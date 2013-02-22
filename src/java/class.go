@@ -111,6 +111,24 @@ type Class struct {
 	Attributes    []attribute_info
 }
 
+func (c *Class) String() (ret string) {
+	ret += fmt.Sprintln("class", String(c.Constant_pool, c.This_class))
+	ret += fmt.Sprintln("extends", String(c.Constant_pool, c.Super_class))
+	ret += fmt.Sprintln("implements")
+	for _, i := range c.Interfaces {
+		ret += fmt.Sprintf("\t%s\n", String(c.Constant_pool, i))
+	}
+	ret += fmt.Sprintln("Fields")
+	for _, f := range c.Fields {
+		ret += fmt.Sprintf("\t%s\n", f.String(c.Constant_pool))
+	}
+	ret += fmt.Sprintln("Methods")
+	for _, m := range c.Methods {
+		ret += fmt.Sprintf("\t%s\n", m.String(c.Constant_pool))
+	}
+	return ret
+}
+
 const (
 	magic                       = 0xcafebabe
 	CONSTANT_Class              = 7
@@ -349,21 +367,6 @@ func NewClass(reader io.Reader) (*Class, error) {
 		// fmt.Println("extends", String(c.Constant_pool, c.Super_class))
 
 		return nil, err
-	} else {
-		// fmt.Println("class", String(c.Constant_pool, c.This_class))
-		// fmt.Println("extends", String(c.Constant_pool, c.Super_class))
-		// fmt.Println("implements")
-		// for _, i := range c.Interfaces {
-		// 	fmt.Printf("\t%s\n", String(c.Constant_pool, i))
-		// }
-		// fmt.Println("Fields")
-		// for _, f := range c.Fields {
-		// 	fmt.Printf("\t%s\n", f.String(c.Constant_pool))
-		// }
-		// fmt.Println("Methods")
-		// for _, m := range c.Methods {
-		// 	fmt.Printf("\t%s\n", m.String(c.Constant_pool))
-		// }
 	}
 	return &c, nil
 }
