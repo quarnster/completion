@@ -102,7 +102,7 @@ func diff(b1, b2 []byte) (data []byte, err error) {
 
 func TestSpecificClasses(t *testing.T) {
 	tests := map[string][]byte{
-		"java/lang/String.class": []byte(`class java/lang/String
+		"java/lang/String.class": []byte(`public final class java/lang/String
 extends java/lang/Object
 implements
 	java/io/Serializable
@@ -209,7 +209,7 @@ Methods
 	public volatile synthetic compareTo (Ljava/lang/Object;)I
 	static <clinit> ()V
 `),
-		"java/util/ArrayList.class": []byte(`class java/util/ArrayList
+		"java/util/ArrayList.class": []byte(`public class java/util/ArrayList
 extends java/util/AbstractList
 implements
 	java/util/List
@@ -266,7 +266,7 @@ Methods
 	static synthetic access$100 (Ljava/util/ArrayList;)I
 	static synthetic access$200 (Ljava/util/ArrayList;)[Ljava/lang/Object;
 `),
-		"java/awt/Button.class": []byte(`class java/awt/Button
+		"java/awt/Button.class": []byte(`public class java/awt/Button
 extends java/awt/Component
 implements
 	javax/accessibility/Accessible
@@ -301,7 +301,7 @@ Methods
 	public getAccessibleContext ()Ljavax/accessibility/AccessibleContext;
 	static <clinit> ()V
 `),
-		"javax/swing/JLabel.class": []byte(`class javax/swing/JLabel
+		"javax/swing/JLabel.class": []byte(`public class javax/swing/JLabel
 extends javax/swing/JComponent
 implements
 	javax/swing/SwingConstants

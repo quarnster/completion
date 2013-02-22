@@ -102,7 +102,7 @@ type Class struct {
 	Minor_version u2
 	Major_version u2
 	Constant_pool []Constant
-	Access_flags  u2
+	Access_flags  AccessFlags
 	This_class    u2
 	Super_class   u2
 	Interfaces    []u2
@@ -112,7 +112,7 @@ type Class struct {
 }
 
 func (c *Class) String() (ret string) {
-	ret += fmt.Sprintln("class", String(c.Constant_pool, c.This_class))
+	ret += fmt.Sprintf("%sclass %s\n", c.Access_flags, String(c.Constant_pool, c.This_class))
 	ret += fmt.Sprintln("extends", String(c.Constant_pool, c.Super_class))
 	ret += fmt.Sprintln("implements")
 	for _, i := range c.Interfaces {
@@ -361,12 +361,9 @@ func NewClass(reader io.Reader) (*Class, error) {
 	r := ClassDecoder{reader, nil}
 	var c Class
 	if err := r.Decode(&c); err != nil {
-		// fmt.Printf("%x, %d, %d\n", c.Magic, c.Major_version, c.Minor_version)
-		// fmt.Println(len(c.Constant_pool))
-		// fmt.Println("class", String(c.Constant_pool, c.This_class))
-		// fmt.Println("extends", String(c.Constant_pool, c.Super_class))
-
 		return nil, err
+	} else if c.Magic != magic {
+		return nil, errors.New(fmt.Sprintf("Magic isn't what's expected: %x", c.Magic))
 	}
 	return &c, nil
 }
