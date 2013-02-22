@@ -1,17 +1,31 @@
 package java
 
 import (
-	"os"
+	"archive/zip"
+	//"os"
+	"strings"
 	"testing"
 )
 
-func TestNewClass(t *testing.T) {
-	if f, err := os.Open("/Users/quarnster/Library/Application Support/Sublime Text 3/Packages/SublimeJava/SublimeJava.class"); err != nil {
+const rt_jar = "/Library/Java/JavaVirtualMachines/jdk1.7.0_09.jdk/Contents/Home/jre/lib/rt.jar"
+
+func TestLoadAllClasses(t *testing.T) {
+	if z, err := zip.OpenReader(rt_jar); err != nil {
 		t.Fatal(err)
 	} else {
-		defer f.Close()
-		if _, err := NewClass(f); err != nil {
-			t.Error(err)
+		defer z.Close()
+		for _, zf := range z.File {
+			if strings.HasSuffix(zf.Name, ".class") {
+				t.Log(zf.Name)
+				if f, err := zf.Open(); err != nil {
+					t.Fatal(err)
+				} else {
+					defer f.Close()
+					if _, err := NewClass(f); err != nil {
+						t.Fatal(err)
+					}
+				}
+			}
 		}
 	}
 }

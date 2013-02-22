@@ -17,11 +17,84 @@ type u1 uint8
 type u2 uint16
 type u4 uint32
 type cp_info int
-type field_info int
-type method_info int
-type attribute_info int
 
 type Constant struct {
+	tag   u1
+	index [2]u2
+	value string
+}
+
+func String(lut []Constant, idx u2) string {
+	if idx > 0 && int(idx) <= len(lut) {
+		return lut[idx-1].String(lut)
+	}
+	return fmt.Sprintf("Invalid index: %d", idx)
+}
+
+func (c Constant) String(lut []Constant) string {
+	switch c.tag {
+	case CONSTANT_Utf8:
+		return c.value
+	case CONSTANT_String:
+		fallthrough
+	case CONSTANT_MethodType:
+		fallthrough
+	case CONSTANT_Class:
+		return String(lut, c.index[0])
+	}
+	return fmt.Sprintf("Non-stringed tag: %d", c.tag)
+}
+
+type AccessFlags u2
+
+func (a AccessFlags) String() (ret string) {
+	if a&ACC_PUBLIC != 0 {
+		ret += "public "
+	}
+	if a&ACC_PRIVATE != 0 {
+		ret += "private "
+	}
+	if a&ACC_PROTECTED != 0 {
+		ret += "protected "
+	}
+	if a&ACC_STATIC != 0 {
+		ret += "static "
+	}
+	if a&ACC_FINAL != 0 {
+		ret += "final "
+	}
+	if a&ACC_VOLATILE != 0 {
+		ret += "volatile "
+	}
+	if a&ACC_TRANSIENT != 0 {
+		ret += "transient "
+	}
+	if a&ACC_SYNTHETIC != 0 {
+		ret += "synthetic "
+	}
+	if a&ACC_ENUM != 0 {
+		ret += "enum "
+	}
+	return ret
+}
+
+type member_info struct {
+	Access_flags     AccessFlags
+	Name_index       u2
+	Descriptor_index u2
+	Attributes       []attribute_info
+}
+
+func (mi *member_info) String(c []Constant) string {
+	ret := mi.Access_flags.String()
+	ret += String(c, mi.Name_index)
+	ret += " " + String(c, mi.Descriptor_index)
+	return ret
+}
+
+type attribute_info struct {
+	Attribute_name_index u2
+	Info                 []byte
 }
 
 type Class struct {
@@ -33,8 +106,8 @@ type Class struct {
 	This_class    u2
 	Super_class   u2
 	Interfaces    []u2
-	Fields        []field_info
-	Methods       []method_info
+	Fields        []member_info
+	Methods       []member_info
 	Attributes    []attribute_info
 }
 
@@ -56,6 +129,27 @@ const (
 	CONSTANT_InvokeDynamic      = 18
 )
 
+const (
+	// Declared public; may be accessed from outside its package.
+	ACC_PUBLIC = 0x0001
+	// Declared private; usable only within the defining class.
+	ACC_PRIVATE = 0x0002
+	// Declared protected; may be accessed within subclasses.
+	ACC_PROTECTED = 0x0004
+	// Declared static.
+	ACC_STATIC = 0x0008
+	// Declared final; never directly assigned to after object construction (JLS §17.5).
+	ACC_FINAL = 0x0010
+	// Declared volatile; cannot be cached.
+	ACC_VOLATILE = 0x0040
+	// Declared transient; not written or read by a persistent object manager.
+	ACC_TRANSIENT = 0x0080
+	// Declared synthetic; not present in the source code.
+	ACC_SYNTHETIC = 0x1000
+	// Declared as an element of an enum.
+	ACC_ENUM = 0x4000
+)
+
 type ClassDecoder struct {
 	reader io.Reader
 	err    error
@@ -63,6 +157,9 @@ type ClassDecoder struct {
 
 func (r *ClassDecoder) Read(size int) ([]byte, error) {
 	data := make([]byte, size)
+	if size == 0 {
+		return data, nil
+	}
 	if n, err := r.reader.Read(data); err != nil {
 		return nil, err
 	} else if n != len(data) {
@@ -80,30 +177,31 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 
 	switch v2.Type().Name() {
 	case "Constant":
-		var tag u1
-		if err := dec.Decode(&tag); err != nil {
+		c := (*Constant)(unsafe.Pointer(t.Pointer()))
+		if err := dec.Decode(&c.tag); err != nil {
 			return err
 		} else {
-			switch tag {
+			switch c.tag {
+			case CONSTANT_String:
+				fallthrough
+			case CONSTANT_MethodType:
+				fallthrough
 			case CONSTANT_Class:
-				var name_index u2
-				return dec.Decode(&name_index)
+				return dec.Decode(&c.index[0])
 			case CONSTANT_Fieldref:
 				fallthrough
 			case CONSTANT_Methodref:
 				fallthrough
+			case CONSTANT_NameAndType:
+				fallthrough
+			case CONSTANT_InvokeDynamic:
+				fallthrough
 			case CONSTANT_InterfaceMethodref:
-				var class_index, name_and_type_index u2
-				if err := dec.Decode(&class_index); err != nil {
+				if err := dec.Decode(&c.index[0]); err != nil {
 					return err
 				} else {
-					return dec.Decode(&name_and_type_index)
+					return dec.Decode(&c.index[1])
 				}
-			default:
-				return errors.New(fmt.Sprintf("Unimplemented tag: %d", tag))
-			case CONSTANT_String:
-				var string_index u2
-				return dec.Decode(&string_index)
 			case CONSTANT_Integer:
 				var v int32
 				return dec.Decode(&v)
@@ -116,13 +214,6 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 			case CONSTANT_Double:
 				var v float64
 				return dec.Decode(&v)
-			case CONSTANT_NameAndType:
-				var name_index, type_index u2
-				if err := dec.Decode(&name_index); err != nil {
-					return err
-				} else {
-					return dec.Decode(&type_index)
-				}
 			case CONSTANT_Utf8:
 				var length u2
 				if err := dec.Decode(&length); err != nil {
@@ -130,26 +221,18 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 				} else if d, err := dec.Read(int(length)); err != nil {
 					return err
 				} else {
-					data := string(d)
-					fmt.Println(data)
+					c.value = string(d)
 				}
 			case CONSTANT_MethodHandle:
-				type MH struct {
-					Reference_kind  u1
-					Reference_index u2
-				}
-				var m MH
-				return dec.Decode(&m)
-			case CONSTANT_MethodType:
-				var desc_index u2
-				return dec.Decode(&desc_index)
-			case CONSTANT_InvokeDynamic:
-				var bootstrap_method_attr_index, name_and_type_index u2
-				if err := dec.Decode(&bootstrap_method_attr_index); err != nil {
+				var ref_kind u1
+				if err := dec.Decode(&ref_kind); err != nil {
 					return err
 				} else {
-					return dec.Decode(&name_and_type_index)
+					c.index[0] = u2(ref_kind)
+					return dec.Decode(&c.index[1])
 				}
+			default:
+				return errors.New(fmt.Sprintf("Unimplemented tag: %d", c.tag))
 			}
 		}
 	default:
@@ -157,10 +240,22 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 		case reflect.Struct:
 			for i := 0; i < v2.NumField(); i++ {
 				f := v2.Field(i)
-				fmt.Println("Field: ", f.Kind(), f.Type())
-				a := f.Addr()
-				if err := dec.Decode(a.Interface()); err != nil {
-					return err
+				if v2.Type().Name() == "attribute_info" && f.Kind() == reflect.Slice {
+					var length u4
+					if err := dec.Decode(&length); err != nil {
+						return err
+					} else {
+						if d, err := dec.Read(int(length)); err != nil {
+							return err
+						} else {
+							f.SetBytes(d)
+						}
+					}
+				} else {
+					a := f.Addr()
+					if err := dec.Decode(a.Interface()); err != nil {
+						return err
+					}
 				}
 			}
 		case reflect.Slice:
@@ -168,14 +263,26 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 			if err := dec.Decode(&count); err != nil {
 				return err
 			} else {
-				ic := int(count) - 1
+				ic := int(count)
+				isConstantPool := v2.Type().String() == "[]java.Constant"
+				if isConstantPool {
+					ic--
+				}
 				v2.Set(reflect.MakeSlice(v2.Type(), ic, ic))
 
 				for i := 0; i < v2.Len(); i++ {
 					f := v2.Index(i)
 					a := f.Addr()
+
 					if err := dec.Decode(a.Interface()); err != nil {
 						return err
+					}
+					if isConstantPool {
+						c := (*Constant)(unsafe.Pointer(a.Pointer()))
+						if c.tag == CONSTANT_Double || c.tag == CONSTANT_Long {
+							// All 8-byte constants take up two entries in the constant_pool table of the class file.
+							i++
+						}
 					}
 				}
 			}
@@ -185,6 +292,12 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 			} else {
 				v2.SetInt(int64(binary.BigEndian.Uint32(d)))
 			}
+		case reflect.Int64:
+			if d, err := dec.Read(8); err != nil {
+				return err
+			} else {
+				v2.SetInt(int64(binary.BigEndian.Uint64(d)))
+			}
 		case reflect.Float32:
 			if d, err := dec.Read(4); err != nil {
 				return err
@@ -192,7 +305,14 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 				i32 := binary.BigEndian.Uint32(d)
 				f32 := *(*float32)(unsafe.Pointer(&i32))
 				v2.SetFloat(float64(f32))
-				fmt.Printf("%f\n", v2.Float())
+			}
+		case reflect.Float64:
+			if d, err := dec.Read(8); err != nil {
+				return err
+			} else {
+				i64 := binary.BigEndian.Uint64(d)
+				f64 := *(*float64)(unsafe.Pointer(&i64))
+				v2.SetFloat(f64)
 			}
 		case reflect.Uint32:
 			if d, err := dec.Read(4); err != nil {
@@ -223,7 +343,27 @@ func NewClass(reader io.Reader) (*Class, error) {
 	r := ClassDecoder{reader, nil}
 	var c Class
 	if err := r.Decode(&c); err != nil {
+		// fmt.Printf("%x, %d, %d\n", c.Magic, c.Major_version, c.Minor_version)
+		// fmt.Println(len(c.Constant_pool))
+		// fmt.Println("class", String(c.Constant_pool, c.This_class))
+		// fmt.Println("extends", String(c.Constant_pool, c.Super_class))
+
 		return nil, err
+	} else {
+		// fmt.Println("class", String(c.Constant_pool, c.This_class))
+		// fmt.Println("extends", String(c.Constant_pool, c.Super_class))
+		// fmt.Println("implements")
+		// for _, i := range c.Interfaces {
+		// 	fmt.Printf("\t%s\n", String(c.Constant_pool, i))
+		// }
+		// fmt.Println("Fields")
+		// for _, f := range c.Fields {
+		// 	fmt.Printf("\t%s\n", f.String(c.Constant_pool))
+		// }
+		// fmt.Println("Methods")
+		// for _, m := range c.Methods {
+		// 	fmt.Printf("\t%s\n", m.String(c.Constant_pool))
+		// }
 	}
 	return &c, nil
 }
