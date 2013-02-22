@@ -377,36 +377,51 @@ Methods
 	public getAccessibleContext ()Ljavax/accessibility/AccessibleContext;
 `),
 	}
-	if z, err := zip.OpenReader(rtJar(t)); err != nil {
-		t.Fatal(err)
-	} else {
-		defer z.Close()
-		for _, zf := range z.File {
-			if v, ok := tests[zf.Name]; ok {
-				if f, err := zf.Open(); err != nil {
-					t.Error(err)
-				} else {
-					defer f.Close()
-					if d, err := ioutil.ReadAll(f); err != nil {
-						t.Error(err)
-					} else {
-						f := bytes.NewReader(d)
-						if c, err := NewClass(f); err != nil {
-							t.Error(err)
-						} else {
-							if len(v) == 0 {
-								t.Log(c.String())
-								continue
-							}
-							if d, err := diff(v, []byte(c.String())); err != nil {
-								t.Error(err)
-							} else if len(d) != 0 {
-								t.Error(string(d))
-							}
-						}
-					}
-				}
-			}
+
+	var err error
+
+	z, err := zip.OpenReader(rtJar(t))
+	if err != nil {
+		t.Fatalf("Failed to read rt.jar: %s", err)
+	}
+	defer z.Close()
+
+	for _, zf := range z.File {
+
+		v, ok := tests[zf.Name]
+		if !ok {
+			continue
+		}
+
+		f, err := zf.Open()
+		if err != nil {
+			t.Error("Failed to open zip file: %s", err)
+			continue
+		}
+		defer f.Close()
+
+		d, err := ioutil.ReadAll(f)
+		if err != nil {
+			t.Errorf("Failed to read file contents: %s", err)
+			continue
+		}
+
+		b := bytes.NewReader(d)
+		c, err := NewClass(b)
+		if err != nil {
+			t.Errorf("Failed to create Class struct: %s", err)
+			continue
+		}
+
+		if len(v) == 0 {
+			t.Log(c.String())
+			continue
+		}
+
+		if d, err := diff(v, []byte(c.String())); err != nil {
+			t.Error(err)
+		} else if len(d) != 0 {
+			t.Error(string(d))
 		}
 	}
 }
