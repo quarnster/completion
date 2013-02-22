@@ -13,13 +13,27 @@ import (
 )
 
 func init() {
-	runtime.GOMAXPROCS(8)
+	runtime.GOMAXPROCS(runtime.NumCPU())
 }
 
-const rt_jar = "/Library/Java/JavaVirtualMachines/jdk1.7.0_09.jdk/Contents/Home/jre/lib/rt.jar"
+func rtJar(t *testing.T) string {
+	substr := []byte("rt.jar")
+
+	// -XshowSettings still exits with `1` returning an error, so use CombinedOutput.
+	out, _ := exec.Command("java", "-XshowSettings:properties").CombinedOutput()
+
+	for _, line := range bytes.Split(out, []byte("\n")) {
+		if bytes.Contains(line, substr) {
+			return string(bytes.TrimSpace(line))
+		}
+	}
+
+	t.Fatal("Failed to locate rt.jar")
+	panic("unreachable")
+}
 
 func TestLoadAllClasses(t *testing.T) {
-	if z, err := zip.OpenReader(rt_jar); err != nil {
+	if z, err := zip.OpenReader(rtJar(t)); err != nil {
 		t.Fatal(err)
 	} else {
 		defer z.Close()
@@ -363,7 +377,7 @@ Methods
 	public getAccessibleContext ()Ljavax/accessibility/AccessibleContext;
 `),
 	}
-	if z, err := zip.OpenReader(rt_jar); err != nil {
+	if z, err := zip.OpenReader(rtJar(t)); err != nil {
 		t.Fatal(err)
 	} else {
 		defer z.Close()
