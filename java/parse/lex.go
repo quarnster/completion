@@ -85,7 +85,7 @@ func lexClassBody(l *lexer) stateFn {
 			// an inner class or interface
 			return lexClass
 		case '}':
-			// end of inner class
+			// end of class body
 			l.discard()
 			l.emit(tokenClassEnd)
 		case '=', ';':
