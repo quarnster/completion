@@ -1,6 +1,7 @@
 package java
 
 import (
+	"common"
 	"encoding/binary"
 	"errors"
 	"fmt"
@@ -16,7 +17,6 @@ http://en.wikipedia.org/wiki/Java_class_file
 type u1 uint8
 type u2 uint16
 type u4 uint32
-type cp_info int
 
 type Constant struct {
 	tag   u1
@@ -169,21 +169,8 @@ const (
 )
 
 type ClassDecoder struct {
-	reader io.Reader
+	reader common.BinaryReader
 	err    error
-}
-
-func (r *ClassDecoder) Read(size int) ([]byte, error) {
-	data := make([]byte, size)
-	if size == 0 {
-		return data, nil
-	}
-	if n, err := r.reader.Read(data); err != nil {
-		return nil, err
-	} else if n != len(data) {
-		return nil, errors.New("Didn't read the expected number of bytes")
-	}
-	return data, nil
 }
 
 func (dec *ClassDecoder) Decode(v interface{}) error {
@@ -236,7 +223,7 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 				var length u2
 				if err := dec.Decode(&length); err != nil {
 					return err
-				} else if d, err := dec.Read(int(length)); err != nil {
+				} else if d, err := dec.reader.Read(int(length)); err != nil {
 					return err
 				} else {
 					c.value = string(d)
@@ -263,7 +250,7 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 					if err := dec.Decode(&length); err != nil {
 						return err
 					} else {
-						if d, err := dec.Read(int(length)); err != nil {
+						if d, err := dec.reader.Read(int(length)); err != nil {
 							return err
 						} else {
 							f.SetBytes(d)
@@ -305,47 +292,43 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 				}
 			}
 		case reflect.Int32:
-			if d, err := dec.Read(4); err != nil {
+			if d, err := dec.reader.Int32(); err != nil {
 				return err
 			} else {
-				v2.SetInt(int64(binary.BigEndian.Uint32(d)))
+				v2.SetInt(int64(d))
 			}
 		case reflect.Int64:
-			if d, err := dec.Read(8); err != nil {
+			if d, err := dec.reader.Int64(); err != nil {
 				return err
 			} else {
-				v2.SetInt(int64(binary.BigEndian.Uint64(d)))
+				v2.SetInt(d)
 			}
 		case reflect.Float32:
-			if d, err := dec.Read(4); err != nil {
+			if d, err := dec.reader.Float32(); err != nil {
 				return err
 			} else {
-				i32 := binary.BigEndian.Uint32(d)
-				f32 := *(*float32)(unsafe.Pointer(&i32))
-				v2.SetFloat(float64(f32))
+				v2.SetFloat(float64(d))
 			}
 		case reflect.Float64:
-			if d, err := dec.Read(8); err != nil {
+			if d, err := dec.reader.Float64(); err != nil {
 				return err
 			} else {
-				i64 := binary.BigEndian.Uint64(d)
-				f64 := *(*float64)(unsafe.Pointer(&i64))
-				v2.SetFloat(f64)
+				v2.SetFloat(d)
 			}
 		case reflect.Uint32:
-			if d, err := dec.Read(4); err != nil {
+			if d, err := dec.reader.Uint32(); err != nil {
 				return err
 			} else {
-				v2.SetUint(uint64(binary.BigEndian.Uint32(d)))
+				v2.SetUint(uint64(d))
 			}
 		case reflect.Uint16:
-			if d, err := dec.Read(2); err != nil {
+			if d, err := dec.reader.Uint16(); err != nil {
 				return err
 			} else {
-				v2.SetUint(uint64(binary.BigEndian.Uint16(d)))
+				v2.SetUint(uint64(d))
 			}
 		case reflect.Uint8:
-			if d, err := dec.Read(1); err != nil {
+			if d, err := dec.reader.Read(1); err != nil {
 				return err
 			} else {
 				v2.SetUint(uint64(d[0]))
@@ -358,7 +341,7 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 }
 
 func NewClass(reader io.Reader) (*Class, error) {
-	r := ClassDecoder{reader, nil}
+	r := ClassDecoder{common.BinaryReader{reader, binary.BigEndian}, nil}
 	var c Class
 	if err := r.Decode(&c); err != nil {
 		return nil, err
