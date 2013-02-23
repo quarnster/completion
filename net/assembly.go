@@ -6,10 +6,10 @@ package net
 
 import (
 	"bytes"
-	"common"
 	"encoding/binary"
 	"errors"
 	"fmt"
+	"github.com/quarnster/completion/common"
 	"io"
 )
 

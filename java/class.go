@@ -1,10 +1,10 @@
 package java
 
 import (
-	"common"
 	"encoding/binary"
 	"errors"
 	"fmt"
+	"github.com/quarnster/completion/common"
 	"io"
 	"reflect"
 	"unsafe"
