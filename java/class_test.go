@@ -53,6 +53,12 @@ func TestSpecificClasses(t *testing.T) {
 		t.Fatal(err)
 	}
 
+	c, err := NewCompositeArchive(classpath)
+	if err != nil {
+		t.Log(err)
+	}
+	defer c.Close()
+
 	testdata, err := os.Open(testdata_path)
 	if err != nil {
 		t.Fatalf("Failed to open %s: %s", testdata_path, err)
@@ -77,7 +83,7 @@ func TestSpecificClasses(t *testing.T) {
 	for k, v := range tests {
 		t.Log("Testing", k)
 
-		d, err := LoadClass(classpath, k)
+		d, err := c.LoadClass(k)
 		if err != nil {
 			t.Errorf("Failed to read file contents: %s", err)
 			continue

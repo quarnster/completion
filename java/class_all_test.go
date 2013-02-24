@@ -45,7 +45,13 @@ func TestLoadAllClasses(t *testing.T) {
 	}
 
 	for _, cp := range classpath {
-		classes := LoadAllClassesInPath(cp)
+		a, err := NewArchive(cp)
+		if err != nil {
+			t.Logf("Failed to open archive: %s", err)
+			continue
+		}
+		defer a.Close()
+		classes := a.LoadAllClasses()
 		for i := 0; i < len(classes); {
 			if len(inChan)+1 >= cap(inChan) {
 				for len(outChan) > 0 {
