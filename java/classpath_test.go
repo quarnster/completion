@@ -25,3 +25,11 @@ func TestClasses(t *testing.T) {
 		}
 	}
 }
+
+func TestLoadClassInMap(t *testing.T) {
+	if p, err := DefaultClasspath(); err != nil {
+		t.Error(err)
+	} else if m := ClasspathMap(p); len(m) < 1 {
+		t.Error("No classes?")
+	}
+}

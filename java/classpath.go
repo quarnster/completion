@@ -4,6 +4,7 @@ import (
 	"archive/zip"
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"regexp"
@@ -49,7 +50,7 @@ func DefaultClasspath() ([]string, error) {
 	panic("unreachable")
 }
 
-func ClassesInPath(path string) (ret []string, err error) {
+func ClassesInPath(path string) (ret []Classname, err error) {
 	if strings.HasSuffix(path, ".zip") || strings.HasSuffix(path, ".jar") {
 		if z, err := zip.OpenReader(path); err != nil {
 			return nil, err
@@ -57,7 +58,7 @@ func ClassesInPath(path string) (ret []string, err error) {
 			defer z.Close()
 			for _, zf := range z.File {
 				if strings.HasSuffix(zf.Name, ".class") {
-					ret = append(ret, FileToClass(zf.Name))
+					ret = append(ret, Filename(zf.Name).Classname())
 				}
 			}
 		}
@@ -71,7 +72,7 @@ func ClassesInPath(path string) (ret []string, err error) {
 			} else {
 				for _, f := range fi {
 					if strings.HasSuffix(f.Name(), ".class") {
-						ret = append(ret, FileToClass(f.Name()))
+						ret = append(ret, Filename(f.Name()).Classname())
 					}
 				}
 			}
@@ -80,9 +81,9 @@ func ClassesInPath(path string) (ret []string, err error) {
 	return ret, err
 }
 
-// Returns the name of all classes found in the specified class path.
+// Returns the name of all classes found in the specified class paths.
 // The returned string array may be populated even if err != nil.
-func Classes(classpath []string) (ret []string, err error) {
+func Classes(classpath []string) (ret []Classname, err error) {
 	var errstr string
 	for i := range classpath {
 		paths, err := ClassesInPath(classpath[i])
@@ -95,4 +96,54 @@ func Classes(classpath []string) (ret []string, err error) {
 		err = errors.New(errstr)
 	}
 	return ret, err
+}
+
+func ClasspathMap(classpath []string) map[string][]Classname {
+	ret := make(map[string][]Classname)
+	for i := range classpath {
+		if paths, _ := ClassesInPath(classpath[i]); len(paths) != 0 {
+			ret[classpath[i]] = paths
+		}
+	}
+	return ret
+}
+
+func LoadClassEx(path string, class Classname) ([]byte, error) {
+	fn := class.Filename()
+	if strings.HasSuffix(path, ".zip") || strings.HasSuffix(path, ".jar") {
+		if z, err := zip.OpenReader(path); err != nil {
+			return nil, err
+		} else {
+			defer z.Close()
+			for _, zf := range z.File {
+				if fn == Filename(zf.Name) {
+					if f, err := zf.Open(); err != nil {
+						return nil, errors.New(fmt.Sprintf("Couldn't open file: %s", err))
+					} else {
+						defer f.Close()
+						if data, err := ioutil.ReadAll(f); err != nil {
+							return nil, err
+						} else {
+							return data, nil
+						}
+					}
+				}
+			}
+		}
+		return nil, errors.New(fmt.Sprintf("Couldn't find class %s in class path %s", fn, path))
+	} else {
+		path = path + string(os.PathSeparator) + string(fn)
+		data, err := ioutil.ReadFile(path)
+		return data, err
+	}
+	panic("unreachable")
+}
+
+func LoadClass(classpath []string, class Classname) ([]byte, error) {
+	for _, cp := range classpath {
+		if data, err := LoadClassEx(cp, class); err == nil {
+			return data, err
+		}
+	}
+	return nil, errors.New(fmt.Sprintf("Couldn't find class: %s", class))
 }
