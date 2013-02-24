@@ -108,6 +108,44 @@ func ClasspathMap(classpath []string) map[string][]Classname {
 	return ret
 }
 
+func LoadAllClassesInPath(path string) (ret [][]byte) {
+	if strings.HasSuffix(path, ".zip") || strings.HasSuffix(path, ".jar") {
+		if z, err := zip.OpenReader(path); err != nil {
+			return nil
+		} else {
+			defer z.Close()
+			for _, zf := range z.File {
+				if strings.HasSuffix(zf.Name, ".class") {
+					if f, err := zf.Open(); err == nil {
+						defer f.Close()
+						if d, err := ioutil.ReadAll(f); err == nil {
+							ret = append(ret, d)
+						}
+					}
+				}
+			}
+		}
+	} else {
+		if f, err := os.Open(path); err != nil {
+			return nil
+		} else {
+			defer f.Close()
+			if fi, err := f.Readdir(-1); err != nil {
+				return nil
+			} else {
+				for _, f := range fi {
+					if strings.HasSuffix(f.Name(), ".class") {
+						if d, err := ioutil.ReadFile(f.Name()); err == nil {
+							ret = append(ret, d)
+						}
+					}
+				}
+			}
+		}
+	}
+	return ret
+}
+
 func LoadClassEx(path string, class Classname) ([]byte, error) {
 	fn := class.Filename()
 	if strings.HasSuffix(path, ".zip") || strings.HasSuffix(path, ".jar") {
