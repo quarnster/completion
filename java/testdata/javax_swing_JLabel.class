@@ -1,0 +1,60 @@
+public class javax/swing/JLabel
+extends javax/swing/JComponent
+implements
+	javax/swing/SwingConstants
+	javax/accessibility/Accessible
+Fields
+	private static final uiClassID Ljava/lang/String;
+	private mnemonic I
+	private mnemonicIndex I
+	private text Ljava/lang/String;
+	private defaultIcon Ljavax/swing/Icon;
+	private disabledIcon Ljavax/swing/Icon;
+	private disabledIconSet Z
+	private verticalAlignment I
+	private horizontalAlignment I
+	private verticalTextPosition I
+	private horizontalTextPosition I
+	private iconTextGap I
+	protected labelFor Ljava/awt/Component;
+	static final LABELED_BY_PROPERTY Ljava/lang/String;
+Methods
+	public <init> (Ljava/lang/String;Ljavax/swing/Icon;I)V
+	public <init> (Ljava/lang/String;I)V
+	public <init> (Ljava/lang/String;)V
+	public <init> (Ljavax/swing/Icon;I)V
+	public <init> (Ljavax/swing/Icon;)V
+	public <init> ()V
+	public getUI ()Ljavax/swing/plaf/LabelUI;
+	public setUI (Ljavax/swing/plaf/LabelUI;)V
+	public updateUI ()V
+	public getUIClassID ()Ljava/lang/String;
+	public getText ()Ljava/lang/String;
+	public setText (Ljava/lang/String;)V
+	public getIcon ()Ljavax/swing/Icon;
+	public setIcon (Ljavax/swing/Icon;)V
+	public getDisabledIcon ()Ljavax/swing/Icon;
+	public setDisabledIcon (Ljavax/swing/Icon;)V
+	public setDisplayedMnemonic (I)V
+	public setDisplayedMnemonic (C)V
+	public getDisplayedMnemonic ()I
+	public setDisplayedMnemonicIndex (I)V
+	public getDisplayedMnemonicIndex ()I
+	protected checkHorizontalKey (ILjava/lang/String;)I
+	protected checkVerticalKey (ILjava/lang/String;)I
+	public getIconTextGap ()I
+	public setIconTextGap (I)V
+	public getVerticalAlignment ()I
+	public setVerticalAlignment (I)V
+	public getHorizontalAlignment ()I
+	public setHorizontalAlignment (I)V
+	public getVerticalTextPosition ()I
+	public setVerticalTextPosition (I)V
+	public getHorizontalTextPosition ()I
+	public setHorizontalTextPosition (I)V
+	public imageUpdate (Ljava/awt/Image;IIIII)Z
+	private writeObject (Ljava/io/ObjectOutputStream;)V
+	protected paramString ()Ljava/lang/String;
+	public getLabelFor ()Ljava/awt/Component;
+	public setLabelFor (Ljava/awt/Component;)V
+	public getAccessibleContext ()Ljavax/accessibility/AccessibleContext;

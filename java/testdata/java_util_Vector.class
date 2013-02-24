@@ -1,0 +1,68 @@
+public class java/util/Vector
+extends java/util/AbstractList
+implements
+	java/util/List
+	java/util/RandomAccess
+	java/lang/Cloneable
+	java/io/Serializable
+Fields
+	protected elementData [Ljava/lang/Object;
+	protected elementCount I
+	protected capacityIncrement I
+	private static final serialVersionUID J
+	private static final MAX_ARRAY_SIZE I
+Methods
+	public <init> (II)V
+	public <init> (I)V
+	public <init> ()V
+	public <init> (Ljava/util/Collection;)V
+	public copyInto ([Ljava/lang/Object;)V
+	public trimToSize ()V
+	public ensureCapacity (I)V
+	private ensureCapacityHelper (I)V
+	private grow (I)V
+	private static hugeCapacity (I)I
+	public setSize (I)V
+	public capacity ()I
+	public size ()I
+	public isEmpty ()Z
+	public elements ()Ljava/util/Enumeration;
+	public contains (Ljava/lang/Object;)Z
+	public indexOf (Ljava/lang/Object;)I
+	public indexOf (Ljava/lang/Object;I)I
+	public lastIndexOf (Ljava/lang/Object;)I
+	public lastIndexOf (Ljava/lang/Object;I)I
+	public elementAt (I)Ljava/lang/Object;
+	public firstElement ()Ljava/lang/Object;
+	public lastElement ()Ljava/lang/Object;
+	public setElementAt (Ljava/lang/Object;I)V
+	public removeElementAt (I)V
+	public insertElementAt (Ljava/lang/Object;I)V
+	public addElement (Ljava/lang/Object;)V
+	public removeElement (Ljava/lang/Object;)Z
+	public removeAllElements ()V
+	public clone ()Ljava/lang/Object;
+	public toArray ()[Ljava/lang/Object;
+	public toArray ([Ljava/lang/Object;)[Ljava/lang/Object;
+	elementData (I)Ljava/lang/Object;
+	public get (I)Ljava/lang/Object;
+	public set (ILjava/lang/Object;)Ljava/lang/Object;
+	public add (Ljava/lang/Object;)Z
+	public remove (Ljava/lang/Object;)Z
+	public add (ILjava/lang/Object;)V
+	public remove (I)Ljava/lang/Object;
+	public clear ()V
+	public containsAll (Ljava/util/Collection;)Z
+	public addAll (Ljava/util/Collection;)Z
+	public removeAll (Ljava/util/Collection;)Z
+	public retainAll (Ljava/util/Collection;)Z
+	public addAll (ILjava/util/Collection;)Z
+	public equals (Ljava/lang/Object;)Z
+	public hashCode ()I
+	public toString ()Ljava/lang/String;
+	public subList (II)Ljava/util/List;
+	protected removeRange (II)V
+	private writeObject (Ljava/io/ObjectOutputStream;)V
+	public listIterator (I)Ljava/util/ListIterator;
+	public listIterator ()Ljava/util/ListIterator;
+	public iterator ()Ljava/util/Iterator;

@@ -1,0 +1,34 @@
+public class java/awt/Button
+extends java/awt/Component
+implements
+	javax/accessibility/Accessible
+Fields
+	label Ljava/lang/String;
+	actionCommand Ljava/lang/String;
+	transient actionListener Ljava/awt/event/ActionListener;
+	private static final base Ljava/lang/String;
+	private static nameCounter I
+	private static final serialVersionUID J
+	private buttonSerializedDataVersion I
+Methods
+	private static initIDs ()V
+	public <init> ()V
+	public <init> (Ljava/lang/String;)V
+	constructComponentName ()Ljava/lang/String;
+	public addNotify ()V
+	public getLabel ()Ljava/lang/String;
+	public setLabel (Ljava/lang/String;)V
+	public setActionCommand (Ljava/lang/String;)V
+	public getActionCommand ()Ljava/lang/String;
+	public addActionListener (Ljava/awt/event/ActionListener;)V
+	public removeActionListener (Ljava/awt/event/ActionListener;)V
+	public getActionListeners ()[Ljava/awt/event/ActionListener;
+	public getListeners (Ljava/lang/Class;)[Ljava/util/EventListener;
+	eventEnabled (Ljava/awt/AWTEvent;)Z
+	protected processEvent (Ljava/awt/AWTEvent;)V
+	protected processActionEvent (Ljava/awt/event/ActionEvent;)V
+	protected paramString ()Ljava/lang/String;
+	private writeObject (Ljava/io/ObjectOutputStream;)V
+	private readObject (Ljava/io/ObjectInputStream;)V
+	public getAccessibleContext ()Ljavax/accessibility/AccessibleContext;
+	static <clinit> ()V
