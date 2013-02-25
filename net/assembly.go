@@ -3,6 +3,7 @@ package net
 // references:
 // http://msdn.microsoft.com/en-us/library/windows/hardware/gg463119.aspx
 // http://www.codeproject.com/Articles/12585/The-NET-File-Format
+// http://msdn.microsoft.com/en-us/library/ms809762.aspx
 
 import (
 	"bytes"
@@ -111,7 +112,7 @@ type section_table struct {
 }
 
 func (s *section_table) String() string {
-	return fmt.Sprintf("Name: %s, VirtualAddress: %x, PointerToRawData: %x", string(s.Name[0:8]), s.VirtualAddress, s.PointerToRawData)
+	return fmt.Sprintf("Name: %s, VirtualAddress: %d, PointerToRawData: %d", string(s.Name[0:8]), s.VirtualAddress, s.PointerToRawData)
 }
 
 func assertEndianness() error {
@@ -122,6 +123,13 @@ func assertEndianness() error {
 		return errors.New("This module assumes a little endian system")
 	}
 	return nil
+}
+
+func goArray(a unsafe.Pointer, ptr uintptr, l int) {
+	sliceHeader := (*reflect.SliceHeader)(a)
+	sliceHeader.Cap = l
+	sliceHeader.Len = l
+	sliceHeader.Data = ptr
 }
 
 func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
@@ -187,17 +195,66 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 		opt_t = reflect.TypeOf(*opt_pe32p)
 	}
 	ptr += opt_t.Size()
-	for i := 0; i < rvas; i++ {
-		id := (*image_data_directory)(unsafe.Pointer(ptr))
-		fmt.Printf("%x, %x\n", id.VirtualAddress, id.Size)
-		ptr += unsafe.Sizeof(*id)
+	var ids []image_data_directory
+	goArray(unsafe.Pointer(&ids), ptr, rvas)
+	for i := range ids {
+		fmt.Printf("%d, %d\n", ids[i].VirtualAddress, ids[i].Size)
 	}
 
-	for i := uint16(0); i < coff.NumberOfSections; i++ {
-		st := (*section_table)(unsafe.Pointer(ptr))
-		fmt.Printf("%d, %s\n", i, st)
-		ptr += unsafe.Sizeof(*st)
+	ptr = uintptr(unsafe.Pointer(coff)) + unsafe.Sizeof(*coff) + uintptr(coff.SizeOfOptionalHeader)
+	var sections []section_table
+	goArray(unsafe.Pointer(&sections), ptr, int(coff.NumberOfSections))
+	for i := range sections {
+		fmt.Printf("%d, %s\n", i, &sections[i])
 	}
+	net := ids[14]
+	off := net.VirtualAddress - sections[0].VirtualAddress + sections[0].PointerToRawData
 
+	type image_cor20 struct {
+		Size         uint32
+		MajorVersion uint16
+		MinorVersion uint16
+		MetaData     image_data_directory
+		Flags        uint32
+	}
+	cor20 := (*image_cor20)(unsafe.Pointer(&data[off]))
+
+	type test struct {
+		Signature    uint32
+		MajorVersion uint16
+		MinorVersion uint16
+		Reserved     uint32
+		Length       uint32
+	}
+	off = cor20.MetaData.VirtualAddress - sections[0].VirtualAddress + sections[0].PointerToRawData
+	t := (*test)(unsafe.Pointer(&data[off]))
+
+	r.Seek(int64(off+uint32(unsafe.Sizeof(*t))), 0)
+	d, _ := br.Read(int((t.Length + 3) &^ 3))
+	fmt.Println(string(d))
+	flags, _ := br.Uint16()
+	fmt.Println("flags:", flags)
+	streams, _ := br.Uint16()
+	fmt.Println("streams:", streams)
+	type stream_header struct {
+		Offset uint32
+		Size   uint32
+		Name   [128]byte
+	}
+	off2, _ := r.Seek(0, 1)
+	ptr = uintptr(unsafe.Pointer(&data[off2]))
+	for i := uint16(0); i < streams; i++ {
+		sh := (*stream_header)(unsafe.Pointer(ptr))
+		l := 0
+		for i, v := range sh.Name {
+			if v == 0 {
+				l = i
+				break
+			}
+		}
+		// +1 to include the terminating 0
+		ptr += 8 + uintptr((l+1+3)&^3)
+		fmt.Printf("%d, %d, %d, %s\n", l, sh.Offset, sh.Size, string(sh.Name[:l]))
+	}
 	return &ret, nil
 }
