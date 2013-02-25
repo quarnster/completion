@@ -54,7 +54,9 @@ func TestSpecificClasses(t *testing.T) {
 	}
 
 	c, err := NewCompositeArchive(classpath)
-	if err != nil {
+	if c == nil {
+		t.Fatal(err)
+	} else if err != nil {
 		t.Log(err)
 	}
 	defer c.Close()
@@ -112,5 +114,30 @@ func TestSpecificClasses(t *testing.T) {
 		} else if len(d) != 0 {
 			t.Error(string(d))
 		}
+	}
+}
+
+func BenchmarkLoadJavaLangString(b *testing.B) {
+	b.StopTimer()
+	classpath, err := DefaultClasspath()
+	if err != nil {
+		b.Fatal(err)
+	}
+	c, err := NewCompositeArchive(classpath)
+	if c == nil {
+		b.Fatal(err)
+	} else if err != nil {
+		b.Log(err)
+	}
+	defer c.Close()
+	data, err := c.LoadClass(Classname("java.lang.String"))
+	if err != nil {
+		b.Fatal(err)
+	}
+	r := bytes.NewReader(data)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		r.Seek(0, 0)
+		NewClass(r)
 	}
 }
