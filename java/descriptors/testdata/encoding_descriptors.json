@@ -1,0 +1,5 @@
+{
+    "(IDLjava/lang/Thread;)Ljava/lang/Object;": "java.lang.Object (int, double, java.lang.Thread)",
+    "[[[D": "double[][][]",
+    "(I[D[[Ljava/lang/Thread;)Ljava/lang/Object;": "java.lang.Object (int, double[], java.lang.Thread[][])"
+}

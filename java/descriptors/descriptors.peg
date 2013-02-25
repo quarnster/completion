@@ -1,0 +1,16 @@
+Entry <- MethodDescriptor / FieldDescriptor
+
+# http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.3.2
+FieldDescriptor     <- FieldType
+ComponentType       <- FieldType
+FieldType           <- BaseType / ObjectType / ArrayType
+BaseType            <- 'B' / 'C' / 'D' / 'F' / 'I' / 'J' / 'S' / 'Z'
+ObjectType          <- 'L' Classname ';'
+Classname           <- (!';' .)+
+ArrayType           <- '[' ComponentType
+
+# http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.3.3
+MethodDescriptor    <- '(' ParameterDescriptor* ')' ReturnDescriptor
+ParameterDescriptor <- FieldType
+ReturnDescriptor    <- FieldType / VoidDescriptor
+VoidDescriptor      <- 'V'
