@@ -175,6 +175,7 @@ const (
 	encidx_Implementation
 	encidx_CustomAttributeType
 	encidx_ResolutionScope
+	encidx_TypeOrMethodDef
 )
 
 var encidx_tables = map[int][]int{
@@ -205,7 +206,10 @@ var encidx_tables = map[int][]int{
 		id_AssemblyRef,
 		id_File,
 		id_ExportedType,
-		id_ManifestResource},
+		id_ManifestResource,
+		id_GenericParam,
+		id_GenericParamConstraint,
+		id_MethodSpec},
 	encidx_HasFieldMarshall: []int{
 		id_Field,
 		id_Param},
@@ -243,9 +247,17 @@ var encidx_tables = map[int][]int{
 		id_ModuleRef,
 		id_AssemblyRef,
 		id_TypeRef},
+	encidx_TypeOrMethodDef: []int{
+		id_TypeDef,
+		id_MethodDef,
+	},
 }
 
 type row_size_func func(*hash_tilde_stream_header) uintptr
+
+func bits(values int) uint {
+	return uint(math.Ceil(math.Log2(float64(values))))
+}
 
 func encoded_index_size(h *hash_tilde_stream_header, tables []int) uintptr {
 	s := uintptr(0)
@@ -254,8 +266,7 @@ func encoded_index_size(h *hash_tilde_stream_header, tables []int) uintptr {
 			s = s2
 		}
 	}
-	bits := uint(math.Log2(float64(len(tables))))
-	if s < (1 << (16 - bits)) {
+	if s < (1 << (16 - bits(len(tables)))) {
 		return 2
 	}
 	return 4
