@@ -1,22 +1,24 @@
 package net
 
 type (
-	AssemblyRefIndex  uint32
-	BlobIndex         uint32
-	EventIndex        uint32
-	FieldIndex        uint32
-	GenericParamIndex uint32
-	GuidIndex         uint32
-	MethodDefIndex    uint32
-	ParamIndex        uint32
-	PropertyIndex     uint32
-	StringIndex       uint32
-	TypeDefIndex      uint32
+	TableIndex        uint32
+	AssemblyRefIndex  TableIndex
+	BlobIndex         TableIndex
+	EventIndex        TableIndex
+	FieldIndex        TableIndex
+	GenericParamIndex TableIndex
+	GuidIndex         TableIndex
+	MethodDefIndex    TableIndex
+	ModuleRefIndex    TableIndex
+	ParamIndex        TableIndex
+	PropertyIndex     TableIndex
+	StringIndex       TableIndex
+	TypeDefIndex      TableIndex
 )
 
 // II.24.2.6
 type (
-	EncodedIndex                    uintptr
+	EncodedIndex                    TableIndex
 	CustomAttributeTypeEncodedIndex EncodedIndex
 	HasConstantEncodedIndex         EncodedIndex
 	HasCustomAttributeEncodedIndex  EncodedIndex

@@ -113,8 +113,11 @@ type (
 
 	// Spec II.22.14
 	ExportedTypeRow struct {
-		Flags     TypeAttributes
-		TypeDefId uint32
+		Flags          TypeAttributes
+		TypeDefId      uint32
+		TypeName       StringIndex
+		TypeNamespace  StringIndex
+		Implementation ImplementationEncodedIndex
 	}
 
 	// Spec II.22.15
@@ -138,7 +141,8 @@ type (
 
 	// Spec II.22.18
 	FieldRVARow struct {
-		RVA uint32
+		RVA   uint32
+		Field FieldIndex
 	}
 
 	// Spec II.22.19
@@ -153,6 +157,7 @@ type (
 		Number uint16
 		Flags  GenericParamAttributes
 		Owner  TypeOrMethodDefEncodedIndex
+		Name   StringIndex
 	}
 
 	// Spec II.22.21
@@ -165,6 +170,8 @@ type (
 	ImplMapRow struct {
 		MappingFlags    PInvokeAttributes
 		MemberForwarded MemberForwardedEncodedIndex
+		ImportName      StringIndex
+		ImportScope     ModuleRefIndex
 	}
 
 	// Spec II.22.23
@@ -175,9 +182,10 @@ type (
 
 	// Spec II.22.24
 	ManifestResourceRow struct {
-		Offset uint32
-		Flags  ManifestResourceAttributes
-		Name   StringIndex
+		Offset         uint32
+		Flags          ManifestResourceAttributes
+		Name           StringIndex
+		Implementation ImplementationEncodedIndex
 	}
 
 	// Spec II.22.25
@@ -199,8 +207,9 @@ type (
 
 	// Spec II.22.27
 	MethodImplRow struct {
-		Class      TypeDefIndex
-		MethodBody MethodDefOrRefEncodedIndex
+		Class             TypeDefIndex
+		MethodBody        MethodDefOrRefEncodedIndex
+		MethodDeclaration MethodDefOrRefEncodedIndex
 	}
 
 	// Spec II.22.28
