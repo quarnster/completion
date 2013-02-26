@@ -11,7 +11,7 @@ const (
 )
 
 const (
-	id_nullTable              = 0
+	id_nullTable              = -1
 	id_Assembly               = 0x20 // II.22.2
 	id_AssemblyOS             = 0x22 // II.22.3
 	id_AssemblyProcessor      = 0x21 // II.22.4
@@ -123,6 +123,16 @@ type hash_tilde_stream_header struct {
 	Valid        uint64
 	Sorted       uint64
 	Rows         [64]uint32
+}
+
+type MetadataUtil struct {
+	HeapSizes uint8
+	Tables    [64]MetadataTable
+}
+
+type MetadataTable struct {
+	Ptr  uintptr
+	Rows uint32
 }
 
 func (h *hash_tilde_stream_header) StringHeapIndexSize() uintptr {
