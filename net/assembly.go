@@ -131,6 +131,14 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 			return nil, err
 		}
 		fmt.Println(h.Name())
+		if h.Name() == "#~" {
+			off += h.Offset
+		}
+	}
+	ht := (*hash_tilde_stream_header)(unsafe.Pointer(&data[off]))
+	fmt.Printf("%#v\n", ht)
+	if err := ht.Validate(); err != nil {
+		return nil, err
 	}
 
 	return &ret, nil
