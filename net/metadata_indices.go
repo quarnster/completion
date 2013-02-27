@@ -1,9 +1,20 @@
 package net
 
+import (
+	"errors"
+	"fmt"
+	"reflect"
+)
+
 type (
-	TableIndex struct {
-		Index uint32
-		Table int
+	ConcreteTableIndex struct {
+		MetadataUtil *MetadataUtil
+		Index        uint32
+		Table        int
+	}
+	TableIndex interface {
+		Data() (interface{}, error)
+		String() string
 	}
 	AssemblyRefIndex  TableIndex
 	BlobIndex         TableIndex
@@ -18,6 +29,43 @@ type (
 	StringIndex       string
 	TypeDefIndex      TableIndex
 )
+
+func (t *ConcreteTableIndex) Data() (interface{}, error) {
+	switch t.Table {
+	case id_nullTable:
+		return nil, errors.New("This is a null table")
+	case id_Guid:
+		return nil, errors.New("Guid lookup not implemented yet")
+	case id_Blob:
+		return nil, errors.New("Blob lookup not implemented yet")
+	}
+	var (
+		ptr   uintptr
+		err   error
+		table = t.MetadataUtil.Tables[t.Table]
+	)
+	if ptr, err = table.Index(t.Index); err != nil {
+		return nil, err
+	}
+	ret := reflect.New(table.RowType).Interface()
+	if _, err := t.MetadataUtil.Create(ptr, ret); err != nil {
+		return nil, err
+	}
+	return ret, nil
+}
+
+func (t *ConcreteTableIndex) String() string {
+	switch t.Table {
+	case id_nullTable:
+		return "nulltable"
+	case id_Guid:
+		return fmt.Sprintf("Guid[%d]", t.Index)
+	case id_Blob:
+		return fmt.Sprintf("Blob[%d]", t.Index)
+	}
+
+	return fmt.Sprintf("%s[%d]", table_row_type_lut[t.Table].Name(), t.Index)
+}
 
 // II.24.2.6
 type (
@@ -63,6 +111,8 @@ var idx_name_lut = map[string]int{
 	"ParamIndex":                      id_Param,
 	"PropertyIndex":                   id_Property,
 	"TypeDefIndex":                    id_TypeDef,
+	"BlobIndex":                       id_Blob,
+	"GuidIndex":                       id_Guid,
 	"TypeDefOrRefEncodedIndex":        idx_TypeDefOrRef,
 	"HasConstantEncodedIndex":         idx_HasConstant,
 	"HasCustomAttributeEncodedIndex":  idx_HasCustomAttribute,

@@ -14,7 +14,6 @@ const (
 )
 
 const (
-	id_nullTable              = -1
 	id_Assembly               = 0x20 // II.22.2
 	id_AssemblyOS             = 0x22 // II.22.3
 	id_AssemblyProcessor      = 0x21 // II.22.4
@@ -53,6 +52,9 @@ const (
 	id_TypeDef                = 0x02 // II.22.37
 	id_TypeRef                = 0x01 // II.22.38
 	id_TypeSpec               = 0x1B // II.22.39
+	id_nullTable              = 0x100
+	id_Blob                   = 0x101
+	id_Guid                   = 0x102
 )
 
 var table_row_type_lut = map[int]reflect.Type{
@@ -169,7 +171,6 @@ type hash_tilde_stream_header struct {
 }
 
 type MetadataUtil struct {
-	HeapSizes  uint8
 	Tables     [64]MetadataTable
 	StringHeap MetadataTable
 	BlobHeap   MetadataTable
@@ -204,8 +205,22 @@ func (mh *MetadataHeader) MetadataUtil() (*MetadataUtil, error) {
 	if err := h.Validate(); err != nil {
 		return nil, err
 	}
+	if h.HeapSizes&bit_stringHeapIndexSize != 0 {
+		ret.StringHeap.RowSize = 4
+	} else {
+		ret.StringHeap.RowSize = 2
+	}
+	if h.HeapSizes&bit_blobHeapIndexSize != 0 {
+		ret.BlobHeap.RowSize = 4
+	} else {
+		ret.BlobHeap.RowSize = 2
+	}
+	if h.HeapSizes&bit_guidHeapIndexSize != 0 {
+		ret.GuidHeap.RowSize = 4
+	} else {
+		ret.GuidHeap.RowSize = 2
+	}
 
-	ret.HeapSizes = h.HeapSizes
 	ptr := uintptr(unsafe.Pointer(h))
 	ptr += reflect.TypeOf(*h).Size()
 	for i := range ret.Tables {
@@ -215,12 +230,14 @@ func (mh *MetadataHeader) MetadataUtil() (*MetadataUtil, error) {
 			ptr += 4
 		}
 	}
+
 	for i := range ret.Tables {
 		if ret.Tables[i].Rows != 0 {
 			ret.Tables[i].Ptr = ptr
 			if size, err := ret.Size(ret.Tables[i].RowType); err != nil {
 				return nil, err
 			} else {
+				ret.Tables[i].RowSize = uintptr(size)
 				ptr += uintptr(size * uint(ret.Tables[i].Rows))
 			}
 		}
@@ -254,26 +271,21 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 	name := v2.Type().Name()
 
 	if name == "StringIndex" {
-		if size, err := m.Size(v2.Type()); err != nil {
-			return 0, err
-		} else {
-			index := m.ReadIndex(ptr, size)
-			start := m.StringHeap.Ptr + uintptr(index)
-			end := m.StringHeap.Ptr + uintptr(m.StringHeap.Rows)
-			if start < end {
-				var data []byte
+		size := m.StringHeap.RowSize
+		index := m.ReadIndex(ptr, uint(size))
+		start := m.StringHeap.Ptr + uintptr(index)
+		end := m.StringHeap.Ptr + uintptr(m.StringHeap.Rows)
+		var data []byte
 
-				goArray(unsafe.Pointer(&data), start, int(end))
-				for i := range data {
-					if data[i] == '\u0000' {
-						end = uintptr(i)
-						break
-					}
-				}
-				v2.SetString(string(data[:end]))
+		goArray(unsafe.Pointer(&data), start, int(end))
+		for i := range data {
+			if data[i] == '\u0000' {
+				end = uintptr(i)
+				break
 			}
-			ptr += uintptr(size)
 		}
+		v2.SetString(string(data[:end]))
+		ptr += uintptr(size)
 	} else if strings.HasSuffix(name, "EncodedIndex") {
 		if size, err := m.Size(v2.Type()); err != nil {
 			return 0, err
@@ -285,18 +297,30 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 				b      = bits(len(tables))
 				mask   = uint32(0xffff << b)
 				tbl    = idx &^ mask
+				ti     ConcreteTableIndex
 			)
 			idx = idx >> b
-			v2.FieldByName("Index").SetUint(uint64(idx))
-			v2.FieldByName("Table").SetInt(int64(tbl))
+			ti.Index = idx
+			ti.Table = int(tbl)
+			ti.MetadataUtil = m
+			v2.Set(reflect.ValueOf(&ti))
 			ptr += uintptr(size)
 		}
 	} else if strings.HasSuffix(name, "Index") {
 		if size, err := m.Size(v2.Type()); err != nil {
 			return 0, err
 		} else {
-			v2.FieldByName("Index").SetUint(uint64(m.ReadIndex(ptr, size)))
-			v2.FieldByName("Table").SetInt(int64(idx_name_lut[name]))
+			var ti ConcreteTableIndex
+			ti.Index = m.ReadIndex(ptr, size)
+			if name == "GuidIndex" {
+				ti.Table = id_Guid
+			} else if name == "BlobIndex" {
+				ti.Table = id_Blob
+			} else {
+				ti.Table = idx_name_lut[name]
+			}
+			ti.MetadataUtil = m
+			v2.Set(reflect.ValueOf(&ti))
 			ptr += uintptr(size)
 		}
 	} else {
@@ -332,23 +356,11 @@ func (m *MetadataUtil) Size(t reflect.Type) (uint, error) {
 	name := t.Name()
 	switch name {
 	case "StringIndex":
-		if m.HeapSizes&bit_stringHeapIndexSize != 0 {
-			size = 4
-		} else {
-			size = 2
-		}
+		size = uint(m.StringHeap.RowSize)
 	case "GuidIndex":
-		if m.HeapSizes&bit_guidHeapIndexSize != 0 {
-			size = 4
-		} else {
-			size = 2
-		}
+		size = uint(m.GuidHeap.RowSize)
 	case "BlobIndex":
-		if m.HeapSizes&bit_blobHeapIndexSize != 0 {
-			size = 4
-		} else {
-			size = 2
-		}
+		size = uint(m.BlobHeap.RowSize)
 	default:
 		if strings.HasSuffix(name, "EncodedIndex") {
 			id := idx_name_lut[name]
@@ -386,6 +398,16 @@ func (m *MetadataUtil) Size(t reflect.Type) (uint, error) {
 						size += s
 					}
 				}
+			case reflect.Uint8:
+				return 1, nil
+			case reflect.Uint16:
+				return 2, nil
+			case reflect.Uint32:
+				return 4, nil
+			case reflect.Uint64:
+				return 8, nil
+			default:
+				return 0, errors.New(fmt.Sprintf("Don't know the size of: %s, %s", t.Name(), t.Kind()))
 			}
 		}
 	}
@@ -396,6 +418,18 @@ type MetadataTable struct {
 	Ptr     uintptr
 	Rows    uint32
 	RowType reflect.Type
+	RowSize uintptr
+}
+
+func (mt *MetadataTable) Index(index uint32) (uintptr, error) {
+	if mt.Ptr == 0 {
+		return 0, errors.New("Trying to dereference a nil table")
+	}
+	index--
+	if index > mt.Rows {
+		return 0, errors.New(fmt.Sprintf("Index outside of bounds: %x > %x", index, mt.Rows))
+	}
+	return mt.Ptr + uintptr(index)*mt.RowSize, nil
 }
 
 func (h *hash_tilde_stream_header) Validate() error {

@@ -1,23 +1,6 @@
 package net
 
 type (
-	AssemblyFlags              uint32 //  II.23.1.2
-	AssemblyHashAlgorithm      uint32 //  II.23.1.1
-	EventAttributes            uint16 //  II.23.1.4
-	FieldAttributes            uint16 //  II.23.1.5
-	FileAttributes             uint32 //  II.23.1.6
-	GenericParamAttributes     uint16 //  II.23.1.7
-	ManifestResourceAttributes uint32 //  II.23.1.9
-	MethodAttributes           uint16 //  II.23.1.10
-	MethodImplAttributes       uint16 //  II.23.1.10
-	MethodSemanticsAttributes  uint16 //  II.23.1.12
-	ParamAttributes            uint16 //  II.23.1.13
-	PInvokeAttributes          uint16 //  II.23.1.8
-	PropertyAttributes         uint16 //  II.23.1.14
-	TypeAttributes             uint32 //  II.23.1.15
-)
-
-type (
 	// Spec II.22.2
 	AssemblyRow struct {
 		HashAlgId      AssemblyHashAlgorithm
