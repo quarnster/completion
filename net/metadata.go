@@ -3,6 +3,9 @@ package net
 import (
 	"errors"
 	"fmt"
+	"math"
+	"reflect"
+	"strings"
 	"unsafe"
 )
 
@@ -130,38 +133,130 @@ type MetadataUtil struct {
 	Tables    [64]MetadataTable
 }
 
+const (
+	bit_stringHeapIndexSize = (1 << iota)
+	bit_guidHeapIndexSize
+	bit_blobHeapIndexSize
+)
+
+func (m *MetadataUtil) ReadIndex(ptr uintptr, size uint) uint32 {
+	if size == 2 {
+		return uint32(*(*uint16)(unsafe.Pointer(ptr)))
+	}
+	return *(*uint32)(unsafe.Pointer(ptr))
+}
+
+func bits(values int) uint {
+	return uint(math.Ceil(math.Log2(float64(values))))
+}
+
+func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
+	t := reflect.ValueOf(v)
+	if t.Kind() != reflect.Ptr {
+		return 0, errors.New(fmt.Sprintf("Expected a pointer not %s", t.Kind()))
+	}
+	v2 := t.Elem()
+	name := v2.Type().Name()
+	if strings.HasSuffix(name, "EncodedIndex") {
+		if size, err := m.Size(v); err != nil {
+			return 0, err
+		} else {
+			var (
+				idx = m.ReadIndex(ptr, size)
+
+				tables = enc_lut[idx_name_lut[name]]
+				b      = bits(len(tables))
+				mask   = uint32(0xffff << b)
+				tbl    = idx &^ mask
+			)
+			idx = idx >> b
+			v2.FieldByName("index").SetUint(uint64(idx))
+			v2.FieldByName("table").SetInt(int64(tbl))
+			ptr += uintptr(size)
+		}
+	} else if strings.HasSuffix(name, "Index") {
+		if size, err := m.Size(v); err != nil {
+			return 0, err
+		} else {
+			v2.FieldByName("index").SetUint(uint64(m.ReadIndex(ptr, size)))
+			v2.FieldByName("table").SetInt(int64(idx_name_lut[name]))
+			ptr += uintptr(size)
+		}
+	}
+	return ptr, nil
+}
+
+func (m *MetadataUtil) Size(v interface{}) (uint, error) {
+	t := reflect.ValueOf(v)
+	if t.Kind() != reflect.Ptr {
+		return 0, errors.New(fmt.Sprintf("Expected a pointer not %s", t.Kind()))
+	}
+	v2 := t.Elem()
+	size := uint(0)
+	name := v2.Type().Name()
+	switch name {
+	case "StringIndex":
+		if m.HeapSizes&bit_stringHeapIndexSize != 0 {
+			size = 4
+		} else {
+			size = 2
+		}
+	case "GuidIndex":
+		if m.HeapSizes&bit_guidHeapIndexSize != 0 {
+			size = 4
+		} else {
+			size = 2
+		}
+	case "BlobIndex":
+		if m.HeapSizes&bit_blobHeapIndexSize != 0 {
+			size = 4
+		} else {
+			size = 2
+		}
+	default:
+		if strings.HasSuffix(name, "EncodedIndex") {
+			id := idx_name_lut[name]
+			var (
+				tables = enc_lut[id]
+				rows   uint32
+			)
+			for _, t := range tables {
+				if s2 := m.Tables[t].Rows; s2 > rows {
+					rows = s2
+				}
+			}
+			if rows<<bits(len(tables)) < 1<<16 {
+				size = 2
+			} else {
+				size = 4
+			}
+		} else if strings.HasSuffix(name, "Index") {
+			if m.Tables[idx_name_lut[name]].Rows < 1<<16 {
+				size = 2
+			} else {
+				size = 4
+			}
+		} else {
+			switch v2.Kind() {
+			case reflect.Struct:
+				for i := 0; i < v2.NumField(); i++ {
+					f := v2.Field(i)
+					a := f.Addr()
+					if s, err := m.Size(a.Interface()); err != nil {
+						return 0, err
+					} else {
+						size += s
+					}
+				}
+			}
+		}
+	}
+	return size, nil
+}
+
 type MetadataTable struct {
 	Ptr  uintptr
 	Rows uint32
-}
-
-func (h *hash_tilde_stream_header) StringHeapIndexSize() uintptr {
-	if h.HeapSizes&0x01 != 0 {
-		return 4
-	}
-	return 2
-}
-
-func (h *hash_tilde_stream_header) GUIDHeapIndexSize() uintptr {
-	if h.HeapSizes&0x02 != 0 {
-		return 4
-	}
-	return 2
-}
-
-func (h *hash_tilde_stream_header) BlobHeapIndexSize() uintptr {
-	if h.HeapSizes&0x04 != 0 {
-		return 4
-	}
-	return 2
-}
-
-func (h *hash_tilde_stream_header) TableIndexSize(table int) uintptr {
-	return 0 // TODO
-}
-
-func (h *hash_tilde_stream_header) TableSize(table int) uintptr {
-	return 0 // TODO
 }
 
 func (h *hash_tilde_stream_header) Validate() error {

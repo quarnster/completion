@@ -1,14 +1,8 @@
 package net
 
-import (
-	"math"
-	"unsafe"
-)
-
 type (
 	TableIndex struct {
-		t     *MetadataUtil
-		ptr   uintptr
+		index uint32
 		table int
 	}
 	AssemblyRefIndex  TableIndex
@@ -25,27 +19,9 @@ type (
 	TypeDefIndex      TableIndex
 )
 
-func (t *TableIndex) Size() uint8 {
-	if t.t.Tables[t.table-1].Rows < 1<<16 {
-		return 2
-	}
-	return 4
-}
-
-func (t *TableIndex) Index() uint32 {
-	if t.Size() == 2 {
-		return uint32(*(*uint16)(unsafe.Pointer(t.ptr)))
-	}
-	return *(*uint32)(unsafe.Pointer(t.ptr))
-}
-
 // II.24.2.6
 type (
-	EncodedIndex struct {
-		t      *MetadataUtil
-		ptr    uintptr
-		encIdx int
-	}
+	EncodedIndex                    TableIndex
 	CustomAttributeTypeEncodedIndex EncodedIndex
 	HasConstantEncodedIndex         EncodedIndex
 	HasCustomAttributeEncodedIndex  EncodedIndex
@@ -76,6 +52,31 @@ const (
 	idx_ResolutionScope
 	idx_TypeOrMethodDef
 )
+
+var idx_name_lut = map[string]int{
+	"AssemblyRefIndex":                id_AssemblyRef,
+	"EventIndex":                      id_Event,
+	"FieldIndex":                      id_Field,
+	"GenericParamIndex":               id_GenericParam,
+	"MethodDefIndex":                  id_MethodDef,
+	"ModuleRefIndex":                  id_ModuleRef,
+	"ParamIndex":                      id_Param,
+	"PropertyIndex":                   id_Property,
+	"TypeDefIndex":                    id_TypeDef,
+	"TypeDefOrRefEncodedIndex":        idx_TypeDefOrRef,
+	"HasConstantEncodedIndex":         idx_HasConstant,
+	"HasCustomAttributeEncodedIndex":  idx_HasCustomAttribute,
+	"HasFieldMarshalEncodedIndex":     idx_HasFieldMarshal,
+	"HasDeclSecurityEncodedIndex":     idx_HasDeclSecurity,
+	"MemberRefParentEncodedIndex":     idx_MemberRefParent,
+	"HasSemanticsEncodedIndex":        idx_HasSemantics,
+	"MethodDefOrRefEncodedIndex":      idx_MethodDefOrRef,
+	"MemberForwardedEncodedIndex":     idx_MemberForwarded,
+	"ImplementationEncodedIndex":      idx_Implementation,
+	"CustomAttributeTypeEncodedIndex": idx_CustomAttributeType,
+	"ResolutionScopeEncodedIndex":     idx_ResolutionScope,
+	"TypeOrMethodDefEncodedIndex":     idx_TypeOrMethodDef,
+}
 
 var enc_lut = [][]int{
 	// TypeDefOrRef
@@ -163,50 +164,4 @@ var enc_lut = [][]int{
 		id_TypeDef,
 		id_MethodDef,
 	},
-}
-
-func bits(values int) uint {
-	return uint(math.Ceil(math.Log2(float64(values))))
-}
-
-func (t *EncodedIndex) RawIndex() uint32 {
-	if t.Size() == 2 {
-		return uint32(*(*uint16)(unsafe.Pointer(t.ptr)))
-	}
-	return *(*uint32)(unsafe.Pointer(t.ptr))
-}
-
-func (id *EncodedIndex) Table() int {
-	var (
-		ret    = id.RawIndex()
-		tables = enc_lut[id.encIdx]
-		b      = bits(len(tables))
-		mask   = uint32(0xffff << b)
-	)
-	return tables[ret&^mask]
-}
-
-func (id *EncodedIndex) Index() uint32 {
-	var (
-		ret    = id.RawIndex()
-		tables = enc_lut[id.encIdx]
-		b      = bits(len(tables))
-	)
-	return ret >> b
-}
-
-func (id *EncodedIndex) Size() uint8 {
-	var (
-		tables = enc_lut[id.encIdx]
-		rows   uint32
-	)
-	for _, t := range tables {
-		if s2 := id.t.Tables[t].Rows; s2 > rows {
-			rows = s2
-		}
-	}
-	if rows<<bits(len(tables)) < 1<<16 {
-		return 2
-	}
-	return 4
 }
