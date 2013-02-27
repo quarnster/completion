@@ -55,8 +55,49 @@ const (
 	id_TypeSpec               = 0x1B // II.22.39
 )
 
+var table_row_type_lut = map[int]reflect.Type{
+	id_Assembly:               reflect.TypeOf(AssemblyRow{}),
+	id_AssemblyOS:             reflect.TypeOf(AssemblyOSRow{}),
+	id_AssemblyProcessor:      reflect.TypeOf(AssemblyProcessorRow{}),
+	id_AssemblyRef:            reflect.TypeOf(AssemblyRefRow{}),
+	id_AssemblyRefOS:          reflect.TypeOf(AssemblyRefOSRow{}),
+	id_AssemblyRefProcessor:   reflect.TypeOf(AssemblyRefProcessorRow{}),
+	id_ClassLayout:            reflect.TypeOf(ClassLayoutRow{}),
+	id_Constant:               reflect.TypeOf(ConstantRow{}),
+	id_CustomAttribute:        reflect.TypeOf(CustomAttributeRow{}),
+	id_DeclSecurity:           reflect.TypeOf(DeclSecurityRow{}),
+	id_EventMap:               reflect.TypeOf(EventMapRow{}),
+	id_Event:                  reflect.TypeOf(EventRow{}),
+	id_ExportedType:           reflect.TypeOf(ExportedTypeRow{}),
+	id_Field:                  reflect.TypeOf(FieldRow{}),
+	id_FieldLayout:            reflect.TypeOf(FieldLayoutRow{}),
+	id_FieldMarshal:           reflect.TypeOf(FieldMarshalRow{}),
+	id_FieldRVA:               reflect.TypeOf(FieldRVARow{}),
+	id_File:                   reflect.TypeOf(FileRow{}),
+	id_GenericParam:           reflect.TypeOf(GenericParamRow{}),
+	id_GenericParamConstraint: reflect.TypeOf(GenericParamConstraintRow{}),
+	id_ImplMap:                reflect.TypeOf(ImplMapRow{}),
+	id_InterfaceImpl:          reflect.TypeOf(InterfaceImplRow{}),
+	id_ManifestResource:       reflect.TypeOf(ManifestResourceRow{}),
+	id_MemberRef:              reflect.TypeOf(MemberRefRow{}),
+	id_MethodDef:              reflect.TypeOf(MethodDefRow{}),
+	id_MethodImpl:             reflect.TypeOf(MethodImplRow{}),
+	id_MethodSemantics:        reflect.TypeOf(MethodSemanticsRow{}),
+	id_MethodSpec:             reflect.TypeOf(MethodSpecRow{}),
+	id_Module:                 reflect.TypeOf(ModuleRow{}),
+	id_ModuleRef:              reflect.TypeOf(ModuleRefRow{}),
+	id_NestedClass:            reflect.TypeOf(NestedClassRow{}),
+	id_Param:                  reflect.TypeOf(ParamRow{}),
+	id_Property:               reflect.TypeOf(PropertyRow{}),
+	id_PropertyMap:            reflect.TypeOf(PropertyMapRow{}),
+	id_StandAloneSig:          reflect.TypeOf(StandAloneSigRow{}),
+	id_TypeDef:                reflect.TypeOf(TypeDefRow{}),
+	id_TypeRef:                reflect.TypeOf(TypeRefRow{}),
+	id_TypeSpec:               reflect.TypeOf(TypeSpecRow{}),
+}
+
 // ECMA-335 II.24.2.1
-type Metadata struct {
+type MetadataHeader struct {
 	Signature    uint32
 	MajorVersion uint16
 	MinorVersion uint16
@@ -65,11 +106,11 @@ type Metadata struct {
 	version      [256]byte
 }
 
-func (m *Metadata) Version() string {
+func (m *MetadataHeader) Version() string {
 	return string(m.version[:m.Length])
 }
 
-func (m *Metadata) StreamHeaders() []*stream_header {
+func (m *MetadataHeader) StreamHeaders() []*stream_header {
 	ptr := uintptr(unsafe.Pointer(&m.version))
 	ptr += uintptr(m.Length+3) &^ 3
 	ptr += 2 // flags
@@ -84,7 +125,7 @@ func (m *Metadata) StreamHeaders() []*stream_header {
 	return ret
 }
 
-func (m *Metadata) Validate() error {
+func (m *MetadataHeader) Validate() error {
 	if m.Signature != metadata_signature || m.MajorVersion != 1 || m.MinorVersion != 1 || m.Reserved != 0 {
 		return errors.New(fmt.Sprintf("Metadata header isn't in the expected format: %#v", m))
 	}
@@ -125,12 +166,66 @@ type hash_tilde_stream_header struct {
 	Reserved2    uint8
 	Valid        uint64
 	Sorted       uint64
-	Rows         [64]uint32
 }
 
 type MetadataUtil struct {
-	HeapSizes uint8
-	Tables    [64]MetadataTable
+	HeapSizes  uint8
+	Tables     [64]MetadataTable
+	StringHeap MetadataTable
+	BlobHeap   MetadataTable
+	GuidHeap   MetadataTable
+}
+
+func (mh *MetadataHeader) MetadataUtil() (*MetadataUtil, error) {
+	var ret MetadataUtil
+	off := uintptr(unsafe.Pointer(mh))
+
+	base := off
+	for _, h := range mh.StreamHeaders() {
+		if err := h.Validate(); err != nil {
+			return nil, err
+		}
+		switch h.Name() {
+		case "#~":
+			off += uintptr(h.Offset)
+		case "#Strings":
+			ret.StringHeap.Ptr = uintptr(unsafe.Pointer(base + uintptr(h.Offset)))
+			ret.StringHeap.Rows = h.Size
+		case "#Blob":
+			ret.BlobHeap.Ptr = uintptr(unsafe.Pointer(base + uintptr(h.Offset)))
+			ret.BlobHeap.Rows = h.Size
+		case "#GUID":
+			ret.GuidHeap.Ptr = uintptr(unsafe.Pointer(base + uintptr(h.Offset)))
+			ret.GuidHeap.Rows = h.Size
+		}
+	}
+
+	h := (*hash_tilde_stream_header)(unsafe.Pointer(off))
+	if err := h.Validate(); err != nil {
+		return nil, err
+	}
+
+	ret.HeapSizes = h.HeapSizes
+	ptr := uintptr(unsafe.Pointer(h))
+	ptr += reflect.TypeOf(*h).Size()
+	for i := range ret.Tables {
+		if valid := (h.Valid >> uint(i)) & 1; valid != 0 {
+			ret.Tables[i].Rows = *(*uint32)(unsafe.Pointer(ptr))
+			ret.Tables[i].RowType = table_row_type_lut[i]
+			ptr += 4
+		}
+	}
+	for i := range ret.Tables {
+		if ret.Tables[i].Rows != 0 {
+			ret.Tables[i].Ptr = ptr
+			if size, err := ret.Size(ret.Tables[i].RowType); err != nil {
+				return nil, err
+			} else {
+				ptr += uintptr(size * uint(ret.Tables[i].Rows))
+			}
+		}
+	}
+	return &ret, nil
 }
 
 const (
@@ -157,8 +252,30 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 	}
 	v2 := t.Elem()
 	name := v2.Type().Name()
-	if strings.HasSuffix(name, "EncodedIndex") {
-		if size, err := m.Size(v); err != nil {
+
+	if name == "StringIndex" {
+		if size, err := m.Size(v2.Type()); err != nil {
+			return 0, err
+		} else {
+			index := m.ReadIndex(ptr, size)
+			start := m.StringHeap.Ptr + uintptr(index)
+			end := m.StringHeap.Ptr + uintptr(m.StringHeap.Rows)
+			if start < end {
+				var data []byte
+
+				goArray(unsafe.Pointer(&data), start, int(end))
+				for i := range data {
+					if data[i] == '\u0000' {
+						end = uintptr(i)
+						break
+					}
+				}
+				v2.SetString(string(data[:end]))
+			}
+			ptr += uintptr(size)
+		}
+	} else if strings.HasSuffix(name, "EncodedIndex") {
+		if size, err := m.Size(v2.Type()); err != nil {
 			return 0, err
 		} else {
 			var (
@@ -170,30 +287,49 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 				tbl    = idx &^ mask
 			)
 			idx = idx >> b
-			v2.FieldByName("index").SetUint(uint64(idx))
-			v2.FieldByName("table").SetInt(int64(tbl))
+			v2.FieldByName("Index").SetUint(uint64(idx))
+			v2.FieldByName("Table").SetInt(int64(tbl))
 			ptr += uintptr(size)
 		}
 	} else if strings.HasSuffix(name, "Index") {
-		if size, err := m.Size(v); err != nil {
+		if size, err := m.Size(v2.Type()); err != nil {
 			return 0, err
 		} else {
-			v2.FieldByName("index").SetUint(uint64(m.ReadIndex(ptr, size)))
-			v2.FieldByName("table").SetInt(int64(idx_name_lut[name]))
+			v2.FieldByName("Index").SetUint(uint64(m.ReadIndex(ptr, size)))
+			v2.FieldByName("Table").SetInt(int64(idx_name_lut[name]))
 			ptr += uintptr(size)
+		}
+	} else {
+		switch v2.Kind() {
+		case reflect.Struct:
+			for i := 0; i < v2.NumField(); i++ {
+				f := v2.Field(i)
+				a := f.Addr()
+				if p2, err := m.Create(ptr, a.Interface()); err != nil {
+					return 0, err
+				} else {
+					ptr = p2
+				}
+			}
+		case reflect.Uint32:
+			v2.SetUint(uint64(*(*uint32)(unsafe.Pointer(ptr))))
+			ptr += 4
+		case reflect.Uint16:
+			v2.SetUint(uint64(*(*uint16)(unsafe.Pointer(ptr))))
+			ptr += 2
+		case reflect.Uint8:
+			v2.SetUint(uint64(*(*uint8)(unsafe.Pointer(ptr))))
+			ptr += 1
+		default:
+			return 0, errors.New(fmt.Sprintf("Don't know how to create %s (%s)", v2.Kind(), v2.Type()))
 		}
 	}
 	return ptr, nil
 }
 
-func (m *MetadataUtil) Size(v interface{}) (uint, error) {
-	t := reflect.ValueOf(v)
-	if t.Kind() != reflect.Ptr {
-		return 0, errors.New(fmt.Sprintf("Expected a pointer not %s", t.Kind()))
-	}
-	v2 := t.Elem()
+func (m *MetadataUtil) Size(t reflect.Type) (uint, error) {
 	size := uint(0)
-	name := v2.Type().Name()
+	name := t.Name()
 	switch name {
 	case "StringIndex":
 		if m.HeapSizes&bit_stringHeapIndexSize != 0 {
@@ -221,6 +357,9 @@ func (m *MetadataUtil) Size(v interface{}) (uint, error) {
 				rows   uint32
 			)
 			for _, t := range tables {
+				if t == id_nullTable {
+					continue
+				}
 				if s2 := m.Tables[t].Rows; s2 > rows {
 					rows = s2
 				}
@@ -237,12 +376,11 @@ func (m *MetadataUtil) Size(v interface{}) (uint, error) {
 				size = 4
 			}
 		} else {
-			switch v2.Kind() {
+			switch t.Kind() {
 			case reflect.Struct:
-				for i := 0; i < v2.NumField(); i++ {
-					f := v2.Field(i)
-					a := f.Addr()
-					if s, err := m.Size(a.Interface()); err != nil {
+				for i := 0; i < t.NumField(); i++ {
+					f := t.Field(i)
+					if s, err := m.Size(f.Type); err != nil {
 						return 0, err
 					} else {
 						size += s
@@ -255,8 +393,9 @@ func (m *MetadataUtil) Size(v interface{}) (uint, error) {
 }
 
 type MetadataTable struct {
-	Ptr  uintptr
-	Rows uint32
+	Ptr     uintptr
+	Rows    uint32
+	RowType reflect.Type
 }
 
 func (h *hash_tilde_stream_header) Validate() error {

@@ -2,6 +2,7 @@ package net
 
 import (
 	"os"
+	"reflect"
 	"testing"
 )
 
@@ -12,8 +13,25 @@ func TestLoadAssembly(t *testing.T) {
 		t.Error(err)
 	} else {
 		defer f.Close()
-		if _, err := LoadAssembly(f); err != nil {
+		if asm, err := LoadAssembly(f); err != nil {
 			t.Error(err)
+		} else {
+			td := asm.Tables[id_TypeDef]
+			ptr := td.Ptr
+			row := reflect.New(td.RowType).Interface().(*TypeDefRow)
+			size, err := asm.Size(td.RowType)
+			if err != nil {
+				t.Fatal(err)
+			}
+			for i := uint32(0); i < td.Rows; i++ {
+				if _, err := asm.Create(ptr, row); err != nil {
+					t.Error(err)
+				} else {
+					t.Logf("%#v", row)
+				}
+				ptr += uintptr(size)
+			}
+			t.Log(td)
 		}
 	}
 }

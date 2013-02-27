@@ -2,8 +2,8 @@ package net
 
 type (
 	TableIndex struct {
-		index uint32
-		table int
+		Index uint32
+		Table int
 	}
 	AssemblyRefIndex  TableIndex
 	BlobIndex         TableIndex
@@ -15,7 +15,7 @@ type (
 	ModuleRefIndex    TableIndex
 	ParamIndex        TableIndex
 	PropertyIndex     TableIndex
-	StringIndex       TableIndex
+	StringIndex       string
 	TypeDefIndex      TableIndex
 )
 

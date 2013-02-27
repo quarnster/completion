@@ -18,6 +18,7 @@ import (
 )
 
 type Assembly struct {
+	MetadataUtil
 }
 
 type Validateable interface {
@@ -48,7 +49,6 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 
 	var (
 		br        = common.BinaryReader{r, binary.LittleEndian}
-		ret       Assembly
 		err       error
 		isPe32    bool
 		data      []byte
@@ -112,7 +112,6 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 		if err := sections[i].Validate(); err != nil {
 			return nil, err
 		}
-		fmt.Println(sections[i].Name())
 	}
 	net := ids[14]
 	off := net.VirtualAddress - sections[0].VirtualAddress + sections[0].PointerToRawData
@@ -120,26 +119,14 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 	cor20 := (*image_cor20)(unsafe.Pointer(&data[off]))
 
 	off = cor20.MetaData.VirtualAddress - sections[0].VirtualAddress + sections[0].PointerToRawData
-	t := (*Metadata)(unsafe.Pointer(&data[off]))
+	t := (*MetadataHeader)(unsafe.Pointer(&data[off]))
 	if err := t.Validate(); err != nil {
 		return nil, err
 	}
-
-	fmt.Println(t.Version())
-	for _, h := range t.StreamHeaders() {
-		if err := h.Validate(); err != nil {
-			return nil, err
-		}
-		fmt.Println(h.Name())
-		if h.Name() == "#~" {
-			off += h.Offset
-		}
-	}
-	ht := (*hash_tilde_stream_header)(unsafe.Pointer(&data[off]))
-	fmt.Printf("%#v\n", ht)
-	if err := ht.Validate(); err != nil {
+	if md, err := t.MetadataUtil(); err != nil {
 		return nil, err
+	} else {
+		return &Assembly{*md}, nil
 	}
-
-	return &ret, nil
+	panic("Unreachable")
 }
