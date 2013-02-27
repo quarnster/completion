@@ -3,51 +3,19 @@ package main
 import (
 	"bufio"
 	"encoding/json"
-	"flag"
 	"fmt"
-	"io"
+	"github.com/quarnster/completion/content"
 	"log"
 	"net"
 	"strconv"
 	"time"
 )
 
-type Handler func(io.Writer, Intent)
-
 var (
 	ln net.Listener
-
-	handlers = map[string]Handler{
-		"foo": foo,
-	}
-
-	flagAddr = flag.String("addr", ":8888", "Local address to listen on.")
 )
 
-func init() {
-	flag.Parse()
-}
-
-func foo(w io.Writer, intent Intent) {
-	log.Println(intent)
-	if b, err := json.Marshal(&Response{1}); err != nil {
-		log.Println(err)
-		fmt.Fprintf(w, "Failed to create response: %v", err)
-	} else {
-		w.Write(b)
-	}
-}
-
-type Intent struct {
-	Version   int64
-	Operation string
-}
-
-type Response struct {
-	Version int64 `json:"version"`
-}
-
-func handleIntent(conn net.Conn) {
+func handleConnection(conn net.Conn) {
 	defer conn.Close()
 	conn.SetReadDeadline(time.Now().Add(time.Second * 3))
 
@@ -71,14 +39,13 @@ func handleIntent(conn net.Conn) {
 	b := make([]byte, i)
 	r.Read(b)
 
-	intent := Intent{}
+	intent := content.Intent{}
 	if err := json.Unmarshal(b, &intent); err != nil {
 		log.Println(err)
 		fmt.Fprintf(conn, "Failed to decode request: %v", err)
 	}
 
-	// TODO get registered handler for operation
-	handlers["foo"](conn, intent)
+	content.Handle(conn, intent)
 }
 
 func listen() {
@@ -94,7 +61,7 @@ func accept() {
 		if conn, err := ln.Accept(); err != nil {
 			log.Print(err)
 		} else {
-			go handleIntent(conn)
+			go handleConnection(conn)
 		}
 	}
 }
@@ -102,8 +69,4 @@ func accept() {
 func startServer() {
 	listen()
 	accept()
-}
-
-func main() {
-	startServer()
 }
