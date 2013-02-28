@@ -1,0 +1,34 @@
+import "location.proto";
+
+// AKA generic parameter in some languages
+message TemplateParameter {
+    // TODO
+}
+
+message Type {
+    required FullyQualifiedName name = 1;
+    repeated TemplateParameter specialization = 2;
+}
+
+message Field {
+    required FullyQualifiedName name = 1;
+    required Type type = 2;
+}
+
+message Method {
+    required FullyQualifiedName name = 1;
+    repeated Field return = 2;
+    repeated Field parameters = 3;
+    repeated TemplateParameter specialization = 4;
+}
+
+message CompletionResult {
+    repeated Type   types = 1;
+    repeated Field  fields = 2;
+    repeated Method methods = 3;
+}
+
+message CompletionRequest {
+    optional FullyQualifiedName type = 1; // Either we want to complete this specific type/package/whatever
+    optional SourceLocation location = 2; // Or we want to perform the complete operation at this specific location
+}
