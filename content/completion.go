@@ -6,8 +6,8 @@ type TemplateParameter struct {
 }
 
 type Type struct {
-	Name           FullyQualifiedName `protocol:required`
-	Specialization TemplateParameter  `protocol:repeated`
+	Name           FullyQualifiedName  `protocol:required`
+	Specialization []TemplateParameter `protocol:optional`
 }
 
 type Field struct {
@@ -16,10 +16,10 @@ type Field struct {
 }
 
 type Method struct {
-	Name           FullyQualifiedName `protocol:required`
-	Returns        Field              `protocol:optional`
-	Parameters     Field              `protocol:optional`
-	Specialization TemplateParameter  `protocol:optional`
+	Name           FullyQualifiedName  `protocol:required`
+	Returns        []Field             `protocol:optional`
+	Parameters     []Field             `protocol:optional`
+	Specialization []TemplateParameter `protocol:optional`
 }
 
 type CompletionResult struct {
