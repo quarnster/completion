@@ -1,6 +1,7 @@
 package net
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/quarnster/completion/util"
 	"io/ioutil"
@@ -10,7 +11,10 @@ import (
 	"testing"
 )
 
-const testdata_path = "./testdata/"
+const (
+	testdata_path     = "./testdata/"
+	completesharp_exe = testdata_path + "CompleteSharp.exe"
+)
 
 func TestLoadAssembly(t *testing.T) {
 	var (
@@ -90,6 +94,44 @@ func TestLoadAssembly(t *testing.T) {
 			} else if len(d) != 0 {
 				t.Error(string(d))
 			}
+		}
+	}
+}
+
+func TestLoadCompleteSharp(t *testing.T) {
+	f, err := os.Open(completesharp_exe)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer f.Close()
+	if asm, err := LoadAssembly(f); err != nil {
+		t.Error(err)
+	} else {
+		td := asm.Tables[id_TypeDef]
+		for i := uint32(0); i < td.Rows; i++ {
+			if fields, err := asm.Fields(i + 1); err != nil {
+				t.Error(err)
+			} else {
+				for j := range fields {
+					if v, err := json.Marshal(fields[j]); err != nil {
+						t.Error(err)
+					} else if s := string(v); s != "null" {
+						t.Log(string(v))
+					}
+				}
+			}
+			if methods, err := asm.Methods(i + 1); err != nil {
+				t.Error(err)
+			} else {
+				for j := range methods {
+					if v, err := json.Marshal(methods[j]); err != nil {
+						t.Error(err)
+					} else if s := string(v); s != "null" {
+						t.Log(string(v))
+					}
+				}
+			}
+
 		}
 	}
 }

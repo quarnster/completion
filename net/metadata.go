@@ -300,9 +300,9 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 				ti     ConcreteTableIndex
 			)
 			idx = idx >> b
-			ti.Index = idx
-			ti.Table = int(tbl)
-			ti.MetadataUtil = m
+			ti.index = idx
+			ti.table = int(tbl)
+			ti.metadataUtil = m
 			v2.Set(reflect.ValueOf(&ti))
 			ptr += uintptr(size)
 		}
@@ -311,15 +311,15 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 			return 0, err
 		} else {
 			var ti ConcreteTableIndex
-			ti.Index = m.ReadIndex(ptr, size)
+			ti.index = m.ReadIndex(ptr, size)
 			if name == "GuidIndex" {
-				ti.Table = id_Guid
+				ti.table = id_Guid
 			} else if name == "BlobIndex" {
-				ti.Table = id_Blob
+				ti.table = id_Blob
 			} else {
-				ti.Table = idx_name_lut[name]
+				ti.table = idx_name_lut[name]
 			}
-			ti.MetadataUtil = m
+			ti.metadataUtil = m
 			v2.Set(reflect.ValueOf(&ti))
 			ptr += uintptr(size)
 		}

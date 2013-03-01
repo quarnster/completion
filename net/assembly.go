@@ -12,6 +12,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/quarnster/completion/common"
+	"github.com/quarnster/completion/content"
 	"io"
 	"reflect"
 	"unsafe"
@@ -19,6 +20,80 @@ import (
 
 type Assembly struct {
 	MetadataUtil
+}
+
+func (a *Assembly) ListRange(index uint32, table, memberTable int, getindex func(interface{}) uint32) (startRow, endRow uint32) {
+	idx := ConcreteTableIndex{&a.MetadataUtil, index, table}
+	if i, err := idx.Data(); err != nil {
+		return 0, 0
+	} else {
+		startRow = getindex(i)
+	}
+	idx.index++
+	if i, err := idx.Data(); err == nil {
+		endRow = getindex(i)
+	} else {
+		endRow = a.Tables[memberTable].Rows
+	}
+	return
+}
+
+func (a *Assembly) Fields(index uint32) (fields []content.Field, err error) {
+	var (
+		startRow, endRow = a.ListRange(index, id_TypeDef, id_Field, func(i interface{}) uint32 { return i.(*TypeDefRow).FieldList.Index() })
+		idx              = ConcreteTableIndex{&a.MetadataUtil, startRow, id_Field}
+	)
+	for i := startRow; i < endRow; i++ {
+		idx.index = i
+		if rawfield, err := idx.Data(); err != nil {
+			return nil, err
+		} else {
+			field := rawfield.(*FieldRow)
+			var f content.Field
+			f.Name.Relative = string(field.Name)
+			fields = append(fields, f)
+		}
+	}
+	return fields, nil
+}
+
+func (a *Assembly) Parameters(index uint32) (params []content.Field, err error) {
+	var (
+		startRow, endRow = a.ListRange(index, id_MethodDef, id_Param, func(i interface{}) uint32 { return i.(*MethodDefRow).ParamList.Index() })
+		idx              = ConcreteTableIndex{&a.MetadataUtil, startRow, id_Param}
+	)
+	for i := startRow; i < endRow; i++ {
+		idx.index = i
+		if rawparam, err := idx.Data(); err != nil {
+			return nil, err
+		} else {
+			param := rawparam.(*ParamRow)
+			var f content.Field
+			f.Name.Relative = string(param.Name)
+			params = append(params, f)
+		}
+	}
+	return params, nil
+}
+
+func (a *Assembly) Methods(index uint32) (methods []content.Method, err error) {
+	var (
+		startRow, endRow = a.ListRange(index, id_TypeDef, id_MethodDef, func(i interface{}) uint32 { return i.(*TypeDefRow).MethodList.Index() })
+		idx              = ConcreteTableIndex{&a.MetadataUtil, startRow, id_MethodDef}
+	)
+	for i := startRow; i < endRow; i++ {
+		idx.index = i
+		if rawmethod, err := idx.Data(); err != nil {
+			return nil, err
+		} else {
+			method := rawmethod.(*MethodDefRow)
+			var m content.Method
+			m.Name.Relative = string(method.Name)
+			m.Parameters, err = a.Parameters(i)
+			methods = append(methods, m)
+		}
+	}
+	return methods, nil
 }
 
 type Validateable interface {
