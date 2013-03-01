@@ -1,12 +1,6 @@
 # Maybe we just create a "dist" utility in the future?
-PACKAGES = github.com/quarnster/completion \
-	github.com/quarnster/completion/common \
-	github.com/quarnster/completion/content \
-	github.com/quarnster/completion/java \
-	github.com/quarnster/completion/java/descriptors \
-	github.com/quarnster/completion/java/parse \
-	github.com/quarnster/completion/net \
-	github.com/quarnster/completion/util
+DIRS = $(shell find .. -type d -not -path "../.git*" -not -path "../build*" -not -path "*/testdata")
+PACKAGES = $(patsubst ..%,github.com/quarnster/completion%, $(DIRS))
 
 ifeq ($V, 1)
 	VERBOSE = -v
