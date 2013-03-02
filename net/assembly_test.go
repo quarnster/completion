@@ -108,7 +108,12 @@ func TestLoadCompleteSharp(t *testing.T) {
 		t.Error(err)
 	} else {
 		td := asm.Tables[id_TypeDef]
+		ty := reflect.New(td.RowType).Interface().(*TypeDefRow)
+
 		for i := uint32(0); i < td.Rows; i++ {
+			ptr, _ := td.Index(i + 1)
+			asm.Create(ptr, ty)
+			t.Log(ty.TypeName)
 			if fields, err := asm.Fields(i + 1); err != nil {
 				t.Error(err)
 			} else {

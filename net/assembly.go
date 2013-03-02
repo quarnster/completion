@@ -9,6 +9,7 @@ package net
 import (
 	"bytes"
 	"encoding/binary"
+	//"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/quarnster/completion/common"
@@ -33,7 +34,10 @@ func (a *Assembly) ListRange(index uint32, table, memberTable int, getindex func
 	if i, err := idx.Data(); err == nil {
 		endRow = getindex(i)
 	} else {
-		endRow = a.Tables[memberTable].Rows
+		endRow = a.Tables[memberTable].Rows + 1
+	}
+	if endRow < startRow {
+		endRow = a.Tables[memberTable].Rows + 1
 	}
 	return
 }
@@ -48,9 +52,23 @@ func (a *Assembly) Fields(index uint32) (fields []content.Field, err error) {
 		if rawfield, err := idx.Data(); err != nil {
 			return nil, err
 		} else {
-			field := rawfield.(*FieldRow)
-			var f content.Field
+			var (
+				field = rawfield.(*FieldRow)
+				f     content.Field
+				dec   *SignatureDecoder
+				sig   FieldSig
+			)
 			f.Name.Relative = string(field.Name)
+			if dec, err = NewSignatureDecoder(field.Signature); err != nil {
+				return nil, err
+			} else if err = dec.Decode(&sig); err != nil {
+				return nil, err
+			} else {
+				f.Type.Name.Relative = sig.Type.String()
+				// s, _ := json.MarshalIndent(sig, "", "\t")
+				// fmt.Printf("%s\n", string(s))
+			}
+
 			fields = append(fields, f)
 		}
 	}
@@ -86,10 +104,31 @@ func (a *Assembly) Methods(index uint32) (methods []content.Method, err error) {
 		if rawmethod, err := idx.Data(); err != nil {
 			return nil, err
 		} else {
-			method := rawmethod.(*MethodDefRow)
-			var m content.Method
+			var (
+				m      content.Method
+				method = rawmethod.(*MethodDefRow)
+				dec    *SignatureDecoder
+				sig    MethodDefSig
+			)
 			m.Name.Relative = string(method.Name)
-			m.Parameters, err = a.Parameters(i)
+			if m.Parameters, err = a.Parameters(i); err != nil {
+				return nil, err
+			}
+			if dec, err = NewSignatureDecoder(method.Signature); err != nil {
+				return nil, err
+			} else if err = dec.Decode(&sig); err != nil {
+				return nil, err
+			} else if a, b := len(sig.Params), len(m.Parameters); a != b {
+				return nil, errors.New(fmt.Sprintf("Mismatched parameter count: %d != %d (%v, %v)", a, b, m, sig))
+			} else {
+				//fmt.Printf("%+v\n", sig)
+
+				for i := range sig.Params {
+					m.Parameters[i].Type.Name.Relative = sig.Params[i].Type.String()
+				}
+				// s, _ := json.MarshalIndent(sig, "", "\t")
+				// fmt.Printf("%d, %d\n%s\n", len(sig.Params), len(m.Parameters), string(s))
+			}
 			methods = append(methods, m)
 		}
 	}
