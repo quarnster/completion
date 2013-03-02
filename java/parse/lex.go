@@ -82,7 +82,7 @@ func lexClassBody(l *lexer) stateFn {
 		case eof:
 			return nil
 		case '{':
-			// an inner class or interface
+			// an inner class, interface, or class initializer
 			return lexClass
 		case '}':
 			// end of class body
