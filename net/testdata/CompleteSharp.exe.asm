@@ -1,5 +1,5 @@
 ModuleRow
-	&{Generation:0 Name:CompleteSharp.exe Mvid:Guid[1] EncId:Guid[0] EncBaseId:Guid[0]}
+	&{Generation:0 Name:CompleteSharp.exe Mvid:3401283C-C835-429E-BD63-BDA728AB549F EncId:nil EncBaseId:nil}
 TypeRefRow
 	&{ResolutionScope:TypeDefRow[1] TypeName:AppDomain TypeNamespace:System}
 	&{ResolutionScope:TypeDefRow[1] TypeName:DateTime TypeNamespace:System}

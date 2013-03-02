@@ -8,11 +8,13 @@ import (
 
 type (
 	ConcreteTableIndex struct {
-		MetadataUtil *MetadataUtil
-		Index        uint32
-		Table        int
+		metadataUtil *MetadataUtil
+		index        uint32
+		table        int
 	}
 	TableIndex interface {
+		Table() int
+		Index() uint32
 		Data() (interface{}, error)
 		String() string
 	}
@@ -21,7 +23,6 @@ type (
 	EventIndex        TableIndex
 	FieldIndex        TableIndex
 	GenericParamIndex TableIndex
-	GuidIndex         TableIndex
 	MethodDefIndex    TableIndex
 	ModuleRefIndex    TableIndex
 	ParamIndex        TableIndex
@@ -30,41 +31,45 @@ type (
 	TypeDefIndex      TableIndex
 )
 
+func (t *ConcreteTableIndex) Index() uint32 {
+	return t.index
+}
+
+func (t *ConcreteTableIndex) Table() int {
+	return t.table
+}
+
 func (t *ConcreteTableIndex) Data() (interface{}, error) {
-	switch t.Table {
+	switch t.table {
 	case id_nullTable:
 		return nil, errors.New("This is a null table")
-	case id_Guid:
-		return nil, errors.New("Guid lookup not implemented yet")
 	case id_Blob:
-		return nil, errors.New("Blob lookup not implemented yet")
+		return t.metadataUtil.BlobHeap.Index(t.index)
 	}
 	var (
 		ptr   uintptr
 		err   error
-		table = t.MetadataUtil.Tables[t.Table]
+		table = t.metadataUtil.Tables[t.table]
 	)
-	if ptr, err = table.Index(t.Index); err != nil {
+	if ptr, err = table.Index(t.index); err != nil {
 		return nil, err
 	}
 	ret := reflect.New(table.RowType).Interface()
-	if _, err := t.MetadataUtil.Create(ptr, ret); err != nil {
+	if _, err := t.metadataUtil.Create(ptr, ret); err != nil {
 		return nil, err
 	}
 	return ret, nil
 }
 
 func (t *ConcreteTableIndex) String() string {
-	switch t.Table {
+	switch t.table {
 	case id_nullTable:
 		return "nulltable"
-	case id_Guid:
-		return fmt.Sprintf("Guid[%d]", t.Index)
 	case id_Blob:
-		return fmt.Sprintf("Blob[%d]", t.Index)
+		return fmt.Sprintf("Blob[%d]", t.index)
 	}
 
-	return fmt.Sprintf("%s[%d]", table_row_type_lut[t.Table].Name(), t.Index)
+	return fmt.Sprintf("%s[%d]", table_row_type_lut[t.table].Name(), t.index)
 }
 
 // II.24.2.6
@@ -112,7 +117,6 @@ var idx_name_lut = map[string]int{
 	"PropertyIndex":                   id_Property,
 	"TypeDefIndex":                    id_TypeDef,
 	"BlobIndex":                       id_Blob,
-	"GuidIndex":                       id_Guid,
 	"TypeDefOrRefEncodedIndex":        idx_TypeDefOrRef,
 	"HasConstantEncodedIndex":         idx_HasConstant,
 	"HasCustomAttributeEncodedIndex":  idx_HasCustomAttribute,

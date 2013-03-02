@@ -1,5 +1,5 @@
 ModuleRow
-	&{Generation:0 Name:Png4BitIndexed.dll Mvid:Guid[1] EncId:Guid[0] EncBaseId:Guid[0]}
+	&{Generation:0 Name:Png4BitIndexed.dll Mvid:DC74EA34-D62F-4136-93BF-797DF4217B8E EncId:nil EncBaseId:nil}
 TypeRefRow
 	&{ResolutionScope:TypeDefRow[1] TypeName:Object TypeNamespace:System}
 	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentOutOfRangeException TypeNamespace:System}

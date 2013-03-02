@@ -9,9 +9,11 @@ package net
 import (
 	"bytes"
 	"encoding/binary"
+	//"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/quarnster/completion/common"
+	"github.com/quarnster/completion/content"
 	"io"
 	"reflect"
 	"unsafe"
@@ -19,6 +21,118 @@ import (
 
 type Assembly struct {
 	MetadataUtil
+}
+
+func (a *Assembly) ListRange(index uint32, table, memberTable int, getindex func(interface{}) uint32) (startRow, endRow uint32) {
+	idx := ConcreteTableIndex{&a.MetadataUtil, index, table}
+	if i, err := idx.Data(); err != nil {
+		return 0, 0
+	} else {
+		startRow = getindex(i)
+	}
+	idx.index++
+	if i, err := idx.Data(); err == nil {
+		endRow = getindex(i)
+	} else {
+		endRow = a.Tables[memberTable].Rows + 1
+	}
+	if endRow < startRow {
+		endRow = a.Tables[memberTable].Rows + 1
+	}
+	return
+}
+
+func (a *Assembly) Fields(index uint32) (fields []content.Field, err error) {
+	var (
+		startRow, endRow = a.ListRange(index, id_TypeDef, id_Field, func(i interface{}) uint32 { return i.(*TypeDefRow).FieldList.Index() })
+		idx              = ConcreteTableIndex{&a.MetadataUtil, startRow, id_Field}
+	)
+	for i := startRow; i < endRow; i++ {
+		idx.index = i
+		if rawfield, err := idx.Data(); err != nil {
+			return nil, err
+		} else {
+			var (
+				field = rawfield.(*FieldRow)
+				f     content.Field
+				dec   *SignatureDecoder
+				sig   FieldSig
+			)
+			f.Name.Relative = string(field.Name)
+			if dec, err = NewSignatureDecoder(field.Signature); err != nil {
+				return nil, err
+			} else if err = dec.Decode(&sig); err != nil {
+				return nil, err
+			} else {
+				f.Type.Name.Relative = sig.Type.String()
+				// s, _ := json.MarshalIndent(sig, "", "\t")
+				// fmt.Printf("%s\n", string(s))
+			}
+
+			fields = append(fields, f)
+		}
+	}
+	return fields, nil
+}
+
+func (a *Assembly) Parameters(index uint32) (params []content.Field, err error) {
+	var (
+		startRow, endRow = a.ListRange(index, id_MethodDef, id_Param, func(i interface{}) uint32 { return i.(*MethodDefRow).ParamList.Index() })
+		idx              = ConcreteTableIndex{&a.MetadataUtil, startRow, id_Param}
+	)
+	for i := startRow; i < endRow; i++ {
+		idx.index = i
+		if rawparam, err := idx.Data(); err != nil {
+			return nil, err
+		} else {
+			param := rawparam.(*ParamRow)
+			var f content.Field
+			f.Name.Relative = string(param.Name)
+			params = append(params, f)
+		}
+	}
+	return params, nil
+}
+
+func (a *Assembly) Methods(index uint32) (methods []content.Method, err error) {
+	var (
+		startRow, endRow = a.ListRange(index, id_TypeDef, id_MethodDef, func(i interface{}) uint32 { return i.(*TypeDefRow).MethodList.Index() })
+		idx              = ConcreteTableIndex{&a.MetadataUtil, startRow, id_MethodDef}
+	)
+	for i := startRow; i < endRow; i++ {
+		idx.index = i
+		if rawmethod, err := idx.Data(); err != nil {
+			return nil, err
+		} else {
+			var (
+				m      content.Method
+				method = rawmethod.(*MethodDefRow)
+				dec    *SignatureDecoder
+				sig    MethodDefSig
+			)
+			m.Name.Relative = string(method.Name)
+			if m.Parameters, err = a.Parameters(i); err != nil {
+				return nil, err
+			}
+			if dec, err = NewSignatureDecoder(method.Signature); err != nil {
+				return nil, err
+			} else if err = dec.Decode(&sig); err != nil {
+				return nil, err
+			} else if a, b := len(sig.Params), len(m.Parameters); a != b {
+				return nil, errors.New(fmt.Sprintf("Mismatched parameter count: %d != %d (%v, %v)", a, b, m, sig))
+			} else {
+				//fmt.Printf("%+v\n", sig)
+
+				for i := range sig.Params {
+					m.Parameters[i].Type.Name.Relative = sig.Params[i].Type.String()
+				}
+				// s, _ := json.MarshalIndent(sig, "", "\t")
+				// fmt.Printf("%d, %d\n%s\n", len(sig.Params), len(m.Parameters), string(s))
+			}
+			methods = append(methods, m)
+		}
+	}
+	return methods, nil
 }
 
 type Validateable interface {

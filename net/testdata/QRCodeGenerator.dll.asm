@@ -1,5 +1,5 @@
 ModuleRow
-	&{Generation:0 Name:QRCodeGenerator.dll Mvid:Guid[1] EncId:Guid[0] EncBaseId:Guid[0]}
+	&{Generation:0 Name:QRCodeGenerator.dll Mvid:EF0BCC38-B8C8-444F-B6A8-96D99B4AF645 EncId:nil EncBaseId:nil}
 TypeRefRow
 	&{ResolutionScope:TypeDefRow[1] TypeName:List`1 TypeNamespace:System.Collections.Generic}
 	&{ResolutionScope:TypeDefRow[1] TypeName:Int32 TypeNamespace:System}

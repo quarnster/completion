@@ -54,7 +54,6 @@ const (
 	id_TypeSpec               = 0x1B // II.22.39
 	id_nullTable              = 0x100
 	id_Blob                   = 0x101
-	id_Guid                   = 0x102
 )
 
 var table_row_type_lut = map[int]reflect.Type{
@@ -286,6 +285,14 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 		}
 		v2.SetString(string(data[:end]))
 		ptr += uintptr(size)
+	} else if name == "Guid" {
+		size := m.GuidHeap.RowSize
+		index := m.ReadIndex(ptr, uint(size))
+		if index != 0 {
+			idx := m.GuidHeap.Ptr + uintptr((index-1)*16)
+			v2.SetUint(uint64(idx))
+		}
+		ptr += uintptr(size)
 	} else if strings.HasSuffix(name, "EncodedIndex") {
 		if size, err := m.Size(v2.Type()); err != nil {
 			return 0, err
@@ -300,9 +307,9 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 				ti     ConcreteTableIndex
 			)
 			idx = idx >> b
-			ti.Index = idx
-			ti.Table = int(tbl)
-			ti.MetadataUtil = m
+			ti.index = idx
+			ti.table = int(tbl)
+			ti.metadataUtil = m
 			v2.Set(reflect.ValueOf(&ti))
 			ptr += uintptr(size)
 		}
@@ -311,15 +318,13 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 			return 0, err
 		} else {
 			var ti ConcreteTableIndex
-			ti.Index = m.ReadIndex(ptr, size)
-			if name == "GuidIndex" {
-				ti.Table = id_Guid
-			} else if name == "BlobIndex" {
-				ti.Table = id_Blob
+			ti.index = m.ReadIndex(ptr, size)
+			if name == "BlobIndex" {
+				ti.table = id_Blob
 			} else {
-				ti.Table = idx_name_lut[name]
+				ti.table = idx_name_lut[name]
 			}
-			ti.MetadataUtil = m
+			ti.metadataUtil = m
 			v2.Set(reflect.ValueOf(&ti))
 			ptr += uintptr(size)
 		}
@@ -357,7 +362,7 @@ func (m *MetadataUtil) Size(t reflect.Type) (uint, error) {
 	switch name {
 	case "StringIndex":
 		size = uint(m.StringHeap.RowSize)
-	case "GuidIndex":
+	case "Guid":
 		size = uint(m.GuidHeap.RowSize)
 	case "BlobIndex":
 		size = uint(m.BlobHeap.RowSize)

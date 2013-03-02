@@ -260,4 +260,10 @@ const (
 	ELEMENT_TYPE_MODIFIER    = 0x40
 	ELEMENT_TYPE_SENTINEL    = 0x41
 	ELEMENT_TYPE_PINNED      = 0x45
+
+	ELEMENT_TYPE_SYSTEM           = 0x50 // Indicates an argument of type System.Type
+	CUSTOM_ATTRIBUTE_BOXED_OBJECT = 0x51 // Used in custom attributes to specify a boxed object (§II.23.3).
+	CUSTOM_ATTRIBUTE_FIELD        = 0x53 // Used in custom attributes to indicate a FIELD (§II.22.10, II.23.3).
+	CUSTOM_ATTRIBUTE_PROPERTY     = 0x54 // Used in custom attributes to indicate a PROPERTY (§II.22.10, II.23.3).
+	CUSTOM_ATTRIBUTE_ENUM         = 0x55 // Used in custom attributes to specify an enum (§II.23.3).
 )
