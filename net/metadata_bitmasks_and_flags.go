@@ -267,14 +267,3 @@ const (
 	CUSTOM_ATTRIBUTE_PROPERTY     = 0x54 // Used in custom attributes to indicate a PROPERTY (§II.22.10, II.23.3).
 	CUSTOM_ATTRIBUTE_ENUM         = 0x55 // Used in custom attributes to specify an enum (§II.23.3).
 )
-const (
-	SIGNATURE_HASTHIS      = 0x20
-	SIGNATURE_EXPLICITTHIS = 0x40
-	SIGNATURE_DEFAULT      = 0x0
-	SIGNATURE_VARARG       = 0x5
-	SIGNATURE_C            = 0x1
-	SIGNATURE_STDCALL      = 0x2
-	SIGNATURE_THISCALL     = 0x3
-	SIGNATURE_FASTCALL     = 0x4
-	SIGNATURE_SENTINEL     = 0x41
-)

@@ -8,8 +8,12 @@ import (
 )
 
 type BinaryReader struct {
-	Reader    io.Reader
+	Reader    io.ReadSeeker
 	Endianess binary.ByteOrder
+}
+
+func (r *BinaryReader) Seek(offset int64, whence int) (int64, error) {
+	return r.Reader.Seek(offset, whence)
 }
 
 func (r *BinaryReader) Read(size int) ([]byte, error) {
@@ -52,6 +56,15 @@ func (r *BinaryReader) Uint16() (uint16, error) {
 	panic("Unreachable")
 }
 
+func (r *BinaryReader) Uint8() (uint8, error) {
+	if data, err := r.Read(1); err != nil {
+		return 0, err
+	} else {
+		return uint8(data[0]), nil
+	}
+	panic("Unreachable")
+}
+
 func (r *BinaryReader) Int64() (int64, error) {
 	if data, err := r.Uint64(); err != nil {
 		return 0, err
@@ -75,6 +88,15 @@ func (r *BinaryReader) Int16() (int16, error) {
 		return 0, err
 	} else {
 		return int16(data), nil
+	}
+	panic("Unreachable")
+}
+
+func (r *BinaryReader) Int8() (int8, error) {
+	if data, err := r.Read(1); err != nil {
+		return 0, err
+	} else {
+		return int8(data[0]), nil
 	}
 	panic("Unreachable")
 }

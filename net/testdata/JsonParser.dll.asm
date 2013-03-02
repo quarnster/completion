@@ -1,5 +1,5 @@
 ModuleRow
-	&{Generation:0 Name:JsonParser.dll Mvid:Guid[1] EncId:Guid[0] EncBaseId:Guid[0]}
+	&{Generation:0 Name:JsonParser.dll Mvid:FA75A08B-59E8-4D4A-B10E-2114294958F4 EncId:nil EncBaseId:nil}
 TypeRefRow
 	&{ResolutionScope:TypeDefRow[1] TypeName:NumberStyles TypeNamespace:System.Globalization}
 	&{ResolutionScope:TypeDefRow[1] TypeName:IDictionary`2 TypeNamespace:System.Collections.Generic}

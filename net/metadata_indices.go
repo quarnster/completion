@@ -23,7 +23,6 @@ type (
 	EventIndex        TableIndex
 	FieldIndex        TableIndex
 	GenericParamIndex TableIndex
-	GuidIndex         TableIndex
 	MethodDefIndex    TableIndex
 	ModuleRefIndex    TableIndex
 	ParamIndex        TableIndex
@@ -44,10 +43,8 @@ func (t *ConcreteTableIndex) Data() (interface{}, error) {
 	switch t.table {
 	case id_nullTable:
 		return nil, errors.New("This is a null table")
-	case id_Guid:
-		return nil, errors.New("Guid lookup not implemented yet")
 	case id_Blob:
-		return nil, errors.New("Blob lookup not implemented yet")
+		return t.metadataUtil.BlobHeap.Index(t.index)
 	}
 	var (
 		ptr   uintptr
@@ -68,8 +65,6 @@ func (t *ConcreteTableIndex) String() string {
 	switch t.table {
 	case id_nullTable:
 		return "nulltable"
-	case id_Guid:
-		return fmt.Sprintf("Guid[%d]", t.index)
 	case id_Blob:
 		return fmt.Sprintf("Blob[%d]", t.index)
 	}
@@ -122,7 +117,6 @@ var idx_name_lut = map[string]int{
 	"PropertyIndex":                   id_Property,
 	"TypeDefIndex":                    id_TypeDef,
 	"BlobIndex":                       id_Blob,
-	"GuidIndex":                       id_Guid,
 	"TypeDefOrRefEncodedIndex":        idx_TypeDefOrRef,
 	"HasConstantEncodedIndex":         idx_HasConstant,
 	"HasCustomAttributeEncodedIndex":  idx_HasCustomAttribute,

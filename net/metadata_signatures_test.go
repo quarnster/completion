@@ -1,6 +1,7 @@
 package net
 
 import (
+	"bytes"
 	"encoding/binary"
 	"testing"
 )
@@ -35,7 +36,7 @@ func TestSignedDecoding(t *testing.T) {
 
 	for _, test := range signed_tests {
 		binary.BigEndian.PutUint32(data, uint32(test[1]))
-		if d, err := SignedDecode(data); err != nil {
+		if d, err := SignedDecode(bytes.NewReader(data)); err != nil {
 			t.Error(err)
 		} else if d != int32(test[0]) {
 			d1 := make([]byte, 4)
@@ -54,7 +55,7 @@ func TestUnsignedDecoding(t *testing.T) {
 
 	for _, test := range unsigned_tests {
 		binary.BigEndian.PutUint32(data, test[1])
-		if d, err := UnsignedDecode(data); err != nil {
+		if d, err := UnsignedDecode(bytes.NewReader(data)); err != nil {
 			t.Error(err)
 		} else if d != test[0] {
 			d1 := make([]byte, 4)

@@ -1,5 +1,5 @@
 ModuleRow
-	&{Generation:0 Name:CommandLineParser.dll Mvid:Guid[1] EncId:Guid[0] EncBaseId:Guid[0]}
+	&{Generation:0 Name:CommandLineParser.dll Mvid:36DCBA29-69C8-4E99-B590-8BD2082695D5 EncId:nil EncBaseId:nil}
 TypeRefRow
 	&{ResolutionScope:TypeDefRow[1] TypeName:ArrayList TypeNamespace:System.Collections}
 	&{ResolutionScope:TypeDefRow[1] TypeName:Stream TypeNamespace:System.IO}

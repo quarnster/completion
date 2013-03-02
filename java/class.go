@@ -340,7 +340,7 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 	return nil
 }
 
-func NewClass(reader io.Reader) (*Class, error) {
+func NewClass(reader io.ReadSeeker) (*Class, error) {
 	r := ClassDecoder{common.BinaryReader{reader, binary.BigEndian}, nil}
 	var c Class
 	if err := r.Decode(&c); err != nil {

@@ -1,6 +1,7 @@
 package net
 
 type (
+
 	// Spec II.22.2
 	AssemblyRow struct {
 		HashAlgId      AssemblyHashAlgorithm
@@ -212,9 +213,9 @@ type (
 	ModuleRow struct {
 		Generation uint16
 		Name       StringIndex
-		Mvid       GuidIndex
-		EncId      GuidIndex
-		EncBaseId  GuidIndex
+		Mvid       Guid
+		EncId      Guid
+		EncBaseId  Guid
 	}
 
 	// Spec II.22.31
