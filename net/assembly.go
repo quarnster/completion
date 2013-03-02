@@ -12,8 +12,8 @@ import (
 	//"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/quarnster/completion/common"
 	"github.com/quarnster/completion/content"
+	"github.com/quarnster/completion/util"
 	"io"
 	"reflect"
 	"unsafe"
@@ -162,7 +162,7 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 	}
 
 	var (
-		br        = common.BinaryReader{r, binary.LittleEndian}
+		br        = util.BinaryReader{r, binary.LittleEndian}
 		err       error
 		isPe32    bool
 		data      []byte

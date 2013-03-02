@@ -5,7 +5,7 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
-	"github.com/quarnster/completion/common"
+	"github.com/quarnster/completion/util"
 	"io"
 	"reflect"
 	"unsafe"
@@ -109,7 +109,7 @@ type EncUint uint32
 type EncInt int32
 
 type SignatureDecoder struct {
-	Reader       common.BinaryReader
+	Reader       util.BinaryReader
 	metadataUtil *MetadataUtil
 }
 
@@ -137,7 +137,7 @@ func NewSignatureDecoder(idx BlobIndex) (*SignatureDecoder, error) {
 		pos, _ := r.Seek(0, 1)
 		data = data[pos : uint32(pos)+l]
 	}
-	return &SignatureDecoder{metadataUtil: ci.metadataUtil, Reader: common.BinaryReader{Reader: bytes.NewReader(data), Endianess: binary.LittleEndian}}, nil
+	return &SignatureDecoder{metadataUtil: ci.metadataUtil, Reader: util.BinaryReader{Reader: bytes.NewReader(data), Endianess: binary.LittleEndian}}, nil
 }
 
 func (d *SignatureDecoder) Decode(v interface{}) error {

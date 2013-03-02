@@ -3,7 +3,7 @@ package util
 import (
 	"io/ioutil"
 	"os"
-	"os/Exec"
+	"os/exec"
 )
 
 // Diff cut'n'paste from http://golang.org/src/cmd/gofmt/gofmt.go
