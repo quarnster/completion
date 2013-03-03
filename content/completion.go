@@ -10,16 +10,37 @@ type Type struct {
 	Specialization []TemplateParameter `protocol:"optional" json:",omitempty"`
 }
 
-type Field struct {
+const (
+	FLAG_ACC_NOTSET = iota
+	FLAG_ACC_PUBLIC
+	FLAG_ACC_PRIVATE
+	FLAG_ACC_PROTECTED
+	FLAG_ACC_MASK = 0x3
+)
+const (
+	FLAG_STATIC = (1 + iota) << 2
+	FLAG_FINAL
+)
+
+type Flags uint8
+
+type Variable struct {
 	Name FullyQualifiedName `protocol:"required" json:",omitempty"`
 	Type Type               `protocol:"required" json:",omitempty"`
 }
 
+type Field struct {
+	Variable `protocol:"required"`
+	Flags    Flags `protocol:"optional" json:",omitempty"`
+}
+
 type Method struct {
 	Name           FullyQualifiedName  `protocol:"required" json:",omitempty"`
-	Returns        []Field             `protocol:"optional" json:",omitempty"`
-	Parameters     []Field             `protocol:"optional" json:",omitempty"`
+	Flags          Flags               `protocol:"optional" json:",omitempty"`
+	Returns        []Variable          `protocol:"optional" json:",omitempty"`
+	Parameters     []Variable          `protocol:"optional" json:",omitempty"`
 	Specialization []TemplateParameter `protocol:"optional" json:",omitempty"`
+	Static         bool                `protocol:"optional"`
 }
 
 type CompletionResult struct {

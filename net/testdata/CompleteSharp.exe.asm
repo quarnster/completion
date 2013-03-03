@@ -1,45 +1,45 @@
 ModuleRow
 	&{Generation:0 Name:CompleteSharp.exe Mvid:3401283C-C835-429E-BD63-BDA728AB549F EncId:nil EncBaseId:nil}
 TypeRefRow
-	&{ResolutionScope:TypeDefRow[1] TypeName:AppDomain TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:DateTime TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Object TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Console TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:TextWriter TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Exception TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:String TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:StringSplitOptions TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[2] TypeName:Regex TypeNamespace:System.Text.RegularExpressions}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArrayList TypeNamespace:System.Collections}
-	&{ResolutionScope:TypeDefRow[1] TypeName:MarshalByRefObject TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Assembly TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:FileInfo TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:FileSystemInfo TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ResolveEventHandler TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:List`1 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Int32 TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[2] TypeName:Match TypeNamespace:System.Text.RegularExpressions}
-	&{ResolutionScope:TypeDefRow[2] TypeName:GroupCollection TypeNamespace:System.Text.RegularExpressions}
-	&{ResolutionScope:TypeDefRow[2] TypeName:Group TypeNamespace:System.Text.RegularExpressions}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Type TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:MemberInfo TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:MemberTypes TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:FieldInfo TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:MethodInfo TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:MethodBase TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:PropertyInfo TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Math TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ResolveEventArgs TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:File TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IEnumerator TypeNamespace:System.Collections}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IDisposable TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:BindingFlags TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Char TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:EventInfo TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Enum TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:AppDomain TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:DateTime TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Object TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Console TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:TextWriter TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Exception TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:String TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:StringSplitOptions TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[2] TypeName:Regex TypeNamespace:System.Text.RegularExpressions}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArrayList TypeNamespace:System.Collections}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:MarshalByRefObject TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Assembly TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:FileInfo TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:FileSystemInfo TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ResolveEventHandler TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:List`1 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Int32 TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[2] TypeName:Match TypeNamespace:System.Text.RegularExpressions}
+	&{ResolutionScope:AssemblyRefRow[2] TypeName:GroupCollection TypeNamespace:System.Text.RegularExpressions}
+	&{ResolutionScope:AssemblyRefRow[2] TypeName:Group TypeNamespace:System.Text.RegularExpressions}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Type TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:MemberInfo TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:MemberTypes TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:FieldInfo TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:MethodInfo TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:MethodBase TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:PropertyInfo TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Math TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ResolveEventArgs TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:File TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IEnumerator TypeNamespace:System.Collections}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IDisposable TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:BindingFlags TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Char TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:EventInfo TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Enum TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
 TypeDefRow
-	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:ModuleRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
+	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:TypeDefRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:1048577 TypeName:CompleteSharp TypeNamespace: Extends:TypeRefRow[3] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:1048580 TypeName:MyAppDomain TypeNamespace: Extends:TypeRefRow[11] FieldList:FieldRow[2] MethodList:MethodDefRow[5]}
 	&{Flags:1048579 TypeName:Hack TypeNamespace: Extends:TypeRefRow[11] FieldList:FieldRow[6] MethodList:MethodDefRow[9]}
@@ -138,13 +138,13 @@ MemberRefRow
 	&{Class:TypeRefRow[1] Name:add_AssemblyResolve Signature:Blob[144]}
 	&{Class:TypeRefRow[7] Name:get_Chars Signature:Blob[150]}
 	&{Class:TypeRefRow[7] Name:get_Length Signature:Blob[155]}
-	&{Class:FieldRow[1] Name:.ctor Signature:Blob[31]}
+	&{Class:TypeSpecRow[1] Name:.ctor Signature:Blob[31]}
 	&{Class:TypeRefRow[7] Name:Substring Signature:Blob[167]}
 	&{Class:TypeRefRow[7] Name:Substring Signature:Blob[172]}
 	&{Class:TypeRefRow[7] Name:StartsWith Signature:Blob[178]}
 	&{Class:TypeRefRow[7] Name:Trim Signature:Blob[40]}
-	&{Class:FieldRow[1] Name:Add Signature:Blob[183]}
-	&{Class:FieldRow[1] Name:ToArray Signature:Blob[189]}
+	&{Class:TypeSpecRow[1] Name:Add Signature:Blob[183]}
+	&{Class:TypeSpecRow[1] Name:ToArray Signature:Blob[189]}
 	&{Class:TypeRefRow[7] Name:Concat Signature:Blob[195]}
 	&{Class:TypeRefRow[7] Name:Empty Signature:Blob[4]}
 	&{Class:TypeRefRow[7] Name:IndexOf Signature:Blob[203]}
@@ -201,16 +201,16 @@ MemberRefRow
 	&{Class:TypeRefRow[27] Name:get_PropertyType Signature:Blob[371]}
 	&{Class:TypeRefRow[37] Name:.ctor Signature:Blob[31]}
 ConstantRow
-	&{Type:8 Padding:0 Parent:ModuleRow[8] Value:Blob[404]}
-	&{Type:2 Padding:0 Parent:TypeRefRow[8] Value:Blob[159]}
-	&{Type:8 Padding:0 Parent:ModuleRow[9] Value:Blob[409]}
-	&{Type:8 Padding:0 Parent:ModuleRow[10] Value:Blob[414]}
-	&{Type:8 Padding:0 Parent:ModuleRow[11] Value:Blob[419]}
-	&{Type:8 Padding:0 Parent:ModuleRow[12] Value:Blob[424]}
-	&{Type:8 Padding:0 Parent:ModuleRow[13] Value:Blob[429]}
-	&{Type:2 Padding:0 Parent:TypeRefRow[13] Value:Blob[201]}
+	&{Type:8 Padding:0 Parent:FieldRow[8] Value:Blob[404]}
+	&{Type:2 Padding:0 Parent:ParamRow[8] Value:Blob[159]}
+	&{Type:8 Padding:0 Parent:FieldRow[9] Value:Blob[409]}
+	&{Type:8 Padding:0 Parent:FieldRow[10] Value:Blob[414]}
+	&{Type:8 Padding:0 Parent:FieldRow[11] Value:Blob[419]}
+	&{Type:8 Padding:0 Parent:FieldRow[12] Value:Blob[424]}
+	&{Type:8 Padding:0 Parent:FieldRow[13] Value:Blob[429]}
+	&{Type:2 Padding:0 Parent:ParamRow[13] Value:Blob[201]}
 CustomAttributeRow
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[879]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[90] Value:Blob[879]}
 StandAloneSigRow
 	&{Signature:Blob[446]}
 	&{Signature:Blob[474]}
@@ -239,3 +239,52 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[0] EnclosingClass:TypeDefRow[3]}
 	&{NestedClass:TypeDefRow[2] EnclosingClass:TypeDefRow[4]}
 	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[5]}
+	<Module>
+	CompleteSharp
+	MyAppDomain
+	Hack
+	Accessibility
+<Module>
+CompleteSharp
+	extends System.Object
+	private static string sep
+	public void  .ctor()
+	private static void  reportError(System.Exception e)
+	public static void  Main(string[] arg)
+	private static void  .cctor()
+MyAppDomain
+	extends System.MarshalByRefObject
+	private System.AppDomain ad
+	private string[] assemblies
+	private DateTime[] times
+	private boolean forceReload
+	public void  .ctor(string[] arg)
+	public void  LoadAssemblies()
+	public boolean  Execute(string[] args, System.Collections.ArrayList modules)
+	private void  CheckUpdate()
+Hack
+	extends System.MarshalByRefObject
+	public MyAppDomain ad
+	public void  .ctor()
+	private int  GetParameterExtent(string parameter)
+	private string[]  SplitParameters(string parameters, boolean fix)
+	private string  ParseParameters(string parameters, int expected, boolean insertion)
+	private string  FixName(string str, boolean insertion)
+	private string[]  GetTemplateArguments(string template)
+	private string  GetBase(string fullname)
+	public System.Type  GetType(MyAppDomain ad, string basename, string[] templateParam)
+	private int  GetModifiers(System.Reflection.MemberInfo m)
+	private System.Reflection.Assembly  TryLoad(string path, string name)
+	private System.Reflection.Assembly  ResolveAssembly(object sender, System.ResolveEventArgs args)
+	public System.Reflection.Assembly  Load(string str)
+	public System.Type  GetType(string basename)
+	public boolean  Execute(string[] args, System.Collections.ArrayList modules)
+Accessibility
+	extends System.Enum
+	public int value__
+	public static Accessibility NONE
+	public static Accessibility STATIC
+	public static Accessibility PRIVATE
+	public static Accessibility PROTECTED
+	public static Accessibility PUBLIC
+	public static Accessibility INTERNAL

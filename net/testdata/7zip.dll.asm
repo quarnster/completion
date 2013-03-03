@@ -1,54 +1,54 @@
 ModuleRow
 	&{Generation:0 Name:CommandLineParser.dll Mvid:36DCBA29-69C8-4E99-B590-8BD2082695D5 EncId:nil EncBaseId:nil}
 TypeRefRow
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArrayList TypeNamespace:System.Collections}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Stream TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:DateTime TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ResourceManager TypeNamespace:System.Resources}
-	&{ResolutionScope:TypeDefRow[1] TypeName:CultureInfo TypeNamespace:System.Globalization}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Object TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:String TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:DefaultMemberAttribute TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Exception TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Char TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Int32 TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:UInt32 TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Byte TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Math TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Boolean TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Console TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:FileStream TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:FileMode TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:FileAccess TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeHelpers TypeNamespace:System.Runtime.CompilerServices}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Array TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeFieldHandle TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:SeekOrigin TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:STAThreadAttribute TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:UInt64 TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:MemoryStream TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:TimeSpan TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[2] TypeName:EditorBrowsableAttribute TypeNamespace:System.ComponentModel}
-	&{ResolutionScope:TypeDefRow[2] TypeName:EditorBrowsableState TypeNamespace:System.ComponentModel}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Type TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeTypeHandle TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Assembly TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[2] TypeName:ApplicationSettingsBase TypeNamespace:System.Configuration}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Monitor TypeNamespace:System.Threading}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ApplicationException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:CompilerGeneratedAttribute TypeNamespace:System.Runtime.CompilerServices}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Enum TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ValueType TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:AssemblyTitleAttribute TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:AssemblyDescriptionAttribute TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:AssemblyConfigurationAttribute TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:AssemblyCompanyAttribute TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:AssemblyProductAttribute TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:AssemblyCopyrightAttribute TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:AssemblyTrademarkAttribute TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArrayList TypeNamespace:System.Collections}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Stream TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:DateTime TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ResourceManager TypeNamespace:System.Resources}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:CultureInfo TypeNamespace:System.Globalization}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Object TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:String TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:DefaultMemberAttribute TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Exception TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Char TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Int32 TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:UInt32 TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Byte TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Math TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Boolean TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Console TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:FileStream TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:FileMode TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:FileAccess TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeHelpers TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Array TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeFieldHandle TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:SeekOrigin TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:STAThreadAttribute TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:UInt64 TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:MemoryStream TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:TimeSpan TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[2] TypeName:EditorBrowsableAttribute TypeNamespace:System.ComponentModel}
+	&{ResolutionScope:AssemblyRefRow[2] TypeName:EditorBrowsableState TypeNamespace:System.ComponentModel}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Type TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeTypeHandle TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Assembly TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[2] TypeName:ApplicationSettingsBase TypeNamespace:System.Configuration}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Monitor TypeNamespace:System.Threading}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ApplicationException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:CompilerGeneratedAttribute TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Enum TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ValueType TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:AssemblyTitleAttribute TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:AssemblyDescriptionAttribute TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:AssemblyConfigurationAttribute TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:AssemblyCompanyAttribute TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:AssemblyProductAttribute TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:AssemblyCopyrightAttribute TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:AssemblyTrademarkAttribute TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
 TypeDefRow
-	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:ModuleRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
+	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:TypeDefRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:257 TypeName:SwitchType TypeNamespace:SevenZip.CommandLineParser Extends:TypeRefRow[37] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:1048577 TypeName:SwitchForm TypeNamespace:SevenZip.CommandLineParser Extends:TypeRefRow[6] FieldList:FieldRow[7] MethodList:MethodDefRow[1]}
 	&{Flags:1048577 TypeName:SwitchResult TypeNamespace:SevenZip.CommandLineParser Extends:TypeRefRow[6] FieldList:FieldRow[13] MethodList:MethodDefRow[4]}
@@ -58,9 +58,9 @@ TypeDefRow
 	&{Flags:0 TypeName:CRC TypeNamespace:SevenZip Extends:TypeRefRow[6] FieldList:FieldRow[27] MethodList:MethodDefRow[14]}
 	&{Flags:1048577 TypeName:InBuffer TypeNamespace:SevenZip.Buffer Extends:TypeRefRow[6] FieldList:FieldRow[29] MethodList:MethodDefRow[22]}
 	&{Flags:1048577 TypeName:OutBuffer TypeNamespace:SevenZip.Buffer Extends:TypeRefRow[6] FieldList:FieldRow[36] MethodList:MethodDefRow[29]}
-	&{Flags:160 TypeName:IInWindowStream TypeNamespace:SevenZip.Compression.LZ Extends:ModuleRow[0] FieldList:FieldRow[41] MethodList:MethodDefRow[38]}
-	&{Flags:160 TypeName:IMatchFinder TypeNamespace:SevenZip.Compression.LZ Extends:ModuleRow[0] FieldList:FieldRow[41] MethodList:MethodDefRow[44]}
-	&{Flags:1048577 TypeName:BinTree TypeNamespace:SevenZip.Compression.LZ Extends:ModuleRow[14] FieldList:FieldRow[41] MethodList:MethodDefRow[47]}
+	&{Flags:160 TypeName:IInWindowStream TypeNamespace:SevenZip.Compression.LZ Extends:TypeDefRow[0] FieldList:FieldRow[41] MethodList:MethodDefRow[38]}
+	&{Flags:160 TypeName:IMatchFinder TypeNamespace:SevenZip.Compression.LZ Extends:TypeDefRow[0] FieldList:FieldRow[41] MethodList:MethodDefRow[44]}
+	&{Flags:1048577 TypeName:BinTree TypeNamespace:SevenZip.Compression.LZ Extends:TypeDefRow[14] FieldList:FieldRow[41] MethodList:MethodDefRow[47]}
 	&{Flags:1048577 TypeName:InWindow TypeNamespace:SevenZip.Compression.LZ Extends:TypeRefRow[6] FieldList:FieldRow[60] MethodList:MethodDefRow[62]}
 	&{Flags:1048577 TypeName:OutWindow TypeNamespace:SevenZip.Compression.LZ Extends:TypeRefRow[6] FieldList:FieldRow[71] MethodList:MethodDefRow[75]}
 	&{Flags:1048704 TypeName:Base TypeNamespace:SevenZip.Compression.LZMA Extends:TypeRefRow[6] FieldList:FieldRow[77] MethodList:MethodDefRow[84]}
@@ -74,7 +74,7 @@ TypeDefRow
 	&{Flags:1048579 TypeName:LiteralEncoder TypeNamespace: Extends:TypeRefRow[6] FieldList:FieldRow[195] MethodList:MethodDefRow[146]}
 	&{Flags:1048842 TypeName:Encoder2 TypeNamespace: Extends:TypeRefRow[38] FieldList:FieldRow[199] MethodList:MethodDefRow[150]}
 	&{Flags:1048579 TypeName:LenEncoder TypeNamespace: Extends:TypeRefRow[6] FieldList:FieldRow[200] MethodList:MethodDefRow[155]}
-	&{Flags:1048579 TypeName:LenPriceTableEncoder TypeNamespace: Extends:ModuleRow[26] FieldList:FieldRow[205] MethodList:MethodDefRow[159]}
+	&{Flags:1048579 TypeName:LenPriceTableEncoder TypeNamespace: Extends:TypeDefRow[26] FieldList:FieldRow[205] MethodList:MethodDefRow[159]}
 	&{Flags:1048579 TypeName:Optimal TypeNamespace: Extends:TypeRefRow[6] FieldList:FieldRow[208] MethodList:MethodDefRow[165]}
 	&{Flags:1048577 TypeName:CDoubleStream TypeNamespace:SevenZip Extends:TypeRefRow[2] FieldList:FieldRow[220] MethodList:MethodDefRow[169]}
 	&{Flags:1048576 TypeName:LzmaAlone TypeNamespace:SevenZip Extends:TypeRefRow[6] FieldList:FieldRow[224] MethodList:MethodDefRow[181]}
@@ -95,12 +95,12 @@ TypeDefRow
 	&{Flags:1048840 TypeName:BitTreeDecoder TypeNamespace:SevenZip.Compression.RangeCoder Extends:TypeRefRow[38] FieldList:FieldRow[284] MethodList:MethodDefRow[276]}
 	&{Flags:1048576 TypeName:DataErrorException TypeNamespace:SevenZip Extends:TypeRefRow[35] FieldList:FieldRow[286] MethodList:MethodDefRow[281]}
 	&{Flags:1048576 TypeName:InvalidParamException TypeNamespace:SevenZip Extends:TypeRefRow[35] FieldList:FieldRow[286] MethodList:MethodDefRow[282]}
-	&{Flags:161 TypeName:ICodeProgress TypeNamespace:SevenZip Extends:ModuleRow[0] FieldList:FieldRow[286] MethodList:MethodDefRow[283]}
-	&{Flags:161 TypeName:ICoder TypeNamespace:SevenZip Extends:ModuleRow[0] FieldList:FieldRow[286] MethodList:MethodDefRow[284]}
+	&{Flags:161 TypeName:ICodeProgress TypeNamespace:SevenZip Extends:TypeDefRow[0] FieldList:FieldRow[286] MethodList:MethodDefRow[283]}
+	&{Flags:161 TypeName:ICoder TypeNamespace:SevenZip Extends:TypeDefRow[0] FieldList:FieldRow[286] MethodList:MethodDefRow[284]}
 	&{Flags:257 TypeName:CoderPropID TypeNamespace:SevenZip Extends:TypeRefRow[37] FieldList:FieldRow[286] MethodList:MethodDefRow[285]}
-	&{Flags:161 TypeName:ISetCoderProperties TypeNamespace:SevenZip Extends:ModuleRow[0] FieldList:FieldRow[302] MethodList:MethodDefRow[285]}
-	&{Flags:161 TypeName:IWriteCoderProperties TypeNamespace:SevenZip Extends:ModuleRow[0] FieldList:FieldRow[302] MethodList:MethodDefRow[286]}
-	&{Flags:161 TypeName:ISetDecoderProperties TypeNamespace:SevenZip Extends:ModuleRow[0] FieldList:FieldRow[302] MethodList:MethodDefRow[287]}
+	&{Flags:161 TypeName:ISetCoderProperties TypeNamespace:SevenZip Extends:TypeDefRow[0] FieldList:FieldRow[302] MethodList:MethodDefRow[285]}
+	&{Flags:161 TypeName:IWriteCoderProperties TypeNamespace:SevenZip Extends:TypeDefRow[0] FieldList:FieldRow[302] MethodList:MethodDefRow[286]}
+	&{Flags:161 TypeName:ISetDecoderProperties TypeNamespace:SevenZip Extends:TypeDefRow[0] FieldList:FieldRow[302] MethodList:MethodDefRow[287]}
 	&{Flags:1048960 TypeName:<PrivateImplementationDetails>{36dcba29-69c8-4e99-b590-8bd2082695d5} TypeNamespace: Extends:TypeRefRow[6] FieldList:FieldRow[302] MethodList:MethodDefRow[288]}
 	&{Flags:1048851 TypeName:$ArrayType=32 TypeNamespace: Extends:TypeRefRow[38] FieldList:FieldRow[303] MethodList:MethodDefRow[288]}
 FieldRow
@@ -1002,15 +1002,15 @@ ParamRow
 	&{Flags:0 Sequence:1 Name:outStream}
 	&{Flags:0 Sequence:1 Name:properties}
 InterfaceImplRow
-	&{Class:TypeDefRow[12] Interface:ModuleRow[11]}
-	&{Class:TypeDefRow[13] Interface:ModuleRow[11]}
-	&{Class:TypeDefRow[13] Interface:ModuleRow[12]}
-	&{Class:TypeDefRow[18] Interface:ModuleRow[49]}
-	&{Class:TypeDefRow[18] Interface:ModuleRow[53]}
-	&{Class:TypeDefRow[22] Interface:ModuleRow[49]}
-	&{Class:TypeDefRow[22] Interface:ModuleRow[51]}
-	&{Class:TypeDefRow[22] Interface:ModuleRow[52]}
-	&{Class:TypeDefRow[37] Interface:ModuleRow[48]}
+	&{Class:TypeDefRow[12] Interface:TypeDefRow[11]}
+	&{Class:TypeDefRow[13] Interface:TypeDefRow[11]}
+	&{Class:TypeDefRow[13] Interface:TypeDefRow[12]}
+	&{Class:TypeDefRow[18] Interface:TypeDefRow[49]}
+	&{Class:TypeDefRow[18] Interface:TypeDefRow[53]}
+	&{Class:TypeDefRow[22] Interface:TypeDefRow[49]}
+	&{Class:TypeDefRow[22] Interface:TypeDefRow[51]}
+	&{Class:TypeDefRow[22] Interface:TypeDefRow[52]}
+	&{Class:TypeDefRow[37] Interface:TypeDefRow[48]}
 MemberRefRow
 	&{Class:TypeRefRow[6] Name:.ctor Signature:Blob[223]}
 	&{Class:TypeRefRow[7] Name:Empty Signature:Blob[8]}
@@ -1080,113 +1080,113 @@ MemberRefRow
 	&{Class:TypeRefRow[45] Name:.ctor Signature:Blob[238]}
 	&{Class:TypeRefRow[46] Name:.ctor Signature:Blob[223]}
 ConstantRow
-	&{Type:8 Padding:0 Parent:ModuleRow[2] Value:Blob[198]}
-	&{Type:8 Padding:0 Parent:ModuleRow[3] Value:Blob[203]}
-	&{Type:8 Padding:0 Parent:ModuleRow[4] Value:Blob[208]}
-	&{Type:8 Padding:0 Parent:ModuleRow[5] Value:Blob[213]}
-	&{Type:8 Padding:0 Parent:ModuleRow[6] Value:Blob[218]}
-	&{Type:3 Padding:0 Parent:ModuleRow[17] Value:Blob[227]}
-	&{Type:3 Padding:0 Parent:ModuleRow[18] Value:Blob[230]}
-	&{Type:3 Padding:0 Parent:ModuleRow[19] Value:Blob[227]}
-	&{Type:14 Padding:0 Parent:ModuleRow[20] Value:Blob[233]}
-	&{Type:9 Padding:0 Parent:ModuleRow[41] Value:Blob[332]}
-	&{Type:9 Padding:0 Parent:ModuleRow[42] Value:Blob[337]}
-	&{Type:9 Padding:0 Parent:ModuleRow[43] Value:Blob[337]}
-	&{Type:9 Padding:0 Parent:ModuleRow[44] Value:Blob[203]}
-	&{Type:9 Padding:0 Parent:ModuleRow[45] Value:Blob[332]}
-	&{Type:9 Padding:0 Parent:ModuleRow[46] Value:Blob[198]}
-	&{Type:9 Padding:0 Parent:ModuleRow[47] Value:Blob[342]}
-	&{Type:9 Padding:0 Parent:ModuleRow[77] Value:Blob[218]}
-	&{Type:9 Padding:0 Parent:ModuleRow[78] Value:Blob[362]}
-	&{Type:8 Padding:0 Parent:ModuleRow[79] Value:Blob[367]}
-	&{Type:8 Padding:0 Parent:ModuleRow[80] Value:Blob[198]}
-	&{Type:8 Padding:0 Parent:ModuleRow[81] Value:Blob[208]}
-	&{Type:9 Padding:0 Parent:ModuleRow[82] Value:Blob[218]}
-	&{Type:9 Padding:0 Parent:ModuleRow[83] Value:Blob[208]}
-	&{Type:8 Padding:0 Parent:ModuleRow[84] Value:Blob[218]}
-	&{Type:9 Padding:0 Parent:ModuleRow[85] Value:Blob[372]}
-	&{Type:9 Padding:0 Parent:ModuleRow[86] Value:Blob[377]}
-	&{Type:9 Padding:0 Parent:ModuleRow[87] Value:Blob[218]}
-	&{Type:9 Padding:0 Parent:ModuleRow[88] Value:Blob[382]}
-	&{Type:9 Padding:0 Parent:ModuleRow[89] Value:Blob[387]}
-	&{Type:9 Padding:0 Parent:ModuleRow[90] Value:Blob[392]}
-	&{Type:9 Padding:0 Parent:ModuleRow[91] Value:Blob[218]}
-	&{Type:9 Padding:0 Parent:ModuleRow[92] Value:Blob[397]}
-	&{Type:8 Padding:0 Parent:ModuleRow[93] Value:Blob[218]}
-	&{Type:9 Padding:0 Parent:ModuleRow[94] Value:Blob[372]}
-	&{Type:8 Padding:0 Parent:ModuleRow[95] Value:Blob[218]}
-	&{Type:9 Padding:0 Parent:ModuleRow[96] Value:Blob[372]}
-	&{Type:8 Padding:0 Parent:ModuleRow[97] Value:Blob[213]}
-	&{Type:8 Padding:0 Parent:ModuleRow[98] Value:Blob[213]}
-	&{Type:8 Padding:0 Parent:ModuleRow[99] Value:Blob[397]}
-	&{Type:9 Padding:0 Parent:ModuleRow[100] Value:Blob[397]}
-	&{Type:9 Padding:0 Parent:ModuleRow[101] Value:Blob[397]}
-	&{Type:9 Padding:0 Parent:ModuleRow[102] Value:Blob[402]}
-	&{Type:9 Padding:0 Parent:ModuleRow[103] Value:Blob[407]}
-	&{Type:9 Padding:0 Parent:ModuleRow[134] Value:Blob[412]}
-	&{Type:8 Padding:0 Parent:ModuleRow[135] Value:Blob[417]}
-	&{Type:9 Padding:0 Parent:ModuleRow[136] Value:Blob[422]}
-	&{Type:9 Padding:0 Parent:ModuleRow[137] Value:Blob[372]}
-	&{Type:9 Padding:0 Parent:ModuleRow[138] Value:Blob[427]}
-	&{Type:8 Padding:0 Parent:ModuleRow[139] Value:Blob[432]}
-	&{Type:8 Padding:0 Parent:ModuleRow[193] Value:Blob[198]}
-	&{Type:8 Padding:0 Parent:ModuleRow[194] Value:Blob[203]}
-	&{Type:8 Padding:0 Parent:ModuleRow[225] Value:Blob[198]}
-	&{Type:8 Padding:0 Parent:ModuleRow[226] Value:Blob[203]}
-	&{Type:8 Padding:0 Parent:ModuleRow[227] Value:Blob[208]}
-	&{Type:8 Padding:0 Parent:ModuleRow[228] Value:Blob[213]}
-	&{Type:8 Padding:0 Parent:ModuleRow[229] Value:Blob[218]}
-	&{Type:8 Padding:0 Parent:ModuleRow[230] Value:Blob[432]}
-	&{Type:8 Padding:0 Parent:ModuleRow[231] Value:Blob[367]}
-	&{Type:8 Padding:0 Parent:ModuleRow[232] Value:Blob[491]}
-	&{Type:8 Padding:0 Parent:ModuleRow[233] Value:Blob[397]}
-	&{Type:8 Padding:0 Parent:ModuleRow[234] Value:Blob[496]}
-	&{Type:8 Padding:0 Parent:ModuleRow[235] Value:Blob[387]}
-	&{Type:8 Padding:0 Parent:ModuleRow[236] Value:Blob[501]}
-	&{Type:8 Padding:0 Parent:ModuleRow[237] Value:Blob[362]}
-	&{Type:9 Padding:0 Parent:ModuleRow[238] Value:Blob[506]}
-	&{Type:9 Padding:0 Parent:ModuleRow[239] Value:Blob[332]}
-	&{Type:9 Padding:0 Parent:ModuleRow[240] Value:Blob[387]}
-	&{Type:8 Padding:0 Parent:ModuleRow[241] Value:Blob[397]}
-	&{Type:9 Padding:0 Parent:ModuleRow[260] Value:Blob[580]}
-	&{Type:9 Padding:0 Parent:ModuleRow[267] Value:Blob[580]}
-	&{Type:8 Padding:0 Parent:ModuleRow[271] Value:Blob[501]}
-	&{Type:9 Padding:0 Parent:ModuleRow[272] Value:Blob[585]}
-	&{Type:8 Padding:0 Parent:ModuleRow[273] Value:Blob[432]}
-	&{Type:8 Padding:0 Parent:ModuleRow[274] Value:Blob[208]}
-	&{Type:8 Padding:0 Parent:ModuleRow[275] Value:Blob[367]}
-	&{Type:8 Padding:0 Parent:ModuleRow[278] Value:Blob[501]}
-	&{Type:9 Padding:0 Parent:ModuleRow[279] Value:Blob[585]}
-	&{Type:8 Padding:0 Parent:ModuleRow[280] Value:Blob[432]}
-	&{Type:8 Padding:0 Parent:ModuleRow[287] Value:Blob[198]}
-	&{Type:8 Padding:0 Parent:ModuleRow[288] Value:Blob[203]}
-	&{Type:8 Padding:0 Parent:ModuleRow[289] Value:Blob[208]}
-	&{Type:8 Padding:0 Parent:ModuleRow[290] Value:Blob[213]}
-	&{Type:8 Padding:0 Parent:ModuleRow[291] Value:Blob[218]}
-	&{Type:8 Padding:0 Parent:ModuleRow[292] Value:Blob[432]}
-	&{Type:8 Padding:0 Parent:ModuleRow[293] Value:Blob[367]}
-	&{Type:8 Padding:0 Parent:ModuleRow[294] Value:Blob[491]}
-	&{Type:8 Padding:0 Parent:ModuleRow[295] Value:Blob[397]}
-	&{Type:8 Padding:0 Parent:ModuleRow[296] Value:Blob[496]}
-	&{Type:8 Padding:0 Parent:ModuleRow[297] Value:Blob[387]}
-	&{Type:8 Padding:0 Parent:ModuleRow[298] Value:Blob[501]}
-	&{Type:8 Padding:0 Parent:ModuleRow[299] Value:Blob[362]}
-	&{Type:8 Padding:0 Parent:ModuleRow[300] Value:Blob[590]}
-	&{Type:8 Padding:0 Parent:ModuleRow[301] Value:Blob[382]}
+	&{Type:8 Padding:0 Parent:FieldRow[2] Value:Blob[198]}
+	&{Type:8 Padding:0 Parent:FieldRow[3] Value:Blob[203]}
+	&{Type:8 Padding:0 Parent:FieldRow[4] Value:Blob[208]}
+	&{Type:8 Padding:0 Parent:FieldRow[5] Value:Blob[213]}
+	&{Type:8 Padding:0 Parent:FieldRow[6] Value:Blob[218]}
+	&{Type:3 Padding:0 Parent:FieldRow[17] Value:Blob[227]}
+	&{Type:3 Padding:0 Parent:FieldRow[18] Value:Blob[230]}
+	&{Type:3 Padding:0 Parent:FieldRow[19] Value:Blob[227]}
+	&{Type:14 Padding:0 Parent:FieldRow[20] Value:Blob[233]}
+	&{Type:9 Padding:0 Parent:FieldRow[41] Value:Blob[332]}
+	&{Type:9 Padding:0 Parent:FieldRow[42] Value:Blob[337]}
+	&{Type:9 Padding:0 Parent:FieldRow[43] Value:Blob[337]}
+	&{Type:9 Padding:0 Parent:FieldRow[44] Value:Blob[203]}
+	&{Type:9 Padding:0 Parent:FieldRow[45] Value:Blob[332]}
+	&{Type:9 Padding:0 Parent:FieldRow[46] Value:Blob[198]}
+	&{Type:9 Padding:0 Parent:FieldRow[47] Value:Blob[342]}
+	&{Type:9 Padding:0 Parent:FieldRow[77] Value:Blob[218]}
+	&{Type:9 Padding:0 Parent:FieldRow[78] Value:Blob[362]}
+	&{Type:8 Padding:0 Parent:FieldRow[79] Value:Blob[367]}
+	&{Type:8 Padding:0 Parent:FieldRow[80] Value:Blob[198]}
+	&{Type:8 Padding:0 Parent:FieldRow[81] Value:Blob[208]}
+	&{Type:9 Padding:0 Parent:FieldRow[82] Value:Blob[218]}
+	&{Type:9 Padding:0 Parent:FieldRow[83] Value:Blob[208]}
+	&{Type:8 Padding:0 Parent:FieldRow[84] Value:Blob[218]}
+	&{Type:9 Padding:0 Parent:FieldRow[85] Value:Blob[372]}
+	&{Type:9 Padding:0 Parent:FieldRow[86] Value:Blob[377]}
+	&{Type:9 Padding:0 Parent:FieldRow[87] Value:Blob[218]}
+	&{Type:9 Padding:0 Parent:FieldRow[88] Value:Blob[382]}
+	&{Type:9 Padding:0 Parent:FieldRow[89] Value:Blob[387]}
+	&{Type:9 Padding:0 Parent:FieldRow[90] Value:Blob[392]}
+	&{Type:9 Padding:0 Parent:FieldRow[91] Value:Blob[218]}
+	&{Type:9 Padding:0 Parent:FieldRow[92] Value:Blob[397]}
+	&{Type:8 Padding:0 Parent:FieldRow[93] Value:Blob[218]}
+	&{Type:9 Padding:0 Parent:FieldRow[94] Value:Blob[372]}
+	&{Type:8 Padding:0 Parent:FieldRow[95] Value:Blob[218]}
+	&{Type:9 Padding:0 Parent:FieldRow[96] Value:Blob[372]}
+	&{Type:8 Padding:0 Parent:FieldRow[97] Value:Blob[213]}
+	&{Type:8 Padding:0 Parent:FieldRow[98] Value:Blob[213]}
+	&{Type:8 Padding:0 Parent:FieldRow[99] Value:Blob[397]}
+	&{Type:9 Padding:0 Parent:FieldRow[100] Value:Blob[397]}
+	&{Type:9 Padding:0 Parent:FieldRow[101] Value:Blob[397]}
+	&{Type:9 Padding:0 Parent:FieldRow[102] Value:Blob[402]}
+	&{Type:9 Padding:0 Parent:FieldRow[103] Value:Blob[407]}
+	&{Type:9 Padding:0 Parent:FieldRow[134] Value:Blob[412]}
+	&{Type:8 Padding:0 Parent:FieldRow[135] Value:Blob[417]}
+	&{Type:9 Padding:0 Parent:FieldRow[136] Value:Blob[422]}
+	&{Type:9 Padding:0 Parent:FieldRow[137] Value:Blob[372]}
+	&{Type:9 Padding:0 Parent:FieldRow[138] Value:Blob[427]}
+	&{Type:8 Padding:0 Parent:FieldRow[139] Value:Blob[432]}
+	&{Type:8 Padding:0 Parent:FieldRow[193] Value:Blob[198]}
+	&{Type:8 Padding:0 Parent:FieldRow[194] Value:Blob[203]}
+	&{Type:8 Padding:0 Parent:FieldRow[225] Value:Blob[198]}
+	&{Type:8 Padding:0 Parent:FieldRow[226] Value:Blob[203]}
+	&{Type:8 Padding:0 Parent:FieldRow[227] Value:Blob[208]}
+	&{Type:8 Padding:0 Parent:FieldRow[228] Value:Blob[213]}
+	&{Type:8 Padding:0 Parent:FieldRow[229] Value:Blob[218]}
+	&{Type:8 Padding:0 Parent:FieldRow[230] Value:Blob[432]}
+	&{Type:8 Padding:0 Parent:FieldRow[231] Value:Blob[367]}
+	&{Type:8 Padding:0 Parent:FieldRow[232] Value:Blob[491]}
+	&{Type:8 Padding:0 Parent:FieldRow[233] Value:Blob[397]}
+	&{Type:8 Padding:0 Parent:FieldRow[234] Value:Blob[496]}
+	&{Type:8 Padding:0 Parent:FieldRow[235] Value:Blob[387]}
+	&{Type:8 Padding:0 Parent:FieldRow[236] Value:Blob[501]}
+	&{Type:8 Padding:0 Parent:FieldRow[237] Value:Blob[362]}
+	&{Type:9 Padding:0 Parent:FieldRow[238] Value:Blob[506]}
+	&{Type:9 Padding:0 Parent:FieldRow[239] Value:Blob[332]}
+	&{Type:9 Padding:0 Parent:FieldRow[240] Value:Blob[387]}
+	&{Type:8 Padding:0 Parent:FieldRow[241] Value:Blob[397]}
+	&{Type:9 Padding:0 Parent:FieldRow[260] Value:Blob[580]}
+	&{Type:9 Padding:0 Parent:FieldRow[267] Value:Blob[580]}
+	&{Type:8 Padding:0 Parent:FieldRow[271] Value:Blob[501]}
+	&{Type:9 Padding:0 Parent:FieldRow[272] Value:Blob[585]}
+	&{Type:8 Padding:0 Parent:FieldRow[273] Value:Blob[432]}
+	&{Type:8 Padding:0 Parent:FieldRow[274] Value:Blob[208]}
+	&{Type:8 Padding:0 Parent:FieldRow[275] Value:Blob[367]}
+	&{Type:8 Padding:0 Parent:FieldRow[278] Value:Blob[501]}
+	&{Type:9 Padding:0 Parent:FieldRow[279] Value:Blob[585]}
+	&{Type:8 Padding:0 Parent:FieldRow[280] Value:Blob[432]}
+	&{Type:8 Padding:0 Parent:FieldRow[287] Value:Blob[198]}
+	&{Type:8 Padding:0 Parent:FieldRow[288] Value:Blob[203]}
+	&{Type:8 Padding:0 Parent:FieldRow[289] Value:Blob[208]}
+	&{Type:8 Padding:0 Parent:FieldRow[290] Value:Blob[213]}
+	&{Type:8 Padding:0 Parent:FieldRow[291] Value:Blob[218]}
+	&{Type:8 Padding:0 Parent:FieldRow[292] Value:Blob[432]}
+	&{Type:8 Padding:0 Parent:FieldRow[293] Value:Blob[367]}
+	&{Type:8 Padding:0 Parent:FieldRow[294] Value:Blob[491]}
+	&{Type:8 Padding:0 Parent:FieldRow[295] Value:Blob[397]}
+	&{Type:8 Padding:0 Parent:FieldRow[296] Value:Blob[496]}
+	&{Type:8 Padding:0 Parent:FieldRow[297] Value:Blob[387]}
+	&{Type:8 Padding:0 Parent:FieldRow[298] Value:Blob[501]}
+	&{Type:8 Padding:0 Parent:FieldRow[299] Value:Blob[362]}
+	&{Type:8 Padding:0 Parent:FieldRow[300] Value:Blob[590]}
+	&{Type:8 Padding:0 Parent:FieldRow[301] Value:Blob[382]}
 CustomAttributeRow
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[1880]}
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[1863]}
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[1857]}
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[1934]}
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[1857]}
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[1895]}
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[1857]}
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[1846]}
-	&{Parent:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[243]}
-	&{Parent:InterfaceImplRow[12] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[545]}
-	&{Parent:InterfaceImplRow[13] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[545]}
-	&{Parent:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[203]}
-	&{Parent:ModuleRow[186] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[203]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[64] Value:Blob[1880]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[63] Value:Blob[1863]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[62] Value:Blob[1857]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[67] Value:Blob[1934]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[66] Value:Blob[1857]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[65] Value:Blob[1895]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[61] Value:Blob[1857]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[60] Value:Blob[1846]}
+	&{Parent:TypeDefRow[5] Type:MemberRefRow[4] Value:Blob[243]}
+	&{Parent:PropertyRow[12] Type:MemberRefRow[51] Value:Blob[545]}
+	&{Parent:PropertyRow[13] Type:MemberRefRow[51] Value:Blob[545]}
+	&{Parent:TypeDefRow[54] Type:MemberRefRow[59] Value:Blob[203]}
+	&{Parent:MethodDefRow[186] Type:MemberRefRow[39] Value:Blob[203]}
 ClassLayoutRow
 	&{PackingSize:1 ClassSize:32 Parent:TypeDefRow[55]}
 StandAloneSigRow
@@ -1259,23 +1259,23 @@ PropertyRow
 	&{Flags:0 Name:Culture Type:Blob[1835]}
 	&{Flags:0 Name:Value Type:Blob[1840]}
 MethodSemanticsRow
-	&{Semantics:2 Method:MethodDefRow[8] Association:TypeRefRow[1]}
-	&{Semantics:2 Method:MethodDefRow[170] Association:TypeRefRow[2]}
-	&{Semantics:2 Method:MethodDefRow[171] Association:TypeRefRow[3]}
-	&{Semantics:2 Method:MethodDefRow[172] Association:TypeRefRow[4]}
-	&{Semantics:2 Method:MethodDefRow[173] Association:TypeRefRow[5]}
-	&{Semantics:1 Method:MethodDefRow[175] Association:TypeRefRow[6]}
-	&{Semantics:2 Method:MethodDefRow[174] Association:TypeRefRow[6]}
-	&{Semantics:2 Method:MethodDefRow[214] Association:TypeRefRow[7]}
-	&{Semantics:2 Method:MethodDefRow[215] Association:TypeRefRow[8]}
-	&{Semantics:2 Method:MethodDefRow[216] Association:TypeRefRow[9]}
-	&{Semantics:2 Method:MethodDefRow[217] Association:TypeRefRow[10]}
-	&{Semantics:1 Method:MethodDefRow[219] Association:TypeRefRow[11]}
-	&{Semantics:2 Method:MethodDefRow[218] Association:TypeRefRow[11]}
-	&{Semantics:2 Method:MethodDefRow[230] Association:TypeRefRow[12]}
-	&{Semantics:1 Method:MethodDefRow[232] Association:TypeRefRow[13]}
-	&{Semantics:2 Method:MethodDefRow[231] Association:TypeRefRow[13]}
-	&{Semantics:2 Method:MethodDefRow[234] Association:TypeRefRow[14]}
+	&{Semantics:2 Method:MethodDefRow[8] Association:PropertyRow[1]}
+	&{Semantics:2 Method:MethodDefRow[170] Association:PropertyRow[2]}
+	&{Semantics:2 Method:MethodDefRow[171] Association:PropertyRow[3]}
+	&{Semantics:2 Method:MethodDefRow[172] Association:PropertyRow[4]}
+	&{Semantics:2 Method:MethodDefRow[173] Association:PropertyRow[5]}
+	&{Semantics:1 Method:MethodDefRow[175] Association:PropertyRow[6]}
+	&{Semantics:2 Method:MethodDefRow[174] Association:PropertyRow[6]}
+	&{Semantics:2 Method:MethodDefRow[214] Association:PropertyRow[7]}
+	&{Semantics:2 Method:MethodDefRow[215] Association:PropertyRow[8]}
+	&{Semantics:2 Method:MethodDefRow[216] Association:PropertyRow[9]}
+	&{Semantics:2 Method:MethodDefRow[217] Association:PropertyRow[10]}
+	&{Semantics:1 Method:MethodDefRow[219] Association:PropertyRow[11]}
+	&{Semantics:2 Method:MethodDefRow[218] Association:PropertyRow[11]}
+	&{Semantics:2 Method:MethodDefRow[230] Association:PropertyRow[12]}
+	&{Semantics:1 Method:MethodDefRow[232] Association:PropertyRow[13]}
+	&{Semantics:2 Method:MethodDefRow[231] Association:PropertyRow[13]}
+	&{Semantics:2 Method:MethodDefRow[234] Association:PropertyRow[14]}
 FieldRVARow
 	&{RVA:65536 Field:FieldRow[302]}
 AssemblyRow
@@ -1301,3 +1301,758 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[32] EnclosingClass:TypeDefRow[36]}
 	&{NestedClass:TypeDefRow[32] EnclosingClass:TypeDefRow[37]}
 	&{NestedClass:TypeDefRow[32] EnclosingClass:TypeDefRow[55]}
+	<Module>
+	SevenZip.CommandLineParser.SwitchType
+	SevenZip.CommandLineParser.SwitchForm
+	SevenZip.CommandLineParser.SwitchResult
+	SevenZip.CommandLineParser.Parser
+	SevenZip.CommandLineParser.CommandForm
+	SevenZip.CommandLineParser.CommandSubCharsSet
+	SevenZip.CRC
+	SevenZip.Buffer.InBuffer
+	SevenZip.Buffer.OutBuffer
+	SevenZip.Compression.LZ.IInWindowStream
+	SevenZip.Compression.LZ.IMatchFinder
+	SevenZip.Compression.LZ.BinTree
+	SevenZip.Compression.LZ.InWindow
+	SevenZip.Compression.LZ.OutWindow
+	SevenZip.Compression.LZMA.Base
+	State
+	SevenZip.Compression.LZMA.Decoder
+	LenDecoder
+	LiteralDecoder
+	Decoder2
+	SevenZip.Compression.LZMA.Encoder
+	EMatchFinderType
+	LiteralEncoder
+	Encoder2
+	LenEncoder
+	LenPriceTableEncoder
+	Optimal
+	SevenZip.CDoubleStream
+	SevenZip.LzmaAlone
+	Key
+	SevenZip.LzmaBench
+	CRandomGenerator
+	CBitRandomGenerator
+	CBenchRandomGenerator
+	CrcOutStream
+	CProgressInfo
+	LzmaAlone.Properties.Resources
+	LzmaAlone.Properties.Settings
+	SevenZip.Compression.RangeCoder.Encoder
+	SevenZip.Compression.RangeCoder.Decoder
+	SevenZip.Compression.RangeCoder.BitEncoder
+	SevenZip.Compression.RangeCoder.BitDecoder
+	SevenZip.Compression.RangeCoder.BitTreeEncoder
+	SevenZip.Compression.RangeCoder.BitTreeDecoder
+	SevenZip.DataErrorException
+	SevenZip.InvalidParamException
+	SevenZip.ICodeProgress
+	SevenZip.ICoder
+	SevenZip.CoderPropID
+	SevenZip.ISetCoderProperties
+	SevenZip.IWriteCoderProperties
+	SevenZip.ISetDecoderProperties
+	<PrivateImplementationDetails>{36dcba29-69c8-4e99-b590-8bd2082695d5}
+	$ArrayType=32
+<Module>
+SwitchType
+	extends System.Enum
+	public int value__
+	public static SevenZip.CommandLineParser.SwitchType Simple
+	public static SevenZip.CommandLineParser.SwitchType PostMinus
+	public static SevenZip.CommandLineParser.SwitchType LimitedPostString
+	public static SevenZip.CommandLineParser.SwitchType UnLimitedPostString
+	public static SevenZip.CommandLineParser.SwitchType PostChar
+SwitchForm
+	extends System.Object
+	public string IDString
+	public SevenZip.CommandLineParser.SwitchType Type
+	public boolean Multi
+	public int MinLen
+	public int MaxLen
+	public string PostCharSet
+	public void  .ctor(string idString, SevenZip.CommandLineParser.SwitchType type, boolean multi, int minLen, int maxLen, string postCharSet)
+	public void  .ctor(string idString, SevenZip.CommandLineParser.SwitchType type, boolean multi, int minLen)
+	public void  .ctor(string idString, SevenZip.CommandLineParser.SwitchType type, boolean multi)
+SwitchResult
+	extends System.Object
+	public boolean ThereIs
+	public boolean WithMinus
+	public System.Collections.ArrayList PostStrings
+	public int PostCharIndex
+	public void  .ctor()
+Parser
+	extends System.Object
+	private static char kSwitchID1
+	private static char kSwitchID2
+	private static char kSwitchMinus
+	private static string kStopSwitchParsing
+	public System.Collections.ArrayList NonSwitchStrings
+	private SwitchResult[] _switches
+	public void  .ctor(int numSwitches)
+	private boolean  ParseString(string srcString, SwitchForm[] switchForms)
+	public void  ParseStrings(SwitchForm[] switchForms, string[] commandStrings)
+	public SevenZip.CommandLineParser.SwitchResult  get_Item(int index)
+	public static int  ParseCommand(CommandForm[] commandForms, string commandString, string postString)
+	private static boolean  ParseSubCharsCommand(int numForms, CommandSubCharsSet[] forms, string commandString, System.Collections.ArrayList indices)
+	private static boolean  IsItSwitchChar(char c)
+CommandForm
+	extends System.Object
+	public string IDString
+	public boolean PostStringMode
+	public void  .ctor(string idString, boolean postStringMode)
+CommandSubCharsSet
+	extends System.Object
+	public string Chars
+	public boolean EmptyAllowed
+	public void  .ctor()
+CRC
+	extends System.Object
+	public static uint[] Table
+	private uint _value
+	public void  .ctor()
+	public void  Init()
+	public void  UpdateByte(byte b)
+	public void  Update(byte[] data, uint offset, uint size)
+	public uint  GetDigest()
+	private static uint  CalculateDigest(byte[] data, uint offset, uint size)
+	private static boolean  VerifyDigest(uint digest, byte[] data, uint offset, uint size)
+	private static void  .cctor()
+InBuffer
+	extends System.Object
+	private byte[] m_Buffer
+	private uint m_Pos
+	private uint m_Limit
+	private uint m_BufferSize
+	private System.IO.Stream m_Stream
+	private boolean m_StreamWasExhausted
+	private ulong m_ProcessedSize
+	public void  .ctor(uint bufferSize)
+	public void  Init(System.IO.Stream stream)
+	public boolean  ReadBlock()
+	public void  ReleaseStream()
+	public boolean  ReadByte(byte b)
+	public byte  ReadByte()
+	public ulong  GetProcessedSize()
+OutBuffer
+	extends System.Object
+	private byte[] m_Buffer
+	private uint m_Pos
+	private uint m_BufferSize
+	private System.IO.Stream m_Stream
+	private ulong m_ProcessedSize
+	public void  .ctor(uint bufferSize)
+	public void  SetStream(System.IO.Stream stream)
+	public void  FlushStream()
+	public void  CloseStream()
+	public void  ReleaseStream()
+	public void  Init()
+	public void  WriteByte(byte b)
+	public void  FlushData()
+	public ulong  GetProcessedSize()
+IInWindowStream
+	public void  SetStream(System.IO.Stream inStream)
+	public void  Init()
+	public void  ReleaseStream()
+	public byte  GetIndexByte(int index)
+	public uint  GetMatchLen(int index, uint distance, uint limit)
+	public uint  GetNumAvailableBytes()
+IMatchFinder
+	public void  Create(uint historySize, uint keepAddBufferBefore, uint matchMaxLen, uint keepAddBufferAfter)
+	public uint  GetMatches(uint[] distances)
+	public void  Skip(uint num)
+BinTree
+	extends SevenZip.Compression.LZ.InWindow
+	private static uint kHash2Size
+	private static uint kHash3Size
+	private static uint kBT2HashSize
+	private static uint kStartMaxLen
+	private static uint kHash3Offset
+	private static uint kEmptyHashValue
+	private static uint kMaxValForNormalize
+	private uint _cyclicBufferPos
+	private uint _cyclicBufferSize
+	private uint _matchMaxLen
+	private uint[] _son
+	private uint[] _hash
+	private uint _cutValue
+	private uint _hashMask
+	private uint _hashSizeSum
+	private boolean HASH_ARRAY
+	private uint kNumHashDirectBytes
+	private uint kMinMatchCheck
+	private uint kFixHashSize
+	public void  .ctor()
+	public void  SetType(int numHashBytes)
+	public final void  SetStream(System.IO.Stream stream)
+	public final void  ReleaseStream()
+	public final void  Init()
+	public void  MovePos()
+	public final byte  GetIndexByte(int index)
+	public final uint  GetMatchLen(int index, uint distance, uint limit)
+	public final uint  GetNumAvailableBytes()
+	public final void  Create(uint historySize, uint keepAddBufferBefore, uint matchMaxLen, uint keepAddBufferAfter)
+	public final uint  GetMatches(uint[] distances)
+	public final void  Skip(uint num)
+	private void  NormalizeLinks(uint[] items, uint numItems, uint subValue)
+	private void  Normalize()
+	public void  SetCutValue(uint cutValue)
+InWindow
+	extends System.Object
+	public byte[] _bufferBase
+	private System.IO.Stream _stream
+	private uint _posLimit
+	private boolean _streamEndWasReached
+	private uint _pointerToLastSafePosition
+	public uint _bufferOffset
+	public uint _blockSize
+	public uint _pos
+	private uint _keepSizeBefore
+	private uint _keepSizeAfter
+	public uint _streamPos
+	public void  .ctor()
+	public void  MoveBlock()
+	public void  ReadBlock()
+	private void  Free()
+	public void  Create(uint keepSizeBefore, uint keepSizeAfter, uint keepSizeReserv)
+	public void  SetStream(System.IO.Stream stream)
+	public void  ReleaseStream()
+	public void  Init()
+	public void  MovePos()
+	public byte  GetIndexByte(int index)
+	public uint  GetMatchLen(int index, uint distance, uint limit)
+	public uint  GetNumAvailableBytes()
+	public void  ReduceOffsets(int subValue)
+OutWindow
+	extends System.Object
+	private byte[] _buffer
+	private uint _pos
+	private uint _windowSize
+	private uint _streamPos
+	private System.IO.Stream _stream
+	public uint TrainSize
+	public void  .ctor()
+	public void  Create(uint windowSize)
+	public void  Init(System.IO.Stream stream, boolean solid)
+	public boolean  Train(System.IO.Stream stream)
+	public void  ReleaseStream()
+	public void  Flush()
+	public void  CopyBlock(uint distance, uint len)
+	public void  PutByte(byte b)
+	public byte  GetByte(uint distance)
+Base
+	extends System.Object
+	public static uint kNumRepDistances
+	public static uint kNumStates
+	public static int kNumPosSlotBits
+	public static int kDicLogSizeMin
+	public static int kNumLenToPosStatesBits
+	public static uint kNumLenToPosStates
+	public static uint kMatchMinLen
+	public static int kNumAlignBits
+	public static uint kAlignTableSize
+	public static uint kAlignMask
+	public static uint kStartPosModelIndex
+	public static uint kEndPosModelIndex
+	public static uint kNumPosModels
+	public static uint kNumFullDistances
+	public static uint kNumLitPosStatesBitsEncodingMax
+	public static uint kNumLitContextBitsMax
+	public static int kNumPosStatesBitsMax
+	public static uint kNumPosStatesMax
+	public static int kNumPosStatesBitsEncodingMax
+	public static uint kNumPosStatesEncodingMax
+	public static int kNumLowLenBits
+	public static int kNumMidLenBits
+	public static int kNumHighLenBits
+	public static uint kNumLowLenSymbols
+	public static uint kNumMidLenSymbols
+	public static uint kNumLenSymbols
+	public static uint kMatchMaxLen
+	public void  .ctor()
+	public static uint  GetLenToPosState(uint len)
+State
+	extends System.ValueType
+	public uint Index
+	public void  Init()
+	public void  UpdateChar()
+	public void  UpdateMatch()
+	public void  UpdateRep()
+	public void  UpdateShortRep()
+	public boolean  IsCharState()
+Decoder
+	extends System.Object
+	implements:
+		SevenZip.ICoder
+		SevenZip.ISetDecoderProperties
+	private SevenZip.Compression.LZ.OutWindow m_OutWindow
+	private SevenZip.Compression.RangeCoder.Decoder m_RangeDecoder
+	private BitDecoder[] m_IsMatchDecoders
+	private BitDecoder[] m_IsRepDecoders
+	private BitDecoder[] m_IsRepG0Decoders
+	private BitDecoder[] m_IsRepG1Decoders
+	private BitDecoder[] m_IsRepG2Decoders
+	private BitDecoder[] m_IsRep0LongDecoders
+	private BitTreeDecoder[] m_PosSlotDecoder
+	private BitDecoder[] m_PosDecoders
+	private SevenZip.Compression.RangeCoder.BitTreeDecoder m_PosAlignDecoder
+	private LenDecoder m_LenDecoder
+	private LenDecoder m_RepLenDecoder
+	private LiteralDecoder m_LiteralDecoder
+	private uint m_DictionarySize
+	private uint m_DictionarySizeCheck
+	private uint m_PosStateMask
+	private boolean _solid
+	public void  .ctor()
+	private void  SetDictionarySize(uint dictionarySize)
+	private void  SetLiteralProperties(int lp, int lc)
+	private void  SetPosBitsProperties(int pb)
+	private void  Init(System.IO.Stream inStream, System.IO.Stream outStream)
+	public final void  Code(System.IO.Stream inStream, System.IO.Stream outStream, long inSize, long outSize, SevenZip.ICodeProgress progress)
+	public final void  SetDecoderProperties(byte[] properties)
+	public boolean  Train(System.IO.Stream stream)
+LenDecoder
+	extends System.Object
+	private SevenZip.Compression.RangeCoder.BitDecoder m_Choice
+	private SevenZip.Compression.RangeCoder.BitDecoder m_Choice2
+	private BitTreeDecoder[] m_LowCoder
+	private BitTreeDecoder[] m_MidCoder
+	private SevenZip.Compression.RangeCoder.BitTreeDecoder m_HighCoder
+	private uint m_NumPosStates
+	public void  .ctor()
+	public void  Create(uint numPosStates)
+	public void  Init()
+	public uint  Decode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, uint posState)
+LiteralDecoder
+	extends System.Object
+	private Decoder2[] m_Coders
+	private int m_NumPrevBits
+	private int m_NumPosBits
+	private uint m_PosMask
+	public void  .ctor()
+	public void  Create(int numPosBits, int numPrevBits)
+	public void  Init()
+	private uint  GetState(uint pos, byte prevByte)
+	public byte  DecodeNormal(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, uint pos, byte prevByte)
+	public byte  DecodeWithMatchByte(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, uint pos, byte prevByte, byte matchByte)
+Decoder2
+	extends System.ValueType
+	private BitDecoder[] m_Decoders
+	public void  Create()
+	public void  Init()
+	public byte  DecodeNormal(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
+	public byte  DecodeWithMatchByte(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, byte matchByte)
+Encoder
+	extends System.Object
+	implements:
+		SevenZip.ICoder
+		SevenZip.ISetCoderProperties
+		SevenZip.IWriteCoderProperties
+	private static uint kIfinityPrice
+	private static int kDefaultDictionaryLogSize
+	private static uint kNumFastBytesDefault
+	private static uint kNumLenSpecSymbols
+	private static uint kNumOpts
+	private static int kPropSize
+	private static byte[] g_FastPos
+	private State _state
+	private byte _previousByte
+	private uint[] _repDistances
+	private Optimal[] _optimum
+	private SevenZip.Compression.LZ.IMatchFinder _matchFinder
+	private SevenZip.Compression.RangeCoder.Encoder _rangeEncoder
+	private BitEncoder[] _isMatch
+	private BitEncoder[] _isRep
+	private BitEncoder[] _isRepG0
+	private BitEncoder[] _isRepG1
+	private BitEncoder[] _isRepG2
+	private BitEncoder[] _isRep0Long
+	private BitTreeEncoder[] _posSlotEncoder
+	private BitEncoder[] _posEncoders
+	private SevenZip.Compression.RangeCoder.BitTreeEncoder _posAlignEncoder
+	private LenPriceTableEncoder _lenEncoder
+	private LenPriceTableEncoder _repMatchLenEncoder
+	private LiteralEncoder _literalEncoder
+	private uint[] _matchDistances
+	private uint _numFastBytes
+	private uint _longestMatchLength
+	private uint _numDistancePairs
+	private uint _additionalOffset
+	private uint _optimumEndIndex
+	private uint _optimumCurrentIndex
+	private boolean _longestMatchWasFound
+	private uint[] _posSlotPrices
+	private uint[] _distancesPrices
+	private uint[] _alignPrices
+	private uint _alignPriceCount
+	private uint _distTableSize
+	private int _posStateBits
+	private uint _posStateMask
+	private int _numLiteralPosStateBits
+	private int _numLiteralContextBits
+	private uint _dictionarySize
+	private uint _dictionarySizePrev
+	private uint _numFastBytesPrev
+	private long nowPos64
+	private boolean _finished
+	private System.IO.Stream _inStream
+	private EMatchFinderType _matchFinderType
+	private boolean _writeEndMark
+	private boolean _needReleaseMFStream
+	private uint[] reps
+	private uint[] repLens
+	private byte[] properties
+	private uint[] tempPrices
+	private uint _matchPriceCount
+	private static string[] kMatchFinderIDs
+	private uint _trainSize
+	public void  .ctor()
+	private static uint  GetPosSlot(uint pos)
+	private static uint  GetPosSlot2(uint pos)
+	private void  BaseInit()
+	private void  Create()
+	private void  SetWriteEndMarkerMode(boolean writeEndMarker)
+	private void  Init()
+	private void  ReadMatchDistances(uint lenRes, uint numDistancePairs)
+	private void  MovePos(uint num)
+	private uint  GetRepLen1Price(State state, uint posState)
+	private uint  GetPureRepPrice(uint repIndex, State state, uint posState)
+	private uint  GetRepPrice(uint repIndex, uint len, State state, uint posState)
+	private uint  GetPosLenPrice(uint pos, uint len, uint posState)
+	private uint  Backward(uint backRes, uint cur)
+	private uint  GetOptimum(uint position, uint backRes)
+	private boolean  ChangePair(uint smallDist, uint bigDist)
+	private void  WriteEndMarker(uint posState)
+	private void  Flush(uint nowPos)
+	public void  CodeOneBlock(long inSize, long outSize, boolean finished)
+	private void  ReleaseMFStream()
+	private void  SetOutStream(System.IO.Stream outStream)
+	private void  ReleaseOutStream()
+	private void  ReleaseStreams()
+	private void  SetStreams(System.IO.Stream inStream, System.IO.Stream outStream, long inSize, long outSize)
+	public final void  Code(System.IO.Stream inStream, System.IO.Stream outStream, long inSize, long outSize, SevenZip.ICodeProgress progress)
+	public final void  WriteCoderProperties(System.IO.Stream outStream)
+	private void  FillDistancesPrices()
+	private void  FillAlignPrices()
+	private static int  FindMatchFinder(string s)
+	public final void  SetCoderProperties(CoderPropID[] propIDs, object[] properties)
+	public void  SetTrainSize(uint trainSize)
+	private static void  .cctor()
+EMatchFinderType
+	extends System.Enum
+	public int value__
+	public static EMatchFinderType BT2
+	public static EMatchFinderType BT4
+LiteralEncoder
+	extends System.Object
+	private Encoder2[] m_Coders
+	private int m_NumPrevBits
+	private int m_NumPosBits
+	private uint m_PosMask
+	public void  .ctor()
+	public void  Create(int numPosBits, int numPrevBits)
+	public void  Init()
+	public Encoder2  GetSubCoder(uint pos, byte prevByte)
+Encoder2
+	extends System.ValueType
+	private BitEncoder[] m_Encoders
+	public void  Create()
+	public void  Init()
+	public void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, byte symbol)
+	public void  EncodeMatched(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, byte matchByte, byte symbol)
+	public uint  GetPrice(boolean matchMode, byte matchByte, byte symbol)
+LenEncoder
+	extends System.Object
+	private SevenZip.Compression.RangeCoder.BitEncoder _choice
+	private SevenZip.Compression.RangeCoder.BitEncoder _choice2
+	private BitTreeEncoder[] _lowCoder
+	private BitTreeEncoder[] _midCoder
+	private SevenZip.Compression.RangeCoder.BitTreeEncoder _highCoder
+	public void  .ctor()
+	public void  Init(uint numPosStates)
+	public void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, uint symbol, uint posState)
+	public void  SetPrices(uint posState, uint numSymbols, uint[] prices, uint st)
+LenPriceTableEncoder
+	extends LenEncoder
+	private uint[] _prices
+	private uint _tableSize
+	private uint[] _counters
+	public void  .ctor()
+	public void  SetTableSize(uint tableSize)
+	public uint  GetPrice(uint symbol, uint posState)
+	private void  UpdateTable(uint posState)
+	public void  UpdateTables(uint numPosStates)
+	public void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, uint symbol, uint posState)
+Optimal
+	extends System.Object
+	public State State
+	public boolean Prev1IsChar
+	public boolean Prev2
+	public uint PosPrev2
+	public uint BackPrev2
+	public uint Price
+	public uint PosPrev
+	public uint BackPrev
+	public uint Backs0
+	public uint Backs1
+	public uint Backs2
+	public uint Backs3
+	public void  .ctor()
+	public void  MakeAsChar()
+	public void  MakeAsShortRep()
+	public boolean  IsShortRep()
+CDoubleStream
+	extends System.IO.Stream
+	public System.IO.Stream s1
+	public System.IO.Stream s2
+	public int fileIndex
+	public long skipSize
+	public void  .ctor()
+	public boolean  get_CanRead()
+	public boolean  get_CanWrite()
+	public boolean  get_CanSeek()
+	public long  get_Length()
+	public long  get_Position()
+	public void  set_Position(long value)
+	public void  Flush()
+	public int  Read(byte[] buffer, int offset, int count)
+	public void  Write(byte[] buffer, int offset, int count)
+	public long  Seek(long offset, System.IO.SeekOrigin origin)
+	public void  SetLength(long value)
+LzmaAlone
+	extends System.Object
+	public void  .ctor()
+	private static void  PrintHelp()
+	private static boolean  GetNumber(string s, int v)
+	private static int  IncorrectCommand()
+	private static int  Main2(string[] args)
+	private static int  Main(string[] args)
+Key
+	extends System.Enum
+	public int value__
+	public static Key Help1
+	public static Key Help2
+	public static Key Mode
+	public static Key Dictionary
+	public static Key FastBytes
+	public static Key LitContext
+	public static Key LitPos
+	public static Key PosBits
+	public static Key MatchFinder
+	public static Key EOS
+	public static Key StdIn
+	public static Key StdOut
+	public static Key Train
+LzmaBench
+	extends System.Object
+	private static uint kAdditionalSize
+	private static uint kCompressedAdditionalSize
+	private static uint kMaxLzmaPropSize
+	private static int kSubBits
+	public void  .ctor()
+	private static uint  GetLogSize(uint size)
+	private static ulong  MyMultDiv64(ulong value, ulong elapsedTime)
+	private static ulong  GetCompressRating(uint dictionarySize, ulong elapsedTime, ulong size)
+	private static ulong  GetDecompressRating(ulong elapsedTime, ulong outSize, ulong inSize)
+	private static ulong  GetTotalRating(uint dictionarySize, ulong elapsedTimeEn, ulong sizeEn, ulong elapsedTimeDe, ulong inSizeDe, ulong outSizeDe)
+	private static void  PrintValue(ulong v)
+	private static void  PrintRating(ulong rating)
+	private static void  PrintResults(uint dictionarySize, ulong elapsedTime, ulong size, boolean decompressMode, ulong secondSize)
+	public static int  LzmaBenchmark(int numIterations, uint dictionarySize)
+CRandomGenerator
+	extends System.Object
+	private uint A1
+	private uint A2
+	public void  .ctor()
+	public void  Init()
+	public uint  GetRnd()
+CBitRandomGenerator
+	extends System.Object
+	private CRandomGenerator RG
+	private uint Value
+	private int NumBits
+	public void  .ctor()
+	public void  Init()
+	public uint  GetRnd(int numBits)
+CBenchRandomGenerator
+	extends System.Object
+	private CBitRandomGenerator RG
+	private uint Pos
+	private uint Rep0
+	public uint BufferSize
+	public byte[] Buffer
+	public void  .ctor()
+	public void  Set(uint bufferSize)
+	private uint  GetRndBit()
+	private uint  GetLogRandBits(int numBits)
+	private uint  GetOffset()
+	private uint  GetLen1()
+	private uint  GetLen2()
+	public void  Generate()
+CrcOutStream
+	extends System.IO.Stream
+	public SevenZip.CRC CRC
+	public void  .ctor()
+	public void  Init()
+	public uint  GetDigest()
+	public boolean  get_CanRead()
+	public boolean  get_CanSeek()
+	public boolean  get_CanWrite()
+	public long  get_Length()
+	public long  get_Position()
+	public void  set_Position(long value)
+	public void  Flush()
+	public long  Seek(long offset, System.IO.SeekOrigin origin)
+	public void  SetLength(long value)
+	public int  Read(byte[] buffer, int offset, int count)
+	public void  WriteByte(byte b)
+	public void  Write(byte[] buffer, int offset, int count)
+CProgressInfo
+	extends System.Object
+	implements:
+		SevenZip.ICodeProgress
+	public long ApprovedStart
+	public long InSize
+	public System.DateTime Time
+	public void  .ctor()
+	public void  Init()
+	public final void  SetProgress(long inSize, long outSize)
+Resources
+	extends System.Object
+	private static System.Resources.ResourceManager _resMgr
+	private static System.Globalization.CultureInfo _resCulture
+	public void  .ctor()
+	public static System.Resources.ResourceManager  get_ResourceManager()
+	public static System.Globalization.CultureInfo  get_Culture()
+	public static void  set_Culture(System.Globalization.CultureInfo value)
+Settings
+	extends System.Configuration.ApplicationSettingsBase
+	private static LzmaAlone.Properties.Settings m_Value
+	private static object m_SyncObject
+	public void  .ctor()
+	public static LzmaAlone.Properties.Settings  get_Value()
+	private static void  .cctor()
+Encoder
+	extends System.Object
+	public static uint kTopValue
+	private System.IO.Stream Stream
+	public ulong Low
+	public uint Range
+	private uint _cacheSize
+	private byte _cache
+	private long StartPosition
+	public void  .ctor()
+	public void  SetStream(System.IO.Stream stream)
+	public void  ReleaseStream()
+	public void  Init()
+	public void  FlushData()
+	public void  FlushStream()
+	public void  CloseStream()
+	public void  Encode(uint start, uint size, uint total)
+	public void  ShiftLow()
+	public void  EncodeDirectBits(uint v, int numTotalBits)
+	public void  EncodeBit(uint size0, int numTotalBits, uint symbol)
+	public long  GetProcessedSizeAdd()
+Decoder
+	extends System.Object
+	public static uint kTopValue
+	public uint Range
+	public uint Code
+	public System.IO.Stream Stream
+	public void  .ctor()
+	public void  Init(System.IO.Stream stream)
+	public void  ReleaseStream()
+	public void  CloseStream()
+	public void  Normalize()
+	public void  Normalize2()
+	public uint  GetThreshold(uint total)
+	public void  Decode(uint start, uint size, uint total)
+	public uint  DecodeDirectBits(int numTotalBits)
+	public uint  DecodeBit(uint size0, int numTotalBits)
+BitEncoder
+	extends System.ValueType
+	public static int kNumBitModelTotalBits
+	public static uint kBitModelTotal
+	private static int kNumMoveBits
+	private static int kNumMoveReducingBits
+	public static int kNumBitPriceShiftBits
+	private uint Prob
+	private static uint[] ProbPrices
+	public void  Init()
+	public void  UpdateModel(uint symbol)
+	public void  Encode(SevenZip.Compression.RangeCoder.Encoder encoder, uint symbol)
+	public uint  GetPrice(uint symbol)
+	public uint  GetPrice0()
+	public uint  GetPrice1()
+	private static void  .cctor()
+BitDecoder
+	extends System.ValueType
+	public static int kNumBitModelTotalBits
+	public static uint kBitModelTotal
+	private static int kNumMoveBits
+	private uint Prob
+	public void  UpdateModel(int numMoveBits, uint symbol)
+	public void  Init()
+	public uint  Decode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
+BitTreeEncoder
+	extends System.ValueType
+	private BitEncoder[] Models
+	private int NumBitLevels
+	public void  .ctor(int numBitLevels)
+	public void  Init()
+	public void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, uint symbol)
+	public void  ReverseEncode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, uint symbol)
+	public uint  GetPrice(uint symbol)
+	public uint  ReverseGetPrice(uint symbol)
+	public static uint  ReverseGetPrice(BitEncoder[] Models, uint startIndex, int NumBitLevels, uint symbol)
+	public static void  ReverseEncode(BitEncoder[] Models, uint startIndex, SevenZip.Compression.RangeCoder.Encoder rangeEncoder, int NumBitLevels, uint symbol)
+BitTreeDecoder
+	extends System.ValueType
+	private BitDecoder[] Models
+	private int NumBitLevels
+	public void  .ctor(int numBitLevels)
+	public void  Init()
+	public uint  Decode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
+	public uint  ReverseDecode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
+	public static uint  ReverseDecode(BitDecoder[] Models, uint startIndex, SevenZip.Compression.RangeCoder.Decoder rangeDecoder, int NumBitLevels)
+DataErrorException
+	extends System.ApplicationException
+	public void  .ctor()
+InvalidParamException
+	extends System.ApplicationException
+	public void  .ctor()
+ICodeProgress
+	public void  SetProgress(long inSize, long outSize)
+ICoder
+	public void  Code(System.IO.Stream inStream, System.IO.Stream outStream, long inSize, long outSize, SevenZip.ICodeProgress progress)
+CoderPropID
+	extends System.Enum
+	public int value__
+	public static SevenZip.CoderPropID DefaultProp
+	public static SevenZip.CoderPropID DictionarySize
+	public static SevenZip.CoderPropID UsedMemorySize
+	public static SevenZip.CoderPropID Order
+	public static SevenZip.CoderPropID BlockSize
+	public static SevenZip.CoderPropID PosStateBits
+	public static SevenZip.CoderPropID LitContextBits
+	public static SevenZip.CoderPropID LitPosBits
+	public static SevenZip.CoderPropID NumFastBytes
+	public static SevenZip.CoderPropID MatchFinder
+	public static SevenZip.CoderPropID MatchFinderCycles
+	public static SevenZip.CoderPropID NumPasses
+	public static SevenZip.CoderPropID Algorithm
+	public static SevenZip.CoderPropID NumThreads
+	public static SevenZip.CoderPropID EndMarker
+ISetCoderProperties
+	public void  SetCoderProperties(CoderPropID[] propIDs, object[] properties)
+IWriteCoderProperties
+	public void  WriteCoderProperties(System.IO.Stream outStream)
+ISetDecoderProperties
+	public void  SetDecoderProperties(byte[] properties)
+<PrivateImplementationDetails>{36dcba29-69c8-4e99-b590-8bd2082695d5}
+	extends System.Object
+	public static $ArrayType=32 $field-0
+$ArrayType=32
+	extends System.ValueType

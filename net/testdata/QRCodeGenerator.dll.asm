@@ -1,29 +1,29 @@
 ModuleRow
 	&{Generation:0 Name:QRCodeGenerator.dll Mvid:EF0BCC38-B8C8-444F-B6A8-96D99B4AF645 EncId:nil EncBaseId:nil}
 TypeRefRow
-	&{ResolutionScope:TypeDefRow[1] TypeName:List`1 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Int32 TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeHelpers TypeNamespace:System.Runtime.CompilerServices}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Array TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeFieldHandle TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:InvalidOperationException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IList`1 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ICollection`1 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentNullException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Boolean TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Object TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Byte TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:DefaultMemberAttribute TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Math TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentOutOfRangeException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:StringBuilder TypeNamespace:System.Text}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Environment TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:CompilerGeneratedAttribute TypeNamespace:System.Runtime.CompilerServices}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ValueType TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:List`1 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Int32 TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeHelpers TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Array TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeFieldHandle TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:InvalidOperationException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IList`1 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ICollection`1 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArgumentNullException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArgumentException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Boolean TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Object TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Byte TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:DefaultMemberAttribute TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Math TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArgumentOutOfRangeException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:StringBuilder TypeNamespace:System.Text}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Environment TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:CompilerGeneratedAttribute TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ValueType TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
 TypeDefRow
-	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:ModuleRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
+	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:TypeDefRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:1048961 TypeName:QRCodeGenerator TypeNamespace:PeterO Extends:TypeRefRow[12] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:1048579 TypeName:CodeMatrix TypeNamespace: Extends:TypeRefRow[12] FieldList:FieldRow[13] MethodList:MethodDefRow[5]}
 	&{Flags:1048579 TypeName:BitList TypeNamespace: Extends:TypeRefRow[12] FieldList:FieldRow[20] MethodList:MethodDefRow[22]}
@@ -178,8 +178,8 @@ ParamRow
 MemberRefRow
 	&{Class:TypeRefRow[3] Name:InitializeArray Signature:Blob[38]}
 	&{Class:TypeRefRow[6] Name:.ctor Signature:Blob[149]}
-	&{Class:FieldRow[2] Name:get_Item Signature:Blob[159]}
-	&{Class:FieldRow[3] Name:Add Signature:Blob[171]}
+	&{Class:TypeSpecRow[2] Name:get_Item Signature:Blob[159]}
+	&{Class:TypeSpecRow[3] Name:Add Signature:Blob[171]}
 	&{Class:TypeRefRow[9] Name:.ctor Signature:Blob[177]}
 	&{Class:TypeRefRow[10] Name:.ctor Signature:Blob[177]}
 	&{Class:TypeRefRow[12] Name:.ctor Signature:Blob[149]}
@@ -191,15 +191,15 @@ MemberRefRow
 	&{Class:TypeRefRow[18] Name:get_NewLine Signature:Blob[208]}
 	&{Class:TypeRefRow[17] Name:Append Signature:Blob[212]}
 	&{Class:TypeRefRow[12] Name:ToString Signature:Blob[218]}
-	&{Class:FieldRow[4] Name:.ctor Signature:Blob[149]}
-	&{Class:FieldRow[4] Name:Add Signature:Blob[171]}
-	&{Class:FieldRow[4] Name:get_Count Signature:Blob[228]}
+	&{Class:TypeSpecRow[4] Name:.ctor Signature:Blob[149]}
+	&{Class:TypeSpecRow[4] Name:Add Signature:Blob[171]}
+	&{Class:TypeSpecRow[4] Name:get_Count Signature:Blob[228]}
 	&{Class:TypeRefRow[19] Name:.ctor Signature:Blob[149]}
 	&{Class:TypeRefRow[21] Name:.ctor Signature:Blob[149]}
 CustomAttributeRow
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[513]}
-	&{Parent:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[187]}
-	&{Parent:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[232]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[20] Value:Blob[513]}
+	&{Parent:TypeDefRow[3] Type:MemberRefRow[8] Value:Blob[187]}
+	&{Parent:TypeDefRow[5] Type:MemberRefRow[19] Value:Blob[232]}
 ClassLayoutRow
 	&{PackingSize:1 ClassSize:2044 Parent:TypeDefRow[6]}
 	&{PackingSize:1 ClassSize:1024 Parent:TypeDefRow[7]}
@@ -247,10 +247,10 @@ PropertyRow
 	&{Flags:0 Name:Item Type:Blob[499]}
 	&{Flags:0 Name:List Type:Blob[505]}
 MethodSemanticsRow
-	&{Semantics:2 Method:MethodDefRow[6] Association:TypeRefRow[1]}
-	&{Semantics:1 Method:MethodDefRow[8] Association:TypeRefRow[2]}
-	&{Semantics:2 Method:MethodDefRow[7] Association:TypeRefRow[2]}
-	&{Semantics:2 Method:MethodDefRow[23] Association:TypeRefRow[3]}
+	&{Semantics:2 Method:MethodDefRow[6] Association:PropertyRow[1]}
+	&{Semantics:1 Method:MethodDefRow[8] Association:PropertyRow[2]}
+	&{Semantics:2 Method:MethodDefRow[7] Association:PropertyRow[2]}
+	&{Semantics:2 Method:MethodDefRow[23] Association:PropertyRow[3]}
 TypeSpecRow
 	&{Signature:Blob[50]}
 	&{Signature:Blob[153]}
@@ -321,3 +321,176 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[30]}
 	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[31]}
 	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[32]}
+	<Module>
+	PeterO.QRCodeGenerator
+	CodeMatrix
+	BitList
+	<PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}
+	$ArrayType=2044
+	$ArrayType=1024
+	$ArrayType=28
+	$ArrayType=32
+	$ArrayType=36
+	$ArrayType=40
+	$ArrayType=44
+	$ArrayType=48
+	$ArrayType=52
+	$ArrayType=56
+	$ArrayType=60
+	$ArrayType=64
+	$ArrayType=68
+	$ArrayType=72
+	$ArrayType=80
+	$ArrayType=88
+	$ArrayType=96
+	$ArrayType=104
+	$ArrayType=112
+	$ArrayType=120
+	$ArrayType=136
+	$ArrayType=1120
+	$ArrayType=960
+	$ArrayType=128
+	$ArrayType=160
+	$ArrayType=256
+	$ArrayType=8
+<Module>
+QRCodeGenerator
+	extends System.Object
+	private static int[] GaloisExp
+	private static int[] GaloisLog
+	private static int[][] polynomials
+	private static int[] VersionInfo
+	private static int[] AlignmentPatterns
+	private static int[] DataBlocks
+	private static int[] FormatInfo
+	private static int[] versions
+	private static int[] versionsnumeric
+	private static int[] versionsalphanum
+	private static int[] ecbytes
+	private static int[] CharToValue
+	private static int  GaloisMult(int a, int b)
+	private static void  ReedSolomonEncode(genericinst b, System.Collections.Generic.IList`1 offset, void count, byte blockSize)
+	private static CodeMatrix  GetEncodedMatrix(byte[] data, boolean stringData)
+	private static void  .cctor()
+CodeMatrix
+	extends System.Object
+	private byte[] data
+	private int size
+	private int codewordX
+	private int codewordY
+	private boolean directionDown
+	private boolean directionRight
+	private boolean[] state11311expected
+	public void  .ctor(int size)
+	public int  get_Size()
+	public boolean  get_Item(int x, int y)
+	public void  set_Item(int x, int y, boolean value)
+	private byte  GetValue(int x, int y)
+	private void  SetValue(int x, int y, byte value)
+	private void  SetValueChecked(int x, int y, byte value)
+	public void  SetVersionInfo(int value)
+	public void  SetFormatInfo(int value)
+	public void  SetNextCodeword(byte value)
+	public void  DrawAlignmentPattern(int x, int y)
+	private int  FindBlock(int x, int y, int tentativeWidth, byte[] moduleblocks)
+	public int  CalculatePenalty()
+	public void  ApplyMask(int mask)
+	public void  DrawTimingPatterns()
+	public void  DrawFinderPattern(int x, int y)
+	public string  ToString()
+BitList
+	extends System.Object
+	private genericinst list
+	private byte curbyte
+	private int curbit
+	public void  .ctor()
+	public genericinst  get_List()
+	public void  AddBits(byte value, int bits)
+	public void  AddBits(int value, int bits)
+	public void  PadTo(int size)
+<PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}
+	extends System.Object
+	public static $ArrayType=2044 $field-0
+	public static $ArrayType=1024 $field-1
+	public static $ArrayType=28 $field-2
+	public static $ArrayType=32 $field-3
+	public static $ArrayType=36 $field-4
+	public static $ArrayType=40 $field-5
+	public static $ArrayType=44 $field-6
+	public static $ArrayType=48 $field-7
+	public static $ArrayType=52 $field-8
+	public static $ArrayType=56 $field-9
+	public static $ArrayType=60 $field-A
+	public static $ArrayType=64 $field-B
+	public static $ArrayType=68 $field-C
+	public static $ArrayType=72 $field-D
+	public static $ArrayType=80 $field-E
+	public static $ArrayType=88 $field-F
+	public static $ArrayType=96 $field-10
+	public static $ArrayType=104 $field-11
+	public static $ArrayType=112 $field-12
+	public static $ArrayType=120 $field-13
+	public static $ArrayType=136 $field-14
+	public static $ArrayType=1120 $field-15
+	public static $ArrayType=960 $field-16
+	public static $ArrayType=128 $field-17
+	public static $ArrayType=160 $field-18
+	public static $ArrayType=160 $field-19
+	public static $ArrayType=160 $field-1A
+	public static $ArrayType=160 $field-1B
+	public static $ArrayType=256 $field-1C
+	public static $ArrayType=8 $field-1D
+$ArrayType=2044
+	extends System.ValueType
+$ArrayType=1024
+	extends System.ValueType
+$ArrayType=28
+	extends System.ValueType
+$ArrayType=32
+	extends System.ValueType
+$ArrayType=36
+	extends System.ValueType
+$ArrayType=40
+	extends System.ValueType
+$ArrayType=44
+	extends System.ValueType
+$ArrayType=48
+	extends System.ValueType
+$ArrayType=52
+	extends System.ValueType
+$ArrayType=56
+	extends System.ValueType
+$ArrayType=60
+	extends System.ValueType
+$ArrayType=64
+	extends System.ValueType
+$ArrayType=68
+	extends System.ValueType
+$ArrayType=72
+	extends System.ValueType
+$ArrayType=80
+	extends System.ValueType
+$ArrayType=88
+	extends System.ValueType
+$ArrayType=96
+	extends System.ValueType
+$ArrayType=104
+	extends System.ValueType
+$ArrayType=112
+	extends System.ValueType
+$ArrayType=120
+	extends System.ValueType
+$ArrayType=136
+	extends System.ValueType
+$ArrayType=1120
+	extends System.ValueType
+$ArrayType=960
+	extends System.ValueType
+$ArrayType=128
+	extends System.ValueType
+$ArrayType=160
+	extends System.ValueType
+$ArrayType=256
+	extends System.ValueType
+$ArrayType=8
+	extends System.ValueType

@@ -1,8 +1,8 @@
 package net
 
 import (
-	"errors"
 	"fmt"
+	errors "github.com/quarnster/completion/util/errors"
 	"math"
 	"reflect"
 	"strings"
@@ -308,7 +308,7 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 			)
 			idx = idx >> b
 			ti.index = idx
-			ti.table = int(tbl)
+			ti.table = tables[int(tbl)]
 			ti.metadataUtil = m
 			v2.Set(reflect.ValueOf(&ti))
 			ptr += uintptr(size)
@@ -431,8 +431,8 @@ func (mt *MetadataTable) Index(index uint32) (uintptr, error) {
 		return 0, errors.New("Trying to dereference a nil table")
 	}
 	index--
-	if index > mt.Rows {
-		return 0, errors.New(fmt.Sprintf("Index outside of bounds: %x > %x", index, mt.Rows))
+	if index >= mt.Rows {
+		return 0, errors.New(fmt.Sprintf("Index outside of bounds: %x >= %x", index, mt.Rows))
 	}
 	return mt.Ptr + uintptr(index)*mt.RowSize, nil
 }

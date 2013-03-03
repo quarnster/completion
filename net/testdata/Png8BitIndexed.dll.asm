@@ -1,27 +1,27 @@
 ModuleRow
 	&{Generation:0 Name:Png8bitIndexed.dll Mvid:2B5CA898-BB41-4B8C-9925-988FA7F2F57A EncId:nil EncBaseId:nil}
 TypeRefRow
-	&{ResolutionScope:TypeDefRow[1] TypeName:Object TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentOutOfRangeException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Byte TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeHelpers TypeNamespace:System.Runtime.CompilerServices}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Array TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeFieldHandle TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:UInt32 TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentNullException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:FileStream TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:FileMode TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Stream TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:MemoryStream TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[2] TypeName:DeflateStream TypeNamespace:System.IO.Compression}
-	&{ResolutionScope:TypeDefRow[2] TypeName:CompressionMode TypeNamespace:System.IO.Compression}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IDisposable TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:CompilerGeneratedAttribute TypeNamespace:System.Runtime.CompilerServices}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ValueType TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Object TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArgumentOutOfRangeException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Byte TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeHelpers TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Array TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeFieldHandle TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:UInt32 TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArgumentNullException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArgumentException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:FileStream TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:FileMode TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Stream TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:MemoryStream TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[2] TypeName:DeflateStream TypeNamespace:System.IO.Compression}
+	&{ResolutionScope:AssemblyRefRow[2] TypeName:CompressionMode TypeNamespace:System.IO.Compression}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IDisposable TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:CompilerGeneratedAttribute TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ValueType TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
 TypeDefRow
-	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:ModuleRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
+	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:TypeDefRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:1048833 TypeName:Png8BitIndexed TypeNamespace:PeterO Extends:TypeRefRow[1] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:1048960 TypeName:<PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a} TypeNamespace: Extends:TypeRefRow[1] FieldList:FieldRow[14] MethodList:MethodDefRow[16]}
 	&{Flags:1048851 TypeName:$ArrayType=32 TypeNamespace: Extends:TypeRefRow[18] FieldList:FieldRow[22] MethodList:MethodDefRow[16]}
@@ -105,8 +105,8 @@ MemberRefRow
 	&{Class:TypeRefRow[17] Name:.ctor Signature:Blob[15]}
 	&{Class:TypeRefRow[19] Name:.ctor Signature:Blob[15]}
 CustomAttributeRow
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[203]}
-	&{Parent:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[78]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[14] Value:Blob[203]}
+	&{Parent:TypeDefRow[3] Type:MemberRefRow[13] Value:Blob[78]}
 ClassLayoutRow
 	&{PackingSize:1 ClassSize:32 Parent:TypeDefRow[4]}
 	&{PackingSize:1 ClassSize:4 Parent:TypeDefRow[5]}
@@ -123,10 +123,10 @@ PropertyRow
 	&{Flags:0 Name:Width Type:Blob[199]}
 	&{Flags:0 Name:Transparent Type:Blob[199]}
 MethodSemanticsRow
-	&{Semantics:2 Method:MethodDefRow[12] Association:TypeRefRow[1]}
-	&{Semantics:2 Method:MethodDefRow[13] Association:TypeRefRow[2]}
-	&{Semantics:1 Method:MethodDefRow[15] Association:TypeRefRow[3]}
-	&{Semantics:2 Method:MethodDefRow[14] Association:TypeRefRow[3]}
+	&{Semantics:2 Method:MethodDefRow[12] Association:PropertyRow[1]}
+	&{Semantics:2 Method:MethodDefRow[13] Association:PropertyRow[2]}
+	&{Semantics:1 Method:MethodDefRow[15] Association:PropertyRow[3]}
+	&{Semantics:2 Method:MethodDefRow[14] Association:PropertyRow[3]}
 FieldRVARow
 	&{RVA:16384 Field:FieldRow[14]}
 	&{RVA:16416 Field:FieldRow[15]}
@@ -145,3 +145,56 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[0] EnclosingClass:TypeDefRow[4]}
 	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[5]}
 	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[6]}
+	<Module>
+	PeterO.Png8BitIndexed
+	<PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}
+	$ArrayType=32
+	$ArrayType=4
+	$ArrayType=12
+<Module>
+Png8BitIndexed
+	extends System.Object
+	private byte[] subdata1
+	private uint[] crcTable
+	private int width
+	private int height
+	private int realRowSize
+	private int blockSize
+	private int rowSize
+	private byte[] imageData
+	private byte[] data
+	private byte[] subdata2
+	private byte[] colors
+	private uint idatCrc
+	private int transparent
+	public void  .ctor(int width, int height)
+	private byte[]  Adler32(byte[] stream, int offset, int length)
+	private uint  Crc32(byte[] stream, int offset, int length, uint crc)
+	public void  SetFilter(int y, byte filter)
+	public byte  GetFilter(int y)
+	public void  SetPixel(int x, int y, int pixel)
+	public int  GetPixel(int x, int y)
+	public byte[]  GetColor(int index)
+	public void  SetColor(int index, byte[] color)
+	private byte[]  GetBE(uint crc)
+	public void  Save(string filename)
+	public int  get_Height()
+	public int  get_Width()
+	public int  get_Transparent()
+	public void  set_Transparent(int value)
+<PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}
+	extends System.Object
+	public static $ArrayType=32 $field-0
+	public static $ArrayType=4 $field-1
+	public static $ArrayType=12 $field-2
+	public static $ArrayType=4 $field-3
+	public static $ArrayType=4 $field-4
+	public static $ArrayType=4 $field-5
+	public static $ArrayType=4 $field-6
+	public static $ArrayType=4 $field-7
+$ArrayType=32
+	extends System.ValueType
+$ArrayType=4
+	extends System.ValueType
+$ArrayType=12
+	extends System.ValueType

@@ -1,3 +1,3 @@
-build/parser_exe
-build/descriptors
+build/*
+!build/Makefile
 java/descriptors/descriptors.go

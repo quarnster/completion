@@ -4,7 +4,7 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
-	"github.com/quarnster/completion/common"
+	"github.com/quarnster/completion/util"
 	"io"
 	"reflect"
 	"unsafe"
@@ -169,7 +169,7 @@ const (
 )
 
 type ClassDecoder struct {
-	reader common.BinaryReader
+	reader util.BinaryReader
 	err    error
 }
 
@@ -341,7 +341,7 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 }
 
 func NewClass(reader io.ReadSeeker) (*Class, error) {
-	r := ClassDecoder{common.BinaryReader{reader, binary.BigEndian}, nil}
+	r := ClassDecoder{util.BinaryReader{reader, binary.BigEndian}, nil}
 	var c Class
 	if err := r.Decode(&c); err != nil {
 		return nil, err
