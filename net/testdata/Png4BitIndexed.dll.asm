@@ -140,3 +140,43 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[0] EnclosingClass:TypeDefRow[4]}
 	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[5]}
 	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[6]}
+<Module>
+Png4BitIndexed
+	private byte[] subdata1
+	private uint[] crcTable
+	private int width
+	private int height
+	private int realRowSize
+	private int blockSize
+	private int rowSize
+	private byte[] imageData
+	private byte[] data
+	private byte[] subdata2
+	private byte[] colors
+	private uint idatCrc
+	private int transparent
+	public void  .ctor(int width, int height)
+	private byte[]  Adler32(byte[] stream, int offset, int length)
+	private uint  Crc32(byte[] stream, int offset, int length, uint crc)
+	public void  SetPixel(int x, int y, int pixel)
+	public int  GetPixel(int x, int y)
+	public byte[]  GetColor(int index)
+	public void  SetColor(int index, byte[] color)
+	private byte[]  GetBE(uint crc)
+	public void  Save(string filename)
+	public int  get_Height()
+	public int  get_Width()
+	public int  get_Transparent()
+	public void  set_Transparent(int value)
+<PrivateImplementationDetails>{dc74ea34-d62f-4136-93bf-797df4217b8e}
+	public static $ArrayType=32 $field-0
+	public static $ArrayType=4 $field-1
+	public static $ArrayType=12 $field-2
+	public static $ArrayType=4 $field-3
+	public static $ArrayType=4 $field-4
+	public static $ArrayType=4 $field-5
+	public static $ArrayType=4 $field-6
+	public static $ArrayType=4 $field-7
+$ArrayType=32
+$ArrayType=4
+$ArrayType=12

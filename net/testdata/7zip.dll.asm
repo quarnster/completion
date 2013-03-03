@@ -1301,3 +1301,647 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[32] EnclosingClass:TypeDefRow[36]}
 	&{NestedClass:TypeDefRow[32] EnclosingClass:TypeDefRow[37]}
 	&{NestedClass:TypeDefRow[32] EnclosingClass:TypeDefRow[55]}
+<Module>
+SwitchType
+	public int value__
+	public static SevenZip.CommandLineParser.SwitchType Simple
+	public static SevenZip.CommandLineParser.SwitchType PostMinus
+	public static SevenZip.CommandLineParser.SwitchType LimitedPostString
+	public static SevenZip.CommandLineParser.SwitchType UnLimitedPostString
+	public static SevenZip.CommandLineParser.SwitchType PostChar
+SwitchForm
+	public string IDString
+	public SevenZip.CommandLineParser.SwitchType Type
+	public boolean Multi
+	public int MinLen
+	public int MaxLen
+	public string PostCharSet
+	public void  .ctor(string idString, SevenZip.CommandLineParser.SwitchType type, boolean multi, int minLen, int maxLen, string postCharSet)
+	public void  .ctor(string idString, SevenZip.CommandLineParser.SwitchType type, boolean multi, int minLen)
+	public void  .ctor(string idString, SevenZip.CommandLineParser.SwitchType type, boolean multi)
+SwitchResult
+	public boolean ThereIs
+	public boolean WithMinus
+	public System.Collections.ArrayList PostStrings
+	public int PostCharIndex
+	public void  .ctor()
+Parser
+	private static char kSwitchID1
+	private static char kSwitchID2
+	private static char kSwitchMinus
+	private static string kStopSwitchParsing
+	public System.Collections.ArrayList NonSwitchStrings
+	private SwitchResult[] _switches
+	public void  .ctor(int numSwitches)
+	private boolean  ParseString(string srcString, SwitchForm[] switchForms)
+	public void  ParseStrings(SwitchForm[] switchForms, string[] commandStrings)
+	public SevenZip.CommandLineParser.SwitchResult  get_Item(int index)
+	public static int  ParseCommand(CommandForm[] commandForms, string commandString, string postString)
+	private static boolean  ParseSubCharsCommand(int numForms, CommandSubCharsSet[] forms, string commandString, System.Collections.ArrayList indices)
+	private static boolean  IsItSwitchChar(char c)
+CommandForm
+	public string IDString
+	public boolean PostStringMode
+	public void  .ctor(string idString, boolean postStringMode)
+CommandSubCharsSet
+	public string Chars
+	public boolean EmptyAllowed
+	public void  .ctor()
+CRC
+	public static uint[] Table
+	private uint _value
+	public void  .ctor()
+	public void  Init()
+	public void  UpdateByte(byte b)
+	public void  Update(byte[] data, uint offset, uint size)
+	public uint  GetDigest()
+	private static uint  CalculateDigest(byte[] data, uint offset, uint size)
+	private static boolean  VerifyDigest(uint digest, byte[] data, uint offset, uint size)
+	private static void  .cctor()
+InBuffer
+	private byte[] m_Buffer
+	private uint m_Pos
+	private uint m_Limit
+	private uint m_BufferSize
+	private System.IO.Stream m_Stream
+	private boolean m_StreamWasExhausted
+	private ulong m_ProcessedSize
+	public void  .ctor(uint bufferSize)
+	public void  Init(System.IO.Stream stream)
+	public boolean  ReadBlock()
+	public void  ReleaseStream()
+	public boolean  ReadByte(byte b)
+	public byte  ReadByte()
+	public ulong  GetProcessedSize()
+OutBuffer
+	private byte[] m_Buffer
+	private uint m_Pos
+	private uint m_BufferSize
+	private System.IO.Stream m_Stream
+	private ulong m_ProcessedSize
+	public void  .ctor(uint bufferSize)
+	public void  SetStream(System.IO.Stream stream)
+	public void  FlushStream()
+	public void  CloseStream()
+	public void  ReleaseStream()
+	public void  Init()
+	public void  WriteByte(byte b)
+	public void  FlushData()
+	public ulong  GetProcessedSize()
+IInWindowStream
+	public void  SetStream(System.IO.Stream inStream)
+	public void  Init()
+	public void  ReleaseStream()
+	public byte  GetIndexByte(int index)
+	public uint  GetMatchLen(int index, uint distance, uint limit)
+	public uint  GetNumAvailableBytes()
+IMatchFinder
+	public void  Create(uint historySize, uint keepAddBufferBefore, uint matchMaxLen, uint keepAddBufferAfter)
+	public uint  GetMatches(uint[] distances)
+	public void  Skip(uint num)
+BinTree
+	private static uint kHash2Size
+	private static uint kHash3Size
+	private static uint kBT2HashSize
+	private static uint kStartMaxLen
+	private static uint kHash3Offset
+	private static uint kEmptyHashValue
+	private static uint kMaxValForNormalize
+	private uint _cyclicBufferPos
+	private uint _cyclicBufferSize
+	private uint _matchMaxLen
+	private uint[] _son
+	private uint[] _hash
+	private uint _cutValue
+	private uint _hashMask
+	private uint _hashSizeSum
+	private boolean HASH_ARRAY
+	private uint kNumHashDirectBytes
+	private uint kMinMatchCheck
+	private uint kFixHashSize
+	public void  .ctor()
+	public void  SetType(int numHashBytes)
+	public final void  SetStream(System.IO.Stream stream)
+	public final void  ReleaseStream()
+	public final void  Init()
+	public void  MovePos()
+	public final byte  GetIndexByte(int index)
+	public final uint  GetMatchLen(int index, uint distance, uint limit)
+	public final uint  GetNumAvailableBytes()
+	public final void  Create(uint historySize, uint keepAddBufferBefore, uint matchMaxLen, uint keepAddBufferAfter)
+	public final uint  GetMatches(uint[] distances)
+	public final void  Skip(uint num)
+	private void  NormalizeLinks(uint[] items, uint numItems, uint subValue)
+	private void  Normalize()
+	public void  SetCutValue(uint cutValue)
+InWindow
+	public byte[] _bufferBase
+	private System.IO.Stream _stream
+	private uint _posLimit
+	private boolean _streamEndWasReached
+	private uint _pointerToLastSafePosition
+	public uint _bufferOffset
+	public uint _blockSize
+	public uint _pos
+	private uint _keepSizeBefore
+	private uint _keepSizeAfter
+	public uint _streamPos
+	public void  .ctor()
+	public void  MoveBlock()
+	public void  ReadBlock()
+	private void  Free()
+	public void  Create(uint keepSizeBefore, uint keepSizeAfter, uint keepSizeReserv)
+	public void  SetStream(System.IO.Stream stream)
+	public void  ReleaseStream()
+	public void  Init()
+	public void  MovePos()
+	public byte  GetIndexByte(int index)
+	public uint  GetMatchLen(int index, uint distance, uint limit)
+	public uint  GetNumAvailableBytes()
+	public void  ReduceOffsets(int subValue)
+OutWindow
+	private byte[] _buffer
+	private uint _pos
+	private uint _windowSize
+	private uint _streamPos
+	private System.IO.Stream _stream
+	public uint TrainSize
+	public void  .ctor()
+	public void  Create(uint windowSize)
+	public void  Init(System.IO.Stream stream, boolean solid)
+	public boolean  Train(System.IO.Stream stream)
+	public void  ReleaseStream()
+	public void  Flush()
+	public void  CopyBlock(uint distance, uint len)
+	public void  PutByte(byte b)
+	public byte  GetByte(uint distance)
+Base
+	public static uint kNumRepDistances
+	public static uint kNumStates
+	public static int kNumPosSlotBits
+	public static int kDicLogSizeMin
+	public static int kNumLenToPosStatesBits
+	public static uint kNumLenToPosStates
+	public static uint kMatchMinLen
+	public static int kNumAlignBits
+	public static uint kAlignTableSize
+	public static uint kAlignMask
+	public static uint kStartPosModelIndex
+	public static uint kEndPosModelIndex
+	public static uint kNumPosModels
+	public static uint kNumFullDistances
+	public static uint kNumLitPosStatesBitsEncodingMax
+	public static uint kNumLitContextBitsMax
+	public static int kNumPosStatesBitsMax
+	public static uint kNumPosStatesMax
+	public static int kNumPosStatesBitsEncodingMax
+	public static uint kNumPosStatesEncodingMax
+	public static int kNumLowLenBits
+	public static int kNumMidLenBits
+	public static int kNumHighLenBits
+	public static uint kNumLowLenSymbols
+	public static uint kNumMidLenSymbols
+	public static uint kNumLenSymbols
+	public static uint kMatchMaxLen
+	public void  .ctor()
+	public static uint  GetLenToPosState(uint len)
+State
+	public uint Index
+	public void  Init()
+	public void  UpdateChar()
+	public void  UpdateMatch()
+	public void  UpdateRep()
+	public void  UpdateShortRep()
+	public boolean  IsCharState()
+Decoder
+	private SevenZip.Compression.LZ.OutWindow m_OutWindow
+	private SevenZip.Compression.RangeCoder.Decoder m_RangeDecoder
+	private BitDecoder[] m_IsMatchDecoders
+	private BitDecoder[] m_IsRepDecoders
+	private BitDecoder[] m_IsRepG0Decoders
+	private BitDecoder[] m_IsRepG1Decoders
+	private BitDecoder[] m_IsRepG2Decoders
+	private BitDecoder[] m_IsRep0LongDecoders
+	private BitTreeDecoder[] m_PosSlotDecoder
+	private BitDecoder[] m_PosDecoders
+	private SevenZip.Compression.RangeCoder.BitTreeDecoder m_PosAlignDecoder
+	private LenDecoder m_LenDecoder
+	private LenDecoder m_RepLenDecoder
+	private LiteralDecoder m_LiteralDecoder
+	private uint m_DictionarySize
+	private uint m_DictionarySizeCheck
+	private uint m_PosStateMask
+	private boolean _solid
+	public void  .ctor()
+	private void  SetDictionarySize(uint dictionarySize)
+	private void  SetLiteralProperties(int lp, int lc)
+	private void  SetPosBitsProperties(int pb)
+	private void  Init(System.IO.Stream inStream, System.IO.Stream outStream)
+	public final void  Code(System.IO.Stream inStream, System.IO.Stream outStream, long inSize, long outSize, SevenZip.ICodeProgress progress)
+	public final void  SetDecoderProperties(byte[] properties)
+	public boolean  Train(System.IO.Stream stream)
+LenDecoder
+	private SevenZip.Compression.RangeCoder.BitDecoder m_Choice
+	private SevenZip.Compression.RangeCoder.BitDecoder m_Choice2
+	private BitTreeDecoder[] m_LowCoder
+	private BitTreeDecoder[] m_MidCoder
+	private SevenZip.Compression.RangeCoder.BitTreeDecoder m_HighCoder
+	private uint m_NumPosStates
+	public void  .ctor()
+	public void  Create(uint numPosStates)
+	public void  Init()
+	public uint  Decode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, uint posState)
+LiteralDecoder
+	private Decoder2[] m_Coders
+	private int m_NumPrevBits
+	private int m_NumPosBits
+	private uint m_PosMask
+	public void  .ctor()
+	public void  Create(int numPosBits, int numPrevBits)
+	public void  Init()
+	private uint  GetState(uint pos, byte prevByte)
+	public byte  DecodeNormal(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, uint pos, byte prevByte)
+	public byte  DecodeWithMatchByte(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, uint pos, byte prevByte, byte matchByte)
+Decoder2
+	private BitDecoder[] m_Decoders
+	public void  Create()
+	public void  Init()
+	public byte  DecodeNormal(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
+	public byte  DecodeWithMatchByte(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, byte matchByte)
+Encoder
+	private static uint kIfinityPrice
+	private static int kDefaultDictionaryLogSize
+	private static uint kNumFastBytesDefault
+	private static uint kNumLenSpecSymbols
+	private static uint kNumOpts
+	private static int kPropSize
+	private static byte[] g_FastPos
+	private State _state
+	private byte _previousByte
+	private uint[] _repDistances
+	private Optimal[] _optimum
+	private SevenZip.Compression.LZ.IMatchFinder _matchFinder
+	private SevenZip.Compression.RangeCoder.Encoder _rangeEncoder
+	private BitEncoder[] _isMatch
+	private BitEncoder[] _isRep
+	private BitEncoder[] _isRepG0
+	private BitEncoder[] _isRepG1
+	private BitEncoder[] _isRepG2
+	private BitEncoder[] _isRep0Long
+	private BitTreeEncoder[] _posSlotEncoder
+	private BitEncoder[] _posEncoders
+	private SevenZip.Compression.RangeCoder.BitTreeEncoder _posAlignEncoder
+	private LenPriceTableEncoder _lenEncoder
+	private LenPriceTableEncoder _repMatchLenEncoder
+	private LiteralEncoder _literalEncoder
+	private uint[] _matchDistances
+	private uint _numFastBytes
+	private uint _longestMatchLength
+	private uint _numDistancePairs
+	private uint _additionalOffset
+	private uint _optimumEndIndex
+	private uint _optimumCurrentIndex
+	private boolean _longestMatchWasFound
+	private uint[] _posSlotPrices
+	private uint[] _distancesPrices
+	private uint[] _alignPrices
+	private uint _alignPriceCount
+	private uint _distTableSize
+	private int _posStateBits
+	private uint _posStateMask
+	private int _numLiteralPosStateBits
+	private int _numLiteralContextBits
+	private uint _dictionarySize
+	private uint _dictionarySizePrev
+	private uint _numFastBytesPrev
+	private long nowPos64
+	private boolean _finished
+	private System.IO.Stream _inStream
+	private EMatchFinderType _matchFinderType
+	private boolean _writeEndMark
+	private boolean _needReleaseMFStream
+	private uint[] reps
+	private uint[] repLens
+	private byte[] properties
+	private uint[] tempPrices
+	private uint _matchPriceCount
+	private static string[] kMatchFinderIDs
+	private uint _trainSize
+	public void  .ctor()
+	private static uint  GetPosSlot(uint pos)
+	private static uint  GetPosSlot2(uint pos)
+	private void  BaseInit()
+	private void  Create()
+	private void  SetWriteEndMarkerMode(boolean writeEndMarker)
+	private void  Init()
+	private void  ReadMatchDistances(uint lenRes, uint numDistancePairs)
+	private void  MovePos(uint num)
+	private uint  GetRepLen1Price(State state, uint posState)
+	private uint  GetPureRepPrice(uint repIndex, State state, uint posState)
+	private uint  GetRepPrice(uint repIndex, uint len, State state, uint posState)
+	private uint  GetPosLenPrice(uint pos, uint len, uint posState)
+	private uint  Backward(uint backRes, uint cur)
+	private uint  GetOptimum(uint position, uint backRes)
+	private boolean  ChangePair(uint smallDist, uint bigDist)
+	private void  WriteEndMarker(uint posState)
+	private void  Flush(uint nowPos)
+	public void  CodeOneBlock(long inSize, long outSize, boolean finished)
+	private void  ReleaseMFStream()
+	private void  SetOutStream(System.IO.Stream outStream)
+	private void  ReleaseOutStream()
+	private void  ReleaseStreams()
+	private void  SetStreams(System.IO.Stream inStream, System.IO.Stream outStream, long inSize, long outSize)
+	public final void  Code(System.IO.Stream inStream, System.IO.Stream outStream, long inSize, long outSize, SevenZip.ICodeProgress progress)
+	public final void  WriteCoderProperties(System.IO.Stream outStream)
+	private void  FillDistancesPrices()
+	private void  FillAlignPrices()
+	private static int  FindMatchFinder(string s)
+	public final void  SetCoderProperties(CoderPropID[] propIDs, object[] properties)
+	public void  SetTrainSize(uint trainSize)
+	private static void  .cctor()
+EMatchFinderType
+	public int value__
+	public static EMatchFinderType BT2
+	public static EMatchFinderType BT4
+LiteralEncoder
+	private Encoder2[] m_Coders
+	private int m_NumPrevBits
+	private int m_NumPosBits
+	private uint m_PosMask
+	public void  .ctor()
+	public void  Create(int numPosBits, int numPrevBits)
+	public void  Init()
+	public Encoder2  GetSubCoder(uint pos, byte prevByte)
+Encoder2
+	private BitEncoder[] m_Encoders
+	public void  Create()
+	public void  Init()
+	public void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, byte symbol)
+	public void  EncodeMatched(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, byte matchByte, byte symbol)
+	public uint  GetPrice(boolean matchMode, byte matchByte, byte symbol)
+LenEncoder
+	private SevenZip.Compression.RangeCoder.BitEncoder _choice
+	private SevenZip.Compression.RangeCoder.BitEncoder _choice2
+	private BitTreeEncoder[] _lowCoder
+	private BitTreeEncoder[] _midCoder
+	private SevenZip.Compression.RangeCoder.BitTreeEncoder _highCoder
+	public void  .ctor()
+	public void  Init(uint numPosStates)
+	public void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, uint symbol, uint posState)
+	public void  SetPrices(uint posState, uint numSymbols, uint[] prices, uint st)
+LenPriceTableEncoder
+	private uint[] _prices
+	private uint _tableSize
+	private uint[] _counters
+	public void  .ctor()
+	public void  SetTableSize(uint tableSize)
+	public uint  GetPrice(uint symbol, uint posState)
+	private void  UpdateTable(uint posState)
+	public void  UpdateTables(uint numPosStates)
+	public void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, uint symbol, uint posState)
+Optimal
+	public State State
+	public boolean Prev1IsChar
+	public boolean Prev2
+	public uint PosPrev2
+	public uint BackPrev2
+	public uint Price
+	public uint PosPrev
+	public uint BackPrev
+	public uint Backs0
+	public uint Backs1
+	public uint Backs2
+	public uint Backs3
+	public void  .ctor()
+	public void  MakeAsChar()
+	public void  MakeAsShortRep()
+	public boolean  IsShortRep()
+CDoubleStream
+	public System.IO.Stream s1
+	public System.IO.Stream s2
+	public int fileIndex
+	public long skipSize
+	public void  .ctor()
+	public boolean  get_CanRead()
+	public boolean  get_CanWrite()
+	public boolean  get_CanSeek()
+	public long  get_Length()
+	public long  get_Position()
+	public void  set_Position(long value)
+	public void  Flush()
+	public int  Read(byte[] buffer, int offset, int count)
+	public void  Write(byte[] buffer, int offset, int count)
+	public long  Seek(long offset, System.IO.SeekOrigin origin)
+	public void  SetLength(long value)
+LzmaAlone
+	public void  .ctor()
+	private static void  PrintHelp()
+	private static boolean  GetNumber(string s, int v)
+	private static int  IncorrectCommand()
+	private static int  Main2(string[] args)
+	private static int  Main(string[] args)
+Key
+	public int value__
+	public static Key Help1
+	public static Key Help2
+	public static Key Mode
+	public static Key Dictionary
+	public static Key FastBytes
+	public static Key LitContext
+	public static Key LitPos
+	public static Key PosBits
+	public static Key MatchFinder
+	public static Key EOS
+	public static Key StdIn
+	public static Key StdOut
+	public static Key Train
+LzmaBench
+	private static uint kAdditionalSize
+	private static uint kCompressedAdditionalSize
+	private static uint kMaxLzmaPropSize
+	private static int kSubBits
+	public void  .ctor()
+	private static uint  GetLogSize(uint size)
+	private static ulong  MyMultDiv64(ulong value, ulong elapsedTime)
+	private static ulong  GetCompressRating(uint dictionarySize, ulong elapsedTime, ulong size)
+	private static ulong  GetDecompressRating(ulong elapsedTime, ulong outSize, ulong inSize)
+	private static ulong  GetTotalRating(uint dictionarySize, ulong elapsedTimeEn, ulong sizeEn, ulong elapsedTimeDe, ulong inSizeDe, ulong outSizeDe)
+	private static void  PrintValue(ulong v)
+	private static void  PrintRating(ulong rating)
+	private static void  PrintResults(uint dictionarySize, ulong elapsedTime, ulong size, boolean decompressMode, ulong secondSize)
+	public static int  LzmaBenchmark(int numIterations, uint dictionarySize)
+CRandomGenerator
+	private uint A1
+	private uint A2
+	public void  .ctor()
+	public void  Init()
+	public uint  GetRnd()
+CBitRandomGenerator
+	private CRandomGenerator RG
+	private uint Value
+	private int NumBits
+	public void  .ctor()
+	public void  Init()
+	public uint  GetRnd(int numBits)
+CBenchRandomGenerator
+	private CBitRandomGenerator RG
+	private uint Pos
+	private uint Rep0
+	public uint BufferSize
+	public byte[] Buffer
+	public void  .ctor()
+	public void  Set(uint bufferSize)
+	private uint  GetRndBit()
+	private uint  GetLogRandBits(int numBits)
+	private uint  GetOffset()
+	private uint  GetLen1()
+	private uint  GetLen2()
+	public void  Generate()
+CrcOutStream
+	public SevenZip.CRC CRC
+	public void  .ctor()
+	public void  Init()
+	public uint  GetDigest()
+	public boolean  get_CanRead()
+	public boolean  get_CanSeek()
+	public boolean  get_CanWrite()
+	public long  get_Length()
+	public long  get_Position()
+	public void  set_Position(long value)
+	public void  Flush()
+	public long  Seek(long offset, System.IO.SeekOrigin origin)
+	public void  SetLength(long value)
+	public int  Read(byte[] buffer, int offset, int count)
+	public void  WriteByte(byte b)
+	public void  Write(byte[] buffer, int offset, int count)
+CProgressInfo
+	public long ApprovedStart
+	public long InSize
+	public System.DateTime Time
+	public void  .ctor()
+	public void  Init()
+	public final void  SetProgress(long inSize, long outSize)
+Resources
+	private static System.Resources.ResourceManager _resMgr
+	private static System.Globalization.CultureInfo _resCulture
+	public void  .ctor()
+	public static System.Resources.ResourceManager  get_ResourceManager()
+	public static System.Globalization.CultureInfo  get_Culture()
+	public static void  set_Culture(System.Globalization.CultureInfo value)
+Settings
+	private static LzmaAlone.Properties.Settings m_Value
+	private static object m_SyncObject
+	public void  .ctor()
+	public static LzmaAlone.Properties.Settings  get_Value()
+	private static void  .cctor()
+Encoder
+	public static uint kTopValue
+	private System.IO.Stream Stream
+	public ulong Low
+	public uint Range
+	private uint _cacheSize
+	private byte _cache
+	private long StartPosition
+	public void  .ctor()
+	public void  SetStream(System.IO.Stream stream)
+	public void  ReleaseStream()
+	public void  Init()
+	public void  FlushData()
+	public void  FlushStream()
+	public void  CloseStream()
+	public void  Encode(uint start, uint size, uint total)
+	public void  ShiftLow()
+	public void  EncodeDirectBits(uint v, int numTotalBits)
+	public void  EncodeBit(uint size0, int numTotalBits, uint symbol)
+	public long  GetProcessedSizeAdd()
+Decoder
+	public static uint kTopValue
+	public uint Range
+	public uint Code
+	public System.IO.Stream Stream
+	public void  .ctor()
+	public void  Init(System.IO.Stream stream)
+	public void  ReleaseStream()
+	public void  CloseStream()
+	public void  Normalize()
+	public void  Normalize2()
+	public uint  GetThreshold(uint total)
+	public void  Decode(uint start, uint size, uint total)
+	public uint  DecodeDirectBits(int numTotalBits)
+	public uint  DecodeBit(uint size0, int numTotalBits)
+BitEncoder
+	public static int kNumBitModelTotalBits
+	public static uint kBitModelTotal
+	private static int kNumMoveBits
+	private static int kNumMoveReducingBits
+	public static int kNumBitPriceShiftBits
+	private uint Prob
+	private static uint[] ProbPrices
+	public void  Init()
+	public void  UpdateModel(uint symbol)
+	public void  Encode(SevenZip.Compression.RangeCoder.Encoder encoder, uint symbol)
+	public uint  GetPrice(uint symbol)
+	public uint  GetPrice0()
+	public uint  GetPrice1()
+	private static void  .cctor()
+BitDecoder
+	public static int kNumBitModelTotalBits
+	public static uint kBitModelTotal
+	private static int kNumMoveBits
+	private uint Prob
+	public void  UpdateModel(int numMoveBits, uint symbol)
+	public void  Init()
+	public uint  Decode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
+BitTreeEncoder
+	private BitEncoder[] Models
+	private int NumBitLevels
+	public void  .ctor(int numBitLevels)
+	public void  Init()
+	public void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, uint symbol)
+	public void  ReverseEncode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, uint symbol)
+	public uint  GetPrice(uint symbol)
+	public uint  ReverseGetPrice(uint symbol)
+	public static uint  ReverseGetPrice(BitEncoder[] Models, uint startIndex, int NumBitLevels, uint symbol)
+	public static void  ReverseEncode(BitEncoder[] Models, uint startIndex, SevenZip.Compression.RangeCoder.Encoder rangeEncoder, int NumBitLevels, uint symbol)
+BitTreeDecoder
+	private BitDecoder[] Models
+	private int NumBitLevels
+	public void  .ctor(int numBitLevels)
+	public void  Init()
+	public uint  Decode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
+	public uint  ReverseDecode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
+	public static uint  ReverseDecode(BitDecoder[] Models, uint startIndex, SevenZip.Compression.RangeCoder.Decoder rangeDecoder, int NumBitLevels)
+DataErrorException
+	public void  .ctor()
+InvalidParamException
+	public void  .ctor()
+ICodeProgress
+	public void  SetProgress(long inSize, long outSize)
+ICoder
+	public void  Code(System.IO.Stream inStream, System.IO.Stream outStream, long inSize, long outSize, SevenZip.ICodeProgress progress)
+CoderPropID
+	public int value__
+	public static SevenZip.CoderPropID DefaultProp
+	public static SevenZip.CoderPropID DictionarySize
+	public static SevenZip.CoderPropID UsedMemorySize
+	public static SevenZip.CoderPropID Order
+	public static SevenZip.CoderPropID BlockSize
+	public static SevenZip.CoderPropID PosStateBits
+	public static SevenZip.CoderPropID LitContextBits
+	public static SevenZip.CoderPropID LitPosBits
+	public static SevenZip.CoderPropID NumFastBytes
+	public static SevenZip.CoderPropID MatchFinder
+	public static SevenZip.CoderPropID MatchFinderCycles
+	public static SevenZip.CoderPropID NumPasses
+	public static SevenZip.CoderPropID Algorithm
+	public static SevenZip.CoderPropID NumThreads
+	public static SevenZip.CoderPropID EndMarker
+ISetCoderProperties
+	public void  SetCoderProperties(CoderPropID[] propIDs, object[] properties)
+IWriteCoderProperties
+	public void  WriteCoderProperties(System.IO.Stream outStream)
+ISetDecoderProperties
+	public void  SetDecoderProperties(byte[] properties)
+<PrivateImplementationDetails>{36dcba29-69c8-4e99-b590-8bd2082695d5}
+	public static $ArrayType=32 $field-0
+$ArrayType=32

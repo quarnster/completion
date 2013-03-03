@@ -219,7 +219,22 @@ func (d *SignatureDecoder) Decode(v interface{}) error {
 			if val == ELEMENT_TYPE_BYREF {
 				return d.Decode(raw)
 			}
-			*raw = Type(val)
+			raw.TypeId = val
+			switch raw.TypeId {
+			case ELEMENT_TYPE_VALUETYPE:
+				fallthrough
+			case ELEMENT_TYPE_CLASS:
+				if err := d.Decode(&raw.Class); err != nil {
+					return err
+				}
+			case ELEMENT_TYPE_SZARRAY:
+				raw.Type = &Type{}
+				if err := d.Decode(&raw.Mod); err != nil {
+					return err
+				} else if err := d.Decode(raw.Type); err != nil {
+					return err
+				}
+			}
 			return nil
 		}
 	}
@@ -290,20 +305,25 @@ type RetType struct {
 	Type Type
 }
 
-type Type uint32
+type Type struct {
+	TypeId uint32
+	Class  TypeDefOrRefEncodedIndex
+	Type   *Type
+	Mod    []CustomMod
+}
 
 var lut_element_type = map[int]string{
 	ELEMENT_TYPE_VOID:        "void",
 	ELEMENT_TYPE_BOOLEAN:     "boolean",
 	ELEMENT_TYPE_CHAR:        "char",
 	ELEMENT_TYPE_I1:          "i1",
-	ELEMENT_TYPE_U1:          "u1",
-	ELEMENT_TYPE_I2:          "i2",
-	ELEMENT_TYPE_U2:          "u2",
-	ELEMENT_TYPE_I4:          "i4",
-	ELEMENT_TYPE_U4:          "u4",
-	ELEMENT_TYPE_I8:          "i8",
-	ELEMENT_TYPE_U8:          "u8",
+	ELEMENT_TYPE_U1:          "byte",
+	ELEMENT_TYPE_I2:          "short",
+	ELEMENT_TYPE_U2:          "ushort",
+	ELEMENT_TYPE_I4:          "int",
+	ELEMENT_TYPE_U4:          "uint",
+	ELEMENT_TYPE_I8:          "long",
+	ELEMENT_TYPE_U8:          "ulong",
 	ELEMENT_TYPE_R4:          "r4",
 	ELEMENT_TYPE_R8:          "r8",
 	ELEMENT_TYPE_STRING:      "string",
@@ -329,6 +349,44 @@ var lut_element_type = map[int]string{
 	ELEMENT_TYPE_PINNED:      "pinned",
 }
 
-func (t Type) String() string {
-	return lut_element_type[int(t)]
+func (t *Type) Name() string {
+	switch t.TypeId {
+	case ELEMENT_TYPE_VALUETYPE:
+		fallthrough
+	case ELEMENT_TYPE_CLASS:
+		v, _ := t.Class.Data()
+		switch t := v.(type) {
+		case *TypeDefRow:
+			return string(t.TypeName)
+		case *TypeRefRow:
+			return string(t.TypeName)
+		default:
+			fmt.Sprintf("Unhandled type: %s", t)
+		}
+	case ELEMENT_TYPE_SZARRAY:
+		return fmt.Sprintf("%s[]", t.Type)
+	}
+	return lut_element_type[int(t.TypeId)]
+}
+
+func (t *Type) Namespace() string {
+	switch t.TypeId {
+	case ELEMENT_TYPE_VALUETYPE:
+		fallthrough
+	case ELEMENT_TYPE_CLASS:
+		v, _ := t.Class.Data()
+		switch t := v.(type) {
+		case *TypeDefRow:
+			return string(t.TypeNamespace)
+		case *TypeRefRow:
+			return string(t.TypeNamespace)
+		default:
+			fmt.Sprintf("Unhandled type: %s", t)
+		}
+	}
+	return ""
+}
+
+func (t *Type) String() string {
+	return t.Name()
 }

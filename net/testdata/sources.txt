@@ -1,0 +1,7 @@
+http://www.7-zip.org/sdk.html
+https://github.com/quarnster/CompleteSharp
+https://github.com/danielcrenna/json
+http://articles.upokecenter.com/__oneclick_uploads/2011/05/png4bitindexed.txt
+http://articles.upokecenter.com/__oneclick_uploads/2011/05/png8bitindexed.txt
+http://www.upokecenter.com/projects/QRCodeGenerator.cs
+

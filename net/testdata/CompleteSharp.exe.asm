@@ -239,3 +239,36 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[0] EnclosingClass:TypeDefRow[3]}
 	&{NestedClass:TypeDefRow[2] EnclosingClass:TypeDefRow[4]}
 	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[5]}
+<Module>
+CompleteSharp
+	private static string sep
+	public void  .ctor()
+	private static void  reportError(System.Exception e)
+	public static void  Main(string[] arg)
+	private static void  .cctor()
+MyAppDomain
+	private System.AppDomain ad
+	private string[] assemblies
+	private DateTime[] times
+	private boolean forceReload
+	public void  .ctor(string[] arg)
+	public void  LoadAssemblies()
+	public boolean  Execute(string[] args, System.Collections.ArrayList modules)
+	private void  CheckUpdate()
+Hack
+	public MyAppDomain ad
+	public void  .ctor()
+	private int  GetParameterExtent(string parameter)
+	private string[]  SplitParameters(string parameters, boolean fix)
+	private string  ParseParameters(string parameters, int expected, boolean insertion)
+	private string  FixName(string str, boolean insertion)
+	private string[]  GetTemplateArguments(string template)
+	private string  GetBase(string fullname)
+	public System.Type  GetType(MyAppDomain ad, string basename, string[] templateParam)
+	private int  GetModifiers(System.Reflection.MemberInfo m)
+	private System.Reflection.Assembly  TryLoad(string path, string name)
+	private System.Reflection.Assembly  ResolveAssembly(object sender, System.ResolveEventArgs args)
+	public System.Reflection.Assembly  Load(string str)
+	public System.Type  GetType(string basename)
+	public boolean  Execute(string[] args, System.Collections.ArrayList modules)
+Accessibility

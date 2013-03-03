@@ -321,3 +321,113 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[30]}
 	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[31]}
 	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[32]}
+<Module>
+QRCodeGenerator
+	private static int[] GaloisExp
+	private static int[] GaloisLog
+	private static int[][] polynomials
+	private static int[] VersionInfo
+	private static int[] AlignmentPatterns
+	private static int[] DataBlocks
+	private static int[] FormatInfo
+	private static int[] versions
+	private static int[] versionsnumeric
+	private static int[] versionsalphanum
+	private static int[] ecbytes
+	private static int[] CharToValue
+	private static int  GaloisMult(int a, int b)
+	private static void  ReedSolomonEncode(genericinst b, System.Collections.Generic.IList`1 offset, void count, byte blockSize)
+	private static CodeMatrix  GetEncodedMatrix(byte[] data, boolean stringData)
+	private static void  .cctor()
+CodeMatrix
+	private byte[] data
+	private int size
+	private int codewordX
+	private int codewordY
+	private boolean directionDown
+	private boolean directionRight
+	private boolean[] state11311expected
+	public void  .ctor(int size)
+	public int  get_Size()
+	public boolean  get_Item(int x, int y)
+	public void  set_Item(int x, int y, boolean value)
+	private byte  GetValue(int x, int y)
+	private void  SetValue(int x, int y, byte value)
+	private void  SetValueChecked(int x, int y, byte value)
+	public void  SetVersionInfo(int value)
+	public void  SetFormatInfo(int value)
+	public void  SetNextCodeword(byte value)
+	public void  DrawAlignmentPattern(int x, int y)
+	private int  FindBlock(int x, int y, int tentativeWidth, byte[] moduleblocks)
+	public int  CalculatePenalty()
+	public void  ApplyMask(int mask)
+	public void  DrawTimingPatterns()
+	public void  DrawFinderPattern(int x, int y)
+	public string  ToString()
+BitList
+	private genericinst list
+	private byte curbyte
+	private int curbit
+	public void  .ctor()
+	public genericinst  get_List()
+	public void  AddBits(byte value, int bits)
+	public void  AddBits(int value, int bits)
+	public void  PadTo(int size)
+<PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}
+	public static $ArrayType=2044 $field-0
+	public static $ArrayType=1024 $field-1
+	public static $ArrayType=28 $field-2
+	public static $ArrayType=32 $field-3
+	public static $ArrayType=36 $field-4
+	public static $ArrayType=40 $field-5
+	public static $ArrayType=44 $field-6
+	public static $ArrayType=48 $field-7
+	public static $ArrayType=52 $field-8
+	public static $ArrayType=56 $field-9
+	public static $ArrayType=60 $field-A
+	public static $ArrayType=64 $field-B
+	public static $ArrayType=68 $field-C
+	public static $ArrayType=72 $field-D
+	public static $ArrayType=80 $field-E
+	public static $ArrayType=88 $field-F
+	public static $ArrayType=96 $field-10
+	public static $ArrayType=104 $field-11
+	public static $ArrayType=112 $field-12
+	public static $ArrayType=120 $field-13
+	public static $ArrayType=136 $field-14
+	public static $ArrayType=1120 $field-15
+	public static $ArrayType=960 $field-16
+	public static $ArrayType=128 $field-17
+	public static $ArrayType=160 $field-18
+	public static $ArrayType=160 $field-19
+	public static $ArrayType=160 $field-1A
+	public static $ArrayType=160 $field-1B
+	public static $ArrayType=256 $field-1C
+	public static $ArrayType=8 $field-1D
+$ArrayType=2044
+$ArrayType=1024
+$ArrayType=28
+$ArrayType=32
+$ArrayType=36
+$ArrayType=40
+$ArrayType=44
+$ArrayType=48
+$ArrayType=52
+$ArrayType=56
+$ArrayType=60
+$ArrayType=64
+$ArrayType=68
+$ArrayType=72
+$ArrayType=80
+$ArrayType=88
+$ArrayType=96
+$ArrayType=104
+$ArrayType=112
+$ArrayType=120
+$ArrayType=136
+$ArrayType=1120
+$ArrayType=960
+$ArrayType=128
+$ArrayType=160
+$ArrayType=256
+$ArrayType=8

@@ -375,3 +375,66 @@ MethodSpecRow
 	&{Method:TypeRefRow[254] Instantiation:Blob[45]}
 	&{Method:TypeRefRow[290] Instantiation:Blob[45]}
 	&{Method:TypeRefRow[296] Instantiation:Blob[47]}
+<Module>
+JsonToken
+	public int value__
+	public static Json.JsonToken Unknown
+	public static Json.JsonToken LeftBrace
+	public static Json.JsonToken RightBrace
+	public static Json.JsonToken Colon
+	public static Json.JsonToken Comma
+	public static Json.JsonToken LeftBracket
+	public static Json.JsonToken RightBracket
+	public static Json.JsonToken String
+	public static Json.JsonToken Number
+	public static Json.JsonToken True
+	public static Json.JsonToken False
+	public static Json.JsonToken Null
+InvalidJsonException
+	public void  .ctor(string message)
+JsonParser
+	private static System.Globalization.NumberStyles JsonNumbers
+	private static genericinst _cache
+	private static char[] _base16
+	private static genericinst <>f__am$cache2
+	public void  .ctor()
+	public static string  Serialize(mvar instance)
+	public static object  Deserialize(string json, System.Type type)
+	public static mvar  Deserialize( json)
+	private static void  DeserializeImpl(genericinst map, System.Collections.Generic.IEnumerable`1 bag, void instance)
+	private static void  DeserializeImpl(genericinst map, System.Collections.Generic.IEnumerable`1 bag, void instance)
+	private static void  DeserializeType(genericinst map, System.Collections.Generic.IEnumerable`1 bag, void instance)
+	public static genericinst  FromJson(System.Collections.Generic.IDictionary`2 json)
+	public static genericinst  FromJson(System.Collections.Generic.IDictionary`2 json, boolean type)
+	public static string  ToJson(genericinst bag)
+	public static genericinst  GetBagForObject(System.Collections.Generic.IDictionary`2 type, boolean instance)
+	public static genericinst  GetBagForObject(System.Collections.Generic.IDictionary`2 instance)
+	public static genericinst  InitializeBag()
+	public static genericinst  PrepareInstance(System.Collections.Generic.IEnumerable`1 instance, void type)
+	public static genericinst  PrepareInstance(System.Collections.Generic.IEnumerable`1 instance)
+	public static void  CacheReflection(System.Type item)
+	public static void  SerializeItem(System.Text.StringBuilder sb, object item)
+	public static void  SerializeDateTime(System.Text.StringBuilder sb)
+	public static void  SerializeArray(object item, System.Text.StringBuilder sb)
+	public static void  SerializeObject(object item, System.Text.StringBuilder sb)
+	public static void  SerializeString(System.Text.StringBuilder sb, object item)
+	public static string  GetUnicode(int code)
+	public static genericinst  ParsePair(System.Collections.Generic.KeyValuePair`2 data, boolean index)
+	public static boolean  ParseToken(Json.JsonToken token, genericinst data, System.Collections.Generic.IList`1 index)
+	public static string  ParseString(genericinst data, System.Collections.Generic.IList`1 index)
+	public static object  ParseValue(genericinst data, System.Collections.Generic.IList`1 index)
+	public static genericinst  ParseObject(System.Collections.Generic.IDictionary`2 data, boolean index)
+	public static genericinst  ParseArray(System.Collections.Generic.IEnumerable`1 data, void index)
+	public static object  ParseNumber(genericinst data, System.Collections.Generic.IList`1 index)
+	public static Json.JsonToken  NextToken(genericinst data, System.Collections.Generic.IList`1 index)
+	public static Json.JsonToken  GetTokenFromSymbol(char symbol)
+	public static Json.JsonToken  GetTokenFromSymbol(char symbol, Json.JsonToken token)
+	public static void  IgnoreWhitespace(genericinst data, System.Collections.Generic.IList`1 index, void symbol)
+	public static Json.JsonToken  IgnoreWhitespace(genericinst data, System.Collections.Generic.IList`1 index, void token, char symbol)
+	public static void  GetKeyword(string word, Json.JsonToken target, genericinst data, System.Collections.Generic.IList`1 index, void result)
+	public static string  BaseConvert(int input, char[] charSet, int minLength)
+	private static void  .cctor()
+	private static int  <SerializeString>m__0(char symbol)
+<PrivateImplementationDetails>{fa75a08b-59e8-4d4a-b10e-2114294958f4}
+	public static $ArrayType=32 $field-0
+$ArrayType=32

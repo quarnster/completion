@@ -1,8 +1,8 @@
 package net
 
 import (
-	"errors"
 	"fmt"
+	errors "github.com/quarnster/completion/util/errors"
 	"math"
 	"reflect"
 	"strings"

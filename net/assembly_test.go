@@ -1,7 +1,6 @@
 package net
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/quarnster/completion/util"
 	"io/ioutil"
@@ -12,8 +11,7 @@ import (
 )
 
 const (
-	testdata_path     = "./testdata/"
-	completesharp_exe = testdata_path + "CompleteSharp.exe"
+	testdata_path = "./testdata/"
 )
 
 func TestLoadAssembly(t *testing.T) {
@@ -77,6 +75,28 @@ func TestLoadAssembly(t *testing.T) {
 					}
 				}
 			}
+			td := asm.Tables[id_TypeDef]
+			ty := reflect.New(td.RowType).Interface().(*TypeDefRow)
+
+			for i := uint32(0); i < td.Rows; i++ {
+				ptr, _ := td.Index(i + 1)
+				asm.Create(ptr, ty)
+				res += fmt.Sprintln(ty.TypeName)
+				if fields, err := asm.Fields(i + 1); err != nil {
+					t.Error(err)
+				} else {
+					for j := range fields {
+						res += fmt.Sprintf("\t%s\n", fields[j])
+					}
+				}
+				if methods, err := asm.Methods(i + 1); err != nil {
+					t.Error(err)
+				} else {
+					for j := range methods {
+						res += fmt.Sprintf("\t%s\n", methods[j])
+					}
+				}
+			}
 
 			if len(v) <= 1 {
 				// Just if we want to add new tests, this will spit out the newly added
@@ -94,49 +114,6 @@ func TestLoadAssembly(t *testing.T) {
 			} else if len(d) != 0 {
 				t.Error(string(d))
 			}
-		}
-	}
-}
-
-func TestLoadCompleteSharp(t *testing.T) {
-	f, err := os.Open(completesharp_exe)
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer f.Close()
-	if asm, err := LoadAssembly(f); err != nil {
-		t.Error(err)
-	} else {
-		td := asm.Tables[id_TypeDef]
-		ty := reflect.New(td.RowType).Interface().(*TypeDefRow)
-
-		for i := uint32(0); i < td.Rows; i++ {
-			ptr, _ := td.Index(i + 1)
-			asm.Create(ptr, ty)
-			t.Log(ty.TypeName)
-			if fields, err := asm.Fields(i + 1); err != nil {
-				t.Error(err)
-			} else {
-				for j := range fields {
-					if v, err := json.Marshal(fields[j]); err != nil {
-						t.Error(err)
-					} else if s := string(v); s != "null" {
-						t.Log(string(v))
-					}
-				}
-			}
-			if methods, err := asm.Methods(i + 1); err != nil {
-				t.Error(err)
-			} else {
-				for j := range methods {
-					if v, err := json.Marshal(methods[j]); err != nil {
-						t.Error(err)
-					} else if s := string(v); s != "null" {
-						t.Log(string(v))
-					}
-				}
-			}
-
 		}
 	}
 }
