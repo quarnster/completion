@@ -1,29 +1,29 @@
 ModuleRow
 	&{Generation:0 Name:QRCodeGenerator.dll Mvid:EF0BCC38-B8C8-444F-B6A8-96D99B4AF645 EncId:nil EncBaseId:nil}
 TypeRefRow
-	&{ResolutionScope:TypeDefRow[1] TypeName:List`1 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Int32 TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeHelpers TypeNamespace:System.Runtime.CompilerServices}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Array TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeFieldHandle TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:InvalidOperationException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IList`1 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ICollection`1 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentNullException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Boolean TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Object TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Byte TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:DefaultMemberAttribute TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Math TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentOutOfRangeException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:StringBuilder TypeNamespace:System.Text}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Environment TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:CompilerGeneratedAttribute TypeNamespace:System.Runtime.CompilerServices}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ValueType TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:List`1 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Int32 TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeHelpers TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Array TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeFieldHandle TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:InvalidOperationException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IList`1 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ICollection`1 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArgumentNullException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArgumentException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Boolean TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Object TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Byte TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:DefaultMemberAttribute TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Math TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArgumentOutOfRangeException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:StringBuilder TypeNamespace:System.Text}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Environment TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:CompilerGeneratedAttribute TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ValueType TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
 TypeDefRow
-	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:ModuleRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
+	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:TypeDefRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:1048961 TypeName:QRCodeGenerator TypeNamespace:PeterO Extends:TypeRefRow[12] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:1048579 TypeName:CodeMatrix TypeNamespace: Extends:TypeRefRow[12] FieldList:FieldRow[13] MethodList:MethodDefRow[5]}
 	&{Flags:1048579 TypeName:BitList TypeNamespace: Extends:TypeRefRow[12] FieldList:FieldRow[20] MethodList:MethodDefRow[22]}
@@ -178,8 +178,8 @@ ParamRow
 MemberRefRow
 	&{Class:TypeRefRow[3] Name:InitializeArray Signature:Blob[38]}
 	&{Class:TypeRefRow[6] Name:.ctor Signature:Blob[149]}
-	&{Class:FieldRow[2] Name:get_Item Signature:Blob[159]}
-	&{Class:FieldRow[3] Name:Add Signature:Blob[171]}
+	&{Class:TypeSpecRow[2] Name:get_Item Signature:Blob[159]}
+	&{Class:TypeSpecRow[3] Name:Add Signature:Blob[171]}
 	&{Class:TypeRefRow[9] Name:.ctor Signature:Blob[177]}
 	&{Class:TypeRefRow[10] Name:.ctor Signature:Blob[177]}
 	&{Class:TypeRefRow[12] Name:.ctor Signature:Blob[149]}
@@ -191,15 +191,15 @@ MemberRefRow
 	&{Class:TypeRefRow[18] Name:get_NewLine Signature:Blob[208]}
 	&{Class:TypeRefRow[17] Name:Append Signature:Blob[212]}
 	&{Class:TypeRefRow[12] Name:ToString Signature:Blob[218]}
-	&{Class:FieldRow[4] Name:.ctor Signature:Blob[149]}
-	&{Class:FieldRow[4] Name:Add Signature:Blob[171]}
-	&{Class:FieldRow[4] Name:get_Count Signature:Blob[228]}
+	&{Class:TypeSpecRow[4] Name:.ctor Signature:Blob[149]}
+	&{Class:TypeSpecRow[4] Name:Add Signature:Blob[171]}
+	&{Class:TypeSpecRow[4] Name:get_Count Signature:Blob[228]}
 	&{Class:TypeRefRow[19] Name:.ctor Signature:Blob[149]}
 	&{Class:TypeRefRow[21] Name:.ctor Signature:Blob[149]}
 CustomAttributeRow
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[513]}
-	&{Parent:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[187]}
-	&{Parent:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[232]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[20] Value:Blob[513]}
+	&{Parent:TypeDefRow[3] Type:MemberRefRow[8] Value:Blob[187]}
+	&{Parent:TypeDefRow[5] Type:MemberRefRow[19] Value:Blob[232]}
 ClassLayoutRow
 	&{PackingSize:1 ClassSize:2044 Parent:TypeDefRow[6]}
 	&{PackingSize:1 ClassSize:1024 Parent:TypeDefRow[7]}
@@ -247,10 +247,10 @@ PropertyRow
 	&{Flags:0 Name:Item Type:Blob[499]}
 	&{Flags:0 Name:List Type:Blob[505]}
 MethodSemanticsRow
-	&{Semantics:2 Method:MethodDefRow[6] Association:TypeRefRow[1]}
-	&{Semantics:1 Method:MethodDefRow[8] Association:TypeRefRow[2]}
-	&{Semantics:2 Method:MethodDefRow[7] Association:TypeRefRow[2]}
-	&{Semantics:2 Method:MethodDefRow[23] Association:TypeRefRow[3]}
+	&{Semantics:2 Method:MethodDefRow[6] Association:PropertyRow[1]}
+	&{Semantics:1 Method:MethodDefRow[8] Association:PropertyRow[2]}
+	&{Semantics:2 Method:MethodDefRow[7] Association:PropertyRow[2]}
+	&{Semantics:2 Method:MethodDefRow[23] Association:PropertyRow[3]}
 TypeSpecRow
 	&{Signature:Blob[50]}
 	&{Signature:Blob[153]}

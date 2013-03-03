@@ -1,53 +1,53 @@
 ModuleRow
 	&{Generation:0 Name:JsonParser.dll Mvid:FA75A08B-59E8-4D4A-B10E-2114294958F4 EncId:nil EncBaseId:nil}
 TypeRefRow
-	&{ResolutionScope:TypeDefRow[1] TypeName:NumberStyles TypeNamespace:System.Globalization}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IDictionary`2 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Type TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:PropertyInfo TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Exception TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Object TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Char TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeHelpers TypeNamespace:System.Runtime.CompilerServices}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Array TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeFieldHandle TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Dictionary`2 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IEnumerable`1 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IEnumerator`1 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:MemberInfo TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:String TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:DateTime TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeTypeHandle TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:CultureInfo TypeNamespace:System.Globalization}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Int32 TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IFormatProvider TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:List`1 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Convert TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[2] TypeName:Func`2 TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[2] TypeName:Enumerable TypeNamespace:System.Linq}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Double TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Int64 TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IEnumerator TypeNamespace:System.Collections}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IDisposable TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:KeyValuePair`2 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:StringBuilder TypeNamespace:System.Text}
-	&{ResolutionScope:TypeDefRow[1] TypeName:StringComparer TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IEqualityComparer`1 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Activator TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:BindingFlags TypeNamespace:System.Reflection}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IEnumerable TypeNamespace:System.Collections}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Boolean TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:TimeSpan TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ICollection`1 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IList`1 TypeNamespace:System.Collections.Generic}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentOutOfRangeException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:NotSupportedException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:CompilerGeneratedAttribute TypeNamespace:System.Runtime.CompilerServices}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Enum TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ValueType TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:NumberStyles TypeNamespace:System.Globalization}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IDictionary`2 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Type TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:PropertyInfo TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Exception TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Object TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Char TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeHelpers TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Array TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeFieldHandle TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Dictionary`2 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IEnumerable`1 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IEnumerator`1 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:MemberInfo TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:String TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:DateTime TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeTypeHandle TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:CultureInfo TypeNamespace:System.Globalization}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Int32 TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IFormatProvider TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:List`1 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Convert TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[2] TypeName:Func`2 TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[2] TypeName:Enumerable TypeNamespace:System.Linq}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Double TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Int64 TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IEnumerator TypeNamespace:System.Collections}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IDisposable TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:KeyValuePair`2 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:StringBuilder TypeNamespace:System.Text}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:StringComparer TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IEqualityComparer`1 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Activator TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:BindingFlags TypeNamespace:System.Reflection}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IEnumerable TypeNamespace:System.Collections}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Boolean TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:TimeSpan TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ICollection`1 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IList`1 TypeNamespace:System.Collections.Generic}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArgumentOutOfRangeException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:NotSupportedException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:CompilerGeneratedAttribute TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Enum TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ValueType TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
 TypeDefRow
-	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:ModuleRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
+	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:TypeDefRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:257 TypeName:JsonToken TypeNamespace:Json Extends:TypeRefRow[43] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:1048577 TypeName:InvalidJsonException TypeNamespace:Json Extends:TypeRefRow[5] FieldList:FieldRow[14] MethodList:MethodDefRow[1]}
 	&{Flags:1 TypeName:JsonParser TypeNamespace:Json Extends:TypeRefRow[6] FieldList:FieldRow[14] MethodList:MethodDefRow[2]}
@@ -188,14 +188,14 @@ MemberRefRow
 	&{Class:TypeRefRow[5] Name:.ctor Signature:Blob[87]}
 	&{Class:TypeRefRow[6] Name:.ctor Signature:Blob[92]}
 	&{Class:TypeRefRow[8] Name:InitializeArray Signature:Blob[105]}
-	&{Class:FieldRow[1] Name:.ctor Signature:Blob[123]}
-	&{Class:FieldRow[3] Name:GetEnumerator Signature:Blob[143]}
-	&{Class:FieldRow[4] Name:get_Current Signature:Blob[159]}
+	&{Class:TypeSpecRow[1] Name:.ctor Signature:Blob[123]}
+	&{Class:TypeSpecRow[3] Name:GetEnumerator Signature:Blob[143]}
+	&{Class:TypeSpecRow[4] Name:get_Current Signature:Blob[159]}
 	&{Class:TypeRefRow[14] Name:get_Name Signature:Blob[164]}
-	&{Class:FieldRow[5] Name:ContainsKey Signature:Blob[175]}
+	&{Class:TypeSpecRow[5] Name:ContainsKey Signature:Blob[175]}
 	&{Class:TypeRefRow[15] Name:Empty Signature:Blob[181]}
 	&{Class:TypeRefRow[15] Name:Replace Signature:Blob[184]}
-	&{Class:FieldRow[5] Name:get_Item Signature:Blob[190]}
+	&{Class:TypeSpecRow[5] Name:get_Item Signature:Blob[190]}
 	&{Class:TypeRefRow[4] Name:get_PropertyType Signature:Blob[197]}
 	&{Class:TypeRefRow[3] Name:GetTypeFromHandle Signature:Blob[202]}
 	&{Class:TypeRefRow[6] Name:ToString Signature:Blob[164]}
@@ -205,7 +205,7 @@ MemberRefRow
 	&{Class:TypeRefRow[16] Name:ToUniversalTime Signature:Blob[230]}
 	&{Class:TypeRefRow[16] Name:AddSeconds Signature:Blob[235]}
 	&{Class:TypeRefRow[22] Name:ToByte Signature:Blob[250]}
-	&{Class:FieldRow[8] Name:.ctor Signature:Blob[262]}
+	&{Class:TypeSpecRow[8] Name:.ctor Signature:Blob[262]}
 	&{Class:TypeRefRow[24] Name:Select Signature:Blob[268]}
 	&{Class:TypeRefRow[24] Name:ToArray Signature:Blob[297]}
 	&{Class:TypeRefRow[22] Name:ToDouble Signature:Blob[314]}
@@ -215,23 +215,23 @@ MemberRefRow
 	&{Class:TypeRefRow[27] Name:MoveNext Signature:Blob[337]}
 	&{Class:TypeRefRow[28] Name:Dispose Signature:Blob[92]}
 	&{Class:TypeRefRow[24] Name:Single Signature:Blob[341]}
-	&{Class:FieldRow[9] Name:get_Value Signature:Blob[369]}
+	&{Class:TypeSpecRow[9] Name:get_Value Signature:Blob[369]}
 	&{Class:TypeRefRow[15] Name:ToCharArray Signature:Blob[374]}
 	&{Class:TypeRefRow[30] Name:.ctor Signature:Blob[123]}
 	&{Class:TypeRefRow[3] Name:get_FullName Signature:Blob[164]}
 	&{Class:TypeRefRow[15] Name:Contains Signature:Blob[379]}
-	&{Class:FieldRow[10] Name:get_Item Signature:Blob[190]}
+	&{Class:TypeSpecRow[10] Name:get_Item Signature:Blob[190]}
 	&{Class:TypeRefRow[4] Name:get_CanWrite Signature:Blob[337]}
 	&{Class:TypeRefRow[4] Name:get_CanRead Signature:Blob[337]}
 	&{Class:TypeRefRow[4] Name:GetValue Signature:Blob[394]}
-	&{Class:FieldRow[5] Name:Add Signature:Blob[401]}
+	&{Class:TypeSpecRow[5] Name:Add Signature:Blob[401]}
 	&{Class:TypeRefRow[31] Name:get_OrdinalIgnoreCase Signature:Blob[409]}
-	&{Class:FieldRow[12] Name:.ctor Signature:Blob[421]}
+	&{Class:TypeSpecRow[12] Name:.ctor Signature:Blob[421]}
 	&{Class:TypeRefRow[33] Name:CreateInstance Signature:Blob[433]}
 	&{Class:TypeRefRow[33] Name:CreateInstance Signature:Blob[439]}
-	&{Class:FieldRow[10] Name:ContainsKey Signature:Blob[175]}
+	&{Class:TypeSpecRow[10] Name:ContainsKey Signature:Blob[175]}
 	&{Class:TypeRefRow[3] Name:GetProperties Signature:Blob[445]}
-	&{Class:FieldRow[10] Name:Add Signature:Blob[401]}
+	&{Class:TypeSpecRow[10] Name:Add Signature:Blob[401]}
 	&{Class:TypeRefRow[36] Name:ToString Signature:Blob[164]}
 	&{Class:TypeRefRow[15] Name:ToLower Signature:Blob[164]}
 	&{Class:TypeRefRow[30] Name:Append Signature:Blob[454]}
@@ -245,31 +245,31 @@ MemberRefRow
 	&{Class:TypeRefRow[24] Name:Count Signature:Blob[513]}
 	&{Class:TypeRefRow[35] Name:GetEnumerator Signature:Blob[524]}
 	&{Class:TypeRefRow[27] Name:get_Current Signature:Blob[529]}
-	&{Class:FieldRow[5] Name:get_Keys Signature:Blob[533]}
-	&{Class:FieldRow[14] Name:GetEnumerator Signature:Blob[143]}
-	&{Class:FieldRow[15] Name:get_Current Signature:Blob[159]}
-	&{Class:FieldRow[16] Name:get_Count Signature:Blob[562]}
-	&{Class:FieldRow[17] Name:.ctor Signature:Blob[262]}
-	&{Class:FieldRow[18] Name:.ctor Signature:Blob[262]}
+	&{Class:TypeSpecRow[5] Name:get_Keys Signature:Blob[533]}
+	&{Class:TypeSpecRow[14] Name:GetEnumerator Signature:Blob[143]}
+	&{Class:TypeSpecRow[15] Name:get_Current Signature:Blob[159]}
+	&{Class:TypeSpecRow[16] Name:get_Count Signature:Blob[562]}
+	&{Class:TypeSpecRow[17] Name:.ctor Signature:Blob[262]}
+	&{Class:TypeSpecRow[18] Name:.ctor Signature:Blob[262]}
 	&{Class:TypeRefRow[15] Name:.ctor Signature:Blob[598]}
 	&{Class:TypeRefRow[15] Name:Concat Signature:Blob[604]}
 	&{Class:TypeRefRow[15] Name:Format Signature:Blob[610]}
-	&{Class:FieldRow[9] Name:.ctor Signature:Blob[401]}
-	&{Class:FieldRow[19] Name:get_Item Signature:Blob[623]}
+	&{Class:TypeSpecRow[9] Name:.ctor Signature:Blob[401]}
+	&{Class:TypeSpecRow[19] Name:get_Item Signature:Blob[623]}
 	&{Class:TypeRefRow[30] Name:.ctor Signature:Blob[92]}
-	&{Class:FieldRow[20] Name:get_Count Signature:Blob[562]}
+	&{Class:TypeSpecRow[20] Name:get_Count Signature:Blob[562]}
 	&{Class:TypeRefRow[30] Name:Append Signature:Blob[636]}
 	&{Class:TypeRefRow[9] Name:Copy Signature:Blob[646]}
 	&{Class:TypeRefRow[15] Name:.ctor Signature:Blob[657]}
 	&{Class:TypeRefRow[22] Name:ToInt32 Signature:Blob[663]}
 	&{Class:TypeRefRow[40] Name:.ctor Signature:Blob[92]}
-	&{Class:FieldRow[12] Name:get_Count Signature:Blob[562]}
+	&{Class:TypeSpecRow[12] Name:get_Count Signature:Blob[562]}
 	&{Class:TypeRefRow[15] Name:Concat Signature:Blob[669]}
-	&{Class:FieldRow[12] Name:Add Signature:Blob[401]}
-	&{Class:FieldRow[9] Name:get_Key Signature:Blob[159]}
+	&{Class:TypeSpecRow[12] Name:Add Signature:Blob[401]}
+	&{Class:TypeSpecRow[9] Name:get_Key Signature:Blob[159]}
 	&{Class:TypeRefRow[41] Name:.ctor Signature:Blob[87]}
-	&{Class:FieldRow[7] Name:.ctor Signature:Blob[92]}
-	&{Class:FieldRow[7] Name:Add Signature:Blob[675]}
+	&{Class:TypeSpecRow[7] Name:.ctor Signature:Blob[92]}
+	&{Class:TypeSpecRow[7] Name:Add Signature:Blob[675]}
 	&{Class:TypeRefRow[15] Name:get_Length Signature:Blob[562]}
 	&{Class:TypeRefRow[15] Name:get_Chars Signature:Blob[681]}
 	&{Class:TypeRefRow[30] Name:Insert Signature:Blob[686]}
@@ -278,24 +278,24 @@ MemberRefRow
 	&{Class:TypeRefRow[42] Name:.ctor Signature:Blob[92]}
 	&{Class:TypeRefRow[45] Name:.ctor Signature:Blob[92]}
 ConstantRow
-	&{Type:8 Padding:0 Parent:ModuleRow[2] Value:Blob[27]}
-	&{Type:8 Padding:0 Parent:ModuleRow[3] Value:Blob[32]}
-	&{Type:8 Padding:0 Parent:ModuleRow[4] Value:Blob[37]}
-	&{Type:8 Padding:0 Parent:ModuleRow[5] Value:Blob[42]}
-	&{Type:8 Padding:0 Parent:ModuleRow[6] Value:Blob[47]}
-	&{Type:8 Padding:0 Parent:ModuleRow[7] Value:Blob[52]}
-	&{Type:8 Padding:0 Parent:ModuleRow[8] Value:Blob[57]}
-	&{Type:8 Padding:0 Parent:ModuleRow[9] Value:Blob[62]}
-	&{Type:8 Padding:0 Parent:ModuleRow[10] Value:Blob[67]}
-	&{Type:8 Padding:0 Parent:ModuleRow[11] Value:Blob[72]}
-	&{Type:8 Padding:0 Parent:ModuleRow[12] Value:Blob[77]}
-	&{Type:8 Padding:0 Parent:ModuleRow[13] Value:Blob[82]}
-	&{Type:8 Padding:0 Parent:ModuleRow[14] Value:Blob[96]}
+	&{Type:8 Padding:0 Parent:FieldRow[2] Value:Blob[27]}
+	&{Type:8 Padding:0 Parent:FieldRow[3] Value:Blob[32]}
+	&{Type:8 Padding:0 Parent:FieldRow[4] Value:Blob[37]}
+	&{Type:8 Padding:0 Parent:FieldRow[5] Value:Blob[42]}
+	&{Type:8 Padding:0 Parent:FieldRow[6] Value:Blob[47]}
+	&{Type:8 Padding:0 Parent:FieldRow[7] Value:Blob[52]}
+	&{Type:8 Padding:0 Parent:FieldRow[8] Value:Blob[57]}
+	&{Type:8 Padding:0 Parent:FieldRow[9] Value:Blob[62]}
+	&{Type:8 Padding:0 Parent:FieldRow[10] Value:Blob[67]}
+	&{Type:8 Padding:0 Parent:FieldRow[11] Value:Blob[72]}
+	&{Type:8 Padding:0 Parent:FieldRow[12] Value:Blob[77]}
+	&{Type:8 Padding:0 Parent:FieldRow[13] Value:Blob[82]}
+	&{Type:8 Padding:0 Parent:FieldRow[14] Value:Blob[96]}
 CustomAttributeRow
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[1385]}
-	&{Parent:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[32]}
-	&{Parent:TypeRefRow[17] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[32]}
-	&{Parent:ModuleRow[39] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[32]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[92] Value:Blob[1385]}
+	&{Parent:TypeDefRow[5] Type:MemberRefRow[91] Value:Blob[32]}
+	&{Parent:FieldRow[17] Type:MemberRefRow[91] Value:Blob[32]}
+	&{Parent:MethodDefRow[39] Type:MemberRefRow[91] Value:Blob[32]}
 ClassLayoutRow
 	&{PackingSize:1 ClassSize:32 Parent:TypeDefRow[6]}
 StandAloneSigRow
@@ -357,24 +357,24 @@ AssemblyRefRow
 NestedClassRow
 	&{NestedClass:TypeDefRow[0] EnclosingClass:TypeDefRow[6]}
 GenericParamRow
-	&{Number:5 Flags:0 Owner:ModuleRow[0] Name:e>}
-	&{Number:322 Flags:0 Owner:ModuleRow[0] Name:son}
-	&{Number:322 Flags:0 Owner:ModuleRow[0] Name:JsonToken}
-	&{Number:322 Flags:0 Owner:ModuleRow[0] Name:validJsonException}
-	&{Number:322 Flags:0 Owner:ModuleRow[0] Name:sonException}
+	&{Number:5 Flags:0 Owner:TypeDefRow[0] Name:e>}
+	&{Number:322 Flags:0 Owner:TypeDefRow[0] Name:son}
+	&{Number:322 Flags:0 Owner:TypeDefRow[0] Name:JsonToken}
+	&{Number:322 Flags:0 Owner:TypeDefRow[0] Name:validJsonException}
+	&{Number:322 Flags:0 Owner:TypeDefRow[0] Name:sonException}
 MethodSpecRow
-	&{Method:ModuleRow[161] Instantiation:Blob[26]}
-	&{Method:ModuleRow[64] Instantiation:Blob[32]}
-	&{Method:ModuleRow[64] Instantiation:Blob[14]}
-	&{Method:ModuleRow[64] Instantiation:Blob[45]}
-	&{Method:ModuleRow[146] Instantiation:Blob[47]}
-	&{Method:ModuleRow[155] Instantiation:Blob[61]}
-	&{Method:TypeRefRow[176] Instantiation:Blob[89]}
-	&{Method:ModuleRow[64] Instantiation:Blob[115]}
-	&{Method:TypeRefRow[254] Instantiation:Blob[117]}
-	&{Method:TypeRefRow[254] Instantiation:Blob[45]}
-	&{Method:TypeRefRow[290] Instantiation:Blob[45]}
-	&{Method:TypeRefRow[296] Instantiation:Blob[47]}
+	&{Method:MethodDefRow[161] Instantiation:Blob[26]}
+	&{Method:MethodDefRow[64] Instantiation:Blob[32]}
+	&{Method:MethodDefRow[64] Instantiation:Blob[14]}
+	&{Method:MethodDefRow[64] Instantiation:Blob[45]}
+	&{Method:MethodDefRow[146] Instantiation:Blob[47]}
+	&{Method:MethodDefRow[155] Instantiation:Blob[61]}
+	&{Method:MemberRefRow[176] Instantiation:Blob[89]}
+	&{Method:MethodDefRow[64] Instantiation:Blob[115]}
+	&{Method:MemberRefRow[254] Instantiation:Blob[117]}
+	&{Method:MemberRefRow[254] Instantiation:Blob[45]}
+	&{Method:MemberRefRow[290] Instantiation:Blob[45]}
+	&{Method:MemberRefRow[296] Instantiation:Blob[47]}
 	<Module>
 	Json.JsonToken
 	Json.InvalidJsonException

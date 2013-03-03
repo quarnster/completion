@@ -1,27 +1,27 @@
 ModuleRow
 	&{Generation:0 Name:Png4BitIndexed.dll Mvid:DC74EA34-D62F-4136-93BF-797DF4217B8E EncId:nil EncBaseId:nil}
 TypeRefRow
-	&{ResolutionScope:TypeDefRow[1] TypeName:Object TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentOutOfRangeException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Byte TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeHelpers TypeNamespace:System.Runtime.CompilerServices}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Array TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeFieldHandle TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:UInt32 TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentNullException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ArgumentException TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:FileStream TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:FileMode TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:Stream TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[1] TypeName:MemoryStream TypeNamespace:System.IO}
-	&{ResolutionScope:TypeDefRow[2] TypeName:DeflateStream TypeNamespace:System.IO.Compression}
-	&{ResolutionScope:TypeDefRow[2] TypeName:CompressionMode TypeNamespace:System.IO.Compression}
-	&{ResolutionScope:TypeDefRow[1] TypeName:IDisposable TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:CompilerGeneratedAttribute TypeNamespace:System.Runtime.CompilerServices}
-	&{ResolutionScope:TypeDefRow[1] TypeName:ValueType TypeNamespace:System}
-	&{ResolutionScope:TypeDefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Object TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArgumentOutOfRangeException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Byte TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeHelpers TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Array TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeFieldHandle TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:UInt32 TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArgumentNullException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ArgumentException TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:FileStream TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:FileMode TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:Stream TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:MemoryStream TypeNamespace:System.IO}
+	&{ResolutionScope:AssemblyRefRow[2] TypeName:DeflateStream TypeNamespace:System.IO.Compression}
+	&{ResolutionScope:AssemblyRefRow[2] TypeName:CompressionMode TypeNamespace:System.IO.Compression}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:IDisposable TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:CompilerGeneratedAttribute TypeNamespace:System.Runtime.CompilerServices}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:ValueType TypeNamespace:System}
+	&{ResolutionScope:AssemblyRefRow[1] TypeName:RuntimeCompatibilityAttribute TypeNamespace:System.Runtime.CompilerServices}
 TypeDefRow
-	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:ModuleRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
+	&{Flags:0 TypeName:<Module> TypeNamespace: Extends:TypeDefRow[0] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:1048833 TypeName:Png4BitIndexed TypeNamespace:PeterO Extends:TypeRefRow[1] FieldList:FieldRow[1] MethodList:MethodDefRow[1]}
 	&{Flags:1048960 TypeName:<PrivateImplementationDetails>{dc74ea34-d62f-4136-93bf-797df4217b8e} TypeNamespace: Extends:TypeRefRow[1] FieldList:FieldRow[14] MethodList:MethodDefRow[14]}
 	&{Flags:1048851 TypeName:$ArrayType=32 TypeNamespace: Extends:TypeRefRow[18] FieldList:FieldRow[22] MethodList:MethodDefRow[14]}
@@ -100,8 +100,8 @@ MemberRefRow
 	&{Class:TypeRefRow[17] Name:.ctor Signature:Blob[15]}
 	&{Class:TypeRefRow[19] Name:.ctor Signature:Blob[15]}
 CustomAttributeRow
-	&{Parent:DeclSecurityRow[1] Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[192]}
-	&{Parent:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Type:%v(PANIC=runtime error: invalid memory address or nil pointer dereference) Value:Blob[78]}
+	&{Parent:AssemblyRow[1] Type:MemberRefRow[14] Value:Blob[192]}
+	&{Parent:TypeDefRow[3] Type:MemberRefRow[13] Value:Blob[78]}
 ClassLayoutRow
 	&{PackingSize:1 ClassSize:32 Parent:TypeDefRow[4]}
 	&{PackingSize:1 ClassSize:4 Parent:TypeDefRow[5]}
@@ -118,10 +118,10 @@ PropertyRow
 	&{Flags:0 Name:Width Type:Blob[188]}
 	&{Flags:0 Name:Transparent Type:Blob[188]}
 MethodSemanticsRow
-	&{Semantics:2 Method:MethodDefRow[10] Association:TypeRefRow[1]}
-	&{Semantics:2 Method:MethodDefRow[11] Association:TypeRefRow[2]}
-	&{Semantics:1 Method:MethodDefRow[13] Association:TypeRefRow[3]}
-	&{Semantics:2 Method:MethodDefRow[12] Association:TypeRefRow[3]}
+	&{Semantics:2 Method:MethodDefRow[10] Association:PropertyRow[1]}
+	&{Semantics:2 Method:MethodDefRow[11] Association:PropertyRow[2]}
+	&{Semantics:1 Method:MethodDefRow[13] Association:PropertyRow[3]}
+	&{Semantics:2 Method:MethodDefRow[12] Association:PropertyRow[3]}
 FieldRVARow
 	&{RVA:16384 Field:FieldRow[14]}
 	&{RVA:16416 Field:FieldRow[15]}

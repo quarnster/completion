@@ -308,7 +308,7 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 			)
 			idx = idx >> b
 			ti.index = idx
-			ti.table = int(tbl)
+			ti.table = tables[int(tbl)]
 			ti.metadataUtil = m
 			v2.Set(reflect.ValueOf(&ti))
 			ptr += uintptr(size)
