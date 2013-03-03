@@ -51,6 +51,29 @@ func (a *Assembly) ListRange(index uint32, table, memberTable int, getindex func
 	return
 }
 
+func (a *Assembly) Types() (types []content.Type, err error) {
+	var (
+		idx = ConcreteTableIndex{&a.MetadataUtil, 0, id_TypeDef}
+	)
+	for i := uint32(0); i < a.Tables[id_TypeDef].Rows; i++ {
+		idx.index = 1 + i
+		if rawtype, err := idx.Data(); err != nil {
+			return nil, err
+		} else {
+			var (
+				tr = rawtype.(*TypeDefRow)
+				t  content.Type
+			)
+			t.Name.Relative = fmt.Sprint(tr.TypeName)
+			if tr.TypeNamespace != "" {
+				t.Name.Absolute = fmt.Sprintf("%s.%s", tr.TypeNamespace, tr.TypeName)
+			}
+			types = append(types, t)
+		}
+	}
+	return
+}
+
 func (a *Assembly) Fields(index uint32) (fields []content.Field, err error) {
 	var (
 		startRow, endRow = a.ListRange(index, id_TypeDef, id_Field, func(i interface{}) uint32 { return i.(*TypeDefRow).FieldList.Index() })

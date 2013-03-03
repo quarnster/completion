@@ -140,6 +140,12 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[0] EnclosingClass:TypeDefRow[4]}
 	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[5]}
 	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[6]}
+	<Module>
+	PeterO.Png4BitIndexed
+	<PrivateImplementationDetails>{dc74ea34-d62f-4136-93bf-797df4217b8e}
+	$ArrayType=32
+	$ArrayType=4
+	$ArrayType=12
 <Module>
 Png4BitIndexed
 	private byte[] subdata1

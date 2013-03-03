@@ -239,6 +239,11 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[0] EnclosingClass:TypeDefRow[3]}
 	&{NestedClass:TypeDefRow[2] EnclosingClass:TypeDefRow[4]}
 	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[5]}
+	<Module>
+	CompleteSharp
+	MyAppDomain
+	Hack
+	Accessibility
 <Module>
 CompleteSharp
 	private static string sep

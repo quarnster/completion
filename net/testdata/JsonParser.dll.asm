@@ -375,6 +375,12 @@ MethodSpecRow
 	&{Method:TypeRefRow[254] Instantiation:Blob[45]}
 	&{Method:TypeRefRow[290] Instantiation:Blob[45]}
 	&{Method:TypeRefRow[296] Instantiation:Blob[47]}
+	<Module>
+	Json.JsonToken
+	Json.InvalidJsonException
+	Json.JsonParser
+	<PrivateImplementationDetails>{fa75a08b-59e8-4d4a-b10e-2114294958f4}
+	$ArrayType=32
 <Module>
 JsonToken
 	public int value__

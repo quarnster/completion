@@ -32,13 +32,13 @@ func TestLoadAssembly(t *testing.T) {
 	}
 
 	for i := range fi {
-		if strings.HasSuffix(fi[i].Name(), ".asm") {
+		if strings.HasSuffix(fi[i].Name(), ".exe") || strings.HasSuffix(fi[i].Name(), ".dll") {
 			path := testdata_path + fi[i].Name()
-			if data, err := ioutil.ReadFile(path); err != nil {
-				t.Errorf("Error reading test data: %s", err)
-			} else {
-				tests[strings.Replace(path, ".asm", "", -1)] = data
+			data, err := ioutil.ReadFile(path + ".asm")
+			if err != nil {
+				t.Logf("Error reading test data: %s. Testdata will be created", err)
 			}
+			tests[path] = data
 		}
 	}
 
@@ -75,9 +75,16 @@ func TestLoadAssembly(t *testing.T) {
 					}
 				}
 			}
+
+			if types, err := asm.Types(); err != nil {
+				t.Error(err)
+			} else {
+				for i := range types {
+					res += fmt.Sprintf("\t%s\n", types[i])
+				}
+			}
 			td := asm.Tables[id_TypeDef]
 			ty := reflect.New(td.RowType).Interface().(*TypeDefRow)
-
 			for i := uint32(0); i < td.Rows; i++ {
 				ptr, _ := td.Index(i + 1)
 				asm.Create(ptr, ty)
