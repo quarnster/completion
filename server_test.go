@@ -34,7 +34,7 @@ func send(s string) (string, error) {
 
 func handler(w io.Writer, intent content.Intent) {
 	log.Println(intent)
-	if b, err := json.Marshal(&content.Response{1}); err != nil {
+	if b, err := json.Marshal(&content.Response{1, nil}); err != nil {
 		log.Println(err)
 		fmt.Fprintf(w, "Failed to create response: %v", err)
 	} else {
