@@ -17,7 +17,7 @@ var (
 		{0x1FFFFFFF, 0xDFFFFFFF},
 	}
 
-	signed_tests = [][2]int{
+	signed_tests = [][2]int64{
 		{3, 0x06000000},
 		{-3, 0x7B000000},
 		{64, 0x80800000},
