@@ -1,5 +1,11 @@
 public class Basic {
 
+	static int sVal;
+
+	static {
+		sVal = 2 * 3;
+	}
+
 	interface Callable {
 		void call();
 	}
