@@ -1358,6 +1358,7 @@ NestedClassRow
 	$ArrayType=32
 <Module>
 SwitchType
+	extends System.Enum
 	public int value__
 	public static SevenZip.CommandLineParser.SwitchType Simple
 	public static SevenZip.CommandLineParser.SwitchType PostMinus
@@ -1365,6 +1366,7 @@ SwitchType
 	public static SevenZip.CommandLineParser.SwitchType UnLimitedPostString
 	public static SevenZip.CommandLineParser.SwitchType PostChar
 SwitchForm
+	extends System.Object
 	public string IDString
 	public SevenZip.CommandLineParser.SwitchType Type
 	public boolean Multi
@@ -1375,12 +1377,14 @@ SwitchForm
 	public void  .ctor(string idString, SevenZip.CommandLineParser.SwitchType type, boolean multi, int minLen)
 	public void  .ctor(string idString, SevenZip.CommandLineParser.SwitchType type, boolean multi)
 SwitchResult
+	extends System.Object
 	public boolean ThereIs
 	public boolean WithMinus
 	public System.Collections.ArrayList PostStrings
 	public int PostCharIndex
 	public void  .ctor()
 Parser
+	extends System.Object
 	private static char kSwitchID1
 	private static char kSwitchID2
 	private static char kSwitchMinus
@@ -1395,14 +1399,17 @@ Parser
 	private static boolean  ParseSubCharsCommand(int numForms, CommandSubCharsSet[] forms, string commandString, System.Collections.ArrayList indices)
 	private static boolean  IsItSwitchChar(char c)
 CommandForm
+	extends System.Object
 	public string IDString
 	public boolean PostStringMode
 	public void  .ctor(string idString, boolean postStringMode)
 CommandSubCharsSet
+	extends System.Object
 	public string Chars
 	public boolean EmptyAllowed
 	public void  .ctor()
 CRC
+	extends System.Object
 	public static uint[] Table
 	private uint _value
 	public void  .ctor()
@@ -1414,6 +1421,7 @@ CRC
 	private static boolean  VerifyDigest(uint digest, byte[] data, uint offset, uint size)
 	private static void  .cctor()
 InBuffer
+	extends System.Object
 	private byte[] m_Buffer
 	private uint m_Pos
 	private uint m_Limit
@@ -1429,6 +1437,7 @@ InBuffer
 	public byte  ReadByte()
 	public ulong  GetProcessedSize()
 OutBuffer
+	extends System.Object
 	private byte[] m_Buffer
 	private uint m_Pos
 	private uint m_BufferSize
@@ -1455,6 +1464,7 @@ IMatchFinder
 	public uint  GetMatches(uint[] distances)
 	public void  Skip(uint num)
 BinTree
+	extends SevenZip.Compression.LZ.InWindow
 	private static uint kHash2Size
 	private static uint kHash3Size
 	private static uint kBT2HashSize
@@ -1490,6 +1500,7 @@ BinTree
 	private void  Normalize()
 	public void  SetCutValue(uint cutValue)
 InWindow
+	extends System.Object
 	public byte[] _bufferBase
 	private System.IO.Stream _stream
 	private uint _posLimit
@@ -1515,6 +1526,7 @@ InWindow
 	public uint  GetNumAvailableBytes()
 	public void  ReduceOffsets(int subValue)
 OutWindow
+	extends System.Object
 	private byte[] _buffer
 	private uint _pos
 	private uint _windowSize
@@ -1531,6 +1543,7 @@ OutWindow
 	public void  PutByte(byte b)
 	public byte  GetByte(uint distance)
 Base
+	extends System.Object
 	public static uint kNumRepDistances
 	public static uint kNumStates
 	public static int kNumPosSlotBits
@@ -1561,6 +1574,7 @@ Base
 	public void  .ctor()
 	public static uint  GetLenToPosState(uint len)
 State
+	extends System.ValueType
 	public uint Index
 	public void  Init()
 	public void  UpdateChar()
@@ -1569,6 +1583,10 @@ State
 	public void  UpdateShortRep()
 	public boolean  IsCharState()
 Decoder
+	extends System.Object
+	implements:
+		SevenZip.ICoder
+		SevenZip.ISetDecoderProperties
 	private SevenZip.Compression.LZ.OutWindow m_OutWindow
 	private SevenZip.Compression.RangeCoder.Decoder m_RangeDecoder
 	private BitDecoder[] m_IsMatchDecoders
@@ -1596,6 +1614,7 @@ Decoder
 	public final void  SetDecoderProperties(byte[] properties)
 	public boolean  Train(System.IO.Stream stream)
 LenDecoder
+	extends System.Object
 	private SevenZip.Compression.RangeCoder.BitDecoder m_Choice
 	private SevenZip.Compression.RangeCoder.BitDecoder m_Choice2
 	private BitTreeDecoder[] m_LowCoder
@@ -1607,6 +1626,7 @@ LenDecoder
 	public void  Init()
 	public uint  Decode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, uint posState)
 LiteralDecoder
+	extends System.Object
 	private Decoder2[] m_Coders
 	private int m_NumPrevBits
 	private int m_NumPosBits
@@ -1618,12 +1638,18 @@ LiteralDecoder
 	public byte  DecodeNormal(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, uint pos, byte prevByte)
 	public byte  DecodeWithMatchByte(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, uint pos, byte prevByte, byte matchByte)
 Decoder2
+	extends System.ValueType
 	private BitDecoder[] m_Decoders
 	public void  Create()
 	public void  Init()
 	public byte  DecodeNormal(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
 	public byte  DecodeWithMatchByte(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, byte matchByte)
 Encoder
+	extends System.Object
+	implements:
+		SevenZip.ICoder
+		SevenZip.ISetCoderProperties
+		SevenZip.IWriteCoderProperties
 	private static uint kIfinityPrice
 	private static int kDefaultDictionaryLogSize
 	private static uint kNumFastBytesDefault
@@ -1715,10 +1741,12 @@ Encoder
 	public void  SetTrainSize(uint trainSize)
 	private static void  .cctor()
 EMatchFinderType
+	extends System.Enum
 	public int value__
 	public static EMatchFinderType BT2
 	public static EMatchFinderType BT4
 LiteralEncoder
+	extends System.Object
 	private Encoder2[] m_Coders
 	private int m_NumPrevBits
 	private int m_NumPosBits
@@ -1728,6 +1756,7 @@ LiteralEncoder
 	public void  Init()
 	public Encoder2  GetSubCoder(uint pos, byte prevByte)
 Encoder2
+	extends System.ValueType
 	private BitEncoder[] m_Encoders
 	public void  Create()
 	public void  Init()
@@ -1735,6 +1764,7 @@ Encoder2
 	public void  EncodeMatched(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, byte matchByte, byte symbol)
 	public uint  GetPrice(boolean matchMode, byte matchByte, byte symbol)
 LenEncoder
+	extends System.Object
 	private SevenZip.Compression.RangeCoder.BitEncoder _choice
 	private SevenZip.Compression.RangeCoder.BitEncoder _choice2
 	private BitTreeEncoder[] _lowCoder
@@ -1745,6 +1775,7 @@ LenEncoder
 	public void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, uint symbol, uint posState)
 	public void  SetPrices(uint posState, uint numSymbols, uint[] prices, uint st)
 LenPriceTableEncoder
+	extends LenEncoder
 	private uint[] _prices
 	private uint _tableSize
 	private uint[] _counters
@@ -1755,6 +1786,7 @@ LenPriceTableEncoder
 	public void  UpdateTables(uint numPosStates)
 	public void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, uint symbol, uint posState)
 Optimal
+	extends System.Object
 	public State State
 	public boolean Prev1IsChar
 	public boolean Prev2
@@ -1772,6 +1804,7 @@ Optimal
 	public void  MakeAsShortRep()
 	public boolean  IsShortRep()
 CDoubleStream
+	extends System.IO.Stream
 	public System.IO.Stream s1
 	public System.IO.Stream s2
 	public int fileIndex
@@ -1789,6 +1822,7 @@ CDoubleStream
 	public long  Seek(long offset, System.IO.SeekOrigin origin)
 	public void  SetLength(long value)
 LzmaAlone
+	extends System.Object
 	public void  .ctor()
 	private static void  PrintHelp()
 	private static boolean  GetNumber(string s, int v)
@@ -1796,6 +1830,7 @@ LzmaAlone
 	private static int  Main2(string[] args)
 	private static int  Main(string[] args)
 Key
+	extends System.Enum
 	public int value__
 	public static Key Help1
 	public static Key Help2
@@ -1811,6 +1846,7 @@ Key
 	public static Key StdOut
 	public static Key Train
 LzmaBench
+	extends System.Object
 	private static uint kAdditionalSize
 	private static uint kCompressedAdditionalSize
 	private static uint kMaxLzmaPropSize
@@ -1826,12 +1862,14 @@ LzmaBench
 	private static void  PrintResults(uint dictionarySize, ulong elapsedTime, ulong size, boolean decompressMode, ulong secondSize)
 	public static int  LzmaBenchmark(int numIterations, uint dictionarySize)
 CRandomGenerator
+	extends System.Object
 	private uint A1
 	private uint A2
 	public void  .ctor()
 	public void  Init()
 	public uint  GetRnd()
 CBitRandomGenerator
+	extends System.Object
 	private CRandomGenerator RG
 	private uint Value
 	private int NumBits
@@ -1839,6 +1877,7 @@ CBitRandomGenerator
 	public void  Init()
 	public uint  GetRnd(int numBits)
 CBenchRandomGenerator
+	extends System.Object
 	private CBitRandomGenerator RG
 	private uint Pos
 	private uint Rep0
@@ -1853,6 +1892,7 @@ CBenchRandomGenerator
 	private uint  GetLen2()
 	public void  Generate()
 CrcOutStream
+	extends System.IO.Stream
 	public SevenZip.CRC CRC
 	public void  .ctor()
 	public void  Init()
@@ -1870,6 +1910,9 @@ CrcOutStream
 	public void  WriteByte(byte b)
 	public void  Write(byte[] buffer, int offset, int count)
 CProgressInfo
+	extends System.Object
+	implements:
+		SevenZip.ICodeProgress
 	public long ApprovedStart
 	public long InSize
 	public System.DateTime Time
@@ -1877,6 +1920,7 @@ CProgressInfo
 	public void  Init()
 	public final void  SetProgress(long inSize, long outSize)
 Resources
+	extends System.Object
 	private static System.Resources.ResourceManager _resMgr
 	private static System.Globalization.CultureInfo _resCulture
 	public void  .ctor()
@@ -1884,12 +1928,14 @@ Resources
 	public static System.Globalization.CultureInfo  get_Culture()
 	public static void  set_Culture(System.Globalization.CultureInfo value)
 Settings
+	extends System.Configuration.ApplicationSettingsBase
 	private static LzmaAlone.Properties.Settings m_Value
 	private static object m_SyncObject
 	public void  .ctor()
 	public static LzmaAlone.Properties.Settings  get_Value()
 	private static void  .cctor()
 Encoder
+	extends System.Object
 	public static uint kTopValue
 	private System.IO.Stream Stream
 	public ulong Low
@@ -1910,6 +1956,7 @@ Encoder
 	public void  EncodeBit(uint size0, int numTotalBits, uint symbol)
 	public long  GetProcessedSizeAdd()
 Decoder
+	extends System.Object
 	public static uint kTopValue
 	public uint Range
 	public uint Code
@@ -1925,6 +1972,7 @@ Decoder
 	public uint  DecodeDirectBits(int numTotalBits)
 	public uint  DecodeBit(uint size0, int numTotalBits)
 BitEncoder
+	extends System.ValueType
 	public static int kNumBitModelTotalBits
 	public static uint kBitModelTotal
 	private static int kNumMoveBits
@@ -1940,6 +1988,7 @@ BitEncoder
 	public uint  GetPrice1()
 	private static void  .cctor()
 BitDecoder
+	extends System.ValueType
 	public static int kNumBitModelTotalBits
 	public static uint kBitModelTotal
 	private static int kNumMoveBits
@@ -1948,6 +1997,7 @@ BitDecoder
 	public void  Init()
 	public uint  Decode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
 BitTreeEncoder
+	extends System.ValueType
 	private BitEncoder[] Models
 	private int NumBitLevels
 	public void  .ctor(int numBitLevels)
@@ -1959,6 +2009,7 @@ BitTreeEncoder
 	public static uint  ReverseGetPrice(BitEncoder[] Models, uint startIndex, int NumBitLevels, uint symbol)
 	public static void  ReverseEncode(BitEncoder[] Models, uint startIndex, SevenZip.Compression.RangeCoder.Encoder rangeEncoder, int NumBitLevels, uint symbol)
 BitTreeDecoder
+	extends System.ValueType
 	private BitDecoder[] Models
 	private int NumBitLevels
 	public void  .ctor(int numBitLevels)
@@ -1967,14 +2018,17 @@ BitTreeDecoder
 	public uint  ReverseDecode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
 	public static uint  ReverseDecode(BitDecoder[] Models, uint startIndex, SevenZip.Compression.RangeCoder.Decoder rangeDecoder, int NumBitLevels)
 DataErrorException
+	extends System.ApplicationException
 	public void  .ctor()
 InvalidParamException
+	extends System.ApplicationException
 	public void  .ctor()
 ICodeProgress
 	public void  SetProgress(long inSize, long outSize)
 ICoder
 	public void  Code(System.IO.Stream inStream, System.IO.Stream outStream, long inSize, long outSize, SevenZip.ICodeProgress progress)
 CoderPropID
+	extends System.Enum
 	public int value__
 	public static SevenZip.CoderPropID DefaultProp
 	public static SevenZip.CoderPropID DictionarySize
@@ -1998,5 +2052,7 @@ IWriteCoderProperties
 ISetDecoderProperties
 	public void  SetDecoderProperties(byte[] properties)
 <PrivateImplementationDetails>{36dcba29-69c8-4e99-b590-8bd2082695d5}
+	extends System.Object
 	public static $ArrayType=32 $field-0
 $ArrayType=32
+	extends System.ValueType

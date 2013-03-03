@@ -246,12 +246,14 @@ NestedClassRow
 	Accessibility
 <Module>
 CompleteSharp
+	extends System.Object
 	private static string sep
 	public void  .ctor()
 	private static void  reportError(System.Exception e)
 	public static void  Main(string[] arg)
 	private static void  .cctor()
 MyAppDomain
+	extends System.MarshalByRefObject
 	private System.AppDomain ad
 	private string[] assemblies
 	private DateTime[] times
@@ -261,6 +263,7 @@ MyAppDomain
 	public boolean  Execute(string[] args, System.Collections.ArrayList modules)
 	private void  CheckUpdate()
 Hack
+	extends System.MarshalByRefObject
 	public MyAppDomain ad
 	public void  .ctor()
 	private int  GetParameterExtent(string parameter)
@@ -277,6 +280,7 @@ Hack
 	public System.Type  GetType(string basename)
 	public boolean  Execute(string[] args, System.Collections.ArrayList modules)
 Accessibility
+	extends System.Enum
 	public int value__
 	public static Accessibility NONE
 	public static Accessibility STATIC

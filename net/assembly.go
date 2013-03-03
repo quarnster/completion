@@ -15,18 +15,45 @@ import (
 	"github.com/quarnster/completion/util"
 	"io"
 	"reflect"
+	"sort"
 	"unsafe"
+)
+
+var (
+	ErrInterface = errors.New("TypeDef is an interface, not a class")
 )
 
 type Assembly struct {
 	MetadataUtil
 }
 
-func TypeToContentType(t *Type, t2 *content.Type) {
+type AbstractType interface {
+	Name() string
+	Namespace() string
+}
+
+func ToContentType(t AbstractType) (t2 content.Type) {
 	t2.Name.Relative = t.Name()
 	if ns := t.Namespace(); ns != "" {
 		t2.Name.Absolute = ns + "." + t2.Name.Relative
 	}
+	return
+}
+
+func (t *TypeDefRow) Name() string {
+	return string(t.TypeName)
+}
+
+func (t *TypeDefRow) Namespace() string {
+	return string(t.TypeNamespace)
+}
+
+func (t *TypeRefRow) Name() string {
+	return string(t.TypeName)
+}
+
+func (t *TypeRefRow) Namespace() string {
+	return string(t.TypeNamespace)
 }
 
 func (a *Assembly) ListRange(index uint32, table, memberTable int, getindex func(interface{}) uint32) (startRow, endRow uint32) {
@@ -62,21 +89,16 @@ func (a *Assembly) Types() (types []content.Type, err error) {
 		} else {
 			var (
 				tr = rawtype.(*TypeDefRow)
-				t  content.Type
 			)
-			t.Name.Relative = fmt.Sprint(tr.TypeName)
-			if tr.TypeNamespace != "" {
-				t.Name.Absolute = fmt.Sprintf("%s.%s", tr.TypeNamespace, tr.TypeName)
-			}
-			types = append(types, t)
+			types = append(types, ToContentType(tr))
 		}
 	}
 	return
 }
 
-func (a *Assembly) Fields(index uint32) (fields []content.Field, err error) {
+func (a *Assembly) Fields(index TypeDefIndex) (fields []content.Field, err error) {
 	var (
-		startRow, endRow = a.ListRange(index, id_TypeDef, id_Field, func(i interface{}) uint32 { return i.(*TypeDefRow).FieldList.Index() })
+		startRow, endRow = a.ListRange(index.Index(), id_TypeDef, id_Field, func(i interface{}) uint32 { return i.(*TypeDefRow).FieldList.Index() })
 		idx              = ConcreteTableIndex{&a.MetadataUtil, startRow, id_Field}
 	)
 	for i := startRow; i < endRow; i++ {
@@ -96,7 +118,7 @@ func (a *Assembly) Fields(index uint32) (fields []content.Field, err error) {
 			} else if err = dec.Decode(&sig); err != nil {
 				return nil, err
 			} else {
-				TypeToContentType(&sig.Type, &f.Type)
+				f.Type = ToContentType(&sig.Type)
 			}
 			if field.Flags&FieldAttributes_Static != 0 {
 				f.Flags |= content.FLAG_STATIC
@@ -115,9 +137,9 @@ func (a *Assembly) Fields(index uint32) (fields []content.Field, err error) {
 	return fields, nil
 }
 
-func (a *Assembly) Parameters(index uint32) (params []content.Variable, err error) {
+func (a *Assembly) Parameters(index MethodDefIndex) (params []content.Variable, err error) {
 	var (
-		startRow, endRow = a.ListRange(index, id_MethodDef, id_Param, func(i interface{}) uint32 { return i.(*MethodDefRow).ParamList.Index() })
+		startRow, endRow = a.ListRange(index.Index(), id_MethodDef, id_Param, func(i interface{}) uint32 { return i.(*MethodDefRow).ParamList.Index() })
 		idx              = ConcreteTableIndex{&a.MetadataUtil, startRow, id_Param}
 	)
 	for i := startRow; i < endRow; i++ {
@@ -134,10 +156,10 @@ func (a *Assembly) Parameters(index uint32) (params []content.Variable, err erro
 	return params, nil
 }
 
-func (a *Assembly) Methods(index uint32) (methods []content.Method, err error) {
+func (a *Assembly) Methods(index TypeDefIndex) (methods []content.Method, err error) {
 	var (
-		startRow, endRow = a.ListRange(index, id_TypeDef, id_MethodDef, func(i interface{}) uint32 { return i.(*TypeDefRow).MethodList.Index() })
-		idx              = ConcreteTableIndex{&a.MetadataUtil, startRow, id_MethodDef}
+		startRow, endRow = a.ListRange(index.Index(), id_TypeDef, id_MethodDef, func(i interface{}) uint32 { return i.(*TypeDefRow).MethodList.Index() })
+		idx              = &ConcreteTableIndex{&a.MetadataUtil, startRow, id_MethodDef}
 	)
 	for i := startRow; i < endRow; i++ {
 		idx.index = i
@@ -151,7 +173,7 @@ func (a *Assembly) Methods(index uint32) (methods []content.Method, err error) {
 				sig    MethodDefSig
 			)
 			m.Name.Relative = string(method.Name)
-			if m.Parameters, err = a.Parameters(i); err != nil {
+			if m.Parameters, err = a.Parameters(idx); err != nil {
 				return nil, err
 			}
 			if dec, err = NewSignatureDecoder(method.Signature); err != nil {
@@ -163,7 +185,7 @@ func (a *Assembly) Methods(index uint32) (methods []content.Method, err error) {
 			} else {
 
 				for i := range sig.Params {
-					TypeToContentType(&sig.Params[i].Type, &m.Parameters[i].Type)
+					m.Parameters[i].Type = ToContentType(&sig.Params[i].Type)
 				}
 				if method.Flags&MethodAttributes_Final != 0 {
 					m.Flags |= content.FLAG_FINAL
@@ -180,12 +202,63 @@ func (a *Assembly) Methods(index uint32) (methods []content.Method, err error) {
 				}
 
 				m.Returns = make([]content.Variable, 1)
-				TypeToContentType(&sig.RetType.Type, &m.Returns[0].Type)
+				m.Returns[0].Type = ToContentType(&sig.RetType.Type)
 			}
 			methods = append(methods, m)
 		}
 	}
 	return methods, nil
+}
+
+func (a *Assembly) Extends(index TypeDefIndex) (t content.Type, err error) {
+	if raw, err := index.Data(); err != nil {
+		return t, err
+	} else {
+		row := raw.(*TypeDefRow)
+		if (row.Flags & TypeAttributes_ClassSemanticsMask) != TypeAttributes_Class {
+			return t, ErrInterface
+		}
+		if row.Extends.Index() != 0 {
+			if raw, err := row.Extends.Data(); err != nil {
+				return t, err
+			} else {
+				t = ToContentType(raw.(AbstractType))
+			}
+		}
+	}
+	return
+}
+
+func (a *Assembly) Implements(index TypeDefIndex) (interfaces []content.Type, err error) {
+	table := a.Tables[id_InterfaceImpl]
+	ci := ConcreteTableIndex{metadataUtil: &a.MetadataUtil, index: 0, table: id_InterfaceImpl}
+	idx := sort.Search(int(table.Rows), func(in int) bool {
+		i := uint32(in)
+		ci.index = i + 1
+		if raw, err := ci.Data(); err == nil {
+			c := raw.(*InterfaceImplRow)
+			return c.Class.Index() == index.Index()
+		}
+		return false
+	})
+
+	for i := uint32(idx); i < table.Rows; i++ {
+		ci.index = i + 1
+		if raw, err := ci.Data(); err != nil {
+			return nil, err
+		} else {
+			c := raw.(*InterfaceImplRow)
+			if c.Class.Index() != index.Index() {
+				break
+			}
+			if raw, err := c.Interface.Data(); err != nil {
+				return nil, err
+			} else {
+				interfaces = append(interfaces, ToContentType(raw.(AbstractType)))
+			}
+		}
+	}
+	return
 }
 
 type Validateable interface {

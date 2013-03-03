@@ -153,6 +153,7 @@ NestedClassRow
 	$ArrayType=12
 <Module>
 Png8BitIndexed
+	extends System.Object
 	private byte[] subdata1
 	private uint[] crcTable
 	private int width
@@ -182,6 +183,7 @@ Png8BitIndexed
 	public int  get_Transparent()
 	public void  set_Transparent(int value)
 <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}
+	extends System.Object
 	public static $ArrayType=32 $field-0
 	public static $ArrayType=4 $field-1
 	public static $ArrayType=12 $field-2
@@ -191,5 +193,8 @@ Png8BitIndexed
 	public static $ArrayType=4 $field-6
 	public static $ArrayType=4 $field-7
 $ArrayType=32
+	extends System.ValueType
 $ArrayType=4
+	extends System.ValueType
 $ArrayType=12
+	extends System.ValueType

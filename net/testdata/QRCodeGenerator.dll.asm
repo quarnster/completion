@@ -355,6 +355,7 @@ NestedClassRow
 	$ArrayType=8
 <Module>
 QRCodeGenerator
+	extends System.Object
 	private static int[] GaloisExp
 	private static int[] GaloisLog
 	private static int[][] polynomials
@@ -372,6 +373,7 @@ QRCodeGenerator
 	private static CodeMatrix  GetEncodedMatrix(byte[] data, boolean stringData)
 	private static void  .cctor()
 CodeMatrix
+	extends System.Object
 	private byte[] data
 	private int size
 	private int codewordX
@@ -397,6 +399,7 @@ CodeMatrix
 	public void  DrawFinderPattern(int x, int y)
 	public string  ToString()
 BitList
+	extends System.Object
 	private genericinst list
 	private byte curbyte
 	private int curbit
@@ -406,6 +409,7 @@ BitList
 	public void  AddBits(int value, int bits)
 	public void  PadTo(int size)
 <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}
+	extends System.Object
 	public static $ArrayType=2044 $field-0
 	public static $ArrayType=1024 $field-1
 	public static $ArrayType=28 $field-2
@@ -437,29 +441,56 @@ BitList
 	public static $ArrayType=256 $field-1C
 	public static $ArrayType=8 $field-1D
 $ArrayType=2044
+	extends System.ValueType
 $ArrayType=1024
+	extends System.ValueType
 $ArrayType=28
+	extends System.ValueType
 $ArrayType=32
+	extends System.ValueType
 $ArrayType=36
+	extends System.ValueType
 $ArrayType=40
+	extends System.ValueType
 $ArrayType=44
+	extends System.ValueType
 $ArrayType=48
+	extends System.ValueType
 $ArrayType=52
+	extends System.ValueType
 $ArrayType=56
+	extends System.ValueType
 $ArrayType=60
+	extends System.ValueType
 $ArrayType=64
+	extends System.ValueType
 $ArrayType=68
+	extends System.ValueType
 $ArrayType=72
+	extends System.ValueType
 $ArrayType=80
+	extends System.ValueType
 $ArrayType=88
+	extends System.ValueType
 $ArrayType=96
+	extends System.ValueType
 $ArrayType=104
+	extends System.ValueType
 $ArrayType=112
+	extends System.ValueType
 $ArrayType=120
+	extends System.ValueType
 $ArrayType=136
+	extends System.ValueType
 $ArrayType=1120
+	extends System.ValueType
 $ArrayType=960
+	extends System.ValueType
 $ArrayType=128
+	extends System.ValueType
 $ArrayType=160
+	extends System.ValueType
 $ArrayType=256
+	extends System.ValueType
 $ArrayType=8
+	extends System.ValueType

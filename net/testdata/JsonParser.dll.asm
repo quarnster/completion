@@ -383,6 +383,7 @@ MethodSpecRow
 	$ArrayType=32
 <Module>
 JsonToken
+	extends System.Enum
 	public int value__
 	public static Json.JsonToken Unknown
 	public static Json.JsonToken LeftBrace
@@ -397,8 +398,10 @@ JsonToken
 	public static Json.JsonToken False
 	public static Json.JsonToken Null
 InvalidJsonException
+	extends System.Exception
 	public void  .ctor(string message)
 JsonParser
+	extends System.Object
 	private static System.Globalization.NumberStyles JsonNumbers
 	private static genericinst _cache
 	private static char[] _base16
@@ -442,5 +445,7 @@ JsonParser
 	private static void  .cctor()
 	private static int  <SerializeString>m__0(char symbol)
 <PrivateImplementationDetails>{fa75a08b-59e8-4d4a-b10e-2114294958f4}
+	extends System.Object
 	public static $ArrayType=32 $field-0
 $ArrayType=32
+	extends System.ValueType

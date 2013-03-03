@@ -83,20 +83,44 @@ func TestLoadAssembly(t *testing.T) {
 					res += fmt.Sprintf("\t%s\n", types[i])
 				}
 			}
+			var idx = &ConcreteTableIndex{metadataUtil: &asm.MetadataUtil, index: 0, table: id_TypeDef}
 			td := asm.Tables[id_TypeDef]
-			ty := reflect.New(td.RowType).Interface().(*TypeDefRow)
+			//ty := reflect.New(td.RowType).Interface().(*TypeDefRow)
 			for i := uint32(0); i < td.Rows; i++ {
-				ptr, _ := td.Index(i + 1)
-				asm.Create(ptr, ty)
+				idx.index = i + 1
+				var ty *TypeDefRow
+				if tr, err := idx.Data(); err != nil {
+					t.Error(err)
+					continue
+				} else {
+					ty = tr.(*TypeDefRow)
+				}
 				res += fmt.Sprintln(ty.TypeName)
-				if fields, err := asm.Fields(i + 1); err != nil {
+				if i > 0 && (ty.Flags&TypeAttributes_ClassSemanticsMask) != TypeAttributes_Interface {
+					if ext, err := asm.Extends(idx); err != nil {
+						t.Error(err)
+					} else {
+						res += fmt.Sprintf("\textends %s\n", ext)
+					}
+					if impl, err := asm.Implements(idx); err != nil {
+						t.Error(err)
+					} else {
+						if len(impl) != 0 {
+							res += "\timplements:\n"
+						}
+						for j := range impl {
+							res += fmt.Sprintf("\t\t%s\n", impl[j])
+						}
+					}
+				}
+				if fields, err := asm.Fields(idx); err != nil {
 					t.Error(err)
 				} else {
 					for j := range fields {
 						res += fmt.Sprintf("\t%s\n", fields[j])
 					}
 				}
-				if methods, err := asm.Methods(i + 1); err != nil {
+				if methods, err := asm.Methods(idx); err != nil {
 					t.Error(err)
 				} else {
 					for j := range methods {
