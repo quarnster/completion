@@ -431,8 +431,8 @@ func (mt *MetadataTable) Index(index uint32) (uintptr, error) {
 		return 0, errors.New("Trying to dereference a nil table")
 	}
 	index--
-	if index > mt.Rows {
-		return 0, errors.New(fmt.Sprintf("Index outside of bounds: %x > %x", index, mt.Rows))
+	if index >= mt.Rows {
+		return 0, errors.New(fmt.Sprintf("Index outside of bounds: %x >= %x", index, mt.Rows))
 	}
 	return mt.Ptr + uintptr(index)*mt.RowSize, nil
 }

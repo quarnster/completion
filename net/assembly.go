@@ -43,12 +43,9 @@ func (a *Assembly) ListRange(index uint32, table, memberTable int, getindex func
 	if i, err := idx.Data(); err == nil {
 		endRow = getindex(i)
 	} else {
-		endRow = startRow
-	}
-	if endRow < startRow {
 		endRow = tableEnd
 	}
-	if endRow > tableEnd {
+	if endRow < startRow {
 		endRow = tableEnd
 	}
 	return

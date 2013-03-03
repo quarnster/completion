@@ -272,3 +272,10 @@ Hack
 	public System.Type  GetType(string basename)
 	public boolean  Execute(string[] args, System.Collections.ArrayList modules)
 Accessibility
+	public int value__
+	public static Accessibility NONE
+	public static Accessibility STATIC
+	public static Accessibility PRIVATE
+	public static Accessibility PROTECTED
+	public static Accessibility PUBLIC
+	public static Accessibility INTERNAL
