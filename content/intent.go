@@ -13,10 +13,17 @@ type Handler func(io.Writer, Intent)
 type Intent struct {
 	Version   int64
 	Operation string
+	Data      []Data
 }
 
 type Response struct {
 	Version int64 `json:"version"`
+	Data    []Data
+}
+
+type Data struct {
+	Name  string
+	Value []byte
 }
 
 func AddHandler(name string, h Handler) {
