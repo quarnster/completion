@@ -55,7 +55,9 @@ const (
 	id_nullTable              = 0x100
 	id_Blob                   = 0x101
 )
-
+var (
+	ErrMetadata = errors.New("Metadata header isn't in the expected format")
+)
 var table_row_type_lut = map[int]reflect.Type{
 	id_Assembly:               reflect.TypeOf(AssemblyRow{}),
 	id_AssemblyOS:             reflect.TypeOf(AssemblyOSRow{}),
@@ -128,7 +130,7 @@ func (m *MetadataHeader) StreamHeaders() []*stream_header {
 
 func (m *MetadataHeader) Validate() error {
 	if m.Signature != metadata_signature || m.MajorVersion != 1 || m.MinorVersion != 1 || m.Reserved != 0 {
-		return errors.New(fmt.Sprintf("Metadata header isn't in the expected format: %#v", m))
+		return ErrMetadata
 	}
 	return nil
 }

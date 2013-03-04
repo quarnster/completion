@@ -21,6 +21,7 @@ import (
 
 var (
 	ErrInterface = errors.New("TypeDef is an interface, not a class")
+	ErrNotAssembly = errors.New("This does not appear to be a .net assembly")
 )
 
 type Assembly struct {
@@ -354,11 +355,26 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 		}
 	}
 	net := ids[14]
-	off := net.VirtualAddress - sections[0].VirtualAddress + sections[0].PointerToRawData
+	if net.VirtualAddress == 0 || net.Size == 0 {
+		return nil, ErrNotAssembly
+	}
+	off := uint32(0)
+	sec := 0
+	for net.VirtualAddress > sections[sec+1].VirtualAddress && sec < len(sections)-2 {
+		sec++
+	}
+	off = net.VirtualAddress - sections[sec].VirtualAddress + sections[sec].PointerToRawData
 
 	cor20 := (*image_cor20)(unsafe.Pointer(&data[off]))
+	if cor20.MetaData.VirtualAddress == 0 || cor20.MetaData.Size == 0 {
+		return nil, ErrNotAssembly
+	}
+	sec = 0
+	for cor20.MetaData.VirtualAddress > sections[sec+1].VirtualAddress && sec < len(sections)-2 {
+		sec++
+	}
 
-	off = cor20.MetaData.VirtualAddress - sections[0].VirtualAddress + sections[0].PointerToRawData
+	off = cor20.MetaData.VirtualAddress - sections[sec].VirtualAddress + sections[sec].PointerToRawData
 	t := (*MetadataHeader)(unsafe.Pointer(&data[off]))
 	if err := t.Validate(); err != nil {
 		return nil, err
