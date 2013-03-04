@@ -57,7 +57,13 @@ func TestLoadAllAssemblies(t *testing.T) {
 					mr := d.(*ModuleRow)
 					ci.table = id_Assembly
 					if d2, err := ci.Data(); err != nil {
-						outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
+						if asm.Tables[id_Assembly].Ptr == 0 {
+							// It's ok for an assembly to not have an assembly table, although
+							// I've only ever seen this with System.EnterpriseServices.Wrapper.dll
+							t.Logf("Successfully loaded module %50s {%s}", mr.Name, mr.Mvid)
+						} else {
+							outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
+						}
 					} else {
 						ar := d2.(*AssemblyRow)
 						if mn, an := string(mr.Name), string(ar.Name); !strings.HasPrefix(mn, an) && (an !=  "mscorlib" && mn != "CommonLanguageRuntimeLibrary") {
@@ -89,8 +95,7 @@ func TestLoadAllAssemblies(t *testing.T) {
 			}
 
 			for i := 0; i < len(fi); {
-				// TODO: why does System.EnterpriceServices.Wrapper.dll fail?
-				if fn := fi[i].Name(); strings.HasSuffix(fn, ".dll") && !strings.HasSuffix(fn, "System.EnterpriseServices.Wrapper.dll") {
+				if fn := fi[i].Name(); strings.HasSuffix(fn, ".dll") {
 					if len(inChan)+1 >= cap(inChan) {
 						for len(outChan) > 0 {
 							o := <-outChan
