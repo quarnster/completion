@@ -15,7 +15,7 @@ const (
 
 func TestSpecificClasses(t *testing.T) {
 	var (
-		tests = make(map[Classname][]byte)
+		tests = make(map[Classname]string)
 		err   error
 	)
 
@@ -48,7 +48,7 @@ func TestSpecificClasses(t *testing.T) {
 			if data, err := ioutil.ReadFile(testdata_path + fi[i].Name()); err != nil {
 				t.Errorf("Error reading test data: %s", err)
 			} else {
-				tests[Filename(strings.Replace(fi[i].Name(), "_", "/", -1)).Classname()] = data
+				tests[Filename(strings.Replace(fi[i].Name(), "_", "/", -1)).Classname()] = string(data)
 			}
 		}
 	}
@@ -80,10 +80,8 @@ func TestSpecificClasses(t *testing.T) {
 			continue
 		}
 
-		if d, err := util.Diff([]byte(v), []byte(c.String())); err != nil {
-			t.Error(err)
-		} else if len(d) != 0 {
-			t.Error(string(d))
+		if d := util.Diff(c.String(), v); len(d) != 0 {
+			t.Error(d)
 		}
 	}
 }

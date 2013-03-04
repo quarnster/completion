@@ -2,6 +2,8 @@ package net
 
 import (
 	"bytes"
+	"errors"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"runtime"
@@ -49,8 +51,18 @@ func TestLoadMonoAssemblies(t *testing.T) {
 					if d, err := ci.Data(); err != nil {
 						outChan <- err
 					} else {
-						mr := d.(*ModuleRow)
-						t.Logf("Successfully loaded module %50s {%s}", mr.Name, mr.Mvid)
+						ci.table = id_Assembly
+						if d2, err := ci.Data(); err != nil {
+							outChan <- err
+						} else {
+							mr := d.(*ModuleRow)
+							ar := d2.(*AssemblyRow)
+							if mn, an := string(mr.Name), string(ar.Name); !strings.HasPrefix(mn, an) {
+								outChan <- errors.New(fmt.Sprintf("The assembly name isn't the prefix of the module name: %s, %s", an, mn))
+							} else {
+								t.Logf("Successfully loaded module %50s {%s} %s", mn, mr.Mvid, an)
+							}
+						}
 					}
 				}
 			}

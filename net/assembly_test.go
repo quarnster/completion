@@ -16,7 +16,7 @@ const (
 
 func TestLoadAssembly(t *testing.T) {
 	var (
-		tests = make(map[string][]byte)
+		tests = make(map[string]string)
 		err   error
 	)
 
@@ -38,7 +38,7 @@ func TestLoadAssembly(t *testing.T) {
 			if err != nil {
 				t.Logf("Error reading test data: %s. Testdata will be created", err)
 			}
-			tests[path] = data
+			tests[path] = string(data)
 		}
 	}
 
@@ -140,10 +140,8 @@ func TestLoadAssembly(t *testing.T) {
 				continue
 			}
 
-			if d, err := util.Diff([]byte(v), []byte(res)); err != nil {
-				t.Error(err)
-			} else if len(d) != 0 {
-				t.Error(string(d))
+			if d := util.Diff(res, v); len(d) != 0 {
+				t.Error(d)
 			}
 		}
 	}

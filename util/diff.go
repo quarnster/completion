@@ -1,36 +1,47 @@
 package util
 
 import (
-	"io/ioutil"
-	"os"
-	"os/exec"
+	"strings"
 )
 
-// Diff cut'n'paste from http://golang.org/src/cmd/gofmt/gofmt.go
-func Diff(b1, b2 []byte) (data []byte, err error) {
-	f1, err := ioutil.TempFile("", "completion_diff")
-	if err != nil {
-		return
-	}
-	defer os.Remove(f1.Name())
-	defer f1.Close()
+// Naive algorithm from http://en.wikipedia.org/wiki/Longest_common_subsequence_problem
+func mDiff(av, bv []string) (ret []string) {
+	matrix := make([]int, (len(av)+1)*(len(bv)+1))
+	pitch := (len(bv) + 1)
+	for i, a := range av {
+		mp := (i+1)*pitch + 1
 
-	f2, err := ioutil.TempFile("", "completion_diff")
-	if err != nil {
-		return
+		for _, b := range bv {
+			if a == b {
+				matrix[mp] = matrix[mp-1-pitch] + 1
+			} else if matrix[mp-1] > matrix[mp-pitch] {
+				matrix[mp] = matrix[mp-1]
+			} else {
+				matrix[mp] = matrix[mp-pitch]
+			}
+			mp++
+		}
 	}
-	defer os.Remove(f2.Name())
-	defer f2.Close()
-
-	f1.Write(b1)
-	f2.Write(b2)
-
-	data, err = exec.Command("diff", "-u", f1.Name(), f2.Name()).CombinedOutput()
-	if len(data) > 0 {
-		// diff exits with a non-zero status when the files don't match.
-		// Ignore that failure as long as we get output.
-		err = nil
+	var inner func(i, j int)
+	inner = func(i, j int) {
+		if i > 0 && j > 0 && av[i-1] == bv[j-1] {
+			i--
+			j--
+			inner(i, j)
+		} else if j > 0 && (i == 0 || matrix[i*pitch+j-1] >= matrix[(i-1)*pitch+j]) {
+			inner(i, j-1)
+			ret = append(ret, "+ "+bv[j-1])
+		} else if i > 0 && (j == 0 || matrix[i*pitch+j-1] < matrix[(i-1)*pitch+j]) {
+			inner(i-1, j)
+			ret = append(ret, "- "+av[i-1])
+		}
 	}
+	inner(len(av), len(bv))
 	return
+}
 
+func Diff(a, b string) string {
+	a = strings.Replace(a, "\n\r", "\n", -1)
+	b = strings.Replace(b, "\n\r", "\n", -1)
+	return strings.Join(mDiff(strings.Split(a, "\n"), strings.Split(b, "\n")), "\n")
 }
