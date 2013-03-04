@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io"
 	"os"
@@ -32,13 +33,22 @@ func adddirs(pkg, path string, dirs []string) []string {
 }
 
 func main() {
+	var verbose bool
+	flag.BoolVar(&verbose, "v", verbose, "Verbose output")
+	flag.Parse()
 	c := exec.Command("go", "build", "-o", "parser_exe", "github.com/quarnster/parser/exe")
+	if verbose {
+		fmt.Println(c.Args)
+	}
 	if b, err := c.CombinedOutput(); err != nil {
 		panic(err)
 	} else if len(b) != 0 {
 		fmt.Println(string(b))
 	}
 	c = exec.Command("./parser_exe", "-peg=../java/descriptors/descriptors.peg", "-notest", "-ignore", "Entry,ComponentType,FieldType,ObjectType", "-testfile", "none silly")
+	if verbose {
+		fmt.Println(c.Args)
+	}
 	if b, err := c.CombinedOutput(); err != nil {
 		panic(err)
 	} else if len(b) != 0 {
@@ -54,10 +64,16 @@ func main() {
 		panic(err)
 	}
 	defer f2.Close()
+	if verbose {
+		fmt.Printf("Copying %s to %s\n", f1.Name(), f2.Name())
+	}
 	if _, err := io.Copy(f2, f1); err != nil {
 		panic(err)
 	}
 	tests := []string{"test"}
+	if verbose {
+		tests = append(tests, "-v")
+	}
 	tests = adddirs("github.com/quarnster/completion", "..", tests)
 	c = exec.Command("go", tests...)
 	r, err := c.StdoutPipe()
@@ -67,7 +83,7 @@ func main() {
 	if err := c.Start(); err != nil {
 		panic(err)
 	}
-	buf := make([]byte, 8)
+	buf := make([]byte, 2048)
 	for {
 		if n, err := r.Read(buf); err != nil && err != io.EOF {
 			panic(err)
