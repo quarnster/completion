@@ -231,14 +231,14 @@ StandAloneSigRow
 TypeSpecRow
 	&{Signature:Blob[161]}
 AssemblyRow
-	&{HashAlgId:SHA1 MajorVersion:0 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKey:Blob[0] Name:CompleteSharp}
+	&{HashAlgId:SHA1 MajorVersion:0 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKey:Blob[0] Name:CompleteSharp Culture:}
 AssemblyRefRow
-	&{MajorVersion:0 MinorVersion:2 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[0] Name:stem.Collections.Generic Culture:mscorlib HashValue:Blob[0]}
-	&{MajorVersion:0 MinorVersion:2 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[0] Name:stem.Collections.Generic Culture:System HashValue:Blob[0]}
+	&{MajorVersion:2 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[910] Name:mscorlib Culture: HashValue:Blob[0]}
+	&{MajorVersion:2 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[910] Name:System Culture: HashValue:Blob[0]}
 NestedClassRow
-	&{NestedClass:TypeDefRow[0] EnclosingClass:TypeDefRow[3]}
-	&{NestedClass:TypeDefRow[2] EnclosingClass:TypeDefRow[4]}
-	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[2]}
+	&{NestedClass:TypeDefRow[4] EnclosingClass:TypeDefRow[3]}
+	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[4]}
 	<Module>
 	CompleteSharp
 	MyAppDomain

@@ -1279,28 +1279,28 @@ MethodSemanticsRow
 FieldRVARow
 	&{RVA:65536 Field:FieldRow[302]}
 AssemblyRow
-	&{HashAlgId:SHA1 MajorVersion:4 MinorVersion:12 BuildNumber:4806 RevisionNumber:33211 Flags:0 PublicKey:Blob[0] Name:CommandLineParser}
+	&{HashAlgId:SHA1 MajorVersion:4 MinorVersion:12 BuildNumber:4806 RevisionNumber:33211 Flags:0 PublicKey:Blob[0] Name:CommandLineParser Culture:}
 AssemblyRefRow
-	&{MajorVersion:0 MinorVersion:2 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[0] Name:FixHashSize Culture:mscorlib HashValue:Blob[0]}
-	&{MajorVersion:0 MinorVersion:2 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[0] Name:FixHashSize Culture:System HashValue:Blob[0]}
+	&{MajorVersion:2 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[1965] Name:mscorlib Culture: HashValue:Blob[0]}
+	&{MajorVersion:2 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[1965] Name:System Culture: HashValue:Blob[0]}
 NestedClassRow
-	&{NestedClass:TypeDefRow[0] EnclosingClass:TypeDefRow[17]}
-	&{NestedClass:TypeDefRow[16] EnclosingClass:TypeDefRow[19]}
-	&{NestedClass:TypeDefRow[18] EnclosingClass:TypeDefRow[20]}
-	&{NestedClass:TypeDefRow[18] EnclosingClass:TypeDefRow[21]}
-	&{NestedClass:TypeDefRow[20] EnclosingClass:TypeDefRow[23]}
-	&{NestedClass:TypeDefRow[22] EnclosingClass:TypeDefRow[24]}
-	&{NestedClass:TypeDefRow[22] EnclosingClass:TypeDefRow[25]}
-	&{NestedClass:TypeDefRow[24] EnclosingClass:TypeDefRow[26]}
-	&{NestedClass:TypeDefRow[22] EnclosingClass:TypeDefRow[27]}
-	&{NestedClass:TypeDefRow[22] EnclosingClass:TypeDefRow[28]}
-	&{NestedClass:TypeDefRow[22] EnclosingClass:TypeDefRow[31]}
-	&{NestedClass:TypeDefRow[30] EnclosingClass:TypeDefRow[33]}
-	&{NestedClass:TypeDefRow[32] EnclosingClass:TypeDefRow[34]}
-	&{NestedClass:TypeDefRow[32] EnclosingClass:TypeDefRow[35]}
-	&{NestedClass:TypeDefRow[32] EnclosingClass:TypeDefRow[36]}
-	&{NestedClass:TypeDefRow[32] EnclosingClass:TypeDefRow[37]}
-	&{NestedClass:TypeDefRow[32] EnclosingClass:TypeDefRow[55]}
+	&{NestedClass:TypeDefRow[17] EnclosingClass:TypeDefRow[16]}
+	&{NestedClass:TypeDefRow[19] EnclosingClass:TypeDefRow[18]}
+	&{NestedClass:TypeDefRow[20] EnclosingClass:TypeDefRow[18]}
+	&{NestedClass:TypeDefRow[21] EnclosingClass:TypeDefRow[20]}
+	&{NestedClass:TypeDefRow[23] EnclosingClass:TypeDefRow[22]}
+	&{NestedClass:TypeDefRow[24] EnclosingClass:TypeDefRow[22]}
+	&{NestedClass:TypeDefRow[25] EnclosingClass:TypeDefRow[24]}
+	&{NestedClass:TypeDefRow[26] EnclosingClass:TypeDefRow[22]}
+	&{NestedClass:TypeDefRow[27] EnclosingClass:TypeDefRow[22]}
+	&{NestedClass:TypeDefRow[28] EnclosingClass:TypeDefRow[22]}
+	&{NestedClass:TypeDefRow[31] EnclosingClass:TypeDefRow[30]}
+	&{NestedClass:TypeDefRow[33] EnclosingClass:TypeDefRow[32]}
+	&{NestedClass:TypeDefRow[34] EnclosingClass:TypeDefRow[32]}
+	&{NestedClass:TypeDefRow[35] EnclosingClass:TypeDefRow[32]}
+	&{NestedClass:TypeDefRow[36] EnclosingClass:TypeDefRow[32]}
+	&{NestedClass:TypeDefRow[37] EnclosingClass:TypeDefRow[32]}
+	&{NestedClass:TypeDefRow[55] EnclosingClass:TypeDefRow[54]}
 	<Module>
 	SevenZip.CommandLineParser.SwitchType
 	SevenZip.CommandLineParser.SwitchForm

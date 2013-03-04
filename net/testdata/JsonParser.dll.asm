@@ -350,31 +350,31 @@ TypeSpecRow
 FieldRVARow
 	&{RVA:24576 Field:FieldRow[18]}
 AssemblyRow
-	&{HashAlgId:SHA1 MajorVersion:0 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKey:Blob[0] Name:JsonParser}
+	&{HashAlgId:SHA1 MajorVersion:0 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKey:Blob[0] Name:JsonParser Culture:}
 AssemblyRefRow
-	&{MajorVersion:0 MinorVersion:2 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[0] Name:oCharArray Culture:mscorlib HashValue:Blob[0]}
-	&{MajorVersion:0 MinorVersion:3 BuildNumber:5 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[0] Name:oCharArray Culture:System.Core HashValue:Blob[0]}
+	&{MajorVersion:2 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[1416] Name:mscorlib Culture: HashValue:Blob[0]}
+	&{MajorVersion:3 MinorVersion:5 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[1416] Name:System.Core Culture: HashValue:Blob[0]}
 NestedClassRow
-	&{NestedClass:TypeDefRow[0] EnclosingClass:TypeDefRow[6]}
+	&{NestedClass:TypeDefRow[6] EnclosingClass:TypeDefRow[5]}
 GenericParamRow
-	&{Number:5 Flags:0 Owner:TypeDefRow[0] Name:e>}
-	&{Number:322 Flags:0 Owner:TypeDefRow[0] Name:son}
-	&{Number:322 Flags:0 Owner:TypeDefRow[0] Name:JsonToken}
-	&{Number:322 Flags:0 Owner:TypeDefRow[0] Name:validJsonException}
-	&{Number:322 Flags:0 Owner:TypeDefRow[0] Name:sonException}
+	&{Number:0 Flags:0 Owner:MethodDefRow[3] Name:T}
+	&{Number:0 Flags:0 Owner:MethodDefRow[5] Name:T}
+	&{Number:0 Flags:0 Owner:MethodDefRow[7] Name:T}
+	&{Number:0 Flags:0 Owner:MethodDefRow[13] Name:T}
+	&{Number:0 Flags:0 Owner:MethodDefRow[16] Name:T}
 MethodSpecRow
-	&{Method:MethodDefRow[161] Instantiation:Blob[26]}
-	&{Method:MethodDefRow[64] Instantiation:Blob[32]}
-	&{Method:MethodDefRow[64] Instantiation:Blob[14]}
-	&{Method:MethodDefRow[64] Instantiation:Blob[45]}
-	&{Method:MethodDefRow[146] Instantiation:Blob[47]}
-	&{Method:MethodDefRow[155] Instantiation:Blob[61]}
-	&{Method:MemberRefRow[176] Instantiation:Blob[89]}
-	&{Method:MethodDefRow[64] Instantiation:Blob[115]}
-	&{Method:MemberRefRow[254] Instantiation:Blob[117]}
-	&{Method:MemberRefRow[254] Instantiation:Blob[45]}
-	&{Method:MemberRefRow[290] Instantiation:Blob[45]}
-	&{Method:MemberRefRow[296] Instantiation:Blob[47]}
+	&{Method:MethodDefRow[13] Instantiation:Blob[128]}
+	&{Method:MethodDefRow[16] Instantiation:Blob[128]}
+	&{Method:MethodDefRow[7] Instantiation:Blob[128]}
+	&{Method:MemberRefRow[22] Instantiation:Blob[292]}
+	&{Method:MemberRefRow[23] Instantiation:Blob[310]}
+	&{Method:MemberRefRow[30] Instantiation:Blob[353]}
+	&{Method:MemberRefRow[44] Instantiation:Blob[128]}
+	&{Method:MemberRefRow[57] Instantiation:Blob[509]}
+	&{Method:MemberRefRow[58] Instantiation:Blob[509]}
+	&{Method:MemberRefRow[22] Instantiation:Blob[581]}
+	&{Method:MemberRefRow[22] Instantiation:Blob[593]}
+	&{Method:MemberRefRow[23] Instantiation:Blob[642]}
 	<Module>
 	Json.JsonToken
 	Json.InvalidJsonException

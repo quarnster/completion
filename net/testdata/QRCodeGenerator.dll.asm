@@ -288,39 +288,39 @@ FieldRVARow
 	&{RVA:31828 Field:FieldRow[51]}
 	&{RVA:32084 Field:FieldRow[52]}
 AssemblyRow
-	&{HashAlgId:SHA1 MajorVersion:0 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKey:Blob[0] Name:QRCodeGenerator}
+	&{HashAlgId:SHA1 MajorVersion:0 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKey:Blob[0] Name:QRCodeGenerator Culture:}
 AssemblyRefRow
-	&{MajorVersion:0 MinorVersion:2 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[0] Name:ist`1 Culture:mscorlib HashValue:Blob[0]}
+	&{MajorVersion:2 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[544] Name:mscorlib Culture: HashValue:Blob[0]}
 NestedClassRow
-	&{NestedClass:TypeDefRow[0] EnclosingClass:TypeDefRow[3]}
-	&{NestedClass:TypeDefRow[2] EnclosingClass:TypeDefRow[4]}
-	&{NestedClass:TypeDefRow[2] EnclosingClass:TypeDefRow[6]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[7]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[8]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[9]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[10]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[11]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[12]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[13]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[14]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[15]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[16]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[17]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[18]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[19]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[20]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[21]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[22]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[23]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[24]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[25]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[26]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[27]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[28]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[29]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[30]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[31]}
-	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[32]}
+	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[2]}
+	&{NestedClass:TypeDefRow[4] EnclosingClass:TypeDefRow[2]}
+	&{NestedClass:TypeDefRow[6] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[7] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[8] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[9] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[10] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[11] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[12] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[13] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[14] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[15] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[16] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[17] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[18] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[19] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[20] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[21] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[22] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[23] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[24] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[25] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[26] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[27] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[28] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[29] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[30] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[31] EnclosingClass:TypeDefRow[5]}
+	&{NestedClass:TypeDefRow[32] EnclosingClass:TypeDefRow[5]}
 	<Module>
 	PeterO.QRCodeGenerator
 	CodeMatrix

@@ -132,14 +132,14 @@ FieldRVARow
 	&{RVA:16444 Field:FieldRow[20]}
 	&{RVA:16448 Field:FieldRow[21]}
 AssemblyRow
-	&{HashAlgId:SHA1 MajorVersion:0 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKey:Blob[0] Name:Png4BitIndexed}
+	&{HashAlgId:SHA1 MajorVersion:0 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKey:Blob[0] Name:Png4BitIndexed Culture:}
 AssemblyRefRow
-	&{MajorVersion:0 MinorVersion:2 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[0] Name:et_Width Culture:mscorlib HashValue:Blob[0]}
-	&{MajorVersion:0 MinorVersion:2 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[0] Name:et_Width Culture:System HashValue:Blob[0]}
+	&{MajorVersion:2 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[223] Name:mscorlib Culture: HashValue:Blob[0]}
+	&{MajorVersion:2 MinorVersion:0 BuildNumber:0 RevisionNumber:0 Flags:0 PublicKeyOrToken:Blob[223] Name:System Culture: HashValue:Blob[0]}
 NestedClassRow
-	&{NestedClass:TypeDefRow[0] EnclosingClass:TypeDefRow[4]}
-	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[5]}
-	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[6]}
+	&{NestedClass:TypeDefRow[4] EnclosingClass:TypeDefRow[3]}
+	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[3]}
+	&{NestedClass:TypeDefRow[6] EnclosingClass:TypeDefRow[3]}
 	<Module>
 	PeterO.Png4BitIndexed
 	<PrivateImplementationDetails>{dc74ea34-d62f-4136-93bf-797df4217b8e}

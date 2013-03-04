@@ -12,6 +12,7 @@ type (
 		Flags          AssemblyFlags
 		PublicKey      BlobIndex
 		Name           StringIndex
+		Culture        StringIndex
 	}
 
 	// Spec II.22.3
