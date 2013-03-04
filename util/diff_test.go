@@ -12,6 +12,7 @@ var tests = [][]string{
 	{"a\nb\nc\nd\ne\nf", "b\nd\ne\nf\ng", "- a\n- c\n+ g"},
 	{"a\n\rb\n\rc\n\rd\n\re\n\rf", "b\nd\ne\nf\ng", "- a\n- c\n+ g"},
 	{"a\nb\nc\nd\ne\nf", "b\n\rd\n\re\n\rf\n\rg", "- a\n- c\n+ g"},
+	{"a\r\nb\r\nc\r\nd\r\ne\r\nf", "b\nd\ne\nf\ng", "- a\n- c\n+ g"},
 }
 
 func TestDiff(t *testing.T) {
