@@ -21,7 +21,7 @@ func TestSpecificClasses(t *testing.T) {
 
 	classpath, err := DefaultClasspath()
 	if err != nil {
-		t.Fatal(err)
+		t.Skip(err)
 	}
 
 	c, err := NewCompositeArchive(classpath)

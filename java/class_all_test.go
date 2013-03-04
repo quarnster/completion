@@ -15,7 +15,7 @@ func init() {
 func TestLoadAllClasses(t *testing.T) {
 	classpath, err := DefaultClasspath()
 	if err != nil {
-		t.Fatal(err)
+		t.Skip(err)
 	}
 	var (
 		inChan  = make(chan []byte, 128)

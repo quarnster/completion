@@ -4,7 +4,7 @@ import "testing"
 
 func TestClasses(t *testing.T) {
 	if p, err := DefaultClasspath(); err != nil {
-		t.Error(err)
+		t.Skip(err)
 	} else {
 		c, err := NewCompositeArchive(p)
 
@@ -28,7 +28,7 @@ func TestClasses(t *testing.T) {
 func BenchmarkCompositeArchiveLoadClass(b *testing.B) {
 	b.StopTimer()
 	if p, err := DefaultClasspath(); err != nil {
-		b.Error(err)
+		b.Skip(err)
 	} else {
 		classes := []Classname{"java.lang.String", "javax.swing.JLabel"}
 		c, err := NewCompositeArchive(p)
