@@ -32,6 +32,16 @@ func (coff *coff_file_header) Validate() error {
 	return nil
 }
 
+func (coff *coff_file_header) VirtualToFileOffset(addr uint32) uint32 {
+	off := uint32(0)
+	sec := 0
+	for addr > coff.Sections[sec+1].VirtualAddress && sec < len(coff.Sections)-2 {
+		sec++
+	}
+	off = addr - coff.Sections[sec].VirtualAddress + coff.Sections[sec].PointerToRawData
+	return off
+}
+
 type optional_header struct {
 	Magic                       uint16
 	MajorLinkerVersion          uint8
@@ -74,6 +84,9 @@ type optional_header struct {
 func (o *optional_header) Validate() error {
 	if o.Magic != pe32 && o.Magic != pe32p {
 		return errors.New(fmt.Sprintf("Unkown optional header magic: %x", o.Magic))
+	}
+	if len(o.RVAS) != 16 || o.RVAS[14].VirtualAddress == 0 || o.RVAS[14].Size == 0 {
+		return ErrNotAssembly
 	}
 	return nil
 }

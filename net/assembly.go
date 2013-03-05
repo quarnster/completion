@@ -7,7 +7,6 @@ package net
 // http://www.ecma-international.org/publications/standards/Ecma-335.htm
 
 import (
-	"bytes"
 	"encoding/binary"
 	"errors"
 	"fmt"
@@ -319,20 +318,11 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 	var (
 		br        = util.BinaryReader{r, binary.LittleEndian}
 		err       error
-		data      []byte
 		pe_offset uint32
+		coff      coff_file_header
+		cor20     image_cor20
+		t         MetadataHeader
 	)
-
-	if size, err := r.Seek(0, 2); err != nil {
-		return nil, err
-	} else if _, err := r.Seek(0, 0); err != nil {
-		return nil, err
-	} else if data, err = br.Read(int(size)); err != nil {
-		return nil, err
-	}
-
-	r = bytes.NewReader(data)
-	br.Reader = r
 
 	if _, err := r.Seek(pe_signature_offset, 0); err != nil {
 		return nil, err
@@ -344,39 +334,22 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 		return nil, err
 	}
 
-	coff := coff_file_header{}
 	if err := br.ReadInterface(&coff); err != nil {
 		return nil, err
 	}
-	sections := coff.Sections
 	net := coff.OptionalHeader.RVAS[14]
-	if net.VirtualAddress == 0 || net.Size == 0 {
-		return nil, ErrNotAssembly
-	}
-	off := uint32(0)
-	sec := 0
-	for net.VirtualAddress > sections[sec+1].VirtualAddress && sec < len(sections)-2 {
-		sec++
-	}
-	off = net.VirtualAddress - sections[sec].VirtualAddress + sections[sec].PointerToRawData
+	off := coff.VirtualToFileOffset(net.VirtualAddress)
 	if _, err := br.Seek(int64(off), 0); err != nil {
 		return nil, err
 	}
 
-	cor20 := image_cor20{}
 	if err := br.ReadInterface(&cor20); err != nil {
-		return nil, ErrNotAssembly
+		return nil, err
 	}
-	sec = 0
-	for cor20.MetaData.VirtualAddress > sections[sec+1].VirtualAddress && sec < len(sections)-2 {
-		sec++
-	}
-
-	off = cor20.MetaData.VirtualAddress - sections[sec].VirtualAddress + sections[sec].PointerToRawData
+	off = coff.VirtualToFileOffset(cor20.MetaData.VirtualAddress)
 	if _, err := br.Seek(int64(off), 0); err != nil {
 		return nil, err
 	}
-	var t MetadataHeader
 	if err := br.ReadInterface(&t); err != nil {
 		return nil, err
 	}
