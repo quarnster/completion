@@ -140,7 +140,7 @@ func TestLoadAssembly(t *testing.T) {
 				continue
 			}
 
-			if d := util.Diff(v, res); len(d) != 0 {
+			if d := util.Diff(res, v); len(d) != 0 {
 				t.Error(d)
 			}
 		}

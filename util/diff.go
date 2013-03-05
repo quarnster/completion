@@ -22,21 +22,24 @@ func mDiff(av, bv []string) (ret []string) {
 			mp++
 		}
 	}
-	var inner func(i, j int)
-	inner = func(i, j int) {
+	var inner func(i, j int, context int)
+	inner = func(i, j int, context int) {
 		if i > 0 && j > 0 && av[i-1] == bv[j-1] {
 			i--
 			j--
-			inner(i, j)
+			inner(i, j, context-1)
+			if context > 0 {
+				ret = append(ret, "  "+bv[j])
+			}
 		} else if j > 0 && (i == 0 || matrix[i*pitch+j-1] >= matrix[(i-1)*pitch+j]) {
-			inner(i, j-1)
+			inner(i, j-1, 3)
 			ret = append(ret, "+ "+bv[j-1])
 		} else if i > 0 && (j == 0 || matrix[i*pitch+j-1] < matrix[(i-1)*pitch+j]) {
-			inner(i-1, j)
+			inner(i-1, j, 3)
 			ret = append(ret, "- "+av[i-1])
 		}
 	}
-	inner(len(av), len(bv))
+	inner(len(av), len(bv), 0)
 	return
 }
 
