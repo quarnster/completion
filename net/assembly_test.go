@@ -2,6 +2,7 @@ package net
 
 import (
 	"fmt"
+	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/util"
 	"io/ioutil"
 	"os"
@@ -12,6 +13,7 @@ import (
 
 const (
 	testdata_path = "./testdata/"
+	findtype_test = testdata_path + "7zip.dll"
 )
 
 func TestLoadAssembly(t *testing.T) {
@@ -142,6 +144,46 @@ func TestLoadAssembly(t *testing.T) {
 
 			if d := util.Diff(v, res); len(d) != 0 {
 				t.Error(d)
+			}
+		}
+	}
+}
+
+func TestFindType(t *testing.T) {
+	type Test struct {
+		in         string
+		expectFind bool
+	}
+	var tests = []Test{
+		{"SevenZip.CommandLineParser.SwitchType", true},
+		{"SevenZip.Compression.LZ.OutWindow", true},
+		{"SevenZip.Compression.LZ.OutWindow.Something", false},
+		{"SevenZip.ISetDecoderProperties", true},
+		{"Key", true},
+		{"Key.Something", false},
+	}
+	f, err := os.Open(findtype_test)
+	if err != nil {
+		t.Fatalf("Failed to open %s: %s", findtype_test, err)
+	}
+	defer f.Close()
+	if asm, err := LoadAssembly(f); err != nil {
+		t.Error(err)
+	} else {
+		for _, test := range tests {
+			if ty, err := asm.FindType(content.FullyQualifiedName{Absolute: test.in}); err != nil {
+				t.Error(err)
+			} else if ty == nil {
+				if test.expectFind {
+					t.Errorf("Expected to find type %s, but didn't", test.in)
+				}
+			} else if raw, err := ty.Data(); err != nil {
+				t.Error(err)
+			} else {
+				tr := raw.(*TypeDefRow)
+				if n := AbsoluteName(tr); n != test.in {
+					t.Errorf("Type name mismatch: %s != %s", n, test.in)
+				}
 			}
 		}
 	}

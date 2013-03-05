@@ -34,6 +34,14 @@ type AbstractType interface {
 	Namespace() string
 }
 
+func AbsoluteName(t AbstractType) string {
+	n := t.Name()
+	if ns := t.Namespace(); ns != "" {
+		return ns + "." + n
+	}
+	return n
+}
+
 func ToContentType(t AbstractType) (t2 content.Type) {
 	t2.Name.Relative = t.Name()
 	if ns := t.Namespace(); ns != "" {
@@ -271,6 +279,42 @@ func (a *Assembly) Implements(index TypeDefIndex) (interfaces []content.Type, er
 		}
 	}
 	return
+}
+
+func (a *Assembly) FindType(t content.FullyQualifiedName) (TypeDefIndex, error) {
+	if t.Absolute == "" {
+		return nil, errors.New("Can only look up types with a full absolute name")
+	}
+	idx := ConcreteTableIndex{&a.MetadataUtil, 0, id_TypeDef}
+	for i := uint32(0); i < a.Tables[id_TypeDef].Rows; i++ {
+		idx.index = 1 + i
+		if rawtype, err := idx.Data(); err != nil {
+			return nil, err
+		} else {
+			var (
+				tr = rawtype.(*TypeDefRow)
+			)
+			if AbsoluteName(tr) == t.Absolute {
+				return &idx, nil
+			}
+		}
+	}
+	return nil, nil
+}
+
+func (a *Assembly) Complete(t content.FullyQualifiedName) (*content.CompletionResult, error) {
+	var ret content.CompletionResult
+	if idx, err := a.FindType(t); err != nil {
+		return nil, err
+	} else if idx == nil {
+		return nil, errors.New(fmt.Sprintf("Type not found in assembly: %s", t.Absolute))
+	} else if ret.Fields, err = a.Fields(idx); err != nil {
+		return nil, err
+	} else if ret.Methods, err = a.Methods(idx); err != nil {
+		return nil, err
+	}
+
+	return &ret, nil
 }
 
 type Validateable interface {
