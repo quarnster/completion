@@ -337,26 +337,8 @@ func (m *MetadataUtil) Create(br *util.BinaryReader, v interface{}) error {
 					return err
 				}
 			}
-		case reflect.Uint32:
-			if d, err := br.Uint32(); err != nil {
-				return err
-			} else {
-				v2.SetUint(uint64(d))
-			}
-		case reflect.Uint16:
-			if d, err := br.Uint16(); err != nil {
-				return err
-			} else {
-				v2.SetUint(uint64(d))
-			}
-		case reflect.Uint8:
-			if d, err := br.Uint8(); err != nil {
-				return err
-			} else {
-				v2.SetUint(uint64(d))
-			}
 		default:
-			return errors.New(fmt.Sprintf("Don't know how to create %s (%s)", v2.Kind(), v2.Type()))
+			return br.ReadInterface(v)
 		}
 	}
 	return nil
