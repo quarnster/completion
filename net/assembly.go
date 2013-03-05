@@ -323,7 +323,6 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 	var (
 		br        = util.BinaryReader{r, binary.LittleEndian}
 		err       error
-		isPe32    bool
 		data      []byte
 		pe_offset uint32
 	)
@@ -349,56 +348,12 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 		return nil, err
 	}
 
-	if check, err := br.Read(len(pe_magic)); err != nil {
-		return nil, err
-	} else if bytes.Compare(check, pe_magic) != 0 {
-		return nil, errors.New(fmt.Sprintf("PE Magic mismatch: %v", check))
-	}
 	coff := coff_file_header{}
 	if err := br.ReadInterface(&coff); err != nil {
 		return nil, err
 	}
-
-	if magic, err := br.Uint16(); err != nil {
-		return nil, err
-	} else if magic != pe32 && magic != pe32p {
-		return nil, errors.New(fmt.Sprintf("Unsupported optional header magic: %x", magic))
-	} else {
-		isPe32 = magic == pe32
-	}
-	rvas := 0
-	if isPe32 {
-		opt_pe32 := optional_header_pe32{}
-		if err := br.ReadInterface(&opt_pe32); err != nil {
-			return nil, err
-		}
-		rvas = int(opt_pe32.NumberOfRvaAndSizes)
-	} else {
-		opt_pe32p := optional_header_pe32p{}
-		if err := br.ReadInterface(&opt_pe32p); err != nil {
-			return nil, err
-		}
-
-		rvas = int(opt_pe32p.NumberOfRvaAndSizes)
-	}
-
-	ids := make([]image_data_directory, rvas)
-	for i := range ids {
-		if err := br.ReadInterface(&ids[i]); err != nil {
-			return nil, err
-		}
-	}
-
-	sections, err := coff.SectionTable(&br)
-	if err != nil {
-		return nil, err
-	}
-	for i := range sections {
-		if err := sections[i].Validate(); err != nil {
-			return nil, err
-		}
-	}
-	net := ids[14]
+	sections := coff.Sections
+	net := coff.OptionalHeader.RVAS[14]
 	if net.VirtualAddress == 0 || net.Size == 0 {
 		return nil, ErrNotAssembly
 	}
@@ -414,9 +369,6 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 
 	cor20 := image_cor20{}
 	if err := br.ReadInterface(&cor20); err != nil {
-		return nil, err
-	}
-	if cor20.MetaData.VirtualAddress == 0 || cor20.MetaData.Size == 0 {
 		return nil, ErrNotAssembly
 	}
 	sec = 0

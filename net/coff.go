@@ -1,9 +1,9 @@
 package net
 
 import (
+	"bytes"
 	"errors"
 	"fmt"
-	"github.com/quarnster/completion/util"
 )
 
 const (
@@ -13,6 +13,7 @@ const (
 )
 
 type coff_file_header struct {
+	Magic                []byte `length:"4"`
 	Machine              uint16
 	NumberOfSections     uint16
 	TimeDateStamp        uint32
@@ -20,29 +21,29 @@ type coff_file_header struct {
 	NumberOfSymbols      uint32
 	SizeOfOptionalHeader uint16
 	Characteristics      uint16
+	OptionalHeader       optional_header
+	Sections             []section_table `length:"NumberOfSections"`
 }
 
-func (coff *coff_file_header) SectionTable(br *util.BinaryReader) (sections []section_table, err error) {
-	sections = make([]section_table, coff.NumberOfSections)
-	for i := range sections {
-		if err := br.ReadInterface(&sections[i]); err != nil {
-			return nil, err
-		}
+func (coff *coff_file_header) Validate() error {
+	if bytes.Compare(coff.Magic, pe_magic) != 0 {
+		return errors.New(fmt.Sprintf("PE Magic mismatch: %v", coff.Magic))
 	}
-
-	return sections, nil
+	return nil
 }
 
-type optional_header_common_1 struct {
-	MajorLinkerVersion      uint8
-	MinorLinkerVersion      uint8
-	SizeOfCode              uint32
-	SizeOfInitializedData   uint32
-	SizeOfUninitializedData uint32
-	AddressOfEntryPoint     uint32
-	BaseOfCode              uint32
-}
-type optional_header_common_2 struct {
+type optional_header struct {
+	Magic                       uint16
+	MajorLinkerVersion          uint8
+	MinorLinkerVersion          uint8
+	SizeOfCode                  uint32
+	SizeOfInitializedData       uint32
+	SizeOfUninitializedData     uint32
+	AddressOfEntryPoint         uint32
+	BaseOfCode                  uint32
+	BaseOfData                  uint32 `if:"Magic,0x10b"`
+	ImageBase                   uint32 `if:"Magic,0x10b"`
+	ImageBase64                 uint64 `if:"Magic,0x20b"`
 	SectionAlignment            uint32
 	FileAlignment               uint32
 	MajorOperatingSystemVersion uint16
@@ -57,33 +58,24 @@ type optional_header_common_2 struct {
 	CheckSum                    uint32
 	Subsystem                   uint16
 	DllCharacteristics          uint16
-}
-type optional_header_common_3 struct {
-	LoaderFlags         uint32
-	NumberOfRvaAndSizes uint32
-}
-
-type optional_header_pe32 struct {
-	optional_header_common_1
-	BaseOfData uint32
-	ImageBase  uint32
-	optional_header_common_2
-	SizeOfStackReserve uint32
-	SizeOfStackCommit  uint32
-	SizeOfHeapReserve  uint32
-	SizeOfHeapCommit   uint32
-	optional_header_common_3
+	SizeOfStackReserve          uint32 `if:"Magic,0x10b"`
+	SizeOfStackCommit           uint32 `if:"Magic,0x10b"`
+	SizeOfHeapReserve           uint32 `if:"Magic,0x10b"`
+	SizeOfHeapCommit            uint32 `if:"Magic,0x10b"`
+	SizeOfStackReserve64        uint64 `if:"Magic,0x20b"`
+	SizeOfStackCommit64         uint64 `if:"Magic,0x20b"`
+	SizeOfHeapReserve64         uint64 `if:"Magic,0x20b"`
+	SizeOfHeapCommit64          uint64 `if:"Magic,0x20b"`
+	LoaderFlags                 uint32
+	NumberOfRvaAndSizes         uint32
+	RVAS                        []image_data_directory `length:"NumberOfRvaAndSizes"`
 }
 
-type optional_header_pe32p struct {
-	optional_header_common_1
-	ImageBase uint64
-	optional_header_common_2
-	SizeOfStackReserve uint64
-	SizeOfStackCommit  uint64
-	SizeOfHeapReserve  uint64
-	SizeOfHeapCommit   uint64
-	optional_header_common_3
+func (o *optional_header) Validate() error {
+	if o.Magic != pe32 && o.Magic != pe32p {
+		return errors.New(fmt.Sprintf("Unkown optional header magic: %x", o.Magic))
+	}
+	return nil
 }
 
 type image_data_directory struct {
@@ -117,6 +109,13 @@ type image_cor20 struct {
 	MinorVersion uint16
 	MetaData     image_data_directory
 	Flags        uint32
+}
+
+func (cor20 *image_cor20) Validate() error {
+	if cor20.MetaData.VirtualAddress == 0 || cor20.MetaData.Size == 0 {
+		return ErrNotAssembly
+	}
+	return nil
 }
 
 func (s *section_table) String() string {
