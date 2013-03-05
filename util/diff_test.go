@@ -19,7 +19,7 @@ func TestDiff(t *testing.T) {
 		if r := Diff(test[0], test[1]); !strings.EqualFold(test[2], r) {
 			t.Errorf("Expected: %s\nGot: %s", test[2], r)
 		} else {
-			t.Logf("diff %#v %#v == %#v", test[0], test[1], r)
+			t.Logf("diff\n%s", r)
 		}
 	}
 }
