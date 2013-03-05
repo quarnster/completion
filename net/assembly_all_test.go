@@ -18,13 +18,7 @@ func init() {
 }
 
 func TestLoadAllAssemblies(t *testing.T) {
-	var paths []string
-	if mp := MonoDefaultPath(); mp != "" {
-		paths = append(paths, mp)
-	}
-	if p2, err := WindowsFrameworks(); err == nil {
-		paths = append(paths, p2...)
-	}
+	paths := DefaultPaths()
 	if len(paths) == 0 {
 		t.Skip("Neither mono nor Windows .NET Framework paths were possible to get")
 	}
