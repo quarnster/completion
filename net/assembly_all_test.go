@@ -50,7 +50,31 @@ func TestLoadAllAssemblies(t *testing.T) {
 					t.Logf("%s is not a .net assembly", fn)
 				}
 			} else {
-				ci := ConcreteTableIndex{metadataUtil: &asm.MetadataUtil, table: id_Module, index: 1}
+				ci := ConcreteTableIndex{metadataUtil: &asm.MetadataUtil, table: id_TypeDef, index: 1}
+				for i := uint32(0); i < asm.Tables[id_TypeDef].Rows; i++ {
+					ci.index = i + 1
+					if _, err := asm.Fields(&ci); err != nil {
+						outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
+					}
+					if _, err := asm.Methods(&ci); err != nil {
+						outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
+					}
+					if raw, err := ci.Data(); err != nil {
+						outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
+					} else {
+						c := raw.(*TypeDefRow)
+						if c.Flags&TypeAttributes_Interface == 0 {
+							if _, err := asm.Extends(&ci); err != nil {
+								outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
+							}
+						}
+					}
+					if _, err := asm.Implements(&ci); err != nil {
+						outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
+					}
+				}
+				ci.table = id_Module
+				ci.index = 1
 				if d, err := ci.Data(); err != nil {
 					outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
 				} else {
@@ -66,7 +90,7 @@ func TestLoadAllAssemblies(t *testing.T) {
 						}
 					} else {
 						ar := d2.(*AssemblyRow)
-						if mn, an := string(mr.Name), string(ar.Name); !strings.HasPrefix(mn, an) && (an !=  "mscorlib" && mn != "CommonLanguageRuntimeLibrary") {
+						if mn, an := string(mr.Name), string(ar.Name); !strings.HasPrefix(mn, an) && (an != "mscorlib" && mn != "CommonLanguageRuntimeLibrary") {
 							outChan <- errors.New(fmt.Sprintf("The assembly name isn't the prefix of the module name: %s, %s", an, mn))
 						} else {
 							t.Logf("Successfully loaded module %50s {%s} %s", mn, mr.Mvid, an)

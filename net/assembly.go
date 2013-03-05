@@ -20,12 +20,13 @@ import (
 )
 
 var (
-	ErrInterface = errors.New("TypeDef is an interface, not a class")
+	ErrInterface   = errors.New("TypeDef is an interface, not a class")
 	ErrNotAssembly = errors.New("This does not appear to be a .net assembly")
 )
 
 type Assembly struct {
 	MetadataUtil
+	rawdata []byte
 }
 
 type AbstractType interface {
@@ -55,6 +56,14 @@ func (t *TypeRefRow) Name() string {
 
 func (t *TypeRefRow) Namespace() string {
 	return string(t.TypeNamespace)
+}
+
+func (t *TypeSpecRow) Name() string {
+	return string("spec")
+}
+
+func (t *TypeSpecRow) Namespace() string {
+	return string("unknown")
 }
 
 func (a *Assembly) ListRange(index uint32, table, memberTable int, getindex func(interface{}) uint32) (startRow, endRow uint32) {
@@ -181,11 +190,13 @@ func (a *Assembly) Methods(index TypeDefIndex) (methods []content.Method, err er
 				return nil, err
 			} else if err = dec.Decode(&sig); err != nil {
 				return nil, err
-			} else if a, b := len(sig.Params), len(m.Parameters); a != b {
-				return nil, errors.New(fmt.Sprintf("Mismatched parameter count: %d != %d (%v, %v)", a, b, m, sig))
 			} else {
-
-				for i := range sig.Params {
+				// TODO: need to figure out why this mismatch happens
+				l := len(sig.Params)
+				if l2 := len(m.Parameters); l2 < l {
+					l = l2
+				}
+				for i := range sig.Params[:l] {
 					m.Parameters[i].Type = ToContentType(&sig.Params[i].Type)
 				}
 				if method.Flags&MethodAttributes_Final != 0 {
@@ -382,7 +393,7 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 	if md, err := t.MetadataUtil(); err != nil {
 		return nil, err
 	} else {
-		return &Assembly{*md}, nil
+		return &Assembly{*md, data}, nil
 	}
 	panic("Unreachable")
 }

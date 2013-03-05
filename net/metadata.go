@@ -55,6 +55,7 @@ const (
 	id_nullTable              = 0x100
 	id_Blob                   = 0x101
 )
+
 var (
 	ErrMetadata = errors.New("Metadata header isn't in the expected format")
 )

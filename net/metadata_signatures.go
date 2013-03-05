@@ -148,7 +148,10 @@ func (d *SignatureDecoder) Decode(v interface{}) error {
 	v2 := t.Elem()
 	switch raw := v.(type) {
 	case *MethodDefSig:
-		var err error
+		var (
+			err error
+			pc  EncUint
+		)
 		if err = d.Decode(&raw.Id); err != nil {
 			return err
 		}
@@ -157,18 +160,24 @@ func (d *SignatureDecoder) Decode(v interface{}) error {
 				return err
 			}
 		}
-		if err := d.Decode(&raw.ParamCount); err != nil {
+		if err := d.Decode(&pc); err != nil {
 			return err
 		}
 		if err := d.Decode(&raw.RetType); err != nil {
 			return err
 		}
-		raw.Params = make([]Param, raw.ParamCount)
+		raw.Params = make([]Param, pc)
 		for i := range raw.Params {
 			if err = d.Decode(&raw.Params[i]); err != nil {
 				return err
 			}
 		}
+		// if raw.Id&SIGNATURE_HASTHIS != 0 {
+		// 	raw.Params = raw.Params[1:] // pop "this"
+		// }
+		// if raw.Id&SIGNATURE_EXPLICITTHIS != 0 {
+		// 	raw.Params = raw.Params[1:] // Pop its type
+		// }
 		return nil
 	case *FieldSig:
 		var id EncUint
@@ -197,8 +206,6 @@ func (d *SignatureDecoder) Decode(v interface{}) error {
 				//fmt.Println("err:", err)
 				break
 			} else {
-				panic("added")
-				fmt.Println("added")
 				*raw = append(*raw, cm)
 			}
 		}
@@ -234,7 +241,15 @@ func (d *SignatureDecoder) Decode(v interface{}) error {
 				} else if err := d.Decode(raw.Type); err != nil {
 					return err
 				}
+			case ELEMENT_TYPE_VAR:
+				// Generic parameter type
+				if _, err := UnsignedDecode(d.Reader.Reader); err != nil {
+					return err
+				} else {
+					// what to do with the read value?
+				}
 			}
+
 			return nil
 		}
 	}
@@ -276,7 +291,6 @@ type MethodDefSigId uint8
 type MethodDefSig struct {
 	Id            MethodDefSigId
 	GenParamCount EncUint
-	ParamCount    EncUint
 	RetType       RetType
 	Params        []Param
 }
