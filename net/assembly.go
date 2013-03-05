@@ -314,10 +314,6 @@ func (a *Assembly) Complete(t content.FullyQualifiedName) (*content.CompletionRe
 	return &ret, nil
 }
 
-type Validateable interface {
-	Validate() error
-}
-
 func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 
 	var (
@@ -382,9 +378,6 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 	}
 	var t MetadataHeader
 	if err := br.ReadInterface(&t); err != nil {
-		return nil, err
-	}
-	if err := t.Validate(); err != nil {
 		return nil, err
 	}
 	if _, err := br.Seek(int64(off), 0); err != nil {

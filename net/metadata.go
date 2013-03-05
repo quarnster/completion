@@ -197,9 +197,6 @@ func (mh *MetadataHeader) MetadataUtil(br *util.BinaryReader) (*MetadataUtil, er
 		return nil, err
 	}
 
-	if err := h.Validate(); err != nil {
-		return nil, err
-	}
 	if h.HeapSizes&bit_stringHeapIndexSize != 0 {
 		ret.StringHeap.RowSize = 4
 	} else {
