@@ -8,8 +8,13 @@ import (
 	"math"
 	"reflect"
 	"strconv"
+	"strings"
 	"unsafe"
 )
+
+type Validateable interface {
+	Validate() error
+}
 
 type BinaryReader struct {
 	Reader    io.ReadSeeker
@@ -79,6 +84,18 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 				size = -1
 				err  error
 			)
+			if fi := f2.Tag.Get("if"); fi != "" {
+				arr := strings.Split(fi, ",")
+				if f3 := v2.FieldByName(arr[0]); !f3.IsValid() {
+					return errors.New(fmt.Sprintf("No such field: %s in %s", arr[0], v2.Type().Name()))
+				} else if test, err := strconv.ParseUint(arr[1], 0, 64); err != nil {
+					return err
+				} else {
+					if f3.Uint() != test {
+						continue
+					}
+				}
+			}
 			if l := f2.Tag.Get("length"); l != "" {
 				if v3 := v2.FieldByName(l); v3.IsValid() {
 					size = int(v3.Uint())
@@ -145,6 +162,9 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 		}
 	default:
 		return errors.New(fmt.Sprintf("Don't know how to read type %s", v2.Kind()))
+	}
+	if val, ok := v.(Validateable); ok {
+		return val.Validate()
 	}
 	return nil
 }
