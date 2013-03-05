@@ -76,6 +76,18 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 		} else {
 			v2.SetInt(int64(d))
 		}
+	case reflect.Float32:
+		if f, err := r.Float32(); err != nil {
+			return err
+		} else {
+			v2.SetFloat(float64(f))
+		}
+	case reflect.Float64:
+		if f, err := r.Float64(); err != nil {
+			return err
+		} else {
+			v2.SetFloat(f)
+		}
 	case reflect.Struct:
 		for i := 0; i < v2.NumField(); i++ {
 			var (

@@ -291,50 +291,8 @@ func (dec *ClassDecoder) Decode(v interface{}) error {
 					}
 				}
 			}
-		case reflect.Int32:
-			if d, err := dec.reader.Int32(); err != nil {
-				return err
-			} else {
-				v2.SetInt(int64(d))
-			}
-		case reflect.Int64:
-			if d, err := dec.reader.Int64(); err != nil {
-				return err
-			} else {
-				v2.SetInt(d)
-			}
-		case reflect.Float32:
-			if d, err := dec.reader.Float32(); err != nil {
-				return err
-			} else {
-				v2.SetFloat(float64(d))
-			}
-		case reflect.Float64:
-			if d, err := dec.reader.Float64(); err != nil {
-				return err
-			} else {
-				v2.SetFloat(d)
-			}
-		case reflect.Uint32:
-			if d, err := dec.reader.Uint32(); err != nil {
-				return err
-			} else {
-				v2.SetUint(uint64(d))
-			}
-		case reflect.Uint16:
-			if d, err := dec.reader.Uint16(); err != nil {
-				return err
-			} else {
-				v2.SetUint(uint64(d))
-			}
-		case reflect.Uint8:
-			if d, err := dec.reader.Read(1); err != nil {
-				return err
-			} else {
-				v2.SetUint(uint64(d[0]))
-			}
 		default:
-			return errors.New(fmt.Sprintf("Unknown kind: %s", v2.Kind()))
+			return dec.reader.ReadInterface(v)
 		}
 	}
 	return nil
