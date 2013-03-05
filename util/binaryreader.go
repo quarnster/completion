@@ -3,13 +3,150 @@ package util
 import (
 	"encoding/binary"
 	"errors"
+	"fmt"
 	"io"
+	"math"
+	"reflect"
+	"strconv"
 	"unsafe"
 )
 
 type BinaryReader struct {
 	Reader    io.ReadSeeker
 	Endianess binary.ByteOrder
+}
+
+func (r *BinaryReader) ReadInterface(v interface{}) error {
+	t := reflect.ValueOf(v)
+	if t.Kind() != reflect.Ptr {
+		return errors.New(fmt.Sprintf("Expected a pointer not %s", t.Kind()))
+	}
+	v2 := t.Elem()
+	switch v2.Kind() {
+	case reflect.Uint64:
+		if d, err := r.Uint64(); err != nil {
+			return err
+		} else {
+			v2.SetUint(uint64(d))
+		}
+	case reflect.Uint32:
+		if d, err := r.Uint32(); err != nil {
+			return err
+		} else {
+			v2.SetUint(uint64(d))
+		}
+	case reflect.Uint16:
+		if d, err := r.Uint16(); err != nil {
+			return err
+		} else {
+			v2.SetUint(uint64(d))
+		}
+	case reflect.Uint8:
+		if d, err := r.Uint8(); err != nil {
+			return err
+		} else {
+			v2.SetUint(uint64(d))
+		}
+	case reflect.Int64:
+		if d, err := r.Int64(); err != nil {
+			return err
+		} else {
+			v2.SetInt(int64(d))
+		}
+	case reflect.Int32:
+		if d, err := r.Int32(); err != nil {
+			return err
+		} else {
+			v2.SetInt(int64(d))
+		}
+	case reflect.Int16:
+		if d, err := r.Int16(); err != nil {
+			return err
+		} else {
+			v2.SetInt(int64(d))
+		}
+	case reflect.Int8:
+		if d, err := r.Int8(); err != nil {
+			return err
+		} else {
+			v2.SetInt(int64(d))
+		}
+	case reflect.Struct:
+		for i := 0; i < v2.NumField(); i++ {
+			var (
+				f    = v2.Field(i)
+				f2   = v2.Type().Field(i)
+				size = -1
+				err  error
+			)
+			if l := f2.Tag.Get("length"); l != "" {
+				if v3 := v2.FieldByName(l); v3.IsValid() {
+					size = int(v3.Uint())
+				} else if size, err = strconv.Atoi(l); err != nil {
+					return err
+				}
+			}
+
+			switch f.Type().Kind() {
+			case reflect.String:
+				var data []byte
+				if size >= 0 {
+					if data, err = r.Read(size); err != nil {
+						return err
+					}
+				} else {
+					var max = math.MaxUint32
+					if m := f2.Tag.Get("max"); m != "" {
+						if max, err = strconv.Atoi(m); err != nil {
+							return err
+						}
+					}
+
+					for i := 0; i < max; i++ {
+						if u, err := r.Uint8(); err != nil {
+							return err
+						} else if u == '\u0000' {
+							size = i + 1
+							break
+						} else {
+							data = append(data, u)
+						}
+					}
+				}
+				f.SetString(string(data))
+			case reflect.Slice:
+				if size == -1 {
+					return errors.New("SliceHeader require a known length")
+				}
+				var v3 = reflect.MakeSlice(f.Type(), size, size)
+				for i := 0; i < size; i++ {
+					if err = r.ReadInterface(v3.Index(i).Addr().Interface()); err != nil {
+						return err
+					}
+				}
+				f.Set(v3)
+			default:
+				if err := r.ReadInterface(f.Addr().Interface()); err != nil {
+					return err
+				} else {
+					size = int(f.Type().Size())
+				}
+			}
+
+			if al := f2.Tag.Get("align"); al != "" {
+				if a, err := strconv.Atoi(al); err != nil {
+					return err
+				} else if seek := ((size + (a - 1)) &^ (a - 1)) - size; seek > 0 {
+					if _, err := r.Seek(int64(seek), 1); err != nil {
+						return err
+					}
+				}
+			}
+		}
+	default:
+		return errors.New(fmt.Sprintf("Don't know how to read type %s", v2.Kind()))
+	}
+	return nil
 }
 
 func (r *BinaryReader) Seek(offset int64, whence int) (int64, error) {
