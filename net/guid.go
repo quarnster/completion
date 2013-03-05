@@ -3,20 +3,18 @@ package net
 import (
 	"encoding/binary"
 	"fmt"
-	"unsafe"
 )
 
-type Guid uintptr
+type Guid []byte
 
 func (g Guid) String() string {
-	if uintptr(g) == 0 {
-		return "nil"
-	}
 	var (
-		bytes  []byte
+		bytes  = []byte(g)
 		native = binary.LittleEndian
 	)
-	goArray(unsafe.Pointer(&bytes), uintptr(g), 16)
+	if len(bytes) != 16 {
+		return "nil"
+	}
 
 	return fmt.Sprintf("%08X-%04X-%04X-%04X-%04X%04X%04X",
 		native.Uint32(bytes[:4]),

@@ -75,7 +75,7 @@ func TestLoadAllAssemblies(t *testing.T) {
 					mr := d.(*ModuleRow)
 					ci.table = id_Assembly
 					if d2, err := ci.Data(); err != nil {
-						if asm.Tables[id_Assembly].Ptr == 0 {
+						if asm.Tables[id_Assembly].Rows == 0 {
 							// It's ok for an assembly to not have an assembly table, although
 							// I've only ever seen this with System.EnterpriseServices.Wrapper.dll
 							t.Logf("Successfully loaded module %50s {%s}", mr.Name, mr.Mvid)

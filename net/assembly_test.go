@@ -1,6 +1,8 @@
 package net
 
 import (
+	"bytes"
+	"encoding/binary"
 	"fmt"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/util"
@@ -65,12 +67,12 @@ func TestLoadAssembly(t *testing.T) {
 				res += fmt.Sprintln(td.RowType.Name())
 				row := reflect.New(td.RowType).Interface()
 				for i := uint32(0); i < td.Rows; i++ {
-					ptr, err := td.Index(i + 1)
+					data, err := td.Index(i + 1)
 					if err != nil {
 						t.Error(err)
 						continue
 					}
-					if _, err := asm.Create(ptr, row); err != nil {
+					if err := asm.Create(&util.BinaryReader{bytes.NewReader(data), binary.LittleEndian}, row); err != nil {
 						t.Error(err)
 					} else {
 						res += fmt.Sprintf("\t%+v\n", row)

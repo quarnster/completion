@@ -1,8 +1,11 @@
 package net
 
 import (
+	"bytes"
+	"encoding/binary"
 	"errors"
 	"fmt"
+	"github.com/quarnster/completion/util"
 	"reflect"
 )
 
@@ -47,15 +50,15 @@ func (t *ConcreteTableIndex) Data() (interface{}, error) {
 		return t.metadataUtil.BlobHeap.Index(t.index)
 	}
 	var (
-		ptr   uintptr
 		err   error
 		table = t.metadataUtil.Tables[t.table]
+		data  []byte
 	)
-	if ptr, err = table.Index(t.index); err != nil {
+	if data, err = table.Index(t.index); err != nil {
 		return nil, err
 	}
 	ret := reflect.New(table.RowType).Interface()
-	if _, err := t.metadataUtil.Create(ptr, ret); err != nil {
+	if err := t.metadataUtil.Create(&util.BinaryReader{Reader: bytes.NewReader(data), Endianess: binary.LittleEndian}, ret); err != nil {
 		return nil, err
 	}
 	return ret, nil

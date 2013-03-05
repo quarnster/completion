@@ -8,7 +8,6 @@ import (
 	"github.com/quarnster/completion/util"
 	"io"
 	"reflect"
-	"unsafe"
 )
 
 // II.23.2
@@ -118,18 +117,13 @@ func NewSignatureDecoder(idx BlobIndex) (*SignatureDecoder, error) {
 		return nil, errors.New("BlobIndex is 0")
 	}
 	var (
-		ci     = idx.(*ConcreteTableIndex)
-		table  = ci.metadataUtil.BlobHeap
-		ptr    = table.Ptr + uintptr(ci.index)
-		end    = table.Ptr + uintptr(table.Rows)
-		length = end - ptr
-		data   []byte
+		ci    = idx.(*ConcreteTableIndex)
+		table = ci.metadataUtil.BlobHeap
 	)
-	if ptr > end {
-		return nil, errors.New(fmt.Sprintf("Indexing beyond the end of the table: %x > %x", ptr, end))
+	if ci.index > table.Rows {
+		return nil, errors.New(fmt.Sprintf("Indexing beyond the end of the table: %x > %x", ci.index, table.Rows))
 	}
-
-	goArray(unsafe.Pointer(&data), ptr, int(length))
+	data := table.data[ci.index:]
 	r := bytes.NewReader(data)
 	if l, err := UnsignedDecode(r); err != nil {
 		return nil, err

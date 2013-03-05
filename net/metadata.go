@@ -2,11 +2,11 @@ package net
 
 import (
 	"fmt"
+	"github.com/quarnster/completion/util"
 	errors "github.com/quarnster/completion/util/errors"
 	"math"
 	"reflect"
 	"strings"
-	"unsafe"
 )
 
 const (
@@ -102,31 +102,15 @@ var table_row_type_lut = map[int]reflect.Type{
 
 // ECMA-335 II.24.2.1
 type MetadataHeader struct {
-	Signature    uint32
-	MajorVersion uint16
-	MinorVersion uint16
-	Reserved     uint32
-	Length       uint32
-	version      [256]byte
-}
-
-func (m *MetadataHeader) Version() string {
-	return string(m.version[:m.Length])
-}
-
-func (m *MetadataHeader) StreamHeaders() []*stream_header {
-	ptr := uintptr(unsafe.Pointer(&m.version))
-	ptr += uintptr(m.Length+3) &^ 3
-	ptr += 2 // flags
-	streams := *(*uint16)(unsafe.Pointer(ptr))
-	ptr += 2
-	ret := make([]*stream_header, streams)
-	for i := range ret {
-		ret[i] = (*stream_header)(unsafe.Pointer(ptr))
-		// +1 to include the terminating 0
-		ptr += 8 + uintptr((len(ret[i].Name())+1+3)&^3)
-	}
-	return ret
+	Signature     uint32
+	MajorVersion  uint16
+	MinorVersion  uint16
+	Reserved      uint32
+	Length        uint32
+	Version       string `length:"Length" align:"4"`
+	Flags         uint16
+	StreamCount   uint16
+	StreamHeaders []stream_header `length:"StreamCount"`
 }
 
 func (m *MetadataHeader) Validate() error {
@@ -140,22 +124,11 @@ func (m *MetadataHeader) Validate() error {
 type stream_header struct {
 	Offset uint32
 	Size   uint32
-	name   [32]byte
-}
-
-func (s *stream_header) Name() string {
-	l := 0
-	for j, v := range s.name {
-		if v == 0 {
-			l = j
-			break
-		}
-	}
-	return string(s.name[:l])
+	Name   string `max:"32" align:"4"`
 }
 
 func (s *stream_header) Validate() error {
-	if s.name[0] != '#' {
+	if s.Name[0] != '#' {
 		return errors.New(fmt.Sprintf("This does not appear to be a valid stream header: %#v", s))
 	}
 	return nil
@@ -179,31 +152,51 @@ type MetadataUtil struct {
 	GuidHeap   MetadataTable
 }
 
-func (mh *MetadataHeader) MetadataUtil() (*MetadataUtil, error) {
-	var ret MetadataUtil
-	off := uintptr(unsafe.Pointer(mh))
+func (mh *MetadataHeader) MetadataUtil(br *util.BinaryReader) (*MetadataUtil, error) {
+	var (
+		ret MetadataUtil
+	)
 
+	off, err := br.Seek(0, 1)
+	if err != nil {
+		return nil, err
+	}
 	base := off
-	for _, h := range mh.StreamHeaders() {
-		if err := h.Validate(); err != nil {
-			return nil, err
-		}
-		switch h.Name() {
+	for _, h := range mh.StreamHeaders {
+		switch h.Name {
 		case "#~":
-			off += uintptr(h.Offset)
+			off += int64(h.Offset)
 		case "#Strings":
-			ret.StringHeap.Ptr = uintptr(unsafe.Pointer(base + uintptr(h.Offset)))
+			if _, err := br.Seek(base+int64(h.Offset), 0); err != nil {
+				return nil, err
+			} else if ret.StringHeap.data, err = br.Read(int(h.Size)); err != nil {
+				return nil, err
+			}
 			ret.StringHeap.Rows = h.Size
 		case "#Blob":
-			ret.BlobHeap.Ptr = uintptr(unsafe.Pointer(base + uintptr(h.Offset)))
+			if _, err := br.Seek(base+int64(h.Offset), 0); err != nil {
+				return nil, err
+			} else if ret.BlobHeap.data, err = br.Read(int(h.Size)); err != nil {
+				return nil, err
+			}
 			ret.BlobHeap.Rows = h.Size
 		case "#GUID":
-			ret.GuidHeap.Ptr = uintptr(unsafe.Pointer(base + uintptr(h.Offset)))
+			if _, err := br.Seek(base+int64(h.Offset), 0); err != nil {
+				return nil, err
+			} else if ret.GuidHeap.data, err = br.Read(int(h.Size)); err != nil {
+				return nil, err
+			}
 			ret.GuidHeap.Rows = h.Size
 		}
 	}
+	if _, err := br.Seek(off, 0); err != nil {
+		return nil, err
+	}
+	h := hash_tilde_stream_header{}
+	if err := br.ReadInterface(&h); err != nil {
+		return nil, err
+	}
 
-	h := (*hash_tilde_stream_header)(unsafe.Pointer(off))
 	if err := h.Validate(); err != nil {
 		return nil, err
 	}
@@ -223,24 +216,24 @@ func (mh *MetadataHeader) MetadataUtil() (*MetadataUtil, error) {
 		ret.GuidHeap.RowSize = 2
 	}
 
-	ptr := uintptr(unsafe.Pointer(h))
-	ptr += reflect.TypeOf(*h).Size()
 	for i := range ret.Tables {
 		if valid := (h.Valid >> uint(i)) & 1; valid != 0 {
-			ret.Tables[i].Rows = *(*uint32)(unsafe.Pointer(ptr))
+			if ret.Tables[i].Rows, err = br.Uint32(); err != nil {
+				return nil, err
+			}
 			ret.Tables[i].RowType = table_row_type_lut[i]
-			ptr += 4
 		}
 	}
 
 	for i := range ret.Tables {
 		if ret.Tables[i].Rows != 0 {
-			ret.Tables[i].Ptr = ptr
 			if size, err := ret.Size(ret.Tables[i].RowType); err != nil {
 				return nil, err
 			} else {
-				ret.Tables[i].RowSize = uintptr(size)
-				ptr += uintptr(size * uint(ret.Tables[i].Rows))
+				ret.Tables[i].RowSize = uint32(size)
+				if ret.Tables[i].data, err = br.Read(int(ret.Tables[i].RowSize * ret.Tables[i].Rows)); err != nil {
+					return nil, err
+				}
 			}
 		}
 	}
@@ -253,56 +246,62 @@ const (
 	bit_blobHeapIndexSize
 )
 
-func (m *MetadataUtil) ReadIndex(ptr uintptr, size uint) uint32 {
+func (m *MetadataUtil) ReadIndex(br *util.BinaryReader, size uint) (uint32, error) {
 	if size == 2 {
-		return uint32(*(*uint16)(unsafe.Pointer(ptr)))
+		if v, e := br.Uint16(); e != nil {
+			return 0, e
+		} else {
+			return uint32(v), nil
+		}
 	}
-	return *(*uint32)(unsafe.Pointer(ptr))
+	return br.Uint32()
 }
 
 func bits(values int) uint {
 	return uint(math.Ceil(math.Log2(float64(values))))
 }
 
-func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
+func (m *MetadataUtil) Create(br *util.BinaryReader, v interface{}) error {
 	t := reflect.ValueOf(v)
 	if t.Kind() != reflect.Ptr {
-		return 0, errors.New(fmt.Sprintf("Expected a pointer not %s", t.Kind()))
+		return errors.New(fmt.Sprintf("Expected a pointer not %s", t.Kind()))
 	}
 	v2 := t.Elem()
 	name := v2.Type().Name()
 
 	if name == "StringIndex" {
 		size := m.StringHeap.RowSize
-		index := m.ReadIndex(ptr, uint(size))
-		start := m.StringHeap.Ptr + uintptr(index)
-		end := m.StringHeap.Ptr + uintptr(m.StringHeap.Rows)
-		var data []byte
+		index, err := m.ReadIndex(br, uint(size))
+		if err != nil {
+			return err
+		}
+		data := m.StringHeap.data[index:m.StringHeap.Rows]
 
-		goArray(unsafe.Pointer(&data), start, int(end))
 		for i := range data {
 			if data[i] == '\u0000' {
-				end = uintptr(i)
+				data = data[:i]
 				break
 			}
 		}
-		v2.SetString(string(data[:end]))
-		ptr += uintptr(size)
+		v2.SetString(string(data))
 	} else if name == "Guid" {
 		size := m.GuidHeap.RowSize
-		index := m.ReadIndex(ptr, uint(size))
-		if index != 0 {
-			idx := m.GuidHeap.Ptr + uintptr((index-1)*16)
-			v2.SetUint(uint64(idx))
+		if index, err := m.ReadIndex(br, uint(size)); err != nil {
+			return err
+		} else if index != 0 {
+			index = (index - 1) * 16
+			g := Guid(m.GuidHeap.data[index : index+16])
+			v2.Set(reflect.ValueOf(g))
 		}
-		ptr += uintptr(size)
 	} else if strings.HasSuffix(name, "EncodedIndex") {
 		if size, err := m.Size(v2.Type()); err != nil {
-			return 0, err
+			return err
 		} else {
+			idx, err := m.ReadIndex(br, size)
+			if err != nil {
+				return err
+			}
 			var (
-				idx = m.ReadIndex(ptr, size)
-
 				tables = enc_lut[idx_name_lut[name]]
 				b      = bits(len(tables))
 				mask   = uint32(0xffff << b)
@@ -314,14 +313,15 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 			ti.table = tables[int(tbl)]
 			ti.metadataUtil = m
 			v2.Set(reflect.ValueOf(&ti))
-			ptr += uintptr(size)
 		}
 	} else if strings.HasSuffix(name, "Index") {
 		if size, err := m.Size(v2.Type()); err != nil {
-			return 0, err
+			return err
 		} else {
 			var ti ConcreteTableIndex
-			ti.index = m.ReadIndex(ptr, size)
+			if ti.index, err = m.ReadIndex(br, size); err != nil {
+				return err
+			}
 			if name == "BlobIndex" {
 				ti.table = id_Blob
 			} else {
@@ -329,7 +329,6 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 			}
 			ti.metadataUtil = m
 			v2.Set(reflect.ValueOf(&ti))
-			ptr += uintptr(size)
 		}
 	} else {
 		switch v2.Kind() {
@@ -337,26 +336,33 @@ func (m *MetadataUtil) Create(ptr uintptr, v interface{}) (uintptr, error) {
 			for i := 0; i < v2.NumField(); i++ {
 				f := v2.Field(i)
 				a := f.Addr()
-				if p2, err := m.Create(ptr, a.Interface()); err != nil {
-					return 0, err
-				} else {
-					ptr = p2
+				if err := m.Create(br, a.Interface()); err != nil {
+					return err
 				}
 			}
 		case reflect.Uint32:
-			v2.SetUint(uint64(*(*uint32)(unsafe.Pointer(ptr))))
-			ptr += 4
+			if d, err := br.Uint32(); err != nil {
+				return err
+			} else {
+				v2.SetUint(uint64(d))
+			}
 		case reflect.Uint16:
-			v2.SetUint(uint64(*(*uint16)(unsafe.Pointer(ptr))))
-			ptr += 2
+			if d, err := br.Uint16(); err != nil {
+				return err
+			} else {
+				v2.SetUint(uint64(d))
+			}
 		case reflect.Uint8:
-			v2.SetUint(uint64(*(*uint8)(unsafe.Pointer(ptr))))
-			ptr += 1
+			if d, err := br.Uint8(); err != nil {
+				return err
+			} else {
+				v2.SetUint(uint64(d))
+			}
 		default:
-			return 0, errors.New(fmt.Sprintf("Don't know how to create %s (%s)", v2.Kind(), v2.Type()))
+			return errors.New(fmt.Sprintf("Don't know how to create %s (%s)", v2.Kind(), v2.Type()))
 		}
 	}
-	return ptr, nil
+	return nil
 }
 
 func (m *MetadataUtil) Size(t reflect.Type) (uint, error) {
@@ -423,21 +429,21 @@ func (m *MetadataUtil) Size(t reflect.Type) (uint, error) {
 }
 
 type MetadataTable struct {
-	Ptr     uintptr
+	data    []byte
 	Rows    uint32
 	RowType reflect.Type
-	RowSize uintptr
+	RowSize uint32
 }
 
-func (mt *MetadataTable) Index(index uint32) (uintptr, error) {
-	if mt.Ptr == 0 {
-		return 0, errors.New("Trying to dereference a nil table")
+func (mt *MetadataTable) Index(index uint32) ([]byte, error) {
+	if mt.Rows == 0 {
+		return nil, errors.New("Trying to dereference a nil table")
 	}
 	index--
 	if index >= mt.Rows {
-		return 0, errors.New(fmt.Sprintf("Index outside of bounds: %x >= %x", index, mt.Rows))
+		return nil, errors.New(fmt.Sprintf("Index outside of bounds: %x >= %x", index, mt.Rows))
 	}
-	return mt.Ptr + uintptr(index)*mt.RowSize, nil
+	return mt.data[index*mt.RowSize:], nil
 }
 
 func (h *hash_tilde_stream_header) Validate() error {

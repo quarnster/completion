@@ -14,9 +14,7 @@ import (
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/util"
 	"io"
-	"reflect"
 	"sort"
-	"unsafe"
 )
 
 var (
@@ -26,7 +24,6 @@ var (
 
 type Assembly struct {
 	MetadataUtil
-	rawdata []byte
 }
 
 type AbstractType interface {
@@ -321,27 +318,7 @@ type Validateable interface {
 	Validate() error
 }
 
-func assertEndianness() error {
-	test := uint32(0x01020304)
-	bytes := make([]byte, 4)
-	binary.LittleEndian.PutUint32(bytes, test)
-	if test2 := *(*uint32)(unsafe.Pointer(&bytes[0])); test != test2 {
-		return errors.New("This module assumes a little endian system")
-	}
-	return nil
-}
-
-func goArray(a unsafe.Pointer, ptr uintptr, l int) {
-	sliceHeader := (*reflect.SliceHeader)(a)
-	sliceHeader.Cap = l
-	sliceHeader.Len = l
-	sliceHeader.Data = ptr
-}
-
 func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
-	if err := assertEndianness(); err != nil {
-		return nil, err
-	}
 
 	var (
 		br        = util.BinaryReader{r, binary.LittleEndian}
@@ -377,33 +354,45 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 	} else if bytes.Compare(check, pe_magic) != 0 {
 		return nil, errors.New(fmt.Sprintf("PE Magic mismatch: %v", check))
 	}
+	coff := coff_file_header{}
+	if err := br.ReadInterface(&coff); err != nil {
+		return nil, err
+	}
 
-	coff := (*coff_file_header)(unsafe.Pointer(&data[int(pe_offset)+len(pe_magic)]))
-
-	var opt_t reflect.Type
-	ptr := uintptr(unsafe.Pointer(coff))
-	ptr += unsafe.Sizeof(*coff)
-	opt_pe32 := (*optional_header_pe32)(unsafe.Pointer(ptr))
-	opt_pe32p := (*optional_header_pe32p)(unsafe.Pointer(ptr))
-
-	if opt_pe32.Magic != pe32 && opt_pe32.Magic != pe32p {
-		return nil, errors.New(fmt.Sprintf("Unsupported optional header magic: %x", opt_pe32.Magic))
+	if magic, err := br.Uint16(); err != nil {
+		return nil, err
+	} else if magic != pe32 && magic != pe32p {
+		return nil, errors.New(fmt.Sprintf("Unsupported optional header magic: %x", magic))
 	} else {
-		isPe32 = opt_pe32.Magic == pe32
+		isPe32 = magic == pe32
 	}
 	rvas := 0
 	if isPe32 {
+		opt_pe32 := optional_header_pe32{}
+		if err := br.ReadInterface(&opt_pe32); err != nil {
+			return nil, err
+		}
 		rvas = int(opt_pe32.NumberOfRvaAndSizes)
-		opt_t = reflect.TypeOf(*opt_pe32)
 	} else {
-		rvas = int(opt_pe32p.NumberOfRvaAndSizes)
-		opt_t = reflect.TypeOf(*opt_pe32p)
-	}
-	ptr += opt_t.Size()
-	var ids []image_data_directory
-	goArray(unsafe.Pointer(&ids), ptr, rvas)
+		opt_pe32p := optional_header_pe32p{}
+		if err := br.ReadInterface(&opt_pe32p); err != nil {
+			return nil, err
+		}
 
-	sections := coff.SectionTable()
+		rvas = int(opt_pe32p.NumberOfRvaAndSizes)
+	}
+
+	ids := make([]image_data_directory, rvas)
+	for i := range ids {
+		if err := br.ReadInterface(&ids[i]); err != nil {
+			return nil, err
+		}
+	}
+
+	sections, err := coff.SectionTable(&br)
+	if err != nil {
+		return nil, err
+	}
 	for i := range sections {
 		if err := sections[i].Validate(); err != nil {
 			return nil, err
@@ -419,8 +408,14 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 		sec++
 	}
 	off = net.VirtualAddress - sections[sec].VirtualAddress + sections[sec].PointerToRawData
+	if _, err := br.Seek(int64(off), 0); err != nil {
+		return nil, err
+	}
 
-	cor20 := (*image_cor20)(unsafe.Pointer(&data[off]))
+	cor20 := image_cor20{}
+	if err := br.ReadInterface(&cor20); err != nil {
+		return nil, err
+	}
 	if cor20.MetaData.VirtualAddress == 0 || cor20.MetaData.Size == 0 {
 		return nil, ErrNotAssembly
 	}
@@ -430,14 +425,23 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 	}
 
 	off = cor20.MetaData.VirtualAddress - sections[sec].VirtualAddress + sections[sec].PointerToRawData
-	t := (*MetadataHeader)(unsafe.Pointer(&data[off]))
+	if _, err := br.Seek(int64(off), 0); err != nil {
+		return nil, err
+	}
+	var t MetadataHeader
+	if err := br.ReadInterface(&t); err != nil {
+		return nil, err
+	}
 	if err := t.Validate(); err != nil {
 		return nil, err
 	}
-	if md, err := t.MetadataUtil(); err != nil {
+	if _, err := br.Seek(int64(off), 0); err != nil {
+		return nil, err
+	}
+	if md, err := t.MetadataUtil(&br); err != nil {
 		return nil, err
 	} else {
-		return &Assembly{*md, data}, nil
+		return &Assembly{*md}, nil
 	}
 	panic("Unreachable")
 }

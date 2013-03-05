@@ -3,7 +3,7 @@ package net
 import (
 	"errors"
 	"fmt"
-	"unsafe"
+	"github.com/quarnster/completion/util"
 )
 
 const (
@@ -22,14 +22,18 @@ type coff_file_header struct {
 	Characteristics      uint16
 }
 
-func (coff *coff_file_header) SectionTable() (sections []section_table) {
-	ptr := uintptr(unsafe.Pointer(coff)) + unsafe.Sizeof(*coff) + uintptr(coff.SizeOfOptionalHeader)
-	goArray(unsafe.Pointer(&sections), ptr, int(coff.NumberOfSections))
-	return sections
+func (coff *coff_file_header) SectionTable(br *util.BinaryReader) (sections []section_table, err error) {
+	sections = make([]section_table, coff.NumberOfSections)
+	for i := range sections {
+		if err := br.ReadInterface(&sections[i]); err != nil {
+			return nil, err
+		}
+	}
+
+	return sections, nil
 }
 
 type optional_header_common_1 struct {
-	Magic                   uint16
 	MajorLinkerVersion      uint8
 	MinorLinkerVersion      uint8
 	SizeOfCode              uint32
@@ -88,7 +92,7 @@ type image_data_directory struct {
 }
 
 type section_table struct {
-	name                 [8]byte
+	Name                 string `length:"8"`
 	VirtualSize          uint32
 	VirtualAddress       uint32
 	SizeOfRawData        uint32
@@ -101,14 +105,10 @@ type section_table struct {
 }
 
 func (s *section_table) Validate() error {
-	if s.name[0] != '.' {
+	if s.Name[0] != '.' {
 		return errors.New(fmt.Sprintf("This does not appear to be a valid section header: %#v", s))
 	}
 	return nil
-}
-
-func (s *section_table) Name() string {
-	return string(s.name[:])
 }
 
 type image_cor20 struct {
@@ -120,7 +120,7 @@ type image_cor20 struct {
 }
 
 func (s *section_table) String() string {
-	return fmt.Sprintf("Name: %s, VirtualAddress: %d, PointerToRawData: %d", s.Name(), s.VirtualAddress, s.PointerToRawData)
+	return fmt.Sprintf("Name: %s, VirtualAddress: %d, PointerToRawData: %d", s.Name, s.VirtualAddress, s.PointerToRawData)
 }
 
 var (
