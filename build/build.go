@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"regexp"
+	"runtime"
 )
 
 var ignore = regexp.MustCompile(`\.git|build|testdata`)
@@ -36,7 +37,11 @@ func main() {
 	var verbose bool
 	flag.BoolVar(&verbose, "v", verbose, "Verbose output")
 	flag.Parse()
-	c := exec.Command("go", "build", "-o", "parser_exe", "github.com/quarnster/parser/exe")
+	var extension = ""
+	if runtime.GOOS == "windows" {
+		extension += ".exe"
+	}
+	c := exec.Command("go", "build", "-o", "parser_exe"+extension, "github.com/quarnster/parser/exe")
 	if verbose {
 		fmt.Println(c.Args)
 	}
