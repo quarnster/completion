@@ -124,7 +124,7 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 						return err
 					}
 				} else {
-					var max = math.MaxUint32
+					var max = math.MaxInt32
 					if m := f2.Tag.Get("max"); m != "" {
 						if max, err = strconv.Atoi(m); err != nil {
 							return err
