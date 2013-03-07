@@ -76,3 +76,25 @@ func (a Flags) String() (ret string) {
 	}
 	return
 }
+
+func (cr CompletionResult) String() (ret string) {
+	if len(cr.Types) > 0 {
+		ret += "Types:\n"
+		for _, t := range cr.Types {
+			ret += fmt.Sprintf("\t%s\n", t)
+		}
+	}
+	if len(cr.Fields) > 0 {
+		ret += "Fields:\n"
+		for _, t := range cr.Fields {
+			ret += fmt.Sprintf("\t%s\n", t)
+		}
+	}
+	if len(cr.Methods) > 0 {
+		ret += "Methods:\n"
+		for _, t := range cr.Methods {
+			ret += fmt.Sprintf("\t%s\n", t)
+		}
+	}
+	return
+}

@@ -352,12 +352,12 @@ func (a *Assembly) FindType(t content.FullyQualifiedName) (TypeDefIndex, error) 
 	return nil, nil
 }
 
-func (a *Assembly) Complete(t content.FullyQualifiedName) (*content.CompletionResult, error) {
+func (a *Assembly) Complete(t *content.Type) (*content.CompletionResult, error) {
 	var ret content.CompletionResult
-	if idx, err := a.FindType(t); err != nil {
+	if idx, err := a.FindType(t.Name); err != nil {
 		return nil, err
 	} else if idx == nil {
-		return nil, errors.New(fmt.Sprintf("Type not found in assembly: %s", t.Absolute))
+		return nil, errors.New(fmt.Sprintf("Type not found in assembly: %s", t))
 	} else if ret.Fields, err = a.Fields(idx); err != nil {
 		return nil, err
 	} else if ret.Methods, err = a.Methods(idx); err != nil {

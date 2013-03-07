@@ -43,12 +43,3 @@ type CompletionResult struct {
 	Fields  []Field  `protocol:"optional" json:",omitempty"`
 	Methods []Method `protocol:"optional" json:",omitempty"`
 }
-
-// TODO: maybe these are two different calls?
-type CompletionRequest struct {
-	// Either we want to complete this specific type/package/whatever
-	Type FullyQualifiedName `protocol:"optional" json:",omitempty"`
-
-	// Or we want to perform the complete operation at this specific location
-	Location SourceLocation `protocol:"optional" json:",omitempty"`
-}

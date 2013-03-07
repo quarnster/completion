@@ -190,3 +190,23 @@ func TestFindType(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkComplete(b *testing.B) {
+	b.StopTimer()
+	f, err := os.Open(findtype_test)
+	if err != nil {
+		b.Fatalf("Failed to open %s: %s", findtype_test, err)
+	}
+	defer f.Close()
+	if asm, err := LoadAssembly(f); err != nil {
+		b.Error(err)
+	} else {
+		b.StartTimer()
+		tn := content.Type{Name: content.FullyQualifiedName{Absolute: "SevenZip.Compression.LZ.OutWindow"}}
+		for i := 0; i < b.N; i++ {
+			if _, err := asm.Complete(&tn); err != nil {
+				b.Error(err)
+			}
+		}
+	}
+}
