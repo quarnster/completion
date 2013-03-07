@@ -10,6 +10,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"sync"
 )
 
 type entry struct {
@@ -32,21 +33,26 @@ type Cache struct {
 	entries []entry
 	paths   []string
 	watch   *fsnotify.Watcher
+	mutex   sync.Mutex
 }
 
 func (c *Cache) watchthread() {
 	for {
 		select {
 		case ev := <-c.watch.Event:
-			for i := range c.entries {
-				if c.entries[i].assembly.Name() == ev.Name {
-					log.Println("Reloading", ev.Name)
-					if err := c.entries[i].Reload(); err != nil {
-						log.Println("Error reloading assembly:", err)
+			func() {
+				c.mutex.Lock()
+				defer c.mutex.Unlock()
+				for i := range c.entries {
+					if c.entries[i].name == ev.Name {
+						log.Println("Reloading", ev.Name)
+						if err := c.entries[i].Reload(); err != nil {
+							log.Println("Error reloading assembly:", err)
+						}
+						break
 					}
-					break
 				}
-			}
+			}()
 		case err := <-c.watch.Error:
 			log.Println("error:", err)
 		}
@@ -54,6 +60,8 @@ func (c *Cache) watchthread() {
 }
 
 func (c *Cache) Load(name string) (*Assembly, error) {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
 	for i := range c.entries {
 		if c.entries[i].assembly.Name() == name {
 			if err := c.entries[i].Reload(); err != nil {
@@ -63,10 +71,10 @@ func (c *Cache) Load(name string) (*Assembly, error) {
 			}
 		}
 	}
-	return c.Cache(name)
+	return c.cache(name)
 }
 
-func (c *Cache) Cache(assembly string) (*Assembly, error) {
+func (c *Cache) cache(assembly string) (*Assembly, error) {
 	errs := ""
 	if c.watch == nil {
 		var err error
@@ -82,6 +90,8 @@ func (c *Cache) Cache(assembly string) (*Assembly, error) {
 			continue
 		} else {
 			if err := c.watch.Watch(path); err != nil {
+				return nil, err
+			} else if err := c.watch.WatchFlags(path, fsnotify.FSN_MODIFY); err != nil {
 				return nil, err
 			}
 			e := entry{name: path}
@@ -105,6 +115,8 @@ func (c *Cache) Cache(assembly string) (*Assembly, error) {
 }
 
 func (c *Cache) Complete(t *content.Type) (*content.CompletionResult, error) {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
 	for i := range c.entries {
 		if ret, err := c.entries[i].assembly.Complete(t); err == nil {
 			return ret, nil

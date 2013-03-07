@@ -2,7 +2,12 @@ package net
 
 import (
 	"github.com/quarnster/completion/content"
+	"io/ioutil"
+	"os"
+	"os/exec"
+	"path/filepath"
 	"testing"
+	"time"
 )
 
 func TestCache(t *testing.T) {
@@ -31,6 +36,62 @@ func TestCache(t *testing.T) {
 			t.Error(err)
 		} else {
 			t.Log(res)
+		}
+	}
+}
+
+func mcs(args ...string) ([]byte, error) {
+	cmd := exec.Command("mcs", args...)
+	return cmd.CombinedOutput()
+}
+
+func TestCache2(t *testing.T) {
+	if out, err := mcs(); len(out) == 0 {
+		t.Skip("It does not appear that mcs is installed:", err)
+	}
+	source, err := ioutil.TempFile("", "Cache")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer os.Remove(source.Name())
+
+	binary, err := ioutil.TempFile("", "Cache")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer os.Remove(binary.Name())
+
+	if err := ioutil.WriteFile(source.Name(), []byte("class Test1 {}"), 0644); err != nil {
+		t.Fatal(err)
+	} else if out, err := mcs("-target:library", "-out:"+binary.Name(), source.Name()); err != nil {
+		t.Fatal(string(out), err)
+	}
+
+	c := Cache{paths: []string{filepath.Dir(binary.Name())}}
+	if _, err := c.Load(filepath.Base(binary.Name())); err != nil {
+		t.Error(err)
+	} else {
+		ty1 := content.Type{Name: content.FullyQualifiedName{Absolute: "Test1"}}
+		ty2 := content.Type{Name: content.FullyQualifiedName{Absolute: "Test2"}}
+		if _, err := c.Complete(&ty1); err != nil {
+			t.Fatal(err)
+		} else if _, err := c.Complete(&ty2); err == nil {
+			t.Fatal("Should not be possible to complete Test2")
+		}
+
+		if err := ioutil.WriteFile(source.Name(), []byte("class Test2 {}"), 0644); err != nil {
+			t.Fatal(err)
+		} else if out, err := mcs("-target:library", "-out:"+binary.Name(), source.Name()); err != nil {
+			t.Fatal(string(out), err)
+		}
+
+		// Give it some time to reload
+		time.Sleep(time.Millisecond * 100)
+
+		if _, err := c.Complete(&ty1); err == nil {
+			t.Fatal("Should not be possible to complete Test1")
+		} else if _, err := c.Complete(&ty2); err != nil {
+			t.Fatal(err)
 		}
 	}
 }
