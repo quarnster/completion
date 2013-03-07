@@ -12,6 +12,10 @@ const (
 	pe32p               = 0x20b
 )
 
+var (
+	pe_magic = []byte("PE\u0000\u0000")
+)
+
 type coff_file_header struct {
 	Magic                []byte `length:"4"`
 	Machine              uint16
@@ -116,6 +120,10 @@ func (s *section_table) Validate() error {
 	return nil
 }
 
+func (s *section_table) String() string {
+	return fmt.Sprintf("Name: %s, VirtualAddress: %d, PointerToRawData: %d", s.Name, s.VirtualAddress, s.PointerToRawData)
+}
+
 type image_cor20 struct {
 	Size         uint32
 	MajorVersion uint16
@@ -130,11 +138,3 @@ func (cor20 *image_cor20) Validate() error {
 	}
 	return nil
 }
-
-func (s *section_table) String() string {
-	return fmt.Sprintf("Name: %s, VirtualAddress: %d, PointerToRawData: %d", s.Name, s.VirtualAddress, s.PointerToRawData)
-}
-
-var (
-	pe_magic = []byte("PE\u0000\u0000")
-)

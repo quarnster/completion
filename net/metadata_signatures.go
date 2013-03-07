@@ -222,11 +222,26 @@ func (d *SignatureDecoder) Decode(v interface{}) error {
 			}
 			raw.TypeId = val
 			switch raw.TypeId {
-			case ELEMENT_TYPE_VALUETYPE:
-				fallthrough
-			case ELEMENT_TYPE_CLASS:
+			case ELEMENT_TYPE_VALUETYPE, ELEMENT_TYPE_CLASS:
 				if err := d.Decode(&raw.Class); err != nil {
 					return err
+				}
+			case ELEMENT_TYPE_GENERICINST:
+				raw.Type = &Type{}
+				if err := d.Decode(raw.Type); err != nil {
+					return err
+				}
+				var count EncUint
+				if err := d.Decode(&count); err != nil {
+					return err
+				}
+				raw.Instance = make([]*Type, count)
+				for i := range raw.Instance {
+					t := Type{}
+					if err := d.Decode(&t); err != nil {
+						return err
+					}
+					raw.Instance[i] = &t
 				}
 			case ELEMENT_TYPE_SZARRAY:
 				raw.Type = &Type{}
@@ -235,12 +250,9 @@ func (d *SignatureDecoder) Decode(v interface{}) error {
 				} else if err := d.Decode(raw.Type); err != nil {
 					return err
 				}
-			case ELEMENT_TYPE_VAR:
-				// Generic parameter type
-				if _, err := UnsignedDecode(d.Reader.Reader); err != nil {
+			case ELEMENT_TYPE_VAR, ELEMENT_TYPE_MVAR:
+				if raw.GenericNumber, err = UnsignedDecode(d.Reader.Reader); err != nil {
 					return err
-				} else {
-					// what to do with the read value?
 				}
 			}
 
@@ -314,54 +326,51 @@ type RetType struct {
 }
 
 type Type struct {
-	TypeId uint32
-	Class  TypeDefOrRefEncodedIndex
-	Type   *Type
-	Mod    []CustomMod
+	TypeId        uint32
+	Class         TypeDefOrRefEncodedIndex
+	Type          *Type
+	Instance      []*Type
+	GenericNumber uint32
+	Mod           []CustomMod
 }
 
+// II.23.2.16 Short form signatures
 var lut_element_type = map[int]string{
-	ELEMENT_TYPE_VOID:        "void",
-	ELEMENT_TYPE_BOOLEAN:     "boolean",
-	ELEMENT_TYPE_CHAR:        "char",
-	ELEMENT_TYPE_I1:          "i1",
-	ELEMENT_TYPE_U1:          "byte",
-	ELEMENT_TYPE_I2:          "short",
-	ELEMENT_TYPE_U2:          "ushort",
-	ELEMENT_TYPE_I4:          "int",
-	ELEMENT_TYPE_U4:          "uint",
-	ELEMENT_TYPE_I8:          "long",
-	ELEMENT_TYPE_U8:          "ulong",
-	ELEMENT_TYPE_R4:          "r4",
-	ELEMENT_TYPE_R8:          "r8",
-	ELEMENT_TYPE_STRING:      "string",
-	ELEMENT_TYPE_PTR:         "ptr",
-	ELEMENT_TYPE_BYREF:       "byref",
-	ELEMENT_TYPE_VALUETYPE:   "valuetype",
-	ELEMENT_TYPE_CLASS:       "class",
-	ELEMENT_TYPE_VAR:         "var",
-	ELEMENT_TYPE_ARRAY:       "array",
-	ELEMENT_TYPE_GENERICINST: "genericinst",
-	ELEMENT_TYPE_TYPEDBYREF:  "typedbyref",
-	ELEMENT_TYPE_I:           "i",
-	ELEMENT_TYPE_U:           "u",
-	ELEMENT_TYPE_FNPTR:       "fnptr",
-	ELEMENT_TYPE_OBJECT:      "object",
-	ELEMENT_TYPE_SZARRAY:     "szarray",
-	ELEMENT_TYPE_MVAR:        "mvar",
-	ELEMENT_TYPE_CMOD_REQD:   "cmod_reqd",
-	ELEMENT_TYPE_CMOD_OPT:    "cmod_opt",
-	ELEMENT_TYPE_INTERNAL:    "internal",
-	ELEMENT_TYPE_MODIFIER:    "modifier",
-	ELEMENT_TYPE_SENTINEL:    "sentinel",
-	ELEMENT_TYPE_PINNED:      "pinned",
+	ELEMENT_TYPE_STRING:     "System.String",
+	ELEMENT_TYPE_OBJECT:     "System.Object",
+	ELEMENT_TYPE_VOID:       "System.Void",
+	ELEMENT_TYPE_BOOLEAN:    "System.Boolean",
+	ELEMENT_TYPE_CHAR:       "System.Char",
+	ELEMENT_TYPE_U1:         "System.Byte",
+	ELEMENT_TYPE_I1:         "System.Sbyte",
+	ELEMENT_TYPE_I2:         "System.Int16",
+	ELEMENT_TYPE_U2:         "System.UInt16",
+	ELEMENT_TYPE_I4:         "System.Int32",
+	ELEMENT_TYPE_U4:         "System.UInt32",
+	ELEMENT_TYPE_I8:         "System.Int64",
+	ELEMENT_TYPE_U8:         "System.UInt64",
+	ELEMENT_TYPE_I:          "System.IntPtr",
+	ELEMENT_TYPE_U:          "System.UIntPtr",
+	ELEMENT_TYPE_TYPEDBYREF: "System.TypedReference",
+	ELEMENT_TYPE_R4:         "r4",
+	ELEMENT_TYPE_R8:         "r8",
+	ELEMENT_TYPE_PTR:        "ptr",
+	ELEMENT_TYPE_VALUETYPE:  "valuetype",
+	ELEMENT_TYPE_CLASS:      "class",
+	ELEMENT_TYPE_ARRAY:      "array",
+	ELEMENT_TYPE_FNPTR:      "fnptr",
+	ELEMENT_TYPE_SZARRAY:    "szarray",
+	ELEMENT_TYPE_CMOD_REQD:  "cmod_reqd",
+	ELEMENT_TYPE_CMOD_OPT:   "cmod_opt",
+	ELEMENT_TYPE_INTERNAL:   "internal",
+	ELEMENT_TYPE_MODIFIER:   "modifier",
+	ELEMENT_TYPE_SENTINEL:   "sentinel",
+	ELEMENT_TYPE_PINNED:     "pinned",
 }
 
 func (t *Type) Name() string {
 	switch t.TypeId {
-	case ELEMENT_TYPE_VALUETYPE:
-		fallthrough
-	case ELEMENT_TYPE_CLASS:
+	case ELEMENT_TYPE_VALUETYPE, ELEMENT_TYPE_CLASS:
 		v, _ := t.Class.Data()
 		switch t := v.(type) {
 		case *TypeDefRow:
@@ -373,15 +382,23 @@ func (t *Type) Name() string {
 		}
 	case ELEMENT_TYPE_SZARRAY:
 		return fmt.Sprintf("%s[]", t.Type)
+	case ELEMENT_TYPE_GENERICINST:
+		ret := t.Type.Name() + "<"
+		for i := range t.Instance {
+			if i > 0 {
+				ret += ", "
+			}
+			ret += t.Instance[i].Name()
+		}
+		ret += ">"
+		return ret
 	}
 	return lut_element_type[int(t.TypeId)]
 }
 
 func (t *Type) Namespace() string {
 	switch t.TypeId {
-	case ELEMENT_TYPE_VALUETYPE:
-		fallthrough
-	case ELEMENT_TYPE_CLASS:
+	case ELEMENT_TYPE_VALUETYPE, ELEMENT_TYPE_CLASS:
 		v, _ := t.Class.Data()
 		switch t := v.(type) {
 		case *TypeDefRow:

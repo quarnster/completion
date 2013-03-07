@@ -356,58 +356,58 @@ NestedClassRow
 <Module>
 QRCodeGenerator
 	extends System.Object
-	private static int[] GaloisExp
-	private static int[] GaloisLog
-	private static int[][] polynomials
-	private static int[] VersionInfo
-	private static int[] AlignmentPatterns
-	private static int[] DataBlocks
-	private static int[] FormatInfo
-	private static int[] versions
-	private static int[] versionsnumeric
-	private static int[] versionsalphanum
-	private static int[] ecbytes
-	private static int[] CharToValue
-	private static int  GaloisMult(int a, int b)
-	private static void  ReedSolomonEncode(genericinst b, System.Collections.Generic.IList`1 offset, void count, byte blockSize)
-	private static CodeMatrix  GetEncodedMatrix(byte[] data, boolean stringData)
-	private static void  .cctor()
+	private static System.Int32[] GaloisExp
+	private static System.Int32[] GaloisLog
+	private static System.Int32[][] polynomials
+	private static System.Int32[] VersionInfo
+	private static System.Int32[] AlignmentPatterns
+	private static System.Int32[] DataBlocks
+	private static System.Int32[] FormatInfo
+	private static System.Int32[] versions
+	private static System.Int32[] versionsnumeric
+	private static System.Int32[] versionsalphanum
+	private static System.Int32[] ecbytes
+	private static System.Int32[] CharToValue
+	private static System.Int32  GaloisMult(System.Int32 a, System.Int32 b)
+	private static System.Void  ReedSolomonEncode(System.Collections.Generic.IList`1<System.Byte> b, System.Int32 offset, System.Int32 count, System.Int32 blockSize)
+	private static CodeMatrix  GetEncodedMatrix(System.Byte[] data, System.Boolean stringData)
+	private static System.Void  .cctor()
 CodeMatrix
 	extends System.Object
-	private byte[] data
-	private int size
-	private int codewordX
-	private int codewordY
-	private boolean directionDown
-	private boolean directionRight
-	private boolean[] state11311expected
-	public void  .ctor(int size)
-	public int  get_Size()
-	public boolean  get_Item(int x, int y)
-	public void  set_Item(int x, int y, boolean value)
-	private byte  GetValue(int x, int y)
-	private void  SetValue(int x, int y, byte value)
-	private void  SetValueChecked(int x, int y, byte value)
-	public void  SetVersionInfo(int value)
-	public void  SetFormatInfo(int value)
-	public void  SetNextCodeword(byte value)
-	public void  DrawAlignmentPattern(int x, int y)
-	private int  FindBlock(int x, int y, int tentativeWidth, byte[] moduleblocks)
-	public int  CalculatePenalty()
-	public void  ApplyMask(int mask)
-	public void  DrawTimingPatterns()
-	public void  DrawFinderPattern(int x, int y)
-	public string  ToString()
+	private System.Byte[] data
+	private System.Int32 size
+	private System.Int32 codewordX
+	private System.Int32 codewordY
+	private System.Boolean directionDown
+	private System.Boolean directionRight
+	private System.Boolean[] state11311expected
+	public System.Void  .ctor(System.Int32 size)
+	public System.Int32  get_Size()
+	public System.Boolean  get_Item(System.Int32 x, System.Int32 y)
+	public System.Void  set_Item(System.Int32 x, System.Int32 y, System.Boolean value)
+	private System.Byte  GetValue(System.Int32 x, System.Int32 y)
+	private System.Void  SetValue(System.Int32 x, System.Int32 y, System.Byte value)
+	private System.Void  SetValueChecked(System.Int32 x, System.Int32 y, System.Byte value)
+	public System.Void  SetVersionInfo(System.Int32 value)
+	public System.Void  SetFormatInfo(System.Int32 value)
+	public System.Void  SetNextCodeword(System.Byte value)
+	public System.Void  DrawAlignmentPattern(System.Int32 x, System.Int32 y)
+	private System.Int32  FindBlock(System.Int32 x, System.Int32 y, System.Int32 tentativeWidth, System.Byte[] moduleblocks)
+	public System.Int32  CalculatePenalty()
+	public System.Void  ApplyMask(System.Int32 mask)
+	public System.Void  DrawTimingPatterns()
+	public System.Void  DrawFinderPattern(System.Int32 x, System.Int32 y)
+	public System.String  ToString()
 BitList
 	extends System.Object
-	private genericinst list
-	private byte curbyte
-	private int curbit
-	public void  .ctor()
-	public genericinst  get_List()
-	public void  AddBits(byte value, int bits)
-	public void  AddBits(int value, int bits)
-	public void  PadTo(int size)
+	private List`1<System.Byte> list
+	private System.Byte curbyte
+	private System.Int32 curbit
+	public System.Void  .ctor()
+	public System.Collections.Generic.IList`1<System.Byte>  get_List()
+	public System.Void  AddBits(System.Byte value, System.Int32 bits)
+	public System.Void  AddBits(System.Int32 value, System.Int32 bits)
+	public System.Void  PadTo(System.Int32 size)
 <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}
 	extends System.Object
 	public static $ArrayType=2044 $field-0

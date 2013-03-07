@@ -46,6 +46,36 @@ func ToContentType(t AbstractType) (t2 content.Type) {
 	return
 }
 
+func (a *Assembly) ToContentType(index TypeDefIndex, t *Type) (t2 content.Type) {
+	switch t.TypeId {
+	case ELEMENT_TYPE_GENERICINST:
+		t2 = ToContentType(t.Type)
+		for i := range t.Instance {
+			t2.Specialization = append(t2.Specialization, a.ToContentType(index, t.Instance[i]))
+		}
+	case ELEMENT_TYPE_VAR, ELEMENT_TYPE_MVAR:
+		idx2 := a.Search(index, id_GenericParam, func(idx TableIndex) bool {
+			if raw, err := idx.Data(); err == nil {
+				gr := raw.(*GenericParamRow)
+				return gr.Owner.Table() >= index.Table() && gr.Owner.Index() >= index.Index()
+			}
+			return false
+		})
+		if idx2.Table() != id_nullTable {
+			ci := idx2.(*ConcreteTableIndex)
+			ci.index += t.GenericNumber
+			if raw, err := ci.Data(); err == nil {
+				gr := raw.(*GenericParamRow)
+				t2.Name.Relative = string(gr.Name)
+			}
+		}
+	default:
+		return ToContentType(t)
+	}
+
+	return
+}
+
 func (t *TypeDefRow) Name() string {
 	return string(t.TypeName)
 }
@@ -68,6 +98,15 @@ func (t *TypeSpecRow) Name() string {
 
 func (t *TypeSpecRow) Namespace() string {
 	return string("unknown")
+}
+
+func (a *Assembly) Name() string {
+	ci := ConcreteTableIndex{&a.MetadataUtil, 1, id_Module}
+	if raw, err := ci.Data(); err == nil {
+		mr := raw.(*ModuleRow)
+		return string(mr.Name)
+	}
+	return ""
 }
 
 func (a *Assembly) ListRange(index uint32, table, memberTable int, getindex func(interface{}) uint32) (startRow, endRow uint32) {
@@ -201,7 +240,7 @@ func (a *Assembly) Methods(index TypeDefIndex) (methods []content.Method, err er
 					l = l2
 				}
 				for i := range sig.Params[:l] {
-					m.Parameters[i].Type = ToContentType(&sig.Params[i].Type)
+					m.Parameters[i].Type = a.ToContentType(index, &sig.Params[i].Type)
 				}
 				if method.Flags&MethodAttributes_Final != 0 {
 					m.Flags |= content.FLAG_FINAL
@@ -218,7 +257,7 @@ func (a *Assembly) Methods(index TypeDefIndex) (methods []content.Method, err er
 				}
 
 				m.Returns = make([]content.Variable, 1)
-				m.Returns[0].Type = ToContentType(&sig.RetType.Type)
+				m.Returns[0].Type = a.ToContentType(index, &sig.RetType.Type)
 			}
 			methods = append(methods, m)
 		}
@@ -245,21 +284,36 @@ func (a *Assembly) Extends(index TypeDefIndex) (t content.Type, err error) {
 	return
 }
 
-func (a *Assembly) Implements(index TypeDefIndex) (interfaces []content.Type, err error) {
-	table := a.Tables[id_InterfaceImpl]
-	ci := ConcreteTableIndex{metadataUtil: &a.MetadataUtil, index: 0, table: id_InterfaceImpl}
+func (a *Assembly) Search(index TypeDefIndex, tableId int, equal func(TableIndex) bool) TableIndex {
+	table := a.Tables[tableId]
+	ci := ConcreteTableIndex{metadataUtil: &a.MetadataUtil, index: 0, table: tableId}
 	idx := sort.Search(int(table.Rows), func(in int) bool {
 		i := uint32(in)
 		ci.index = i + 1
-		if raw, err := ci.Data(); err == nil {
+		return equal(&ci)
+	})
+	if uint32(idx) == table.Rows {
+		return nil
+	}
+	ci.index = uint32(idx) + 1
+	return &ci
+}
+
+func (a *Assembly) Implements(index TypeDefIndex) (interfaces []content.Type, err error) {
+	table := a.Tables[id_InterfaceImpl]
+	rawidx := a.Search(index, id_InterfaceImpl, func(ti TableIndex) bool {
+		if raw, err := ti.Data(); err == nil {
 			c := raw.(*InterfaceImplRow)
-			return c.Class.Index() == index.Index()
+			return c.Class.Table() >= index.Table() && c.Class.Index() >= index.Index()
 		}
 		return false
 	})
-
-	for i := uint32(idx); i < table.Rows; i++ {
-		ci.index = i + 1
+	if rawidx == nil {
+		return nil, nil
+	}
+	ci := rawidx.(*ConcreteTableIndex)
+	for i := uint32(ci.index); i < table.Rows+1; i++ {
+		ci.index = i
 		if raw, err := ci.Data(); err != nil {
 			return nil, err
 		} else {

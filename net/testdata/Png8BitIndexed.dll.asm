@@ -154,34 +154,34 @@ NestedClassRow
 <Module>
 Png8BitIndexed
 	extends System.Object
-	private byte[] subdata1
-	private uint[] crcTable
-	private int width
-	private int height
-	private int realRowSize
-	private int blockSize
-	private int rowSize
-	private byte[] imageData
-	private byte[] data
-	private byte[] subdata2
-	private byte[] colors
-	private uint idatCrc
-	private int transparent
-	public void  .ctor(int width, int height)
-	private byte[]  Adler32(byte[] stream, int offset, int length)
-	private uint  Crc32(byte[] stream, int offset, int length, uint crc)
-	public void  SetFilter(int y, byte filter)
-	public byte  GetFilter(int y)
-	public void  SetPixel(int x, int y, int pixel)
-	public int  GetPixel(int x, int y)
-	public byte[]  GetColor(int index)
-	public void  SetColor(int index, byte[] color)
-	private byte[]  GetBE(uint crc)
-	public void  Save(string filename)
-	public int  get_Height()
-	public int  get_Width()
-	public int  get_Transparent()
-	public void  set_Transparent(int value)
+	private System.Byte[] subdata1
+	private System.UInt32[] crcTable
+	private System.Int32 width
+	private System.Int32 height
+	private System.Int32 realRowSize
+	private System.Int32 blockSize
+	private System.Int32 rowSize
+	private System.Byte[] imageData
+	private System.Byte[] data
+	private System.Byte[] subdata2
+	private System.Byte[] colors
+	private System.UInt32 idatCrc
+	private System.Int32 transparent
+	public System.Void  .ctor(System.Int32 width, System.Int32 height)
+	private System.Byte[]  Adler32(System.Byte[] stream, System.Int32 offset, System.Int32 length)
+	private System.UInt32  Crc32(System.Byte[] stream, System.Int32 offset, System.Int32 length, System.UInt32 crc)
+	public System.Void  SetFilter(System.Int32 y, System.Byte filter)
+	public System.Byte  GetFilter(System.Int32 y)
+	public System.Void  SetPixel(System.Int32 x, System.Int32 y, System.Int32 pixel)
+	public System.Int32  GetPixel(System.Int32 x, System.Int32 y)
+	public System.Byte[]  GetColor(System.Int32 index)
+	public System.Void  SetColor(System.Int32 index, System.Byte[] color)
+	private System.Byte[]  GetBE(System.UInt32 crc)
+	public System.Void  Save(System.String filename)
+	public System.Int32  get_Height()
+	public System.Int32  get_Width()
+	public System.Int32  get_Transparent()
+	public System.Void  set_Transparent(System.Int32 value)
 <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}
 	extends System.Object
 	public static $ArrayType=32 $field-0

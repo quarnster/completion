@@ -247,41 +247,41 @@ NestedClassRow
 <Module>
 CompleteSharp
 	extends System.Object
-	private static string sep
-	public void  .ctor()
-	private static void  reportError(System.Exception e)
-	public static void  Main(string[] arg)
-	private static void  .cctor()
+	private static System.String sep
+	public System.Void  .ctor()
+	private static System.Void  reportError(System.Exception e)
+	public static System.Void  Main(System.String[] arg)
+	private static System.Void  .cctor()
 MyAppDomain
 	extends System.MarshalByRefObject
 	private System.AppDomain ad
-	private string[] assemblies
+	private System.String[] assemblies
 	private DateTime[] times
-	private boolean forceReload
-	public void  .ctor(string[] arg)
-	public void  LoadAssemblies()
-	public boolean  Execute(string[] args, System.Collections.ArrayList modules)
-	private void  CheckUpdate()
+	private System.Boolean forceReload
+	public System.Void  .ctor(System.String[] arg)
+	public System.Void  LoadAssemblies()
+	public System.Boolean  Execute(System.String[] args, System.Collections.ArrayList modules)
+	private System.Void  CheckUpdate()
 Hack
 	extends System.MarshalByRefObject
 	public MyAppDomain ad
-	public void  .ctor()
-	private int  GetParameterExtent(string parameter)
-	private string[]  SplitParameters(string parameters, boolean fix)
-	private string  ParseParameters(string parameters, int expected, boolean insertion)
-	private string  FixName(string str, boolean insertion)
-	private string[]  GetTemplateArguments(string template)
-	private string  GetBase(string fullname)
-	public System.Type  GetType(MyAppDomain ad, string basename, string[] templateParam)
-	private int  GetModifiers(System.Reflection.MemberInfo m)
-	private System.Reflection.Assembly  TryLoad(string path, string name)
-	private System.Reflection.Assembly  ResolveAssembly(object sender, System.ResolveEventArgs args)
-	public System.Reflection.Assembly  Load(string str)
-	public System.Type  GetType(string basename)
-	public boolean  Execute(string[] args, System.Collections.ArrayList modules)
+	public System.Void  .ctor()
+	private System.Int32  GetParameterExtent(System.String parameter)
+	private System.String[]  SplitParameters(System.String parameters, System.Boolean fix)
+	private System.String  ParseParameters(System.String parameters, System.Int32 expected, System.Boolean insertion)
+	private System.String  FixName(System.String str, System.Boolean insertion)
+	private System.String[]  GetTemplateArguments(System.String template)
+	private System.String  GetBase(System.String fullname)
+	public System.Type  GetType(MyAppDomain ad, System.String basename, System.String[] templateParam)
+	private System.Int32  GetModifiers(System.Reflection.MemberInfo m)
+	private System.Reflection.Assembly  TryLoad(System.String path, System.String name)
+	private System.Reflection.Assembly  ResolveAssembly(System.Object sender, System.ResolveEventArgs args)
+	public System.Reflection.Assembly  Load(System.String str)
+	public System.Type  GetType(System.String basename)
+	public System.Boolean  Execute(System.String[] args, System.Collections.ArrayList modules)
 Accessibility
 	extends System.Enum
-	public int value__
+	public System.Int32 value__
 	public static Accessibility NONE
 	public static Accessibility STATIC
 	public static Accessibility PRIVATE

@@ -384,7 +384,7 @@ MethodSpecRow
 <Module>
 JsonToken
 	extends System.Enum
-	public int value__
+	public System.Int32 value__
 	public static Json.JsonToken Unknown
 	public static Json.JsonToken LeftBrace
 	public static Json.JsonToken RightBrace
@@ -399,51 +399,51 @@ JsonToken
 	public static Json.JsonToken Null
 InvalidJsonException
 	extends System.Exception
-	public void  .ctor(string message)
+	public System.Void  .ctor(System.String message)
 JsonParser
 	extends System.Object
 	private static System.Globalization.NumberStyles JsonNumbers
-	private static genericinst _cache
-	private static char[] _base16
-	private static genericinst <>f__am$cache2
-	public void  .ctor()
-	public static string  Serialize(mvar instance)
-	public static object  Deserialize(string json, System.Type type)
-	public static mvar  Deserialize( json)
-	private static void  DeserializeImpl(genericinst map, System.Collections.Generic.IEnumerable`1 bag, void instance)
-	private static void  DeserializeImpl(genericinst map, System.Collections.Generic.IEnumerable`1 bag, void instance)
-	private static void  DeserializeType(genericinst map, System.Collections.Generic.IEnumerable`1 bag, void instance)
-	public static genericinst  FromJson(System.Collections.Generic.IDictionary`2 json)
-	public static genericinst  FromJson(System.Collections.Generic.IDictionary`2 json, boolean type)
-	public static string  ToJson(genericinst bag)
-	public static genericinst  GetBagForObject(System.Collections.Generic.IDictionary`2 type, boolean instance)
-	public static genericinst  GetBagForObject(System.Collections.Generic.IDictionary`2 instance)
-	public static genericinst  InitializeBag()
-	public static genericinst  PrepareInstance(System.Collections.Generic.IEnumerable`1 instance, void type)
-	public static genericinst  PrepareInstance(System.Collections.Generic.IEnumerable`1 instance)
-	public static void  CacheReflection(System.Type item)
-	public static void  SerializeItem(System.Text.StringBuilder sb, object item)
-	public static void  SerializeDateTime(System.Text.StringBuilder sb)
-	public static void  SerializeArray(object item, System.Text.StringBuilder sb)
-	public static void  SerializeObject(object item, System.Text.StringBuilder sb)
-	public static void  SerializeString(System.Text.StringBuilder sb, object item)
-	public static string  GetUnicode(int code)
-	public static genericinst  ParsePair(System.Collections.Generic.KeyValuePair`2 data, boolean index)
-	public static boolean  ParseToken(Json.JsonToken token, genericinst data, System.Collections.Generic.IList`1 index)
-	public static string  ParseString(genericinst data, System.Collections.Generic.IList`1 index)
-	public static object  ParseValue(genericinst data, System.Collections.Generic.IList`1 index)
-	public static genericinst  ParseObject(System.Collections.Generic.IDictionary`2 data, boolean index)
-	public static genericinst  ParseArray(System.Collections.Generic.IEnumerable`1 data, void index)
-	public static object  ParseNumber(genericinst data, System.Collections.Generic.IList`1 index)
-	public static Json.JsonToken  NextToken(genericinst data, System.Collections.Generic.IList`1 index)
-	public static Json.JsonToken  GetTokenFromSymbol(char symbol)
-	public static Json.JsonToken  GetTokenFromSymbol(char symbol, Json.JsonToken token)
-	public static void  IgnoreWhitespace(genericinst data, System.Collections.Generic.IList`1 index, void symbol)
-	public static Json.JsonToken  IgnoreWhitespace(genericinst data, System.Collections.Generic.IList`1 index, void token, char symbol)
-	public static void  GetKeyword(string word, Json.JsonToken target, genericinst data, System.Collections.Generic.IList`1 index, void result)
-	public static string  BaseConvert(int input, char[] charSet, int minLength)
-	private static void  .cctor()
-	private static int  <SerializeString>m__0(char symbol)
+	private static IDictionary`2<Type, PropertyInfo[]> _cache
+	private static System.Char[] _base16
+	private static Func`2<System.Char, System.Int32> <>f__am$cache2
+	public System.Void  .ctor()
+	public static System.String  Serialize(T instance)
+	public static System.Object  Deserialize(System.String json, System.Type type)
+	public static T  Deserialize(System.String json)
+	private static System.Void  DeserializeImpl(System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo> map, System.Collections.Generic.IDictionary`2<System.String, System.Object> bag, System.Object instance)
+	private static System.Void  DeserializeImpl(System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo> map, System.Collections.Generic.IDictionary`2<System.String, System.Object> bag, T instance)
+	private static System.Void  DeserializeType(System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo> map, System.Collections.Generic.IDictionary`2<System.String, System.Object> bag, System.Object instance)
+	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  FromJson(System.String json)
+	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  FromJson(System.String json, Json.JsonToken type)
+	public static System.String  ToJson(System.Collections.Generic.IDictionary`2<System.String, System.Object> bag)
+	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  GetBagForObject(System.Type type, System.Object instance)
+	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  GetBagForObject(T instance)
+	public static System.Collections.Generic.Dictionary`2<System.String, System.Object>  InitializeBag()
+	public static System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo>  PrepareInstance(System.Object instance, System.Type type)
+	public static System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo>  PrepareInstance(T instance)
+	public static System.Void  CacheReflection(System.Type item)
+	public static System.Void  SerializeItem(System.Text.StringBuilder sb, System.Object item)
+	public static System.Void  SerializeDateTime(System.Text.StringBuilder sb)
+	public static System.Void  SerializeArray(System.Object item, System.Text.StringBuilder sb)
+	public static System.Void  SerializeObject(System.Object item, System.Text.StringBuilder sb)
+	public static System.Void  SerializeString(System.Text.StringBuilder sb, System.Object item)
+	public static System.String  GetUnicode(System.Int32 code)
+	public static System.Collections.Generic.KeyValuePair`2<System.String, System.Object>  ParsePair(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
+	public static System.Boolean  ParseToken(Json.JsonToken token, System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
+	public static System.String  ParseString(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
+	public static System.Object  ParseValue(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
+	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  ParseObject(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
+	public static System.Collections.Generic.IEnumerable`1<System.Object>  ParseArray(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
+	public static System.Object  ParseNumber(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
+	public static Json.JsonToken  NextToken(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
+	public static Json.JsonToken  GetTokenFromSymbol(System.Char symbol)
+	public static Json.JsonToken  GetTokenFromSymbol(System.Char symbol, Json.JsonToken token)
+	public static System.Void  IgnoreWhitespace(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index, System.Char symbol)
+	public static Json.JsonToken  IgnoreWhitespace(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index, Json.JsonToken token, System.Char symbol)
+	public static System.Void  GetKeyword(System.String word, Json.JsonToken target, System.Collections.Generic.IList`1<System.Char> data, System.Int32 index, Json.JsonToken result)
+	public static System.String  BaseConvert(System.Int32 input, System.Char[] charSet, System.Int32 minLength)
+	private static System.Void  .cctor()
+	private static System.Int32  <SerializeString>m__0(System.Char symbol)
 <PrivateImplementationDetails>{fa75a08b-59e8-4d4a-b10e-2114294958f4}
 	extends System.Object
 	public static $ArrayType=32 $field-0

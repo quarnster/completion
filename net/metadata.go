@@ -56,6 +56,12 @@ const (
 	id_Blob                   = 0x101
 )
 
+const (
+	bit_stringHeapIndexSize = (1 << iota)
+	bit_guidHeapIndexSize
+	bit_blobHeapIndexSize
+)
+
 var (
 	ErrMetadata = errors.New("Metadata header isn't in the expected format")
 )
@@ -143,6 +149,13 @@ type hash_tilde_stream_header struct {
 	Reserved2    uint8
 	Valid        uint64
 	Sorted       uint64
+}
+
+func (h *hash_tilde_stream_header) Validate() error {
+	if h.Reserved != 0 || h.MajorVersion != 2 || h.MinorVersion != 0 /*|| h.Reserved2 != 1*/ { //TODO: Hmm spec says Reserved2 should be 1, but it appears to be 0x10?
+		return errors.New(fmt.Sprintf("This does not appear to be a valid #~ stream header: %#v", h))
+	}
+	return nil
 }
 
 type MetadataUtil struct {
@@ -236,12 +249,6 @@ func (mh *MetadataHeader) MetadataUtil(br *util.BinaryReader) (*MetadataUtil, er
 	}
 	return &ret, nil
 }
-
-const (
-	bit_stringHeapIndexSize = (1 << iota)
-	bit_guidHeapIndexSize
-	bit_blobHeapIndexSize
-)
 
 func (m *MetadataUtil) ReadIndex(br *util.BinaryReader, size uint) (uint32, error) {
 	if size == 2 {
@@ -423,11 +430,4 @@ func (mt *MetadataTable) Index(index uint32) ([]byte, error) {
 		return nil, errors.New(fmt.Sprintf("Index outside of bounds: %x >= %x", index, mt.Rows))
 	}
 	return mt.data[index*mt.RowSize:], nil
-}
-
-func (h *hash_tilde_stream_header) Validate() error {
-	if h.Reserved != 0 || h.MajorVersion != 2 || h.MinorVersion != 0 /*|| h.Reserved2 != 1*/ { //TODO: Hmm spec says Reserved2 should be 1, but it appears to be 0x10?
-		return errors.New(fmt.Sprintf("This does not appear to be a valid #~ stream header: %#v", h))
-	}
-	return nil
 }
