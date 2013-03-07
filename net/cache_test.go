@@ -96,6 +96,25 @@ func TestCache2(t *testing.T) {
 	}
 }
 
+func TestCacheLoadDep(t *testing.T) {
+	paths := DefaultPaths()
+	if len(paths) == 0 {
+		t.Skip("No default paths available")
+	}
+
+	t.Log(paths)
+	c := Cache{paths: paths}
+	if asm, err := c.Load("System.dll"); err != nil {
+		t.Error(err)
+	} else {
+		t.Logf("Found %s", asm.Name())
+		time.Sleep(time.Millisecond * 10)
+		if len(c.entries) <= 1 {
+			t.Error("Dependencies not loaded:", c.entries)
+		}
+	}
+}
+
 func BenchmarkCacheComplete(b *testing.B) {
 	b.StopTimer()
 
