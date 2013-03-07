@@ -382,18 +382,12 @@ func (t *Type) Name() string {
 		}
 	case ELEMENT_TYPE_SZARRAY:
 		return fmt.Sprintf("%s[]", t.Type)
-	case ELEMENT_TYPE_GENERICINST:
-		ret := t.Type.Name() + "<"
-		for i := range t.Instance {
-			if i > 0 {
-				ret += ", "
-			}
-			ret += t.Instance[i].Name()
-		}
-		ret += ">"
-		return ret
 	}
-	return lut_element_type[int(t.TypeId)]
+	n, ok := lut_element_type[int(t.TypeId)]
+	if ok {
+		return n
+	}
+	return "unknown"
 }
 
 func (t *Type) Namespace() string {

@@ -403,9 +403,9 @@ InvalidJsonException
 JsonParser
 	extends System.Object
 	private static System.Globalization.NumberStyles JsonNumbers
-	private static IDictionary`2<Type, PropertyInfo[]> _cache
+	private static System.Collections.Generic.IDictionary`2<System.Type, PropertyInfo[]> _cache
 	private static System.Char[] _base16
-	private static Func`2<System.Char, System.Int32> <>f__am$cache2
+	private static System.Func`2<System.Char, System.Int32> <>f__am$cache2
 	public System.Void  .ctor()
 	public static System.String  Serialize(T instance)
 	public static System.Object  Deserialize(System.String json, System.Type type)

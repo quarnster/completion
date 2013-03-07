@@ -400,7 +400,7 @@ CodeMatrix
 	public System.String  ToString()
 BitList
 	extends System.Object
-	private List`1<System.Byte> list
+	private System.Collections.Generic.List`1<System.Byte> list
 	private System.Byte curbyte
 	private System.Int32 curbit
 	public System.Void  .ctor()

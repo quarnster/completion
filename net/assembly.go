@@ -171,7 +171,7 @@ func (a *Assembly) Fields(index TypeDefIndex) (fields []content.Field, err error
 			} else if err = dec.Decode(&sig); err != nil {
 				return nil, err
 			} else {
-				f.Type = ToContentType(&sig.Type)
+				f.Type = a.ToContentType(index, &sig.Type)
 			}
 			if field.Flags&FieldAttributes_Static != 0 {
 				f.Flags |= content.FLAG_STATIC
