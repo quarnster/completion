@@ -32,6 +32,7 @@ func TestLoadAllAssemblies(t *testing.T) {
 		wg.Add(1)
 
 		for fn := range inChan {
+			start := time.Now()
 			data, err := ioutil.ReadFile(fn)
 			if err != nil {
 				outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
@@ -87,7 +88,7 @@ func TestLoadAllAssemblies(t *testing.T) {
 						if mn, an := string(mr.Name), string(ar.Name); !strings.HasPrefix(mn, an) && (an != "mscorlib" && mn != "CommonLanguageRuntimeLibrary") {
 							outChan <- errors.New(fmt.Sprintf("The assembly name isn't the prefix of the module name: %s, %s", an, mn))
 						} else {
-							t.Logf("Successfully loaded module %50s {%s} %s", mn, mr.Mvid, an)
+							t.Logf("Successfully loaded module %50s {%s} %s (%s)", mn, mr.Mvid, an, time.Now().Sub(start))
 						}
 					}
 				}

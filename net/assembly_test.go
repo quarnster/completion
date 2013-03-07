@@ -210,3 +210,28 @@ func BenchmarkComplete(b *testing.B) {
 		}
 	}
 }
+
+func BenchmarkMetatableLookup(b *testing.B) {
+	b.StopTimer()
+	f, err := os.Open(findtype_test)
+	if err != nil {
+		b.Fatalf("Failed to open %s: %s", findtype_test, err)
+	}
+	defer f.Close()
+	if asm, err := LoadAssembly(f); err != nil {
+		b.Error(err)
+	} else if idx, err := asm.FindType(content.FullyQualifiedName{Absolute: "SevenZip.Compression.LZ.OutWindow"}); err != nil {
+		b.Error(err)
+	} else {
+		b.StartTimer()
+		for i := 0; i < b.N; i++ {
+			if raw, err := idx.Data(); err != nil {
+				b.Error(err)
+			} else {
+				if _, ok := raw.(*TypeDefRow); !ok {
+					b.Error("It's not a TypeDefRow")
+				}
+			}
+		}
+	}
+}

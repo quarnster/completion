@@ -4,16 +4,16 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"github.com/howeyc/fsnotify"
 	"github.com/quarnster/completion/content"
 	"io/ioutil"
+	"log"
 	"os"
 	"path/filepath"
-	"time"
 )
 
 type entry struct {
 	name     string
-	modtime  time.Time
 	assembly *Assembly
 }
 
@@ -23,17 +23,7 @@ func (e *entry) Reload() error {
 	} else if asm, err := LoadAssembly(bytes.NewReader(data)); err != nil {
 		return err
 	} else {
-		e.modtime = time.Now()
 		e.assembly = asm
-	}
-	return nil
-}
-
-func (e *entry) Update() error {
-	if fi, err := os.Stat(e.name); err != nil {
-		return err
-	} else if fi.ModTime() != e.modtime {
-		return e.Reload()
 	}
 	return nil
 }
@@ -41,12 +31,32 @@ func (e *entry) Update() error {
 type Cache struct {
 	entries []entry
 	paths   []string
+	watch   *fsnotify.Watcher
+}
+
+func (c *Cache) watchthread() {
+	for {
+		select {
+		case ev := <-c.watch.Event:
+			for i := range c.entries {
+				if c.entries[i].assembly.Name() == ev.Name {
+					log.Println("Reloading", ev.Name)
+					if err := c.entries[i].Reload(); err != nil {
+						log.Println("Error reloading assembly:", err)
+					}
+					break
+				}
+			}
+		case err := <-c.watch.Error:
+			log.Println("error:", err)
+		}
+	}
 }
 
 func (c *Cache) Load(name string) (*Assembly, error) {
 	for i := range c.entries {
 		if c.entries[i].assembly.Name() == name {
-			if err := c.entries[i].Update(); err != nil {
+			if err := c.entries[i].Reload(); err != nil {
 				return nil, err
 			} else {
 				return c.entries[i].assembly, nil
@@ -58,17 +68,28 @@ func (c *Cache) Load(name string) (*Assembly, error) {
 
 func (c *Cache) Cache(assembly string) (*Assembly, error) {
 	errs := ""
+	if c.watch == nil {
+		var err error
+		c.watch, err = fsnotify.NewWatcher()
+		if err != nil {
+			return nil, err
+		}
+		go c.watchthread()
+	}
 	for _, p := range c.paths {
 		path := filepath.Join(p, assembly)
 		if _, err := os.Stat(path); err != nil {
 			continue
 		} else {
+			if err := c.watch.Watch(path); err != nil {
+				return nil, err
+			}
 			e := entry{name: path}
 			if err := e.Reload(); err != nil {
 				if len(errs) != 0 {
 					errs += "\n"
 				}
-				errs += err.Error()
+				errs += fmt.Sprintf("\t%s", err.Error())
 				continue
 			}
 			c.entries = append(c.entries, e)
