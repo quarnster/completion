@@ -18,7 +18,18 @@ func (f FullyQualifiedName) String() string {
 }
 
 func (t Type) String() string {
-	return t.Name.String()
+	ret := t.Name.String()
+	if len(t.Specialization) > 0 {
+		ret += "<"
+		for i := range t.Specialization {
+			if i > 0 {
+				ret += ", "
+			}
+			ret += t.Specialization[i].String()
+		}
+		ret += ">"
+	}
+	return ret
 }
 
 func (v Variable) String() string {

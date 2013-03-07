@@ -1,13 +1,8 @@
 package content
 
-// AKA generic parameter in some languages
-type TemplateParameter struct {
-	// TODO
-}
-
 type Type struct {
-	Name           FullyQualifiedName  `protocol:"required" json:",omitempty"`
-	Specialization []TemplateParameter `protocol:"optional" json:",omitempty"`
+	Name           FullyQualifiedName `protocol:"required" json:",omitempty"`
+	Specialization []Type             `protocol:"optional" json:",omitempty"`
 }
 
 const (
@@ -35,12 +30,12 @@ type Field struct {
 }
 
 type Method struct {
-	Name           FullyQualifiedName  `protocol:"required" json:",omitempty"`
-	Flags          Flags               `protocol:"optional" json:",omitempty"`
-	Returns        []Variable          `protocol:"optional" json:",omitempty"`
-	Parameters     []Variable          `protocol:"optional" json:",omitempty"`
-	Specialization []TemplateParameter `protocol:"optional" json:",omitempty"`
-	Static         bool                `protocol:"optional"`
+	Name           FullyQualifiedName `protocol:"required" json:",omitempty"`
+	Flags          Flags              `protocol:"optional" json:",omitempty"`
+	Returns        []Variable         `protocol:"optional" json:",omitempty"`
+	Parameters     []Variable         `protocol:"optional" json:",omitempty"`
+	Specialization []Type             `protocol:"optional" json:",omitempty"`
+	Static         bool               `protocol:"optional"`
 }
 
 type CompletionResult struct {
