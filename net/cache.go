@@ -32,32 +32,38 @@ func (c *Cache) reload(e *entry) error {
 				return err
 			} else {
 				row := raw.(*AssemblyRefRow)
-				c.load <- string(row.Name)
+				c.load <- loadreq{name: string(row.Name)}
 			}
 		}
 	}
 	return nil
 }
 
+type loadreq struct {
+	name   string
+	reload bool
+}
 type Cache struct {
 	entries []entry
 	paths   []string
 	watch   *fsnotify.Watcher
 	mutex   sync.Mutex
-	load    chan string
+	load    chan loadreq
 }
 
 func (c *Cache) loaderthread() {
-	for modulename := range c.load {
+	for req := range c.load {
 		loaded := false
 		func() {
 			c.mutex.Lock()
 			defer c.mutex.Unlock()
 			for i := range c.entries {
-				if c.entries[i].name == modulename {
+				if c.entries[i].name == req.name {
 					loaded = true
-					if err := c.reload(&c.entries[i]); err != nil {
-						log.Println("Error reloading assembly:", err)
+					if req.reload {
+						if err := c.reload(&c.entries[i]); err != nil {
+							log.Println("Error reloading assembly:", err)
+						}
 					}
 					break
 				}
@@ -65,9 +71,9 @@ func (c *Cache) loaderthread() {
 		}()
 		if !loaded {
 			exts := []string{".dll", ".exe"}
-			if _, err := c.Load(modulename); err != nil {
+			if _, err := c.Load(req.name); err != nil {
 				for _, ext := range exts {
-					if _, err := c.Load(modulename + ext); err == nil {
+					if _, err := c.Load(req.name + ext); err == nil {
 						break
 					}
 				}
@@ -80,7 +86,7 @@ func (c *Cache) watchthread() {
 	for {
 		select {
 		case ev := <-c.watch.Event:
-			c.load <- ev.Name
+			c.load <- loadreq{ev.Name, true}
 		case err := <-c.watch.Error:
 			log.Println("error:", err)
 		}
@@ -101,7 +107,7 @@ func (c *Cache) Load(name string) (*Assembly, error) {
 func (c *Cache) cache(assembly string) (*Assembly, error) {
 	errs := ""
 	if c.watch == nil {
-		c.load = make(chan string, 64)
+		c.load = make(chan loadreq, 64)
 		var err error
 		c.watch, err = fsnotify.NewWatcher()
 		if err != nil {
