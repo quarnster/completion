@@ -170,7 +170,6 @@ func NewArchive(path string) (Archive, error) {
 			return &DirectoryArchive{path, fi}, nil
 		}
 	}
-	panic("unreachable")
 }
 
 func NewCompositeArchive(paths []string) (ret *CompositeArchive, err error) {

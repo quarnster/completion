@@ -29,7 +29,6 @@ func send(s string) (string, error) {
 	} else {
 		return string(reply), nil
 	}
-	panic("unreachable")
 }
 
 func handler(w io.Writer, intent content.Intent) {

@@ -67,7 +67,7 @@ func SignedDecode(reader io.ReadSeeker) (ret int32, err error) {
 		return 0, err
 	} else {
 		sign := (d & 1)
-		switch encodedWidth(data[0]) {
+		switch w := encodedWidth(data[0]); w {
 		case 1:
 			sign <<= 7
 			sign |= sign >> 1
@@ -83,9 +83,10 @@ func SignedDecode(reader io.ReadSeeker) (ret int32, err error) {
 			sign |= sign >> 1
 			sign |= sign >> 1
 			return int32(int32(d>>1 | sign)), nil
+		default:
+			return 0, errors.New(fmt.Sprintf("Invalid width: %d", w))
 		}
 	}
-	panic("unreachable")
 }
 
 const (

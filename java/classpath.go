@@ -44,5 +44,4 @@ func DefaultClasspath() ([]string, error) {
 		}
 		return nil, errors.New(err)
 	}
-	panic("unreachable")
 }

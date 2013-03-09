@@ -204,7 +204,6 @@ func (r *BinaryReader) Uint64() (uint64, error) {
 	} else {
 		return r.Endianess.Uint64(data), nil
 	}
-	panic("Unreachable")
 }
 
 func (r *BinaryReader) Uint32() (uint32, error) {
@@ -213,7 +212,6 @@ func (r *BinaryReader) Uint32() (uint32, error) {
 	} else {
 		return r.Endianess.Uint32(data), nil
 	}
-	panic("Unreachable")
 }
 
 func (r *BinaryReader) Uint16() (uint16, error) {
@@ -222,7 +220,6 @@ func (r *BinaryReader) Uint16() (uint16, error) {
 	} else {
 		return r.Endianess.Uint16(data), nil
 	}
-	panic("Unreachable")
 }
 
 func (r *BinaryReader) Uint8() (uint8, error) {
@@ -231,7 +228,6 @@ func (r *BinaryReader) Uint8() (uint8, error) {
 	} else {
 		return uint8(data[0]), nil
 	}
-	panic("Unreachable")
 }
 
 func (r *BinaryReader) Int64() (int64, error) {
@@ -240,7 +236,6 @@ func (r *BinaryReader) Int64() (int64, error) {
 	} else {
 		return int64(data), nil
 	}
-	panic("Unreachable")
 }
 
 func (r *BinaryReader) Int32() (int32, error) {
@@ -249,7 +244,6 @@ func (r *BinaryReader) Int32() (int32, error) {
 	} else {
 		return int32(data), nil
 	}
-	panic("Unreachable")
 }
 
 func (r *BinaryReader) Int16() (int16, error) {
@@ -258,7 +252,6 @@ func (r *BinaryReader) Int16() (int16, error) {
 	} else {
 		return int16(data), nil
 	}
-	panic("Unreachable")
 }
 
 func (r *BinaryReader) Int8() (int8, error) {
@@ -267,7 +260,6 @@ func (r *BinaryReader) Int8() (int8, error) {
 	} else {
 		return int8(data[0]), nil
 	}
-	panic("Unreachable")
 }
 
 func (r *BinaryReader) Float32() (float32, error) {
@@ -277,7 +269,6 @@ func (r *BinaryReader) Float32() (float32, error) {
 		f32 := *(*float32)(unsafe.Pointer(&i32))
 		return f32, nil
 	}
-	panic("Unreachable")
 }
 
 func (r *BinaryReader) Float64() (float64, error) {
@@ -287,5 +278,4 @@ func (r *BinaryReader) Float64() (float64, error) {
 		f64 := *(*float64)(unsafe.Pointer(&i64))
 		return f64, nil
 	}
-	panic("Unreachable")
 }

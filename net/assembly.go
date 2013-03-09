@@ -134,5 +134,4 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 	} else {
 		return &Assembly{*md}, nil
 	}
-	panic("Unreachable")
 }

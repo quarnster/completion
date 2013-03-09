@@ -73,7 +73,6 @@ func lexClass(l *lexer) stateFn {
 			l.next()
 		}
 	}
-	panic("unreachable")
 }
 
 func lexClassBody(l *lexer) stateFn {
@@ -98,7 +97,6 @@ func lexClassBody(l *lexer) stateFn {
 			l.next()
 		}
 	}
-	panic("unreachable")
 }
 
 func lexField(l *lexer) stateFn {
@@ -119,7 +117,6 @@ func lexField(l *lexer) stateFn {
 			l.next()
 		}
 	}
-	panic("unreachable")
 }
 
 func lexFieldAssignment(l *lexer) stateFn {
@@ -138,7 +135,6 @@ func lexFieldAssignment(l *lexer) stateFn {
 			l.next()
 		}
 	}
-	panic("unreachable")
 }
 
 func lexMethod(l *lexer) stateFn {
@@ -160,7 +156,6 @@ func lexMethod(l *lexer) stateFn {
 			l.next()
 		}
 	}
-	panic("unreachable")
 }
 
 func lexMethodBody(l *lexer) stateFn {
@@ -175,5 +170,4 @@ func lexMethodBody(l *lexer) stateFn {
 			l.next()
 		}
 	}
-	panic("unreachable")
 }
