@@ -3,7 +3,6 @@ package net
 import (
 	"errors"
 	"github.com/quarnster/completion/content"
-	"sort"
 )
 
 var (
@@ -11,6 +10,7 @@ var (
 )
 
 type TypeDef struct {
+	mu    *MetadataUtil
 	index TypeDefIndex
 	row   TypeDefRow
 }
@@ -64,7 +64,7 @@ func TypeDefFromIndex(index TypeDefIndex) (*TypeDef, error) {
 	if tr, err := index.Data(); err != nil {
 		return nil, err
 	} else {
-		return &TypeDef{index, *tr.(*TypeDefRow)}, nil
+		return &TypeDef{index.(*ConcreteTableIndex).metadataUtil, index, *tr.(*TypeDefRow)}, nil
 	}
 }
 
@@ -76,7 +76,7 @@ func (td *TypeDef) initContentType(index TypeDefIndex, t *Type) (t2 content.Type
 			t2.Specialization = append(t2.Specialization, td.initContentType(index, t.Instance[i]))
 		}
 	case ELEMENT_TYPE_VAR, ELEMENT_TYPE_MVAR:
-		idx2 := td.Search(index, id_GenericParam, func(idx TableIndex) bool {
+		idx2 := td.mu.Search(id_GenericParam, func(idx TableIndex) bool {
 			if raw, err := idx.Data(); err == nil {
 				gr := raw.(*GenericParamRow)
 				return gr.Owner.Table() >= index.Table() && gr.Owner.Index() >= index.Index()
@@ -98,22 +98,6 @@ func (td *TypeDef) initContentType(index TypeDefIndex, t *Type) (t2 content.Type
 	return
 }
 
-func (td *TypeDef) Search(index TypeDefIndex, tableId int, equal func(TableIndex) bool) TableIndex {
-	mu := index.(*ConcreteTableIndex).metadataUtil
-	table := mu.Tables[tableId]
-	ci := ConcreteTableIndex{metadataUtil: mu, index: 0, table: tableId}
-	idx := sort.Search(int(table.Rows), func(in int) bool {
-		i := uint32(in)
-		ci.index = i + 1
-		return equal(&ci)
-	})
-	if uint32(idx) == table.Rows {
-		return nil
-	}
-	ci.index = uint32(idx) + 1
-	return &ci
-}
-
 func (td *TypeDef) Extends() (t []content.Type, err error) {
 	if (td.row.Flags & TypeAttributes_ClassSemanticsMask) != TypeAttributes_Class {
 		return nil, ErrInterface
@@ -129,9 +113,8 @@ func (td *TypeDef) Extends() (t []content.Type, err error) {
 }
 
 func (td *TypeDef) Implements() (interfaces []content.Type, err error) {
-	mu := td.index.(*ConcreteTableIndex).metadataUtil
-	table := mu.Tables[id_InterfaceImpl]
-	rawidx := td.Search(td.index, id_InterfaceImpl, func(ti TableIndex) bool {
+	table := td.mu.Tables[id_InterfaceImpl]
+	rawidx := td.mu.Search(id_InterfaceImpl, func(ti TableIndex) bool {
 		if raw, err := ti.Data(); err == nil {
 			c := raw.(*InterfaceImplRow)
 			return c.Class.Table() >= td.index.Table() && c.Class.Index() >= td.index.Index()
@@ -165,7 +148,7 @@ func (td *TypeDef) ListRange(index uint32, table, memberTable int, getindex func
 	mu := td.index.(*ConcreteTableIndex).metadataUtil
 	var (
 		idx      = ConcreteTableIndex{mu, index, table}
-		tableEnd = mu.Tables[memberTable].Rows + 1
+		tableEnd = td.mu.Tables[memberTable].Rows + 1
 	)
 	if i, err := idx.Data(); err != nil {
 		return 0, 0
@@ -303,17 +286,59 @@ func (td *TypeDef) Methods() (methods []content.Method, err error) {
 	return methods, nil
 }
 
-func (td *TypeDef) ToContentType() (t content.Type, err error) {
-	t = ToContentType(&td.row)
-	switch t2 := td.row.Flags & TypeAttributes_ClassSemanticsMask; t2 {
+func (td *TypeDef) TypeNesting(index TypeDefIndex) (ret string) {
+	idx := td.mu.Search(id_NestedClass, func(ti TableIndex) bool {
+		if raw, err := ti.Data(); err == nil {
+			c := raw.(*NestedClassRow)
+			return c.NestedClass.Index() >= index.Index()
+		}
+		return false
+	})
+	if idx != nil {
+		if raw, err := idx.Data(); err == nil {
+			c := raw.(*NestedClassRow)
+			if c.NestedClass.Index() == index.Index() {
+				ret += td.TypeNesting(c.EnclosingClass)
+			}
+		} else {
+			ret += err.Error()
+		}
+	}
+	if len(ret) > 0 {
+		ret += "$"
+	}
+	if raw, err := index.Data(); err != nil {
+		ret += err.Error()
+	} else {
+		ret += raw.(*TypeDefRow).Name()
+	}
+	return
+}
+
+func (td *TypeDef) Name() string {
+	return td.TypeNesting(td.index)
+}
+
+func (td *TypeDef) Namespace() string {
+	return td.row.Namespace()
+}
+
+func (flags TypeAttributes) Convert() (t content.Flags) {
+	switch t2 := flags & TypeAttributes_ClassSemanticsMask; t2 {
 	case TypeAttributes_Class:
-		t.Flags |= content.FLAG_CLASS
+		t |= content.FLAG_CLASS
 	case TypeAttributes_Interface:
-		t.Flags |= content.FLAG_INTERFACE
+		t |= content.FLAG_INTERFACE
 	}
-	if td.row.Flags&TypeAttributes_Public != 0 {
-		t.Flags |= content.FLAG_ACC_PUBLIC
+	if flags&TypeAttributes_Public != 0 {
+		t |= content.FLAG_ACC_PUBLIC
 	}
+	return t
+}
+
+func (td *TypeDef) ToContentType() (t content.Type, err error) {
+	t = ToContentType(td)
+	t.Flags = td.row.Flags.Convert()
 
 	if ext, err := td.Extends(); err != nil && err != ErrInterface {
 		return content.Type{}, err
@@ -334,6 +359,42 @@ func (td *TypeDef) ToContentType() (t content.Type, err error) {
 		return content.Type{}, err
 	} else {
 		t.Methods = f
+	}
+
+	idx := td.mu.Search(id_NestedClass, func(ti TableIndex) bool {
+		if raw, err := ti.Data(); err == nil {
+			c := raw.(*NestedClassRow)
+			return c.NestedClass.Index() > td.index.Index()
+		}
+		return false
+	})
+	if idx != nil {
+		ci := idx.(*ConcreteTableIndex)
+		table := td.mu.Tables[idx.Table()]
+		for i := idx.Index(); i < table.Rows+1; i++ {
+			ci.index = i
+			if raw, err := ci.Data(); err != nil {
+				return content.Type{}, err
+			} else {
+				row := raw.(*NestedClassRow)
+				if row.EnclosingClass.Index() != td.index.Index() {
+					break
+				} else if raw, err := row.NestedClass.Data(); err != nil {
+					return content.Type{}, err
+				} else {
+					ct := content.Type{}
+					ct.Name.Relative = td.TypeNesting(row.NestedClass)
+					row2 := raw.(*TypeDefRow)
+					ct.Name.Absolute = row2.Namespace()
+					if len(ct.Name.Absolute) > 0 {
+						ct.Name.Absolute += "."
+					}
+					ct.Name.Absolute += ct.Name.Relative
+					ct.Flags = row2.Flags.Convert()
+					t.Types = append(t.Types, ct)
+				}
+			}
+		}
 	}
 
 	return

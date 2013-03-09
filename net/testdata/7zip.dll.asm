@@ -1575,7 +1575,8 @@ class SevenZip.Compression.LZMA.Base
 	public static System.UInt32 kMatchMaxLen
 	public System.Void  .ctor()
 	public static System.UInt32  GetLenToPosState(System.UInt32 len)
-class State
+	class Base$State
+class Base$State
 	extends System.ValueType
 	public System.UInt32 Index
 	public System.Void  Init()
@@ -1613,7 +1614,9 @@ public class SevenZip.Compression.LZMA.Decoder
 	public final System.Void  Code(System.IO.Stream inStream, System.IO.Stream outStream, System.Int64 inSize, System.Int64 outSize, SevenZip.ICodeProgress progress)
 	public final System.Void  SetDecoderProperties(System.Byte[] properties)
 	public System.Boolean  Train(System.IO.Stream stream)
-public class LenDecoder
+	public class Decoder$LenDecoder
+	public class Decoder$LiteralDecoder
+public class Decoder$LenDecoder
 	extends System.Object
 	private SevenZip.Compression.RangeCoder.BitDecoder m_Choice
 	private SevenZip.Compression.RangeCoder.BitDecoder m_Choice2
@@ -1625,7 +1628,7 @@ public class LenDecoder
 	public System.Void  Create(System.UInt32 numPosStates)
 	public System.Void  Init()
 	public System.UInt32  Decode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, System.UInt32 posState)
-public class LiteralDecoder
+public class Decoder$LiteralDecoder
 	extends System.Object
 	private Decoder2[] m_Coders
 	private System.Int32 m_NumPrevBits
@@ -1637,7 +1640,8 @@ public class LiteralDecoder
 	private System.UInt32  GetState(System.UInt32 pos, System.Byte prevByte)
 	public System.Byte  DecodeNormal(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, System.UInt32 pos, System.Byte prevByte)
 	public System.Byte  DecodeWithMatchByte(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, System.UInt32 pos, System.Byte prevByte, System.Byte matchByte)
-public class Decoder2
+	public class Decoder$LiteralDecoder$Decoder2
+public class Decoder$LiteralDecoder$Decoder2
 	extends System.ValueType
 	private BitDecoder[] m_Decoders
 	public System.Void  Create()
@@ -1737,12 +1741,14 @@ public class SevenZip.Compression.LZMA.Encoder
 	public final System.Void  SetCoderProperties(CoderPropID[] propIDs, System.Object[] properties)
 	public System.Void  SetTrainSize(System.UInt32 trainSize)
 	private static System.Void  .cctor()
-public class EMatchFinderType
+	public class Encoder$EMatchFinderType
+	public class Encoder$LiteralEncoder
+public class Encoder$EMatchFinderType
 	extends System.Enum
 	public System.Int32 value__
 	public static EMatchFinderType BT2
 	public static EMatchFinderType BT4
-public class LiteralEncoder
+public class Encoder$LiteralEncoder
 	extends System.Object
 	private Encoder2[] m_Coders
 	private System.Int32 m_NumPrevBits
@@ -1752,7 +1758,8 @@ public class LiteralEncoder
 	public System.Void  Create(System.Int32 numPosBits, System.Int32 numPrevBits)
 	public System.Void  Init()
 	public Encoder2  GetSubCoder(System.UInt32 pos, System.Byte prevByte)
-class Encoder2
+	class Encoder$LiteralEncoder$Encoder2
+class Encoder$LiteralEncoder$Encoder2
 	extends System.ValueType
 	private BitEncoder[] m_Encoders
 	public System.Void  Create()
@@ -1760,7 +1767,7 @@ class Encoder2
 	public System.Void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, System.Byte symbol)
 	public System.Void  EncodeMatched(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, System.Byte matchByte, System.Byte symbol)
 	public System.UInt32  GetPrice(System.Boolean matchMode, System.Byte matchByte, System.Byte symbol)
-public class LenEncoder
+public class Encoder$LenEncoder
 	extends System.Object
 	private SevenZip.Compression.RangeCoder.BitEncoder _choice
 	private SevenZip.Compression.RangeCoder.BitEncoder _choice2
@@ -1771,7 +1778,7 @@ public class LenEncoder
 	public System.Void  Init(System.UInt32 numPosStates)
 	public System.Void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, System.UInt32 symbol, System.UInt32 posState)
 	public System.Void  SetPrices(System.UInt32 posState, System.UInt32 numSymbols, System.UInt32[] prices, System.UInt32 st)
-public class LenPriceTableEncoder
+public class Encoder$LenPriceTableEncoder
 	extends LenEncoder
 	private System.UInt32[] _prices
 	private System.UInt32 _tableSize
@@ -1782,7 +1789,7 @@ public class LenPriceTableEncoder
 	private System.Void  UpdateTable(System.UInt32 posState)
 	public System.Void  UpdateTables(System.UInt32 numPosStates)
 	public System.Void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, System.UInt32 symbol, System.UInt32 posState)
-public class Optimal
+public class Encoder$Optimal
 	extends System.Object
 	public State State
 	public System.Boolean Prev1IsChar
@@ -1826,7 +1833,8 @@ class SevenZip.LzmaAlone
 	private static System.Int32  IncorrectCommand()
 	private static System.Int32  Main2(System.String[] args)
 	private static System.Int32  Main(System.String[] args)
-public class Key
+	public class LzmaAlone$Key
+public class LzmaAlone$Key
 	extends System.Enum
 	public System.Int32 value__
 	public static Key Help1
@@ -1858,14 +1866,19 @@ class SevenZip.LzmaBench
 	private static System.Void  PrintRating(System.UInt64 rating)
 	private static System.Void  PrintResults(System.UInt32 dictionarySize, System.UInt64 elapsedTime, System.UInt64 size, System.Boolean decompressMode, System.UInt64 secondSize)
 	public static System.Int32  LzmaBenchmark(System.Int32 numIterations, System.UInt32 dictionarySize)
-public class CRandomGenerator
+	public class LzmaBench$CRandomGenerator
+	public class LzmaBench$CBitRandomGenerator
+	public class LzmaBench$CBenchRandomGenerator
+	public class LzmaBench$CrcOutStream
+	public class LzmaBench$CProgressInfo
+public class LzmaBench$CRandomGenerator
 	extends System.Object
 	private System.UInt32 A1
 	private System.UInt32 A2
 	public System.Void  .ctor()
 	public System.Void  Init()
 	public System.UInt32  GetRnd()
-public class CBitRandomGenerator
+public class LzmaBench$CBitRandomGenerator
 	extends System.Object
 	private CRandomGenerator RG
 	private System.UInt32 Value
@@ -1873,7 +1886,7 @@ public class CBitRandomGenerator
 	public System.Void  .ctor()
 	public System.Void  Init()
 	public System.UInt32  GetRnd(System.Int32 numBits)
-public class CBenchRandomGenerator
+public class LzmaBench$CBenchRandomGenerator
 	extends System.Object
 	private CBitRandomGenerator RG
 	private System.UInt32 Pos
@@ -1888,7 +1901,7 @@ public class CBenchRandomGenerator
 	private System.UInt32  GetLen1()
 	private System.UInt32  GetLen2()
 	public System.Void  Generate()
-public class CrcOutStream
+public class LzmaBench$CrcOutStream
 	extends System.IO.Stream
 	public SevenZip.CRC CRC
 	public System.Void  .ctor()
@@ -1906,7 +1919,7 @@ public class CrcOutStream
 	public System.Int32  Read(System.Byte[] buffer, System.Int32 offset, System.Int32 count)
 	public System.Void  WriteByte(System.Byte b)
 	public System.Void  Write(System.Byte[] buffer, System.Int32 offset, System.Int32 count)
-public class CProgressInfo
+public class LzmaBench$CProgressInfo
 	extends System.Object
 	implements SevenZip.ICodeProgress
 	public System.Int64 ApprovedStart
@@ -2050,5 +2063,6 @@ public interface SevenZip.ISetDecoderProperties
 class <PrivateImplementationDetails>{36dcba29-69c8-4e99-b590-8bd2082695d5}
 	extends System.Object
 	public static $ArrayType=32 $field-0
-public class $ArrayType=32
+	public class <PrivateImplementationDetails>{36dcba29-69c8-4e99-b590-8bd2082695d5}$$ArrayType=32
+public class <PrivateImplementationDetails>{36dcba29-69c8-4e99-b590-8bd2082695d5}$$ArrayType=32
 	extends System.ValueType

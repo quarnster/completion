@@ -252,7 +252,8 @@ public class CompleteSharp
 	private static System.Void  reportError(System.Exception e)
 	public static System.Void  Main(System.String[] arg)
 	private static System.Void  .cctor()
-class MyAppDomain
+	class CompleteSharp$MyAppDomain
+class CompleteSharp$MyAppDomain
 	extends System.MarshalByRefObject
 	private System.AppDomain ad
 	private System.String[] assemblies
@@ -262,7 +263,8 @@ class MyAppDomain
 	public System.Void  LoadAssemblies()
 	public System.Boolean  Execute(System.String[] args, System.Collections.ArrayList modules)
 	private System.Void  CheckUpdate()
-public class Hack
+	public class CompleteSharp$MyAppDomain$Hack
+public class CompleteSharp$MyAppDomain$Hack
 	extends System.MarshalByRefObject
 	public MyAppDomain ad
 	public System.Void  .ctor()
@@ -279,7 +281,8 @@ public class Hack
 	public System.Reflection.Assembly  Load(System.String str)
 	public System.Type  GetType(System.String basename)
 	public System.Boolean  Execute(System.String[] args, System.Collections.ArrayList modules)
-public class Accessibility
+	public class CompleteSharp$MyAppDomain$Hack$Accessibility
+public class CompleteSharp$MyAppDomain$Hack$Accessibility
 	extends System.Enum
 	public System.Int32 value__
 	public static Accessibility NONE

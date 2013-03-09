@@ -185,9 +185,12 @@ class <PrivateImplementationDetails>{dc74ea34-d62f-4136-93bf-797df4217b8e}
 	public static $ArrayType=4 $field-5
 	public static $ArrayType=4 $field-6
 	public static $ArrayType=4 $field-7
-public class $ArrayType=32
+	public class <PrivateImplementationDetails>{dc74ea34-d62f-4136-93bf-797df4217b8e}$$ArrayType=32
+	public class <PrivateImplementationDetails>{dc74ea34-d62f-4136-93bf-797df4217b8e}$$ArrayType=4
+	public class <PrivateImplementationDetails>{dc74ea34-d62f-4136-93bf-797df4217b8e}$$ArrayType=12
+public class <PrivateImplementationDetails>{dc74ea34-d62f-4136-93bf-797df4217b8e}$$ArrayType=32
 	extends System.ValueType
-public class $ArrayType=4
+public class <PrivateImplementationDetails>{dc74ea34-d62f-4136-93bf-797df4217b8e}$$ArrayType=4
 	extends System.ValueType
-public class $ArrayType=12
+public class <PrivateImplementationDetails>{dc74ea34-d62f-4136-93bf-797df4217b8e}$$ArrayType=12
 	extends System.ValueType

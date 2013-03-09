@@ -6,6 +6,7 @@ import (
 	errors "github.com/quarnster/completion/util/errors"
 	"math"
 	"reflect"
+	"sort"
 	"strings"
 )
 
@@ -412,6 +413,21 @@ func (m *MetadataUtil) Size(t reflect.Type) (uint, error) {
 		}
 	}
 	return size, nil
+}
+
+func (mu *MetadataUtil) Search(tableId int, equal func(TableIndex) bool) TableIndex {
+	mt := mu.Tables[tableId]
+	ci := ConcreteTableIndex{metadataUtil: mu, index: 0, table: tableId}
+	idx := sort.Search(int(mt.Rows), func(in int) bool {
+		i := uint32(in)
+		ci.index = i + 1
+		return equal(&ci)
+	})
+	if uint32(idx) == mt.Rows {
+		return nil
+	}
+	ci.index = uint32(idx) + 1
+	return &ci
 }
 
 type MetadataTable struct {

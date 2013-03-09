@@ -53,6 +53,10 @@ func (t Type) String() (ret string) {
 		ret += "\n\t"
 		ret += fmt.Sprintf("%s", e)
 	}
+	for _, e := range t.Types {
+		ret += "\n\t"
+		ret += fmt.Sprintf("%s", e)
+	}
 
 	return ret
 }

@@ -372,7 +372,9 @@ public class PeterO.QRCodeGenerator
 	private static System.Void  ReedSolomonEncode(System.Collections.Generic.IList`1<System.Byte> b, System.Int32 offset, System.Int32 count, System.Int32 blockSize)
 	private static CodeMatrix  GetEncodedMatrix(System.Byte[] data, System.Boolean stringData)
 	private static System.Void  .cctor()
-public class CodeMatrix
+	public class QRCodeGenerator$CodeMatrix
+	public class QRCodeGenerator$BitList
+public class QRCodeGenerator$CodeMatrix
 	extends System.Object
 	private System.Byte[] data
 	private System.Int32 size
@@ -398,7 +400,7 @@ public class CodeMatrix
 	public System.Void  DrawTimingPatterns()
 	public System.Void  DrawFinderPattern(System.Int32 x, System.Int32 y)
 	public System.String  ToString()
-public class BitList
+public class QRCodeGenerator$BitList
 	extends System.Object
 	private System.Collections.Generic.List`1<System.Byte> list
 	private System.Byte curbyte
@@ -440,57 +442,84 @@ class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}
 	public static $ArrayType=160 $field-1B
 	public static $ArrayType=256 $field-1C
 	public static $ArrayType=8 $field-1D
-public class $ArrayType=2044
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=2044
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=1024
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=28
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=32
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=36
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=40
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=44
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=48
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=52
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=56
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=60
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=64
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=68
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=72
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=80
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=88
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=96
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=104
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=112
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=120
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=136
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=1120
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=960
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=128
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=160
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=256
+	public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=8
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=2044
 	extends System.ValueType
-public class $ArrayType=1024
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=1024
 	extends System.ValueType
-public class $ArrayType=28
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=28
 	extends System.ValueType
-public class $ArrayType=32
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=32
 	extends System.ValueType
-public class $ArrayType=36
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=36
 	extends System.ValueType
-public class $ArrayType=40
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=40
 	extends System.ValueType
-public class $ArrayType=44
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=44
 	extends System.ValueType
-public class $ArrayType=48
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=48
 	extends System.ValueType
-public class $ArrayType=52
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=52
 	extends System.ValueType
-public class $ArrayType=56
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=56
 	extends System.ValueType
-public class $ArrayType=60
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=60
 	extends System.ValueType
-public class $ArrayType=64
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=64
 	extends System.ValueType
-public class $ArrayType=68
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=68
 	extends System.ValueType
-public class $ArrayType=72
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=72
 	extends System.ValueType
-public class $ArrayType=80
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=80
 	extends System.ValueType
-public class $ArrayType=88
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=88
 	extends System.ValueType
-public class $ArrayType=96
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=96
 	extends System.ValueType
-public class $ArrayType=104
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=104
 	extends System.ValueType
-public class $ArrayType=112
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=112
 	extends System.ValueType
-public class $ArrayType=120
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=120
 	extends System.ValueType
-public class $ArrayType=136
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=136
 	extends System.ValueType
-public class $ArrayType=1120
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=1120
 	extends System.ValueType
-public class $ArrayType=960
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=960
 	extends System.ValueType
-public class $ArrayType=128
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=128
 	extends System.ValueType
-public class $ArrayType=160
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=160
 	extends System.ValueType
-public class $ArrayType=256
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=256
 	extends System.ValueType
-public class $ArrayType=8
+public class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}$$ArrayType=8
 	extends System.ValueType

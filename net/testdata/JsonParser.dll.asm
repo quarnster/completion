@@ -447,5 +447,6 @@ public class Json.JsonParser
 class <PrivateImplementationDetails>{fa75a08b-59e8-4d4a-b10e-2114294958f4}
 	extends System.Object
 	public static $ArrayType=32 $field-0
-public class $ArrayType=32
+	public class <PrivateImplementationDetails>{fa75a08b-59e8-4d4a-b10e-2114294958f4}$$ArrayType=32
+public class <PrivateImplementationDetails>{fa75a08b-59e8-4d4a-b10e-2114294958f4}$$ArrayType=32
 	extends System.ValueType

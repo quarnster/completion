@@ -192,9 +192,12 @@ class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}
 	public static $ArrayType=4 $field-5
 	public static $ArrayType=4 $field-6
 	public static $ArrayType=4 $field-7
-public class $ArrayType=32
+	public class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}$$ArrayType=32
+	public class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}$$ArrayType=4
+	public class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}$$ArrayType=12
+public class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}$$ArrayType=32
 	extends System.ValueType
-public class $ArrayType=4
+public class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}$$ArrayType=4
 	extends System.ValueType
-public class $ArrayType=12
+public class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}$$ArrayType=12
 	extends System.ValueType
