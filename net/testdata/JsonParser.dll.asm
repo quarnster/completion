@@ -381,8 +381,8 @@ MethodSpecRow
 	Json.JsonParser
 	<PrivateImplementationDetails>{fa75a08b-59e8-4d4a-b10e-2114294958f4}
 	$ArrayType=32
-<Module>
-JsonToken
+class <Module>
+public class Json.JsonToken
 	extends System.Enum
 	public System.Int32 value__
 	public static Json.JsonToken Unknown
@@ -397,10 +397,10 @@ JsonToken
 	public static Json.JsonToken True
 	public static Json.JsonToken False
 	public static Json.JsonToken Null
-InvalidJsonException
+public class Json.InvalidJsonException
 	extends System.Exception
 	public System.Void  .ctor(System.String message)
-JsonParser
+public class Json.JsonParser
 	extends System.Object
 	private static System.Globalization.NumberStyles JsonNumbers
 	private static System.Collections.Generic.IDictionary`2<System.Type, PropertyInfo[]> _cache
@@ -444,8 +444,8 @@ JsonParser
 	public static System.String  BaseConvert(System.Int32 input, System.Char[] charSet, System.Int32 minLength)
 	private static System.Void  .cctor()
 	private static System.Int32  <SerializeString>m__0(System.Char symbol)
-<PrivateImplementationDetails>{fa75a08b-59e8-4d4a-b10e-2114294958f4}
+class <PrivateImplementationDetails>{fa75a08b-59e8-4d4a-b10e-2114294958f4}
 	extends System.Object
 	public static $ArrayType=32 $field-0
-$ArrayType=32
+public class $ArrayType=32
 	extends System.ValueType

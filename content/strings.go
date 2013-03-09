@@ -17,8 +17,8 @@ func (f FullyQualifiedName) String() string {
 	return f.Relative
 }
 
-func (t Type) String() string {
-	ret := t.Name.String()
+func (t Type) String() (ret string) {
+	ret += fmt.Sprintf("%s%s", t.Flags, t.Name.String())
 	if len(t.Specialization) > 0 {
 		ret += "<"
 		for i := range t.Specialization {
@@ -29,6 +29,31 @@ func (t Type) String() string {
 		}
 		ret += ">"
 	}
+	for i, e := range t.Extends {
+		if i == 0 {
+			ret += "\n\textends "
+		} else {
+			ret += ", "
+		}
+		ret += fmt.Sprintf("%s", e)
+	}
+	for i, e := range t.Implements {
+		if i == 0 {
+			ret += "\n\timplements "
+		} else {
+			ret += ", "
+		}
+		ret += fmt.Sprintf("%s", e)
+	}
+	for _, e := range t.Fields {
+		ret += "\n\t"
+		ret += fmt.Sprintf("%s", e)
+	}
+	for _, e := range t.Methods {
+		ret += "\n\t"
+		ret += fmt.Sprintf("%s", e)
+	}
+
 	return ret
 }
 
@@ -73,6 +98,12 @@ func (a Flags) String() (ret string) {
 	}
 	if a&FLAG_FINAL != 0 {
 		ret += "final "
+	}
+	if a&FLAG_CLASS != 0 {
+		ret += "class "
+	}
+	if a&FLAG_INTERFACE != 0 {
+		ret += "interface "
 	}
 	return
 }

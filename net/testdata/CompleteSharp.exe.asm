@@ -244,15 +244,15 @@ NestedClassRow
 	MyAppDomain
 	Hack
 	Accessibility
-<Module>
-CompleteSharp
+class <Module>
+public class CompleteSharp
 	extends System.Object
 	private static System.String sep
 	public System.Void  .ctor()
 	private static System.Void  reportError(System.Exception e)
 	public static System.Void  Main(System.String[] arg)
 	private static System.Void  .cctor()
-MyAppDomain
+class MyAppDomain
 	extends System.MarshalByRefObject
 	private System.AppDomain ad
 	private System.String[] assemblies
@@ -262,7 +262,7 @@ MyAppDomain
 	public System.Void  LoadAssemblies()
 	public System.Boolean  Execute(System.String[] args, System.Collections.ArrayList modules)
 	private System.Void  CheckUpdate()
-Hack
+public class Hack
 	extends System.MarshalByRefObject
 	public MyAppDomain ad
 	public System.Void  .ctor()
@@ -279,7 +279,7 @@ Hack
 	public System.Reflection.Assembly  Load(System.String str)
 	public System.Type  GetType(System.String basename)
 	public System.Boolean  Execute(System.String[] args, System.Collections.ArrayList modules)
-Accessibility
+public class Accessibility
 	extends System.Enum
 	public System.Int32 value__
 	public static Accessibility NONE

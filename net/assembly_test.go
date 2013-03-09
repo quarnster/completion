@@ -88,48 +88,21 @@ func TestLoadAssembly(t *testing.T) {
 				}
 			}
 			var idx = &ConcreteTableIndex{metadataUtil: &asm.MetadataUtil, index: 0, table: id_TypeDef}
-			td := asm.Tables[id_TypeDef]
+			tdTable := asm.Tables[id_TypeDef]
 			//ty := reflect.New(td.RowType).Interface().(*TypeDefRow)
-			for i := uint32(0); i < td.Rows; i++ {
+			for i := uint32(0); i < tdTable.Rows; i++ {
 				idx.index = i + 1
-				var ty *TypeDefRow
-				if tr, err := idx.Data(); err != nil {
+				td, err := TypeDefFromIndex(idx)
+				if err != nil {
+					t.Error(err)
+					continue
+				}
+
+				if ct, err := td.ToContentType(); err != nil {
 					t.Error(err)
 					continue
 				} else {
-					ty = tr.(*TypeDefRow)
-				}
-				res += fmt.Sprintln(ty.TypeName)
-				if i > 0 && (ty.Flags&TypeAttributes_ClassSemanticsMask) != TypeAttributes_Interface {
-					if ext, err := asm.Extends(idx); err != nil {
-						t.Error(err)
-					} else {
-						res += fmt.Sprintf("\textends %s\n", ext)
-					}
-					if impl, err := asm.Implements(idx); err != nil {
-						t.Error(err)
-					} else {
-						if len(impl) != 0 {
-							res += "\timplements:\n"
-						}
-						for j := range impl {
-							res += fmt.Sprintf("\t\t%s\n", impl[j])
-						}
-					}
-				}
-				if fields, err := asm.Fields(idx); err != nil {
-					t.Error(err)
-				} else {
-					for j := range fields {
-						res += fmt.Sprintf("\t%s\n", fields[j])
-					}
-				}
-				if methods, err := asm.Methods(idx); err != nil {
-					t.Error(err)
-				} else {
-					for j := range methods {
-						res += fmt.Sprintf("\t%s\n", methods[j])
-					}
+					res += fmt.Sprintln(ct)
 				}
 			}
 
@@ -179,11 +152,8 @@ func TestFindType(t *testing.T) {
 				if test.expectFind {
 					t.Errorf("Expected to find type %s, but didn't", test.in)
 				}
-			} else if raw, err := ty.Data(); err != nil {
-				t.Error(err)
 			} else {
-				tr := raw.(*TypeDefRow)
-				if n := AbsoluteName(tr); n != test.in {
+				if n := AbsoluteName(&ty.row); n != test.in {
 					t.Errorf("Type name mismatch: %s != %s", n, test.in)
 				}
 			}
@@ -220,9 +190,10 @@ func BenchmarkMetatableLookup(b *testing.B) {
 	defer f.Close()
 	if asm, err := LoadAssembly(f); err != nil {
 		b.Error(err)
-	} else if idx, err := asm.FindType(content.FullyQualifiedName{Absolute: "SevenZip.Compression.LZ.OutWindow"}); err != nil {
+	} else if ty, err := asm.FindType(content.FullyQualifiedName{Absolute: "SevenZip.Compression.LZ.OutWindow"}); err != nil {
 		b.Error(err)
 	} else {
+		idx := ty.index
 		b.StartTimer()
 		for i := 0; i < b.N; i++ {
 			if raw, err := idx.Data(); err != nil {

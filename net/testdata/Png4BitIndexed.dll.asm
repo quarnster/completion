@@ -146,8 +146,8 @@ NestedClassRow
 	$ArrayType=32
 	$ArrayType=4
 	$ArrayType=12
-<Module>
-Png4BitIndexed
+class <Module>
+public class PeterO.Png4BitIndexed
 	extends System.Object
 	private System.Byte[] subdata1
 	private System.UInt32[] crcTable
@@ -175,7 +175,7 @@ Png4BitIndexed
 	public System.Int32  get_Width()
 	public System.Int32  get_Transparent()
 	public System.Void  set_Transparent(System.Int32 value)
-<PrivateImplementationDetails>{dc74ea34-d62f-4136-93bf-797df4217b8e}
+class <PrivateImplementationDetails>{dc74ea34-d62f-4136-93bf-797df4217b8e}
 	extends System.Object
 	public static $ArrayType=32 $field-0
 	public static $ArrayType=4 $field-1
@@ -185,9 +185,9 @@ Png4BitIndexed
 	public static $ArrayType=4 $field-5
 	public static $ArrayType=4 $field-6
 	public static $ArrayType=4 $field-7
-$ArrayType=32
+public class $ArrayType=32
 	extends System.ValueType
-$ArrayType=4
+public class $ArrayType=4
 	extends System.ValueType
-$ArrayType=12
+public class $ArrayType=12
 	extends System.ValueType

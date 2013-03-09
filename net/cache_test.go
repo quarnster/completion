@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-func TestCache(t *testing.T) {
+func TestCacheComplete(t *testing.T) {
 	paths := DefaultPaths()
 	if len(paths) == 0 {
 		t.Skip("No default paths available")
@@ -45,7 +45,7 @@ func mcs(args ...string) ([]byte, error) {
 	return cmd.CombinedOutput()
 }
 
-func TestCache2(t *testing.T) {
+func TestCacheReload(t *testing.T) {
 	if out, err := mcs(); len(out) == 0 {
 		t.Skip("It does not appear that mcs is installed:", err)
 	}

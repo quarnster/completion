@@ -48,23 +48,9 @@ func TestLoadAllAssemblies(t *testing.T) {
 				ci := ConcreteTableIndex{metadataUtil: &asm.MetadataUtil, table: id_TypeDef, index: 1}
 				for i := uint32(0); i < asm.Tables[id_TypeDef].Rows; i++ {
 					ci.index = i + 1
-					if _, err := asm.Fields(&ci); err != nil {
+					if td, err := TypeDefFromIndex(&ci); err != nil {
 						outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
-					}
-					if _, err := asm.Methods(&ci); err != nil {
-						outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
-					}
-					if raw, err := ci.Data(); err != nil {
-						outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
-					} else {
-						c := raw.(*TypeDefRow)
-						if c.Flags&TypeAttributes_Interface == 0 {
-							if _, err := asm.Extends(&ci); err != nil {
-								outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
-							}
-						}
-					}
-					if _, err := asm.Implements(&ci); err != nil {
+					} else if _, err := td.ToContentType(); err != nil {
 						outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
 					}
 				}

@@ -353,8 +353,8 @@ NestedClassRow
 	$ArrayType=160
 	$ArrayType=256
 	$ArrayType=8
-<Module>
-QRCodeGenerator
+class <Module>
+public class PeterO.QRCodeGenerator
 	extends System.Object
 	private static System.Int32[] GaloisExp
 	private static System.Int32[] GaloisLog
@@ -372,7 +372,7 @@ QRCodeGenerator
 	private static System.Void  ReedSolomonEncode(System.Collections.Generic.IList`1<System.Byte> b, System.Int32 offset, System.Int32 count, System.Int32 blockSize)
 	private static CodeMatrix  GetEncodedMatrix(System.Byte[] data, System.Boolean stringData)
 	private static System.Void  .cctor()
-CodeMatrix
+public class CodeMatrix
 	extends System.Object
 	private System.Byte[] data
 	private System.Int32 size
@@ -398,7 +398,7 @@ CodeMatrix
 	public System.Void  DrawTimingPatterns()
 	public System.Void  DrawFinderPattern(System.Int32 x, System.Int32 y)
 	public System.String  ToString()
-BitList
+public class BitList
 	extends System.Object
 	private System.Collections.Generic.List`1<System.Byte> list
 	private System.Byte curbyte
@@ -408,7 +408,7 @@ BitList
 	public System.Void  AddBits(System.Byte value, System.Int32 bits)
 	public System.Void  AddBits(System.Int32 value, System.Int32 bits)
 	public System.Void  PadTo(System.Int32 size)
-<PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}
+class <PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}
 	extends System.Object
 	public static $ArrayType=2044 $field-0
 	public static $ArrayType=1024 $field-1
@@ -440,57 +440,57 @@ BitList
 	public static $ArrayType=160 $field-1B
 	public static $ArrayType=256 $field-1C
 	public static $ArrayType=8 $field-1D
-$ArrayType=2044
+public class $ArrayType=2044
 	extends System.ValueType
-$ArrayType=1024
+public class $ArrayType=1024
 	extends System.ValueType
-$ArrayType=28
+public class $ArrayType=28
 	extends System.ValueType
-$ArrayType=32
+public class $ArrayType=32
 	extends System.ValueType
-$ArrayType=36
+public class $ArrayType=36
 	extends System.ValueType
-$ArrayType=40
+public class $ArrayType=40
 	extends System.ValueType
-$ArrayType=44
+public class $ArrayType=44
 	extends System.ValueType
-$ArrayType=48
+public class $ArrayType=48
 	extends System.ValueType
-$ArrayType=52
+public class $ArrayType=52
 	extends System.ValueType
-$ArrayType=56
+public class $ArrayType=56
 	extends System.ValueType
-$ArrayType=60
+public class $ArrayType=60
 	extends System.ValueType
-$ArrayType=64
+public class $ArrayType=64
 	extends System.ValueType
-$ArrayType=68
+public class $ArrayType=68
 	extends System.ValueType
-$ArrayType=72
+public class $ArrayType=72
 	extends System.ValueType
-$ArrayType=80
+public class $ArrayType=80
 	extends System.ValueType
-$ArrayType=88
+public class $ArrayType=88
 	extends System.ValueType
-$ArrayType=96
+public class $ArrayType=96
 	extends System.ValueType
-$ArrayType=104
+public class $ArrayType=104
 	extends System.ValueType
-$ArrayType=112
+public class $ArrayType=112
 	extends System.ValueType
-$ArrayType=120
+public class $ArrayType=120
 	extends System.ValueType
-$ArrayType=136
+public class $ArrayType=136
 	extends System.ValueType
-$ArrayType=1120
+public class $ArrayType=1120
 	extends System.ValueType
-$ArrayType=960
+public class $ArrayType=960
 	extends System.ValueType
-$ArrayType=128
+public class $ArrayType=128
 	extends System.ValueType
-$ArrayType=160
+public class $ArrayType=160
 	extends System.ValueType
-$ArrayType=256
+public class $ArrayType=256
 	extends System.ValueType
-$ArrayType=8
+public class $ArrayType=8
 	extends System.ValueType
