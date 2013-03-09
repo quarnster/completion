@@ -46,7 +46,7 @@ func main() {
 		fmt.Println(c.Args)
 	}
 	if b, err := c.CombinedOutput(); err != nil {
-		panic(fmt.Sprintf(string(b), err))
+		panic(fmt.Sprint(string(b), err))
 	} else if len(b) != 0 {
 		fmt.Println(string(b))
 	}
@@ -55,7 +55,7 @@ func main() {
 		fmt.Println(c.Args)
 	}
 	if b, err := c.CombinedOutput(); err != nil {
-		panic(fmt.Sprintf(string(b), err))
+		panic(fmt.Sprint(string(b), err))
 	} else if len(b) != 0 {
 		fmt.Println(string(b))
 	}
