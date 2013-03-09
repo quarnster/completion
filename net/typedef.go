@@ -379,18 +379,11 @@ func (td *TypeDef) ToContentType() (t content.Type, err error) {
 				row := raw.(*NestedClassRow)
 				if row.EnclosingClass.Index() != td.index.Index() {
 					break
-				} else if raw, err := row.NestedClass.Data(); err != nil {
+				} else if td2, err := TypeDefFromIndex(row.NestedClass); err != nil {
 					return content.Type{}, err
 				} else {
-					ct := content.Type{}
-					ct.Name.Relative = td.TypeNesting(row.NestedClass)
-					row2 := raw.(*TypeDefRow)
-					ct.Name.Absolute = row2.Namespace()
-					if len(ct.Name.Absolute) > 0 {
-						ct.Name.Absolute += "."
-					}
-					ct.Name.Absolute += ct.Name.Relative
-					ct.Flags = row2.Flags.Convert()
+					ct := ToContentType(td2)
+					ct.Flags = td2.row.Flags.Convert()
 					t.Types = append(t.Types, ct)
 				}
 			}
