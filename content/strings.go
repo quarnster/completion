@@ -18,6 +18,12 @@ func (f FullyQualifiedName) String() string {
 }
 
 func (t Type) String() (ret string) {
+	switch t.Flags & FLAG_TYPE_MASK {
+	case FLAG_TYPE_POINTER:
+		return "*" + t.Specialization[0].String()
+	case FLAG_TYPE_ARRAY:
+		return t.Specialization[0].String() + "[]"
+	}
 	ret += fmt.Sprintf("%s%s", t.Flags, t.Name.String())
 	if len(t.Specialization) > 0 {
 		ret += "<"
@@ -103,10 +109,16 @@ func (a Flags) String() (ret string) {
 	if a&FLAG_FINAL != 0 {
 		ret += "final "
 	}
-	if a&FLAG_CLASS != 0 {
+	switch a & FLAG_TYPE_MASK {
+	case FLAG_TYPE_ARRAY:
+		ret += "[]"
+	case FLAG_TYPE_PACKAGE:
+		ret += "package "
+	case FLAG_TYPE_POINTER:
+		ret += "*"
+	case FLAG_TYPE_CLASS:
 		ret += "class "
-	}
-	if a&FLAG_INTERFACE != 0 {
+	case FLAG_TYPE_INTERFACE:
 		ret += "interface "
 	}
 	return

@@ -21,14 +21,19 @@ var tests = []test{
 	{&FullyQualifiedName{}, true},
 	{&FullyQualifiedName{Absolute: "Something"}, true},
 	{&FullyQualifiedName{Relative: "Something"}, false},
+	{&FullyQualifiedName{"Something.Something", "Something.Something"}, true},
+	{&FullyQualifiedName{"Something", "Something.Something"}, false},
+	{&FullyQualifiedName{".Something", "Something.Something"}, true},
+	{&Type{}, true},
+	{&Type{Flags: FLAG_TYPE_ARRAY}, true},
+	{&Type{Flags: FLAG_TYPE_ARRAY, Specialization: []Type{Type{Name: FullyQualifiedName{Absolute: "Test"}}}}, false},
 }
 
 func TestValidate(t *testing.T) {
-	for _, test := range tests {
+	for i, test := range tests {
 		err := Validate(test.data)
-		t.Log(err)
 		if err == nil && test.expectError {
-			t.Error("Expected an error")
+			t.Errorf("Expected an error in test %d", i)
 		} else if err != nil && !test.expectError {
 			t.Errorf("Didn't expected an error: %s", err)
 		}

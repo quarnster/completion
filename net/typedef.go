@@ -1,7 +1,9 @@
 package net
 
 import (
+	"code.google.com/p/log4go"
 	"errors"
+	"fmt"
 	"github.com/quarnster/completion/content"
 )
 
@@ -31,7 +33,7 @@ func AbsoluteName(t AbstractType) string {
 func ToContentType(t AbstractType) (t2 content.Type) {
 	t2.Name.Relative = t.Name()
 	if ns := t.Namespace(); ns != "" {
-		t2.Name.Absolute = ns + "." + t2.Name.Relative
+		t2.Name.Absolute = fmt.Sprintf("%s.%s", ns, t2.Name.Relative)
 	}
 	return
 }
@@ -91,6 +93,9 @@ func (td *TypeDef) initContentType(index TypeDefIndex, t *Type) (t2 content.Type
 				t2.Name.Relative = string(gr.Name)
 			}
 		}
+	case ELEMENT_TYPE_SZARRAY:
+		t2.Flags |= content.FLAG_TYPE_ARRAY
+		t2.Specialization = append(t2.Specialization, td.initContentType(index, t.Type))
 	default:
 		return ToContentType(t)
 	}
@@ -202,7 +207,10 @@ func (td *TypeDef) Fields() (fields []content.Field, err error) {
 			} else if field.Flags&FieldAttributes_Family != 0 {
 				f.Flags |= content.FLAG_ACC_PROTECTED
 			}
-
+			if err := content.Validate(&f); err != nil {
+				log4go.Debug("Skipping field: %s, %+v, %+v", err, f, field)
+				continue
+			}
 			fields = append(fields, f)
 		}
 	}
@@ -246,7 +254,12 @@ func (td *TypeDef) Methods() (methods []content.Method, err error) {
 				dec    *SignatureDecoder
 				sig    MethodDefSig
 			)
-			m.Name.Relative = string(method.Name)
+			if n := string(method.Name); n == ".cctor" {
+				// Static constructor, we don't care about that one
+				continue
+			} else {
+				m.Name.Relative = n
+			}
 			if m.Parameters, err = td.Parameters(idx); err != nil {
 				return nil, err
 			}
@@ -276,10 +289,19 @@ func (td *TypeDef) Methods() (methods []content.Method, err error) {
 				} else if method.Flags&MethodAttributes_Family != 0 {
 					m.Flags |= content.FLAG_ACC_PROTECTED
 				}
-
-				m.Returns = make([]content.Variable, 1)
-				m.Returns[0].Type = td.initContentType(td.index, &sig.RetType.Type)
+				if m.Name.Relative == ".ctor" {
+					m.Name.Relative = td.row.Name()
+					m.Flags |= content.FLAG_CONSTRUCTOR
+				} else {
+					m.Returns = make([]content.Variable, 1)
+					m.Returns[0].Type = td.initContentType(td.index, &sig.RetType.Type)
+				}
 			}
+			if err := content.Validate(&m); err != nil {
+				log4go.Debug("Skipping method: %s, %+v, %+v", err, m, method)
+				continue
+			}
+
 			methods = append(methods, m)
 		}
 	}
@@ -315,20 +337,22 @@ func (td *TypeDef) TypeNesting(index TypeDefIndex) (ret string) {
 	return
 }
 
-func (td *TypeDef) Name() string {
-	return td.TypeNesting(td.index)
-}
-
-func (td *TypeDef) Namespace() string {
-	return td.row.Namespace()
+func (td *TypeDef) Name() (ret content.FullyQualifiedName) {
+	ret.Absolute = td.row.Namespace()
+	if len(ret.Absolute) > 0 {
+		ret.Absolute += "."
+	}
+	ret.Absolute += td.TypeNesting(td.index)
+	ret.Relative = string(td.row.Name())
+	return
 }
 
 func (flags TypeAttributes) Convert() (t content.Flags) {
 	switch t2 := flags & TypeAttributes_ClassSemanticsMask; t2 {
 	case TypeAttributes_Class:
-		t |= content.FLAG_CLASS
+		t |= content.FLAG_TYPE_CLASS
 	case TypeAttributes_Interface:
-		t |= content.FLAG_INTERFACE
+		t |= content.FLAG_TYPE_INTERFACE
 	}
 	if flags&TypeAttributes_Public != 0 {
 		t |= content.FLAG_ACC_PUBLIC
@@ -337,7 +361,7 @@ func (flags TypeAttributes) Convert() (t content.Flags) {
 }
 
 func (td *TypeDef) ToContentType() (t content.Type, err error) {
-	t = ToContentType(td)
+	t.Name = td.Name()
 	t.Flags = td.row.Flags.Convert()
 
 	if ext, err := td.Extends(); err != nil && err != ErrInterface {
@@ -382,13 +406,19 @@ func (td *TypeDef) ToContentType() (t content.Type, err error) {
 				} else if td2, err := TypeDefFromIndex(row.NestedClass); err != nil {
 					return content.Type{}, err
 				} else {
-					ct := ToContentType(td2)
+					ct := content.Type{}
+					ct.Name = td2.Name()
 					ct.Flags = td2.row.Flags.Convert()
+					if err := content.Validate(&ct); err != nil {
+						log4go.Debug("Skipping nested type: %s, %+v, %+v", err, ct, td2.row)
+						continue
+					}
+
 					t.Types = append(t.Types, ct)
 				}
 			}
 		}
 	}
-
+	err = content.Validate(&t)
 	return
 }

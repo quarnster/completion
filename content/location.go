@@ -1,5 +1,11 @@
 package content
 
+import (
+	"errors"
+	"fmt"
+	"strings"
+)
+
 type File struct {
 	// The name of the file
 	Name string `protocol:"required" json:",omitempty"`
@@ -14,11 +20,13 @@ type SourceLocation struct {
 }
 
 type FullyQualifiedName struct {
-	// TODO
-	// Relative would be "lastIndexOf" whereas the absolute would be something like
-	// java/lang/String.class/lastIndexOf/(Ljava/lang/String;I)I or whatever
-	// we decide on. We should probably define this better so that there's some standard in how
-	// it's encoded across languages and to make it harder to write a path that's "wrong".
 	Relative string `protocol:"required" json:",omitempty"`
 	Absolute string `protocol:"optional" json:",omitempty"`
+}
+
+func (f *FullyQualifiedName) Validate() error {
+	if strings.ContainsAny(string(f.Relative), "$.{}[]/*-+<>") {
+		return errors.New(fmt.Sprintf("Relative name contains illegal characters: %s", f.Relative))
+	}
+	return nil
 }

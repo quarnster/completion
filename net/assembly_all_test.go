@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"github.com/quarnster/completion/content"
 	"io/ioutil"
 	"os"
 	"runtime"
@@ -50,8 +51,12 @@ func TestLoadAllAssemblies(t *testing.T) {
 					ci.index = i + 1
 					if td, err := TypeDefFromIndex(&ci); err != nil {
 						outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
-					} else if _, err := td.ToContentType(); err != nil {
-						outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
+					} else {
+						if n := td.Name(); content.Validate(&n) != nil {
+							continue
+						} else if _, err := td.ToContentType(); err != nil {
+							outChan <- errors.New(fmt.Sprintf("%s: %s\n", fn, err))
+						}
 					}
 				}
 				ci.table = id_Module

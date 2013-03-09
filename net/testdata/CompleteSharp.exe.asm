@@ -244,22 +244,20 @@ NestedClassRow
 	MyAppDomain
 	Hack
 	Accessibility
-class <Module>
 public class CompleteSharp
 	extends System.Object
 	private static System.String sep
-	public System.Void  .ctor()
+	public  CompleteSharp()
 	private static System.Void  reportError(System.Exception e)
 	public static System.Void  Main(System.String[] arg)
-	private static System.Void  .cctor()
 	class CompleteSharp$MyAppDomain
 class CompleteSharp$MyAppDomain
 	extends System.MarshalByRefObject
 	private System.AppDomain ad
 	private System.String[] assemblies
-	private DateTime[] times
+	private System.DateTime[] times
 	private System.Boolean forceReload
-	public System.Void  .ctor(System.String[] arg)
+	public  MyAppDomain(System.String[] arg)
 	public System.Void  LoadAssemblies()
 	public System.Boolean  Execute(System.String[] args, System.Collections.ArrayList modules)
 	private System.Void  CheckUpdate()
@@ -267,7 +265,7 @@ class CompleteSharp$MyAppDomain
 public class CompleteSharp$MyAppDomain$Hack
 	extends System.MarshalByRefObject
 	public MyAppDomain ad
-	public System.Void  .ctor()
+	public  Hack()
 	private System.Int32  GetParameterExtent(System.String parameter)
 	private System.String[]  SplitParameters(System.String parameters, System.Boolean fix)
 	private System.String  ParseParameters(System.String parameters, System.Int32 expected, System.Boolean insertion)

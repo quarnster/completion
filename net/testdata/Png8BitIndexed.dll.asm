@@ -151,7 +151,6 @@ NestedClassRow
 	$ArrayType=32
 	$ArrayType=4
 	$ArrayType=12
-class <Module>
 public class PeterO.Png8BitIndexed
 	extends System.Object
 	private System.Byte[] subdata1
@@ -167,7 +166,7 @@ public class PeterO.Png8BitIndexed
 	private System.Byte[] colors
 	private System.UInt32 idatCrc
 	private System.Int32 transparent
-	public System.Void  .ctor(System.Int32 width, System.Int32 height)
+	public  Png8BitIndexed(System.Int32 width, System.Int32 height)
 	private System.Byte[]  Adler32(System.Byte[] stream, System.Int32 offset, System.Int32 length)
 	private System.UInt32  Crc32(System.Byte[] stream, System.Int32 offset, System.Int32 length, System.UInt32 crc)
 	public System.Void  SetFilter(System.Int32 y, System.Byte filter)
@@ -182,22 +181,3 @@ public class PeterO.Png8BitIndexed
 	public System.Int32  get_Width()
 	public System.Int32  get_Transparent()
 	public System.Void  set_Transparent(System.Int32 value)
-class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}
-	extends System.Object
-	public static $ArrayType=32 $field-0
-	public static $ArrayType=4 $field-1
-	public static $ArrayType=12 $field-2
-	public static $ArrayType=4 $field-3
-	public static $ArrayType=4 $field-4
-	public static $ArrayType=4 $field-5
-	public static $ArrayType=4 $field-6
-	public static $ArrayType=4 $field-7
-	public class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}$$ArrayType=32
-	public class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}$$ArrayType=4
-	public class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}$$ArrayType=12
-public class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}$$ArrayType=32
-	extends System.ValueType
-public class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}$$ArrayType=4
-	extends System.ValueType
-public class <PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}$$ArrayType=12
-	extends System.ValueType

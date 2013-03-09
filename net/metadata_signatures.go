@@ -336,22 +336,22 @@ type Type struct {
 
 // II.23.2.16 Short form signatures
 var lut_element_type = map[int]string{
-	ELEMENT_TYPE_STRING:     "System.String",
-	ELEMENT_TYPE_OBJECT:     "System.Object",
-	ELEMENT_TYPE_VOID:       "System.Void",
-	ELEMENT_TYPE_BOOLEAN:    "System.Boolean",
-	ELEMENT_TYPE_CHAR:       "System.Char",
-	ELEMENT_TYPE_U1:         "System.Byte",
-	ELEMENT_TYPE_I1:         "System.Sbyte",
-	ELEMENT_TYPE_I2:         "System.Int16",
-	ELEMENT_TYPE_U2:         "System.UInt16",
-	ELEMENT_TYPE_I4:         "System.Int32",
-	ELEMENT_TYPE_U4:         "System.UInt32",
-	ELEMENT_TYPE_I8:         "System.Int64",
-	ELEMENT_TYPE_U8:         "System.UInt64",
-	ELEMENT_TYPE_I:          "System.IntPtr",
-	ELEMENT_TYPE_U:          "System.UIntPtr",
-	ELEMENT_TYPE_TYPEDBYREF: "System.TypedReference",
+	ELEMENT_TYPE_STRING:     "String",
+	ELEMENT_TYPE_OBJECT:     "Object",
+	ELEMENT_TYPE_VOID:       "Void",
+	ELEMENT_TYPE_BOOLEAN:    "Boolean",
+	ELEMENT_TYPE_CHAR:       "Char",
+	ELEMENT_TYPE_U1:         "Byte",
+	ELEMENT_TYPE_I1:         "Sbyte",
+	ELEMENT_TYPE_I2:         "Int16",
+	ELEMENT_TYPE_U2:         "UInt16",
+	ELEMENT_TYPE_I4:         "Int32",
+	ELEMENT_TYPE_U4:         "UInt32",
+	ELEMENT_TYPE_I8:         "Int64",
+	ELEMENT_TYPE_U8:         "UInt64",
+	ELEMENT_TYPE_I:          "IntPtr",
+	ELEMENT_TYPE_U:          "UIntPtr",
+	ELEMENT_TYPE_TYPEDBYREF: "TypedReference",
 	ELEMENT_TYPE_R4:         "r4",
 	ELEMENT_TYPE_R8:         "r8",
 	ELEMENT_TYPE_PTR:        "ptr",
@@ -378,10 +378,8 @@ func (t *Type) Name() string {
 		case *TypeRefRow:
 			return string(t.TypeName)
 		default:
-			fmt.Sprintf("Unhandled type: %s", t)
+			return fmt.Sprintf("Unhandled type: %s", t)
 		}
-	case ELEMENT_TYPE_SZARRAY:
-		return fmt.Sprintf("%s[]", t.Type)
 	}
 	n, ok := lut_element_type[int(t.TypeId)]
 	if ok {
@@ -403,7 +401,7 @@ func (t *Type) Namespace() string {
 			fmt.Sprintf("Unhandled type: %s", t)
 		}
 	}
-	return ""
+	return "System"
 }
 
 func (t *Type) String() string {

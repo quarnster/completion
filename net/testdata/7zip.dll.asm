@@ -1356,7 +1356,6 @@ NestedClassRow
 	SevenZip.ISetDecoderProperties
 	<PrivateImplementationDetails>{36dcba29-69c8-4e99-b590-8bd2082695d5}
 	$ArrayType=32
-class <Module>
 public class SevenZip.CommandLineParser.SwitchType
 	extends System.Enum
 	public System.Int32 value__
@@ -1373,16 +1372,16 @@ public class SevenZip.CommandLineParser.SwitchForm
 	public System.Int32 MinLen
 	public System.Int32 MaxLen
 	public System.String PostCharSet
-	public System.Void  .ctor(System.String idString, SevenZip.CommandLineParser.SwitchType type, System.Boolean multi, System.Int32 minLen, System.Int32 maxLen, System.String postCharSet)
-	public System.Void  .ctor(System.String idString, SevenZip.CommandLineParser.SwitchType type, System.Boolean multi, System.Int32 minLen)
-	public System.Void  .ctor(System.String idString, SevenZip.CommandLineParser.SwitchType type, System.Boolean multi)
+	public  SwitchForm(System.String idString, SevenZip.CommandLineParser.SwitchType type, System.Boolean multi, System.Int32 minLen, System.Int32 maxLen, System.String postCharSet)
+	public  SwitchForm(System.String idString, SevenZip.CommandLineParser.SwitchType type, System.Boolean multi, System.Int32 minLen)
+	public  SwitchForm(System.String idString, SevenZip.CommandLineParser.SwitchType type, System.Boolean multi)
 public class SevenZip.CommandLineParser.SwitchResult
 	extends System.Object
 	public System.Boolean ThereIs
 	public System.Boolean WithMinus
 	public System.Collections.ArrayList PostStrings
 	public System.Int32 PostCharIndex
-	public System.Void  .ctor()
+	public  SwitchResult()
 public class SevenZip.CommandLineParser.Parser
 	extends System.Object
 	private static System.Char kSwitchID1
@@ -1390,36 +1389,35 @@ public class SevenZip.CommandLineParser.Parser
 	private static System.Char kSwitchMinus
 	private static System.String kStopSwitchParsing
 	public System.Collections.ArrayList NonSwitchStrings
-	private SwitchResult[] _switches
-	public System.Void  .ctor(System.Int32 numSwitches)
-	private System.Boolean  ParseString(System.String srcString, SwitchForm[] switchForms)
-	public System.Void  ParseStrings(SwitchForm[] switchForms, System.String[] commandStrings)
+	private SevenZip.CommandLineParser.SwitchResult[] _switches
+	public  Parser(System.Int32 numSwitches)
+	private System.Boolean  ParseString(System.String srcString, SevenZip.CommandLineParser.SwitchForm[] switchForms)
+	public System.Void  ParseStrings(SevenZip.CommandLineParser.SwitchForm[] switchForms, System.String[] commandStrings)
 	public SevenZip.CommandLineParser.SwitchResult  get_Item(System.Int32 index)
-	public static System.Int32  ParseCommand(CommandForm[] commandForms, System.String commandString, System.String postString)
-	private static System.Boolean  ParseSubCharsCommand(System.Int32 numForms, CommandSubCharsSet[] forms, System.String commandString, System.Collections.ArrayList indices)
+	public static System.Int32  ParseCommand(SevenZip.CommandLineParser.CommandForm[] commandForms, System.String commandString, System.String postString)
+	private static System.Boolean  ParseSubCharsCommand(System.Int32 numForms, SevenZip.CommandLineParser.CommandSubCharsSet[] forms, System.String commandString, System.Collections.ArrayList indices)
 	private static System.Boolean  IsItSwitchChar(System.Char c)
 public class SevenZip.CommandLineParser.CommandForm
 	extends System.Object
 	public System.String IDString
 	public System.Boolean PostStringMode
-	public System.Void  .ctor(System.String idString, System.Boolean postStringMode)
+	public  CommandForm(System.String idString, System.Boolean postStringMode)
 class SevenZip.CommandLineParser.CommandSubCharsSet
 	extends System.Object
 	public System.String Chars
 	public System.Boolean EmptyAllowed
-	public System.Void  .ctor()
+	public  CommandSubCharsSet()
 class SevenZip.CRC
 	extends System.Object
 	public static System.UInt32[] Table
 	private System.UInt32 _value
-	public System.Void  .ctor()
+	public  CRC()
 	public System.Void  Init()
 	public System.Void  UpdateByte(System.Byte b)
 	public System.Void  Update(System.Byte[] data, System.UInt32 offset, System.UInt32 size)
 	public System.UInt32  GetDigest()
 	private static System.UInt32  CalculateDigest(System.Byte[] data, System.UInt32 offset, System.UInt32 size)
 	private static System.Boolean  VerifyDigest(System.UInt32 digest, System.Byte[] data, System.UInt32 offset, System.UInt32 size)
-	private static System.Void  .cctor()
 public class SevenZip.Buffer.InBuffer
 	extends System.Object
 	private System.Byte[] m_Buffer
@@ -1429,7 +1427,7 @@ public class SevenZip.Buffer.InBuffer
 	private System.IO.Stream m_Stream
 	private System.Boolean m_StreamWasExhausted
 	private System.UInt64 m_ProcessedSize
-	public System.Void  .ctor(System.UInt32 bufferSize)
+	public  InBuffer(System.UInt32 bufferSize)
 	public System.Void  Init(System.IO.Stream stream)
 	public System.Boolean  ReadBlock()
 	public System.Void  ReleaseStream()
@@ -1443,7 +1441,7 @@ public class SevenZip.Buffer.OutBuffer
 	private System.UInt32 m_BufferSize
 	private System.IO.Stream m_Stream
 	private System.UInt64 m_ProcessedSize
-	public System.Void  .ctor(System.UInt32 bufferSize)
+	public  OutBuffer(System.UInt32 bufferSize)
 	public System.Void  SetStream(System.IO.Stream stream)
 	public System.Void  FlushStream()
 	public System.Void  CloseStream()
@@ -1486,7 +1484,7 @@ public class SevenZip.Compression.LZ.BinTree
 	private System.UInt32 kNumHashDirectBytes
 	private System.UInt32 kMinMatchCheck
 	private System.UInt32 kFixHashSize
-	public System.Void  .ctor()
+	public  BinTree()
 	public System.Void  SetType(System.Int32 numHashBytes)
 	public final System.Void  SetStream(System.IO.Stream stream)
 	public final System.Void  ReleaseStream()
@@ -1514,7 +1512,7 @@ public class SevenZip.Compression.LZ.InWindow
 	private System.UInt32 _keepSizeBefore
 	private System.UInt32 _keepSizeAfter
 	public System.UInt32 _streamPos
-	public System.Void  .ctor()
+	public  InWindow()
 	public System.Void  MoveBlock()
 	public System.Void  ReadBlock()
 	private System.Void  Free()
@@ -1535,7 +1533,7 @@ public class SevenZip.Compression.LZ.OutWindow
 	private System.UInt32 _streamPos
 	private System.IO.Stream _stream
 	public System.UInt32 TrainSize
-	public System.Void  .ctor()
+	public  OutWindow()
 	public System.Void  Create(System.UInt32 windowSize)
 	public System.Void  Init(System.IO.Stream stream, System.Boolean solid)
 	public System.Boolean  Train(System.IO.Stream stream)
@@ -1573,7 +1571,7 @@ class SevenZip.Compression.LZMA.Base
 	public static System.UInt32 kNumMidLenSymbols
 	public static System.UInt32 kNumLenSymbols
 	public static System.UInt32 kMatchMaxLen
-	public System.Void  .ctor()
+	public  Base()
 	public static System.UInt32  GetLenToPosState(System.UInt32 len)
 	class Base$State
 class Base$State
@@ -1590,14 +1588,14 @@ public class SevenZip.Compression.LZMA.Decoder
 	implements SevenZip.ICoder, SevenZip.ISetDecoderProperties
 	private SevenZip.Compression.LZ.OutWindow m_OutWindow
 	private SevenZip.Compression.RangeCoder.Decoder m_RangeDecoder
-	private BitDecoder[] m_IsMatchDecoders
-	private BitDecoder[] m_IsRepDecoders
-	private BitDecoder[] m_IsRepG0Decoders
-	private BitDecoder[] m_IsRepG1Decoders
-	private BitDecoder[] m_IsRepG2Decoders
-	private BitDecoder[] m_IsRep0LongDecoders
-	private BitTreeDecoder[] m_PosSlotDecoder
-	private BitDecoder[] m_PosDecoders
+	private SevenZip.Compression.RangeCoder.BitDecoder[] m_IsMatchDecoders
+	private SevenZip.Compression.RangeCoder.BitDecoder[] m_IsRepDecoders
+	private SevenZip.Compression.RangeCoder.BitDecoder[] m_IsRepG0Decoders
+	private SevenZip.Compression.RangeCoder.BitDecoder[] m_IsRepG1Decoders
+	private SevenZip.Compression.RangeCoder.BitDecoder[] m_IsRepG2Decoders
+	private SevenZip.Compression.RangeCoder.BitDecoder[] m_IsRep0LongDecoders
+	private SevenZip.Compression.RangeCoder.BitTreeDecoder[] m_PosSlotDecoder
+	private SevenZip.Compression.RangeCoder.BitDecoder[] m_PosDecoders
 	private SevenZip.Compression.RangeCoder.BitTreeDecoder m_PosAlignDecoder
 	private LenDecoder m_LenDecoder
 	private LenDecoder m_RepLenDecoder
@@ -1606,7 +1604,7 @@ public class SevenZip.Compression.LZMA.Decoder
 	private System.UInt32 m_DictionarySizeCheck
 	private System.UInt32 m_PosStateMask
 	private System.Boolean _solid
-	public System.Void  .ctor()
+	public  Decoder()
 	private System.Void  SetDictionarySize(System.UInt32 dictionarySize)
 	private System.Void  SetLiteralProperties(System.Int32 lp, System.Int32 lc)
 	private System.Void  SetPosBitsProperties(System.Int32 pb)
@@ -1620,11 +1618,11 @@ public class Decoder$LenDecoder
 	extends System.Object
 	private SevenZip.Compression.RangeCoder.BitDecoder m_Choice
 	private SevenZip.Compression.RangeCoder.BitDecoder m_Choice2
-	private BitTreeDecoder[] m_LowCoder
-	private BitTreeDecoder[] m_MidCoder
+	private SevenZip.Compression.RangeCoder.BitTreeDecoder[] m_LowCoder
+	private SevenZip.Compression.RangeCoder.BitTreeDecoder[] m_MidCoder
 	private SevenZip.Compression.RangeCoder.BitTreeDecoder m_HighCoder
 	private System.UInt32 m_NumPosStates
-	public System.Void  .ctor()
+	public  LenDecoder()
 	public System.Void  Create(System.UInt32 numPosStates)
 	public System.Void  Init()
 	public System.UInt32  Decode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder, System.UInt32 posState)
@@ -1634,7 +1632,7 @@ public class Decoder$LiteralDecoder
 	private System.Int32 m_NumPrevBits
 	private System.Int32 m_NumPosBits
 	private System.UInt32 m_PosMask
-	public System.Void  .ctor()
+	public  LiteralDecoder()
 	public System.Void  Create(System.Int32 numPosBits, System.Int32 numPrevBits)
 	public System.Void  Init()
 	private System.UInt32  GetState(System.UInt32 pos, System.Byte prevByte)
@@ -1643,7 +1641,7 @@ public class Decoder$LiteralDecoder
 	public class Decoder$LiteralDecoder$Decoder2
 public class Decoder$LiteralDecoder$Decoder2
 	extends System.ValueType
-	private BitDecoder[] m_Decoders
+	private SevenZip.Compression.RangeCoder.BitDecoder[] m_Decoders
 	public System.Void  Create()
 	public System.Void  Init()
 	public System.Byte  DecodeNormal(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
@@ -1664,14 +1662,14 @@ public class SevenZip.Compression.LZMA.Encoder
 	private Optimal[] _optimum
 	private SevenZip.Compression.LZ.IMatchFinder _matchFinder
 	private SevenZip.Compression.RangeCoder.Encoder _rangeEncoder
-	private BitEncoder[] _isMatch
-	private BitEncoder[] _isRep
-	private BitEncoder[] _isRepG0
-	private BitEncoder[] _isRepG1
-	private BitEncoder[] _isRepG2
-	private BitEncoder[] _isRep0Long
-	private BitTreeEncoder[] _posSlotEncoder
-	private BitEncoder[] _posEncoders
+	private SevenZip.Compression.RangeCoder.BitEncoder[] _isMatch
+	private SevenZip.Compression.RangeCoder.BitEncoder[] _isRep
+	private SevenZip.Compression.RangeCoder.BitEncoder[] _isRepG0
+	private SevenZip.Compression.RangeCoder.BitEncoder[] _isRepG1
+	private SevenZip.Compression.RangeCoder.BitEncoder[] _isRepG2
+	private SevenZip.Compression.RangeCoder.BitEncoder[] _isRep0Long
+	private SevenZip.Compression.RangeCoder.BitTreeEncoder[] _posSlotEncoder
+	private SevenZip.Compression.RangeCoder.BitEncoder[] _posEncoders
 	private SevenZip.Compression.RangeCoder.BitTreeEncoder _posAlignEncoder
 	private LenPriceTableEncoder _lenEncoder
 	private LenPriceTableEncoder _repMatchLenEncoder
@@ -1709,7 +1707,7 @@ public class SevenZip.Compression.LZMA.Encoder
 	private System.UInt32 _matchPriceCount
 	private static System.String[] kMatchFinderIDs
 	private System.UInt32 _trainSize
-	public System.Void  .ctor()
+	public  Encoder()
 	private static System.UInt32  GetPosSlot(System.UInt32 pos)
 	private static System.UInt32  GetPosSlot2(System.UInt32 pos)
 	private System.Void  BaseInit()
@@ -1738,9 +1736,8 @@ public class SevenZip.Compression.LZMA.Encoder
 	private System.Void  FillDistancesPrices()
 	private System.Void  FillAlignPrices()
 	private static System.Int32  FindMatchFinder(System.String s)
-	public final System.Void  SetCoderProperties(CoderPropID[] propIDs, System.Object[] properties)
+	public final System.Void  SetCoderProperties(SevenZip.CoderPropID[] propIDs, System.Object[] properties)
 	public System.Void  SetTrainSize(System.UInt32 trainSize)
-	private static System.Void  .cctor()
 	public class Encoder$EMatchFinderType
 	public class Encoder$LiteralEncoder
 public class Encoder$EMatchFinderType
@@ -1754,14 +1751,14 @@ public class Encoder$LiteralEncoder
 	private System.Int32 m_NumPrevBits
 	private System.Int32 m_NumPosBits
 	private System.UInt32 m_PosMask
-	public System.Void  .ctor()
+	public  LiteralEncoder()
 	public System.Void  Create(System.Int32 numPosBits, System.Int32 numPrevBits)
 	public System.Void  Init()
 	public Encoder2  GetSubCoder(System.UInt32 pos, System.Byte prevByte)
 	class Encoder$LiteralEncoder$Encoder2
 class Encoder$LiteralEncoder$Encoder2
 	extends System.ValueType
-	private BitEncoder[] m_Encoders
+	private SevenZip.Compression.RangeCoder.BitEncoder[] m_Encoders
 	public System.Void  Create()
 	public System.Void  Init()
 	public System.Void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, System.Byte symbol)
@@ -1771,10 +1768,10 @@ public class Encoder$LenEncoder
 	extends System.Object
 	private SevenZip.Compression.RangeCoder.BitEncoder _choice
 	private SevenZip.Compression.RangeCoder.BitEncoder _choice2
-	private BitTreeEncoder[] _lowCoder
-	private BitTreeEncoder[] _midCoder
+	private SevenZip.Compression.RangeCoder.BitTreeEncoder[] _lowCoder
+	private SevenZip.Compression.RangeCoder.BitTreeEncoder[] _midCoder
 	private SevenZip.Compression.RangeCoder.BitTreeEncoder _highCoder
-	public System.Void  .ctor()
+	public  LenEncoder()
 	public System.Void  Init(System.UInt32 numPosStates)
 	public System.Void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, System.UInt32 symbol, System.UInt32 posState)
 	public System.Void  SetPrices(System.UInt32 posState, System.UInt32 numSymbols, System.UInt32[] prices, System.UInt32 st)
@@ -1783,7 +1780,7 @@ public class Encoder$LenPriceTableEncoder
 	private System.UInt32[] _prices
 	private System.UInt32 _tableSize
 	private System.UInt32[] _counters
-	public System.Void  .ctor()
+	public  LenPriceTableEncoder()
 	public System.Void  SetTableSize(System.UInt32 tableSize)
 	public System.UInt32  GetPrice(System.UInt32 symbol, System.UInt32 posState)
 	private System.Void  UpdateTable(System.UInt32 posState)
@@ -1803,7 +1800,7 @@ public class Encoder$Optimal
 	public System.UInt32 Backs1
 	public System.UInt32 Backs2
 	public System.UInt32 Backs3
-	public System.Void  .ctor()
+	public  Optimal()
 	public System.Void  MakeAsChar()
 	public System.Void  MakeAsShortRep()
 	public System.Boolean  IsShortRep()
@@ -1813,7 +1810,7 @@ public class SevenZip.CDoubleStream
 	public System.IO.Stream s2
 	public System.Int32 fileIndex
 	public System.Int64 skipSize
-	public System.Void  .ctor()
+	public  CDoubleStream()
 	public System.Boolean  get_CanRead()
 	public System.Boolean  get_CanWrite()
 	public System.Boolean  get_CanSeek()
@@ -1827,7 +1824,7 @@ public class SevenZip.CDoubleStream
 	public System.Void  SetLength(System.Int64 value)
 class SevenZip.LzmaAlone
 	extends System.Object
-	public System.Void  .ctor()
+	public  LzmaAlone()
 	private static System.Void  PrintHelp()
 	private static System.Boolean  GetNumber(System.String s, System.Int32 v)
 	private static System.Int32  IncorrectCommand()
@@ -1856,7 +1853,7 @@ class SevenZip.LzmaBench
 	private static System.UInt32 kCompressedAdditionalSize
 	private static System.UInt32 kMaxLzmaPropSize
 	private static System.Int32 kSubBits
-	public System.Void  .ctor()
+	public  LzmaBench()
 	private static System.UInt32  GetLogSize(System.UInt32 size)
 	private static System.UInt64  MyMultDiv64(System.UInt64 value, System.UInt64 elapsedTime)
 	private static System.UInt64  GetCompressRating(System.UInt32 dictionarySize, System.UInt64 elapsedTime, System.UInt64 size)
@@ -1875,7 +1872,7 @@ public class LzmaBench$CRandomGenerator
 	extends System.Object
 	private System.UInt32 A1
 	private System.UInt32 A2
-	public System.Void  .ctor()
+	public  CRandomGenerator()
 	public System.Void  Init()
 	public System.UInt32  GetRnd()
 public class LzmaBench$CBitRandomGenerator
@@ -1883,7 +1880,7 @@ public class LzmaBench$CBitRandomGenerator
 	private CRandomGenerator RG
 	private System.UInt32 Value
 	private System.Int32 NumBits
-	public System.Void  .ctor()
+	public  CBitRandomGenerator()
 	public System.Void  Init()
 	public System.UInt32  GetRnd(System.Int32 numBits)
 public class LzmaBench$CBenchRandomGenerator
@@ -1893,7 +1890,7 @@ public class LzmaBench$CBenchRandomGenerator
 	private System.UInt32 Rep0
 	public System.UInt32 BufferSize
 	public System.Byte[] Buffer
-	public System.Void  .ctor()
+	public  CBenchRandomGenerator()
 	public System.Void  Set(System.UInt32 bufferSize)
 	private System.UInt32  GetRndBit()
 	private System.UInt32  GetLogRandBits(System.Int32 numBits)
@@ -1904,7 +1901,7 @@ public class LzmaBench$CBenchRandomGenerator
 public class LzmaBench$CrcOutStream
 	extends System.IO.Stream
 	public SevenZip.CRC CRC
-	public System.Void  .ctor()
+	public  CrcOutStream()
 	public System.Void  Init()
 	public System.UInt32  GetDigest()
 	public System.Boolean  get_CanRead()
@@ -1925,14 +1922,14 @@ public class LzmaBench$CProgressInfo
 	public System.Int64 ApprovedStart
 	public System.Int64 InSize
 	public System.DateTime Time
-	public System.Void  .ctor()
+	public  CProgressInfo()
 	public System.Void  Init()
 	public final System.Void  SetProgress(System.Int64 inSize, System.Int64 outSize)
 class LzmaAlone.Properties.Resources
 	extends System.Object
 	private static System.Resources.ResourceManager _resMgr
 	private static System.Globalization.CultureInfo _resCulture
-	public System.Void  .ctor()
+	public  Resources()
 	public static System.Resources.ResourceManager  get_ResourceManager()
 	public static System.Globalization.CultureInfo  get_Culture()
 	public static System.Void  set_Culture(System.Globalization.CultureInfo value)
@@ -1940,9 +1937,8 @@ public class LzmaAlone.Properties.Settings
 	extends System.Configuration.ApplicationSettingsBase
 	private static LzmaAlone.Properties.Settings m_Value
 	private static System.Object m_SyncObject
-	public System.Void  .ctor()
+	public  Settings()
 	public static LzmaAlone.Properties.Settings  get_Value()
-	private static System.Void  .cctor()
 class SevenZip.Compression.RangeCoder.Encoder
 	extends System.Object
 	public static System.UInt32 kTopValue
@@ -1952,7 +1948,7 @@ class SevenZip.Compression.RangeCoder.Encoder
 	private System.UInt32 _cacheSize
 	private System.Byte _cache
 	private System.Int64 StartPosition
-	public System.Void  .ctor()
+	public  Encoder()
 	public System.Void  SetStream(System.IO.Stream stream)
 	public System.Void  ReleaseStream()
 	public System.Void  Init()
@@ -1970,7 +1966,7 @@ class SevenZip.Compression.RangeCoder.Decoder
 	public System.UInt32 Range
 	public System.UInt32 Code
 	public System.IO.Stream Stream
-	public System.Void  .ctor()
+	public  Decoder()
 	public System.Void  Init(System.IO.Stream stream)
 	public System.Void  ReleaseStream()
 	public System.Void  CloseStream()
@@ -1995,7 +1991,6 @@ class SevenZip.Compression.RangeCoder.BitEncoder
 	public System.UInt32  GetPrice(System.UInt32 symbol)
 	public System.UInt32  GetPrice0()
 	public System.UInt32  GetPrice1()
-	private static System.Void  .cctor()
 class SevenZip.Compression.RangeCoder.BitDecoder
 	extends System.ValueType
 	public static System.Int32 kNumBitModelTotalBits
@@ -2007,31 +2002,31 @@ class SevenZip.Compression.RangeCoder.BitDecoder
 	public System.UInt32  Decode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
 class SevenZip.Compression.RangeCoder.BitTreeEncoder
 	extends System.ValueType
-	private BitEncoder[] Models
+	private SevenZip.Compression.RangeCoder.BitEncoder[] Models
 	private System.Int32 NumBitLevels
-	public System.Void  .ctor(System.Int32 numBitLevels)
+	public  BitTreeEncoder(System.Int32 numBitLevels)
 	public System.Void  Init()
 	public System.Void  Encode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, System.UInt32 symbol)
 	public System.Void  ReverseEncode(SevenZip.Compression.RangeCoder.Encoder rangeEncoder, System.UInt32 symbol)
 	public System.UInt32  GetPrice(System.UInt32 symbol)
 	public System.UInt32  ReverseGetPrice(System.UInt32 symbol)
-	public static System.UInt32  ReverseGetPrice(BitEncoder[] Models, System.UInt32 startIndex, System.Int32 NumBitLevels, System.UInt32 symbol)
-	public static System.Void  ReverseEncode(BitEncoder[] Models, System.UInt32 startIndex, SevenZip.Compression.RangeCoder.Encoder rangeEncoder, System.Int32 NumBitLevels, System.UInt32 symbol)
+	public static System.UInt32  ReverseGetPrice(SevenZip.Compression.RangeCoder.BitEncoder[] Models, System.UInt32 startIndex, System.Int32 NumBitLevels, System.UInt32 symbol)
+	public static System.Void  ReverseEncode(SevenZip.Compression.RangeCoder.BitEncoder[] Models, System.UInt32 startIndex, SevenZip.Compression.RangeCoder.Encoder rangeEncoder, System.Int32 NumBitLevels, System.UInt32 symbol)
 class SevenZip.Compression.RangeCoder.BitTreeDecoder
 	extends System.ValueType
-	private BitDecoder[] Models
+	private SevenZip.Compression.RangeCoder.BitDecoder[] Models
 	private System.Int32 NumBitLevels
-	public System.Void  .ctor(System.Int32 numBitLevels)
+	public  BitTreeDecoder(System.Int32 numBitLevels)
 	public System.Void  Init()
 	public System.UInt32  Decode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
 	public System.UInt32  ReverseDecode(SevenZip.Compression.RangeCoder.Decoder rangeDecoder)
-	public static System.UInt32  ReverseDecode(BitDecoder[] Models, System.UInt32 startIndex, SevenZip.Compression.RangeCoder.Decoder rangeDecoder, System.Int32 NumBitLevels)
+	public static System.UInt32  ReverseDecode(SevenZip.Compression.RangeCoder.BitDecoder[] Models, System.UInt32 startIndex, SevenZip.Compression.RangeCoder.Decoder rangeDecoder, System.Int32 NumBitLevels)
 class SevenZip.DataErrorException
 	extends System.ApplicationException
-	public System.Void  .ctor()
+	public  DataErrorException()
 class SevenZip.InvalidParamException
 	extends System.ApplicationException
-	public System.Void  .ctor()
+	public  InvalidParamException()
 public interface SevenZip.ICodeProgress
 	public System.Void  SetProgress(System.Int64 inSize, System.Int64 outSize)
 public interface SevenZip.ICoder
@@ -2055,14 +2050,8 @@ public class SevenZip.CoderPropID
 	public static SevenZip.CoderPropID NumThreads
 	public static SevenZip.CoderPropID EndMarker
 public interface SevenZip.ISetCoderProperties
-	public System.Void  SetCoderProperties(CoderPropID[] propIDs, System.Object[] properties)
+	public System.Void  SetCoderProperties(SevenZip.CoderPropID[] propIDs, System.Object[] properties)
 public interface SevenZip.IWriteCoderProperties
 	public System.Void  WriteCoderProperties(System.IO.Stream outStream)
 public interface SevenZip.ISetDecoderProperties
 	public System.Void  SetDecoderProperties(System.Byte[] properties)
-class <PrivateImplementationDetails>{36dcba29-69c8-4e99-b590-8bd2082695d5}
-	extends System.Object
-	public static $ArrayType=32 $field-0
-	public class <PrivateImplementationDetails>{36dcba29-69c8-4e99-b590-8bd2082695d5}$$ArrayType=32
-public class <PrivateImplementationDetails>{36dcba29-69c8-4e99-b590-8bd2082695d5}$$ArrayType=32
-	extends System.ValueType
