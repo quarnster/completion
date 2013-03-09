@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"reflect"
+	"regexp"
 )
 
 type Validateable interface {
@@ -69,6 +70,15 @@ func (t *Type) Validate() error {
 		}
 	default:
 		return Validate(&t.Name)
+	}
+	return nil
+}
+
+var badre = regexp.MustCompile(`(?:^|[^\\])[ \t\n\r$.{}\[\]/*-+<>].*`)
+
+func (f *FullyQualifiedName) Validate() error {
+	if badre.MatchString(f.Relative) {
+		return errors.New(fmt.Sprintf("Relative name contains illegal characters: %s", f.Relative))
 	}
 	return nil
 }

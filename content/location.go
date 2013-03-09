@@ -1,11 +1,5 @@
 package content
 
-import (
-	"errors"
-	"fmt"
-	"strings"
-)
-
 type File struct {
 	// The name of the file
 	Name string `protocol:"required" json:",omitempty"`
@@ -22,11 +16,4 @@ type SourceLocation struct {
 type FullyQualifiedName struct {
 	Relative string `protocol:"required" json:",omitempty"`
 	Absolute string `protocol:"optional" json:",omitempty"`
-}
-
-func (f *FullyQualifiedName) Validate() error {
-	if strings.ContainsAny(string(f.Relative), "$.{}[]/*-+<>") {
-		return errors.New(fmt.Sprintf("Relative name contains illegal characters: %s", f.Relative))
-	}
-	return nil
 }

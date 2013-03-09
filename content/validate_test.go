@@ -24,6 +24,8 @@ var tests = []test{
 	{&FullyQualifiedName{"Something.Something", "Something.Something"}, true},
 	{&FullyQualifiedName{"Something", "Something.Something"}, false},
 	{&FullyQualifiedName{".Something", "Something.Something"}, true},
+	{&FullyQualifiedName{"\\.Something", "Something.Something"}, false},
+	{&FullyQualifiedName{"\\.$omething", "Something.Something"}, true},
 	{&Type{}, true},
 	{&Type{Flags: FLAG_TYPE_ARRAY}, true},
 	{&Type{Flags: FLAG_TYPE_ARRAY, Specialization: []Type{Type{Name: FullyQualifiedName{Absolute: "Test"}}}}, false},
