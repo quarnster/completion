@@ -5,10 +5,12 @@ import (
 	"errors"
 	"fmt"
 	"github.com/quarnster/completion/content"
+	"regexp"
 )
 
 var (
 	ErrInterface = errors.New("TypeDef is an interface, not a class")
+	templateType = regexp.MustCompile("`\\d+")
 )
 
 type TypeDef struct {
@@ -74,6 +76,7 @@ func (td *TypeDef) initContentType(index TypeDefIndex, t *Type) (t2 content.Type
 	switch t.TypeId {
 	case ELEMENT_TYPE_GENERICINST:
 		t2 = ToContentType(t.Type)
+		t2.Name.Relative = templateType.ReplaceAllString(t2.Name.Relative, "")
 		for i := range t.Instance {
 			t2.Specialization = append(t2.Specialization, td.initContentType(index, t.Instance[i]))
 		}
