@@ -1,3 +1,5 @@
+Fields:
+	std::basic_string<char> & erase
 Methods:
 	std::basic_string<char> &  append(const std::basic_string<char> &__str )
 	std::basic_string<char> &  append(const std::basic_string<char> &__str , size_type __pos , size_type __n )
@@ -12,3 +14,21 @@ Methods:
 	std::basic_string<char> &  assign(size_type __n , char __c )
 	std::basic_string<char> &  assign(_InputIterator __first , _InputIterator __last )
 	const_reference  at(size_type __n )
+	reference  at(size_type __n )
+	void  basic_string(_InputIterator __beg , _InputIterator __end , const std::allocator<char> &__a )
+	iterator  begin()
+	const_iterator  begin()
+	const char *  c_str()
+	size_type  capacity()
+	void  clear()
+	int  compare(const std::basic_string<char> &__str )
+	int  compare(size_type __pos , size_type __n , const std::basic_string<char> &__str )
+	int  compare(size_type __pos1 , size_type __n1 , const std::basic_string<char> &__str , size_type __pos2 , size_type __n2 )
+	int  compare(const char *__s )
+	int  compare(size_type __pos , size_type __n1 , const char *__s )
+	int  compare(size_type __pos , size_type __n1 , const char *__s , size_type __n2 )
+	size_type  copy(char *__s , size_type __n , size_type __pos )
+	const char *  data()
+	bool  empty()
+	iterator  end()
+	const_iterator  end()

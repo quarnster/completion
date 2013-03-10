@@ -2,8 +2,9 @@ package clang
 
 import (
 	"fmt"
-	"github.com/quarnster/completion/clang/parser"
+	cp "github.com/quarnster/completion/clang/parser"
 	"github.com/quarnster/completion/content"
+	"github.com/quarnster/parser"
 	"os/exec"
 )
 
@@ -13,8 +14,17 @@ func RunClang(args ...string) ([]byte, error) {
 	return cmd.CombinedOutput()
 }
 
+func data(n *parser.Node) string {
+	switch n.Name {
+	default:
+		return n.Data()
+	case "OptionalArgument":
+		return data(n.Children[0])
+	}
+}
+
 func parseresult(in string) (ret content.CompletionResult, err error) {
-	var p parser.PARSER
+	var p cp.PARSER
 	p.Parse(in)
 	n := p.RootNode()
 	for i := range n.Children {
@@ -31,8 +41,12 @@ func parseresult(in string) (ret content.CompletionResult, err error) {
 			f.Name.Relative = child.Children[1].Data()
 			args := child.Children[2:]
 			for j := range args {
+				if args[j].Name == "ConstQualifier" {
+					// TODO
+					break
+				}
 				p := content.Variable{}
-				p.Type.Name.Relative = args[j].Data()
+				p.Type.Name.Relative = data(args[j])
 				f.Parameters = append(f.Parameters, p)
 			}
 			ret.Methods = append(ret.Methods, f)
