@@ -1,0 +1,544 @@
+COMPLETION: abort : [#void#]abort()
+COMPLETION: abs : [#int#]abs(<#int#>)
+COMPLETION: abs : [#long#]abs(<#long __i#>)
+COMPLETION: abs : [#long long#]abs(<#long long __x#>)
+COMPLETION: adjacent_find : [#_ForwardIterator#]adjacent_find(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>)
+COMPLETION: adjacent_find : [#_ForwardIterator#]adjacent_find(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#_BinaryPredicate __binary_pred#>)
+COMPLETION: advance : [#void#]advance(<#_InputIterator &__i#>, <#_Distance __n#>)
+COMPLETION: allocator : allocator<<#typename _Tp#>>
+COMPLETION: asctime : [#char *#]asctime(<#const struct tm *#>)
+COMPLETION: atexit : [#int#]atexit(<#void (*)()#>)
+COMPLETION: atof : [#double#]atof(<#const char *#>)
+COMPLETION: atoi : [#int#]atoi(<#const char *#>)
+COMPLETION: atol : [#long#]atol(<#const char *#>)
+COMPLETION: atoll : [#long long#]atoll(<#const char *#>)
+COMPLETION: auto_ptr : auto_ptr<<#typename _Tp#>>
+COMPLETION: auto_ptr_ref : auto_ptr_ref<<#typename _Tp1#>>
+COMPLETION: back_insert_iterator : back_insert_iterator<<#typename _Container#>>
+COMPLETION: back_inserter : [#back_insert_iterator<_Container>#]back_inserter(<#_Container &__x#>)
+COMPLETION: bad_alloc : bad_alloc
+COMPLETION: bad_exception : bad_exception
+COMPLETION: basic_filebuf : basic_filebuf<<#typename _CharT#>{#, <#typename _Traits#>#}>
+COMPLETION: basic_fstream : basic_fstream<<#typename _CharT#>{#, <#typename _Traits#>#}>
+COMPLETION: basic_ifstream : basic_ifstream<<#typename _CharT#>{#, <#typename _Traits#>#}>
+COMPLETION: basic_ios : basic_ios<<#typename _CharT#>{#, <#typename _Traits#>#}>
+COMPLETION: basic_iostream : basic_iostream<<#typename _CharT#>{#, <#typename _Traits#>#}>
+COMPLETION: basic_istream : basic_istream<<#typename _CharT#>{#, <#typename _Traits#>#}>
+COMPLETION: basic_istringstream : basic_istringstream<<#typename _CharT#>{#, <#typename _Traits#>{#, <#typename _Alloc#>#}#}>
+COMPLETION: basic_ofstream : basic_ofstream<<#typename _CharT#>{#, <#typename _Traits#>#}>
+COMPLETION: basic_ostream : basic_ostream<<#typename _CharT#>{#, <#typename _Traits#>#}>
+COMPLETION: basic_ostringstream : basic_ostringstream<<#typename _CharT#>{#, <#typename _Traits#>{#, <#typename _Alloc#>#}#}>
+COMPLETION: basic_streambuf : basic_streambuf<<#typename _CharT#>{#, <#typename _Traits#>#}>
+COMPLETION: basic_string : basic_string<<#typename _CharT#>{#, <#typename _Traits#>{#, <#typename _Alloc#>#}#}>
+COMPLETION: basic_stringbuf : basic_stringbuf<<#typename _CharT#>{#, <#typename _Traits#>{#, <#typename _Alloc#>#}#}>
+COMPLETION: basic_stringstream : basic_stringstream<<#typename _CharT#>{#, <#typename _Traits#>{#, <#typename _Alloc#>#}#}>
+COMPLETION: bidirectional_iterator_tag : bidirectional_iterator_tag
+COMPLETION: binary_function : binary_function<<#class _Arg1#>, <#class _Arg2#>, <#class _Result#>>
+COMPLETION: binary_negate : binary_negate<<#class _Predicate#>>
+COMPLETION: binary_search : [#bool#]binary_search(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#const _Tp &__val#>)
+COMPLETION: binary_search : [#bool#]binary_search(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#const _Tp &__val#>, <#_Compare __comp#>)
+COMPLETION: bind1st : [#binder1st<_Operation>#]bind1st(<#const _Operation &__fn#>, <#const _Tp &__x#>)
+COMPLETION: bind2nd : [#binder2nd<_Operation>#]bind2nd(<#const _Operation &__fn#>, <#const _Tp &__x#>)
+COMPLETION: binder1st : binder1st<<#class _Operation#>>
+COMPLETION: binder2nd : binder2nd<<#class _Operation#>>
+COMPLETION: bsearch : [#void *#]bsearch(<#const void *#>, <#const void *#>, <#size_t#>, <#size_t#>, <#int (*)(const void *, const void *)#>)
+COMPLETION: btowc : [#wint_t#]btowc(<#int#>)
+COMPLETION: calloc : [#void *#]calloc(<#size_t#>, <#size_t#>)
+COMPLETION: char_traits : char_traits<<#class _CharT#>>
+COMPLETION: clearerr : [#void#]clearerr(<#FILE *#>)
+COMPLETION: clock : [#clock_t#]clock()
+COMPLETION: clock_t : clock_t
+COMPLETION: const_mem_fun1_ref_t : const_mem_fun1_ref_t<<#class _Ret#>, <#class _Tp#>, <#class _Arg#>>
+COMPLETION: const_mem_fun1_t : const_mem_fun1_t<<#class _Ret#>, <#class _Tp#>, <#class _Arg#>>
+COMPLETION: const_mem_fun_ref_t : const_mem_fun_ref_t<<#class _Ret#>, <#class _Tp#>>
+COMPLETION: const_mem_fun_t : const_mem_fun_t<<#class _Ret#>, <#class _Tp#>>
+COMPLETION: copy : [#_OutputIterator#]copy(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_OutputIterator __result#>)
+COMPLETION: copy : [#typename __gnu_cxx::__enable_if<__is_char<_CharT>::__value, ostreambuf_iterator<_CharT> >::__type#]copy(<#istreambuf_iterator<_CharT>#>, <#istreambuf_iterator<_CharT>#>, <#ostreambuf_iterator<_CharT>#>)
+COMPLETION: copy_backward : [#_BI2#]copy_backward(<#_BI1 __first#>, <#_BI1 __last#>, <#_BI2 __result#>)
+COMPLETION: count : [#typename iterator_traits<_InputIterator>::difference_type#]count(<#_InputIterator __first#>, <#_InputIterator __last#>, <#const _Tp &__value#>)
+COMPLETION: count_if : [#typename iterator_traits<_InputIterator>::difference_type#]count_if(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_Predicate __pred#>)
+COMPLETION: ctime : [#char *#]ctime(<#const time_t *#>)
+COMPLETION: denorm_absent : [#std::float_denorm_style#]denorm_absent
+COMPLETION: denorm_indeterminate : [#std::float_denorm_style#]denorm_indeterminate
+COMPLETION: denorm_present : [#std::float_denorm_style#]denorm_present
+COMPLETION: difftime : [#double#]difftime(<#time_t#>, <#time_t#>)
+COMPLETION: distance : [#typename iterator_traits<_InputIterator>::difference_type#]distance(<#_InputIterator __first#>, <#_InputIterator __last#>)
+COMPLETION: div : [#div_t#]div(<#int#>, <#int#>)
+COMPLETION: div : [#ldiv_t#]div(<#long __i#>, <#long __j#>)
+COMPLETION: div : [#lldiv_t#]div(<#long long __n#>, <#long long __d#>)
+COMPLETION: div_t : div_t
+COMPLETION: divides : divides<<#class _Tp#>>
+COMPLETION: equal : [#bool#]equal(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>)
+COMPLETION: equal : [#bool#]equal(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_BinaryPredicate __binary_pred#>)
+COMPLETION: equal_range : [#pair<_ForwardIterator, _ForwardIterator>#]equal_range(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#const _Tp &__val#>)
+COMPLETION: equal_range : [#pair<_ForwardIterator, _ForwardIterator>#]equal_range(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#const _Tp &__val#>, <#_Compare __comp#>)
+COMPLETION: equal_to : equal_to<<#class _Tp#>>
+COMPLETION: exception : exception
+COMPLETION: exit : [#void#]exit(<#int#>)
+COMPLETION: fclose : [#int#]fclose(<#FILE *#>)
+COMPLETION: feof : [#int#]feof(<#FILE *#>)
+COMPLETION: ferror : [#int#]ferror(<#FILE *#>)
+COMPLETION: fflush : [#int#]fflush(<#FILE *#>)
+COMPLETION: fgetc : [#int#]fgetc(<#FILE *#>)
+COMPLETION: fgetpos : [#int#]fgetpos(<#FILE *#>, <#fpos_t *#>)
+COMPLETION: fgets : [#char *#]fgets(<#char *#>, <#int#>, <#FILE *#>)
+COMPLETION: fgetwc : [#wint_t#]fgetwc(<#FILE *#>)
+COMPLETION: fgetws : [#wchar_t *#]fgetws(<#wchar_t *#>, <#int#>, <#FILE *#>)
+COMPLETION: FILE : FILE
+COMPLETION: filebuf : filebuf
+COMPLETION: fill : [#void#]fill(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#const _Tp &__value#>)
+COMPLETION: fill : [#void#]fill(<#unsigned char *__first#>, <#unsigned char *__last#>, <#const unsigned char &__c#>)
+COMPLETION: fill : [#void#]fill(<#signed char *__first#>, <#signed char *__last#>, <#const signed char &__c#>)
+COMPLETION: fill : [#void#]fill(<#char *__first#>, <#char *__last#>, <#const char &__c#>)
+COMPLETION: fill : [#void#]fill(<#std::_Bit_iterator __first#>, <#std::_Bit_iterator __last#>, <#const bool &__x#>)
+COMPLETION: fill_n : [#_OutputIterator#]fill_n(<#_OutputIterator __first#>, <#_Size __n#>, <#const _Tp &__value#>)
+COMPLETION: fill_n : [#unsigned char *#]fill_n(<#unsigned char *__first#>, <#_Size __n#>, <#const unsigned char &__c#>)
+COMPLETION: fill_n : [#signed char *#]fill_n(<#signed char *__first#>, <#_Size __n#>, <#const signed char &__c#>)
+COMPLETION: fill_n : [#char *#]fill_n(<#char *__first#>, <#_Size __n#>, <#const char &__c#>)
+COMPLETION: find : [#typename __gnu_cxx::__enable_if<__is_char<_CharT>::__value, istreambuf_iterator<_CharT> >::__type#]find(<#istreambuf_iterator<_CharT>#>, <#istreambuf_iterator<_CharT>#>, <#const _CharT &#>)
+COMPLETION: find : [#_InputIterator#]find(<#_InputIterator __first#>, <#_InputIterator __last#>, <#const _Tp &__val#>)
+COMPLETION: find_end : [#_ForwardIterator1#]find_end(<#_ForwardIterator1 __first1#>, <#_ForwardIterator1 __last1#>, <#_ForwardIterator2 __first2#>, <#_ForwardIterator2 __last2#>)
+COMPLETION: find_end : [#_ForwardIterator1#]find_end(<#_ForwardIterator1 __first1#>, <#_ForwardIterator1 __last1#>, <#_ForwardIterator2 __first2#>, <#_ForwardIterator2 __last2#>, <#_BinaryPredicate __comp#>)
+COMPLETION: find_first_of : [#_InputIterator#]find_first_of(<#_InputIterator __first1#>, <#_InputIterator __last1#>, <#_ForwardIterator __first2#>, <#_ForwardIterator __last2#>)
+COMPLETION: find_first_of : [#_InputIterator#]find_first_of(<#_InputIterator __first1#>, <#_InputIterator __last1#>, <#_ForwardIterator __first2#>, <#_ForwardIterator __last2#>, <#_BinaryPredicate __comp#>)
+COMPLETION: find_if : [#_InputIterator#]find_if(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_Predicate __pred#>)
+COMPLETION: float_denorm_style : float_denorm_style
+COMPLETION: float_round_style : float_round_style
+COMPLETION: fopen : [#FILE *#]fopen(<#const char *#>, <#const char *#>)
+COMPLETION: for_each : [#_Function#]for_each(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_Function __f#>)
+COMPLETION: forward_iterator_tag : forward_iterator_tag
+COMPLETION: fpos : fpos<<#typename _StateT#>>
+COMPLETION: fpos_t : fpos_t
+COMPLETION: fprintf : [#int#]fprintf(<#FILE *#>, <#const char *, ...#>)
+COMPLETION: fputc : [#int#]fputc(<#int#>, <#FILE *#>)
+COMPLETION: fputs : [#int#]fputs(<#const char *#>, <#FILE *#>)
+COMPLETION: fputwc : [#wint_t#]fputwc(<#wchar_t#>, <#FILE *#>)
+COMPLETION: fputws : [#int#]fputws(<#const wchar_t *#>, <#FILE *#>)
+COMPLETION: fread : [#size_t#]fread(<#void *#>, <#size_t#>, <#size_t#>, <#FILE *#>)
+COMPLETION: free : [#void#]free(<#void *#>)
+COMPLETION: freopen : [#FILE *#]freopen(<#const char *#>, <#const char *#>, <#FILE *#>)
+COMPLETION: front_insert_iterator : front_insert_iterator<<#typename _Container#>>
+COMPLETION: front_inserter : [#front_insert_iterator<_Container>#]front_inserter(<#_Container &__x#>)
+COMPLETION: fscanf : [#int#]fscanf(<#FILE *#>, <#const char *, ...#>)
+COMPLETION: fseek : [#int#]fseek(<#FILE *#>, <#long#>, <#int#>)
+COMPLETION: fsetpos : [#int#]fsetpos(<#FILE *#>, <#const fpos_t *#>)
+COMPLETION: fstream : fstream
+COMPLETION: ftell : [#long#]ftell(<#FILE *#>)
+COMPLETION: fwide : [#int#]fwide(<#FILE *#>, <#int#>)
+COMPLETION: fwprintf : [#int#]fwprintf(<#FILE *#>, <#const wchar_t *, ...#>)
+COMPLETION: fwrite : [#size_t#]fwrite(<#const void *#>, <#size_t#>, <#size_t#>, <#FILE *#>)
+COMPLETION: fwscanf : [#int#]fwscanf(<#FILE *#>, <#const wchar_t *, ...#>)
+COMPLETION: generate : [#void#]generate(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#_Generator __gen#>)
+COMPLETION: generate_n : [#_OutputIterator#]generate_n(<#_OutputIterator __first#>, <#_Size __n#>, <#_Generator __gen#>)
+COMPLETION: get_temporary_buffer : [#pair<_Tp *, ptrdiff_t>#]get_temporary_buffer<<#typename _Tp#>>(<#ptrdiff_t __len#>)
+COMPLETION: getc : [#int#]getc(<#FILE *#>)
+COMPLETION: getchar : [#int#]getchar()
+COMPLETION: getenv : [#char *#]getenv(<#const char *#>)
+COMPLETION: getline : [#basic_istream<_CharT, _Traits> &#]getline(<#basic_istream<_CharT, _Traits> &__is#>, <#basic_string<_CharT, _Traits, _Alloc> &__str#>, <#_CharT __delim#>)
+COMPLETION: getline : [#basic_istream<_CharT, _Traits> &#]getline(<#basic_istream<_CharT, _Traits> &__is#>, <#basic_string<_CharT, _Traits, _Alloc> &__str#>)
+COMPLETION: gets : [#char *#]gets(<#char *#>)
+COMPLETION: getwc : [#wint_t#]getwc(<#FILE *#>)
+COMPLETION: getwchar : [#wint_t#]getwchar()
+COMPLETION: gmtime : [#struct tm *#]gmtime(<#const time_t *#>)
+COMPLETION: greater : greater<<#class _Tp#>>
+COMPLETION: greater_equal : greater_equal<<#class _Tp#>>
+COMPLETION: ifstream : ifstream
+COMPLETION: includes : [#bool#]includes(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>)
+COMPLETION: includes : [#bool#]includes(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>, <#_Compare __comp#>)
+COMPLETION: inplace_merge : [#void#]inplace_merge(<#_BidirectionalIterator __first#>, <#_BidirectionalIterator __middle#>, <#_BidirectionalIterator __last#>)
+COMPLETION: inplace_merge : [#void#]inplace_merge(<#_BidirectionalIterator __first#>, <#_BidirectionalIterator __middle#>, <#_BidirectionalIterator __last#>, <#_Compare __comp#>)
+COMPLETION: input_iterator_tag : input_iterator_tag
+COMPLETION: insert_iterator : insert_iterator<<#typename _Container#>>
+COMPLETION: inserter : [#insert_iterator<_Container>#]inserter(<#_Container &__x#>, <#_Iterator __i#>)
+COMPLETION: ios : ios
+COMPLETION: ios_base : ios_base
+COMPLETION: iostream : iostream
+COMPLETION: isalnum : [#int#]isalnum(<#int _c#>)
+COMPLETION: isalpha : [#int#]isalpha(<#int _c#>)
+COMPLETION: iscntrl : [#int#]iscntrl(<#int _c#>)
+COMPLETION: isdigit : [#int#]isdigit(<#int _c#>)
+COMPLETION: isgraph : [#int#]isgraph(<#int _c#>)
+COMPLETION: islower : [#int#]islower(<#int _c#>)
+COMPLETION: isprint : [#int#]isprint(<#int _c#>)
+COMPLETION: ispunct : [#int#]ispunct(<#int _c#>)
+COMPLETION: isspace : [#int#]isspace(<#int _c#>)
+COMPLETION: istream : istream
+COMPLETION: istreambuf_iterator : istreambuf_iterator<<#typename _CharT#>{#, <#typename _Traits#>#}>
+COMPLETION: istringstream : istringstream
+COMPLETION: isupper : [#int#]isupper(<#int _c#>)
+COMPLETION: isxdigit : [#int#]isxdigit(<#int _c#>)
+COMPLETION: iter_swap : [#void#]iter_swap(<#_ForwardIterator1 __a#>, <#_ForwardIterator2 __b#>)
+COMPLETION: iterator : iterator<<#typename _Category#>, <#typename _Tp#>{#, <#typename _Distance#>{#, <#typename _Pointer#>{#, <#typename _Reference#>#}#}#}>
+COMPLETION: iterator_traits : iterator_traits<<#typename _Iterator#>>
+COMPLETION: labs : [#long#]labs(<#long#>)
+COMPLETION: lconv : lconv
+COMPLETION: ldiv : [#ldiv_t#]ldiv(<#long#>, <#long#>)
+COMPLETION: ldiv_t : ldiv_t
+COMPLETION: less : less<<#class _Tp#>>
+COMPLETION: less_equal : less_equal<<#class _Tp#>>
+COMPLETION: lexicographical_compare : [#bool#]lexicographical_compare(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>)
+COMPLETION: lexicographical_compare : [#bool#]lexicographical_compare(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>, <#_Compare __comp#>)
+COMPLETION: lexicographical_compare : [#bool#]lexicographical_compare(<#const unsigned char *__first1#>, <#const unsigned char *__last1#>, <#const unsigned char *__first2#>, <#const unsigned char *__last2#>)
+COMPLETION: lexicographical_compare : [#bool#]lexicographical_compare(<#const char *__first1#>, <#const char *__last1#>, <#const char *__first2#>, <#const char *__last2#>)
+COMPLETION: llabs : [#long long#]llabs(<#long long#>)
+COMPLETION: lldiv : [#lldiv_t#]lldiv(<#long long#>, <#long long#>)
+COMPLETION: lldiv_t : lldiv_t
+COMPLETION: localeconv : [#struct lconv *#]localeconv()
+COMPLETION: localtime : [#struct tm *#]localtime(<#const time_t *#>)
+COMPLETION: logical_and : logical_and<<#class _Tp#>>
+COMPLETION: logical_not : logical_not<<#class _Tp#>>
+COMPLETION: logical_or : logical_or<<#class _Tp#>>
+COMPLETION: lower_bound : [#_ForwardIterator#]lower_bound(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#const _Tp &__val#>)
+COMPLETION: lower_bound : [#_ForwardIterator#]lower_bound(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#const _Tp &__val#>, <#_Compare __comp#>)
+COMPLETION: make_heap : [#void#]make_heap(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>)
+COMPLETION: make_heap : [#void#]make_heap(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>, <#_Compare __comp#>)
+COMPLETION: make_pair : [#pair<_T1, _T2>#]make_pair(<#_T1 __x#>, <#_T2 __y#>)
+COMPLETION: malloc : [#void *#]malloc(<#size_t#>)
+COMPLETION: max : [#const _Tp &#]max(<#const _Tp &__a#>, <#const _Tp &__b#>)
+COMPLETION: max : [#const _Tp &#]max(<#const _Tp &__a#>, <#const _Tp &__b#>, <#_Compare __comp#>)
+COMPLETION: max_element : [#_ForwardIterator#]max_element(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>)
+COMPLETION: max_element : [#_ForwardIterator#]max_element(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#_Compare __comp#>)
+COMPLETION: mblen : [#int#]mblen(<#const char *#>, <#size_t#>)
+COMPLETION: mbrlen : [#size_t#]mbrlen(<#const char *#>, <#size_t#>, <#mbstate_t *#>)
+COMPLETION: mbrtowc : [#size_t#]mbrtowc(<#wchar_t *#>, <#const char *#>, <#size_t#>, <#mbstate_t *#>)
+COMPLETION: mbsinit : [#int#]mbsinit(<#const mbstate_t *#>)
+COMPLETION: mbsrtowcs : [#size_t#]mbsrtowcs(<#wchar_t *#>, <#const char **#>, <#size_t#>, <#mbstate_t *#>)
+COMPLETION: mbstate_t : mbstate_t
+COMPLETION: mbstowcs : [#size_t#]mbstowcs(<#wchar_t *#>, <#const char *#>, <#size_t#>)
+COMPLETION: mbtowc : [#int#]mbtowc(<#wchar_t *#>, <#const char *#>, <#size_t#>)
+COMPLETION: mem_fun : [#mem_fun_t<_Ret, _Tp>#]mem_fun(<#_Ret (_Tp::*__f)()#>)
+COMPLETION: mem_fun : [#const_mem_fun_t<_Ret, _Tp>#]mem_fun(<#_Ret (_Tp::*__f)() const#>)
+COMPLETION: mem_fun : [#mem_fun1_t<_Ret, _Tp, _Arg>#]mem_fun(<#_Ret (_Tp::*__f)(_Arg)#>)
+COMPLETION: mem_fun : [#const_mem_fun1_t<_Ret, _Tp, _Arg>#]mem_fun(<#_Ret (_Tp::*__f)(_Arg) const#>)
+COMPLETION: mem_fun1_ref_t : mem_fun1_ref_t<<#class _Ret#>, <#class _Tp#>, <#class _Arg#>>
+COMPLETION: mem_fun1_t : mem_fun1_t<<#class _Ret#>, <#class _Tp#>, <#class _Arg#>>
+COMPLETION: mem_fun_ref : [#mem_fun_ref_t<_Ret, _Tp>#]mem_fun_ref(<#_Ret (_Tp::*__f)()#>)
+COMPLETION: mem_fun_ref : [#const_mem_fun_ref_t<_Ret, _Tp>#]mem_fun_ref(<#_Ret (_Tp::*__f)() const#>)
+COMPLETION: mem_fun_ref : [#mem_fun1_ref_t<_Ret, _Tp, _Arg>#]mem_fun_ref(<#_Ret (_Tp::*__f)(_Arg)#>)
+COMPLETION: mem_fun_ref : [#const_mem_fun1_ref_t<_Ret, _Tp, _Arg>#]mem_fun_ref(<#_Ret (_Tp::*__f)(_Arg) const#>)
+COMPLETION: mem_fun_ref_t : mem_fun_ref_t<<#class _Ret#>, <#class _Tp#>>
+COMPLETION: mem_fun_t : mem_fun_t<<#class _Ret#>, <#class _Tp#>>
+COMPLETION: memchr : [#void *#]memchr(<#const void *#>, <#int#>, <#size_t#>)
+COMPLETION: memchr : [#void *#]memchr(<#void *__p#>, <#int __c#>, <#size_t __n#>)
+COMPLETION: memcmp : [#int#]memcmp(<#const void *#>, <#const void *#>, <#size_t#>)
+COMPLETION: memcpy : [#void *#]memcpy(<#void *#>, <#const void *#>, <#size_t#>)
+COMPLETION: memmove : [#void *#]memmove(<#void *#>, <#const void *#>, <#size_t#>)
+COMPLETION: memset : [#void *#]memset(<#void *#>, <#int#>, <#size_t#>)
+COMPLETION: merge : [#_OutputIterator#]merge(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>, <#_OutputIterator __result#>)
+COMPLETION: merge : [#_OutputIterator#]merge(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>, <#_OutputIterator __result#>, <#_Compare __comp#>)
+COMPLETION: min : [#const _Tp &#]min(<#const _Tp &__a#>, <#const _Tp &__b#>)
+COMPLETION: min : [#const _Tp &#]min(<#const _Tp &__a#>, <#const _Tp &__b#>, <#_Compare __comp#>)
+COMPLETION: min_element : [#_ForwardIterator#]min_element(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>)
+COMPLETION: min_element : [#_ForwardIterator#]min_element(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#_Compare __comp#>)
+COMPLETION: minus : minus<<#class _Tp#>>
+COMPLETION: mismatch : [#pair<_InputIterator1, _InputIterator2>#]mismatch(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>)
+COMPLETION: mismatch : [#pair<_InputIterator1, _InputIterator2>#]mismatch(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_BinaryPredicate __binary_pred#>)
+COMPLETION: mktime : [#time_t#]mktime(<#struct tm *#>)
+COMPLETION: modulus : modulus<<#class _Tp#>>
+COMPLETION: multiplies : multiplies<<#class _Tp#>>
+COMPLETION: negate : negate<<#class _Tp#>>
+COMPLETION: new_handler : new_handler
+COMPLETION: next_permutation : [#bool#]next_permutation(<#_BidirectionalIterator __first#>, <#_BidirectionalIterator __last#>)
+COMPLETION: next_permutation : [#bool#]next_permutation(<#_BidirectionalIterator __first#>, <#_BidirectionalIterator __last#>, <#_Compare __comp#>)
+COMPLETION: not1 : [#unary_negate<_Predicate>#]not1(<#const _Predicate &__pred#>)
+COMPLETION: not2 : [#binary_negate<_Predicate>#]not2(<#const _Predicate &__pred#>)
+COMPLETION: not_equal_to : not_equal_to<<#class _Tp#>>
+COMPLETION: nothrow : [#const std::nothrow_t#]nothrow
+COMPLETION: nothrow_t : nothrow_t
+COMPLETION: nth_element : [#void#]nth_element(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __nth#>, <#_RandomAccessIterator __last#>)
+COMPLETION: nth_element : [#void#]nth_element(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __nth#>, <#_RandomAccessIterator __last#>, <#_Compare __comp#>)
+COMPLETION: numeric_limits : numeric_limits<<#typename _Tp#>>
+COMPLETION: ofstream : ofstream
+COMPLETION: operator!= : [#bool#]operator!=(<#const fpos<_StateT> &__lhs#>, <#const fpos<_StateT> &__rhs#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const pair<_T1, _T2> &__x#>, <#const pair<_T1, _T2> &__y#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const reverse_iterator<_Iterator> &__x#>, <#const reverse_iterator<_Iterator> &__y#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const reverse_iterator<_IteratorL> &__x#>, <#const reverse_iterator<_IteratorR> &__y#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const allocator<_T1> &#>, <#const allocator<_T2> &#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const vector<_Tp, _Alloc> &__x#>, <#const vector<_Tp, _Alloc> &__y#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const _CharT *__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const _CharT *__rhs#>)
+COMPLETION: operator+ : [#reverse_iterator<_Iterator>#]operator+(<#typename reverse_iterator<_Iterator>::difference_type __n#>, <#const reverse_iterator<_Iterator> &__x#>)
+COMPLETION: operator+ : [#std::_Bit_iterator#]operator+(<#ptrdiff_t __n#>, <#const std::_Bit_iterator &__x#>)
+COMPLETION: operator+ : [#std::_Bit_const_iterator#]operator+(<#ptrdiff_t __n#>, <#const std::_Bit_const_iterator &__x#>)
+COMPLETION: operator+ : [#basic_string<_CharT, _Traits, _Alloc>#]operator+(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator+ : [#basic_string<_CharT, _Traits, _Alloc>#]operator+(<#const _CharT *__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator+ : [#basic_string<_CharT, _Traits, _Alloc>#]operator+(<#_CharT __lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator+ : [#basic_string<_CharT, _Traits, _Alloc>#]operator+(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const _CharT *__rhs#>)
+COMPLETION: operator+ : [#basic_string<_CharT, _Traits, _Alloc>#]operator+(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#_CharT __rhs#>)
+COMPLETION: operator- : [#typename reverse_iterator<_Iterator>::difference_type#]operator-(<#const reverse_iterator<_Iterator> &__x#>, <#const reverse_iterator<_Iterator> &__y#>)
+COMPLETION: operator- : [#typename reverse_iterator<_IteratorL>::difference_type#]operator-(<#const reverse_iterator<_IteratorL> &__x#>, <#const reverse_iterator<_IteratorR> &__y#>)
+COMPLETION: operator- : [#ptrdiff_t#]operator-(<#const std::_Bit_iterator_base &__x#>, <#const std::_Bit_iterator_base &__y#>)
+COMPLETION: operator< : [#bool#]operator<(<#const pair<_T1, _T2> &__x#>, <#const pair<_T1, _T2> &__y#>)
+COMPLETION: operator< : [#bool#]operator<(<#const reverse_iterator<_Iterator> &__x#>, <#const reverse_iterator<_Iterator> &__y#>)
+COMPLETION: operator< : [#bool#]operator<(<#const reverse_iterator<_IteratorL> &__x#>, <#const reverse_iterator<_IteratorR> &__y#>)
+COMPLETION: operator< : [#bool#]operator<(<#const vector<_Tp, _Alloc> &__x#>, <#const vector<_Tp, _Alloc> &__y#>)
+COMPLETION: operator< : [#bool#]operator<(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator< : [#bool#]operator<(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const _CharT *__rhs#>)
+COMPLETION: operator< : [#bool#]operator<(<#const _CharT *__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator<< : [#basic_ostream<_CharT, _Traits> &#]operator<<(<#basic_ostream<_CharT, _Traits> &__os#>, <#const basic_string<_CharT, _Traits, _Alloc> &__str#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const pair<_T1, _T2> &__x#>, <#const pair<_T1, _T2> &__y#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const reverse_iterator<_Iterator> &__x#>, <#const reverse_iterator<_Iterator> &__y#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const reverse_iterator<_IteratorL> &__x#>, <#const reverse_iterator<_IteratorR> &__y#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const vector<_Tp, _Alloc> &__x#>, <#const vector<_Tp, _Alloc> &__y#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const _CharT *__rhs#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const _CharT *__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator== : [#bool#]operator==(<#const fpos<_StateT> &__lhs#>, <#const fpos<_StateT> &__rhs#>)
+COMPLETION: operator== : [#bool#]operator==(<#const pair<_T1, _T2> &__x#>, <#const pair<_T1, _T2> &__y#>)
+COMPLETION: operator== : [#bool#]operator==(<#const reverse_iterator<_Iterator> &__x#>, <#const reverse_iterator<_Iterator> &__y#>)
+COMPLETION: operator== : [#bool#]operator==(<#const reverse_iterator<_IteratorL> &__x#>, <#const reverse_iterator<_IteratorR> &__y#>)
+COMPLETION: operator== : [#bool#]operator==(<#const allocator<_T1> &#>, <#const allocator<_T2> &#>)
+COMPLETION: operator== : [#bool#]operator==(<#const vector<_Tp, _Alloc> &__x#>, <#const vector<_Tp, _Alloc> &__y#>)
+COMPLETION: operator== : [#bool#]operator==(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator== : [#bool#]operator==(<#const _CharT *__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator== : [#bool#]operator==(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const _CharT *__rhs#>)
+COMPLETION: operator> : [#bool#]operator>(<#const pair<_T1, _T2> &__x#>, <#const pair<_T1, _T2> &__y#>)
+COMPLETION: operator> : [#bool#]operator>(<#const reverse_iterator<_Iterator> &__x#>, <#const reverse_iterator<_Iterator> &__y#>)
+COMPLETION: operator> : [#bool#]operator>(<#const reverse_iterator<_IteratorL> &__x#>, <#const reverse_iterator<_IteratorR> &__y#>)
+COMPLETION: operator> : [#bool#]operator>(<#const vector<_Tp, _Alloc> &__x#>, <#const vector<_Tp, _Alloc> &__y#>)
+COMPLETION: operator> : [#bool#]operator>(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator> : [#bool#]operator>(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const _CharT *__rhs#>)
+COMPLETION: operator> : [#bool#]operator>(<#const _CharT *__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const pair<_T1, _T2> &__x#>, <#const pair<_T1, _T2> &__y#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const reverse_iterator<_Iterator> &__x#>, <#const reverse_iterator<_Iterator> &__y#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const reverse_iterator<_IteratorL> &__x#>, <#const reverse_iterator<_IteratorR> &__y#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const vector<_Tp, _Alloc> &__x#>, <#const vector<_Tp, _Alloc> &__y#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#const _CharT *__rhs#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const _CharT *__lhs#>, <#const basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: operator>> : [#basic_istream<_CharT, _Traits> &#]operator>>(<#basic_istream<_CharT, _Traits> &__is#>, <#basic_string<_CharT, _Traits, _Alloc> &__str#>)
+COMPLETION: ostream : ostream
+COMPLETION: ostreambuf_iterator : ostreambuf_iterator<<#typename _CharT#>{#, <#typename _Traits#>#}>
+COMPLETION: ostringstream : ostringstream
+COMPLETION: output_iterator_tag : output_iterator_tag
+COMPLETION: pair : pair<<#class _T1#>, <#class _T2#>>
+COMPLETION: partial_sort : [#void#]partial_sort(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __middle#>, <#_RandomAccessIterator __last#>)
+COMPLETION: partial_sort : [#void#]partial_sort(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __middle#>, <#_RandomAccessIterator __last#>, <#_Compare __comp#>)
+COMPLETION: partial_sort_copy : [#_RandomAccessIterator#]partial_sort_copy(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_RandomAccessIterator __result_first#>, <#_RandomAccessIterator __result_last#>)
+COMPLETION: partial_sort_copy : [#_RandomAccessIterator#]partial_sort_copy(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_RandomAccessIterator __result_first#>, <#_RandomAccessIterator __result_last#>, <#_Compare __comp#>)
+COMPLETION: partition : [#_ForwardIterator#]partition(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#_Predicate __pred#>)
+COMPLETION: perror : [#void#]perror(<#const char *#>)
+COMPLETION: plus : plus<<#class _Tp#>>
+COMPLETION: pointer_to_binary_function : pointer_to_binary_function<<#class _Arg1#>, <#class _Arg2#>, <#class _Result#>>
+COMPLETION: pointer_to_unary_function : pointer_to_unary_function<<#class _Arg#>, <#class _Result#>>
+COMPLETION: pop_heap : [#void#]pop_heap(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>)
+COMPLETION: pop_heap : [#void#]pop_heap(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>, <#_Compare __comp#>)
+COMPLETION: prev_permutation : [#bool#]prev_permutation(<#_BidirectionalIterator __first#>, <#_BidirectionalIterator __last#>)
+COMPLETION: prev_permutation : [#bool#]prev_permutation(<#_BidirectionalIterator __first#>, <#_BidirectionalIterator __last#>, <#_Compare __comp#>)
+COMPLETION: printf : [#int#]printf(<#const char *, ...#>)
+COMPLETION: ptr_fun : [#pointer_to_unary_function<_Arg, _Result>#]ptr_fun(<#_Result (*__x)(_Arg)#>)
+COMPLETION: ptr_fun : [#pointer_to_binary_function<_Arg1, _Arg2, _Result>#]ptr_fun(<#_Result (*__x)(_Arg1, _Arg2)#>)
+COMPLETION: ptrdiff_t : ptrdiff_t
+COMPLETION: push_heap : [#void#]push_heap(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>)
+COMPLETION: push_heap : [#void#]push_heap(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>, <#_Compare __comp#>)
+COMPLETION: putc : [#int#]putc(<#int#>, <#FILE *#>)
+COMPLETION: putchar : [#int#]putchar(<#int#>)
+COMPLETION: puts : [#int#]puts(<#const char *#>)
+COMPLETION: putwc : [#wint_t#]putwc(<#wchar_t#>, <#FILE *#>)
+COMPLETION: putwchar : [#wint_t#]putwchar(<#wchar_t#>)
+COMPLETION: qsort : [#void#]qsort(<#void *#>, <#size_t#>, <#size_t#>, <#int (*)(const void *, const void *)#>)
+COMPLETION: rand : [#int#]rand()
+COMPLETION: random_access_iterator_tag : random_access_iterator_tag
+COMPLETION: random_shuffle : [#void#]random_shuffle(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>)
+COMPLETION: random_shuffle : [#void#]random_shuffle(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>, <#_RandomNumberGenerator &__rand#>)
+COMPLETION: raw_storage_iterator : raw_storage_iterator<<#class _ForwardIterator#>, <#class _Tp#>>
+COMPLETION: realloc : [#void *#]realloc(<#void *#>, <#size_t#>)
+COMPLETION: rel_ops : rel_ops
+COMPLETION: remove : [#int#]remove(<#const char *#>)
+COMPLETION: remove : [#_ForwardIterator#]remove(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#const _Tp &__value#>)
+COMPLETION: remove_copy : [#_OutputIterator#]remove_copy(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_OutputIterator __result#>, <#const _Tp &__value#>)
+COMPLETION: remove_copy_if : [#_OutputIterator#]remove_copy_if(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_OutputIterator __result#>, <#_Predicate __pred#>)
+COMPLETION: remove_if : [#_ForwardIterator#]remove_if(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#_Predicate __pred#>)
+COMPLETION: rename : [#int#]rename(<#const char *#>, <#const char *#>)
+COMPLETION: replace : [#void#]replace(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#const _Tp &__old_value#>, <#const _Tp &__new_value#>)
+COMPLETION: replace_copy : [#_OutputIterator#]replace_copy(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_OutputIterator __result#>, <#const _Tp &__old_value#>, <#const _Tp &__new_value#>)
+COMPLETION: replace_copy_if : [#_OutputIterator#]replace_copy_if(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_OutputIterator __result#>, <#_Predicate __pred#>, <#const _Tp &__new_value#>)
+COMPLETION: replace_if : [#void#]replace_if(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#_Predicate __pred#>, <#const _Tp &__new_value#>)
+COMPLETION: return_temporary_buffer : [#void#]return_temporary_buffer(<#_Tp *__p#>)
+COMPLETION: reverse : [#void#]reverse(<#_BidirectionalIterator __first#>, <#_BidirectionalIterator __last#>)
+COMPLETION: reverse_copy : [#_OutputIterator#]reverse_copy(<#_BidirectionalIterator __first#>, <#_BidirectionalIterator __last#>, <#_OutputIterator __result#>)
+COMPLETION: reverse_iterator : reverse_iterator<<#typename _Iterator#>>
+COMPLETION: rewind : [#void#]rewind(<#FILE *#>)
+COMPLETION: rotate : [#void#]rotate(<#_ForwardIterator __first#>, <#_ForwardIterator __middle#>, <#_ForwardIterator __last#>)
+COMPLETION: rotate_copy : [#_OutputIterator#]rotate_copy(<#_ForwardIterator __first#>, <#_ForwardIterator __middle#>, <#_ForwardIterator __last#>, <#_OutputIterator __result#>)
+COMPLETION: round_indeterminate : [#std::float_round_style#]round_indeterminate
+COMPLETION: round_to_nearest : [#std::float_round_style#]round_to_nearest
+COMPLETION: round_toward_infinity : [#std::float_round_style#]round_toward_infinity
+COMPLETION: round_toward_neg_infinity : [#std::float_round_style#]round_toward_neg_infinity
+COMPLETION: round_toward_zero : [#std::float_round_style#]round_toward_zero
+COMPLETION: scanf : [#int#]scanf(<#const char *, ...#>)
+COMPLETION: search : [#_ForwardIterator1#]search(<#_ForwardIterator1 __first1#>, <#_ForwardIterator1 __last1#>, <#_ForwardIterator2 __first2#>, <#_ForwardIterator2 __last2#>)
+COMPLETION: search : [#_ForwardIterator1#]search(<#_ForwardIterator1 __first1#>, <#_ForwardIterator1 __last1#>, <#_ForwardIterator2 __first2#>, <#_ForwardIterator2 __last2#>, <#_BinaryPredicate __predicate#>)
+COMPLETION: search_n : [#_ForwardIterator#]search_n(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#_Integer __count#>, <#const _Tp &__val#>)
+COMPLETION: search_n : [#_ForwardIterator#]search_n(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#_Integer __count#>, <#const _Tp &__val#>, <#_BinaryPredicate __binary_pred#>)
+COMPLETION: set_difference : [#_OutputIterator#]set_difference(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>, <#_OutputIterator __result#>)
+COMPLETION: set_difference : [#_OutputIterator#]set_difference(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>, <#_OutputIterator __result#>, <#_Compare __comp#>)
+COMPLETION: set_intersection : [#_OutputIterator#]set_intersection(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>, <#_OutputIterator __result#>)
+COMPLETION: set_intersection : [#_OutputIterator#]set_intersection(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>, <#_OutputIterator __result#>, <#_Compare __comp#>)
+COMPLETION: set_new_handler : [#new_handler#]set_new_handler(<#new_handler#>)
+COMPLETION: set_symmetric_difference : [#_OutputIterator#]set_symmetric_difference(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>, <#_OutputIterator __result#>)
+COMPLETION: set_symmetric_difference : [#_OutputIterator#]set_symmetric_difference(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>, <#_OutputIterator __result#>, <#_Compare __comp#>)
+COMPLETION: set_terminate : [#terminate_handler#]set_terminate(<#terminate_handler#>)
+COMPLETION: set_unexpected : [#unexpected_handler#]set_unexpected(<#unexpected_handler#>)
+COMPLETION: set_union : [#_OutputIterator#]set_union(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>, <#_OutputIterator __result#>)
+COMPLETION: set_union : [#_OutputIterator#]set_union(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_InputIterator2 __last2#>, <#_OutputIterator __result#>, <#_Compare __comp#>)
+COMPLETION: setbuf : [#void#]setbuf(<#FILE *#>, <#char *#>)
+COMPLETION: setlocale : [#char *#]setlocale(<#int#>, <#const char *#>)
+COMPLETION: setvbuf : [#int#]setvbuf(<#FILE *#>, <#char *#>, <#int#>, <#size_t#>)
+COMPLETION: size_t : size_t
+COMPLETION: snprintf : [#int#]snprintf(<#char *#>, <#size_t#>, <#const char *, ...#>)
+COMPLETION: sort : [#void#]sort(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>)
+COMPLETION: sort : [#void#]sort(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>, <#_Compare __comp#>)
+COMPLETION: sort_heap : [#void#]sort_heap(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>)
+COMPLETION: sort_heap : [#void#]sort_heap(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>, <#_Compare __comp#>)
+COMPLETION: sprintf : [#int#]sprintf(<#char *#>, <#const char *, ...#>)
+COMPLETION: srand : [#void#]srand(<#unsigned int#>)
+COMPLETION: sscanf : [#int#]sscanf(<#const char *#>, <#const char *, ...#>)
+COMPLETION: stable_partition : [#_ForwardIterator#]stable_partition(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#_Predicate __pred#>)
+COMPLETION: stable_sort : [#void#]stable_sort(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>)
+COMPLETION: stable_sort : [#void#]stable_sort(<#_RandomAccessIterator __first#>, <#_RandomAccessIterator __last#>, <#_Compare __comp#>)
+COMPLETION: strcat : [#char *#]strcat(<#char *#>, <#const char *#>)
+COMPLETION: strchr : [#char *#]strchr(<#const char *#>, <#int#>)
+COMPLETION: strchr : [#char *#]strchr(<#char *__s1#>, <#int __n#>)
+COMPLETION: strcmp : [#int#]strcmp(<#const char *#>, <#const char *#>)
+COMPLETION: strcoll : [#int#]strcoll(<#const char *#>, <#const char *#>)
+COMPLETION: strcpy : [#char *#]strcpy(<#char *#>, <#const char *#>)
+COMPLETION: strcspn : [#size_t#]strcspn(<#const char *#>, <#const char *#>)
+COMPLETION: streambuf : streambuf
+COMPLETION: streamoff : streamoff
+COMPLETION: streampos : streampos
+COMPLETION: streamsize : streamsize
+COMPLETION: strerror : [#char *#]strerror(<#int#>)
+COMPLETION: strftime : [#size_t#]strftime(<#char *#>, <#size_t#>, <#const char *#>, <#const struct tm *#>)
+COMPLETION: string : string
+COMPLETION: stringbuf : stringbuf
+COMPLETION: stringstream : stringstream
+COMPLETION: strlen : [#size_t#]strlen(<#const char *#>)
+COMPLETION: strncat : [#char *#]strncat(<#char *#>, <#const char *#>, <#size_t#>)
+COMPLETION: strncmp : [#int#]strncmp(<#const char *#>, <#const char *#>, <#size_t#>)
+COMPLETION: strncpy : [#char *#]strncpy(<#char *#>, <#const char *#>, <#size_t#>)
+COMPLETION: strpbrk : [#char *#]strpbrk(<#const char *#>, <#const char *#>)
+COMPLETION: strpbrk : [#char *#]strpbrk(<#char *__s1#>, <#const char *__s2#>)
+COMPLETION: strrchr : [#char *#]strrchr(<#const char *#>, <#int#>)
+COMPLETION: strrchr : [#char *#]strrchr(<#char *__s1#>, <#int __n#>)
+COMPLETION: strspn : [#size_t#]strspn(<#const char *#>, <#const char *#>)
+COMPLETION: strstr : [#char *#]strstr(<#const char *#>, <#const char *#>)
+COMPLETION: strstr : [#char *#]strstr(<#char *__s1#>, <#const char *__s2#>)
+COMPLETION: strtod : [#double#]strtod(<#const char *#>, <#char **#>)
+COMPLETION: strtof : [#float#]strtof(<#const char *#>, <#char **#>)
+COMPLETION: strtok : [#char *#]strtok(<#char *#>, <#const char *#>)
+COMPLETION: strtol : [#long#]strtol(<#const char *#>, <#char **#>, <#int#>)
+COMPLETION: strtold : [#long double#]strtold(<#const char *#>, <#char **#>)
+COMPLETION: strtoll : [#long long#]strtoll(<#const char *#>, <#char **#>, <#int#>)
+COMPLETION: strtoul : [#unsigned long#]strtoul(<#const char *#>, <#char **#>, <#int#>)
+COMPLETION: strtoull : [#unsigned long long#]strtoull(<#const char *#>, <#char **#>, <#int#>)
+COMPLETION: strxfrm : [#size_t#]strxfrm(<#char *#>, <#const char *#>, <#size_t#>)
+COMPLETION: swap : [#void#]swap(<#_Tp &__a#>, <#_Tp &__b#>)
+COMPLETION: swap : [#void#]swap(<#vector<_Tp, _Alloc> &__x#>, <#vector<_Tp, _Alloc> &__y#>)
+COMPLETION: swap : [#void#]swap(<#basic_string<_CharT, _Traits, _Alloc> &__lhs#>, <#basic_string<_CharT, _Traits, _Alloc> &__rhs#>)
+COMPLETION: swap_ranges : [#_ForwardIterator2#]swap_ranges(<#_ForwardIterator1 __first1#>, <#_ForwardIterator1 __last1#>, <#_ForwardIterator2 __first2#>)
+COMPLETION: swprintf : [#int#]swprintf(<#wchar_t *#>, <#size_t#>, <#const wchar_t *, ...#>)
+COMPLETION: swscanf : [#int#]swscanf(<#const wchar_t *#>, <#const wchar_t *, ...#>)
+COMPLETION: system : [#int#]system(<#const char *#>)
+COMPLETION: terminate : [#void#]terminate()
+COMPLETION: terminate_handler : terminate_handler
+COMPLETION: time : [#time_t#]time(<#time_t *#>)
+COMPLETION: time_t : time_t
+COMPLETION: tm : tm
+COMPLETION: tmpfile : [#FILE *#]tmpfile()
+COMPLETION: tmpnam : [#char *#]tmpnam(<#char *#>)
+COMPLETION: tolower : [#int#]tolower(<#int _c#>)
+COMPLETION: toupper : [#int#]toupper(<#int _c#>)
+COMPLETION: transform : [#_OutputIterator#]transform(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_OutputIterator __result#>, <#_UnaryOperation __unary_op#>)
+COMPLETION: transform : [#_OutputIterator#]transform(<#_InputIterator1 __first1#>, <#_InputIterator1 __last1#>, <#_InputIterator2 __first2#>, <#_OutputIterator __result#>, <#_BinaryOperation __binary_op#>)
+COMPLETION: unary_function : unary_function<<#class _Arg#>, <#class _Result#>>
+COMPLETION: unary_negate : unary_negate<<#class _Predicate#>>
+COMPLETION: uncaught_exception : [#bool#]uncaught_exception()
+COMPLETION: unexpected : [#void#]unexpected()
+COMPLETION: unexpected_handler : unexpected_handler
+COMPLETION: ungetc : [#int#]ungetc(<#int#>, <#FILE *#>)
+COMPLETION: ungetwc : [#wint_t#]ungetwc(<#wint_t#>, <#FILE *#>)
+COMPLETION: uninitialized_copy : [#_ForwardIterator#]uninitialized_copy(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_ForwardIterator __result#>)
+COMPLETION: uninitialized_copy : [#char *#]uninitialized_copy(<#const char *__first#>, <#const char *__last#>, <#char *__result#>)
+COMPLETION: uninitialized_copy : [#wchar_t *#]uninitialized_copy(<#const wchar_t *__first#>, <#const wchar_t *__last#>, <#wchar_t *__result#>)
+COMPLETION: uninitialized_fill : [#void#]uninitialized_fill(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#const _Tp &__x#>)
+COMPLETION: uninitialized_fill_n : [#void#]uninitialized_fill_n(<#_ForwardIterator __first#>, <#_Size __n#>, <#const _Tp &__x#>)
+COMPLETION: unique : [#_ForwardIterator#]unique(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>)
+COMPLETION: unique : [#_ForwardIterator#]unique(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#_BinaryPredicate __binary_pred#>)
+COMPLETION: unique_copy : [#_OutputIterator#]unique_copy(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_OutputIterator __result#>)
+COMPLETION: unique_copy : [#_OutputIterator#]unique_copy(<#_InputIterator __first#>, <#_InputIterator __last#>, <#_OutputIterator __result#>, <#_BinaryPredicate __binary_pred#>)
+COMPLETION: upper_bound : [#_ForwardIterator#]upper_bound(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#const _Tp &__val#>)
+COMPLETION: upper_bound : [#_ForwardIterator#]upper_bound(<#_ForwardIterator __first#>, <#_ForwardIterator __last#>, <#const _Tp &__val#>, <#_Compare __comp#>)
+COMPLETION: va_list : va_list
+COMPLETION: vector : vector<<#typename _Tp#>{#, <#typename _Alloc#>#}>
+COMPLETION: vfprintf : [#int#]vfprintf(<#FILE *#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vfscanf : [#int#]vfscanf(<#FILE *#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vfwprintf : [#int#]vfwprintf(<#FILE *#>, <#const wchar_t *#>, <#__va_list_tag *#>)
+COMPLETION: vfwscanf : [#int#]vfwscanf(<#FILE *#>, <#const wchar_t *#>, <#__va_list_tag *#>)
+COMPLETION: vprintf : [#int#]vprintf(<#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vscanf : [#int#]vscanf(<#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vsnprintf : [#int#]vsnprintf(<#char *#>, <#size_t#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vsprintf : [#int#]vsprintf(<#char *#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vsscanf : [#int#]vsscanf(<#const char *#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vswprintf : [#int#]vswprintf(<#wchar_t *#>, <#size_t#>, <#const wchar_t *#>, <#__va_list_tag *#>)
+COMPLETION: vswscanf : [#int#]vswscanf(<#const wchar_t *#>, <#const wchar_t *#>, <#__va_list_tag *#>)
+COMPLETION: vwprintf : [#int#]vwprintf(<#const wchar_t *#>, <#__va_list_tag *#>)
+COMPLETION: vwscanf : [#int#]vwscanf(<#const wchar_t *#>, <#__va_list_tag *#>)
+COMPLETION: wcrtomb : [#size_t#]wcrtomb(<#char *#>, <#wchar_t#>, <#mbstate_t *#>)
+COMPLETION: wcscat : [#wchar_t *#]wcscat(<#wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcschr : [#wchar_t *#]wcschr(<#const wchar_t *#>, <#wchar_t#>)
+COMPLETION: wcschr : [#wchar_t *#]wcschr(<#wchar_t *__p#>, <#wchar_t __c#>)
+COMPLETION: wcscmp : [#int#]wcscmp(<#const wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcscoll : [#int#]wcscoll(<#const wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcscpy : [#wchar_t *#]wcscpy(<#wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcscspn : [#size_t#]wcscspn(<#const wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcsftime : [#size_t#]wcsftime(<#wchar_t *#>, <#size_t#>, <#const wchar_t *#>, <#const struct tm *#>)
+COMPLETION: wcslen : [#size_t#]wcslen(<#const wchar_t *#>)
+COMPLETION: wcsncat : [#wchar_t *#]wcsncat(<#wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wcsncmp : [#int#]wcsncmp(<#const wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wcsncpy : [#wchar_t *#]wcsncpy(<#wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wcspbrk : [#wchar_t *#]wcspbrk(<#const wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcspbrk : [#wchar_t *#]wcspbrk(<#wchar_t *__s1#>, <#const wchar_t *__s2#>)
+COMPLETION: wcsrchr : [#wchar_t *#]wcsrchr(<#const wchar_t *#>, <#wchar_t#>)
+COMPLETION: wcsrchr : [#wchar_t *#]wcsrchr(<#wchar_t *__p#>, <#wchar_t __c#>)
+COMPLETION: wcsrtombs : [#size_t#]wcsrtombs(<#char *#>, <#const wchar_t **#>, <#size_t#>, <#mbstate_t *#>)
+COMPLETION: wcsspn : [#size_t#]wcsspn(<#const wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcsstr : [#wchar_t *#]wcsstr(<#const wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcsstr : [#wchar_t *#]wcsstr(<#wchar_t *__s1#>, <#const wchar_t *__s2#>)
+COMPLETION: wcstod : [#double#]wcstod(<#const wchar_t *#>, <#wchar_t **#>)
+COMPLETION: wcstof : [#float#]wcstof(<#const wchar_t *#>, <#wchar_t **#>)
+COMPLETION: wcstok : [#wchar_t *#]wcstok(<#wchar_t *#>, <#const wchar_t *#>, <#wchar_t **#>)
+COMPLETION: wcstol : [#long#]wcstol(<#const wchar_t *#>, <#wchar_t **#>, <#int#>)
+COMPLETION: wcstold : [#long double#]wcstold(<#const wchar_t *#>, <#wchar_t **#>)
+COMPLETION: wcstoll : [#long long#]wcstoll(<#const wchar_t *#>, <#wchar_t **#>, <#int#>)
+COMPLETION: wcstombs : [#size_t#]wcstombs(<#char *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wcstoul : [#unsigned long#]wcstoul(<#const wchar_t *#>, <#wchar_t **#>, <#int#>)
+COMPLETION: wcstoull : [#unsigned long long#]wcstoull(<#const wchar_t *#>, <#wchar_t **#>, <#int#>)
+COMPLETION: wcsxfrm : [#size_t#]wcsxfrm(<#wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wctob : [#int#]wctob(<#wint_t#>)
+COMPLETION: wctomb : [#int#]wctomb(<#char *#>, <#wchar_t#>)
+COMPLETION: wfilebuf : wfilebuf
+COMPLETION: wfstream : wfstream
+COMPLETION: wifstream : wifstream
+COMPLETION: wint_t : wint_t
+COMPLETION: wios : wios
+COMPLETION: wiostream : wiostream
+COMPLETION: wistream : wistream
+COMPLETION: wistringstream : wistringstream
+COMPLETION: wmemchr : [#wchar_t *#]wmemchr(<#const wchar_t *#>, <#wchar_t#>, <#size_t#>)
+COMPLETION: wmemchr : [#wchar_t *#]wmemchr(<#wchar_t *__p#>, <#wchar_t __c#>, <#size_t __n#>)
+COMPLETION: wmemcmp : [#int#]wmemcmp(<#const wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wmemcpy : [#wchar_t *#]wmemcpy(<#wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wmemmove : [#wchar_t *#]wmemmove(<#wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wmemset : [#wchar_t *#]wmemset(<#wchar_t *#>, <#wchar_t#>, <#size_t#>)
+COMPLETION: wofstream : wofstream
+COMPLETION: wostream : wostream
+COMPLETION: wostringstream : wostringstream
+COMPLETION: wprintf : [#int#]wprintf(<#const wchar_t *, ...#>)
+COMPLETION: wscanf : [#int#]wscanf(<#const wchar_t *, ...#>)
+COMPLETION: wstreambuf : wstreambuf
+COMPLETION: wstreampos : wstreampos
+COMPLETION: wstring : wstring
+COMPLETION: wstringbuf : wstringbuf
+COMPLETION: wstringstream : wstringstream

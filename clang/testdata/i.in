@@ -1,0 +1,11 @@
+COMPLETION: GetID : [#unsigned int#]GetID()[# const#]
+COMPLETION: GetName : [#const std::string &#]GetName()[# const#]
+COMPLETION: Load : [#void#]Load(<#const std::string &name#>)
+COMPLETION: mID : [#unsigned int#]mID
+COMPLETION: operator!= : [#bool#]operator!=(<#const StringID &other#>)[# const#]
+COMPLETION: operator< : [#bool#]operator<(<#const StringID &other#>)[# const#]
+COMPLETION: operator= : [#StringID &#]operator=(<#const StringID &#>)
+COMPLETION: operator== : [#bool#]operator==(<#const StringID &other#>)[# const#]
+COMPLETION: operator> : [#bool#]operator>(<#const StringID &other#>)[# const#]
+COMPLETION: StringID : StringID::
+COMPLETION: ~StringID : [#void#]~StringID()

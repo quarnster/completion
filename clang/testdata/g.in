@@ -1,0 +1,105 @@
+COMPLETION: append : [#std::basic_string<char> &#]append(<#const std::basic_string<char> &__str#>)
+COMPLETION: append : [#std::basic_string<char> &#]append(<#const std::basic_string<char> &__str#>, <#size_type __pos#>, <#size_type __n#>)
+COMPLETION: append : [#std::basic_string<char> &#]append(<#const char *__s#>, <#size_type __n#>)
+COMPLETION: append : [#std::basic_string<char> &#]append(<#const char *__s#>)
+COMPLETION: append : [#std::basic_string<char> &#]append(<#size_type __n#>, <#char __c#>)
+COMPLETION: append : [#std::basic_string<char> &#]append(<#_InputIterator __first#>, <#_InputIterator __last#>)
+COMPLETION: assign : [#std::basic_string<char> &#]assign(<#const std::basic_string<char> &__str#>)
+COMPLETION: assign : [#std::basic_string<char> &#]assign(<#const std::basic_string<char> &__str#>, <#size_type __pos#>, <#size_type __n#>)
+COMPLETION: assign : [#std::basic_string<char> &#]assign(<#const char *__s#>, <#size_type __n#>)
+COMPLETION: assign : [#std::basic_string<char> &#]assign(<#const char *__s#>)
+COMPLETION: assign : [#std::basic_string<char> &#]assign(<#size_type __n#>, <#char __c#>)
+COMPLETION: assign : [#std::basic_string<char> &#]assign(<#_InputIterator __first#>, <#_InputIterator __last#>)
+COMPLETION: at : [#const_reference#]at(<#size_type __n#>)[# const#]
+COMPLETION: at : [#reference#]at(<#size_type __n#>)
+COMPLETION: basic_string : [#void#]basic_string(<#_InputIterator __beg#>, <#_InputIterator __end#>{#, <#const std::allocator<char> &__a#>#})
+COMPLETION: basic_string : basic_string::
+COMPLETION: begin : [#iterator#]begin()
+COMPLETION: begin : [#const_iterator#]begin()[# const#]
+COMPLETION: c_str : [#const char *#]c_str()[# const#]
+COMPLETION: capacity : [#size_type#]capacity()[# const#]
+COMPLETION: clear : [#void#]clear()
+COMPLETION: compare : [#int#]compare(<#const std::basic_string<char> &__str#>)[# const#]
+COMPLETION: compare : [#int#]compare(<#size_type __pos#>, <#size_type __n#>, <#const std::basic_string<char> &__str#>)[# const#]
+COMPLETION: compare : [#int#]compare(<#size_type __pos1#>, <#size_type __n1#>, <#const std::basic_string<char> &__str#>, <#size_type __pos2#>, <#size_type __n2#>)[# const#]
+COMPLETION: compare : [#int#]compare(<#const char *__s#>)[# const#]
+COMPLETION: compare : [#int#]compare(<#size_type __pos#>, <#size_type __n1#>, <#const char *__s#>)[# const#]
+COMPLETION: compare : [#int#]compare(<#size_type __pos#>, <#size_type __n1#>, <#const char *__s#>, <#size_type __n2#>)[# const#]
+COMPLETION: copy : [#size_type#]copy(<#char *__s#>, <#size_type __n#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: data : [#const char *#]data()[# const#]
+COMPLETION: empty : [#bool#]empty()[# const#]
+COMPLETION: end : [#iterator#]end()
+COMPLETION: end : [#const_iterator#]end()[# const#]
+COMPLETION: erase : [#std::basic_string<char> &#]erase({#<#size_type __pos#>{#, <#size_type __n#>#}#})
+COMPLETION: erase : [#iterator#]erase(<#iterator __position#>)
+COMPLETION: erase : [#iterator#]erase(<#iterator __first#>, <#iterator __last#>)
+COMPLETION: find : [#size_type#]find(<#const char *__s#>, <#size_type __pos#>, <#size_type __n#>)[# const#]
+COMPLETION: find : [#size_type#]find(<#const std::basic_string<char> &__str#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find : [#size_type#]find(<#const char *__s#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find : [#size_type#]find(<#char __c#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find_first_not_of : [#size_type#]find_first_not_of(<#const std::basic_string<char> &__str#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find_first_not_of : [#size_type#]find_first_not_of(<#const char *__s#>, <#size_type __pos#>, <#size_type __n#>)[# const#]
+COMPLETION: find_first_not_of : [#size_type#]find_first_not_of(<#const char *__s#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find_first_not_of : [#size_type#]find_first_not_of(<#char __c#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find_first_of : [#size_type#]find_first_of(<#const std::basic_string<char> &__str#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find_first_of : [#size_type#]find_first_of(<#const char *__s#>, <#size_type __pos#>, <#size_type __n#>)[# const#]
+COMPLETION: find_first_of : [#size_type#]find_first_of(<#const char *__s#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find_first_of : [#size_type#]find_first_of(<#char __c#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find_last_not_of : [#size_type#]find_last_not_of(<#const std::basic_string<char> &__str#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find_last_not_of : [#size_type#]find_last_not_of(<#const char *__s#>, <#size_type __pos#>, <#size_type __n#>)[# const#]
+COMPLETION: find_last_not_of : [#size_type#]find_last_not_of(<#const char *__s#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find_last_not_of : [#size_type#]find_last_not_of(<#char __c#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find_last_of : [#size_type#]find_last_of(<#const std::basic_string<char> &__str#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find_last_of : [#size_type#]find_last_of(<#const char *__s#>, <#size_type __pos#>, <#size_type __n#>)[# const#]
+COMPLETION: find_last_of : [#size_type#]find_last_of(<#const char *__s#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: find_last_of : [#size_type#]find_last_of(<#char __c#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: get_allocator : [#allocator_type#]get_allocator()[# const#]
+COMPLETION: insert : [#void#]insert(<#iterator __p#>, <#size_type __n#>, <#char __c#>)
+COMPLETION: insert : [#void#]insert(<#iterator __p#>, <#_InputIterator __beg#>, <#_InputIterator __end#>)
+COMPLETION: insert : [#std::basic_string<char> &#]insert(<#size_type __pos1#>, <#const std::basic_string<char> &__str#>)
+COMPLETION: insert : [#std::basic_string<char> &#]insert(<#size_type __pos1#>, <#const std::basic_string<char> &__str#>, <#size_type __pos2#>, <#size_type __n#>)
+COMPLETION: insert : [#std::basic_string<char> &#]insert(<#size_type __pos#>, <#const char *__s#>, <#size_type __n#>)
+COMPLETION: insert : [#std::basic_string<char> &#]insert(<#size_type __pos#>, <#const char *__s#>)
+COMPLETION: insert : [#std::basic_string<char> &#]insert(<#size_type __pos#>, <#size_type __n#>, <#char __c#>)
+COMPLETION: insert : [#iterator#]insert(<#iterator __p#>, <#char __c#>)
+COMPLETION: length : [#size_type#]length()[# const#]
+COMPLETION: max_size : [#size_type#]max_size()[# const#]
+COMPLETION: npos : [#const size_type#]npos
+COMPLETION: operator+= : [#std::basic_string<char> &#]operator+=(<#const std::basic_string<char> &__str#>)
+COMPLETION: operator+= : [#std::basic_string<char> &#]operator+=(<#const char *__s#>)
+COMPLETION: operator+= : [#std::basic_string<char> &#]operator+=(<#char __c#>)
+COMPLETION: operator= : [#std::basic_string<char> &#]operator=(<#const std::basic_string<char> &__str#>)
+COMPLETION: operator= : [#std::basic_string<char> &#]operator=(<#const char *__s#>)
+COMPLETION: operator= : [#std::basic_string<char> &#]operator=(<#char __c#>)
+COMPLETION: operator[] : [#const_reference#]operator[](<#size_type __pos#>)[# const#]
+COMPLETION: operator[] : [#reference#]operator[](<#size_type __pos#>)
+COMPLETION: push_back : [#void#]push_back(<#char __c#>)
+COMPLETION: rbegin : [#reverse_iterator#]rbegin()
+COMPLETION: rbegin : [#const_reverse_iterator#]rbegin()[# const#]
+COMPLETION: rend : [#reverse_iterator#]rend()
+COMPLETION: rend : [#const_reverse_iterator#]rend()[# const#]
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#size_type __pos#>, <#size_type __n#>, <#const std::basic_string<char> &__str#>)
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#size_type __pos1#>, <#size_type __n1#>, <#const std::basic_string<char> &__str#>, <#size_type __pos2#>, <#size_type __n2#>)
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#size_type __pos#>, <#size_type __n1#>, <#const char *__s#>, <#size_type __n2#>)
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#size_type __pos#>, <#size_type __n1#>, <#const char *__s#>)
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#size_type __pos#>, <#size_type __n1#>, <#size_type __n2#>, <#char __c#>)
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#iterator __i1#>, <#iterator __i2#>, <#const std::basic_string<char> &__str#>)
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#iterator __i1#>, <#iterator __i2#>, <#const char *__s#>, <#size_type __n#>)
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#iterator __i1#>, <#iterator __i2#>, <#const char *__s#>)
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#iterator __i1#>, <#iterator __i2#>, <#size_type __n#>, <#char __c#>)
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#iterator __i1#>, <#iterator __i2#>, <#_InputIterator __k1#>, <#_InputIterator __k2#>)
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#iterator __i1#>, <#iterator __i2#>, <#char *__k1#>, <#char *__k2#>)
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#iterator __i1#>, <#iterator __i2#>, <#const char *__k1#>, <#const char *__k2#>)
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#iterator __i1#>, <#iterator __i2#>, <#iterator __k1#>, <#iterator __k2#>)
+COMPLETION: replace : [#std::basic_string<char> &#]replace(<#iterator __i1#>, <#iterator __i2#>, <#const_iterator __k1#>, <#const_iterator __k2#>)
+COMPLETION: reserve : [#void#]reserve({#<#size_type __res_arg#>#})
+COMPLETION: resize : [#void#]resize(<#size_type __n#>, <#char __c#>)
+COMPLETION: resize : [#void#]resize(<#size_type __n#>)
+COMPLETION: rfind : [#size_type#]rfind(<#const std::basic_string<char> &__str#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: rfind : [#size_type#]rfind(<#const char *__s#>, <#size_type __pos#>, <#size_type __n#>)[# const#]
+COMPLETION: rfind : [#size_type#]rfind(<#const char *__s#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: rfind : [#size_type#]rfind(<#char __c#>{#, <#size_type __pos#>#})[# const#]
+COMPLETION: size : [#size_type#]size()[# const#]
+COMPLETION: substr : [#std::basic_string<char>#]substr({#<#size_type __pos#>{#, <#size_type __n#>#}#})[# const#]
+COMPLETION: swap : [#void#]swap(<#std::basic_string<char> &__s#>)
+COMPLETION: ~basic_string : [#void#]~basic_string()

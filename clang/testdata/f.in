@@ -1,0 +1,30 @@
+COMPLETION: AddRef : [#void#][#IReferenceCounted::#]AddRef()
+COMPLETION: AddResourceUpdatedListener : [#void#][#Resource::#]AddResourceUpdatedListener(<#ResourceUpdatedListener *listener#>)
+COMPLETION: AngelScript : AngelScript::
+COMPLETION: DelRef : [#void#][#IReferenceCounted::#]DelRef()
+COMPLETION: GetFunction : [#asIScriptFunction *#]GetFunction(<#const std::string &decl#>)[# const#]
+COMPLETION: GetName : [#StringID#][#Resource::#]GetName()[# const#]
+COMPLETION: GetReferenceCount : [#int#][#IReferenceCounted::#]GetReferenceCount()
+COMPLETION: IReferenceCounted : IReferenceCounted::
+COMPLETION: m_Module : [#asIScriptModule *#]m_Module
+COMPLETION: mEvStat : [#ev_stat#][#Resource::#]mEvStat
+COMPLETION: mLastmod : [#long long#][#Resource::#]mLastmod
+COMPLETION: mListeners : [#std::vector<SmartPointer<ResourceUpdatedListener> >#][#Resource::#]mListeners
+COMPLETION: mMutex : [#Mutex#][#IReferenceCounted::#]mMutex
+COMPLETION: mName : [#StringID#][#Resource::#]mName
+COMPLETION: mRefCount : [#int#][#IReferenceCounted::#]mRefCount
+COMPLETION: OnUpdated : [#void#][#Resource::#]OnUpdated()
+COMPLETION: Open : [#std::istream *#][#Resource::#]Open()
+COMPLETION: operator= : [#AngelScript &#]operator=(<#const AngelScript &#>)
+COMPLETION: operator= (Hidden) : [#Resource &#]Resource::operator=(<#const Resource &#>)
+COMPLETION: operator= (Hidden) : [#IReferenceCounted &#]IReferenceCounted::operator=(<#const IReferenceCounted &#>)
+COMPLETION: ReadAsString : [#void#][#Resource::#]ReadAsString(<#char **data#>, <#int *size#>)
+COMPLETION: Reload : [#void#]Reload()
+COMPLETION: Reload (Hidden) : [#void#]Resource::Reload()
+COMPLETION: RemoveResourceUpdatedListener : [#void#][#Resource::#]RemoveResourceUpdatedListener(<#ResourceUpdatedListener *listener#>)
+COMPLETION: Resource : Resource::
+COMPLETION: SetName : [#void#][#Resource::#]SetName(<#StringID#>)
+COMPLETION: Update : [#void#][#Resource::#]Update()
+COMPLETION: ~AngelScript : [#void#]~AngelScript()
+COMPLETION: ~IReferenceCounted : [#void#][#IReferenceCounted::#]~IReferenceCounted()
+COMPLETION: ~Resource : [#void#][#Resource::#]~Resource()

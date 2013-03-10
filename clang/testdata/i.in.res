@@ -1,0 +1,2 @@
+Methods:
+	unsigned int  GetID()

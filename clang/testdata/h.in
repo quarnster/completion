@@ -1,0 +1,42 @@
+COMPLETION: assign : [#void#]assign(<#size_type __n#>, <#const value_type &__val#>)
+COMPLETION: assign : [#void#]assign(<#_InputIterator __first#>, <#_InputIterator __last#>)
+COMPLETION: at : [#reference#]at(<#size_type __n#>)
+COMPLETION: at : [#const_reference#]at(<#size_type __n#>)[# const#]
+COMPLETION: back : [#reference#]back()
+COMPLETION: back : [#const_reference#]back()[# const#]
+COMPLETION: begin : [#iterator#]begin()
+COMPLETION: begin : [#const_iterator#]begin()[# const#]
+COMPLETION: capacity : [#size_type#]capacity()[# const#]
+COMPLETION: clear : [#void#]clear()
+COMPLETION: data : [#pointer#]data()
+COMPLETION: data : [#const_pointer#]data()[# const#]
+COMPLETION: empty : [#bool#]empty()[# const#]
+COMPLETION: end : [#iterator#]end()
+COMPLETION: end : [#const_iterator#]end()[# const#]
+COMPLETION: erase : [#iterator#]erase(<#iterator __position#>)
+COMPLETION: erase : [#iterator#]erase(<#iterator __first#>, <#iterator __last#>)
+COMPLETION: front : [#reference#]front()
+COMPLETION: front : [#const_reference#]front()[# const#]
+COMPLETION: get_allocator : [#allocator_type#]get_allocator()[# const#]
+COMPLETION: insert : [#iterator#]insert(<#iterator __position#>, <#const value_type &__x#>)
+COMPLETION: insert : [#void#]insert(<#iterator __position#>, <#size_type __n#>, <#const value_type &__x#>)
+COMPLETION: insert : [#void#]insert(<#iterator __position#>, <#_InputIterator __first#>, <#_InputIterator __last#>)
+COMPLETION: max_size : [#size_type#]max_size()[# const#]
+COMPLETION: operator= : [#std::vector<StringID, std::allocator<StringID> > &#]operator=(<#const std::vector<StringID, std::allocator<StringID> > &__x#>)
+COMPLETION: operator= (Hidden) : [#std::_Vector_base<StringID, std::allocator<StringID> > &#]std::_Vector_base<StringID, allocator<StringID> >::operator=(<#const std::_Vector_base<StringID, std::allocator<StringID> > &#>)
+COMPLETION: operator[] : [#reference#]operator[](<#size_type __n#>)
+COMPLETION: operator[] : [#const_reference#]operator[](<#size_type __n#>)[# const#]
+COMPLETION: pop_back : [#void#]pop_back()
+COMPLETION: push_back : [#void#]push_back(<#const value_type &__x#>)
+COMPLETION: rbegin : [#reverse_iterator#]rbegin()
+COMPLETION: rbegin : [#const_reverse_iterator#]rbegin()[# const#]
+COMPLETION: rend : [#reverse_iterator#]rend()
+COMPLETION: rend : [#const_reverse_iterator#]rend()[# const#]
+COMPLETION: reserve : [#void#]reserve(<#size_type __n#>)
+COMPLETION: resize : [#void#]resize(<#size_type __new_size#>{#, <#value_type __x#>#})
+COMPLETION: size : [#size_type#]size()[# const#]
+COMPLETION: swap : [#void#]swap(<#std::vector<StringID, std::allocator<StringID> > &__x#>)
+COMPLETION: vector : vector::
+COMPLETION: vector : [#void#]vector(<#_InputIterator __first#>, <#_InputIterator __last#>{#, <#const allocator_type &__a#>#})
+COMPLETION: ~_Vector_base : [#void#][#_Vector_base<StringID, allocator<StringID> >::#]~_Vector_base()
+COMPLETION: ~vector : [#void#]~vector()

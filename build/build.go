@@ -96,7 +96,7 @@ func main() {
 		fmt.Println(string(b))
 	}
 	buildPeg("../java/descriptors/descriptors.peg", "Entry,ComponentType,FieldType,ObjectType")
-	buildPeg("../clang/parser/parser.peg", "Spacing,Pattern,Completion,Completions,ReturnType,Arguments,Argument")
+	buildPeg("../clang/parser/parser.peg", "Spacing,Pattern,Completion,Completions,ReturnType,Arguments,Argument,UnhandledStuff,KeyedStuff,Type,TemplateName")
 	tests := []string{"test"}
 	if verbose {
 		tests = append(tests, "-v")

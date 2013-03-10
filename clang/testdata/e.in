@@ -1,0 +1,1962 @@
+COMPLETION: __FUNCTION__
+COMPLETION: __PRETTY_FUNCTION__
+COMPLETION: _exit : [#void#]_exit(<#int#>)
+COMPLETION: _filesec : _filesec
+COMPLETION: _opaque_pthread_attr_t : _opaque_pthread_attr_t
+COMPLETION: _opaque_pthread_cond_t : _opaque_pthread_cond_t
+COMPLETION: _opaque_pthread_condattr_t : _opaque_pthread_condattr_t
+COMPLETION: _opaque_pthread_mutex_t : _opaque_pthread_mutex_t
+COMPLETION: _opaque_pthread_mutex_t : _opaque_pthread_mutex_t(<#const _opaque_pthread_mutex_t &#>)
+COMPLETION: _opaque_pthread_mutexattr_t : _opaque_pthread_mutexattr_t
+COMPLETION: _opaque_pthread_once_t : _opaque_pthread_once_t
+COMPLETION: _opaque_pthread_rwlock_t : _opaque_pthread_rwlock_t
+COMPLETION: _opaque_pthread_rwlockattr_t : _opaque_pthread_rwlockattr_t
+COMPLETION: _opaque_pthread_t : _opaque_pthread_t
+COMPLETION: a64l : [#long#]a64l(<#const char *#>)
+COMPLETION: abort : [#void#]abort()
+COMPLETION: abs : [#int#]abs(<#int#>)
+COMPLETION: access : [#int#]access(<#const char *#>, <#int#>)
+COMPLETION: accessx_descriptor : accessx_descriptor
+COMPLETION: accessx_np : [#int#]accessx_np(<#const struct accessx_descriptor *#>, <#size_t#>, <#int *#>, <#uid_t#>)
+COMPLETION: acct : [#int#]acct(<#const char *#>)
+COMPLETION: acos : [#double#]acos(<#double#>)
+COMPLETION: acosf : [#float#]acosf(<#float#>)
+COMPLETION: acosh : [#double#]acosh(<#double#>)
+COMPLETION: acoshf : [#float#]acoshf(<#float#>)
+COMPLETION: acoshl : [#long double#]acoshl(<#long double#>)
+COMPLETION: acosl : [#long double#]acosl(<#long double#>)
+COMPLETION: add_profil : [#int#]add_profil(<#char *#>, <#size_t#>, <#unsigned long#>, <#unsigned int#>)
+COMPLETION: AddRef : [#void#]AddRef()
+COMPLETION: AddResourceUpdatedListener : [#void#]AddResourceUpdatedListener(<#ResourceUpdatedListener *listener#>)
+COMPLETION: alarm : [#unsigned int#]alarm(<#unsigned int#>)
+COMPLETION: alloca : [#void *#]alloca(<#size_t#>)
+COMPLETION: AngelScript : AngelScript
+COMPLETION: AngelScript (Hidden) : AngelScript
+COMPLETION: AngelScript (Hidden) : AngelScript(<#StringID id#>)
+COMPLETION: AngelScript (Hidden) : AngelScript(<#const AngelScript &#>)
+COMPLETION: AngelScriptLoader : AngelScriptLoader
+COMPLETION: AngelScriptLoader : AngelScriptLoader()
+COMPLETION: angle : [#btScalar#]angle(<#const btQuaternion &q1#>, <#const btQuaternion &q2#>)
+COMPLETION: AOTCompiler : AOTCompiler
+COMPLETION: AOTLinker : AOTLinker
+COMPLETION: arc4random : [#u_int32_t#]arc4random()
+COMPLETION: arc4random_addrandom : [#void#]arc4random_addrandom(<#unsigned char *#>, <#int#>)
+COMPLETION: arc4random_buf : [#void#]arc4random_buf(<#void *#>, <#size_t#>)
+COMPLETION: arc4random_stir : [#void#]arc4random_stir()
+COMPLETION: arc4random_uniform : [#u_int32_t#]arc4random_uniform(<#u_int32_t#>)
+COMPLETION: asAcquireExclusiveLock : [#void#]asAcquireExclusiveLock()
+COMPLETION: asAcquireSharedLock : [#void#]asAcquireSharedLock()
+COMPLETION: asALLOCFUNC_t : asALLOCFUNC_t
+COMPLETION: asALREADY_REGISTERED : [#asERetCodes#]asALREADY_REGISTERED
+COMPLETION: asAtomicDec : [#int#]asAtomicDec(<#int &value#>)
+COMPLETION: asAtomicInc : [#int#]asAtomicInc(<#int &value#>)
+COMPLETION: asBC_ADDd : [#asEBCInstr#]asBC_ADDd
+COMPLETION: asBC_ADDf : [#asEBCInstr#]asBC_ADDf
+COMPLETION: asBC_ADDi : [#asEBCInstr#]asBC_ADDi
+COMPLETION: asBC_ADDi64 : [#asEBCInstr#]asBC_ADDi64
+COMPLETION: asBC_ADDIf : [#asEBCInstr#]asBC_ADDIf
+COMPLETION: asBC_ADDIi : [#asEBCInstr#]asBC_ADDIi
+COMPLETION: asBC_ADDSi : [#asEBCInstr#]asBC_ADDSi
+COMPLETION: asBC_ALLOC : [#asEBCInstr#]asBC_ALLOC
+COMPLETION: asBC_BAND : [#asEBCInstr#]asBC_BAND
+COMPLETION: asBC_BAND64 : [#asEBCInstr#]asBC_BAND64
+COMPLETION: asBC_Block : [#asEBCInstr#]asBC_Block
+COMPLETION: asBC_BNOT : [#asEBCInstr#]asBC_BNOT
+COMPLETION: asBC_BNOT64 : [#asEBCInstr#]asBC_BNOT64
+COMPLETION: asBC_BOR : [#asEBCInstr#]asBC_BOR
+COMPLETION: asBC_BOR64 : [#asEBCInstr#]asBC_BOR64
+COMPLETION: asBC_BSLL : [#asEBCInstr#]asBC_BSLL
+COMPLETION: asBC_BSLL64 : [#asEBCInstr#]asBC_BSLL64
+COMPLETION: asBC_BSRA : [#asEBCInstr#]asBC_BSRA
+COMPLETION: asBC_BSRA64 : [#asEBCInstr#]asBC_BSRA64
+COMPLETION: asBC_BSRL : [#asEBCInstr#]asBC_BSRL
+COMPLETION: asBC_BSRL64 : [#asEBCInstr#]asBC_BSRL64
+COMPLETION: asBC_BXOR : [#asEBCInstr#]asBC_BXOR
+COMPLETION: asBC_BXOR64 : [#asEBCInstr#]asBC_BXOR64
+COMPLETION: asBC_CALL : [#asEBCInstr#]asBC_CALL
+COMPLETION: asBC_CALLBND : [#asEBCInstr#]asBC_CALLBND
+COMPLETION: asBC_CALLINTF : [#asEBCInstr#]asBC_CALLINTF
+COMPLETION: asBC_CallPtr : [#asEBCInstr#]asBC_CallPtr
+COMPLETION: asBC_CALLSYS : [#asEBCInstr#]asBC_CALLSYS
+COMPLETION: asBC_Cast : [#asEBCInstr#]asBC_Cast
+COMPLETION: asBC_ChkNullS : [#asEBCInstr#]asBC_ChkNullS
+COMPLETION: asBC_ChkNullV : [#asEBCInstr#]asBC_ChkNullV
+COMPLETION: asBC_CHKREF : [#asEBCInstr#]asBC_CHKREF
+COMPLETION: asBC_ChkRefS : [#asEBCInstr#]asBC_ChkRefS
+COMPLETION: asBC_ClrHi : [#asEBCInstr#]asBC_ClrHi
+COMPLETION: asBC_ClrVPtr : [#asEBCInstr#]asBC_ClrVPtr
+COMPLETION: asBC_CMPd : [#asEBCInstr#]asBC_CMPd
+COMPLETION: asBC_CMPf : [#asEBCInstr#]asBC_CMPf
+COMPLETION: asBC_CMPi : [#asEBCInstr#]asBC_CMPi
+COMPLETION: asBC_CMPi64 : [#asEBCInstr#]asBC_CMPi64
+COMPLETION: asBC_CMPIf : [#asEBCInstr#]asBC_CMPIf
+COMPLETION: asBC_CMPIi : [#asEBCInstr#]asBC_CMPIi
+COMPLETION: asBC_CMPIu : [#asEBCInstr#]asBC_CMPIu
+COMPLETION: asBC_CmpPtr : [#asEBCInstr#]asBC_CmpPtr
+COMPLETION: asBC_CMPu : [#asEBCInstr#]asBC_CMPu
+COMPLETION: asBC_CMPu64 : [#asEBCInstr#]asBC_CMPu64
+COMPLETION: asBC_COPY : [#asEBCInstr#]asBC_COPY
+COMPLETION: asBC_CpyGtoV4 : [#asEBCInstr#]asBC_CpyGtoV4
+COMPLETION: asBC_CpyRtoV4 : [#asEBCInstr#]asBC_CpyRtoV4
+COMPLETION: asBC_CpyRtoV8 : [#asEBCInstr#]asBC_CpyRtoV8
+COMPLETION: asBC_CpyVtoG4 : [#asEBCInstr#]asBC_CpyVtoG4
+COMPLETION: asBC_CpyVtoR4 : [#asEBCInstr#]asBC_CpyVtoR4
+COMPLETION: asBC_CpyVtoR8 : [#asEBCInstr#]asBC_CpyVtoR8
+COMPLETION: asBC_CpyVtoV4 : [#asEBCInstr#]asBC_CpyVtoV4
+COMPLETION: asBC_CpyVtoV8 : [#asEBCInstr#]asBC_CpyVtoV8
+COMPLETION: asBC_DECd : [#asEBCInstr#]asBC_DECd
+COMPLETION: asBC_DECf : [#asEBCInstr#]asBC_DECf
+COMPLETION: asBC_DECi : [#asEBCInstr#]asBC_DECi
+COMPLETION: asBC_DECi16 : [#asEBCInstr#]asBC_DECi16
+COMPLETION: asBC_DECi64 : [#asEBCInstr#]asBC_DECi64
+COMPLETION: asBC_DECi8 : [#asEBCInstr#]asBC_DECi8
+COMPLETION: asBC_DecVi : [#asEBCInstr#]asBC_DecVi
+COMPLETION: asBC_DIVd : [#asEBCInstr#]asBC_DIVd
+COMPLETION: asBC_DIVf : [#asEBCInstr#]asBC_DIVf
+COMPLETION: asBC_DIVi : [#asEBCInstr#]asBC_DIVi
+COMPLETION: asBC_DIVi64 : [#asEBCInstr#]asBC_DIVi64
+COMPLETION: asBC_DIVu : [#asEBCInstr#]asBC_DIVu
+COMPLETION: asBC_DIVu64 : [#asEBCInstr#]asBC_DIVu64
+COMPLETION: asBC_dTOf : [#asEBCInstr#]asBC_dTOf
+COMPLETION: asBC_dTOi : [#asEBCInstr#]asBC_dTOi
+COMPLETION: asBC_dTOi64 : [#asEBCInstr#]asBC_dTOi64
+COMPLETION: asBC_dTOu : [#asEBCInstr#]asBC_dTOu
+COMPLETION: asBC_dTOu64 : [#asEBCInstr#]asBC_dTOu64
+COMPLETION: asBC_FREE : [#asEBCInstr#]asBC_FREE
+COMPLETION: asBC_fTOd : [#asEBCInstr#]asBC_fTOd
+COMPLETION: asBC_fTOi : [#asEBCInstr#]asBC_fTOi
+COMPLETION: asBC_fTOi64 : [#asEBCInstr#]asBC_fTOi64
+COMPLETION: asBC_fTOu : [#asEBCInstr#]asBC_fTOu
+COMPLETION: asBC_fTOu64 : [#asEBCInstr#]asBC_fTOu64
+COMPLETION: asBC_FuncPtr : [#asEBCInstr#]asBC_FuncPtr
+COMPLETION: asBC_GETOBJ : [#asEBCInstr#]asBC_GETOBJ
+COMPLETION: asBC_GETOBJREF : [#asEBCInstr#]asBC_GETOBJREF
+COMPLETION: asBC_GETREF : [#asEBCInstr#]asBC_GETREF
+COMPLETION: asBC_i64TOd : [#asEBCInstr#]asBC_i64TOd
+COMPLETION: asBC_i64TOf : [#asEBCInstr#]asBC_i64TOf
+COMPLETION: asBC_i64TOi : [#asEBCInstr#]asBC_i64TOi
+COMPLETION: asBC_INCd : [#asEBCInstr#]asBC_INCd
+COMPLETION: asBC_INCf : [#asEBCInstr#]asBC_INCf
+COMPLETION: asBC_INCi : [#asEBCInstr#]asBC_INCi
+COMPLETION: asBC_INCi16 : [#asEBCInstr#]asBC_INCi16
+COMPLETION: asBC_INCi64 : [#asEBCInstr#]asBC_INCi64
+COMPLETION: asBC_INCi8 : [#asEBCInstr#]asBC_INCi8
+COMPLETION: asBC_IncVi : [#asEBCInstr#]asBC_IncVi
+COMPLETION: asBC_iTOb : [#asEBCInstr#]asBC_iTOb
+COMPLETION: asBC_iTOd : [#asEBCInstr#]asBC_iTOd
+COMPLETION: asBC_iTOf : [#asEBCInstr#]asBC_iTOf
+COMPLETION: asBC_iTOi64 : [#asEBCInstr#]asBC_iTOi64
+COMPLETION: asBC_iTOw : [#asEBCInstr#]asBC_iTOw
+COMPLETION: asBC_JitEntry : [#asEBCInstr#]asBC_JitEntry
+COMPLETION: asBC_JLowNZ : [#asEBCInstr#]asBC_JLowNZ
+COMPLETION: asBC_JLowZ : [#asEBCInstr#]asBC_JLowZ
+COMPLETION: asBC_JMP : [#asEBCInstr#]asBC_JMP
+COMPLETION: asBC_JMPP : [#asEBCInstr#]asBC_JMPP
+COMPLETION: asBC_JNP : [#asEBCInstr#]asBC_JNP
+COMPLETION: asBC_JNS : [#asEBCInstr#]asBC_JNS
+COMPLETION: asBC_JNZ : [#asEBCInstr#]asBC_JNZ
+COMPLETION: asBC_JP : [#asEBCInstr#]asBC_JP
+COMPLETION: asBC_JS : [#asEBCInstr#]asBC_JS
+COMPLETION: asBC_JZ : [#asEBCInstr#]asBC_JZ
+COMPLETION: asBC_LABEL : [#asEBCInstr#]asBC_LABEL
+COMPLETION: asBC_LDG : [#asEBCInstr#]asBC_LDG
+COMPLETION: asBC_LdGRdR4 : [#asEBCInstr#]asBC_LdGRdR4
+COMPLETION: asBC_LDV : [#asEBCInstr#]asBC_LDV
+COMPLETION: asBC_LINE : [#asEBCInstr#]asBC_LINE
+COMPLETION: asBC_LOADOBJ : [#asEBCInstr#]asBC_LOADOBJ
+COMPLETION: asBC_LoadRObjR : [#asEBCInstr#]asBC_LoadRObjR
+COMPLETION: asBC_LoadThisR : [#asEBCInstr#]asBC_LoadThisR
+COMPLETION: asBC_LoadVObjR : [#asEBCInstr#]asBC_LoadVObjR
+COMPLETION: asBC_MAXBYTECODE : [#asEBCInstr#]asBC_MAXBYTECODE
+COMPLETION: asBC_MODd : [#asEBCInstr#]asBC_MODd
+COMPLETION: asBC_MODf : [#asEBCInstr#]asBC_MODf
+COMPLETION: asBC_MODi : [#asEBCInstr#]asBC_MODi
+COMPLETION: asBC_MODi64 : [#asEBCInstr#]asBC_MODi64
+COMPLETION: asBC_MODu : [#asEBCInstr#]asBC_MODu
+COMPLETION: asBC_MODu64 : [#asEBCInstr#]asBC_MODu64
+COMPLETION: asBC_MULd : [#asEBCInstr#]asBC_MULd
+COMPLETION: asBC_MULf : [#asEBCInstr#]asBC_MULf
+COMPLETION: asBC_MULi : [#asEBCInstr#]asBC_MULi
+COMPLETION: asBC_MULi64 : [#asEBCInstr#]asBC_MULi64
+COMPLETION: asBC_MULIf : [#asEBCInstr#]asBC_MULIf
+COMPLETION: asBC_MULIi : [#asEBCInstr#]asBC_MULIi
+COMPLETION: asBC_NEGd : [#asEBCInstr#]asBC_NEGd
+COMPLETION: asBC_NEGf : [#asEBCInstr#]asBC_NEGf
+COMPLETION: asBC_NEGi : [#asEBCInstr#]asBC_NEGi
+COMPLETION: asBC_NEGi64 : [#asEBCInstr#]asBC_NEGi64
+COMPLETION: asBC_NOT : [#asEBCInstr#]asBC_NOT
+COMPLETION: asBC_ObjInfo : [#asEBCInstr#]asBC_ObjInfo
+COMPLETION: asBC_OBJTYPE : [#asEBCInstr#]asBC_OBJTYPE
+COMPLETION: asBC_PGA : [#asEBCInstr#]asBC_PGA
+COMPLETION: asBC_PopPtr : [#asEBCInstr#]asBC_PopPtr
+COMPLETION: asBC_PopRPtr : [#asEBCInstr#]asBC_PopRPtr
+COMPLETION: asBC_PSF : [#asEBCInstr#]asBC_PSF
+COMPLETION: asBC_PshC4 : [#asEBCInstr#]asBC_PshC4
+COMPLETION: asBC_PshC8 : [#asEBCInstr#]asBC_PshC8
+COMPLETION: asBC_PshG4 : [#asEBCInstr#]asBC_PshG4
+COMPLETION: asBC_PshGPtr : [#asEBCInstr#]asBC_PshGPtr
+COMPLETION: asBC_PshNull : [#asEBCInstr#]asBC_PshNull
+COMPLETION: asBC_PshRPtr : [#asEBCInstr#]asBC_PshRPtr
+COMPLETION: asBC_PshV4 : [#asEBCInstr#]asBC_PshV4
+COMPLETION: asBC_PshV8 : [#asEBCInstr#]asBC_PshV8
+COMPLETION: asBC_PshVPtr : [#asEBCInstr#]asBC_PshVPtr
+COMPLETION: asBC_RDR1 : [#asEBCInstr#]asBC_RDR1
+COMPLETION: asBC_RDR2 : [#asEBCInstr#]asBC_RDR2
+COMPLETION: asBC_RDR4 : [#asEBCInstr#]asBC_RDR4
+COMPLETION: asBC_RDR8 : [#asEBCInstr#]asBC_RDR8
+COMPLETION: asBC_RDSPtr : [#asEBCInstr#]asBC_RDSPtr
+COMPLETION: asBC_REFCPY : [#asEBCInstr#]asBC_REFCPY
+COMPLETION: asBC_RefCpyV : [#asEBCInstr#]asBC_RefCpyV
+COMPLETION: asBC_RET : [#asEBCInstr#]asBC_RET
+COMPLETION: asBC_sbTOi : [#asEBCInstr#]asBC_sbTOi
+COMPLETION: asBC_SetG4 : [#asEBCInstr#]asBC_SetG4
+COMPLETION: asBC_SetV1 : [#asEBCInstr#]asBC_SetV1
+COMPLETION: asBC_SetV2 : [#asEBCInstr#]asBC_SetV2
+COMPLETION: asBC_SetV4 : [#asEBCInstr#]asBC_SetV4
+COMPLETION: asBC_SetV8 : [#asEBCInstr#]asBC_SetV8
+COMPLETION: asBC_STOREOBJ : [#asEBCInstr#]asBC_STOREOBJ
+COMPLETION: asBC_STR : [#asEBCInstr#]asBC_STR
+COMPLETION: asBC_SUBd : [#asEBCInstr#]asBC_SUBd
+COMPLETION: asBC_SUBf : [#asEBCInstr#]asBC_SUBf
+COMPLETION: asBC_SUBi : [#asEBCInstr#]asBC_SUBi
+COMPLETION: asBC_SUBi64 : [#asEBCInstr#]asBC_SUBi64
+COMPLETION: asBC_SUBIf : [#asEBCInstr#]asBC_SUBIf
+COMPLETION: asBC_SUBIi : [#asEBCInstr#]asBC_SUBIi
+COMPLETION: asBC_SUSPEND : [#asEBCInstr#]asBC_SUSPEND
+COMPLETION: asBC_SwapPtr : [#asEBCInstr#]asBC_SwapPtr
+COMPLETION: asBC_swTOi : [#asEBCInstr#]asBC_swTOi
+COMPLETION: asBC_TNP : [#asEBCInstr#]asBC_TNP
+COMPLETION: asBC_TNS : [#asEBCInstr#]asBC_TNS
+COMPLETION: asBC_TNZ : [#asEBCInstr#]asBC_TNZ
+COMPLETION: asBC_TP : [#asEBCInstr#]asBC_TP
+COMPLETION: asBC_TS : [#asEBCInstr#]asBC_TS
+COMPLETION: asBC_TYPEID : [#asEBCInstr#]asBC_TYPEID
+COMPLETION: asBC_TZ : [#asEBCInstr#]asBC_TZ
+COMPLETION: asBC_u64TOd : [#asEBCInstr#]asBC_u64TOd
+COMPLETION: asBC_u64TOf : [#asEBCInstr#]asBC_u64TOf
+COMPLETION: asBC_ubTOi : [#asEBCInstr#]asBC_ubTOi
+COMPLETION: asBC_uTOd : [#asEBCInstr#]asBC_uTOd
+COMPLETION: asBC_uTOf : [#asEBCInstr#]asBC_uTOf
+COMPLETION: asBC_uTOi64 : [#asEBCInstr#]asBC_uTOi64
+COMPLETION: asBC_uwTOi : [#asEBCInstr#]asBC_uwTOi
+COMPLETION: asBC_VAR : [#asEBCInstr#]asBC_VAR
+COMPLETION: asBC_VarDecl : [#asEBCInstr#]asBC_VarDecl
+COMPLETION: asBC_WRTV1 : [#asEBCInstr#]asBC_WRTV1
+COMPLETION: asBC_WRTV2 : [#asEBCInstr#]asBC_WRTV2
+COMPLETION: asBC_WRTV4 : [#asEBCInstr#]asBC_WRTV4
+COMPLETION: asBC_WRTV8 : [#asEBCInstr#]asBC_WRTV8
+COMPLETION: asBCInfo : [#const asSBCInfo [256]#]asBCInfo
+COMPLETION: asBCTYPE_DW_ARG : [#asEBCType#]asBCTYPE_DW_ARG
+COMPLETION: asBCTYPE_DW_DW_ARG : [#asEBCType#]asBCTYPE_DW_DW_ARG
+COMPLETION: asBCTYPE_INFO : [#asEBCType#]asBCTYPE_INFO
+COMPLETION: asBCTYPE_NO_ARG : [#asEBCType#]asBCTYPE_NO_ARG
+COMPLETION: asBCTYPE_QW_ARG : [#asEBCType#]asBCTYPE_QW_ARG
+COMPLETION: asBCTYPE_QW_DW_ARG : [#asEBCType#]asBCTYPE_QW_DW_ARG
+COMPLETION: asBCTYPE_rW_ARG : [#asEBCType#]asBCTYPE_rW_ARG
+COMPLETION: asBCTYPE_rW_DW_ARG : [#asEBCType#]asBCTYPE_rW_DW_ARG
+COMPLETION: asBCTYPE_rW_QW_ARG : [#asEBCType#]asBCTYPE_rW_QW_ARG
+COMPLETION: asBCTYPE_rW_rW_ARG : [#asEBCType#]asBCTYPE_rW_rW_ARG
+COMPLETION: asBCTYPE_rW_W_DW_ARG : [#asEBCType#]asBCTYPE_rW_W_DW_ARG
+COMPLETION: asBCTYPE_W_ARG : [#asEBCType#]asBCTYPE_W_ARG
+COMPLETION: asBCTYPE_W_DW_ARG : [#asEBCType#]asBCTYPE_W_DW_ARG
+COMPLETION: asBCTYPE_wW_ARG : [#asEBCType#]asBCTYPE_wW_ARG
+COMPLETION: asBCTYPE_wW_DW_ARG : [#asEBCType#]asBCTYPE_wW_DW_ARG
+COMPLETION: asBCTYPE_wW_QW_ARG : [#asEBCType#]asBCTYPE_wW_QW_ARG
+COMPLETION: asBCTYPE_wW_rW_ARG : [#asEBCType#]asBCTYPE_wW_rW_ARG
+COMPLETION: asBCTYPE_wW_rW_DW_ARG : [#asEBCType#]asBCTYPE_wW_rW_DW_ARG
+COMPLETION: asBCTYPE_wW_rW_rW_ARG : [#asEBCType#]asBCTYPE_wW_rW_rW_ARG
+COMPLETION: asBCTYPE_wW_W_ARG : [#asEBCType#]asBCTYPE_wW_W_ARG
+COMPLETION: asBCTypeSize : [#const int [20]#]asBCTypeSize
+COMPLETION: asBEHAVE_ADDREF : [#asEBehaviours#]asBEHAVE_ADDREF
+COMPLETION: asBEHAVE_CONSTRUCT : [#asEBehaviours#]asBEHAVE_CONSTRUCT
+COMPLETION: asBEHAVE_DESTRUCT : [#asEBehaviours#]asBEHAVE_DESTRUCT
+COMPLETION: asBEHAVE_ENUMREFS : [#asEBehaviours#]asBEHAVE_ENUMREFS
+COMPLETION: asBEHAVE_FACTORY : [#asEBehaviours#]asBEHAVE_FACTORY
+COMPLETION: asBEHAVE_FIRST_GC : [#asEBehaviours#]asBEHAVE_FIRST_GC
+COMPLETION: asBEHAVE_GETGCFLAG : [#asEBehaviours#]asBEHAVE_GETGCFLAG
+COMPLETION: asBEHAVE_GETREFCOUNT : [#asEBehaviours#]asBEHAVE_GETREFCOUNT
+COMPLETION: asBEHAVE_IMPLICIT_REF_CAST : [#asEBehaviours#]asBEHAVE_IMPLICIT_REF_CAST
+COMPLETION: asBEHAVE_IMPLICIT_VALUE_CAST : [#asEBehaviours#]asBEHAVE_IMPLICIT_VALUE_CAST
+COMPLETION: asBEHAVE_LAST_GC : [#asEBehaviours#]asBEHAVE_LAST_GC
+COMPLETION: asBEHAVE_LIST_FACTORY : [#asEBehaviours#]asBEHAVE_LIST_FACTORY
+COMPLETION: asBEHAVE_MAX : [#asEBehaviours#]asBEHAVE_MAX
+COMPLETION: asBEHAVE_REF_CAST : [#asEBehaviours#]asBEHAVE_REF_CAST
+COMPLETION: asBEHAVE_RELEASE : [#asEBehaviours#]asBEHAVE_RELEASE
+COMPLETION: asBEHAVE_RELEASEREFS : [#asEBehaviours#]asBEHAVE_RELEASEREFS
+COMPLETION: asBEHAVE_SETGCFLAG : [#asEBehaviours#]asBEHAVE_SETGCFLAG
+COMPLETION: asBEHAVE_TEMPLATE_CALLBACK : [#asEBehaviours#]asBEHAVE_TEMPLATE_CALLBACK
+COMPLETION: asBEHAVE_VALUE_CAST : [#asEBehaviours#]asBEHAVE_VALUE_CAST
+COMPLETION: asBUILD_IN_PROGRESS : [#asERetCodes#]asBUILD_IN_PROGRESS
+COMPLETION: asBYTE : asBYTE
+COMPLETION: asCALL_CDECL : [#asECallConvTypes#]asCALL_CDECL
+COMPLETION: asCALL_CDECL_OBJFIRST : [#asECallConvTypes#]asCALL_CDECL_OBJFIRST
+COMPLETION: asCALL_CDECL_OBJLAST : [#asECallConvTypes#]asCALL_CDECL_OBJLAST
+COMPLETION: asCALL_GENERIC : [#asECallConvTypes#]asCALL_GENERIC
+COMPLETION: asCALL_STDCALL : [#asECallConvTypes#]asCALL_STDCALL
+COMPLETION: asCALL_THISCALL : [#asECallConvTypes#]asCALL_THISCALL
+COMPLETION: asCALL_THISCALL_ASGLOBAL : [#asECallConvTypes#]asCALL_THISCALL_ASGLOBAL
+COMPLETION: asCANT_BIND_ALL_FUNCTIONS : [#asERetCodes#]asCANT_BIND_ALL_FUNCTIONS
+COMPLETION: asCLEANCONTEXTFUNC_t : asCLEANCONTEXTFUNC_t
+COMPLETION: asCLEANENGINEFUNC_t : asCLEANENGINEFUNC_t
+COMPLETION: asCLEANFUNCTIONFUNC_t : asCLEANFUNCTIONFUNC_t
+COMPLETION: asCLEANMODULEFUNC_t : asCLEANMODULEFUNC_t
+COMPLETION: asCLEANOBJECTTYPEFUNC_t : asCLEANOBJECTTYPEFUNC_t
+COMPLETION: asCOMP_ADD_TO_MODULE : [#asECompileFlags#]asCOMP_ADD_TO_MODULE
+COMPLETION: asCONFIG_GROUP_IS_IN_USE : [#asERetCodes#]asCONFIG_GROUP_IS_IN_USE
+COMPLETION: asCONTEXT_ACTIVE : [#asERetCodes#]asCONTEXT_ACTIVE
+COMPLETION: asCONTEXT_NOT_FINISHED : [#asERetCodes#]asCONTEXT_NOT_FINISHED
+COMPLETION: asCONTEXT_NOT_PREPARED : [#asERetCodes#]asCONTEXT_NOT_PREPARED
+COMPLETION: asCreateScriptEngine : [#asIScriptEngine *#]asCreateScriptEngine(<#asDWORD version#>)
+COMPLETION: asCSimpleDummy : asCSimpleDummy
+COMPLETION: asctime : [#char *#]asctime(<#const struct tm *#>)
+COMPLETION: asctime_r : [#char *#]asctime_r(<#const struct tm *#>, <#char *#>)
+COMPLETION: asCUnknownClass : asCUnknownClass
+COMPLETION: asDWORD : asDWORD
+COMPLETION: asEBCInstr : asEBCInstr
+COMPLETION: asEBCType : asEBCType
+COMPLETION: asEBehaviours : asEBehaviours
+COMPLETION: asECallConvTypes : asECallConvTypes
+COMPLETION: asECompileFlags : asECompileFlags
+COMPLETION: asEContextState : asEContextState
+COMPLETION: asEEngineProp : asEEngineProp
+COMPLETION: asEFuncType : asEFuncType
+COMPLETION: asEGCFlags : asEGCFlags
+COMPLETION: asEGMFlags : asEGMFlags
+COMPLETION: asEMsgType : asEMsgType
+COMPLETION: asEObjTypeFlags : asEObjTypeFlags
+COMPLETION: asEP_ALLOW_IMPLICIT_HANDLE_TYPES : [#asEEngineProp#]asEP_ALLOW_IMPLICIT_HANDLE_TYPES
+COMPLETION: asEP_ALLOW_MULTILINE_STRINGS : [#asEEngineProp#]asEP_ALLOW_MULTILINE_STRINGS
+COMPLETION: asEP_ALLOW_UNSAFE_REFERENCES : [#asEEngineProp#]asEP_ALLOW_UNSAFE_REFERENCES
+COMPLETION: asEP_ALWAYS_IMPL_DEFAULT_CONSTRUCT : [#asEEngineProp#]asEP_ALWAYS_IMPL_DEFAULT_CONSTRUCT
+COMPLETION: asEP_AUTO_GARBAGE_COLLECT : [#asEEngineProp#]asEP_AUTO_GARBAGE_COLLECT
+COMPLETION: asEP_BUILD_WITHOUT_LINE_CUES : [#asEEngineProp#]asEP_BUILD_WITHOUT_LINE_CUES
+COMPLETION: asEP_COPY_SCRIPT_SECTIONS : [#asEEngineProp#]asEP_COPY_SCRIPT_SECTIONS
+COMPLETION: asEP_DISALLOW_GLOBAL_VARS : [#asEEngineProp#]asEP_DISALLOW_GLOBAL_VARS
+COMPLETION: asEP_EXPAND_DEF_ARRAY_TO_TMPL : [#asEEngineProp#]asEP_EXPAND_DEF_ARRAY_TO_TMPL
+COMPLETION: asEP_INCLUDE_JIT_INSTRUCTIONS : [#asEEngineProp#]asEP_INCLUDE_JIT_INSTRUCTIONS
+COMPLETION: asEP_INIT_GLOBAL_VARS_AFTER_BUILD : [#asEEngineProp#]asEP_INIT_GLOBAL_VARS_AFTER_BUILD
+COMPLETION: asEP_MAX_STACK_SIZE : [#asEEngineProp#]asEP_MAX_STACK_SIZE
+COMPLETION: asEP_OPTIMIZE_BYTECODE : [#asEEngineProp#]asEP_OPTIMIZE_BYTECODE
+COMPLETION: asEP_PROPERTY_ACCESSOR_MODE : [#asEEngineProp#]asEP_PROPERTY_ACCESSOR_MODE
+COMPLETION: asEP_REQUIRE_ENUM_SCOPE : [#asEEngineProp#]asEP_REQUIRE_ENUM_SCOPE
+COMPLETION: asEP_SCRIPT_SCANNER : [#asEEngineProp#]asEP_SCRIPT_SCANNER
+COMPLETION: asEP_STRING_ENCODING : [#asEEngineProp#]asEP_STRING_ENCODING
+COMPLETION: asEP_USE_CHARACTER_LITERALS : [#asEEngineProp#]asEP_USE_CHARACTER_LITERALS
+COMPLETION: asERetCodes : asERetCodes
+COMPLETION: asERROR : [#asERetCodes#]asERROR
+COMPLETION: asETokenClass : asETokenClass
+COMPLETION: asETypeIdFlags : asETypeIdFlags
+COMPLETION: asETypeModifiers : asETypeModifiers
+COMPLETION: asEXECUTION_ABORTED : [#asEContextState#]asEXECUTION_ABORTED
+COMPLETION: asEXECUTION_ACTIVE : [#asEContextState#]asEXECUTION_ACTIVE
+COMPLETION: asEXECUTION_ERROR : [#asEContextState#]asEXECUTION_ERROR
+COMPLETION: asEXECUTION_EXCEPTION : [#asEContextState#]asEXECUTION_EXCEPTION
+COMPLETION: asEXECUTION_FINISHED : [#asEContextState#]asEXECUTION_FINISHED
+COMPLETION: asEXECUTION_PREPARED : [#asEContextState#]asEXECUTION_PREPARED
+COMPLETION: asEXECUTION_SUSPENDED : [#asEContextState#]asEXECUTION_SUSPENDED
+COMPLETION: asEXECUTION_UNINITIALIZED : [#asEContextState#]asEXECUTION_UNINITIALIZED
+COMPLETION: asFREEFUNC_t : asFREEFUNC_t
+COMPLETION: asFUNC_DUMMY : [#asEFuncType#]asFUNC_DUMMY
+COMPLETION: asFUNC_FUNCDEF : [#asEFuncType#]asFUNC_FUNCDEF
+COMPLETION: asFUNC_IMPORTED : [#asEFuncType#]asFUNC_IMPORTED
+COMPLETION: asFUNC_INTERFACE : [#asEFuncType#]asFUNC_INTERFACE
+COMPLETION: asFUNC_SCRIPT : [#asEFuncType#]asFUNC_SCRIPT
+COMPLETION: asFUNC_SYSTEM : [#asEFuncType#]asFUNC_SYSTEM
+COMPLETION: asFUNC_VIRTUAL : [#asEFuncType#]asFUNC_VIRTUAL
+COMPLETION: asFUNCTION_t : asFUNCTION_t
+COMPLETION: asFunctionPtr : [#asSFuncPtr#]asFunctionPtr(<#T func#>)
+COMPLETION: asGC_DESTROY_GARBAGE : [#asEGCFlags#]asGC_DESTROY_GARBAGE
+COMPLETION: asGC_DETECT_GARBAGE : [#asEGCFlags#]asGC_DETECT_GARBAGE
+COMPLETION: asGC_FULL_CYCLE : [#asEGCFlags#]asGC_FULL_CYCLE
+COMPLETION: asGC_ONE_STEP : [#asEGCFlags#]asGC_ONE_STEP
+COMPLETION: asGENFUNC_t : asGENFUNC_t
+COMPLETION: asGetActiveContext : [#asIScriptContext *#]asGetActiveContext()
+COMPLETION: asGetLibraryOptions : [#const char *#]asGetLibraryOptions()
+COMPLETION: asGetLibraryVersion : [#const char *#]asGetLibraryVersion()
+COMPLETION: asGetThreadManager : [#asIThreadManager *#]asGetThreadManager()
+COMPLETION: asGM_ALWAYS_CREATE : [#asEGMFlags#]asGM_ALWAYS_CREATE
+COMPLETION: asGM_CREATE_IF_NOT_EXISTS : [#asEGMFlags#]asGM_CREATE_IF_NOT_EXISTS
+COMPLETION: asGM_ONLY_IF_EXISTS : [#asEGMFlags#]asGM_ONLY_IF_EXISTS
+COMPLETION: asIBinaryStream : asIBinaryStream
+COMPLETION: asIJITCompiler : asIJITCompiler
+COMPLETION: asILLEGAL_BEHAVIOUR_FOR_TYPE : [#asERetCodes#]asILLEGAL_BEHAVIOUR_FOR_TYPE
+COMPLETION: asin : [#double#]asin(<#double#>)
+COMPLETION: asinf : [#float#]asinf(<#float#>)
+COMPLETION: asinh : [#double#]asinh(<#double#>)
+COMPLETION: asinhf : [#float#]asinhf(<#float#>)
+COMPLETION: asinhl : [#long double#]asinhl(<#long double#>)
+COMPLETION: asINIT_GLOBAL_VARS_FAILED : [#asERetCodes#]asINIT_GLOBAL_VARS_FAILED
+COMPLETION: asinl : [#long double#]asinl(<#long double#>)
+COMPLETION: asINT64 : asINT64
+COMPLETION: asINVALID_ARG : [#asERetCodes#]asINVALID_ARG
+COMPLETION: asINVALID_CONFIGURATION : [#asERetCodes#]asINVALID_CONFIGURATION
+COMPLETION: asINVALID_DECLARATION : [#asERetCodes#]asINVALID_DECLARATION
+COMPLETION: asINVALID_INTERFACE : [#asERetCodes#]asINVALID_INTERFACE
+COMPLETION: asINVALID_NAME : [#asERetCodes#]asINVALID_NAME
+COMPLETION: asINVALID_OBJECT : [#asERetCodes#]asINVALID_OBJECT
+COMPLETION: asINVALID_TYPE : [#asERetCodes#]asINVALID_TYPE
+COMPLETION: asIObjectType : asIObjectType
+COMPLETION: asIScriptContext : asIScriptContext
+COMPLETION: asIScriptEngine : asIScriptEngine
+COMPLETION: asIScriptFunction : asIScriptFunction
+COMPLETION: asIScriptGeneric : asIScriptGeneric
+COMPLETION: asIScriptModule : asIScriptModule
+COMPLETION: asIScriptObject : asIScriptObject
+COMPLETION: asIThreadManager : asIThreadManager
+COMPLETION: asJITFunction : asJITFunction
+COMPLETION: asLOWER_ARRAY_DIMENSION_NOT_REGISTERED : [#asERetCodes#]asLOWER_ARRAY_DIMENSION_NOT_REGISTERED
+COMPLETION: asMETHOD_t : asMETHOD_t
+COMPLETION: asMSGTYPE_ERROR : [#asEMsgType#]asMSGTYPE_ERROR
+COMPLETION: asMSGTYPE_INFORMATION : [#asEMsgType#]asMSGTYPE_INFORMATION
+COMPLETION: asMSGTYPE_WARNING : [#asEMsgType#]asMSGTYPE_WARNING
+COMPLETION: asMULTIPLE_FUNCTIONS : [#asERetCodes#]asMULTIPLE_FUNCTIONS
+COMPLETION: asNAME_TAKEN : [#asERetCodes#]asNAME_TAKEN
+COMPLETION: asNO_FUNCTION : [#asERetCodes#]asNO_FUNCTION
+COMPLETION: asNO_GLOBAL_VAR : [#asERetCodes#]asNO_GLOBAL_VAR
+COMPLETION: asNO_MODULE : [#asERetCodes#]asNO_MODULE
+COMPLETION: asNOT_SUPPORTED : [#asERetCodes#]asNOT_SUPPORTED
+COMPLETION: asOBJ_APP_CLASS : [#asEObjTypeFlags#]asOBJ_APP_CLASS
+COMPLETION: asOBJ_APP_CLASS_A : [#asEObjTypeFlags#]asOBJ_APP_CLASS_A
+COMPLETION: asOBJ_APP_CLASS_AK : [#asEObjTypeFlags#]asOBJ_APP_CLASS_AK
+COMPLETION: asOBJ_APP_CLASS_ALIGN8 : [#asEObjTypeFlags#]asOBJ_APP_CLASS_ALIGN8
+COMPLETION: asOBJ_APP_CLASS_ALLFLOATS : [#asEObjTypeFlags#]asOBJ_APP_CLASS_ALLFLOATS
+COMPLETION: asOBJ_APP_CLASS_ALLINTS : [#asEObjTypeFlags#]asOBJ_APP_CLASS_ALLINTS
+COMPLETION: asOBJ_APP_CLASS_ASSIGNMENT : [#asEObjTypeFlags#]asOBJ_APP_CLASS_ASSIGNMENT
+COMPLETION: asOBJ_APP_CLASS_C : [#asEObjTypeFlags#]asOBJ_APP_CLASS_C
+COMPLETION: asOBJ_APP_CLASS_CA : [#asEObjTypeFlags#]asOBJ_APP_CLASS_CA
+COMPLETION: asOBJ_APP_CLASS_CAK : [#asEObjTypeFlags#]asOBJ_APP_CLASS_CAK
+COMPLETION: asOBJ_APP_CLASS_CD : [#asEObjTypeFlags#]asOBJ_APP_CLASS_CD
+COMPLETION: asOBJ_APP_CLASS_CDA : [#asEObjTypeFlags#]asOBJ_APP_CLASS_CDA
+COMPLETION: asOBJ_APP_CLASS_CDAK : [#asEObjTypeFlags#]asOBJ_APP_CLASS_CDAK
+COMPLETION: asOBJ_APP_CLASS_CDK : [#asEObjTypeFlags#]asOBJ_APP_CLASS_CDK
+COMPLETION: asOBJ_APP_CLASS_CK : [#asEObjTypeFlags#]asOBJ_APP_CLASS_CK
+COMPLETION: asOBJ_APP_CLASS_CONSTRUCTOR : [#asEObjTypeFlags#]asOBJ_APP_CLASS_CONSTRUCTOR
+COMPLETION: asOBJ_APP_CLASS_COPY_CONSTRUCTOR : [#asEObjTypeFlags#]asOBJ_APP_CLASS_COPY_CONSTRUCTOR
+COMPLETION: asOBJ_APP_CLASS_D : [#asEObjTypeFlags#]asOBJ_APP_CLASS_D
+COMPLETION: asOBJ_APP_CLASS_DA : [#asEObjTypeFlags#]asOBJ_APP_CLASS_DA
+COMPLETION: asOBJ_APP_CLASS_DAK : [#asEObjTypeFlags#]asOBJ_APP_CLASS_DAK
+COMPLETION: asOBJ_APP_CLASS_DESTRUCTOR : [#asEObjTypeFlags#]asOBJ_APP_CLASS_DESTRUCTOR
+COMPLETION: asOBJ_APP_CLASS_DK : [#asEObjTypeFlags#]asOBJ_APP_CLASS_DK
+COMPLETION: asOBJ_APP_CLASS_K : [#asEObjTypeFlags#]asOBJ_APP_CLASS_K
+COMPLETION: asOBJ_APP_FLOAT : [#asEObjTypeFlags#]asOBJ_APP_FLOAT
+COMPLETION: asOBJ_APP_PRIMITIVE : [#asEObjTypeFlags#]asOBJ_APP_PRIMITIVE
+COMPLETION: asOBJ_ASHANDLE : [#asEObjTypeFlags#]asOBJ_ASHANDLE
+COMPLETION: asOBJ_GC : [#asEObjTypeFlags#]asOBJ_GC
+COMPLETION: asOBJ_MASK_VALID_FLAGS : [#asEObjTypeFlags#]asOBJ_MASK_VALID_FLAGS
+COMPLETION: asOBJ_NOCOUNT : [#asEObjTypeFlags#]asOBJ_NOCOUNT
+COMPLETION: asOBJ_NOHANDLE : [#asEObjTypeFlags#]asOBJ_NOHANDLE
+COMPLETION: asOBJ_NOINHERIT : [#asEObjTypeFlags#]asOBJ_NOINHERIT
+COMPLETION: asOBJ_POD : [#asEObjTypeFlags#]asOBJ_POD
+COMPLETION: asOBJ_REF : [#asEObjTypeFlags#]asOBJ_REF
+COMPLETION: asOBJ_SCOPED : [#asEObjTypeFlags#]asOBJ_SCOPED
+COMPLETION: asOBJ_SCRIPT_FUNCTION : [#asEObjTypeFlags#]asOBJ_SCRIPT_FUNCTION
+COMPLETION: asOBJ_SCRIPT_OBJECT : [#asEObjTypeFlags#]asOBJ_SCRIPT_OBJECT
+COMPLETION: asOBJ_SHARED : [#asEObjTypeFlags#]asOBJ_SHARED
+COMPLETION: asOBJ_TEMPLATE : [#asEObjTypeFlags#]asOBJ_TEMPLATE
+COMPLETION: asOBJ_VALUE : [#asEObjTypeFlags#]asOBJ_VALUE
+COMPLETION: asOUT_OF_MEMORY : [#asERetCodes#]asOUT_OF_MEMORY
+COMPLETION: asPrepareMultithread : [#int#]asPrepareMultithread({#<#asIThreadManager *externalMgr#>#})
+COMPLETION: asprintf : [#int#]asprintf(<#char **#>, <#const char *, ...#>)
+COMPLETION: asPWORD : asPWORD
+COMPLETION: asQWORD : asQWORD
+COMPLETION: asReleaseExclusiveLock : [#void#]asReleaseExclusiveLock()
+COMPLETION: asReleaseSharedLock : [#void#]asReleaseSharedLock()
+COMPLETION: asResetGlobalMemoryFunctions : [#int#]asResetGlobalMemoryFunctions()
+COMPLETION: asSBCInfo : asSBCInfo
+COMPLETION: asSetGlobalMemoryFunctions : [#int#]asSetGlobalMemoryFunctions(<#asALLOCFUNC_t allocFunc#>, <#asFREEFUNC_t freeFunc#>)
+COMPLETION: asSFuncPtr : asSFuncPtr
+COMPLETION: asSFuncPtr : asSFuncPtr(<#asBYTE f#>)
+COMPLETION: asSIMPLEMETHOD_t : asSIMPLEMETHOD_t
+COMPLETION: asSMessageInfo : asSMessageInfo
+COMPLETION: asSMethodPtr : asSMethodPtr<<#int N#>>
+COMPLETION: asSUCCESS : [#asERetCodes#]asSUCCESS
+COMPLETION: asSVMRegisters : asSVMRegisters
+COMPLETION: asTC_COMMENT : [#asETokenClass#]asTC_COMMENT
+COMPLETION: asTC_IDENTIFIER : [#asETokenClass#]asTC_IDENTIFIER
+COMPLETION: asTC_KEYWORD : [#asETokenClass#]asTC_KEYWORD
+COMPLETION: asTC_UNKNOWN : [#asETokenClass#]asTC_UNKNOWN
+COMPLETION: asTC_VALUE : [#asETokenClass#]asTC_VALUE
+COMPLETION: asTC_WHITESPACE : [#asETokenClass#]asTC_WHITESPACE
+COMPLETION: asThreadCleanup : [#int#]asThreadCleanup()
+COMPLETION: asTM_INOUTREF : [#asETypeModifiers#]asTM_INOUTREF
+COMPLETION: asTM_INREF : [#asETypeModifiers#]asTM_INREF
+COMPLETION: asTM_NONE : [#asETypeModifiers#]asTM_NONE
+COMPLETION: asTM_OUTREF : [#asETypeModifiers#]asTM_OUTREF
+COMPLETION: asTYPEID_APPOBJECT : [#asETypeIdFlags#]asTYPEID_APPOBJECT
+COMPLETION: asTYPEID_BOOL : [#asETypeIdFlags#]asTYPEID_BOOL
+COMPLETION: asTYPEID_DOUBLE : [#asETypeIdFlags#]asTYPEID_DOUBLE
+COMPLETION: asTYPEID_FLOAT : [#asETypeIdFlags#]asTYPEID_FLOAT
+COMPLETION: asTYPEID_HANDLETOCONST : [#asETypeIdFlags#]asTYPEID_HANDLETOCONST
+COMPLETION: asTYPEID_INT16 : [#asETypeIdFlags#]asTYPEID_INT16
+COMPLETION: asTYPEID_INT32 : [#asETypeIdFlags#]asTYPEID_INT32
+COMPLETION: asTYPEID_INT64 : [#asETypeIdFlags#]asTYPEID_INT64
+COMPLETION: asTYPEID_INT8 : [#asETypeIdFlags#]asTYPEID_INT8
+COMPLETION: asTYPEID_MASK_OBJECT : [#asETypeIdFlags#]asTYPEID_MASK_OBJECT
+COMPLETION: asTYPEID_MASK_SEQNBR : [#asETypeIdFlags#]asTYPEID_MASK_SEQNBR
+COMPLETION: asTYPEID_OBJHANDLE : [#asETypeIdFlags#]asTYPEID_OBJHANDLE
+COMPLETION: asTYPEID_SCRIPTOBJECT : [#asETypeIdFlags#]asTYPEID_SCRIPTOBJECT
+COMPLETION: asTYPEID_TEMPLATE : [#asETypeIdFlags#]asTYPEID_TEMPLATE
+COMPLETION: asTYPEID_UINT16 : [#asETypeIdFlags#]asTYPEID_UINT16
+COMPLETION: asTYPEID_UINT32 : [#asETypeIdFlags#]asTYPEID_UINT32
+COMPLETION: asTYPEID_UINT64 : [#asETypeIdFlags#]asTYPEID_UINT64
+COMPLETION: asTYPEID_UINT8 : [#asETypeIdFlags#]asTYPEID_UINT8
+COMPLETION: asTYPEID_VOID : [#asETypeIdFlags#]asTYPEID_VOID
+COMPLETION: asUINT : asUINT
+COMPLETION: asUnprepareMultithread : [#void#]asUnprepareMultithread()
+COMPLETION: asWORD : asWORD
+COMPLETION: asWRONG_CALLING_CONV : [#asERetCodes#]asWRONG_CALLING_CONV
+COMPLETION: asWRONG_CONFIG_GROUP : [#asERetCodes#]asWRONG_CONFIG_GROUP
+COMPLETION: atan : [#double#]atan(<#double#>)
+COMPLETION: atan2 : [#double#]atan2(<#double#>, <#double#>)
+COMPLETION: atan2f : [#float#]atan2f(<#float#>, <#float#>)
+COMPLETION: atan2l : [#long double#]atan2l(<#long double#>, <#long double#>)
+COMPLETION: atanf : [#float#]atanf(<#float#>)
+COMPLETION: atanh : [#double#]atanh(<#double#>)
+COMPLETION: atanhf : [#float#]atanhf(<#float#>)
+COMPLETION: atanhl : [#long double#]atanhl(<#long double#>)
+COMPLETION: atanl : [#long double#]atanl(<#long double#>)
+COMPLETION: atexit : [#int#]atexit(<#void (*)()#>)
+COMPLETION: atexit_b : [#int#]atexit_b(<#^(void)#>)
+COMPLETION: atof : [#double#]atof(<#const char *#>)
+COMPLETION: atoi : [#int#]atoi(<#const char *#>)
+COMPLETION: atol : [#long#]atol(<#const char *#>)
+COMPLETION: atoll : [#long long#]atoll(<#const char *#>)
+COMPLETION: Attribute : Attribute
+COMPLETION: Attribute : Attribute()
+COMPLETION: Attribute : Attribute(<#Buffer *b#>, <#unsigned long offset#>, <#unsigned long stride#>, <#unsigned int components#>, <#Attribute::DataType type#>)
+COMPLETION: bcmp : [#int#]bcmp(<#const void *#>, <#const void *#>, <#size_t#>)
+COMPLETION: bcopy : [#void#]bcopy(<#const void *#>, <#void *#>, <#size_t#>)
+COMPLETION: blkcnt_t : blkcnt_t
+COMPLETION: blksize_t : blksize_t
+COMPLETION: bool
+COMPLETION: boost : boost::
+COMPLETION: brk : [#void *#]brk(<#const void *#>)
+COMPLETION: bsd_signal : [#void (*)(int)#]bsd_signal(<#int#>, <#void (*)(int)#>)
+COMPLETION: bsearch : [#void *#]bsearch(<#const void *#>, <#const void *#>, <#size_t#>, <#size_t#>, <#int (*)(const void *, const void *)#>)
+COMPLETION: bsearch_b : [#void *#]bsearch_b(<#const void *#>, <#const void *#>, <#size_t#>, <#size_t#>, <#^int(const void *, const void *)#>)
+COMPLETION: btAcos : [#btScalar#]btAcos(<#btScalar x#>)
+COMPLETION: btAlignPointer : [#T *#]btAlignPointer(<#T *unalignedPtr#>, <#size_t alignment#>)
+COMPLETION: btAngle : [#btScalar#]btAngle(<#const btVector3 &v1#>, <#const btVector3 &v2#>)
+COMPLETION: btAsin : [#btScalar#]btAsin(<#btScalar x#>)
+COMPLETION: btAtan : [#btScalar#]btAtan(<#btScalar x#>)
+COMPLETION: btAtan2 : [#btScalar#]btAtan2(<#btScalar x#>, <#btScalar y#>)
+COMPLETION: btAtan2Fast : [#btScalar#]btAtan2Fast(<#btScalar y#>, <#btScalar x#>)
+COMPLETION: btClamp : [#void#]btClamp(<#T &a#>, <#const T &lb#>, <#const T &ub#>)
+COMPLETION: btClamped : [#const T &#]btClamped(<#const T &a#>, <#const T &lb#>, <#const T &ub#>)
+COMPLETION: btCos : [#btScalar#]btCos(<#btScalar x#>)
+COMPLETION: btCross : [#btVector3#]btCross(<#const btVector3 &v1#>, <#const btVector3 &v2#>)
+COMPLETION: btDegrees : [#btScalar#]btDegrees(<#btScalar x#>)
+COMPLETION: btDistance : [#btScalar#]btDistance(<#const btVector3 &v1#>, <#const btVector3 &v2#>)
+COMPLETION: btDistance2 : [#btScalar#]btDistance2(<#const btVector3 &v1#>, <#const btVector3 &v2#>)
+COMPLETION: btDot : [#btScalar#]btDot(<#const btVector3 &v1#>, <#const btVector3 &v2#>)
+COMPLETION: btEqual : [#bool#]btEqual(<#btScalar a#>, <#btScalar eps#>)
+COMPLETION: btExp : [#btScalar#]btExp(<#btScalar x#>)
+COMPLETION: btFabs : [#btScalar#]btFabs(<#btScalar x#>)
+COMPLETION: btFmod : [#btScalar#]btFmod(<#btScalar x#>, <#btScalar y#>)
+COMPLETION: btFsel : [#btScalar#]btFsel(<#btScalar a#>, <#btScalar b#>, <#btScalar c#>)
+COMPLETION: btFuzzyZero : [#bool#]btFuzzyZero(<#btScalar x#>)
+COMPLETION: btGetVersion : [#int#]btGetVersion()
+COMPLETION: btGreaterEqual : [#bool#]btGreaterEqual(<#btScalar a#>, <#btScalar eps#>)
+COMPLETION: btIsNegative : [#int#]btIsNegative(<#btScalar x#>)
+COMPLETION: btLog : [#btScalar#]btLog(<#btScalar x#>)
+COMPLETION: btMachineIsLittleEndian : [#bool#]btMachineIsLittleEndian()
+COMPLETION: btMatrix3x3 : btMatrix3x3
+COMPLETION: btMatrix3x3 : btMatrix3x3()
+COMPLETION: btMatrix3x3 : btMatrix3x3(<#const btQuaternion &q#>)
+COMPLETION: btMatrix3x3 : btMatrix3x3(<#const btScalar &xx#>, <#const btScalar &xy#>, <#const btScalar &xz#>, <#const btScalar &yx#>, <#const btScalar &yy#>, <#const btScalar &yz#>, <#const btScalar &zx#>, <#const btScalar &zy#>, <#const btScalar &zz#>)
+COMPLETION: btMatrix3x3 : btMatrix3x3(<#const btMatrix3x3 &other#>)
+COMPLETION: btMatrix3x3DoubleData : btMatrix3x3DoubleData
+COMPLETION: btMatrix3x3FloatData : btMatrix3x3FloatData
+COMPLETION: btMax : [#const T &#]btMax(<#const T &a#>, <#const T &b#>)
+COMPLETION: btMin : [#const T &#]btMin(<#const T &a#>, <#const T &b#>)
+COMPLETION: btNormalizeAngle : [#btScalar#]btNormalizeAngle(<#btScalar angleInRadians#>)
+COMPLETION: btowc : [#wint_t#]btowc(<#int#>)
+COMPLETION: btPlaneSpace1 : [#void#]btPlaneSpace1(<#const T &n#>, <#T &p#>, <#T &q#>)
+COMPLETION: btPow : [#btScalar#]btPow(<#btScalar x#>, <#btScalar y#>)
+COMPLETION: btQuadWord : btQuadWord
+COMPLETION: btQuadWord : btQuadWord()
+COMPLETION: btQuadWord : btQuadWord(<#const btScalar &x#>, <#const btScalar &y#>, <#const btScalar &z#>)
+COMPLETION: btQuadWord : btQuadWord(<#const btScalar &x#>, <#const btScalar &y#>, <#const btScalar &z#>, <#const btScalar &w#>)
+COMPLETION: btQuadWord : btQuadWord(<#const btQuadWord &#>)
+COMPLETION: btQuaternion : btQuaternion
+COMPLETION: btQuaternion : btQuaternion()
+COMPLETION: btQuaternion : btQuaternion(<#const btScalar &x#>, <#const btScalar &y#>, <#const btScalar &z#>, <#const btScalar &w#>)
+COMPLETION: btQuaternion : btQuaternion(<#const btVector3 &axis#>, <#const btScalar &angle#>)
+COMPLETION: btQuaternion : btQuaternion(<#const btScalar &yaw#>, <#const btScalar &pitch#>, <#const btScalar &roll#>)
+COMPLETION: btQuaternion : btQuaternion(<#const btQuaternion &#>)
+COMPLETION: btRadians : [#btScalar#]btRadians(<#btScalar x#>)
+COMPLETION: btScalar : btScalar
+COMPLETION: btSelect : [#unsigned int#]btSelect(<#unsigned int condition#>, <#unsigned int valueIfConditionNonZero#>, <#unsigned int valueIfConditionZero#>)
+COMPLETION: btSelect : [#int#]btSelect(<#unsigned int condition#>, <#int valueIfConditionNonZero#>, <#int valueIfConditionZero#>)
+COMPLETION: btSelect : [#float#]btSelect(<#unsigned int condition#>, <#float valueIfConditionNonZero#>, <#float valueIfConditionZero#>)
+COMPLETION: btSetMax : [#void#]btSetMax(<#T &a#>, <#const T &b#>)
+COMPLETION: btSetMin : [#void#]btSetMin(<#T &a#>, <#const T &b#>)
+COMPLETION: btSin : [#btScalar#]btSin(<#btScalar x#>)
+COMPLETION: btSqrt : [#btScalar#]btSqrt(<#btScalar y#>)
+COMPLETION: btSwap : [#void#]btSwap(<#T &a#>, <#T &b#>)
+COMPLETION: btSwapEndian : [#unsigned short#]btSwapEndian(<#short val#>)
+COMPLETION: btSwapEndian : [#unsigned int#]btSwapEndian(<#unsigned int val#>)
+COMPLETION: btSwapEndian : [#unsigned short#]btSwapEndian(<#unsigned short val#>)
+COMPLETION: btSwapEndian : [#unsigned int#]btSwapEndian(<#int val#>)
+COMPLETION: btSwapEndianDouble : [#void#]btSwapEndianDouble(<#double d#>, <#unsigned char *dst#>)
+COMPLETION: btSwapEndianFloat : [#unsigned int#]btSwapEndianFloat(<#float d#>)
+COMPLETION: btSwapScalarEndian : [#void#]btSwapScalarEndian(<#const btScalar &sourceVal#>, <#btScalar &destVal#>)
+COMPLETION: btSwapVector3Endian : [#void#]btSwapVector3Endian(<#const btVector3 &sourceVec#>, <#btVector3 &destVec#>)
+COMPLETION: btTan : [#btScalar#]btTan(<#btScalar x#>)
+COMPLETION: btTransform : btTransform
+COMPLETION: btTransform : btTransform()
+COMPLETION: btTransform : btTransform(<#const btQuaternion &q#>{#, <#const btVector3 &c#>#})
+COMPLETION: btTransform : btTransform(<#const btMatrix3x3 &b#>{#, <#const btVector3 &c#>#})
+COMPLETION: btTransform : btTransform(<#const btTransform &other#>)
+COMPLETION: btTransformDoubleData : btTransformDoubleData
+COMPLETION: btTransformFloatData : btTransformFloatData
+COMPLETION: btTriple : [#btScalar#]btTriple(<#const btVector3 &v1#>, <#const btVector3 &v2#>, <#const btVector3 &v3#>)
+COMPLETION: btTypedObject : btTypedObject
+COMPLETION: btTypedObject : btTypedObject(<#int objectType#>)
+COMPLETION: btUnswapEndianDouble : [#double#]btUnswapEndianDouble(<#const unsigned char *src#>)
+COMPLETION: btUnswapEndianFloat : [#float#]btUnswapEndianFloat(<#unsigned int a#>)
+COMPLETION: btUnSwapVector3Endian : [#void#]btUnSwapVector3Endian(<#btVector3 &vector#>)
+COMPLETION: btVector3 : btVector3
+COMPLETION: btVector3 : btVector3()
+COMPLETION: btVector3 : btVector3(<#const btScalar &x#>, <#const btScalar &y#>, <#const btScalar &z#>)
+COMPLETION: btVector3 : btVector3(<#const btVector3 &#>)
+COMPLETION: btVector3DoubleData : btVector3DoubleData
+COMPLETION: btVector3FloatData : btVector3FloatData
+COMPLETION: btVector4 : btVector4
+COMPLETION: btVector4 : btVector4()
+COMPLETION: btVector4 : btVector4(<#const btScalar &x#>, <#const btScalar &y#>, <#const btScalar &z#>, <#const btScalar &w#>)
+COMPLETION: Buffer : Buffer
+COMPLETION: Buffer : Buffer()
+COMPLETION: Buffer : Buffer(<#size_t size#>, <#Buffer::BufferUsage usage#>)
+COMPLETION: bzero : [#void#]bzero(<#void *#>, <#size_t#>)
+COMPLETION: calloc : [#void *#]calloc(<#size_t#>, <#size_t#>)
+COMPLETION: Camera : Camera
+COMPLETION: Camera : Camera()
+COMPLETION: cbrt : [#double#]cbrt(<#double#>)
+COMPLETION: cbrtf : [#float#]cbrtf(<#float#>)
+COMPLETION: cbrtl : [#long double#]cbrtl(<#long double#>)
+COMPLETION: ceil : [#double#]ceil(<#double#>)
+COMPLETION: ceilf : [#float#]ceilf(<#float#>)
+COMPLETION: ceill : [#long double#]ceill(<#long double#>)
+COMPLETION: cgetcap : [#char *#]cgetcap(<#char *#>, <#const char *#>, <#int#>)
+COMPLETION: cgetclose : [#int#]cgetclose()
+COMPLETION: cgetent : [#int#]cgetent(<#char **#>, <#char **#>, <#const char *#>)
+COMPLETION: cgetfirst : [#int#]cgetfirst(<#char **#>, <#char **#>)
+COMPLETION: cgetmatch : [#int#]cgetmatch(<#const char *#>, <#const char *#>)
+COMPLETION: cgetnext : [#int#]cgetnext(<#char **#>, <#char **#>)
+COMPLETION: cgetnum : [#int#]cgetnum(<#char *#>, <#const char *#>, <#long *#>)
+COMPLETION: cgetset : [#int#]cgetset(<#const char *#>)
+COMPLETION: cgetstr : [#int#]cgetstr(<#char *#>, <#const char *#>, <#char **#>)
+COMPLETION: cgetustr : [#int#]cgetustr(<#char *#>, <#const char *#>, <#char **#>)
+COMPLETION: char
+COMPLETION: chdir : [#int#]chdir(<#const char *#>)
+COMPLETION: chflags : [#int#]chflags(<#const char *#>, <#__uint32_t#>)
+COMPLETION: chmod : [#int#]chmod(<#const char *#>, <#mode_t#>)
+COMPLETION: chmodx_np : [#int#]chmodx_np(<#const char *#>, <#filesec_t#>)
+COMPLETION: chown : [#int#]chown(<#const char *#>, <#uid_t#>, <#gid_t#>)
+COMPLETION: chroot : [#int#]chroot(<#const char *#>)
+COMPLETION: class
+COMPLETION: clearerr : [#void#]clearerr(<#FILE *#>)
+COMPLETION: clock : [#clock_t#]clock()
+COMPLETION: clock_t : clock_t
+COMPLETION: close : [#int#]close(<#int#>)
+COMPLETION: Color : Color
+COMPLETION: Color : Color()
+COMPLETION: Color : Color(<#const Color &other#>)
+COMPLETION: Color : Color(<#float r1#>, <#float g1#>, <#float b1#>, <#float a1#>)
+COMPLETION: confstr : [#size_t#]confstr(<#int#>, <#char *#>, <#size_t#>)
+COMPLETION: const
+COMPLETION: Pattern : const_cast<<#type#>>(<#expression#>)
+COMPLETION: copysign : [#double#]copysign(<#double#>, <#double#>)
+COMPLETION: copysignf : [#float#]copysignf(<#float#>, <#float#>)
+COMPLETION: copysignl : [#long double#]copysignl(<#long double#>, <#long double#>)
+COMPLETION: cos : [#double#]cos(<#double#>)
+COMPLETION: cosf : [#float#]cosf(<#float#>)
+COMPLETION: cosh : [#double#]cosh(<#double#>)
+COMPLETION: coshf : [#float#]coshf(<#float#>)
+COMPLETION: coshl : [#long double#]coshl(<#long double#>)
+COMPLETION: cosl : [#long double#]cosl(<#long double#>)
+COMPLETION: crypt : [#char *#]crypt(<#const char *#>, <#const char *#>)
+COMPLETION: ct_rune_t : ct_rune_t
+COMPLETION: ctermid : [#char *#]ctermid(<#char *#>)
+COMPLETION: ctermid_r : [#char *#]ctermid_r(<#char *#>)
+COMPLETION: ctime : [#char *#]ctime(<#const time_t *#>)
+COMPLETION: ctime_r : [#char *#]ctime_r(<#const time_t *#>, <#char *#>)
+COMPLETION: daemon : [#int#]daemon(<#int#>, <#int#>)
+COMPLETION: daylight : [#int#]daylight
+COMPLETION: Pattern : [#void#]delete <#expression#>
+COMPLETION: Pattern : [#void#]delete [] <#expression#>
+COMPLETION: DelRef : [#void#]DelRef()
+COMPLETION: dev_t : dev_t
+COMPLETION: devname : [#char *#]devname(<#dev_t#>, <#mode_t#>)
+COMPLETION: devname_r : [#char *#]devname_r(<#dev_t#>, <#mode_t#>, <#char *buf#>, <#int len#>)
+COMPLETION: difftime : [#double#]difftime(<#time_t#>, <#time_t#>)
+COMPLETION: digittoint : [#int#]digittoint(<#int _c#>)
+COMPLETION: div : [#div_t#]div(<#int#>, <#int#>)
+COMPLETION: div_t : div_t
+COMPLETION: dot : [#btScalar#]dot(<#const btQuaternion &q1#>, <#const btQuaternion &q2#>)
+COMPLETION: double
+COMPLETION: double_t : double_t
+COMPLETION: dprintf : [#int#]dprintf(<#int#>, <#const char *, ...#>)
+COMPLETION: drand48 : [#double#]drand48()
+COMPLETION: drem : [#double#]drem(<#double#>, <#double#>)
+COMPLETION: dup : [#int#]dup(<#int#>)
+COMPLETION: dup2 : [#int#]dup2(<#int#>, <#int#>)
+COMPLETION: Pattern : dynamic_cast<<#type#>>(<#expression#>)
+COMPLETION: ecvt : [#char *#]ecvt(<#double#>, <#int#>, <#int *#>, <#int *#>)
+COMPLETION: Pattern : else
+COMPLETION: Pattern : else if (<#condition#>)
+COMPLETION: encrypt : [#void#]encrypt(<#char *#>, <#int#>)
+COMPLETION: endusershell : [#void#]endusershell()
+COMPLETION: Engine : Engine
+COMPLETION: Engine : Engine(<#const EngineSettings &s#>)
+COMPLETION: EngineSettings : EngineSettings
+COMPLETION: Entity : Entity
+COMPLETION: enum
+COMPLETION: erand48 : [#double#]erand48(<#unsigned short *#>)
+COMPLETION: erf : [#double#]erf(<#double#>)
+COMPLETION: erfc : [#double#]erfc(<#double#>)
+COMPLETION: erfcf : [#float#]erfcf(<#float#>)
+COMPLETION: erfcl : [#long double#]erfcl(<#long double#>)
+COMPLETION: erff : [#float#]erff(<#float#>)
+COMPLETION: erfl : [#long double#]erfl(<#long double#>)
+COMPLETION: EV__IOFDSET : [#enum <anonymous>#]EV__IOFDSET
+COMPLETION: ev_any_watcher : ev_any_watcher
+COMPLETION: EV_ASYNC : [#enum <anonymous>#]EV_ASYNC
+COMPLETION: ev_async : ev_async
+COMPLETION: ev_async_send : [#void#]ev_async_send(<#struct ev_loop *loop#>, <#ev_async *w#>)
+COMPLETION: ev_async_start : [#void#]ev_async_start(<#struct ev_loop *loop#>, <#ev_async *w#>)
+COMPLETION: ev_async_stop : [#void#]ev_async_stop(<#struct ev_loop *loop#>, <#ev_async *w#>)
+COMPLETION: ev_backend : [#unsigned int#]ev_backend(<#struct ev_loop *loop#>)
+COMPLETION: ev_break : [#void#]ev_break(<#struct ev_loop *loop#>{#, <#int how#>#})
+COMPLETION: EV_CHECK : [#enum <anonymous>#]EV_CHECK
+COMPLETION: ev_check : ev_check
+COMPLETION: ev_check_start : [#void#]ev_check_start(<#struct ev_loop *loop#>, <#ev_check *w#>)
+COMPLETION: ev_check_stop : [#void#]ev_check_stop(<#struct ev_loop *loop#>, <#ev_check *w#>)
+COMPLETION: EV_CHILD : [#enum <anonymous>#]EV_CHILD
+COMPLETION: ev_child : ev_child
+COMPLETION: ev_child : ev_child
+COMPLETION: ev_child_start : [#void#]ev_child_start(<#struct ev_loop *loop#>, <#ev_child *w#>)
+COMPLETION: ev_child_stop : [#void#]ev_child_stop(<#struct ev_loop *loop#>, <#ev_child *w#>)
+COMPLETION: EV_CLEANUP : [#enum <anonymous>#]EV_CLEANUP
+COMPLETION: ev_cleanup : ev_cleanup
+COMPLETION: ev_cleanup_start : [#void#]ev_cleanup_start(<#struct ev_loop *loop#>, <#ev_cleanup *w#>)
+COMPLETION: ev_cleanup_stop : [#void#]ev_cleanup_stop(<#struct ev_loop *loop#>, <#ev_cleanup *w#>)
+COMPLETION: ev_clear_pending : [#int#]ev_clear_pending(<#struct ev_loop *loop#>, <#void *w#>)
+COMPLETION: EV_CUSTOM : [#enum <anonymous>#]EV_CUSTOM
+COMPLETION: ev_default_destroy : [#void#]ev_default_destroy()
+COMPLETION: ev_default_fork : [#void#]ev_default_fork()
+COMPLETION: ev_default_loop : [#struct ev_loop *#]ev_default_loop({#<#unsigned int flags#>#})
+COMPLETION: ev_default_loop_uc_ : [#struct ev_loop *#]ev_default_loop_uc_()
+COMPLETION: ev_depth : [#unsigned int#]ev_depth(<#struct ev_loop *loop#>)
+COMPLETION: EV_EMBED : [#enum <anonymous>#]EV_EMBED
+COMPLETION: ev_embed : ev_embed
+COMPLETION: ev_embed : ev_embed
+COMPLETION: ev_embed_start : [#void#]ev_embed_start(<#struct ev_loop *loop#>, <#ev_embed *w#>)
+COMPLETION: ev_embed_stop : [#void#]ev_embed_stop(<#struct ev_loop *loop#>, <#ev_embed *w#>)
+COMPLETION: ev_embed_sweep : [#void#]ev_embed_sweep(<#struct ev_loop *loop#>, <#ev_embed *w#>)
+COMPLETION: ev_embeddable_backends : [#unsigned int#]ev_embeddable_backends()
+COMPLETION: EV_ERROR : [#enum <anonymous>#]EV_ERROR
+COMPLETION: ev_feed_event : [#void#]ev_feed_event(<#struct ev_loop *loop#>, <#void *w#>, <#int revents#>)
+COMPLETION: ev_feed_fd_event : [#void#]ev_feed_fd_event(<#struct ev_loop *loop#>, <#int fd#>, <#int revents#>)
+COMPLETION: ev_feed_signal : [#void#]ev_feed_signal(<#int signum#>)
+COMPLETION: ev_feed_signal_event : [#void#]ev_feed_signal_event(<#struct ev_loop *loop#>, <#int signum#>)
+COMPLETION: EV_FORK : [#enum <anonymous>#]EV_FORK
+COMPLETION: ev_fork : ev_fork
+COMPLETION: ev_fork : ev_fork
+COMPLETION: ev_fork_start : [#void#]ev_fork_start(<#struct ev_loop *loop#>, <#ev_fork *w#>)
+COMPLETION: ev_fork_stop : [#void#]ev_fork_stop(<#struct ev_loop *loop#>, <#ev_fork *w#>)
+COMPLETION: EV_IDLE : [#enum <anonymous>#]EV_IDLE
+COMPLETION: ev_idle : ev_idle
+COMPLETION: ev_idle : ev_idle
+COMPLETION: ev_idle_start : [#void#]ev_idle_start(<#struct ev_loop *loop#>, <#ev_idle *w#>)
+COMPLETION: ev_idle_stop : [#void#]ev_idle_stop(<#struct ev_loop *loop#>, <#ev_idle *w#>)
+COMPLETION: ev_invoke : [#void#]ev_invoke(<#struct ev_loop *loop#>, <#void *w#>, <#int revents#>)
+COMPLETION: ev_invoke_pending : [#void#]ev_invoke_pending(<#struct ev_loop *loop#>)
+COMPLETION: EV_IO : [#enum <anonymous>#]EV_IO
+COMPLETION: ev_io : ev_io
+COMPLETION: ev_io : ev_io
+COMPLETION: ev_io_start : [#void#]ev_io_start(<#struct ev_loop *loop#>, <#ev_io *w#>)
+COMPLETION: ev_io_stop : [#void#]ev_io_stop(<#struct ev_loop *loop#>, <#ev_io *w#>)
+COMPLETION: ev_is_default_loop : [#int#]ev_is_default_loop(<#struct ev_loop *loop#>)
+COMPLETION: ev_iteration : [#unsigned int#]ev_iteration(<#struct ev_loop *loop#>)
+COMPLETION: ev_loop : [#void#]ev_loop(<#struct ev_loop *loop#>, <#int flags#>)
+COMPLETION: ev_loop_count : [#unsigned int#]ev_loop_count(<#struct ev_loop *loop#>)
+COMPLETION: ev_loop_depth : [#unsigned int#]ev_loop_depth(<#struct ev_loop *loop#>)
+COMPLETION: ev_loop_destroy : [#void#]ev_loop_destroy(<#struct ev_loop *loop#>)
+COMPLETION: ev_loop_fork : [#void#]ev_loop_fork(<#struct ev_loop *loop#>)
+COMPLETION: ev_loop_new : [#struct ev_loop *#]ev_loop_new({#<#unsigned int flags#>#})
+COMPLETION: ev_loop_verify : [#void#]ev_loop_verify(<#struct ev_loop *loop#>)
+COMPLETION: EV_NONE : [#enum <anonymous>#]EV_NONE
+COMPLETION: ev_now : [#ev_tstamp#]ev_now(<#struct ev_loop *loop#>)
+COMPLETION: ev_now_update : [#void#]ev_now_update(<#struct ev_loop *loop#>)
+COMPLETION: ev_once : [#void#]ev_once(<#struct ev_loop *loop#>, <#int fd#>, <#int events#>, <#ev_tstamp timeout#>, <#void (*cb)(int, void *)#>, <#void *arg#>)
+COMPLETION: ev_pending_count : [#unsigned int#]ev_pending_count(<#struct ev_loop *loop#>)
+COMPLETION: EV_PERIODIC : [#enum <anonymous>#]EV_PERIODIC
+COMPLETION: ev_periodic : ev_periodic
+COMPLETION: ev_periodic : ev_periodic
+COMPLETION: ev_periodic_again : [#void#]ev_periodic_again(<#struct ev_loop *loop#>, <#ev_periodic *w#>)
+COMPLETION: ev_periodic_start : [#void#]ev_periodic_start(<#struct ev_loop *loop#>, <#ev_periodic *w#>)
+COMPLETION: ev_periodic_stop : [#void#]ev_periodic_stop(<#struct ev_loop *loop#>, <#ev_periodic *w#>)
+COMPLETION: EV_PREPARE : [#enum <anonymous>#]EV_PREPARE
+COMPLETION: ev_prepare : ev_prepare
+COMPLETION: ev_prepare_start : [#void#]ev_prepare_start(<#struct ev_loop *loop#>, <#ev_prepare *w#>)
+COMPLETION: ev_prepare_stop : [#void#]ev_prepare_stop(<#struct ev_loop *loop#>, <#ev_prepare *w#>)
+COMPLETION: EV_READ : [#enum <anonymous>#]EV_READ
+COMPLETION: ev_recommended_backends : [#unsigned int#]ev_recommended_backends()
+COMPLETION: ev_ref : [#void#]ev_ref(<#struct ev_loop *loop#>)
+COMPLETION: ev_resume : [#void#]ev_resume(<#struct ev_loop *loop#>)
+COMPLETION: ev_run : [#void#]ev_run(<#struct ev_loop *loop#>{#, <#int flags#>#})
+COMPLETION: ev_set_allocator : [#void#]ev_set_allocator(<#void *(*cb)(void *, long)#>)
+COMPLETION: ev_set_invoke_pending_cb : [#void#]ev_set_invoke_pending_cb(<#struct ev_loop *loop#>, <#void (*invoke_pending_cb)(struct ev_loop *)#>)
+COMPLETION: ev_set_io_collect_interval : [#void#]ev_set_io_collect_interval(<#struct ev_loop *loop#>, <#ev_tstamp interval#>)
+COMPLETION: ev_set_loop_release_cb : [#void#]ev_set_loop_release_cb(<#struct ev_loop *loop#>, <#void (*release)(struct ev_loop *)#>, <#void (*acquire)(struct ev_loop *)#>)
+COMPLETION: ev_set_syserr_cb : [#void#]ev_set_syserr_cb(<#void (*cb)(const char *)#>)
+COMPLETION: ev_set_timeout_collect_interval : [#void#]ev_set_timeout_collect_interval(<#struct ev_loop *loop#>, <#ev_tstamp interval#>)
+COMPLETION: ev_set_userdata : [#void#]ev_set_userdata(<#struct ev_loop *loop#>, <#void *data#>)
+COMPLETION: EV_SIGNAL : [#enum <anonymous>#]EV_SIGNAL
+COMPLETION: ev_signal : ev_signal
+COMPLETION: ev_signal : ev_signal
+COMPLETION: ev_signal_start : [#void#]ev_signal_start(<#struct ev_loop *loop#>, <#ev_signal *w#>)
+COMPLETION: ev_signal_stop : [#void#]ev_signal_stop(<#struct ev_loop *loop#>, <#ev_signal *w#>)
+COMPLETION: ev_sleep : [#void#]ev_sleep(<#ev_tstamp delay#>)
+COMPLETION: EV_STAT : [#enum <anonymous>#]EV_STAT
+COMPLETION: ev_stat : ev_stat
+COMPLETION: ev_stat : ev_stat(<#const ev_stat &#>)
+COMPLETION: ev_stat : ev_stat
+COMPLETION: ev_stat_start : [#void#]ev_stat_start(<#struct ev_loop *loop#>, <#ev_stat *w#>)
+COMPLETION: ev_stat_stat : [#void#]ev_stat_stat(<#struct ev_loop *loop#>, <#ev_stat *w#>)
+COMPLETION: ev_stat_stop : [#void#]ev_stat_stop(<#struct ev_loop *loop#>, <#ev_stat *w#>)
+COMPLETION: ev_statdata : ev_statdata
+COMPLETION: ev_supported_backends : [#unsigned int#]ev_supported_backends()
+COMPLETION: ev_suspend : [#void#]ev_suspend(<#struct ev_loop *loop#>)
+COMPLETION: ev_time : [#ev_tstamp#]ev_time()
+COMPLETION: EV_TIMEOUT : [#enum <anonymous>#]EV_TIMEOUT
+COMPLETION: EV_TIMER : [#enum <anonymous>#]EV_TIMER
+COMPLETION: ev_timer : ev_timer
+COMPLETION: ev_timer : ev_timer(<#const ev_timer &#>)
+COMPLETION: ev_timer : ev_timer
+COMPLETION: ev_timer_again : [#void#]ev_timer_again(<#struct ev_loop *loop#>, <#ev_timer *w#>)
+COMPLETION: ev_timer_remaining : [#ev_tstamp#]ev_timer_remaining(<#struct ev_loop *loop#>, <#ev_timer *w#>)
+COMPLETION: ev_timer_start : [#void#]ev_timer_start(<#struct ev_loop *loop#>, <#ev_timer *w#>)
+COMPLETION: ev_timer_stop : [#void#]ev_timer_stop(<#struct ev_loop *loop#>, <#ev_timer *w#>)
+COMPLETION: ev_tstamp : ev_tstamp
+COMPLETION: EV_UNDEF : [#enum <anonymous>#]EV_UNDEF
+COMPLETION: ev_unloop : [#void#]ev_unloop(<#struct ev_loop *loop#>, <#int how#>)
+COMPLETION: ev_unref : [#void#]ev_unref(<#struct ev_loop *loop#>)
+COMPLETION: ev_userdata : [#void *#]ev_userdata(<#struct ev_loop *loop#>)
+COMPLETION: ev_verify : [#void#]ev_verify(<#struct ev_loop *loop#>)
+COMPLETION: ev_version_major : [#int#]ev_version_major()
+COMPLETION: ev_version_minor : [#int#]ev_version_minor()
+COMPLETION: ev_watcher : ev_watcher
+COMPLETION: ev_watcher : ev_watcher
+COMPLETION: ev_watcher_list : ev_watcher_list
+COMPLETION: ev_watcher_list : ev_watcher_list
+COMPLETION: ev_watcher_time : ev_watcher_time
+COMPLETION: ev_watcher_time : ev_watcher_time
+COMPLETION: EV_WRITE : [#enum <anonymous>#]EV_WRITE
+COMPLETION: EVBACKEND_ALL : [#enum <anonymous>#]EVBACKEND_ALL
+COMPLETION: EVBACKEND_DEVPOLL : [#enum <anonymous>#]EVBACKEND_DEVPOLL
+COMPLETION: EVBACKEND_EPOLL : [#enum <anonymous>#]EVBACKEND_EPOLL
+COMPLETION: EVBACKEND_KQUEUE : [#enum <anonymous>#]EVBACKEND_KQUEUE
+COMPLETION: EVBACKEND_MASK : [#enum <anonymous>#]EVBACKEND_MASK
+COMPLETION: EVBACKEND_POLL : [#enum <anonymous>#]EVBACKEND_POLL
+COMPLETION: EVBACKEND_PORT : [#enum <anonymous>#]EVBACKEND_PORT
+COMPLETION: EVBACKEND_SELECT : [#enum <anonymous>#]EVBACKEND_SELECT
+COMPLETION: EVBREAK_ALL : [#enum <anonymous>#]EVBREAK_ALL
+COMPLETION: EVBREAK_CANCEL : [#enum <anonymous>#]EVBREAK_CANCEL
+COMPLETION: EVBREAK_ONE : [#enum <anonymous>#]EVBREAK_ONE
+COMPLETION: EVFLAG_AUTO : [#enum <anonymous>#]EVFLAG_AUTO
+COMPLETION: EVFLAG_FORKCHECK : [#enum <anonymous>#]EVFLAG_FORKCHECK
+COMPLETION: EVFLAG_NOENV : [#enum <anonymous>#]EVFLAG_NOENV
+COMPLETION: EVFLAG_NOINOTIFY : [#enum <anonymous>#]EVFLAG_NOINOTIFY
+COMPLETION: EVFLAG_NOSIGFD : [#enum <anonymous>#]EVFLAG_NOSIGFD
+COMPLETION: EVFLAG_NOSIGMASK : [#enum <anonymous>#]EVFLAG_NOSIGMASK
+COMPLETION: EVFLAG_SIGNALFD : [#enum <anonymous>#]EVFLAG_SIGNALFD
+COMPLETION: EVRUN_NOWAIT : [#enum <anonymous>#]EVRUN_NOWAIT
+COMPLETION: EVRUN_ONCE : [#enum <anonymous>#]EVRUN_ONCE
+COMPLETION: Exception : Exception
+COMPLETION: Exception : Exception({#<#const std::string &message#>#})
+COMPLETION: exchangedata : [#int#]exchangedata(<#const char *#>, <#const char *#>, <#unsigned int#>)
+COMPLETION: execl : [#int#]execl(<#const char *#>, <#const char *, ...#>)
+COMPLETION: execle : [#int#]execle(<#const char *#>, <#const char *, ...#>)
+COMPLETION: execlp : [#int#]execlp(<#const char *#>, <#const char *, ...#>)
+COMPLETION: execv : [#int#]execv(<#const char *#>, <#char *const *#>)
+COMPLETION: execve : [#int#]execve(<#const char *#>, <#char *const *#>, <#char *const *#>)
+COMPLETION: execvP : [#int#]execvP(<#const char *#>, <#const char *#>, <#char *const *#>)
+COMPLETION: execvp : [#int#]execvp(<#const char *#>, <#char *const *#>)
+COMPLETION: exit : [#void#]exit(<#int#>)
+COMPLETION: exp : [#double#]exp(<#double#>)
+COMPLETION: exp2 : [#double#]exp2(<#double#>)
+COMPLETION: exp2f : [#float#]exp2f(<#float#>)
+COMPLETION: exp2l : [#long double#]exp2l(<#long double#>)
+COMPLETION: expf : [#float#]expf(<#float#>)
+COMPLETION: expl : [#long double#]expl(<#long double#>)
+COMPLETION: expm1 : [#double#]expm1(<#double#>)
+COMPLETION: expm1f : [#float#]expm1f(<#float#>)
+COMPLETION: expm1l : [#long double#]expm1l(<#long double#>)
+COMPLETION: extern
+COMPLETION: fabs : [#double#]fabs(<#double#>)
+COMPLETION: fabsf : [#float#]fabsf(<#float#>)
+COMPLETION: fabsl : [#long double#]fabsl(<#long double#>)
+COMPLETION: Pattern : [#bool#]false
+COMPLETION: fchdir : [#int#]fchdir(<#int#>)
+COMPLETION: fchflags : [#int#]fchflags(<#int#>, <#__uint32_t#>)
+COMPLETION: fchmod : [#int#]fchmod(<#int#>, <#mode_t#>)
+COMPLETION: fchmodx_np : [#int#]fchmodx_np(<#int#>, <#filesec_t#>)
+COMPLETION: fchown : [#int#]fchown(<#int#>, <#uid_t#>, <#gid_t#>)
+COMPLETION: fclose : [#int#]fclose(<#FILE *#>)
+COMPLETION: fcvt : [#char *#]fcvt(<#double#>, <#int#>, <#int *#>, <#int *#>)
+COMPLETION: fd_set : fd_set
+COMPLETION: fd_set : fd_set
+COMPLETION: fdim : [#double#]fdim(<#double#>, <#double#>)
+COMPLETION: fdimf : [#float#]fdimf(<#float#>, <#float#>)
+COMPLETION: fdiml : [#long double#]fdiml(<#long double#>, <#long double#>)
+COMPLETION: fdopen : [#FILE *#]fdopen(<#int#>, <#const char *#>)
+COMPLETION: feof : [#int#]feof(<#FILE *#>)
+COMPLETION: ferror : [#int#]ferror(<#FILE *#>)
+COMPLETION: fflagstostr : [#char *#]fflagstostr(<#unsigned long#>)
+COMPLETION: fflush : [#int#]fflush(<#FILE *#>)
+COMPLETION: ffs : [#int#]ffs(<#int#>)
+COMPLETION: ffsctl : [#int#]ffsctl(<#int#>, <#unsigned long#>, <#void *#>, <#unsigned int#>)
+COMPLETION: ffsl : [#int#]ffsl(<#long#>)
+COMPLETION: fgetattrlist : [#int#]fgetattrlist(<#int#>, <#void *#>, <#void *#>, <#size_t#>, <#unsigned int#>)
+COMPLETION: fgetc : [#int#]fgetc(<#FILE *#>)
+COMPLETION: fgetln : [#char *#]fgetln(<#FILE *#>, <#size_t *#>)
+COMPLETION: fgetpos : [#int#]fgetpos(<#FILE *#>, <#fpos_t *#>)
+COMPLETION: fgets : [#char *#]fgets(<#char *#>, <#int#>, <#FILE *#>)
+COMPLETION: fgetwc : [#wint_t#]fgetwc(<#FILE *#>)
+COMPLETION: fgetwln : [#wchar_t *#]fgetwln(<#FILE *#>, <#size_t *#>)
+COMPLETION: fgetws : [#wchar_t *#]fgetws(<#wchar_t *#>, <#int#>, <#FILE *#>)
+COMPLETION: FILE : FILE
+COMPLETION: fileno : [#int#]fileno(<#FILE *#>)
+COMPLETION: filesec_t : filesec_t
+COMPLETION: finite : [#int#]finite(<#double#>)
+COMPLETION: float
+COMPLETION: float_t : float_t
+COMPLETION: flockfile : [#void#]flockfile(<#FILE *#>)
+COMPLETION: floor : [#double#]floor(<#double#>)
+COMPLETION: floorf : [#float#]floorf(<#float#>)
+COMPLETION: floorl : [#long double#]floorl(<#long double#>)
+COMPLETION: fls : [#int#]fls(<#int#>)
+COMPLETION: flsl : [#int#]flsl(<#long#>)
+COMPLETION: fma : [#double#]fma(<#double#>, <#double#>, <#double#>)
+COMPLETION: fmaf : [#float#]fmaf(<#float#>, <#float#>, <#float#>)
+COMPLETION: fmal : [#long double#]fmal(<#long double#>, <#long double#>, <#long double#>)
+COMPLETION: fmax : [#double#]fmax(<#double#>, <#double#>)
+COMPLETION: fmaxf : [#float#]fmaxf(<#float#>, <#float#>)
+COMPLETION: fmaxl : [#long double#]fmaxl(<#long double#>, <#long double#>)
+COMPLETION: fmin : [#double#]fmin(<#double#>, <#double#>)
+COMPLETION: fminf : [#float#]fminf(<#float#>, <#float#>)
+COMPLETION: fminl : [#long double#]fminl(<#long double#>, <#long double#>)
+COMPLETION: fmod : [#double#]fmod(<#double#>, <#double#>)
+COMPLETION: fmodf : [#float#]fmodf(<#float#>, <#float#>)
+COMPLETION: fmodl : [#long double#]fmodl(<#long double#>, <#long double#>)
+COMPLETION: fmtcheck : [#const char *#]fmtcheck(<#const char *#>, <#const char *#>)
+COMPLETION: fopen : [#FILE *#]fopen(<#const char *#>, <#const char *#>)
+COMPLETION: fork : [#pid_t#]fork()
+COMPLETION: fpathconf : [#long#]fpathconf(<#int#>, <#int#>)
+COMPLETION: fpos_t : fpos_t
+COMPLETION: fprintf : [#int#]fprintf(<#FILE *#>, <#const char *, ...#>)
+COMPLETION: fpurge : [#int#]fpurge(<#FILE *#>)
+COMPLETION: fputc : [#int#]fputc(<#int#>, <#FILE *#>)
+COMPLETION: fputs : [#int#]fputs(<#const char *#>, <#FILE *#>)
+COMPLETION: fputwc : [#wint_t#]fputwc(<#wchar_t#>, <#FILE *#>)
+COMPLETION: fputws : [#int#]fputws(<#const wchar_t *#>, <#FILE *#>)
+COMPLETION: fread : [#size_t#]fread(<#void *#>, <#size_t#>, <#size_t#>, <#FILE *#>)
+COMPLETION: free : [#void#]free(<#void *#>)
+COMPLETION: freopen : [#FILE *#]freopen(<#const char *#>, <#const char *#>, <#FILE *#>)
+COMPLETION: frexp : [#double#]frexp(<#double#>, <#int *#>)
+COMPLETION: frexpf : [#float#]frexpf(<#float#>, <#int *#>)
+COMPLETION: frexpl : [#long double#]frexpl(<#long double#>, <#int *#>)
+COMPLETION: fscanf : [#int#]fscanf(<#FILE *#>, <#const char *, ...#>)
+COMPLETION: fsctl : [#int#]fsctl(<#const char *#>, <#unsigned long#>, <#void *#>, <#unsigned int#>)
+COMPLETION: fseek : [#int#]fseek(<#FILE *#>, <#long#>, <#int#>)
+COMPLETION: fseeko : [#int#]fseeko(<#FILE *#>, <#off_t#>, <#int#>)
+COMPLETION: fsetattrlist : [#int#]fsetattrlist(<#int#>, <#void *#>, <#void *#>, <#size_t#>, <#unsigned int#>)
+COMPLETION: fsetpos : [#int#]fsetpos(<#FILE *#>, <#const fpos_t *#>)
+COMPLETION: fssearchblock : fssearchblock
+COMPLETION: fstat : [#int#]fstat(<#int#>, <#struct stat *#>)
+COMPLETION: fstat64 : [#int#]fstat64(<#int#>, <#struct stat64 *#>)
+COMPLETION: fstatx64_np : [#int#]fstatx64_np(<#int#>, <#struct stat64 *#>, <#filesec_t#>)
+COMPLETION: fstatx_np : [#int#]fstatx_np(<#int#>, <#struct stat *#>, <#filesec_t#>)
+COMPLETION: fsync : [#int#]fsync(<#int#>)
+COMPLETION: fsync_volume_np : [#int#]fsync_volume_np(<#int#>, <#int#>)
+COMPLETION: ftell : [#long#]ftell(<#FILE *#>)
+COMPLETION: ftello : [#off_t#]ftello(<#FILE *#>)
+COMPLETION: ftruncate : [#int#]ftruncate(<#int#>, <#off_t#>)
+COMPLETION: ftrylockfile : [#int#]ftrylockfile(<#FILE *#>)
+COMPLETION: funlockfile : [#void#]funlockfile(<#FILE *#>)
+COMPLETION: funopen : [#FILE *#]funopen(<#const void *#>, <#int (*)(void *, char *, int)#>, <#int (*)(void *, const char *, int)#>, <#fpos_t (*)(void *, fpos_t, int)#>, <#int (*)(void *)#>)
+COMPLETION: fwide : [#int#]fwide(<#FILE *#>, <#int#>)
+COMPLETION: fwprintf : [#int#]fwprintf(<#FILE *#>, <#const wchar_t *, ...#>)
+COMPLETION: fwrite : [#size_t#]fwrite(<#const void *#>, <#size_t#>, <#size_t#>, <#FILE *#>)
+COMPLETION: fwscanf : [#int#]fwscanf(<#FILE *#>, <#const wchar_t *, ...#>)
+COMPLETION: gamma : [#double#]gamma(<#double#>)
+COMPLETION: gcvt : [#char *#]gcvt(<#double#>, <#int#>, <#char *#>)
+COMPLETION: getattrlist : [#int#]getattrlist(<#const char *#>, <#void *#>, <#void *#>, <#size_t#>, <#unsigned int#>)
+COMPLETION: getbsize : [#char *#]getbsize(<#int *#>, <#long *#>)
+COMPLETION: getc : [#int#]getc(<#FILE *#>)
+COMPLETION: getc_unlocked : [#int#]getc_unlocked(<#FILE *#>)
+COMPLETION: getchar : [#int#]getchar()
+COMPLETION: getchar_unlocked : [#int#]getchar_unlocked()
+COMPLETION: getcwd : [#char *#]getcwd(<#char *#>, <#size_t#>)
+COMPLETION: getdate : [#struct tm *#]getdate(<#const char *#>)
+COMPLETION: getdate_err : [#int#]getdate_err
+COMPLETION: getdelim : [#ssize_t#]getdelim(<#char **#>, <#size_t *#>, <#int#>, <#FILE *#>)
+COMPLETION: getdirentriesattr : [#int#]getdirentriesattr(<#int#>, <#void *#>, <#void *#>, <#size_t#>, <#unsigned int *#>, <#unsigned int *#>, <#unsigned int *#>, <#unsigned int#>)
+COMPLETION: getdomainname : [#int#]getdomainname(<#char *#>, <#int#>)
+COMPLETION: getdtablesize : [#int#]getdtablesize()
+COMPLETION: getegid : [#gid_t#]getegid()
+COMPLETION: GetEntity : [#Entity *#]GetEntity(<#const StringID &sid#>)
+COMPLETION: getenv : [#char *#]getenv(<#const char *#>)
+COMPLETION: geteuid : [#uid_t#]geteuid()
+COMPLETION: GetFunction : [#asIScriptFunction *#]GetFunction(<#const std::string &decl#>)[# const#]
+COMPLETION: getgid : [#gid_t#]getgid()
+COMPLETION: getgrouplist : [#int#]getgrouplist(<#const char *#>, <#int#>, <#int *#>, <#int *#>)
+COMPLETION: getgroups : [#int#]getgroups(<#int#>, <#gid_t *#>)
+COMPLETION: gethostid : [#long#]gethostid()
+COMPLETION: gethostname : [#int#]gethostname(<#char *#>, <#size_t#>)
+COMPLETION: gethostuuid : [#int#]gethostuuid(<#unsigned char *#>, <#const struct timespec *#>)
+COMPLETION: getiopolicy_np : [#int#]getiopolicy_np(<#int#>, <#int#>)
+COMPLETION: getline : [#ssize_t#]getline(<#char **#>, <#size_t *#>, <#FILE *#>)
+COMPLETION: getloadavg : [#int#]getloadavg(<#double *#>, <#int#>)
+COMPLETION: getlogin : [#char *#]getlogin()
+COMPLETION: getlogin_r : [#int#]getlogin_r(<#char *#>, <#size_t#>)
+COMPLETION: getmode : [#mode_t#]getmode(<#const void *#>, <#mode_t#>)
+COMPLETION: GetName : [#StringID#]GetName()[# const#]
+COMPLETION: getopt : [#int#]getopt(<#int#>, <#char *const *#>, <#const char *#>)
+COMPLETION: getpagesize : [#int#]getpagesize()
+COMPLETION: getpass : [#char *#]getpass(<#const char *#>)
+COMPLETION: getpeereid : [#int#]getpeereid(<#int#>, <#uid_t *#>, <#gid_t *#>)
+COMPLETION: getpgid : [#pid_t#]getpgid(<#pid_t#>)
+COMPLETION: getpgrp : [#pid_t#]getpgrp()
+COMPLETION: getpid : [#pid_t#]getpid()
+COMPLETION: getppid : [#pid_t#]getppid()
+COMPLETION: getpriority : [#int#]getpriority(<#int#>, <#id_t#>)
+COMPLETION: getprogname : [#const char *#]getprogname()
+COMPLETION: GetReferenceCount : [#int#]GetReferenceCount()
+COMPLETION: getrlimit : [#int#]getrlimit(<#int#>, <#struct rlimit *#>)
+COMPLETION: getrusage : [#int#]getrusage(<#int#>, <#struct rusage *#>)
+COMPLETION: gets : [#char *#]gets(<#char *#>)
+COMPLETION: getsgroups_np : [#int#]getsgroups_np(<#int *#>, <#unsigned char *#>)
+COMPLETION: getsid : [#pid_t#]getsid(<#pid_t#>)
+COMPLETION: GetStringID : [#StringID#]GetStringID(<#const std::string &name#>)
+COMPLETION: getsubopt : [#int#]getsubopt(<#char **#>, <#char *const *#>, <#char **#>)
+COMPLETION: getuid : [#uid_t#]getuid()
+COMPLETION: getusershell : [#char *#]getusershell()
+COMPLETION: getw : [#int#]getw(<#FILE *#>)
+COMPLETION: getwc : [#wint_t#]getwc(<#FILE *#>)
+COMPLETION: getwchar : [#wint_t#]getwchar()
+COMPLETION: getwd : [#char *#]getwd(<#char *#>)
+COMPLETION: getwgroups_np : [#int#]getwgroups_np(<#int *#>, <#unsigned char *#>)
+COMPLETION: GfxDevice : GfxDevice
+COMPLETION: gid_t : gid_t
+COMPLETION: gmtime : [#struct tm *#]gmtime(<#const time_t *#>)
+COMPLETION: gmtime_r : [#struct tm *#]gmtime_r(<#const time_t *#>, <#struct tm *#>)
+COMPLETION: Pattern : goto <#label#>
+COMPLETION: grantpt : [#int#]grantpt(<#int#>)
+COMPLETION: heapsort : [#int#]heapsort(<#void *#>, <#size_t#>, <#size_t#>, <#int (*)(const void *, const void *)#>)
+COMPLETION: heapsort_b : [#int#]heapsort_b(<#void *#>, <#size_t#>, <#size_t#>, <#^int(const void *, const void *)#>)
+COMPLETION: hypot : [#double#]hypot(<#double#>, <#double#>)
+COMPLETION: hypotf : [#float#]hypotf(<#float#>, <#float#>)
+COMPLETION: hypotl : [#long double#]hypotl(<#long double#>, <#long double#>)
+COMPLETION: id_t : id_t
+COMPLETION: idtype_t : idtype_t
+COMPLETION: ilogb : [#int#]ilogb(<#double#>)
+COMPLETION: ilogbf : [#int#]ilogbf(<#float#>)
+COMPLETION: ilogbl : [#int#]ilogbl(<#long double#>)
+COMPLETION: index : [#char *#]index(<#const char *#>, <#int#>)
+COMPLETION: initgroups : [#int#]initgroups(<#const char *#>, <#int#>)
+COMPLETION: initstate : [#char *#]initstate(<#unsigned int#>, <#char *#>, <#size_t#>)
+COMPLETION: ino64_t : ino64_t
+COMPLETION: ino_t : ino_t
+COMPLETION: int
+COMPLETION: int16_t : int16_t
+COMPLETION: int32_t : int32_t
+COMPLETION: int64_t : int64_t
+COMPLETION: int8_t : int8_t
+COMPLETION: int_fast16_t : int_fast16_t
+COMPLETION: int_fast32_t : int_fast32_t
+COMPLETION: int_fast64_t : int_fast64_t
+COMPLETION: int_fast8_t : int_fast8_t
+COMPLETION: int_least16_t : int_least16_t
+COMPLETION: int_least32_t : int_least32_t
+COMPLETION: int_least64_t : int_least64_t
+COMPLETION: int_least8_t : int_least8_t
+COMPLETION: intmax_t : intmax_t
+COMPLETION: intptr_t : intptr_t
+COMPLETION: inverse : [#btQuaternion#]inverse(<#const btQuaternion &q#>)
+COMPLETION: IReferenceCounted : IReferenceCounted
+COMPLETION: IReferenceCounted : IReferenceCounted
+COMPLETION: IReferenceCounted : IReferenceCounted()
+COMPLETION: IReferenceCounted : IReferenceCounted(<#const IReferenceCounted &#>)
+COMPLETION: iruserok : [#int#]iruserok(<#unsigned long#>, <#int#>, <#const char *#>, <#const char *#>)
+COMPLETION: iruserok_sa : [#int#]iruserok_sa(<#const void *#>, <#int#>, <#int#>, <#const char *#>, <#const char *#>)
+COMPLETION: isalnum : [#int#]isalnum(<#int _c#>)
+COMPLETION: isalpha : [#int#]isalpha(<#int _c#>)
+COMPLETION: isascii : [#int#]isascii(<#int _c#>)
+COMPLETION: isatty : [#int#]isatty(<#int#>)
+COMPLETION: isblank : [#int#]isblank(<#int _c#>)
+COMPLETION: iscntrl : [#int#]iscntrl(<#int _c#>)
+COMPLETION: isdigit : [#int#]isdigit(<#int _c#>)
+COMPLETION: isgraph : [#int#]isgraph(<#int _c#>)
+COMPLETION: ishexnumber : [#int#]ishexnumber(<#int _c#>)
+COMPLETION: isideogram : [#int#]isideogram(<#int _c#>)
+COMPLETION: islower : [#int#]islower(<#int _c#>)
+COMPLETION: isnumber : [#int#]isnumber(<#int _c#>)
+COMPLETION: isphonogram : [#int#]isphonogram(<#int _c#>)
+COMPLETION: isprint : [#int#]isprint(<#int _c#>)
+COMPLETION: ispunct : [#int#]ispunct(<#int _c#>)
+COMPLETION: isrune : [#int#]isrune(<#int _c#>)
+COMPLETION: issetugid : [#int#]issetugid()
+COMPLETION: isspace : [#int#]isspace(<#int _c#>)
+COMPLETION: isspecial : [#int#]isspecial(<#int _c#>)
+COMPLETION: isupper : [#int#]isupper(<#int _c#>)
+COMPLETION: iswalnum : [#int#]iswalnum(<#wint_t _wc#>)
+COMPLETION: iswalpha : [#int#]iswalpha(<#wint_t _wc#>)
+COMPLETION: iswascii : [#int#]iswascii(<#wint_t _wc#>)
+COMPLETION: iswblank : [#int#]iswblank(<#wint_t _wc#>)
+COMPLETION: iswcntrl : [#int#]iswcntrl(<#wint_t _wc#>)
+COMPLETION: iswctype : [#int#]iswctype(<#wint_t _wc#>, <#wctype_t _charclass#>)
+COMPLETION: iswdigit : [#int#]iswdigit(<#wint_t _wc#>)
+COMPLETION: iswgraph : [#int#]iswgraph(<#wint_t _wc#>)
+COMPLETION: iswhexnumber : [#int#]iswhexnumber(<#wint_t _wc#>)
+COMPLETION: iswideogram : [#int#]iswideogram(<#wint_t _wc#>)
+COMPLETION: iswlower : [#int#]iswlower(<#wint_t _wc#>)
+COMPLETION: iswnumber : [#int#]iswnumber(<#wint_t _wc#>)
+COMPLETION: iswphonogram : [#int#]iswphonogram(<#wint_t _wc#>)
+COMPLETION: iswprint : [#int#]iswprint(<#wint_t _wc#>)
+COMPLETION: iswpunct : [#int#]iswpunct(<#wint_t _wc#>)
+COMPLETION: iswrune : [#int#]iswrune(<#wint_t _wc#>)
+COMPLETION: iswspace : [#int#]iswspace(<#wint_t _wc#>)
+COMPLETION: iswspecial : [#int#]iswspecial(<#wint_t _wc#>)
+COMPLETION: iswupper : [#int#]iswupper(<#wint_t _wc#>)
+COMPLETION: iswxdigit : [#int#]iswxdigit(<#wint_t _wc#>)
+COMPLETION: isxdigit : [#int#]isxdigit(<#int _c#>)
+COMPLETION: j0 : [#double#]j0(<#double#>)
+COMPLETION: j1 : [#double#]j1(<#double#>)
+COMPLETION: jn : [#double#]jn(<#int#>, <#double#>)
+COMPLETION: Joystick : Joystick
+COMPLETION: Joystick : Joystick(<#int index#>)
+COMPLETION: jrand48 : [#long#]jrand48(<#unsigned short *#>)
+COMPLETION: kill : [#int#]kill(<#pid_t#>, <#int#>)
+COMPLETION: killpg : [#int#]killpg(<#pid_t#>, <#int#>)
+COMPLETION: l64a : [#char *#]l64a(<#long#>)
+COMPLETION: labs : [#long#]labs(<#long#>)
+COMPLETION: lchflags : [#int#]lchflags(<#const char *#>, <#__uint32_t#>)
+COMPLETION: lchmod : [#int#]lchmod(<#const char *#>, <#mode_t#>)
+COMPLETION: lchown : [#int#]lchown(<#const char *#>, <#uid_t#>, <#gid_t#>)
+COMPLETION: lcong48 : [#void#]lcong48(<#unsigned short *#>)
+COMPLETION: lconv : lconv
+COMPLETION: ldexp : [#double#]ldexp(<#double#>, <#int#>)
+COMPLETION: ldexpf : [#float#]ldexpf(<#float#>, <#int#>)
+COMPLETION: ldexpl : [#long double#]ldexpl(<#long double#>, <#int#>)
+COMPLETION: ldiv : [#ldiv_t#]ldiv(<#long#>, <#long#>)
+COMPLETION: ldiv_t : ldiv_t
+COMPLETION: length : [#btScalar#]length(<#const btQuaternion &q#>)
+COMPLETION: lerp : [#btVector3#]lerp(<#const btVector3 &v1#>, <#const btVector3 &v2#>, <#const btScalar &t#>)
+COMPLETION: lgamma : [#double#]lgamma(<#double#>)
+COMPLETION: lgammaf : [#float#]lgammaf(<#float#>)
+COMPLETION: lgammal : [#long double#]lgammal(<#long double#>)
+COMPLETION: link : [#int#]link(<#const char *#>, <#const char *#>)
+COMPLETION: List : List<<#class T#>>
+COMPLETION: List<T> : List<<#class T#>>()
+COMPLETION: ListItem : ListItem<<#class T#>>
+COMPLETION: ListItem<T> : ListItem<<#class T#>>(<#T data#>{#, <#void (*dest)(T)#>#})
+COMPLETION: llabs : [#long long#]llabs(<#long long#>)
+COMPLETION: lldiv : [#lldiv_t#]lldiv(<#long long#>, <#long long#>)
+COMPLETION: lldiv_t : lldiv_t
+COMPLETION: llrint : [#long long#]llrint(<#double#>)
+COMPLETION: llrintf : [#long long#]llrintf(<#float#>)
+COMPLETION: llrintl : [#long long#]llrintl(<#long double#>)
+COMPLETION: llround : [#long long#]llround(<#double#>)
+COMPLETION: llroundf : [#long long#]llroundf(<#float#>)
+COMPLETION: llroundl : [#long long#]llroundl(<#long double#>)
+COMPLETION: localeconv : [#struct lconv *#]localeconv()
+COMPLETION: localtime : [#struct tm *#]localtime(<#const time_t *#>)
+COMPLETION: localtime_r : [#struct tm *#]localtime_r(<#const time_t *#>, <#struct tm *#>)
+COMPLETION: lockf : [#int#]lockf(<#int#>, <#int#>, <#off_t#>)
+COMPLETION: log : [#double#]log(<#double#>)
+COMPLETION: log10 : [#double#]log10(<#double#>)
+COMPLETION: log10f : [#float#]log10f(<#float#>)
+COMPLETION: log10l : [#long double#]log10l(<#long double#>)
+COMPLETION: log1p : [#double#]log1p(<#double#>)
+COMPLETION: log1pf : [#float#]log1pf(<#float#>)
+COMPLETION: log1pl : [#long double#]log1pl(<#long double#>)
+COMPLETION: log2 : [#double#]log2(<#double#>)
+COMPLETION: log2f : [#float#]log2f(<#float#>)
+COMPLETION: log2l : [#long double#]log2l(<#long double#>)
+COMPLETION: logb : [#double#]logb(<#double#>)
+COMPLETION: logbf : [#float#]logbf(<#float#>)
+COMPLETION: logbl : [#long double#]logbl(<#long double#>)
+COMPLETION: logf : [#float#]logf(<#float#>)
+COMPLETION: Logger : Logger
+COMPLETION: Logger : Logger()
+COMPLETION: logl : [#long double#]logl(<#long double#>)
+COMPLETION: long
+COMPLETION: lrand48 : [#long#]lrand48()
+COMPLETION: lrint : [#long#]lrint(<#double#>)
+COMPLETION: lrintf : [#long#]lrintf(<#float#>)
+COMPLETION: lrintl : [#long#]lrintl(<#long double#>)
+COMPLETION: lround : [#long#]lround(<#double#>)
+COMPLETION: lroundf : [#long#]lroundf(<#float#>)
+COMPLETION: lroundl : [#long#]lroundl(<#long double#>)
+COMPLETION: lseek : [#off_t#]lseek(<#int#>, <#off_t#>, <#int#>)
+COMPLETION: lstat : [#int#]lstat(<#const char *#>, <#struct stat *#>)
+COMPLETION: lstat64 : [#int#]lstat64(<#const char *#>, <#struct stat64 *#>)
+COMPLETION: lstatx64_np : [#int#]lstatx64_np(<#const char *#>, <#struct stat64 *#>, <#filesec_t#>)
+COMPLETION: lstatx_np : [#int#]lstatx_np(<#const char *#>, <#struct stat *#>, <#filesec_t#>)
+COMPLETION: m_Module : [#asIScriptModule *#]m_Module
+COMPLETION: mach_port_t : mach_port_t
+COMPLETION: malloc : [#void *#]malloc(<#size_t#>)
+COMPLETION: Material : Material
+COMPLETION: Material : Material()
+COMPLETION: Matrix : Matrix
+COMPLETION: Matrix : Matrix(<#const Transform &trans#>)
+COMPLETION: Matrix : Matrix(<#const Matrix &other#>)
+COMPLETION: Matrix : Matrix()
+COMPLETION: Matrix : Matrix(<#const Vector3 &pos#>)
+COMPLETION: Matrix : Matrix(<#float left#>, <#float right#>, <#float top#>, <#float bottom#>, <#float near#>, <#float far#>)
+COMPLETION: mblen : [#int#]mblen(<#const char *#>, <#size_t#>)
+COMPLETION: mbrlen : [#size_t#]mbrlen(<#const char *#>, <#size_t#>, <#mbstate_t *#>)
+COMPLETION: mbrtowc : [#size_t#]mbrtowc(<#wchar_t *#>, <#const char *#>, <#size_t#>, <#mbstate_t *#>)
+COMPLETION: mbsinit : [#int#]mbsinit(<#const mbstate_t *#>)
+COMPLETION: mbsnrtowcs : [#size_t#]mbsnrtowcs(<#wchar_t *#>, <#const char **#>, <#size_t#>, <#size_t#>, <#mbstate_t *#>)
+COMPLETION: mbsrtowcs : [#size_t#]mbsrtowcs(<#wchar_t *#>, <#const char **#>, <#size_t#>, <#mbstate_t *#>)
+COMPLETION: mbstate_t : mbstate_t
+COMPLETION: mbstowcs : [#size_t#]mbstowcs(<#wchar_t *#>, <#const char *#>, <#size_t#>)
+COMPLETION: mbtowc : [#int#]mbtowc(<#wchar_t *#>, <#const char *#>, <#size_t#>)
+COMPLETION: mcontext_t : mcontext_t
+COMPLETION: memccpy : [#void *#]memccpy(<#void *#>, <#const void *#>, <#int#>, <#size_t#>)
+COMPLETION: memchr : [#void *#]memchr(<#const void *#>, <#int#>, <#size_t#>)
+COMPLETION: memcmp : [#int#]memcmp(<#const void *#>, <#const void *#>, <#size_t#>)
+COMPLETION: memcpy : [#void *#]memcpy(<#void *#>, <#const void *#>, <#size_t#>)
+COMPLETION: memmem : [#void *#]memmem(<#const void *#>, <#size_t#>, <#const void *#>, <#size_t#>)
+COMPLETION: memmove : [#void *#]memmove(<#void *#>, <#const void *#>, <#size_t#>)
+COMPLETION: memset : [#void *#]memset(<#void *#>, <#int#>, <#size_t#>)
+COMPLETION: memset_pattern16 : [#void#]memset_pattern16(<#void *#>, <#const void *#>, <#size_t#>)
+COMPLETION: memset_pattern4 : [#void#]memset_pattern4(<#void *#>, <#const void *#>, <#size_t#>)
+COMPLETION: memset_pattern8 : [#void#]memset_pattern8(<#void *#>, <#const void *#>, <#size_t#>)
+COMPLETION: mergesort : [#int#]mergesort(<#void *#>, <#size_t#>, <#size_t#>, <#int (*)(const void *, const void *)#>)
+COMPLETION: mergesort_b : [#int#]mergesort_b(<#void *#>, <#size_t#>, <#size_t#>, <#^int(const void *, const void *)#>)
+COMPLETION: Mesh : Mesh
+COMPLETION: Mesh : Mesh()
+COMPLETION: mEvStat : [#ev_stat#]mEvStat
+COMPLETION: mkdir : [#int#]mkdir(<#const char *#>, <#mode_t#>)
+COMPLETION: mkdirx_np : [#int#]mkdirx_np(<#const char *#>, <#filesec_t#>)
+COMPLETION: mkdtemp : [#char *#]mkdtemp(<#char *#>)
+COMPLETION: mkfifo : [#int#]mkfifo(<#const char *#>, <#mode_t#>)
+COMPLETION: mkfifox_np : [#int#]mkfifox_np(<#const char *#>, <#filesec_t#>)
+COMPLETION: mknod : [#int#]mknod(<#const char *#>, <#mode_t#>, <#dev_t#>)
+COMPLETION: mkpath_np : [#int#]mkpath_np(<#const char *path#>, <#mode_t omode#>)
+COMPLETION: mkstemp : [#int#]mkstemp(<#char *#>)
+COMPLETION: mkstemps : [#int#]mkstemps(<#char *#>, <#int#>)
+COMPLETION: mktemp : [#char *#]mktemp(<#char *#>)
+COMPLETION: mktime : [#time_t#]mktime(<#struct tm *#>)
+COMPLETION: mLastmod : [#long long#]mLastmod
+COMPLETION: mListeners : [#std::vector<SmartPointer<ResourceUpdatedListener> >#]mListeners
+COMPLETION: mMutex : [#Mutex#]mMutex
+COMPLETION: mName : [#StringID#]mName
+COMPLETION: mode_t : mode_t
+COMPLETION: modf : [#double#]modf(<#double#>, <#double *#>)
+COMPLETION: modff : [#float#]modff(<#float#>, <#float *#>)
+COMPLETION: modfl : [#long double#]modfl(<#long double#>, <#long double *#>)
+COMPLETION: mpl_ : mpl_::
+COMPLETION: mrand48 : [#long#]mrand48()
+COMPLETION: mRefCount : [#int#]mRefCount
+COMPLETION: Mutex : Mutex
+COMPLETION: Mutex : Mutex()
+COMPLETION: Mutex : Mutex(<#const Mutex &#>)
+COMPLETION: nan : [#double#]nan(<#const char *#>)
+COMPLETION: nanf : [#float#]nanf(<#const char *#>)
+COMPLETION: nanl : [#long double#]nanl(<#const char *#>)
+COMPLETION: nanosleep : [#int#]nanosleep(<#const struct timespec *#>, <#struct timespec *#>)
+COMPLETION: nearbyint : [#double#]nearbyint(<#double#>)
+COMPLETION: nearbyintf : [#float#]nearbyintf(<#float#>)
+COMPLETION: nearbyintl : [#long double#]nearbyintl(<#long double#>)
+COMPLETION: Pattern : new <#type#>(<#expressions#>)
+COMPLETION: Pattern : new <#type#>[<#size#>](<#expressions#>)
+COMPLETION: nextafter : [#double#]nextafter(<#double#>, <#double#>)
+COMPLETION: nextafterf : [#float#]nextafterf(<#float#>, <#float#>)
+COMPLETION: nextafterl : [#long double#]nextafterl(<#long double#>, <#long double#>)
+COMPLETION: nexttoward : [#double#]nexttoward(<#double#>, <#long double#>)
+COMPLETION: nexttowardf : [#float#]nexttowardf(<#float#>, <#long double#>)
+COMPLETION: nexttowardl : [#long double#]nexttowardl(<#long double#>, <#long double#>)
+COMPLETION: nextwctype : [#wint_t#]nextwctype(<#wint_t#>, <#wctype_t#>)
+COMPLETION: nfssvc : [#int#]nfssvc(<#int#>, <#void *#>)
+COMPLETION: nice : [#int#]nice(<#int#>)
+COMPLETION: nlink_t : nlink_t
+COMPLETION: Node : Node
+COMPLETION: Node : Node()
+COMPLETION: Node : Node(<#const Node &#>)
+COMPLETION: nrand48 : [#long#]nrand48(<#unsigned short *#>)
+COMPLETION: off_t : off_t
+COMPLETION: OnUpdated : [#void#]OnUpdated()
+COMPLETION: Open : [#std::istream *#]Open()
+COMPLETION: operator
+COMPLETION: operator delete : [#void#]operator delete(<#void *#>, <#const std::nothrow_t &#>)
+COMPLETION: operator delete : [#void#]operator delete(<#void *#>)
+COMPLETION: operator delete : [#void#]operator delete(<#void *#>, <#void *#>)
+COMPLETION: operator delete[] : [#void#]operator delete[](<#void *#>)
+COMPLETION: operator delete[] : [#void#]operator delete[](<#void *#>, <#void *#>)
+COMPLETION: operator delete[] : [#void#]operator delete[](<#void *#>, <#const std::nothrow_t &#>)
+COMPLETION: operator new : [#void *#]operator new(<#std::size_t#>, <#const std::nothrow_t &#>)
+COMPLETION: operator new : [#void *#]operator new(<#std::size_t#>)
+COMPLETION: operator new : [#void *#]operator new(<#std::size_t#>, <#void *__p#>)
+COMPLETION: operator new[] : [#void *#]operator new[](<#std::size_t#>, <#const std::nothrow_t &#>)
+COMPLETION: operator new[] : [#void *#]operator new[](<#std::size_t#>)
+COMPLETION: operator new[] : [#void *#]operator new[](<#std::size_t#>, <#void *__p#>)
+COMPLETION: operator* : [#btVector3#]operator*(<#const btScalar &s#>, <#const btVector3 &v#>)
+COMPLETION: operator* : [#btVector3#]operator*(<#const btVector3 &v#>, <#const btScalar &s#>)
+COMPLETION: operator* : [#btMatrix3x3#]operator*(<#const btMatrix3x3 &m#>, <#const btScalar &k#>)
+COMPLETION: operator* : [#btVector3#]operator*(<#const btMatrix3x3 &m#>, <#const btVector3 &v#>)
+COMPLETION: operator* : [#btMatrix3x3#]operator*(<#const btMatrix3x3 &m1#>, <#const btMatrix3x3 &m2#>)
+COMPLETION: operator* : [#btVector3#]operator*(<#const btVector3 &v#>, <#const btMatrix3x3 &m#>)
+COMPLETION: operator* : [#Color#]operator*(<#float s#>, <#const Color &col#>)
+COMPLETION: operator* : [#btVector3#]operator*(<#const btVector3 &v1#>, <#const btVector3 &v2#>)
+COMPLETION: operator* : [#btQuaternion#]operator*(<#const btQuaternion &q1#>, <#const btQuaternion &q2#>)
+COMPLETION: operator* : [#btQuaternion#]operator*(<#const btQuaternion &q#>, <#const btVector3 &w#>)
+COMPLETION: operator* : [#btQuaternion#]operator*(<#const btVector3 &w#>, <#const btQuaternion &q#>)
+COMPLETION: operator+ : [#btMatrix3x3#]operator+(<#const btMatrix3x3 &m1#>, <#const btMatrix3x3 &m2#>)
+COMPLETION: operator+ : [#btVector3#]operator+(<#const btVector3 &v1#>, <#const btVector3 &v2#>)
+COMPLETION: operator- : [#btMatrix3x3#]operator-(<#const btMatrix3x3 &m1#>, <#const btMatrix3x3 &m2#>)
+COMPLETION: operator- : [#btVector3#]operator-(<#const btVector3 &v#>)
+COMPLETION: operator- : [#btVector3#]operator-(<#const btVector3 &v1#>, <#const btVector3 &v2#>)
+COMPLETION: operator/ : [#btVector3#]operator/(<#const btVector3 &v1#>, <#const btVector3 &v2#>)
+COMPLETION: operator/ : [#btVector3#]operator/(<#const btVector3 &v#>, <#const btScalar &s#>)
+COMPLETION: operator= : [#AngelScript &#]operator=(<#const AngelScript &#>)
+COMPLETION: operator= (Hidden) : [#Resource &#]Resource::operator=(<#const Resource &#>)
+COMPLETION: operator= (Hidden) : [#IReferenceCounted &#]IReferenceCounted::operator=(<#const IReferenceCounted &#>)
+COMPLETION: operator== : [#bool#]operator==(<#const btTransform &t1#>, <#const btTransform &t2#>)
+COMPLETION: operator== : [#bool#]operator==(<#const btMatrix3x3 &m1#>, <#const btMatrix3x3 &m2#>)
+COMPLETION: optarg : [#char *#]optarg
+COMPLETION: opterr : [#int#]opterr
+COMPLETION: optind : [#int#]optind
+COMPLETION: optopt : [#int#]optopt
+COMPLETION: optreset : [#int#]optreset
+COMPLETION: ostat : ostat
+COMPLETION: P_ALL : [#idtype_t#]P_ALL
+COMPLETION: P_PGID : [#idtype_t#]P_PGID
+COMPLETION: P_PID : [#idtype_t#]P_PID
+COMPLETION: ParentNode : ParentNode
+COMPLETION: ParentNode : ParentNode()
+COMPLETION: pathconf : [#long#]pathconf(<#const char *#>, <#int#>)
+COMPLETION: pause : [#int#]pause()
+COMPLETION: pclose : [#int#]pclose(<#FILE *#>)
+COMPLETION: perror : [#void#]perror(<#const char *#>)
+COMPLETION: PhysicsWorld : PhysicsWorld
+COMPLETION: pid_t : pid_t
+COMPLETION: pipe : [#int#]pipe(<#int *#>)
+COMPLETION: popen : [#FILE *#]popen(<#const char *#>, <#const char *#>)
+COMPLETION: posix2time : [#time_t#]posix2time(<#time_t#>)
+COMPLETION: posix_memalign : [#int#]posix_memalign(<#void **#>, <#size_t#>, <#size_t#>)
+COMPLETION: posix_openpt : [#int#]posix_openpt(<#int#>)
+COMPLETION: pow : [#double#]pow(<#double#>, <#double#>)
+COMPLETION: powf : [#float#]powf(<#float#>, <#float#>)
+COMPLETION: powl : [#long double#]powl(<#long double#>, <#long double#>)
+COMPLETION: pread : [#ssize_t#]pread(<#int#>, <#void *#>, <#size_t#>, <#off_t#>)
+COMPLETION: Preprocessor : Preprocessor
+COMPLETION: printf : [#int#]printf(<#const char *, ...#>)
+COMPLETION: profil : [#int#]profil(<#char *#>, <#size_t#>, <#unsigned long#>, <#unsigned int#>)
+COMPLETION: Property : Property
+COMPLETION: Property : Property()
+COMPLETION: Property : Property(<#IReferenceCounted *res#>)
+COMPLETION: Property : Property(<#const Color &c#>)
+COMPLETION: Property : Property(<#const double &f#>)
+COMPLETION: Property : Property(<#const float &f#>)
+COMPLETION: Property : Property(<#const int &i#>)
+COMPLETION: Property : Property(<#const unsigned int &i#>)
+COMPLETION: Property : Property(<#const Vector2 &v2#>)
+COMPLETION: Property : Property(<#const Vector3 &vec#>)
+COMPLETION: Property : Property(<#const Vector4 &v4#>)
+COMPLETION: Property : Property(<#StringID prop#>)
+COMPLETION: Property : Property(<#void *ptr#>)
+COMPLETION: Property : Property(<#const Property &other#>)
+COMPLETION: pselect : [#int#]pselect(<#int#>, <#fd_set *#>, <#fd_set *#>, <#fd_set *#>, <#const struct timespec *#>, <#const sigset_t *#>)
+COMPLETION: psignal : [#void#]psignal(<#unsigned int#>, <#const char *#>)
+COMPLETION: psort : [#void#]psort(<#void *#>, <#size_t#>, <#size_t#>, <#int (*)(const void *, const void *)#>)
+COMPLETION: psort_b : [#void#]psort_b(<#void *#>, <#size_t#>, <#size_t#>, <#^int(const void *, const void *)#>)
+COMPLETION: psort_r : [#void#]psort_r(<#void *#>, <#size_t#>, <#size_t#>, <#void *#>, <#int (*)(void *, const void *, const void *)#>)
+COMPLETION: pthread_atfork : [#int#]pthread_atfork(<#void (*)()#>, <#void (*)()#>, <#void (*)()#>)
+COMPLETION: pthread_attr_destroy : [#int#]pthread_attr_destroy(<#pthread_attr_t *#>)
+COMPLETION: pthread_attr_getdetachstate : [#int#]pthread_attr_getdetachstate(<#const pthread_attr_t *#>, <#int *#>)
+COMPLETION: pthread_attr_getguardsize : [#int#]pthread_attr_getguardsize(<#const pthread_attr_t *#>, <#size_t *#>)
+COMPLETION: pthread_attr_getinheritsched : [#int#]pthread_attr_getinheritsched(<#const pthread_attr_t *#>, <#int *#>)
+COMPLETION: pthread_attr_getschedparam : [#int#]pthread_attr_getschedparam(<#const pthread_attr_t *#>, <#struct sched_param *#>)
+COMPLETION: pthread_attr_getschedpolicy : [#int#]pthread_attr_getschedpolicy(<#const pthread_attr_t *#>, <#int *#>)
+COMPLETION: pthread_attr_getscope : [#int#]pthread_attr_getscope(<#const pthread_attr_t *#>, <#int *#>)
+COMPLETION: pthread_attr_getstack : [#int#]pthread_attr_getstack(<#const pthread_attr_t *#>, <#void **#>, <#size_t *#>)
+COMPLETION: pthread_attr_getstackaddr : [#int#]pthread_attr_getstackaddr(<#const pthread_attr_t *#>, <#void **#>)
+COMPLETION: pthread_attr_getstacksize : [#int#]pthread_attr_getstacksize(<#const pthread_attr_t *#>, <#size_t *#>)
+COMPLETION: pthread_attr_init : [#int#]pthread_attr_init(<#pthread_attr_t *#>)
+COMPLETION: pthread_attr_setdetachstate : [#int#]pthread_attr_setdetachstate(<#pthread_attr_t *#>, <#int#>)
+COMPLETION: pthread_attr_setguardsize : [#int#]pthread_attr_setguardsize(<#pthread_attr_t *#>, <#size_t#>)
+COMPLETION: pthread_attr_setinheritsched : [#int#]pthread_attr_setinheritsched(<#pthread_attr_t *#>, <#int#>)
+COMPLETION: pthread_attr_setschedparam : [#int#]pthread_attr_setschedparam(<#pthread_attr_t *#>, <#const struct sched_param *#>)
+COMPLETION: pthread_attr_setschedpolicy : [#int#]pthread_attr_setschedpolicy(<#pthread_attr_t *#>, <#int#>)
+COMPLETION: pthread_attr_setscope : [#int#]pthread_attr_setscope(<#pthread_attr_t *#>, <#int#>)
+COMPLETION: pthread_attr_setstack : [#int#]pthread_attr_setstack(<#pthread_attr_t *#>, <#void *#>, <#size_t#>)
+COMPLETION: pthread_attr_setstackaddr : [#int#]pthread_attr_setstackaddr(<#pthread_attr_t *#>, <#void *#>)
+COMPLETION: pthread_attr_setstacksize : [#int#]pthread_attr_setstacksize(<#pthread_attr_t *#>, <#size_t#>)
+COMPLETION: pthread_attr_t : pthread_attr_t
+COMPLETION: pthread_cancel : [#int#]pthread_cancel(<#pthread_t#>)
+COMPLETION: pthread_cond_broadcast : [#int#]pthread_cond_broadcast(<#pthread_cond_t *#>)
+COMPLETION: pthread_cond_destroy : [#int#]pthread_cond_destroy(<#pthread_cond_t *#>)
+COMPLETION: pthread_cond_init : [#int#]pthread_cond_init(<#pthread_cond_t *#>, <#const pthread_condattr_t *#>)
+COMPLETION: pthread_cond_signal : [#int#]pthread_cond_signal(<#pthread_cond_t *#>)
+COMPLETION: pthread_cond_signal_thread_np : [#int#]pthread_cond_signal_thread_np(<#pthread_cond_t *#>, <#pthread_t#>)
+COMPLETION: pthread_cond_t : pthread_cond_t
+COMPLETION: pthread_cond_timedwait : [#int#]pthread_cond_timedwait(<#pthread_cond_t *#>, <#pthread_mutex_t *#>, <#const struct timespec *#>)
+COMPLETION: pthread_cond_timedwait_relative_np : [#int#]pthread_cond_timedwait_relative_np(<#pthread_cond_t *#>, <#pthread_mutex_t *#>, <#const struct timespec *#>)
+COMPLETION: pthread_cond_wait : [#int#]pthread_cond_wait(<#pthread_cond_t *#>, <#pthread_mutex_t *#>)
+COMPLETION: pthread_condattr_destroy : [#int#]pthread_condattr_destroy(<#pthread_condattr_t *#>)
+COMPLETION: pthread_condattr_getpshared : [#int#]pthread_condattr_getpshared(<#const pthread_condattr_t *#>, <#int *#>)
+COMPLETION: pthread_condattr_init : [#int#]pthread_condattr_init(<#pthread_condattr_t *#>)
+COMPLETION: pthread_condattr_setpshared : [#int#]pthread_condattr_setpshared(<#pthread_condattr_t *#>, <#int#>)
+COMPLETION: pthread_condattr_t : pthread_condattr_t
+COMPLETION: pthread_create : [#int#]pthread_create(<#pthread_t *#>, <#const pthread_attr_t *#>, <#void *(*)(void *)#>, <#void *#>)
+COMPLETION: pthread_create_suspended_np : [#int#]pthread_create_suspended_np(<#pthread_t *#>, <#const pthread_attr_t *#>, <#void *(*)(void *)#>, <#void *#>)
+COMPLETION: pthread_detach : [#int#]pthread_detach(<#pthread_t#>)
+COMPLETION: pthread_equal : [#int#]pthread_equal(<#pthread_t#>, <#pthread_t#>)
+COMPLETION: pthread_exit : [#void#]pthread_exit(<#void *#>)
+COMPLETION: pthread_from_mach_thread_np : [#pthread_t#]pthread_from_mach_thread_np(<#mach_port_t#>)
+COMPLETION: pthread_get_stackaddr_np : [#void *#]pthread_get_stackaddr_np(<#pthread_t#>)
+COMPLETION: pthread_get_stacksize_np : [#size_t#]pthread_get_stacksize_np(<#pthread_t#>)
+COMPLETION: pthread_getconcurrency : [#int#]pthread_getconcurrency()
+COMPLETION: pthread_getname_np : [#int#]pthread_getname_np(<#pthread_t#>, <#char *#>, <#size_t#>)
+COMPLETION: pthread_getschedparam : [#int#]pthread_getschedparam(<#pthread_t#>, <#int *#>, <#struct sched_param *#>)
+COMPLETION: pthread_getspecific : [#void *#]pthread_getspecific(<#pthread_key_t#>)
+COMPLETION: pthread_getugid_np : [#int#]pthread_getugid_np(<#uid_t *#>, <#gid_t *#>)
+COMPLETION: pthread_is_threaded_np : [#int#]pthread_is_threaded_np()
+COMPLETION: pthread_join : [#int#]pthread_join(<#pthread_t#>, <#void **#>)
+COMPLETION: pthread_key_create : [#int#]pthread_key_create(<#pthread_key_t *#>, <#void (*)(void *)#>)
+COMPLETION: pthread_key_delete : [#int#]pthread_key_delete(<#pthread_key_t#>)
+COMPLETION: pthread_key_t : pthread_key_t
+COMPLETION: pthread_kill : [#int#]pthread_kill(<#pthread_t#>, <#int#>)
+COMPLETION: pthread_mach_thread_np : [#mach_port_t#]pthread_mach_thread_np(<#pthread_t#>)
+COMPLETION: pthread_main_np : [#int#]pthread_main_np()
+COMPLETION: pthread_mutex_destroy : [#int#]pthread_mutex_destroy(<#pthread_mutex_t *#>)
+COMPLETION: pthread_mutex_getprioceiling : [#int#]pthread_mutex_getprioceiling(<#const pthread_mutex_t *#>, <#int *#>)
+COMPLETION: pthread_mutex_init : [#int#]pthread_mutex_init(<#pthread_mutex_t *#>, <#const pthread_mutexattr_t *#>)
+COMPLETION: pthread_mutex_lock : [#int#]pthread_mutex_lock(<#pthread_mutex_t *#>)
+COMPLETION: pthread_mutex_setprioceiling : [#int#]pthread_mutex_setprioceiling(<#pthread_mutex_t *#>, <#int#>, <#int *#>)
+COMPLETION: pthread_mutex_t : pthread_mutex_t
+COMPLETION: pthread_mutex_trylock : [#int#]pthread_mutex_trylock(<#pthread_mutex_t *#>)
+COMPLETION: pthread_mutex_unlock : [#int#]pthread_mutex_unlock(<#pthread_mutex_t *#>)
+COMPLETION: pthread_mutexattr_destroy : [#int#]pthread_mutexattr_destroy(<#pthread_mutexattr_t *#>)
+COMPLETION: pthread_mutexattr_getprioceiling : [#int#]pthread_mutexattr_getprioceiling(<#const pthread_mutexattr_t *#>, <#int *#>)
+COMPLETION: pthread_mutexattr_getprotocol : [#int#]pthread_mutexattr_getprotocol(<#const pthread_mutexattr_t *#>, <#int *#>)
+COMPLETION: pthread_mutexattr_getpshared : [#int#]pthread_mutexattr_getpshared(<#const pthread_mutexattr_t *#>, <#int *#>)
+COMPLETION: pthread_mutexattr_gettype : [#int#]pthread_mutexattr_gettype(<#const pthread_mutexattr_t *#>, <#int *#>)
+COMPLETION: pthread_mutexattr_init : [#int#]pthread_mutexattr_init(<#pthread_mutexattr_t *#>)
+COMPLETION: pthread_mutexattr_setprioceiling : [#int#]pthread_mutexattr_setprioceiling(<#pthread_mutexattr_t *#>, <#int#>)
+COMPLETION: pthread_mutexattr_setprotocol : [#int#]pthread_mutexattr_setprotocol(<#pthread_mutexattr_t *#>, <#int#>)
+COMPLETION: pthread_mutexattr_setpshared : [#int#]pthread_mutexattr_setpshared(<#pthread_mutexattr_t *#>, <#int#>)
+COMPLETION: pthread_mutexattr_settype : [#int#]pthread_mutexattr_settype(<#pthread_mutexattr_t *#>, <#int#>)
+COMPLETION: pthread_mutexattr_t : pthread_mutexattr_t
+COMPLETION: pthread_once : [#int#]pthread_once(<#pthread_once_t *#>, <#void (*)()#>)
+COMPLETION: pthread_once_t : pthread_once_t
+COMPLETION: pthread_rwlock_destroy : [#int#]pthread_rwlock_destroy(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlock_downgrade_np : [#int#]pthread_rwlock_downgrade_np(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlock_held_np : [#int#]pthread_rwlock_held_np(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlock_init : [#int#]pthread_rwlock_init(<#pthread_rwlock_t *#>, <#const pthread_rwlockattr_t *#>)
+COMPLETION: pthread_rwlock_longrdlock_np : [#int#]pthread_rwlock_longrdlock_np(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlock_rdheld_np : [#int#]pthread_rwlock_rdheld_np(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlock_rdlock : [#int#]pthread_rwlock_rdlock(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlock_t : pthread_rwlock_t
+COMPLETION: pthread_rwlock_tryrdlock : [#int#]pthread_rwlock_tryrdlock(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlock_tryupgrade_np : [#int#]pthread_rwlock_tryupgrade_np(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlock_trywrlock : [#int#]pthread_rwlock_trywrlock(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlock_unlock : [#int#]pthread_rwlock_unlock(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlock_upgrade_np : [#int#]pthread_rwlock_upgrade_np(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlock_wrheld_np : [#int#]pthread_rwlock_wrheld_np(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlock_wrlock : [#int#]pthread_rwlock_wrlock(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlock_yieldwrlock_np : [#int#]pthread_rwlock_yieldwrlock_np(<#pthread_rwlock_t *#>)
+COMPLETION: pthread_rwlockattr_destroy : [#int#]pthread_rwlockattr_destroy(<#pthread_rwlockattr_t *#>)
+COMPLETION: pthread_rwlockattr_getpshared : [#int#]pthread_rwlockattr_getpshared(<#const pthread_rwlockattr_t *#>, <#int *#>)
+COMPLETION: pthread_rwlockattr_init : [#int#]pthread_rwlockattr_init(<#pthread_rwlockattr_t *#>)
+COMPLETION: pthread_rwlockattr_setpshared : [#int#]pthread_rwlockattr_setpshared(<#pthread_rwlockattr_t *#>, <#int#>)
+COMPLETION: pthread_rwlockattr_t : pthread_rwlockattr_t
+COMPLETION: pthread_self : [#pthread_t#]pthread_self()
+COMPLETION: pthread_setcancelstate : [#int#]pthread_setcancelstate(<#int#>, <#int *#>)
+COMPLETION: pthread_setcanceltype : [#int#]pthread_setcanceltype(<#int#>, <#int *#>)
+COMPLETION: pthread_setconcurrency : [#int#]pthread_setconcurrency(<#int#>)
+COMPLETION: pthread_setname_np : [#int#]pthread_setname_np(<#const char *#>)
+COMPLETION: pthread_setschedparam : [#int#]pthread_setschedparam(<#pthread_t#>, <#int#>, <#const struct sched_param *#>)
+COMPLETION: pthread_setspecific : [#int#]pthread_setspecific(<#pthread_key_t#>, <#const void *#>)
+COMPLETION: pthread_setugid_np : [#int#]pthread_setugid_np(<#uid_t#>, <#gid_t#>)
+COMPLETION: pthread_sigmask : [#int#]pthread_sigmask(<#int#>, <#const sigset_t *#>, <#sigset_t *#>)
+COMPLETION: pthread_t : pthread_t
+COMPLETION: pthread_testcancel : [#void#]pthread_testcancel()
+COMPLETION: pthread_threadid_np : [#int#]pthread_threadid_np(<#pthread_t#>, <#__uint64_t *#>)
+COMPLETION: pthread_yield_np : [#void#]pthread_yield_np()
+COMPLETION: ptrdiff_t : ptrdiff_t
+COMPLETION: ptsname : [#char *#]ptsname(<#int#>)
+COMPLETION: putc : [#int#]putc(<#int#>, <#FILE *#>)
+COMPLETION: putc_unlocked : [#int#]putc_unlocked(<#int#>, <#FILE *#>)
+COMPLETION: putchar : [#int#]putchar(<#int#>)
+COMPLETION: putchar_unlocked : [#int#]putchar_unlocked(<#int#>)
+COMPLETION: putenv : [#int#]putenv(<#char *#>)
+COMPLETION: puts : [#int#]puts(<#const char *#>)
+COMPLETION: putw : [#int#]putw(<#int#>, <#FILE *#>)
+COMPLETION: putwc : [#wint_t#]putwc(<#wchar_t#>, <#FILE *#>)
+COMPLETION: putwchar : [#wint_t#]putwchar(<#wchar_t#>)
+COMPLETION: pwrite : [#ssize_t#]pwrite(<#int#>, <#const void *#>, <#size_t#>, <#off_t#>)
+COMPLETION: qsort : [#void#]qsort(<#void *#>, <#size_t#>, <#size_t#>, <#int (*)(const void *, const void *)#>)
+COMPLETION: qsort_b : [#void#]qsort_b(<#void *#>, <#size_t#>, <#size_t#>, <#^int(const void *, const void *)#>)
+COMPLETION: qsort_r : [#void#]qsort_r(<#void *#>, <#size_t#>, <#size_t#>, <#void *#>, <#int (*)(void *, const void *, const void *)#>)
+COMPLETION: Quaternion : Quaternion
+COMPLETION: quatRotate : [#btVector3#]quatRotate(<#const btQuaternion &rotation#>, <#const btVector3 &v#>)
+COMPLETION: radixsort : [#int#]radixsort(<#const unsigned char **#>, <#int#>, <#const unsigned char *#>, <#unsigned int#>)
+COMPLETION: raise : [#int#]raise(<#int#>)
+COMPLETION: rand : [#int#]rand()
+COMPLETION: rand_r : [#int#]rand_r(<#unsigned int *#>)
+COMPLETION: random : [#long#]random()
+COMPLETION: rcmd : [#int#]rcmd(<#char **#>, <#int#>, <#const char *#>, <#const char *#>, <#const char *#>, <#int *#>)
+COMPLETION: rcmd_af : [#int#]rcmd_af(<#char **#>, <#int#>, <#const char *#>, <#const char *#>, <#const char *#>, <#int *#>, <#int#>)
+COMPLETION: read : [#ssize_t#]read(<#int#>, <#void *#>, <#size_t#>)
+COMPLETION: ReadAsString : [#void#]ReadAsString(<#char **data#>, <#int *size#>)
+COMPLETION: readlink : [#ssize_t#]readlink(<#const char *#>, <#char *#>, <#size_t#>)
+COMPLETION: realloc : [#void *#]realloc(<#void *#>, <#size_t#>)
+COMPLETION: reallocf : [#void *#]reallocf(<#void *#>, <#size_t#>)
+COMPLETION: realpath : [#char *#]realpath(<#const char *#>, <#char *#>)
+COMPLETION: reboot : [#int#]reboot(<#int#>)
+COMPLETION: ReferenceCounted : ReferenceCounted<<#class T#>>
+COMPLETION: ReferenceCounted<T> : ReferenceCounted<<#class T#>>({#<#T *t#>#})
+COMPLETION: register_t : register_t
+COMPLETION: Pattern : reinterpret_cast<<#type#>>(<#expression#>)
+COMPLETION: Reload : [#void#]Reload()
+COMPLETION: Reload (Hidden) : [#void#]Resource::Reload()
+COMPLETION: remainder : [#double#]remainder(<#double#>, <#double#>)
+COMPLETION: remainderf : [#float#]remainderf(<#float#>, <#float#>)
+COMPLETION: remainderl : [#long double#]remainderl(<#long double#>, <#long double#>)
+COMPLETION: remove : [#int#]remove(<#const char *#>)
+COMPLETION: RemoveResourceUpdatedListener : [#void#]RemoveResourceUpdatedListener(<#ResourceUpdatedListener *listener#>)
+COMPLETION: remquo : [#double#]remquo(<#double#>, <#double#>, <#int *#>)
+COMPLETION: remquof : [#float#]remquof(<#float#>, <#float#>, <#int *#>)
+COMPLETION: remquol : [#long double#]remquol(<#long double#>, <#long double#>, <#int *#>)
+COMPLETION: rename : [#int#]rename(<#const char *#>, <#const char *#>)
+COMPLETION: RenderNode : RenderNode
+COMPLETION: Resource : Resource
+COMPLETION: Resource : Resource
+COMPLETION: Resource : Resource()
+COMPLETION: Resource : Resource(<#const Resource &#>)
+COMPLETION: ResourceEntry : ResourceEntry
+COMPLETION: ResourceFactory : ResourceFactory
+COMPLETION: ResourceLoader : ResourceLoader
+COMPLETION: ResourceManager : ResourceManager
+COMPLETION: ResourceManager : ResourceManager()
+COMPLETION: ResourceUpdatedListener : ResourceUpdatedListener
+COMPLETION: Pattern : return
+COMPLETION: revoke : [#int#]revoke(<#const char *#>)
+COMPLETION: rewind : [#void#]rewind(<#FILE *#>)
+COMPLETION: RigidBody : RigidBody
+COMPLETION: RigidBody : RigidBody(<#float mass#>, <#Shape *s#>)
+COMPLETION: RigidBodyNode : RigidBodyNode
+COMPLETION: rindex : [#char *#]rindex(<#const char *#>, <#int#>)
+COMPLETION: rint : [#double#]rint(<#double#>)
+COMPLETION: rintf : [#float#]rintf(<#float#>)
+COMPLETION: rintl : [#long double#]rintl(<#long double#>)
+COMPLETION: rinttol : [#long#]rinttol(<#double#>)
+COMPLETION: rlim_t : rlim_t
+COMPLETION: rlimit : rlimit
+COMPLETION: rmdir : [#int#]rmdir(<#const char *#>)
+COMPLETION: round : [#double#]round(<#double#>)
+COMPLETION: roundf : [#float#]roundf(<#float#>)
+COMPLETION: roundl : [#long double#]roundl(<#long double#>)
+COMPLETION: roundtol : [#long#]roundtol(<#double#>)
+COMPLETION: rresvport : [#int#]rresvport(<#int *#>)
+COMPLETION: rresvport_af : [#int#]rresvport_af(<#int *#>, <#int#>)
+COMPLETION: rune_t : rune_t
+COMPLETION: rusage : rusage
+COMPLETION: ruserok : [#int#]ruserok(<#const char *#>, <#int#>, <#const char *#>, <#const char *#>)
+COMPLETION: sbrk : [#void *#]sbrk(<#int#>)
+COMPLETION: scalb : [#double#]scalb(<#double#>, <#double#>)
+COMPLETION: scalbln : [#double#]scalbln(<#double#>, <#long#>)
+COMPLETION: scalblnf : [#float#]scalblnf(<#float#>, <#long#>)
+COMPLETION: scalblnl : [#long double#]scalblnl(<#long double#>, <#long#>)
+COMPLETION: scalbn : [#double#]scalbn(<#double#>, <#int#>)
+COMPLETION: scalbnf : [#float#]scalbnf(<#float#>, <#int#>)
+COMPLETION: scalbnl : [#long double#]scalbnl(<#long double#>, <#int#>)
+COMPLETION: scanf : [#int#]scanf(<#const char *, ...#>)
+COMPLETION: sched_get_priority_max : [#int#]sched_get_priority_max(<#int#>)
+COMPLETION: sched_get_priority_min : [#int#]sched_get_priority_min(<#int#>)
+COMPLETION: sched_param : sched_param
+COMPLETION: sched_yield : [#int#]sched_yield()
+COMPLETION: searchfs : [#int#]searchfs(<#const char *#>, <#struct fssearchblock *#>, <#unsigned long *#>, <#unsigned int#>, <#unsigned int#>, <#struct searchstate *#>)
+COMPLETION: searchstate : searchstate
+COMPLETION: seed48 : [#unsigned short *#]seed48(<#unsigned short *#>)
+COMPLETION: select : [#int#]select(<#int#>, <#fd_set *#>, <#fd_set *#>, <#fd_set *#>, <#struct timeval *#>)
+COMPLETION: serialize : [#void#]serialize(<#Archive &ar#>, <#EngineSettings &t#>, <#const unsigned int#>)
+COMPLETION: serialize : [#void#]serialize(<#Archive &#>, <#Mesh &#>, <#const unsigned int#>)
+COMPLETION: serialize : [#void#]serialize(<#Archive &#>, <#StringList &#>, <#const unsigned int#>)
+COMPLETION: serialize : [#void#]serialize(<#Archive &#>, <#Material &#>, <#const unsigned int#>)
+COMPLETION: serialize : [#void#]serialize(<#Archive &#>, <#Attribute &#>, <#const unsigned int#>)
+COMPLETION: serialize : [#void#]serialize(<#Archive &#>, <#StringID &#>, <#const unsigned int#>)
+COMPLETION: setattrlist : [#int#]setattrlist(<#const char *#>, <#void *#>, <#void *#>, <#size_t#>, <#unsigned int#>)
+COMPLETION: setbuf : [#void#]setbuf(<#FILE *#>, <#char *#>)
+COMPLETION: setbuffer : [#void#]setbuffer(<#FILE *#>, <#char *#>, <#int#>)
+COMPLETION: setdomainname : [#int#]setdomainname(<#const char *#>, <#int#>)
+COMPLETION: setegid : [#int#]setegid(<#gid_t#>)
+COMPLETION: setenv : [#int#]setenv(<#const char *#>, <#const char *#>, <#int#>)
+COMPLETION: seteuid : [#int#]seteuid(<#uid_t#>)
+COMPLETION: setgid : [#int#]setgid(<#gid_t#>)
+COMPLETION: setgroups : [#int#]setgroups(<#int#>, <#const gid_t *#>)
+COMPLETION: sethostid : [#void#]sethostid(<#long#>)
+COMPLETION: sethostname : [#int#]sethostname(<#const char *#>, <#int#>)
+COMPLETION: setiopolicy_np : [#int#]setiopolicy_np(<#int#>, <#int#>, <#int#>)
+COMPLETION: setkey : [#void#]setkey(<#const char *#>)
+COMPLETION: setlinebuf : [#int#]setlinebuf(<#FILE *#>)
+COMPLETION: setlocale : [#char *#]setlocale(<#int#>, <#const char *#>)
+COMPLETION: setlogin : [#int#]setlogin(<#const char *#>)
+COMPLETION: setmode : [#void *#]setmode(<#const char *#>)
+COMPLETION: SetName : [#void#]SetName(<#StringID#>)
+COMPLETION: setpgid : [#int#]setpgid(<#pid_t#>, <#pid_t#>)
+COMPLETION: setpgrp : [#pid_t#]setpgrp()
+COMPLETION: setpriority : [#int#]setpriority(<#int#>, <#id_t#>, <#int#>)
+COMPLETION: setprogname : [#void#]setprogname(<#const char *#>)
+COMPLETION: setregid : [#int#]setregid(<#gid_t#>, <#gid_t#>)
+COMPLETION: setreuid : [#int#]setreuid(<#uid_t#>, <#uid_t#>)
+COMPLETION: setrgid : [#int#]setrgid(<#gid_t#>)
+COMPLETION: setrlimit : [#int#]setrlimit(<#int#>, <#const struct rlimit *#>)
+COMPLETION: setruid : [#int#]setruid(<#uid_t#>)
+COMPLETION: setsgroups_np : [#int#]setsgroups_np(<#int#>, <#const unsigned char *#>)
+COMPLETION: setsid : [#pid_t#]setsid()
+COMPLETION: setstate : [#char *#]setstate(<#const char *#>)
+COMPLETION: setuid : [#int#]setuid(<#uid_t#>)
+COMPLETION: setusershell : [#void#]setusershell()
+COMPLETION: setvbuf : [#int#]setvbuf(<#FILE *#>, <#char *#>, <#int#>, <#size_t#>)
+COMPLETION: setwgroups_np : [#int#]setwgroups_np(<#int#>, <#const unsigned char *#>)
+COMPLETION: Shape : Shape
+COMPLETION: short
+COMPLETION: shortestArcQuat : [#btQuaternion#]shortestArcQuat(<#const btVector3 &v0#>, <#const btVector3 &v1#>)
+COMPLETION: shortestArcQuatNormalize2 : [#btQuaternion#]shortestArcQuatNormalize2(<#btVector3 &v0#>, <#btVector3 &v1#>)
+COMPLETION: sig_atomic_t : sig_atomic_t
+COMPLETION: sig_t : sig_t
+COMPLETION: sigaction : [#int#]sigaction(<#int#>, <#const struct sigaction *#>, <#struct sigaction *#>)
+COMPLETION: sigaddset : [#int#]sigaddset(<#sigset_t *#>, <#int#>)
+COMPLETION: sigaltstack : [#int#]sigaltstack(<#const stack_t *#>, <#stack_t *#>)
+COMPLETION: sigblock : [#int#]sigblock(<#int#>)
+COMPLETION: sigdelset : [#int#]sigdelset(<#sigset_t *#>, <#int#>)
+COMPLETION: sigemptyset : [#int#]sigemptyset(<#sigset_t *#>)
+COMPLETION: sigevent : sigevent
+COMPLETION: sigfillset : [#int#]sigfillset(<#sigset_t *#>)
+COMPLETION: sighold : [#int#]sighold(<#int#>)
+COMPLETION: sigignore : [#int#]sigignore(<#int#>)
+COMPLETION: siginfo_t : siginfo_t
+COMPLETION: siginterrupt : [#int#]siginterrupt(<#int#>, <#int#>)
+COMPLETION: sigismember : [#int#]sigismember(<#const sigset_t *#>, <#int#>)
+COMPLETION: signal : [#void (*)(int)#]signal(<#int#>, <#void (*)(int)#>)
+COMPLETION: signed
+COMPLETION: signgam : [#int#]signgam
+COMPLETION: significand : [#double#]significand(<#double#>)
+COMPLETION: sigpause : [#int#]sigpause(<#int#>)
+COMPLETION: sigpending : [#int#]sigpending(<#sigset_t *#>)
+COMPLETION: sigprocmask : [#int#]sigprocmask(<#int#>, <#const sigset_t *#>, <#sigset_t *#>)
+COMPLETION: sigrelse : [#int#]sigrelse(<#int#>)
+COMPLETION: sigset : [#void (*)(int)#]sigset(<#int#>, <#void (*)(int)#>)
+COMPLETION: sigset_t : sigset_t
+COMPLETION: sigsetmask : [#int#]sigsetmask(<#int#>)
+COMPLETION: sigstack : sigstack
+COMPLETION: sigsuspend : [#int#]sigsuspend(<#const sigset_t *#>)
+COMPLETION: sigval : sigval
+COMPLETION: sigvec : [#int#]sigvec(<#int#>, <#struct sigvec *#>, <#struct sigvec *#>)
+COMPLETION: sigwait : [#int#]sigwait(<#const sigset_t *#>, <#int *#>)
+COMPLETION: sin : [#double#]sin(<#double#>)
+COMPLETION: sinf : [#float#]sinf(<#float#>)
+COMPLETION: SINGLE_PTR_SIZE : [#const int#]SINGLE_PTR_SIZE
+COMPLETION: sinh : [#double#]sinh(<#double#>)
+COMPLETION: sinhf : [#float#]sinhf(<#float#>)
+COMPLETION: sinhl : [#long double#]sinhl(<#long double#>)
+COMPLETION: sinl : [#long double#]sinl(<#long double#>)
+COMPLETION: size_t : size_t
+COMPLETION: Pattern : [#size_t#]sizeof(<#expression-or-type#>)
+COMPLETION: sleep : [#unsigned int#]sleep(<#unsigned int#>)
+COMPLETION: slerp : [#btQuaternion#]slerp(<#const btQuaternion &q1#>, <#const btQuaternion &q2#>, <#const btScalar &t#>)
+COMPLETION: SmartPointer : SmartPointer<<#class T#>{#, <#class Enable#>#}>
+COMPLETION: SmartPointer<T, Enable> : SmartPointer<<#class T#>{#, <#class Enable#>#}>(<#const SmartPointer<T> &other#>)
+COMPLETION: SmartPointer<T, Enable> : SmartPointer<<#class T#>{#, <#class Enable#>#}>()
+COMPLETION: SmartPointer<T, Enable> : SmartPointer<<#class T#>{#, <#class Enable#>#}>(<#T *t#>)
+COMPLETION: snprintf : [#int#]snprintf(<#char *#>, <#size_t#>, <#const char *, ...#>)
+COMPLETION: sprintf : [#int#]sprintf(<#char *#>, <#const char *, ...#>)
+COMPLETION: sqrt : [#double#]sqrt(<#double#>)
+COMPLETION: sqrtf : [#float#]sqrtf(<#float#>)
+COMPLETION: sqrtl : [#long double#]sqrtl(<#long double#>)
+COMPLETION: sradixsort : [#int#]sradixsort(<#const unsigned char **#>, <#int#>, <#const unsigned char *#>, <#unsigned int#>)
+COMPLETION: srand : [#void#]srand(<#unsigned int#>)
+COMPLETION: srand48 : [#void#]srand48(<#long#>)
+COMPLETION: sranddev : [#void#]sranddev()
+COMPLETION: srandom : [#void#]srandom(<#unsigned int#>)
+COMPLETION: srandomdev : [#void#]srandomdev()
+COMPLETION: sscanf : [#int#]sscanf(<#const char *#>, <#const char *, ...#>)
+COMPLETION: ssize_t : ssize_t
+COMPLETION: stack_t : stack_t
+COMPLETION: Stacktrace : Stacktrace
+COMPLETION: Stacktrace : Stacktrace({#<#int off#>{#, <#int len#>#}#})
+COMPLETION: Stacktrace : Stacktrace(<#const Stacktrace &#>)
+COMPLETION: stat : stat
+COMPLETION: stat : stat(<#const stat &#>)
+COMPLETION: stat : [#int#]stat(<#const char *#>, <#struct stat *#>)
+COMPLETION: stat64 : stat64
+COMPLETION: stat64 : [#int#]stat64(<#const char *#>, <#struct stat64 *#>)
+COMPLETION: static
+COMPLETION: Pattern : static_cast<<#type#>>(<#expression#>)
+COMPLETION: statx64_np : [#int#]statx64_np(<#const char *#>, <#struct stat64 *#>, <#filesec_t#>)
+COMPLETION: statx_np : [#int#]statx_np(<#const char *#>, <#struct stat *#>, <#filesec_t#>)
+COMPLETION: std : std::
+COMPLETION: stpcpy : [#char *#]stpcpy(<#char *#>, <#const char *#>)
+COMPLETION: stpncpy : [#char *#]stpncpy(<#char *#>, <#const char *#>, <#size_t#>)
+COMPLETION: strcasecmp : [#int#]strcasecmp(<#const char *#>, <#const char *#>)
+COMPLETION: strcasestr : [#char *#]strcasestr(<#const char *#>, <#const char *#>)
+COMPLETION: strcat : [#char *#]strcat(<#char *#>, <#const char *#>)
+COMPLETION: strchr : [#char *#]strchr(<#const char *#>, <#int#>)
+COMPLETION: strcmp : [#int#]strcmp(<#const char *#>, <#const char *#>)
+COMPLETION: strcoll : [#int#]strcoll(<#const char *#>, <#const char *#>)
+COMPLETION: strcpy : [#char *#]strcpy(<#char *#>, <#const char *#>)
+COMPLETION: strcspn : [#size_t#]strcspn(<#const char *#>, <#const char *#>)
+COMPLETION: strdup : [#char *#]strdup(<#const char *#>)
+COMPLETION: strerror : [#char *#]strerror(<#int#>)
+COMPLETION: strerror_r : [#int#]strerror_r(<#int#>, <#char *#>, <#size_t#>)
+COMPLETION: strftime : [#size_t#]strftime(<#char *#>, <#size_t#>, <#const char *#>, <#const struct tm *#>)
+COMPLETION: StringID : StringID
+COMPLETION: StringID : StringID(<#const char *data#>)
+COMPLETION: StringID : StringID(<#const std::string &str#>)
+COMPLETION: StringID : StringID(<#unsigned int id#>)
+COMPLETION: StringID : StringID()
+COMPLETION: StringID : StringID(<#const StringID &#>)
+COMPLETION: StringIDList : StringIDList<<#typename T#>>
+COMPLETION: StringList : StringList
+COMPLETION: strlcat : [#size_t#]strlcat(<#char *#>, <#const char *#>, <#size_t#>)
+COMPLETION: strlcpy : [#size_t#]strlcpy(<#char *#>, <#const char *#>, <#size_t#>)
+COMPLETION: strlen : [#size_t#]strlen(<#const char *#>)
+COMPLETION: strmode : [#void#]strmode(<#int#>, <#char *#>)
+COMPLETION: strncasecmp : [#int#]strncasecmp(<#const char *#>, <#const char *#>, <#size_t#>)
+COMPLETION: strncat : [#char *#]strncat(<#char *#>, <#const char *#>, <#size_t#>)
+COMPLETION: strncmp : [#int#]strncmp(<#const char *#>, <#const char *#>, <#size_t#>)
+COMPLETION: strncpy : [#char *#]strncpy(<#char *#>, <#const char *#>, <#size_t#>)
+COMPLETION: strndup : [#char *#]strndup(<#const char *#>, <#size_t#>)
+COMPLETION: strnlen : [#size_t#]strnlen(<#const char *#>, <#size_t#>)
+COMPLETION: strnstr : [#char *#]strnstr(<#const char *#>, <#const char *#>, <#size_t#>)
+COMPLETION: strpbrk : [#char *#]strpbrk(<#const char *#>, <#const char *#>)
+COMPLETION: strptime : [#char *#]strptime(<#const char *#>, <#const char *#>, <#struct tm *#>)
+COMPLETION: strrchr : [#char *#]strrchr(<#const char *#>, <#int#>)
+COMPLETION: strsep : [#char *#]strsep(<#char **#>, <#const char *#>)
+COMPLETION: strsignal : [#char *#]strsignal(<#int sig#>)
+COMPLETION: strspn : [#size_t#]strspn(<#const char *#>, <#const char *#>)
+COMPLETION: strstr : [#char *#]strstr(<#const char *#>, <#const char *#>)
+COMPLETION: strtod : [#double#]strtod(<#const char *#>, <#char **#>)
+COMPLETION: strtof : [#float#]strtof(<#const char *#>, <#char **#>)
+COMPLETION: strtofflags : [#int#]strtofflags(<#char **#>, <#unsigned long *#>, <#unsigned long *#>)
+COMPLETION: strtok : [#char *#]strtok(<#char *#>, <#const char *#>)
+COMPLETION: strtok_r : [#char *#]strtok_r(<#char *#>, <#const char *#>, <#char **#>)
+COMPLETION: strtol : [#long#]strtol(<#const char *#>, <#char **#>, <#int#>)
+COMPLETION: strtold : [#long double#]strtold(<#const char *#>, <#char **#>)
+COMPLETION: strtoll : [#long long#]strtoll(<#const char *#>, <#char **#>, <#int#>)
+COMPLETION: strtoq : [#long long#]strtoq(<#const char *#>, <#char **#>, <#int#>)
+COMPLETION: strtoul : [#unsigned long#]strtoul(<#const char *#>, <#char **#>, <#int#>)
+COMPLETION: strtoull : [#unsigned long long#]strtoull(<#const char *#>, <#char **#>, <#int#>)
+COMPLETION: strtouq : [#unsigned long long#]strtouq(<#const char *#>, <#char **#>, <#int#>)
+COMPLETION: struct
+COMPLETION: strxfrm : [#size_t#]strxfrm(<#char *#>, <#const char *#>, <#size_t#>)
+COMPLETION: suboptarg : [#char *#]suboptarg
+COMPLETION: suseconds_t : suseconds_t
+COMPLETION: swab : [#void#]swab(<#const void *#>, <#void *#>, <#ssize_t#>)
+COMPLETION: swapon : [#int#]swapon(<#const char *#>)
+COMPLETION: swprintf : [#int#]swprintf(<#wchar_t *#>, <#size_t#>, <#const wchar_t *, ...#>)
+COMPLETION: swscanf : [#int#]swscanf(<#const wchar_t *#>, <#const wchar_t *, ...#>)
+COMPLETION: symlink : [#int#]symlink(<#const char *#>, <#const char *#>)
+COMPLETION: sync : [#void#]sync()
+COMPLETION: sync_volume_np : [#int#]sync_volume_np(<#const char *#>, <#int#>)
+COMPLETION: sys_errlist : [#const char *const []#]sys_errlist
+COMPLETION: sys_nerr : [#const int#]sys_nerr
+COMPLETION: sys_siglist : [#const char *const [32]#]sys_siglist
+COMPLETION: sys_signame : [#const char *const [32]#]sys_signame
+COMPLETION: syscall : [#int#]syscall(<#int, ...#>)
+COMPLETION: syscall_arg_t : syscall_arg_t
+COMPLETION: sysconf : [#long#]sysconf(<#int#>)
+COMPLETION: system : [#int#]system(<#const char *#>)
+COMPLETION: tan : [#double#]tan(<#double#>)
+COMPLETION: tanf : [#float#]tanf(<#float#>)
+COMPLETION: tanh : [#double#]tanh(<#double#>)
+COMPLETION: tanhf : [#float#]tanhf(<#float#>)
+COMPLETION: tanhl : [#long double#]tanhl(<#long double#>)
+COMPLETION: tanl : [#long double#]tanl(<#long double#>)
+COMPLETION: tcgetpgrp : [#pid_t#]tcgetpgrp(<#int#>)
+COMPLETION: tcsetpgrp : [#int#]tcsetpgrp(<#int#>, <#pid_t#>)
+COMPLETION: tempnam : [#char *#]tempnam(<#const char *#>, <#const char *#>)
+COMPLETION: tgamma : [#double#]tgamma(<#double#>)
+COMPLETION: tgammaf : [#float#]tgammaf(<#float#>)
+COMPLETION: tgammal : [#long double#]tgammal(<#long double#>)
+COMPLETION: Pattern : [#AngelScript *#]this
+COMPLETION: Pattern : [#void#]throw <#expression#>
+COMPLETION: time : [#time_t#]time(<#time_t *#>)
+COMPLETION: time2posix : [#time_t#]time2posix(<#time_t#>)
+COMPLETION: time_t : time_t
+COMPLETION: timegm : [#time_t#]timegm(<#struct tm *const#>)
+COMPLETION: timelocal : [#time_t#]timelocal(<#struct tm *const#>)
+COMPLETION: timespec : timespec
+COMPLETION: timespec : timespec(<#const timespec &#>)
+COMPLETION: timeval : timeval
+COMPLETION: timezone : [#long#]timezone
+COMPLETION: tm : tm
+COMPLETION: tmpfile : [#FILE *#]tmpfile()
+COMPLETION: tmpnam : [#char *#]tmpnam(<#char *#>)
+COMPLETION: toascii : [#int#]toascii(<#int _c#>)
+COMPLETION: tolower : [#int#]tolower(<#int _c#>)
+COMPLETION: toupper : [#int#]toupper(<#int _c#>)
+COMPLETION: towctrans : [#wint_t#]towctrans(<#wint_t#>, <#wctrans_t#>)
+COMPLETION: towlower : [#wint_t#]towlower(<#wint_t _wc#>)
+COMPLETION: towupper : [#wint_t#]towupper(<#wint_t _wc#>)
+COMPLETION: Transform : Transform
+COMPLETION: Pattern : [#bool#]true
+COMPLETION: trunc : [#double#]trunc(<#double#>)
+COMPLETION: truncate : [#int#]truncate(<#const char *#>, <#off_t#>)
+COMPLETION: truncf : [#float#]truncf(<#float#>)
+COMPLETION: truncl : [#long double#]truncl(<#long double#>)
+COMPLETION: ttyname : [#char *#]ttyname(<#int#>)
+COMPLETION: ttyname_r : [#int#]ttyname_r(<#int#>, <#char *#>, <#size_t#>)
+COMPLETION: ttyslot : [#int#]ttyslot()
+COMPLETION: Pattern : typedef <#type#> <#name#>
+COMPLETION: Pattern : [#std::type_info#]typeid(<#expression-or-type#>)
+COMPLETION: Pattern : typename <#qualifier#>::<#name#>
+COMPLETION: Pattern : typeof <#expression#>
+COMPLETION: Pattern : typeof(<#type#>)
+COMPLETION: tzname : [#char *[]#]tzname
+COMPLETION: tzset : [#void#]tzset()
+COMPLETION: tzsetwall : [#void#]tzsetwall()
+COMPLETION: u_int16_t : u_int16_t
+COMPLETION: u_int32_t : u_int32_t
+COMPLETION: u_int64_t : u_int64_t
+COMPLETION: u_int8_t : u_int8_t
+COMPLETION: ualarm : [#useconds_t#]ualarm(<#useconds_t#>, <#useconds_t#>)
+COMPLETION: ucontext_t : ucontext_t
+COMPLETION: uid_t : uid_t
+COMPLETION: uint16_t : uint16_t
+COMPLETION: uint32_t : uint32_t
+COMPLETION: uint64_t : uint64_t
+COMPLETION: uint8_t : uint8_t
+COMPLETION: uint_fast16_t : uint_fast16_t
+COMPLETION: uint_fast32_t : uint_fast32_t
+COMPLETION: uint_fast64_t : uint_fast64_t
+COMPLETION: uint_fast8_t : uint_fast8_t
+COMPLETION: uint_least16_t : uint_least16_t
+COMPLETION: uint_least32_t : uint_least32_t
+COMPLETION: uint_least64_t : uint_least64_t
+COMPLETION: uint_least8_t : uint_least8_t
+COMPLETION: uintmax_t : uintmax_t
+COMPLETION: uintptr_t : uintptr_t
+COMPLETION: umask : [#mode_t#]umask(<#mode_t#>)
+COMPLETION: umaskx_np : [#int#]umaskx_np(<#filesec_t#>)
+COMPLETION: undelete : [#int#]undelete(<#const char *#>)
+COMPLETION: ungetc : [#int#]ungetc(<#int#>, <#FILE *#>)
+COMPLETION: ungetwc : [#wint_t#]ungetwc(<#wint_t#>, <#FILE *#>)
+COMPLETION: union
+COMPLETION: unlink : [#int#]unlink(<#const char *#>)
+COMPLETION: unlockpt : [#int#]unlockpt(<#int#>)
+COMPLETION: unsetenv : [#int#]unsetenv(<#const char *#>)
+COMPLETION: unsigned
+COMPLETION: unwhiteout : [#int#]unwhiteout(<#const char *#>)
+COMPLETION: Update : [#void#]Update()
+COMPLETION: useconds_t : useconds_t
+COMPLETION: user_addr_t : user_addr_t
+COMPLETION: user_long_t : user_long_t
+COMPLETION: user_off_t : user_off_t
+COMPLETION: user_size_t : user_size_t
+COMPLETION: user_ssize_t : user_ssize_t
+COMPLETION: user_time_t : user_time_t
+COMPLETION: user_ulong_t : user_ulong_t
+COMPLETION: Pattern : using namespace <#identifier#>
+COMPLETION: usleep : [#int#]usleep(<#useconds_t#>)
+COMPLETION: uuid_t : uuid_t
+COMPLETION: va_list : va_list
+COMPLETION: valloc : [#void *#]valloc(<#size_t#>)
+COMPLETION: vasprintf : [#int#]vasprintf(<#char **#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vdprintf : [#int#]vdprintf(<#int#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: Vector2 : Vector2
+COMPLETION: Vector2 : Vector2(<#const Vector2 &#>)
+COMPLETION: Vector3 : Vector3
+COMPLETION: Vector4 : Vector4
+COMPLETION: vfork : [#pid_t#]vfork()
+COMPLETION: vfprintf : [#int#]vfprintf(<#FILE *#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vfscanf : [#int#]vfscanf(<#FILE *#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vfwprintf : [#int#]vfwprintf(<#FILE *#>, <#const wchar_t *#>, <#__va_list_tag *#>)
+COMPLETION: vfwscanf : [#int#]vfwscanf(<#FILE *#>, <#const wchar_t *#>, <#__va_list_tag *#>)
+COMPLETION: void
+COMPLETION: volatile
+COMPLETION: vprintf : [#int#]vprintf(<#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vscanf : [#int#]vscanf(<#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vsnprintf : [#int#]vsnprintf(<#char *#>, <#size_t#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vsprintf : [#int#]vsprintf(<#char *#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vsscanf : [#int#]vsscanf(<#const char *#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vswprintf : [#int#]vswprintf(<#wchar_t *#>, <#size_t#>, <#const wchar_t *#>, <#__va_list_tag *#>)
+COMPLETION: vswscanf : [#int#]vswscanf(<#const wchar_t *#>, <#const wchar_t *#>, <#__va_list_tag *#>)
+COMPLETION: vwprintf : [#int#]vwprintf(<#const wchar_t *#>, <#__va_list_tag *#>)
+COMPLETION: vwscanf : [#int#]vwscanf(<#const wchar_t *#>, <#__va_list_tag *#>)
+COMPLETION: wait : wait
+COMPLETION: wait : [#pid_t#]wait(<#int *#>)
+COMPLETION: wait3 : [#pid_t#]wait3(<#int *#>, <#int#>, <#struct rusage *#>)
+COMPLETION: wait4 : [#pid_t#]wait4(<#pid_t#>, <#int *#>, <#int#>, <#struct rusage *#>)
+COMPLETION: waitid : [#int#]waitid(<#idtype_t#>, <#id_t#>, <#siginfo_t *#>, <#int#>)
+COMPLETION: waitpid : [#pid_t#]waitpid(<#pid_t#>, <#int *#>, <#int#>)
+COMPLETION: wchar_t
+COMPLETION: wcpcpy : [#wchar_t *#]wcpcpy(<#wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcpncpy : [#wchar_t *#]wcpncpy(<#wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wcrtomb : [#size_t#]wcrtomb(<#char *#>, <#wchar_t#>, <#mbstate_t *#>)
+COMPLETION: wcscasecmp : [#int#]wcscasecmp(<#const wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcscat : [#wchar_t *#]wcscat(<#wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcschr : [#wchar_t *#]wcschr(<#const wchar_t *#>, <#wchar_t#>)
+COMPLETION: wcscmp : [#int#]wcscmp(<#const wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcscoll : [#int#]wcscoll(<#const wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcscpy : [#wchar_t *#]wcscpy(<#wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcscspn : [#size_t#]wcscspn(<#const wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcsdup : [#wchar_t *#]wcsdup(<#const wchar_t *#>)
+COMPLETION: wcsftime : [#size_t#]wcsftime(<#wchar_t *#>, <#size_t#>, <#const wchar_t *#>, <#const struct tm *#>)
+COMPLETION: wcslcat : [#size_t#]wcslcat(<#wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wcslcpy : [#size_t#]wcslcpy(<#wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wcslen : [#size_t#]wcslen(<#const wchar_t *#>)
+COMPLETION: wcsncasecmp : [#int#]wcsncasecmp(<#const wchar_t *#>, <#const wchar_t *#>, <#size_t n#>)
+COMPLETION: wcsncat : [#wchar_t *#]wcsncat(<#wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wcsncmp : [#int#]wcsncmp(<#const wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wcsncpy : [#wchar_t *#]wcsncpy(<#wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wcsnlen : [#size_t#]wcsnlen(<#const wchar_t *#>, <#size_t#>)
+COMPLETION: wcsnrtombs : [#size_t#]wcsnrtombs(<#char *#>, <#const wchar_t **#>, <#size_t#>, <#size_t#>, <#mbstate_t *#>)
+COMPLETION: wcspbrk : [#wchar_t *#]wcspbrk(<#const wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcsrchr : [#wchar_t *#]wcsrchr(<#const wchar_t *#>, <#wchar_t#>)
+COMPLETION: wcsrtombs : [#size_t#]wcsrtombs(<#char *#>, <#const wchar_t **#>, <#size_t#>, <#mbstate_t *#>)
+COMPLETION: wcsspn : [#size_t#]wcsspn(<#const wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcsstr : [#wchar_t *#]wcsstr(<#const wchar_t *#>, <#const wchar_t *#>)
+COMPLETION: wcstod : [#double#]wcstod(<#const wchar_t *#>, <#wchar_t **#>)
+COMPLETION: wcstof : [#float#]wcstof(<#const wchar_t *#>, <#wchar_t **#>)
+COMPLETION: wcstok : [#wchar_t *#]wcstok(<#wchar_t *#>, <#const wchar_t *#>, <#wchar_t **#>)
+COMPLETION: wcstol : [#long#]wcstol(<#const wchar_t *#>, <#wchar_t **#>, <#int#>)
+COMPLETION: wcstold : [#long double#]wcstold(<#const wchar_t *#>, <#wchar_t **#>)
+COMPLETION: wcstoll : [#long long#]wcstoll(<#const wchar_t *#>, <#wchar_t **#>, <#int#>)
+COMPLETION: wcstombs : [#size_t#]wcstombs(<#char *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wcstoul : [#unsigned long#]wcstoul(<#const wchar_t *#>, <#wchar_t **#>, <#int#>)
+COMPLETION: wcstoull : [#unsigned long long#]wcstoull(<#const wchar_t *#>, <#wchar_t **#>, <#int#>)
+COMPLETION: wcswidth : [#int#]wcswidth(<#const wchar_t *#>, <#size_t#>)
+COMPLETION: wcsxfrm : [#size_t#]wcsxfrm(<#wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wctob : [#int#]wctob(<#wint_t#>)
+COMPLETION: wctomb : [#int#]wctomb(<#char *#>, <#wchar_t#>)
+COMPLETION: wctrans : [#wctrans_t#]wctrans(<#const char *#>)
+COMPLETION: wctrans_t : wctrans_t
+COMPLETION: wctype : [#wctype_t#]wctype(<#const char *#>)
+COMPLETION: wctype_t : wctype_t
+COMPLETION: wcwidth : [#int#]wcwidth(<#wchar_t#>)
+COMPLETION: wint_t : wint_t
+COMPLETION: wmemchr : [#wchar_t *#]wmemchr(<#const wchar_t *#>, <#wchar_t#>, <#size_t#>)
+COMPLETION: wmemcmp : [#int#]wmemcmp(<#const wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wmemcpy : [#wchar_t *#]wmemcpy(<#wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wmemmove : [#wchar_t *#]wmemmove(<#wchar_t *#>, <#const wchar_t *#>, <#size_t#>)
+COMPLETION: wmemset : [#wchar_t *#]wmemset(<#wchar_t *#>, <#wchar_t#>, <#size_t#>)
+COMPLETION: wprintf : [#int#]wprintf(<#const wchar_t *, ...#>)
+COMPLETION: write : [#ssize_t#]write(<#int#>, <#const void *#>, <#size_t#>)
+COMPLETION: wscanf : [#int#]wscanf(<#const wchar_t *, ...#>)
+COMPLETION: y0 : [#double#]y0(<#double#>)
+COMPLETION: y1 : [#double#]y1(<#double#>)
+COMPLETION: yn : [#double#]yn(<#int#>, <#double#>)
+COMPLETION: zopen : [#FILE *#]zopen(<#const char *#>, <#const char *#>, <#int#>)
+COMPLETION: ~AngelScript : [#void#]~AngelScript()
+COMPLETION: ~IReferenceCounted : [#void#]~IReferenceCounted()
+COMPLETION: ~Resource : [#void#]~Resource()

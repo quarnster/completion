@@ -1,0 +1,457 @@
+COMPLETION: addable : addable<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: addable1 : addable1<<#class T#>{#, <#class B#>#}>
+COMPLETION: addable2 : addable2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: additive : additive<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: additive1 : additive1<<#class T#>{#, <#class B#>#}>
+COMPLETION: additive2 : additive2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: addressof : [#T *#]addressof(<#T &v#>)
+COMPLETION: andable : andable<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: andable1 : andable1<<#class T#>{#, <#class B#>#}>
+COMPLETION: andable2 : andable2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: archive : archive
+COMPLETION: arithmetic : arithmetic<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: arithmetic1 : arithmetic1<<#class T#>{#, <#class B#>#}>
+COMPLETION: arithmetic2 : arithmetic2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: array : array<<#class T#>, <#std::size_t N#>>
+COMPLETION: assertion : assertion
+COMPLETION: atomic_compare_exchange : [#bool#]atomic_compare_exchange(<#shared_ptr<T> *p#>, <#shared_ptr<T> *v#>, <#shared_ptr<T> w#>)
+COMPLETION: atomic_compare_exchange_explicit : [#bool#]atomic_compare_exchange_explicit(<#shared_ptr<T> *p#>, <#shared_ptr<T> *v#>, <#shared_ptr<T> w#>, <#boost::memory_order#>, <#boost::memory_order#>)
+COMPLETION: atomic_exchange : [#shared_ptr<T>#]atomic_exchange(<#shared_ptr<T> *p#>, <#shared_ptr<T> r#>)
+COMPLETION: atomic_exchange_explicit : [#shared_ptr<T>#]atomic_exchange_explicit(<#shared_ptr<T> *p#>, <#shared_ptr<T> r#>, <#boost::memory_order#>)
+COMPLETION: atomic_is_lock_free : [#bool#]atomic_is_lock_free(<#const shared_ptr<T> *#>)
+COMPLETION: atomic_load : [#shared_ptr<T>#]atomic_load(<#const shared_ptr<T> *p#>)
+COMPLETION: atomic_load_explicit : [#shared_ptr<T>#]atomic_load_explicit(<#const shared_ptr<T> *p#>, <#boost::memory_order#>)
+COMPLETION: atomic_store : [#void#]atomic_store(<#shared_ptr<T> *p#>, <#shared_ptr<T> r#>)
+COMPLETION: atomic_store_explicit : [#void#]atomic_store_explicit(<#shared_ptr<T> *p#>, <#shared_ptr<T> r#>, <#boost::memory_order#>)
+COMPLETION: bad_expression : bad_expression
+COMPLETION: bad_pattern : bad_pattern
+COMPLETION: bad_weak_ptr : bad_weak_ptr
+COMPLETION: basic_regex : basic_regex<<#class charT#>{#, <#class traits#>#}>
+COMPLETION: bidirectional_iteratable : bidirectional_iteratable<<#class T#>, <#class P#>{#, <#class B#>#}>
+COMPLETION: bidirectional_iterator_helper : bidirectional_iterator_helper<<#class T#>, <#class V#>{#, <#class D#>{#, <#class P#>{#, <#class R#>#}#}#}>
+COMPLETION: bitwise : bitwise<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: bitwise1 : bitwise1<<#class T#>{#, <#class B#>#}>
+COMPLETION: bitwise2 : bitwise2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: c_regex_traits : c_regex_traits<<#class charT#>>
+COMPLETION: checked_array_delete : [#void#]checked_array_delete(<#T *x#>)
+COMPLETION: checked_array_deleter : checked_array_deleter<<#class T#>>
+COMPLETION: checked_delete : [#void#]checked_delete(<#T *x#>)
+COMPLETION: checked_deleter : checked_deleter<<#class T#>>
+COMPLETION: cmatch : cmatch
+COMPLETION: const_pointer_cast : [#shared_ptr<T>#]const_pointer_cast<<#class T#>>(<#const shared_ptr<U> &r#>)
+COMPLETION: cpp_regex_traits : cpp_regex_traits<<#class charT#>>
+COMPLETION: cref : [#const reference_wrapper<const T>#]cref(<#const T &t#>)
+COMPLETION: cregex_iterator : cregex_iterator
+COMPLETION: cregex_token_iterator : cregex_token_iterator
+COMPLETION: csub_match : csub_match
+COMPLETION: decrementable : decrementable<<#class T#>{#, <#class B#>#}>
+COMPLETION: deprecated : deprecated
+COMPLETION: dereferenceable : dereferenceable<<#class T#>, <#class P#>{#, <#class B#>#}>
+COMPLETION: detail : detail
+COMPLETION: disable_if : disable_if<<#class Cond#>{#, <#class T#>#}>
+COMPLETION: disable_if_c : disable_if_c<<#bool B#>{#, <#class T#>#}>
+COMPLETION: dividable : dividable<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: dividable1 : dividable1<<#class T#>{#, <#class B#>#}>
+COMPLETION: dividable2 : dividable2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: dividable2_left : dividable2_left<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: dynamic_pointer_cast : [#shared_ptr<T>#]dynamic_pointer_cast<<#class T#>>(<#const shared_ptr<U> &r#>)
+COMPLETION: enable_current_exception : [#exception_detail::clone_impl<T>#]enable_current_exception(<#const T &x#>)
+COMPLETION: enable_error_info : [#typename exception_detail::enable_error_info_return_type<T>::type#]enable_error_info(<#const T &x#>)
+COMPLETION: enable_if : enable_if<<#class Cond#>{#, <#class T#>#}>
+COMPLETION: enable_if_c : enable_if_c<<#bool B#>{#, <#class T#>#}>
+COMPLETION: enable_shared_from_raw : enable_shared_from_raw
+COMPLETION: enable_shared_from_this : enable_shared_from_this<<#class T#>>
+COMPLETION: equality_comparable : equality_comparable<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: equality_comparable1 : equality_comparable1<<#class T#>{#, <#class B#>#}>
+COMPLETION: equality_comparable2 : equality_comparable2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: equivalent : equivalent<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: equivalent1 : equivalent1<<#class T#>{#, <#class B#>#}>
+COMPLETION: equivalent2 : equivalent2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: error_info : error_info<<#class Tag#>, <#class T#>>
+COMPLETION: euclidean_ring_operators : euclidean_ring_operators<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: euclidean_ring_operators1 : euclidean_ring_operators1<<#class T#>{#, <#class B#>#}>
+COMPLETION: euclidean_ring_operators2 : euclidean_ring_operators2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: euclidian_ring_operators : euclidian_ring_operators<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: euclidian_ring_operators1 : euclidian_ring_operators1<<#class T#>{#, <#class B#>#}>
+COMPLETION: euclidian_ring_operators2 : euclidian_ring_operators2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: exception : exception
+COMPLETION: exception_detail : exception_detail
+COMPLETION: false_type : false_type
+COMPLETION: field_operators : field_operators<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: field_operators1 : field_operators1<<#class T#>{#, <#class B#>#}>
+COMPLETION: field_operators2 : field_operators2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: format_all : [#boost::regex_constants::_match_flags#]format_all
+COMPLETION: format_default : [#boost::regex_constants::_match_flags#]format_default
+COMPLETION: format_first_only : [#boost::regex_constants::_match_flags#]format_first_only
+COMPLETION: format_no_copy : [#boost::regex_constants::_match_flags#]format_no_copy
+COMPLETION: format_perl : [#boost::regex_constants::_match_flags#]format_perl
+COMPLETION: format_sed : [#boost::regex_constants::_match_flags#]format_sed
+COMPLETION: forward_iteratable : forward_iteratable<<#class T#>, <#class P#>{#, <#class B#>#}>
+COMPLETION: forward_iterator_helper : forward_iterator_helper<<#class T#>, <#class V#>{#, <#class D#>{#, <#class P#>{#, <#class R#>#}#}#}>
+COMPLETION: get_c_array : [#T (&)[N]#]get_c_array(<#boost::array<T, N> &arg#>)
+COMPLETION: get_c_array : [#const T (&)[N]#]get_c_array(<#const boost::array<T, N> &arg#>)
+COMPLETION: get_deleter : [#D *#]get_deleter<<#class D#>>(<#const shared_ptr<T> &p#>)
+COMPLETION: get_pointer : [#typename shared_ptr<T>::element_type *#]get_pointer(<#const shared_ptr<T> &p#>)
+COMPLETION: get_pointer : [#T *#]get_pointer(<#const scoped_ptr<T> &p#>)
+COMPLETION: get_pointer : [#T *#]get_pointer(<#const reference_wrapper<T> &r#>)
+COMPLETION: has_new_operator : has_new_operator<<#typename T#>>
+COMPLETION: hash : hash<<#class T#>>
+COMPLETION: hash_combine : [#void#]hash_combine(<#std::size_t &seed#>, <#const T &v#>)
+COMPLETION: hash_detail : hash_detail
+COMPLETION: hash_range : [#std::size_t#]hash_range(<#It first#>, <#It last#>)
+COMPLETION: hash_range : [#void#]hash_range(<#std::size_t &seed#>, <#It first#>, <#It last#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#const array<T, N> &arr#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#const boost::shared_ptr<T> &p#>)
+COMPLETION: hash_value : [#typename boost::hash_detail::basic_numbers<T>::type#]hash_value(<#T v#>)
+COMPLETION: hash_value : [#typename boost::hash_detail::long_numbers<T>::type#]hash_value(<#T v#>)
+COMPLETION: hash_value : [#typename boost::hash_detail::ulong_numbers<T>::type#]hash_value(<#T v#>)
+COMPLETION: hash_value : [#typename boost::enable_if<boost::is_enum<T>, std::size_t>::type#]hash_value(<#T v#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#T *const &v#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#const T (&x)[N]#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#T (&x)[N]#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#const std::basic_string<Ch, std::char_traits<Ch>, A> &v#>)
+COMPLETION: hash_value : [#typename boost::hash_detail::float_numbers<T>::type#]hash_value(<#T v#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#const std::pair<A, B> &v#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#const std::vector<T, A> &v#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#const std::list<T, A> &v#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#const std::deque<T, A> &v#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#const std::set<K, C, A> &v#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#const std::multiset<K, C, A> &v#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#const std::map<K, T, C, A> &v#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#const std::multimap<K, T, C, A> &v#>)
+COMPLETION: hash_value : [#std::size_t#]hash_value(<#const std::complex<T> &v#>)
+COMPLETION: high_bit_mask_t : high_bit_mask_t<<#std::size_t Bit#>>
+COMPLETION: incrementable : incrementable<<#class T#>{#, <#class B#>#}>
+COMPLETION: indexable : indexable<<#class T#>, <#class I#>, <#class R#>{#, <#class B#>#}>
+COMPLETION: input_iteratable : input_iteratable<<#class T#>, <#class P#>{#, <#class B#>#}>
+COMPLETION: input_iterator_helper : input_iterator_helper<<#class T#>, <#class V#>{#, <#class D#>{#, <#class P#>{#, <#class R#>#}#}#}>
+COMPLETION: int16_t : int16_t
+COMPLETION: int32_t : int32_t
+COMPLETION: int64_t : int64_t
+COMPLETION: int8_t : int8_t
+COMPLETION: int_fast16_t : int_fast16_t
+COMPLETION: int_fast32_t : int_fast32_t
+COMPLETION: int_fast64_t : int_fast64_t
+COMPLETION: int_fast8_t : int_fast8_t
+COMPLETION: int_fast_t : int_fast_t<<#typename LeastInt#>>
+COMPLETION: int_least16_t : int_least16_t
+COMPLETION: int_least32_t : int_least32_t
+COMPLETION: int_least64_t : int_least64_t
+COMPLETION: int_least8_t : int_least8_t
+COMPLETION: int_max_value_t : int_max_value_t<<#boost::long_long_type MaxValue#>>
+COMPLETION: int_min_value_t : int_min_value_t<<#boost::long_long_type MinValue#>>
+COMPLETION: int_t : int_t<<#int Bits#>>
+COMPLETION: integer_arithmetic : integer_arithmetic<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: integer_arithmetic1 : integer_arithmetic1<<#class T#>{#, <#class B#>#}>
+COMPLETION: integer_arithmetic2 : integer_arithmetic2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: integer_multiplicative : integer_multiplicative<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: integer_multiplicative1 : integer_multiplicative1<<#class T#>{#, <#class B#>#}>
+COMPLETION: integer_multiplicative2 : integer_multiplicative2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: integer_traits : integer_traits<<#class T#>>
+COMPLETION: integral_constant : integral_constant<<#class T#>, <#T val#>>
+COMPLETION: intmax_t : intmax_t
+COMPLETION: is_abstract : is_abstract<<#typename T#>>
+COMPLETION: is_arithmetic : is_arithmetic<<#typename T#>>
+COMPLETION: is_array : is_array<<#typename T#>>
+COMPLETION: is_base_and_derived : is_base_and_derived<<#typename Base#>, <#typename Derived#>>
+COMPLETION: is_base_of : is_base_of<<#typename Base#>, <#typename Derived#>>
+COMPLETION: is_chained_base : is_chained_base<<#class T#>>
+COMPLETION: is_class : is_class<<#typename T#>>
+COMPLETION: is_const : is_const<<#typename T#>>
+COMPLETION: is_convertible : is_convertible<<#typename From#>, <#typename To#>>
+COMPLETION: is_enum : is_enum<<#typename T#>>
+COMPLETION: is_float : is_float<<#typename T#>>
+COMPLETION: is_function : is_function<<#typename T#>>
+COMPLETION: is_fundamental : is_fundamental<<#typename T#>>
+COMPLETION: is_integral : is_integral<<#typename T#>>
+COMPLETION: is_lvalue_reference : is_lvalue_reference<<#typename T#>>
+COMPLETION: is_member_function_pointer : is_member_function_pointer<<#typename T#>>
+COMPLETION: is_member_pointer : is_member_pointer<<#typename T#>>
+COMPLETION: is_pointer : is_pointer<<#typename T#>>
+COMPLETION: is_polymorphic : is_polymorphic<<#typename T#>>
+COMPLETION: is_random_access_iterator : is_random_access_iterator<<#class I#>>
+COMPLETION: is_reference : is_reference<<#typename T#>>
+COMPLETION: is_reference_wrapper : is_reference_wrapper<<#typename T#>>
+COMPLETION: is_rvalue_reference : is_rvalue_reference<<#typename T#>>
+COMPLETION: is_same : is_same<<#typename T#>, <#typename U#>>
+COMPLETION: is_virtual_base_of : is_virtual_base_of<<#typename Base#>, <#typename Derived#>>
+COMPLETION: is_void : is_void<<#typename T#>>
+COMPLETION: is_volatile : is_volatile<<#typename T#>>
+COMPLETION: iterator : iterator<<#class Category#>, <#class T#>{#, <#class Distance#>{#, <#class Pointer#>{#, <#class Reference#>#}#}#}>
+COMPLETION: lazy_disable_if : lazy_disable_if<<#class Cond#>, <#class T#>>
+COMPLETION: lazy_disable_if_c : lazy_disable_if_c<<#bool B#>, <#class T#>>
+COMPLETION: lazy_enable_if : lazy_enable_if<<#class Cond#>, <#class T#>>
+COMPLETION: lazy_enable_if_c : lazy_enable_if_c<<#bool B#>, <#class T#>>
+COMPLETION: left_shiftable : left_shiftable<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: left_shiftable1 : left_shiftable1<<#class T#>{#, <#class B#>#}>
+COMPLETION: left_shiftable2 : left_shiftable2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: less_than_comparable : less_than_comparable<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: less_than_comparable1 : less_than_comparable1<<#class T#>{#, <#class B#>#}>
+COMPLETION: less_than_comparable2 : less_than_comparable2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: long_long_type : long_long_type
+COMPLETION: low_bits_mask_t : low_bits_mask_t<<#std::size_t Bits#>>
+COMPLETION: make_regex_iterator : [#regex_iterator<const charT *, charT, traits>#]make_regex_iterator(<#const charT *p#>, <#const basic_regex<charT, traits> &e#>{#, <#regex_constants::match_flag_type m#>#})
+COMPLETION: make_regex_iterator : [#regex_iterator<typename std::basic_string<charT, ST, SA>::const_iterator, charT, traits>#]make_regex_iterator(<#const std::basic_string<charT, ST, SA> &p#>, <#const basic_regex<charT, traits> &e#>{#, <#regex_constants::match_flag_type m#>#})
+COMPLETION: make_regex_token_iterator : [#regex_token_iterator<const charT *, charT, traits>#]make_regex_token_iterator(<#const charT *p#>, <#const basic_regex<charT, traits> &e#>{#, <#int submatch#>{#, <#regex_constants::match_flag_type m#>#}#})
+COMPLETION: make_regex_token_iterator : [#regex_token_iterator<typename std::basic_string<charT, ST, SA>::const_iterator, charT, traits>#]make_regex_token_iterator(<#const std::basic_string<charT, ST, SA> &p#>, <#const basic_regex<charT, traits> &e#>{#, <#int submatch#>{#, <#regex_constants::match_flag_type m#>#}#})
+COMPLETION: make_regex_token_iterator : [#regex_token_iterator<const charT *, charT, traits>#]make_regex_token_iterator(<#const charT *p#>, <#const basic_regex<charT, traits> &e#>, <#const int (&submatch)[N]#>{#, <#regex_constants::match_flag_type m#>#})
+COMPLETION: make_regex_token_iterator : [#regex_token_iterator<typename std::basic_string<charT, ST, SA>::const_iterator, charT, traits>#]make_regex_token_iterator(<#const std::basic_string<charT, ST, SA> &p#>, <#const basic_regex<charT, traits> &e#>, <#const int (&submatch)[N]#>{#, <#regex_constants::match_flag_type m#>#})
+COMPLETION: make_regex_token_iterator : [#regex_token_iterator<const charT *, charT, traits>#]make_regex_token_iterator(<#const charT *p#>, <#const basic_regex<charT, traits> &e#>, <#const std::vector<int> &submatch#>{#, <#regex_constants::match_flag_type m#>#})
+COMPLETION: make_regex_token_iterator : [#regex_token_iterator<typename std::basic_string<charT, ST, SA>::const_iterator, charT, traits>#]make_regex_token_iterator(<#const std::basic_string<charT, ST, SA> &p#>, <#const basic_regex<charT, traits> &e#>, <#const std::vector<int> &submatch#>{#, <#regex_constants::match_flag_type m#>#})
+COMPLETION: match_all : [#boost::regex_constants::_match_flags#]match_all
+COMPLETION: match_any : [#boost::regex_constants::_match_flags#]match_any
+COMPLETION: match_continuous : [#boost::regex_constants::_match_flags#]match_continuous
+COMPLETION: match_default : [#boost::regex_constants::_match_flags#]match_default
+COMPLETION: match_extra : [#boost::regex_constants::_match_flags#]match_extra
+COMPLETION: match_flag_type : match_flag_type
+COMPLETION: match_nosubs : [#boost::regex_constants::_match_flags#]match_nosubs
+COMPLETION: match_not_bob : [#boost::regex_constants::_match_flags#]match_not_bob
+COMPLETION: match_not_bol : [#boost::regex_constants::_match_flags#]match_not_bol
+COMPLETION: match_not_bow : [#boost::regex_constants::_match_flags#]match_not_bow
+COMPLETION: match_not_dot_newline : [#boost::regex_constants::_match_flags#]match_not_dot_newline
+COMPLETION: match_not_dot_null : [#boost::regex_constants::_match_flags#]match_not_dot_null
+COMPLETION: match_not_eob : [#boost::regex_constants::_match_flags#]match_not_eob
+COMPLETION: match_not_eol : [#boost::regex_constants::_match_flags#]match_not_eol
+COMPLETION: match_not_eow : [#boost::regex_constants::_match_flags#]match_not_eow
+COMPLETION: match_not_null : [#boost::regex_constants::_match_flags#]match_not_null
+COMPLETION: match_partial : [#boost::regex_constants::_match_flags#]match_partial
+COMPLETION: match_perl : [#boost::regex_constants::_match_flags#]match_perl
+COMPLETION: match_posix : [#boost::regex_constants::_match_flags#]match_posix
+COMPLETION: match_prev_avail : [#boost::regex_constants::_match_flags#]match_prev_avail
+COMPLETION: match_results : match_results<<#class BidiIterator#>{#, <#class Allocator#>#}>
+COMPLETION: match_single_line : [#boost::regex_constants::_match_flags#]match_single_line
+COMPLETION: memory_order : memory_order
+COMPLETION: memory_order_acq_rel : [#boost::memory_order#]memory_order_acq_rel
+COMPLETION: memory_order_acquire : [#boost::memory_order#]memory_order_acquire
+COMPLETION: memory_order_consume : [#boost::memory_order#]memory_order_consume
+COMPLETION: memory_order_relaxed : [#boost::memory_order#]memory_order_relaxed
+COMPLETION: memory_order_release : [#boost::memory_order#]memory_order_release
+COMPLETION: memory_order_seq_cst : [#boost::memory_order#]memory_order_seq_cst
+COMPLETION: modable : modable<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: modable1 : modable1<<#class T#>{#, <#class B#>#}>
+COMPLETION: modable2 : modable2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: modable2_left : modable2_left<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: mpl : mpl
+COMPLETION: multipliable : multipliable<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: multipliable1 : multipliable1<<#class T#>{#, <#class B#>#}>
+COMPLETION: multipliable2 : multipliable2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: multiplicative : multiplicative<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: multiplicative1 : multiplicative1<<#class T#>{#, <#class B#>#}>
+COMPLETION: multiplicative2 : multiplicative2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: noncopyable : noncopyable
+COMPLETION: noncopyable_ : noncopyable_
+COMPLETION: object_cache : object_cache<<#class Key#>, <#class Object#>>
+COMPLETION: operator!= : [#bool#]operator!=(<#const array<T, N> &x#>, <#const array<T, N> &y#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const shared_ptr<T> &a#>, <#const shared_ptr<U> &b#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const sub_match<RandomAccessIterator> &m#>, <#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>)
+COMPLETION: operator!= : [#bool#]operator!=(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator+ : [#std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator>#]operator+(<#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator+ : [#std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator>#]operator+(<#const sub_match<RandomAccessIterator> &m#>, <#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>)
+COMPLETION: operator+ : [#std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type>#]operator+(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator+ : [#std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type>#]operator+(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>)
+COMPLETION: operator+ : [#std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type>#]operator+(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator+ : [#std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type>#]operator+(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>)
+COMPLETION: operator+ : [#std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type>#]operator+(<#const sub_match<RandomAccessIterator> &m1#>, <#const sub_match<RandomAccessIterator> &m2#>)
+COMPLETION: operator< : [#bool#]operator<(<#const array<T, N> &x#>, <#const array<T, N> &y#>)
+COMPLETION: operator< : [#bool#]operator<(<#const shared_ptr<T> &a#>, <#const shared_ptr<U> &b#>)
+COMPLETION: operator< : [#bool#]operator<(<#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator< : [#bool#]operator<(<#const sub_match<RandomAccessIterator> &m#>, <#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>)
+COMPLETION: operator< : [#bool#]operator<(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>)
+COMPLETION: operator< : [#bool#]operator<(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator< : [#bool#]operator<(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>)
+COMPLETION: operator< : [#bool#]operator<(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator<< : [#std::basic_ostream<E, T> &#]operator<<(<#std::basic_ostream<E, T> &os#>, <#const shared_ptr<Y> &p#>)
+COMPLETION: operator<< : [#std::basic_ostream<charT, traits> &#]operator<<(<#std::basic_ostream<charT, traits> &os#>, <#const basic_regex<charT, traits2> &e#>)
+COMPLETION: operator<< : [#std::basic_ostream<charT, traits> &#]operator<<(<#std::basic_ostream<charT, traits> &os#>, <#const sub_match<RandomAccessIterator> &s#>)
+COMPLETION: operator<< : [#std::basic_ostream<charT, traits> &#]operator<<(<#std::basic_ostream<charT, traits> &os#>, <#const match_results<BidiIterator, Allocator> &s#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const array<T, N> &x#>, <#const array<T, N> &y#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const sub_match<RandomAccessIterator> &m#>, <#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>)
+COMPLETION: operator<= : [#bool#]operator<=(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator== : [#bool#]operator==(<#const array<T, N> &x#>, <#const array<T, N> &y#>)
+COMPLETION: operator== : [#bool#]operator==(<#const shared_ptr<T> &a#>, <#const shared_ptr<U> &b#>)
+COMPLETION: operator== : [#bool#]operator==(<#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator== : [#bool#]operator==(<#const sub_match<RandomAccessIterator> &m#>, <#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>)
+COMPLETION: operator== : [#bool#]operator==(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>)
+COMPLETION: operator== : [#bool#]operator==(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator== : [#bool#]operator==(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>)
+COMPLETION: operator== : [#bool#]operator==(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator> : [#bool#]operator>(<#const array<T, N> &x#>, <#const array<T, N> &y#>)
+COMPLETION: operator> : [#bool#]operator>(<#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator> : [#bool#]operator>(<#const sub_match<RandomAccessIterator> &m#>, <#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>)
+COMPLETION: operator> : [#bool#]operator>(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>)
+COMPLETION: operator> : [#bool#]operator>(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator> : [#bool#]operator>(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>)
+COMPLETION: operator> : [#bool#]operator>(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const array<T, N> &x#>, <#const array<T, N> &y#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const sub_match<RandomAccessIterator> &m#>, <#const std::basic_string<typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type, traits, Allocator> &s#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type *s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const sub_match<RandomAccessIterator> &m#>, <#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>)
+COMPLETION: operator>= : [#bool#]operator>=(<#const typename re_detail::regex_iterator_traits<RandomAccessIterator>::value_type &s#>, <#const sub_match<RandomAccessIterator> &m#>)
+COMPLETION: operators : operators<<#class T#>{#, <#class U#>#}>
+COMPLETION: operators2 : operators2<<#class T#>, <#class U#>>
+COMPLETION: orable : orable<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: orable1 : orable1<<#class T#>{#, <#class B#>#}>
+COMPLETION: orable2 : orable2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: ordered_euclidean_ring_operators : ordered_euclidean_ring_operators<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: ordered_euclidean_ring_operators1 : ordered_euclidean_ring_operators1<<#class T#>{#, <#class B#>#}>
+COMPLETION: ordered_euclidean_ring_operators2 : ordered_euclidean_ring_operators2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: ordered_euclidian_ring_operators : ordered_euclidian_ring_operators<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: ordered_euclidian_ring_operators1 : ordered_euclidian_ring_operators1<<#class T#>{#, <#class B#>#}>
+COMPLETION: ordered_euclidian_ring_operators2 : ordered_euclidian_ring_operators2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: ordered_field_operators : ordered_field_operators<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: ordered_field_operators1 : ordered_field_operators1<<#class T#>{#, <#class B#>#}>
+COMPLETION: ordered_field_operators2 : ordered_field_operators2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: ordered_ring_operators : ordered_ring_operators<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: ordered_ring_operators1 : ordered_ring_operators1<<#class T#>{#, <#class B#>#}>
+COMPLETION: ordered_ring_operators2 : ordered_ring_operators2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: output_iteratable : output_iteratable<<#class T#>{#, <#class B#>#}>
+COMPLETION: output_iterator_helper : output_iterator_helper<<#class T#>>
+COMPLETION: partially_ordered : partially_ordered<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: partially_ordered1 : partially_ordered1<<#class T#>{#, <#class B#>#}>
+COMPLETION: partially_ordered2 : partially_ordered2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: random_access_iteratable : random_access_iteratable<<#class T#>, <#class P#>, <#class D#>, <#class R#>{#, <#class B#>#}>
+COMPLETION: random_access_iterator_helper : random_access_iterator_helper<<#class T#>, <#class V#>{#, <#class D#>{#, <#class P#>{#, <#class R#>#}#}#}>
+COMPLETION: re_detail : re_detail
+COMPLETION: ref : [#const reference_wrapper<T>#]ref(<#T &t#>)
+COMPLETION: reference_wrapper : reference_wrapper<<#class T#>>
+COMPLETION: reg_expression : reg_expression<<#class charT#>, <#class traits#>>
+COMPLETION: regbase : regbase
+COMPLETION: regex : regex
+COMPLETION: regex_constants : regex_constants
+COMPLETION: regex_error : regex_error
+COMPLETION: regex_format : [#OutputIterator#]regex_format(<#OutputIterator out#>, <#const match_results<Iterator, Allocator> &m#>, <#Functor fmt#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_format : [#std::basic_string<typename match_results<Iterator, Allocator>::char_type>#]regex_format(<#const match_results<Iterator, Allocator> &m#>, <#Functor fmt#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_grep : [#unsigned int#]regex_grep(<#Predicate foo#>, <#BidiIterator first#>, <#BidiIterator last#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_grep : [#unsigned int#]regex_grep(<#Predicate foo#>, <#const charT *str#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_grep : [#unsigned int#]regex_grep(<#Predicate foo#>, <#const std::basic_string<charT, ST, SA> &s#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_iterator : regex_iterator<<#class BidirectionalIterator#>{#, <#class charT#>{#, <#class traits#>#}#}>
+COMPLETION: regex_iterator_implementation : regex_iterator_implementation<<#class BidirectionalIterator#>, <#class charT#>, <#class traits#>>
+COMPLETION: regex_match : [#bool#]regex_match(<#BidiIterator first#>, <#BidiIterator last#>, <#match_results<BidiIterator, Allocator> &m#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_match : [#bool#]regex_match(<#iterator first#>, <#iterator last#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_match : [#bool#]regex_match(<#const charT *str#>, <#match_results<const charT *, Allocator> &m#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_match : [#bool#]regex_match(<#const std::basic_string<charT, ST, SA> &s#>, <#match_results<typename std::basic_string<charT, ST, SA>::const_iterator, Allocator> &m#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_match : [#bool#]regex_match(<#const charT *str#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_match : [#bool#]regex_match(<#const std::basic_string<charT, ST, SA> &s#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_merge : [#OutputIterator#]regex_merge(<#OutputIterator out#>, <#Iterator first#>, <#Iterator last#>, <#const basic_regex<charT, traits> &e#>, <#const charT *fmt#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_merge : [#OutputIterator#]regex_merge(<#OutputIterator out#>, <#Iterator first#>, <#Iterator last#>, <#const basic_regex<charT, traits> &e#>, <#const std::basic_string<charT> &fmt#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_merge : [#std::basic_string<charT>#]regex_merge(<#const std::basic_string<charT> &s#>, <#const basic_regex<charT, traits> &e#>, <#const charT *fmt#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_merge : [#std::basic_string<charT>#]regex_merge(<#const std::basic_string<charT> &s#>, <#const basic_regex<charT, traits> &e#>, <#const std::basic_string<charT> &fmt#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_replace : [#OutputIterator#]regex_replace(<#OutputIterator out#>, <#BidirectionalIterator first#>, <#BidirectionalIterator last#>, <#const basic_regex<charT, traits> &e#>, <#Formatter fmt#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_replace : [#std::basic_string<charT>#]regex_replace(<#const std::basic_string<charT> &s#>, <#const basic_regex<charT, traits> &e#>, <#Formatter fmt#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_search : [#bool#]regex_search(<#BidiIterator first#>, <#BidiIterator last#>, <#match_results<BidiIterator, Allocator> &m#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_search : [#bool#]regex_search(<#BidiIterator first#>, <#BidiIterator last#>, <#match_results<BidiIterator, Allocator> &m#>, <#const basic_regex<charT, traits> &e#>, <#match_flag_type flags#>, <#BidiIterator base#>)
+COMPLETION: regex_search : [#bool#]regex_search(<#const charT *str#>, <#match_results<const charT *, Allocator> &m#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_search : [#bool#]regex_search(<#const std::basic_string<charT, ST, SA> &s#>, <#match_results<typename std::basic_string<charT, ST, SA>::const_iterator, Allocator> &m#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_search : [#bool#]regex_search(<#BidiIterator first#>, <#BidiIterator last#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_search : [#bool#]regex_search(<#const charT *str#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_search : [#bool#]regex_search(<#const std::basic_string<charT, ST, SA> &s#>, <#const basic_regex<charT, traits> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_split : [#std::size_t#]regex_split(<#OutputIterator out#>, <#std::basic_string<charT, Traits1, Alloc1> &s#>, <#const basic_regex<charT, Traits2> &e#>, <#match_flag_type flags#>, <#std::size_t max_split#>)
+COMPLETION: regex_split : [#std::size_t#]regex_split(<#OutputIterator out#>, <#std::basic_string<charT, Traits1, Alloc1> &s#>, <#const basic_regex<charT, Traits2> &e#>{#, <#match_flag_type flags#>#})
+COMPLETION: regex_split : [#std::size_t#]regex_split(<#OutputIterator out#>, <#std::basic_string<charT, Traits1, Alloc1> &s#>)
+COMPLETION: regex_token_iterator : regex_token_iterator<<#class BidirectionalIterator#>{#, <#class charT#>{#, <#class traits#>#}#}>
+COMPLETION: regex_token_iterator_implementation : regex_token_iterator_implementation<<#class BidirectionalIterator#>, <#class charT#>, <#class traits#>>
+COMPLETION: regex_traits : regex_traits<<#class charT#>{#, <#class implementationT#>#}>
+COMPLETION: regex_traits_wrapper : regex_traits_wrapper<<#class BaseT#>>
+COMPLETION: reinterpret_pointer_cast : [#shared_ptr<T>#]reinterpret_pointer_cast<<#class T#>>(<#const shared_ptr<U> &r#>)
+COMPLETION: remove_const : remove_const<<#typename T#>>
+COMPLETION: remove_cv : remove_cv<<#typename T#>>
+COMPLETION: remove_extent : remove_extent<<#typename T#>>
+COMPLETION: remove_pointer : remove_pointer<<#typename T#>>
+COMPLETION: remove_reference : remove_reference<<#typename T#>>
+COMPLETION: right_shiftable : right_shiftable<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: right_shiftable1 : right_shiftable1<<#class T#>{#, <#class B#>#}>
+COMPLETION: right_shiftable2 : right_shiftable2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: ring_operators : ring_operators<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: ring_operators1 : ring_operators1<<#class T#>{#, <#class B#>#}>
+COMPLETION: ring_operators2 : ring_operators2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: scoped_array : scoped_array<<#class T#>>
+COMPLETION: scoped_ptr : scoped_ptr<<#class T#>>
+COMPLETION: scoped_static_mutex_lock : scoped_static_mutex_lock
+COMPLETION: serialization : serialization
+COMPLETION: shiftable : shiftable<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: shiftable1 : shiftable1<<#class T#>{#, <#class B#>#}>
+COMPLETION: shiftable2 : shiftable2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: smatch : smatch
+COMPLETION: sregex_iterator : sregex_iterator
+COMPLETION: sregex_token_iterator : sregex_token_iterator
+COMPLETION: ssub_match : ssub_match
+COMPLETION: static_assert_test : static_assert_test<<#int x#>>
+COMPLETION: STATIC_ASSERTION_FAILURE : STATIC_ASSERTION_FAILURE<<#bool x#>>
+COMPLETION: static_log2 : static_log2<<#static_log2_argument_type x#>>
+COMPLETION: static_log2_argument_type : static_log2_argument_type
+COMPLETION: static_log2_result_type : static_log2_result_type
+COMPLETION: static_min_max_signed_type : static_min_max_signed_type
+COMPLETION: static_min_max_unsigned_type : static_min_max_unsigned_type
+COMPLETION: static_mutex : static_mutex
+COMPLETION: static_pointer_cast : [#shared_ptr<T>#]static_pointer_cast<<#class T#>>(<#const shared_ptr<U> &r#>)
+COMPLETION: static_signed_max : static_signed_max<<#static_min_max_signed_type Value1#>, <#static_min_max_signed_type Value2#>>
+COMPLETION: static_signed_min : static_signed_min<<#static_min_max_signed_type Value1#>, <#static_min_max_signed_type Value2#>>
+COMPLETION: static_unsigned_max : static_unsigned_max<<#static_min_max_unsigned_type Value1#>, <#static_min_max_unsigned_type Value2#>>
+COMPLETION: static_unsigned_min : static_unsigned_min<<#static_min_max_unsigned_type Value1#>, <#static_min_max_unsigned_type Value2#>>
+COMPLETION: sub_match : sub_match<<#class BidiIterator#>>
+COMPLETION: subtractable : subtractable<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: subtractable1 : subtractable1<<#class T#>{#, <#class B#>#}>
+COMPLETION: subtractable2 : subtractable2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: subtractable2_left : subtractable2_left<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: swap : [#void#]swap(<#T1 &left#>, <#T2 &right#>)
+COMPLETION: swap : [#void#]swap(<#array<T, N> &x#>, <#array<T, N> &y#>)
+COMPLETION: swap : [#void#]swap(<#shared_ptr<T> &a#>, <#shared_ptr<T> &b#>)
+COMPLETION: swap : [#void#]swap(<#scoped_ptr<T> &a#>, <#scoped_ptr<T> &b#>)
+COMPLETION: swap : [#void#]swap(<#scoped_array<T> &a#>, <#scoped_array<T> &b#>)
+COMPLETION: swap : [#void#]swap(<#basic_regex<charT, traits> &e1#>, <#basic_regex<charT, traits> &e2#>)
+COMPLETION: swap : [#void#]swap(<#match_results<BidiIterator, Allocator> &a#>, <#match_results<BidiIterator, Allocator> &b#>)
+COMPLETION: throw_exception : [#void#]throw_exception(<#const E &e#>)
+COMPLETION: throw_exception_assert_compatibility : [#void#]throw_exception_assert_compatibility(<#const std::exception &#>)
+COMPLETION: throw_file : throw_file
+COMPLETION: throw_file_ : throw_file_
+COMPLETION: throw_function : throw_function
+COMPLETION: throw_function_ : throw_function_
+COMPLETION: throw_line : throw_line
+COMPLETION: throw_line_ : throw_line_
+COMPLETION: totally_ordered : totally_ordered<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: totally_ordered1 : totally_ordered1<<#class T#>{#, <#class B#>#}>
+COMPLETION: totally_ordered2 : totally_ordered2<<#class T#>, <#class U#>{#, <#class B#>#}>
+COMPLETION: true_type : true_type
+COMPLETION: type_traits : type_traits
+COMPLETION: uint16_t : uint16_t
+COMPLETION: uint32_t : uint32_t
+COMPLETION: uint64_t : uint64_t
+COMPLETION: uint8_t : uint8_t
+COMPLETION: uint_fast16_t : uint_fast16_t
+COMPLETION: uint_fast32_t : uint_fast32_t
+COMPLETION: uint_fast64_t : uint_fast64_t
+COMPLETION: uint_fast8_t : uint_fast8_t
+COMPLETION: uint_least16_t : uint_least16_t
+COMPLETION: uint_least32_t : uint_least32_t
+COMPLETION: uint_least64_t : uint_least64_t
+COMPLETION: uint_least8_t : uint_least8_t
+COMPLETION: uint_t : uint_t<<#int Bits#>>
+COMPLETION: uint_value_t : uint_value_t<<#boost::ulong_long_type MaxValue#>>
+COMPLETION: uintmax_t : uintmax_t
+COMPLETION: ulong_long_type : ulong_long_type
+COMPLETION: unit_steppable : unit_steppable<<#class T#>{#, <#class B#>#}>
+COMPLETION: unwrap_ref : [#typename unwrap_reference<T>::type &#]unwrap_ref(<#T &t#>)
+COMPLETION: unwrap_reference : unwrap_reference<<#typename T#>>
+COMPLETION: w32_regex_traits : w32_regex_traits<<#class charT#>>
+COMPLETION: wcmatch : wcmatch
+COMPLETION: wcregex_iterator : wcregex_iterator
+COMPLETION: wcregex_token_iterator : wcregex_token_iterator
+COMPLETION: wcsub_match : wcsub_match
+COMPLETION: wregex : wregex
+COMPLETION: wsmatch : wsmatch
+COMPLETION: wsregex_iterator : wsregex_iterator
+COMPLETION: wsregex_token_iterator : wsregex_token_iterator
+COMPLETION: wssub_match : wssub_match
+COMPLETION: xorable : xorable<<#class T#>{#, <#class U#>{#, <#class B#>{#, <#class O#>#}#}#}>
+COMPLETION: xorable1 : xorable1<<#class T#>{#, <#class B#>#}>
+COMPLETION: xorable2 : xorable2<<#class T#>, <#class U#>{#, <#class B#>#}>

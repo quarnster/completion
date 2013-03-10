@@ -1,0 +1,140 @@
+COMPLETION: __FUNCTION__
+COMPLETION: __PRETTY_FUNCTION__
+COMPLETION: _opaque_pthread_attr_t : _opaque_pthread_attr_t
+COMPLETION: _opaque_pthread_cond_t : _opaque_pthread_cond_t
+COMPLETION: _opaque_pthread_condattr_t : _opaque_pthread_condattr_t
+COMPLETION: _opaque_pthread_mutex_t : _opaque_pthread_mutex_t
+COMPLETION: _opaque_pthread_mutexattr_t : _opaque_pthread_mutexattr_t
+COMPLETION: _opaque_pthread_once_t : _opaque_pthread_once_t
+COMPLETION: _opaque_pthread_rwlock_t : _opaque_pthread_rwlock_t
+COMPLETION: _opaque_pthread_rwlockattr_t : _opaque_pthread_rwlockattr_t
+COMPLETION: _opaque_pthread_t : _opaque_pthread_t
+COMPLETION: argc : [#int#]argc
+COMPLETION: argv : [#char **#]argv
+COMPLETION: asprintf : [#int#]asprintf(<#char **#>, <#const char *, ...#>)
+COMPLETION: bool
+COMPLETION: char
+COMPLETION: class
+COMPLETION: clearerr : [#void#]clearerr(<#FILE *#>)
+COMPLETION: const
+COMPLETION: Pattern : const_cast<<#type#>>(<#expression#>)
+COMPLETION: ctermid : [#char *#]ctermid(<#char *#>)
+COMPLETION: ctermid_r : [#char *#]ctermid_r(<#char *#>)
+COMPLETION: Pattern : [#void#]delete <#expression#>
+COMPLETION: Pattern : [#void#]delete [] <#expression#>
+COMPLETION: double
+COMPLETION: dprintf : [#int#]dprintf(<#int#>, <#const char *, ...#>)
+COMPLETION: Pattern : dynamic_cast<<#type#>>(<#expression#>)
+COMPLETION: enum
+COMPLETION: extern
+COMPLETION: Pattern : [#bool#]false
+COMPLETION: fclose : [#int#]fclose(<#FILE *#>)
+COMPLETION: fdopen : [#FILE *#]fdopen(<#int#>, <#const char *#>)
+COMPLETION: feof : [#int#]feof(<#FILE *#>)
+COMPLETION: ferror : [#int#]ferror(<#FILE *#>)
+COMPLETION: fflush : [#int#]fflush(<#FILE *#>)
+COMPLETION: fgetc : [#int#]fgetc(<#FILE *#>)
+COMPLETION: fgetln : [#char *#]fgetln(<#FILE *#>, <#size_t *#>)
+COMPLETION: fgetpos : [#int#]fgetpos(<#FILE *#>, <#fpos_t *#>)
+COMPLETION: fgets : [#char *#]fgets(<#char *#>, <#int#>, <#FILE *#>)
+COMPLETION: FILE : FILE
+COMPLETION: fileno : [#int#]fileno(<#FILE *#>)
+COMPLETION: float
+COMPLETION: flockfile : [#void#]flockfile(<#FILE *#>)
+COMPLETION: fmtcheck : [#const char *#]fmtcheck(<#const char *#>, <#const char *#>)
+COMPLETION: fopen : [#FILE *#]fopen(<#const char *#>, <#const char *#>)
+COMPLETION: fpos_t : fpos_t
+COMPLETION: fprintf : [#int#]fprintf(<#FILE *#>, <#const char *, ...#>)
+COMPLETION: fpurge : [#int#]fpurge(<#FILE *#>)
+COMPLETION: fputc : [#int#]fputc(<#int#>, <#FILE *#>)
+COMPLETION: fputs : [#int#]fputs(<#const char *#>, <#FILE *#>)
+COMPLETION: fread : [#size_t#]fread(<#void *#>, <#size_t#>, <#size_t#>, <#FILE *#>)
+COMPLETION: freopen : [#FILE *#]freopen(<#const char *#>, <#const char *#>, <#FILE *#>)
+COMPLETION: fscanf : [#int#]fscanf(<#FILE *#>, <#const char *, ...#>)
+COMPLETION: fseek : [#int#]fseek(<#FILE *#>, <#long#>, <#int#>)
+COMPLETION: fseeko : [#int#]fseeko(<#FILE *#>, <#off_t#>, <#int#>)
+COMPLETION: fsetpos : [#int#]fsetpos(<#FILE *#>, <#const fpos_t *#>)
+COMPLETION: ftell : [#long#]ftell(<#FILE *#>)
+COMPLETION: ftello : [#off_t#]ftello(<#FILE *#>)
+COMPLETION: ftrylockfile : [#int#]ftrylockfile(<#FILE *#>)
+COMPLETION: funlockfile : [#void#]funlockfile(<#FILE *#>)
+COMPLETION: funopen : [#FILE *#]funopen(<#const void *#>, <#int (*)(void *, char *, int)#>, <#int (*)(void *, const char *, int)#>, <#fpos_t (*)(void *, fpos_t, int)#>, <#int (*)(void *)#>)
+COMPLETION: fwrite : [#size_t#]fwrite(<#const void *#>, <#size_t#>, <#size_t#>, <#FILE *#>)
+COMPLETION: getc : [#int#]getc(<#FILE *#>)
+COMPLETION: getc_unlocked : [#int#]getc_unlocked(<#FILE *#>)
+COMPLETION: getchar : [#int#]getchar()
+COMPLETION: getchar_unlocked : [#int#]getchar_unlocked()
+COMPLETION: getdelim : [#ssize_t#]getdelim(<#char **#>, <#size_t *#>, <#int#>, <#FILE *#>)
+COMPLETION: getline : [#ssize_t#]getline(<#char **#>, <#size_t *#>, <#FILE *#>)
+COMPLETION: gets : [#char *#]gets(<#char *#>)
+COMPLETION: getw : [#int#]getw(<#FILE *#>)
+COMPLETION: Pattern : goto <#label#>
+COMPLETION: int
+COMPLETION: long
+COMPLETION: main : [#int#]main(<#int argc#>, <#char **argv#>)
+COMPLETION: Pattern : new <#type#>(<#expressions#>)
+COMPLETION: Pattern : new <#type#>[<#size#>](<#expressions#>)
+COMPLETION: off_t : off_t
+COMPLETION: operator
+COMPLETION: pclose : [#int#]pclose(<#FILE *#>)
+COMPLETION: perror : [#void#]perror(<#const char *#>)
+COMPLETION: popen : [#FILE *#]popen(<#const char *#>, <#const char *#>)
+COMPLETION: printf : [#int#]printf(<#const char *, ...#>)
+COMPLETION: putc : [#int#]putc(<#int#>, <#FILE *#>)
+COMPLETION: putc_unlocked : [#int#]putc_unlocked(<#int#>, <#FILE *#>)
+COMPLETION: putchar : [#int#]putchar(<#int#>)
+COMPLETION: putchar_unlocked : [#int#]putchar_unlocked(<#int#>)
+COMPLETION: puts : [#int#]puts(<#const char *#>)
+COMPLETION: putw : [#int#]putw(<#int#>, <#FILE *#>)
+COMPLETION: Pattern : reinterpret_cast<<#type#>>(<#expression#>)
+COMPLETION: remove : [#int#]remove(<#const char *#>)
+COMPLETION: rename : [#int#]rename(<#const char *#>, <#const char *#>)
+COMPLETION: Pattern : return <#expression#>
+COMPLETION: rewind : [#void#]rewind(<#FILE *#>)
+COMPLETION: scanf : [#int#]scanf(<#const char *, ...#>)
+COMPLETION: setbuf : [#void#]setbuf(<#FILE *#>, <#char *#>)
+COMPLETION: setbuffer : [#void#]setbuffer(<#FILE *#>, <#char *#>, <#int#>)
+COMPLETION: setlinebuf : [#int#]setlinebuf(<#FILE *#>)
+COMPLETION: setvbuf : [#int#]setvbuf(<#FILE *#>, <#char *#>, <#int#>, <#size_t#>)
+COMPLETION: short
+COMPLETION: signed
+COMPLETION: size_t : size_t
+COMPLETION: Pattern : [#size_t#]sizeof(<#expression-or-type#>)
+COMPLETION: snprintf : [#int#]snprintf(<#char *#>, <#size_t#>, <#const char *, ...#>)
+COMPLETION: sprintf : [#int#]sprintf(<#char *#>, <#const char *, ...#>)
+COMPLETION: sscanf : [#int#]sscanf(<#const char *#>, <#const char *, ...#>)
+COMPLETION: ssize_t : ssize_t
+COMPLETION: static
+COMPLETION: Pattern : static_cast<<#type#>>(<#expression#>)
+COMPLETION: struct
+COMPLETION: sys_errlist : [#const char *const []#]sys_errlist
+COMPLETION: sys_nerr : [#const int#]sys_nerr
+COMPLETION: tempnam : [#char *#]tempnam(<#const char *#>, <#const char *#>)
+COMPLETION: Test : Test
+COMPLETION: Pattern : [#void#]throw <#expression#>
+COMPLETION: tmpfile : [#FILE *#]tmpfile()
+COMPLETION: tmpnam : [#char *#]tmpnam(<#char *#>)
+COMPLETION: Pattern : [#bool#]true
+COMPLETION: Pattern : typedef <#type#> <#name#>
+COMPLETION: Pattern : [#std::type_info#]typeid(<#expression-or-type#>)
+COMPLETION: Pattern : typename <#qualifier#>::<#name#>
+COMPLETION: Pattern : typeof <#expression#>
+COMPLETION: Pattern : typeof(<#type#>)
+COMPLETION: ungetc : [#int#]ungetc(<#int#>, <#FILE *#>)
+COMPLETION: union
+COMPLETION: unsigned
+COMPLETION: Pattern : using namespace <#identifier#>
+COMPLETION: va_list : va_list
+COMPLETION: vasprintf : [#int#]vasprintf(<#char **#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vdprintf : [#int#]vdprintf(<#int#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vfprintf : [#int#]vfprintf(<#FILE *#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vfscanf : [#int#]vfscanf(<#FILE *#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: void
+COMPLETION: volatile
+COMPLETION: vprintf : [#int#]vprintf(<#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vscanf : [#int#]vscanf(<#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vsnprintf : [#int#]vsnprintf(<#char *#>, <#size_t#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vsprintf : [#int#]vsprintf(<#char *#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: vsscanf : [#int#]vsscanf(<#const char *#>, <#const char *#>, <#__va_list_tag *#>)
+COMPLETION: wchar_t
+COMPLETION: zopen : [#FILE *#]zopen(<#const char *#>, <#const char *#>, <#int#>)

@@ -1,0 +1,19 @@
+Completions     <-        Completion+
+Completion      <-        "COMPLETION: " (Pattern / KeyedStuff / UnhandledStuff) Spacing
+KeyedStuff      <-        [A-Za-z_0-9]+ " : " (Function / Variable / Type)
+Pattern         <-        "Pattern : " (![\n] .)+
+Function        <-        ReturnType TemplateName '(' Arguments? ')'
+Variable        <-        ReturnType TemplateName
+
+
+TemplateName    <-        TemplateType / Name
+Type            <-        TemplateType / BasicType
+TemplateType    <-        Name '<' Arguments '>'
+
+Arguments       <-        (((Argument "{#, " Arguments "#}") / (Argument ", " Arguments)) / Argument)+
+Argument        <-        "<#" Type "#>"
+ReturnType      <-        "[#" Type "#]"
+BasicType       <-        (![#\n\r] .)+
+Name            <-        [A-Za-z_] [A-Za-z_0-9]*
+UnhandledStuff  <-        (!Spacing .)+
+Spacing         <-        [\n\r]+
