@@ -44,7 +44,7 @@ func TestParseResult(t *testing.T) {
 		}
 	}
 	for k, data := range tests {
-		// if !strings.HasSuffix(k, "b.in") {
+		// if !strings.HasSuffix(k, "e.in") {
 		// 	continue
 		// }
 		input, expected := data[0], data[1]
