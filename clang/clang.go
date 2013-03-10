@@ -18,6 +18,8 @@ func data(n *parser.Node) string {
 	switch n.Name {
 	default:
 		return n.Data()
+	case "InheritedName":
+		return data(n.Children[1])
 	case "OptionalArgument":
 		return data(n.Children[0])
 	}
@@ -33,12 +35,12 @@ func parseresult(in string) (ret content.CompletionResult, err error) {
 		case "Variable":
 			v := content.Field{}
 			v.Type.Name.Relative = child.Children[0].Data()
-			v.Name.Relative = child.Children[1].Data()
+			v.Name.Relative = data(child.Children[1])
 			ret.Fields = append(ret.Fields, v)
 		case "Function":
 			f := content.Method{}
 			f.Returns = append(f.Returns, content.Variable{Type: content.Type{Name: content.FullyQualifiedName{Relative: child.Children[0].Data()}}})
-			f.Name.Relative = child.Children[1].Data()
+			f.Name.Relative = data(child.Children[1])
 			args := child.Children[2:]
 			for j := range args {
 				if args[j].Name == "ConstQualifier" {

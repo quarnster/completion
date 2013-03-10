@@ -1,15 +1,17 @@
 Completions     <-        Completion+
-Completion      <-        "COMPLETION: " (Pattern / KeyedStuff / UnhandledStuff) Spacing
-KeyedStuff      <-        [A-Za-z_0-9]+ " (Hidden)"? " : " (Constructor / Function / Variable / Type)
-Pattern         <-        "Pattern : " (![\n] .)+
+Completion      <-        "COMPLETION: " (Pattern / KeyedStuff / UnhandledStuff)
+KeyedStuff      <-        [A-Za-z_0-9]+ " (Hidden)"? " : " (Constructor / Function / Variable / Type Spacing)
+Pattern         <-        "Pattern : " UnhandledStuff
 
-Constructor     <-        TemplateName '(' Arguments ')'
-Function        <-        ReturnType TemplateName '(' Arguments ')' ConstQualifier?
-Variable        <-        ReturnType TemplateName ConstQualifier?
+Constructor     <-        TemplateName '(' Arguments ')' Spacing
+Function        <-        ReturnType TemplateName '(' Arguments ')' ConstQualifier? Spacing
+Variable        <-        ReturnType TemplateName ConstQualifier? Spacing
 
 ConstQualifier  <-        "[# const#]"
 
-TemplateName    <-        TemplateType / Name
+
+InheritedName   <-        "[#" Name "::#]" (InheritedName / Name)
+TemplateName    <-        InheritedName / TemplateType / Name
 Type            <-        TemplateType / BasicType
 TemplateType    <-        Name '<' Arguments '>'
 
@@ -19,5 +21,5 @@ Argument        <-        ("<#" Type "#>")
 ReturnType      <-        "[#" Type "#]"
 BasicType       <-        (![#\n\r] .)+
 Name            <-        [A-Za-z_] [A-Za-z_0-9]* ("::" Name)*
-UnhandledStuff  <-        (!Spacing .)+
+UnhandledStuff  <-        (!Spacing .)+ Spacing
 Spacing         <-        [\n\r]+
