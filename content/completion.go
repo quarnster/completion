@@ -47,7 +47,7 @@ type Variable struct {
 }
 
 type Field struct {
-	Variable `protocol:"required"`
+	Variable `protocol:"required" json:",omitempty"`
 	Flags    Flags `protocol:"optional" json:",omitempty"`
 }
 
@@ -57,7 +57,6 @@ type Method struct {
 	Returns        []Variable         `protocol:"optional" json:",omitempty"`
 	Parameters     []Variable         `protocol:"optional" json:",omitempty"`
 	Specialization []Type             `protocol:"optional" json:",omitempty"`
-	Static         bool               `protocol:"optional"`
 }
 
 type CompletionResult struct {

@@ -1,6 +1,9 @@
 package content
 
-import "fmt"
+import (
+	"bytes"
+	"fmt"
+)
 
 func (f File) String() string {
 	return f.Name
@@ -125,23 +128,25 @@ func (a Flags) String() (ret string) {
 }
 
 func (cr CompletionResult) String() (ret string) {
+	b := bytes.NewBuffer(nil)
 	if len(cr.Types) > 0 {
-		ret += "Types:\n"
+		b.WriteString("Types:\n")
 		for _, t := range cr.Types {
-			ret += fmt.Sprintf("\t%s\n", t)
+			b.WriteString(fmt.Sprintf("\t%s\n", t))
 		}
 	}
 	if len(cr.Fields) > 0 {
-		ret += "Fields:\n"
+		b.WriteString("Fields:\n")
 		for _, t := range cr.Fields {
-			ret += fmt.Sprintf("\t%s\n", t)
+			b.WriteString(fmt.Sprintf("\t%s\n", t))
 		}
 	}
 	if len(cr.Methods) > 0 {
-		ret += "Methods:\n"
+		b.WriteString("Methods:\n")
 		for _, t := range cr.Methods {
-			ret += fmt.Sprintf("\t%s\n", t)
+			b.WriteString(fmt.Sprintf("\t%s\n", t))
 		}
 	}
+	ret = string(b.Bytes())
 	return
 }
