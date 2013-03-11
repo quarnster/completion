@@ -1,0 +1,7 @@
+COMPLETION: MyCategoryMethod : [#void#]MyCategoryMethod
+COMPLETION: myworld : [#void#]myworld
+COMPLETION: setValue: : [#void#]setValue:<#(float)#>
+COMPLETION: setWorld2: : [#void#]setWorld2:<#(World *)#>
+COMPLETION: something : [#void#]something
+COMPLETION: value : [#float#]value
+COMPLETION: world2 : [#World *#]world2

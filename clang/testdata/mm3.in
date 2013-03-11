@@ -1,0 +1,4 @@
+COMPLETION: _value : [#float#]_value
+COMPLETION: privateVariable : [#int#]privateVariable
+COMPLETION: protectedVariable : [#int#]protectedVariable
+COMPLETION: publicVariable : [#int#]publicVariable

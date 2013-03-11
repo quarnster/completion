@@ -37,7 +37,7 @@ func parseresult(in string) (ret content.CompletionResult, err error) {
 			v.Type.Name.Relative = child.Children[0].Data()
 			v.Name.Relative = data(child.Children[1])
 			ret.Fields = append(ret.Fields, v)
-		case "Function":
+		case "CFunction":
 			f := content.Method{}
 			f.Returns = append(f.Returns, content.Variable{Type: content.Type{Name: content.FullyQualifiedName{Relative: child.Children[0].Data()}}})
 			f.Name.Relative = data(child.Children[1])
@@ -52,6 +52,19 @@ func parseresult(in string) (ret content.CompletionResult, err error) {
 				f.Parameters = append(f.Parameters, p)
 			}
 			ret.Methods = append(ret.Methods, f)
+		case "ObjCFunction":
+			f := content.Method{}
+			f.Returns = append(f.Returns, content.Variable{Type: content.Type{Name: content.FullyQualifiedName{Relative: child.Children[1].Data()}}})
+			args := child.Children[2:]
+			for j := range args {
+				p := content.Variable{}
+				p.Type.Name.Relative = data(args[j].Children[1])
+				p.Name.Relative = data(args[j].Children[0])
+
+				f.Parameters = append(f.Parameters, p)
+			}
+			ret.Methods = append(ret.Methods, f)
+
 		}
 	}
 	return

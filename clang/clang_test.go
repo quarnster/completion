@@ -8,6 +8,7 @@ import (
 	"os"
 	"strings"
 	"testing"
+	"time"
 )
 
 func TestClang(t *testing.T) {
@@ -44,9 +45,11 @@ func TestParseResult(t *testing.T) {
 		}
 	}
 	for k, data := range tests {
-		// if !strings.HasSuffix(k, "e.in") {
-		// 	continue
-		// }
+		if strings.HasSuffix(k, "mm5.in") {
+			// With almost 30000 lines this one is way to slow to parse and diff at the moment
+			continue
+		}
+		s := time.Now()
 		input, expected := data[0], data[1]
 		res := ""
 		if cmp, err := parseresult(input); err != nil {
@@ -55,6 +58,8 @@ func TestParseResult(t *testing.T) {
 		} else {
 			res = fmt.Sprintf("%s", cmp)
 		}
+		e := time.Now()
+		t.Logf("Parse %s %s", k, e.Sub(s))
 		if len(expected) <= 1 {
 			// Just if we want to add new tests, this will spit out the newly added
 			// test data
@@ -65,10 +70,13 @@ func TestParseResult(t *testing.T) {
 			}
 			continue
 		}
-
+		s = time.Now()
 		if d := util.Diff(expected, res); len(d) != 0 {
 			t.Error(d)
 		}
+		e = time.Now()
+
+		t.Logf("Diff %s %s", k, e.Sub(s))
 	}
 
 }

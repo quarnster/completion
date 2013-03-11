@@ -1,0 +1,93 @@
+COMPLETION: Pattern : [#NSArray *#]accessibilityActionNames
+COMPLETION: Pattern : [#NSArray *#]accessibilityAttributeNames
+COMPLETION: Pattern : [#id#]accessibilityFocusedUIElement
+COMPLETION: Pattern : [#BOOL#]accessibilityIsIgnored
+COMPLETION: Pattern : [#NSArray *#]accessibilityParameterizedAttributeNames
+COMPLETION: Pattern : [#BOOL#]accessInstanceVariablesDirectly
+COMPLETION: Pattern : [#id#]alloc
+COMPLETION: Pattern : [#BOOL#]allowsWeakReference
+COMPLETION: Pattern : [#NSArray *#]attributeKeys
+COMPLETION: Pattern : [#id#]autoContentAccessingProxy
+COMPLETION: Pattern : [#id#]autorelease
+COMPLETION: Pattern : [#const NSStringEncoding *#]availableStringEncodings
+COMPLETION: Pattern : [#void#]awakeFromNib
+COMPLETION: Pattern : [#BOOL#]boolValue
+COMPLETION: Pattern : [#NSString *#]capitalizedString
+COMPLETION: Pattern : [#Class#]class
+COMPLETION: Pattern : [#FourCharCode#]classCode
+COMPLETION: Pattern : [#NSClassDescription *#]classDescription
+COMPLETION: Pattern : [#NSArray *#]classFallbacksForKeyedArchiver
+COMPLETION: Pattern : [#Class#]classForArchiver
+COMPLETION: Pattern : [#Class#]classForCoder
+COMPLETION: Pattern : [#Class#]classForKeyedArchiver
+COMPLETION: Pattern : [#Class#]classForKeyedUnarchiver
+COMPLETION: Pattern : [#Class#]classForPortCoder
+COMPLETION: Pattern : [#NSString *#]className
+COMPLETION: Pattern : [#BOOL#]commitEditing
+COMPLETION: Pattern : [#id#]copy
+COMPLETION: Pattern : [#const char *#]cString
+COMPLETION: Pattern : [#NSUInteger#]cStringLength
+COMPLETION: Pattern : [#void#]dealloc
+COMPLETION: Pattern : [#NSString *#]debugDescription
+COMPLETION: Pattern : [#NSString *#]decomposedStringWithCanonicalMapping
+COMPLETION: Pattern : [#NSString *#]decomposedStringWithCompatibilityMapping
+COMPLETION: Pattern : [#NSStringEncoding#]defaultCStringEncoding
+COMPLETION: Pattern : [#NSString *#]description
+COMPLETION: Pattern : [#void#]discardEditing
+COMPLETION: Pattern : [#double#]doubleValue
+COMPLETION: Pattern : [#NSArray *#]exposedBindings
+COMPLETION: Pattern : [#NSStringEncoding#]fastestEncoding
+COMPLETION: Pattern : [#const char *#]fileSystemRepresentation
+COMPLETION: Pattern : [#void#]finalize
+COMPLETION: Pattern : [#float#]floatValue
+COMPLETION: Pattern : [#NSUInteger#]hash
+COMPLETION: Pattern : [#BOOL#]ignoreModifierKeysWhileDragging
+COMPLETION: Pattern : [#id#]init
+COMPLETION: Pattern : [#void#]initialize
+COMPLETION: Pattern : [#NSInteger#]integerValue
+COMPLETION: Pattern : [#int#]intValue
+COMPLETION: Pattern : [#BOOL#]isAbsolutePath
+COMPLETION: Pattern : [#BOOL#]isExplicitlyIncluded
+COMPLETION: Pattern : [#BOOL#]isProxy
+COMPLETION: Pattern : [#NSString *#]key
+COMPLETION: Pattern : [#NSString *#]lastPathComponent
+COMPLETION: Pattern : [#NSUInteger#]length
+COMPLETION: Pattern : [#void#]load
+COMPLETION: Pattern : [#NSString *#]localizedKey
+COMPLETION: Pattern : [#long long#]longLongValue
+COMPLETION: Pattern : [#const char *#]lossyCString
+COMPLETION: Pattern : [#NSString *#]lowercaseString
+COMPLETION: Pattern : [#id#]mutableCopy
+COMPLETION: Pattern : [#id#]new
+COMPLETION: Pattern : [#NSScriptObjectSpecifier *#]objectSpecifier
+COMPLETION: Pattern : [#void *#]observationInfo
+COMPLETION: Pattern : [#NSArray *#]pathComponents
+COMPLETION: Pattern : [#NSString *#]pathExtension
+COMPLETION: Pattern : [#NSString *#]precomposedStringWithCanonicalMapping
+COMPLETION: Pattern : [#NSString *#]precomposedStringWithCompatibilityMapping
+COMPLETION: Pattern : [#id#]propertyList
+COMPLETION: Pattern : [#NSDictionary *#]propertyListFromStringsFileFormat
+COMPLETION: Pattern : [#void#]release
+COMPLETION: Pattern : [#id#]retain
+COMPLETION: Pattern : [#NSUInteger#]retainCount
+COMPLETION: Pattern : [#BOOL#]retainWeakReference
+COMPLETION: Pattern : [#NSDictionary *#]scriptingProperties
+COMPLETION: Pattern : [#id#]self
+COMPLETION: Pattern : [#NSStringEncoding#]smallestEncoding
+COMPLETION: Pattern : [#id#]string
+COMPLETION: Pattern : [#NSString *#]stringByAbbreviatingWithTildeInPath
+COMPLETION: Pattern : [#NSString *#]stringByDeletingLastPathComponent
+COMPLETION: Pattern : [#NSString *#]stringByDeletingPathExtension
+COMPLETION: Pattern : [#NSString *#]stringByExpandingTildeInPath
+COMPLETION: Pattern : [#NSString *#]stringByResolvingSymlinksInPath
+COMPLETION: Pattern : [#NSString *#]stringByStandardizingPath
+COMPLETION: Pattern : [#Class#]superclass
+COMPLETION: Pattern : [#BOOL#]supportsSecureCoding
+COMPLETION: Pattern : [#NSArray *#]toManyRelationshipKeys
+COMPLETION: Pattern : [#NSArray *#]toOneRelationshipKeys
+COMPLETION: Pattern : [#NSString *#]uppercaseString
+COMPLETION: Pattern : [#BOOL#]useStoredAccessor
+COMPLETION: Pattern : [#const char *#]UTF8String
+COMPLETION: Pattern : [#id#]value
+COMPLETION: Pattern : [#NSInteger#]version
+COMPLETION: Pattern : [#NSZone *#]zone

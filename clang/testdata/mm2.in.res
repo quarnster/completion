@@ -1,0 +1,2 @@
+Fields:
+	float value

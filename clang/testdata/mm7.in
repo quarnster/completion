@@ -1,0 +1,341 @@
+COMPLETION: accessibilityActionDescription: : [#NSString *#]accessibilityActionDescription:<#(NSString *)#>
+COMPLETION: accessibilityActionNames : [#NSArray *#]accessibilityActionNames
+COMPLETION: accessibilityArrayAttributeCount: : [#NSUInteger#]accessibilityArrayAttributeCount:<#(NSString *)#>
+COMPLETION: accessibilityArrayAttributeValues:index:maxCount: : [#NSArray *#]accessibilityArrayAttributeValues:<#(NSString *)#> index:<#(NSUInteger)#> maxCount:<#(NSUInteger)#>
+COMPLETION: accessibilityAttributeNames : [#NSArray *#]accessibilityAttributeNames
+COMPLETION: accessibilityAttributeValue: : [#id#]accessibilityAttributeValue:<#(NSString *)#>
+COMPLETION: accessibilityAttributeValue:forParameter: : [#id#]accessibilityAttributeValue:<#(NSString *)#> forParameter:<#(id)#>
+COMPLETION: accessibilityFocusedUIElement : [#id#]accessibilityFocusedUIElement
+COMPLETION: accessibilityHitTest: : [#id#]accessibilityHitTest:<#(NSPoint)#>
+COMPLETION: accessibilityIndexOfChild: : [#NSUInteger#]accessibilityIndexOfChild:<#(id)#>
+COMPLETION: accessibilityIsAttributeSettable: : [#BOOL#]accessibilityIsAttributeSettable:<#(NSString *)#>
+COMPLETION: accessibilityIsIgnored : [#BOOL#]accessibilityIsIgnored
+COMPLETION: accessibilityParameterizedAttributeNames : [#NSArray *#]accessibilityParameterizedAttributeNames
+COMPLETION: accessibilityPerformAction: : [#void#]accessibilityPerformAction:<#(NSString *)#>
+COMPLETION: accessibilitySetOverrideValue:forAttribute: : [#BOOL#]accessibilitySetOverrideValue:<#(id)#> forAttribute:<#(NSString *)#>
+COMPLETION: accessibilitySetValue:forAttribute: : [#void#]accessibilitySetValue:<#(id)#> forAttribute:<#(NSString *)#>
+COMPLETION: actionForLayer:forKey: : [#id<CAAction>#]actionForLayer:<#(CALayer *)#> forKey:<#(NSString *)#>
+COMPLETION: addObserver:forKeyPath:options:context: : [#void#]addObserver:<#(NSObject *)#> forKeyPath:<#(NSString *)#> options:<#(NSKeyValueObservingOptions)#> context:<#(void *)#>
+COMPLETION: allowsWeakReference : [#BOOL#]allowsWeakReference
+COMPLETION: application:delegateHandlesKey: : [#BOOL#]application:<#(NSApplication *)#> delegateHandlesKey:<#(NSString *)#>
+COMPLETION: attemptRecoveryFromError:optionIndex: : [#BOOL#]attemptRecoveryFromError:<#(NSError *)#> optionIndex:<#(NSUInteger)#>
+COMPLETION: attemptRecoveryFromError:optionIndex:delegate:didRecoverSelector:contextInfo: : [#void#]attemptRecoveryFromError:<#(NSError *)#> optionIndex:<#(NSUInteger)#> delegate:<#(id)#> didRecoverSelector:<#(SEL)#> contextInfo:<#(void *)#>
+COMPLETION: attributeKeys : [#NSArray *#]attributeKeys
+COMPLETION: autoContentAccessingProxy : [#id#]autoContentAccessingProxy
+COMPLETION: autorelease : [#id#]autorelease
+COMPLETION: awakeAfterUsingCoder: : [#id#]awakeAfterUsingCoder:<#(NSCoder *)#>
+COMPLETION: awakeFromNib : [#void#]awakeFromNib
+COMPLETION: bind:toObject:withKeyPath:options: : [#void#]bind:<#(NSString *)#> toObject:<#(id)#> withKeyPath:<#(NSString *)#> options:<#(NSDictionary *)#>
+COMPLETION: boolValue : [#BOOL#]boolValue
+COMPLETION: boundingRectWithSize:options:attributes: : [#NSRect#]boundingRectWithSize:<#(NSSize)#> options:<#(NSStringDrawingOptions)#> attributes:<#(NSDictionary *)#>
+COMPLETION: canBeConvertedToEncoding: : [#BOOL#]canBeConvertedToEncoding:<#(NSStringEncoding)#>
+COMPLETION: capitalizedString : [#NSString *#]capitalizedString
+COMPLETION: capitalizedStringWithLocale: : [#NSString *#]capitalizedStringWithLocale:<#(NSLocale *)#>
+COMPLETION: caseInsensitiveCompare: : [#NSComparisonResult#]caseInsensitiveCompare:<#(NSString *)#>
+COMPLETION: changeColor: : [#void#]changeColor:<#(id)#>
+COMPLETION: changeFont: : [#void#]changeFont:<#(id)#>
+COMPLETION: characterAtIndex: : [#unichar#]characterAtIndex:<#(NSUInteger)#>
+COMPLETION: class : [#Class#]class
+COMPLETION: classCode : [#FourCharCode#]classCode
+COMPLETION: classDescription : [#NSClassDescription *#]classDescription
+COMPLETION: classForArchiver : [#Class#]classForArchiver
+COMPLETION: classForCoder : [#Class#]classForCoder
+COMPLETION: classForKeyedArchiver : [#Class#]classForKeyedArchiver
+COMPLETION: classForPortCoder : [#Class#]classForPortCoder
+COMPLETION: className : [#NSString *#]className
+COMPLETION: coerceValue:forKey: : [#id#]coerceValue:<#(id)#> forKey:<#(NSString *)#>
+COMPLETION: commitEditing : [#BOOL#]commitEditing
+COMPLETION: commitEditingAndReturnError: : [#BOOL#]commitEditingAndReturnError:<#(NSError **)#>
+COMPLETION: commitEditingWithDelegate:didCommitSelector:contextInfo: : [#void#]commitEditingWithDelegate:<#(id)#> didCommitSelector:<#(SEL)#> contextInfo:<#(void *)#>
+COMPLETION: commonPrefixWithString:options: : [#NSString *#]commonPrefixWithString:<#(NSString *)#> options:<#(NSStringCompareOptions)#>
+COMPLETION: compare: : [#NSComparisonResult#]compare:<#(NSString *)#>
+COMPLETION: compare:options: : [#NSComparisonResult#]compare:<#(NSString *)#> options:<#(NSStringCompareOptions)#>
+COMPLETION: compare:options:range: : [#NSComparisonResult#]compare:<#(NSString *)#> options:<#(NSStringCompareOptions)#> range:<#(NSRange)#>
+COMPLETION: compare:options:range:locale: : [#NSComparisonResult#]compare:<#(NSString *)#> options:<#(NSStringCompareOptions)#> range:<#(NSRange)#> locale:<#(id)#>
+COMPLETION: completePathIntoString:caseSensitive:matchesIntoArray:filterTypes: : [#NSUInteger#]completePathIntoString:<#(NSString **)#> caseSensitive:<#(BOOL)#> matchesIntoArray:<#(NSArray **)#> filterTypes:<#(NSArray *)#>
+COMPLETION: componentsSeparatedByCharactersInSet: : [#NSArray *#]componentsSeparatedByCharactersInSet:<#(NSCharacterSet *)#>
+COMPLETION: componentsSeparatedByString: : [#NSArray *#]componentsSeparatedByString:<#(NSString *)#>
+COMPLETION: conformsToProtocol: : [#BOOL#]conformsToProtocol:<#(Protocol *)#>
+COMPLETION: controlTextDidBeginEditing: : [#void#]controlTextDidBeginEditing:<#(NSNotification *)#>
+COMPLETION: controlTextDidChange: : [#void#]controlTextDidChange:<#(NSNotification *)#>
+COMPLETION: controlTextDidEndEditing: : [#void#]controlTextDidEndEditing:<#(NSNotification *)#>
+COMPLETION: copy : [#id#]copy
+COMPLETION: copyScriptingValue:forKey:withProperties: : [#id#]copyScriptingValue:<#(id)#> forKey:<#(NSString *)#> withProperties:<#(NSDictionary *)#>
+COMPLETION: copyWithZone: : [#id#]copyWithZone:<#(NSZone *)#>
+COMPLETION: cString : [#const char *#]cString
+COMPLETION: cStringLength : [#NSUInteger#]cStringLength
+COMPLETION: cStringUsingEncoding: : [#const char *#]cStringUsingEncoding:<#(NSStringEncoding)#>
+COMPLETION: dataUsingEncoding: : [#NSData *#]dataUsingEncoding:<#(NSStringEncoding)#>
+COMPLETION: dataUsingEncoding:allowLossyConversion: : [#NSData *#]dataUsingEncoding:<#(NSStringEncoding)#> allowLossyConversion:<#(BOOL)#>
+COMPLETION: dealloc : [#void#]dealloc
+COMPLETION: debugDescription : [#NSString *#]debugDescription
+COMPLETION: decomposedStringWithCanonicalMapping : [#NSString *#]decomposedStringWithCanonicalMapping
+COMPLETION: decomposedStringWithCompatibilityMapping : [#NSString *#]decomposedStringWithCompatibilityMapping
+COMPLETION: description : [#NSString *#]description
+COMPLETION: dictionaryWithValuesForKeys: : [#NSDictionary *#]dictionaryWithValuesForKeys:<#(NSArray *)#>
+COMPLETION: didChange:valuesAtIndexes:forKey: : [#void#]didChange:<#(NSKeyValueChange)#> valuesAtIndexes:<#(NSIndexSet *)#> forKey:<#(NSString *)#>
+COMPLETION: didChangeValueForKey: : [#void#]didChangeValueForKey:<#(NSString *)#>
+COMPLETION: didChangeValueForKey:withSetMutation:usingObjects: : [#void#]didChangeValueForKey:<#(NSString *)#> withSetMutation:<#(NSKeyValueSetMutationKind)#> usingObjects:<#(NSSet *)#>
+COMPLETION: discardEditing : [#void#]discardEditing
+COMPLETION: displayLayer: : [#void#]displayLayer:<#(CALayer *)#>
+COMPLETION: doesContain: : [#BOOL#]doesContain:<#(id)#>
+COMPLETION: doesNotRecognizeSelector: : [#void#]doesNotRecognizeSelector:<#(SEL)#>
+COMPLETION: doubleValue : [#double#]doubleValue
+COMPLETION: draggedImage:beganAt: : [#void#]draggedImage:<#(NSImage *)#> beganAt:<#(NSPoint)#>
+COMPLETION: draggedImage:endedAt:deposited: : [#void#]draggedImage:<#(NSImage *)#> endedAt:<#(NSPoint)#> deposited:<#(BOOL)#>
+COMPLETION: draggedImage:endedAt:operation: : [#void#]draggedImage:<#(NSImage *)#> endedAt:<#(NSPoint)#> operation:<#(NSDragOperation)#>
+COMPLETION: draggedImage:movedTo: : [#void#]draggedImage:<#(NSImage *)#> movedTo:<#(NSPoint)#>
+COMPLETION: draggingSourceOperationMaskForLocal: : [#NSDragOperation#]draggingSourceOperationMaskForLocal:<#(BOOL)#>
+COMPLETION: drawAtPoint:withAttributes: : [#void#]drawAtPoint:<#(NSPoint)#> withAttributes:<#(NSDictionary *)#>
+COMPLETION: drawInRect:withAttributes: : [#void#]drawInRect:<#(NSRect)#> withAttributes:<#(NSDictionary *)#>
+COMPLETION: drawLayer:inContext: : [#void#]drawLayer:<#(CALayer *)#> inContext:<#(CGContextRef)#>
+COMPLETION: drawWithRect:options:attributes: : [#void#]drawWithRect:<#(NSRect)#> options:<#(NSStringDrawingOptions)#> attributes:<#(NSDictionary *)#>
+COMPLETION: encodeWithCoder: : [#void#]encodeWithCoder:<#(NSCoder *)#>
+COMPLETION: enumerateLinesUsingBlock: : [#void#]enumerateLinesUsingBlock:<#^(NSString *line, BOOL *stop)block#>
+COMPLETION: enumerateLinguisticTagsInRange:scheme:options:orthography:usingBlock: : [#void#]enumerateLinguisticTagsInRange:<#(NSRange)#> scheme:<#(NSString *)#> options:<#(NSLinguisticTaggerOptions)#> orthography:<#(NSOrthography *)#> usingBlock:<#^(NSString *tag, NSRange tokenRange, NSRange sentenceRange, BOOL *stop)block#>
+COMPLETION: enumerateSubstringsInRange:options:usingBlock: : [#void#]enumerateSubstringsInRange:<#(NSRange)#> options:<#(NSStringEnumerationOptions)#> usingBlock:<#^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop)block#>
+COMPLETION: exposedBindings : [#NSArray *#]exposedBindings
+COMPLETION: fastestEncoding : [#NSStringEncoding#]fastestEncoding
+COMPLETION: fileManager:shouldProceedAfterError: : [#BOOL#]fileManager:<#(NSFileManager *)#> shouldProceedAfterError:<#(NSDictionary *)#>
+COMPLETION: fileManager:willProcessPath: : [#void#]fileManager:<#(NSFileManager *)#> willProcessPath:<#(NSString *)#>
+COMPLETION: fileSystemRepresentation : [#const char *#]fileSystemRepresentation
+COMPLETION: finalize : [#void#]finalize
+COMPLETION: floatValue : [#float#]floatValue
+COMPLETION: fontManager:willIncludeFont: : [#BOOL#]fontManager:<#(id)#> willIncludeFont:<#(NSString *)#>
+COMPLETION: forwardingTargetForSelector: : [#id#]forwardingTargetForSelector:<#(SEL)#>
+COMPLETION: forwardInvocation: : [#void#]forwardInvocation:<#(NSInvocation *)#>
+COMPLETION: getBytes:maxLength:usedLength:encoding:options:range:remainingRange: : [#BOOL#]getBytes:<#(void *)#> maxLength:<#(NSUInteger)#> usedLength:<#(NSUInteger *)#> encoding:<#(NSStringEncoding)#> options:<#(NSStringEncodingConversionOptions)#> range:<#(NSRange)#> remainingRange:<#(NSRangePointer)#>
+COMPLETION: getCharacters: : [#void#]getCharacters:<#(unichar *)#>
+COMPLETION: getCharacters:range: : [#void#]getCharacters:<#(unichar *)#> range:<#(NSRange)#>
+COMPLETION: getCString: : [#void#]getCString:<#(char *)#>
+COMPLETION: getCString:maxLength: : [#void#]getCString:<#(char *)#> maxLength:<#(NSUInteger)#>
+COMPLETION: getCString:maxLength:encoding: : [#BOOL#]getCString:<#(char *)#> maxLength:<#(NSUInteger)#> encoding:<#(NSStringEncoding)#>
+COMPLETION: getCString:maxLength:range:remainingRange: : [#void#]getCString:<#(char *)#> maxLength:<#(NSUInteger)#> range:<#(NSRange)#> remainingRange:<#(NSRangePointer)#>
+COMPLETION: getFileSystemRepresentation:maxLength: : [#BOOL#]getFileSystemRepresentation:<#(char *)#> maxLength:<#(NSUInteger)#>
+COMPLETION: getLineStart:end:contentsEnd:forRange: : [#void#]getLineStart:<#(NSUInteger *)#> end:<#(NSUInteger *)#> contentsEnd:<#(NSUInteger *)#> forRange:<#(NSRange)#>
+COMPLETION: getParagraphStart:end:contentsEnd:forRange: : [#void#]getParagraphStart:<#(NSUInteger *)#> end:<#(NSUInteger *)#> contentsEnd:<#(NSUInteger *)#> forRange:<#(NSRange)#>
+COMPLETION: handleQueryWithUnboundKey: : [#id#]handleQueryWithUnboundKey:<#(NSString *)#>
+COMPLETION: handleTakeValue:forUnboundKey: : [#void#]handleTakeValue:<#(id)#> forUnboundKey:<#(NSString *)#>
+COMPLETION: hash : [#NSUInteger#]hash
+COMPLETION: hasPrefix: : [#BOOL#]hasPrefix:<#(NSString *)#>
+COMPLETION: hasSuffix: : [#BOOL#]hasSuffix:<#(NSString *)#>
+COMPLETION: ignoreModifierKeysWhileDragging : [#BOOL#]ignoreModifierKeysWhileDragging
+COMPLETION: indicesOfObjectsByEvaluatingObjectSpecifier: : [#NSArray *#]indicesOfObjectsByEvaluatingObjectSpecifier:<#(NSScriptObjectSpecifier *)#>
+COMPLETION: infoForBinding: : [#NSDictionary *#]infoForBinding:<#(NSString *)#>
+COMPLETION: init : [#id#]init
+COMPLETION: initWithBytes:length:encoding: : [#id#]initWithBytes:<#(const void *)#> length:<#(NSUInteger)#> encoding:<#(NSStringEncoding)#>
+COMPLETION: initWithBytesNoCopy:length:encoding:freeWhenDone: : [#id#]initWithBytesNoCopy:<#(void *)#> length:<#(NSUInteger)#> encoding:<#(NSStringEncoding)#> freeWhenDone:<#(BOOL)#>
+COMPLETION: initWithCharacters:length: : [#id#]initWithCharacters:<#(const unichar *)#> length:<#(NSUInteger)#>
+COMPLETION: initWithCharactersNoCopy:length:freeWhenDone: : [#id#]initWithCharactersNoCopy:<#(unichar *)#> length:<#(NSUInteger)#> freeWhenDone:<#(BOOL)#>
+COMPLETION: initWithCoder: : [#id#]initWithCoder:<#(NSCoder *)#>
+COMPLETION: initWithContentsOfFile: : [#id#]initWithContentsOfFile:<#(NSString *)#>
+COMPLETION: initWithContentsOfFile:encoding:error: : [#id#]initWithContentsOfFile:<#(NSString *)#> encoding:<#(NSStringEncoding)#> error:<#(NSError **)#>
+COMPLETION: initWithContentsOfFile:usedEncoding:error: : [#id#]initWithContentsOfFile:<#(NSString *)#> usedEncoding:<#(NSStringEncoding *)#> error:<#(NSError **)#>
+COMPLETION: initWithContentsOfURL: : [#id#]initWithContentsOfURL:<#(NSURL *)#>
+COMPLETION: initWithContentsOfURL:encoding:error: : [#id#]initWithContentsOfURL:<#(NSURL *)#> encoding:<#(NSStringEncoding)#> error:<#(NSError **)#>
+COMPLETION: initWithContentsOfURL:usedEncoding:error: : [#id#]initWithContentsOfURL:<#(NSURL *)#> usedEncoding:<#(NSStringEncoding *)#> error:<#(NSError **)#>
+COMPLETION: initWithCString: : [#id#]initWithCString:<#(const char *)#>
+COMPLETION: initWithCString:encoding: : [#id#]initWithCString:<#(const char *)#> encoding:<#(NSStringEncoding)#>
+COMPLETION: initWithCString:length: : [#id#]initWithCString:<#(const char *)#> length:<#(NSUInteger)#>
+COMPLETION: initWithCStringNoCopy:length:freeWhenDone: : [#id#]initWithCStringNoCopy:<#(char *)#> length:<#(NSUInteger)#> freeWhenDone:<#(BOOL)#>
+COMPLETION: initWithData:encoding: : [#id#]initWithData:<#(NSData *)#> encoding:<#(NSStringEncoding)#>
+COMPLETION: initWithFormat: : [#id#]initWithFormat:<#(NSString *), ...#>
+COMPLETION: initWithFormat:arguments: : [#id#]initWithFormat:<#(NSString *)#> arguments:<#(__va_list_tag *)#>
+COMPLETION: initWithFormat:locale: : [#id#]initWithFormat:<#(NSString *)#> locale:<#(id), ...#>
+COMPLETION: initWithFormat:locale:arguments: : [#id#]initWithFormat:<#(NSString *)#> locale:<#(id)#> arguments:<#(__va_list_tag *)#>
+COMPLETION: initWithPasteboardPropertyList:ofType: : [#id#]initWithPasteboardPropertyList:<#(id)#> ofType:<#(NSString *)#>
+COMPLETION: initWithString: : [#id#]initWithString:<#(NSString *)#>
+COMPLETION: initWithUTF8String: : [#id#]initWithUTF8String:<#(const char *)#>
+COMPLETION: insertValue:atIndex:inPropertyWithKey: : [#void#]insertValue:<#(id)#> atIndex:<#(NSUInteger)#> inPropertyWithKey:<#(NSString *)#>
+COMPLETION: insertValue:inPropertyWithKey: : [#void#]insertValue:<#(id)#> inPropertyWithKey:<#(NSString *)#>
+COMPLETION: integerValue : [#NSInteger#]integerValue
+COMPLETION: intValue : [#int#]intValue
+COMPLETION: invalidateLayoutOfLayer: : [#void#]invalidateLayoutOfLayer:<#(CALayer *)#>
+COMPLETION: inverseForRelationshipKey: : [#NSString *#]inverseForRelationshipKey:<#(NSString *)#>
+COMPLETION: isAbsolutePath : [#BOOL#]isAbsolutePath
+COMPLETION: isCaseInsensitiveLike: : [#BOOL#]isCaseInsensitiveLike:<#(NSString *)#>
+COMPLETION: isEqual: : [#BOOL#]isEqual:<#(id)#>
+COMPLETION: isEqualTo: : [#BOOL#]isEqualTo:<#(id)#>
+COMPLETION: isEqualToString: : [#BOOL#]isEqualToString:<#(NSString *)#>
+COMPLETION: isExplicitlyIncluded : [#BOOL#]isExplicitlyIncluded
+COMPLETION: isGreaterThan: : [#BOOL#]isGreaterThan:<#(id)#>
+COMPLETION: isGreaterThanOrEqualTo: : [#BOOL#]isGreaterThanOrEqualTo:<#(id)#>
+COMPLETION: isKindOfClass: : [#BOOL#]isKindOfClass:<#(Class)#>
+COMPLETION: isLessThan: : [#BOOL#]isLessThan:<#(id)#>
+COMPLETION: isLessThanOrEqualTo: : [#BOOL#]isLessThanOrEqualTo:<#(id)#>
+COMPLETION: isLike: : [#BOOL#]isLike:<#(NSString *)#>
+COMPLETION: isMemberOfClass: : [#BOOL#]isMemberOfClass:<#(Class)#>
+COMPLETION: isNotEqualTo: : [#BOOL#]isNotEqualTo:<#(id)#>
+COMPLETION: isProxy : [#BOOL#]isProxy
+COMPLETION: key : [#NSString *#]key
+COMPLETION: lastPathComponent : [#NSString *#]lastPathComponent
+COMPLETION: layer:shouldInheritContentsScale:fromWindow: : [#BOOL#]layer:<#(CALayer *)#> shouldInheritContentsScale:<#(CGFloat)#> fromWindow:<#(NSWindow *)#>
+COMPLETION: layoutSublayersOfLayer: : [#void#]layoutSublayersOfLayer:<#(CALayer *)#>
+COMPLETION: length : [#NSUInteger#]length
+COMPLETION: lengthOfBytesUsingEncoding: : [#NSUInteger#]lengthOfBytesUsingEncoding:<#(NSStringEncoding)#>
+COMPLETION: lineRangeForRange: : [#NSRange#]lineRangeForRange:<#(NSRange)#>
+COMPLETION: linguisticTagsInRange:scheme:options:orthography:tokenRanges: : [#NSArray *#]linguisticTagsInRange:<#(NSRange)#> scheme:<#(NSString *)#> options:<#(NSLinguisticTaggerOptions)#> orthography:<#(NSOrthography *)#> tokenRanges:<#(NSArray **)#>
+COMPLETION: localizedCaseInsensitiveCompare: : [#NSComparisonResult#]localizedCaseInsensitiveCompare:<#(NSString *)#>
+COMPLETION: localizedCompare: : [#NSComparisonResult#]localizedCompare:<#(NSString *)#>
+COMPLETION: localizedKey : [#NSString *#]localizedKey
+COMPLETION: localizedStandardCompare: : [#NSComparisonResult#]localizedStandardCompare:<#(NSString *)#>
+COMPLETION: longLongValue : [#long long#]longLongValue
+COMPLETION: lossyCString : [#const char *#]lossyCString
+COMPLETION: lowercaseString : [#NSString *#]lowercaseString
+COMPLETION: lowercaseStringWithLocale: : [#NSString *#]lowercaseStringWithLocale:<#(NSLocale *)#>
+COMPLETION: maximumLengthOfBytesUsingEncoding: : [#NSUInteger#]maximumLengthOfBytesUsingEncoding:<#(NSStringEncoding)#>
+COMPLETION: methodForSelector: : [#IMP#]methodForSelector:<#(SEL)#>
+COMPLETION: methodSignatureForSelector: : [#NSMethodSignature *#]methodSignatureForSelector:<#(SEL)#>
+COMPLETION: mutableArrayValueForKey: : [#NSMutableArray *#]mutableArrayValueForKey:<#(NSString *)#>
+COMPLETION: mutableArrayValueForKeyPath: : [#NSMutableArray *#]mutableArrayValueForKeyPath:<#(NSString *)#>
+COMPLETION: mutableCopy : [#id#]mutableCopy
+COMPLETION: mutableCopyWithZone: : [#id#]mutableCopyWithZone:<#(NSZone *)#>
+COMPLETION: mutableOrderedSetValueForKey: : [#NSMutableOrderedSet *#]mutableOrderedSetValueForKey:<#(NSString *)#>
+COMPLETION: mutableOrderedSetValueForKeyPath: : [#NSMutableOrderedSet *#]mutableOrderedSetValueForKeyPath:<#(NSString *)#>
+COMPLETION: mutableSetValueForKey: : [#NSMutableSet *#]mutableSetValueForKey:<#(NSString *)#>
+COMPLETION: mutableSetValueForKeyPath: : [#NSMutableSet *#]mutableSetValueForKeyPath:<#(NSString *)#>
+COMPLETION: namesOfPromisedFilesDroppedAtDestination: : [#NSArray *#]namesOfPromisedFilesDroppedAtDestination:<#(NSURL *)#>
+COMPLETION: newScriptingObjectOfClass:forValueForKey:withContentsValue:properties: : [#id#]newScriptingObjectOfClass:<#(Class)#> forValueForKey:<#(NSString *)#> withContentsValue:<#(id)#> properties:<#(NSDictionary *)#>
+COMPLETION: objectDidBeginEditing: : [#void#]objectDidBeginEditing:<#(id)#>
+COMPLETION: objectDidEndEditing: : [#void#]objectDidEndEditing:<#(id)#>
+COMPLETION: objectSpecifier : [#NSScriptObjectSpecifier *#]objectSpecifier
+COMPLETION: observationInfo : [#void *#]observationInfo
+COMPLETION: observeValueForKeyPath:ofObject:change:context: : [#void#]observeValueForKeyPath:<#(NSString *)#> ofObject:<#(id)#> change:<#(NSDictionary *)#> context:<#(void *)#>
+COMPLETION: optionDescriptionsForBinding: : [#NSArray *#]optionDescriptionsForBinding:<#(NSString *)#>
+COMPLETION: panel:compareFilename:with:caseSensitive: : [#NSComparisonResult#]panel:<#(id)#> compareFilename:<#(NSString *)#> with:<#(NSString *)#> caseSensitive:<#(BOOL)#>
+COMPLETION: panel:directoryDidChange: : [#void#]panel:<#(id)#> directoryDidChange:<#(NSString *)#>
+COMPLETION: panel:isValidFilename: : [#BOOL#]panel:<#(id)#> isValidFilename:<#(NSString *)#>
+COMPLETION: panel:shouldShowFilename: : [#BOOL#]panel:<#(id)#> shouldShowFilename:<#(NSString *)#>
+COMPLETION: paragraphRangeForRange: : [#NSRange#]paragraphRangeForRange:<#(NSRange)#>
+COMPLETION: pasteboard:provideDataForType: : [#void#]pasteboard:<#(NSPasteboard *)#> provideDataForType:<#(NSString *)#>
+COMPLETION: pasteboardChangedOwner: : [#void#]pasteboardChangedOwner:<#(NSPasteboard *)#>
+COMPLETION: pasteboardPropertyListForType: : [#id#]pasteboardPropertyListForType:<#(NSString *)#>
+COMPLETION: pathComponents : [#NSArray *#]pathComponents
+COMPLETION: pathExtension : [#NSString *#]pathExtension
+COMPLETION: performSelector: : [#id#]performSelector:<#(SEL)#>
+COMPLETION: performSelector:onThread:withObject:waitUntilDone: : [#void#]performSelector:<#(SEL)#> onThread:<#(NSThread *)#> withObject:<#(id)#> waitUntilDone:<#(BOOL)#>
+COMPLETION: performSelector:onThread:withObject:waitUntilDone:modes: : [#void#]performSelector:<#(SEL)#> onThread:<#(NSThread *)#> withObject:<#(id)#> waitUntilDone:<#(BOOL)#> modes:<#(NSArray *)#>
+COMPLETION: performSelector:withObject: : [#id#]performSelector:<#(SEL)#> withObject:<#(id)#>
+COMPLETION: performSelector:withObject:afterDelay: : [#void#]performSelector:<#(SEL)#> withObject:<#(id)#> afterDelay:<#(NSTimeInterval)#>
+COMPLETION: performSelector:withObject:afterDelay:inModes: : [#void#]performSelector:<#(SEL)#> withObject:<#(id)#> afterDelay:<#(NSTimeInterval)#> inModes:<#(NSArray *)#>
+COMPLETION: performSelector:withObject:withObject: : [#id#]performSelector:<#(SEL)#> withObject:<#(id)#> withObject:<#(id)#>
+COMPLETION: performSelectorInBackground:withObject: : [#void#]performSelectorInBackground:<#(SEL)#> withObject:<#(id)#>
+COMPLETION: performSelectorOnMainThread:withObject:waitUntilDone: : [#void#]performSelectorOnMainThread:<#(SEL)#> withObject:<#(id)#> waitUntilDone:<#(BOOL)#>
+COMPLETION: performSelectorOnMainThread:withObject:waitUntilDone:modes: : [#void#]performSelectorOnMainThread:<#(SEL)#> withObject:<#(id)#> waitUntilDone:<#(BOOL)#> modes:<#(NSArray *)#>
+COMPLETION: precomposedStringWithCanonicalMapping : [#NSString *#]precomposedStringWithCanonicalMapping
+COMPLETION: precomposedStringWithCompatibilityMapping : [#NSString *#]precomposedStringWithCompatibilityMapping
+COMPLETION: preferredSizeOfLayer: : [#CGSize#]preferredSizeOfLayer:<#(CALayer *)#>
+COMPLETION: propertyList : [#id#]propertyList
+COMPLETION: propertyListFromStringsFileFormat : [#NSDictionary *#]propertyListFromStringsFileFormat
+COMPLETION: rangeOfCharacterFromSet: : [#NSRange#]rangeOfCharacterFromSet:<#(NSCharacterSet *)#>
+COMPLETION: rangeOfCharacterFromSet:options: : [#NSRange#]rangeOfCharacterFromSet:<#(NSCharacterSet *)#> options:<#(NSStringCompareOptions)#>
+COMPLETION: rangeOfCharacterFromSet:options:range: : [#NSRange#]rangeOfCharacterFromSet:<#(NSCharacterSet *)#> options:<#(NSStringCompareOptions)#> range:<#(NSRange)#>
+COMPLETION: rangeOfComposedCharacterSequenceAtIndex: : [#NSRange#]rangeOfComposedCharacterSequenceAtIndex:<#(NSUInteger)#>
+COMPLETION: rangeOfComposedCharacterSequencesForRange: : [#NSRange#]rangeOfComposedCharacterSequencesForRange:<#(NSRange)#>
+COMPLETION: rangeOfString: : [#NSRange#]rangeOfString:<#(NSString *)#>
+COMPLETION: rangeOfString:options: : [#NSRange#]rangeOfString:<#(NSString *)#> options:<#(NSStringCompareOptions)#>
+COMPLETION: rangeOfString:options:range: : [#NSRange#]rangeOfString:<#(NSString *)#> options:<#(NSStringCompareOptions)#> range:<#(NSRange)#>
+COMPLETION: rangeOfString:options:range:locale: : [#NSRange#]rangeOfString:<#(NSString *)#> options:<#(NSStringCompareOptions)#> range:<#(NSRange)#> locale:<#(NSLocale *)#>
+COMPLETION: readSelectionFromPasteboard: : [#BOOL#]readSelectionFromPasteboard:<#(NSPasteboard *)#>
+COMPLETION: release : [#void#]release
+COMPLETION: removeObserver:forKeyPath: : [#void#]removeObserver:<#(NSObject *)#> forKeyPath:<#(NSString *)#>
+COMPLETION: removeObserver:forKeyPath:context: : [#void#]removeObserver:<#(NSObject *)#> forKeyPath:<#(NSString *)#> context:<#(void *)#>
+COMPLETION: removeValueAtIndex:fromPropertyWithKey: : [#void#]removeValueAtIndex:<#(NSUInteger)#> fromPropertyWithKey:<#(NSString *)#>
+COMPLETION: replacementObjectForArchiver: : [#id#]replacementObjectForArchiver:<#(NSArchiver *)#>
+COMPLETION: replacementObjectForCoder: : [#id#]replacementObjectForCoder:<#(NSCoder *)#>
+COMPLETION: replacementObjectForKeyedArchiver: : [#id#]replacementObjectForKeyedArchiver:<#(NSKeyedArchiver *)#>
+COMPLETION: replacementObjectForPortCoder: : [#id#]replacementObjectForPortCoder:<#(NSPortCoder *)#>
+COMPLETION: replaceValueAtIndex:inPropertyWithKey:withValue: : [#void#]replaceValueAtIndex:<#(NSUInteger)#> inPropertyWithKey:<#(NSString *)#> withValue:<#(id)#>
+COMPLETION: respondsToSelector: : [#BOOL#]respondsToSelector:<#(SEL)#>
+COMPLETION: retain : [#id#]retain
+COMPLETION: retainCount : [#NSUInteger#]retainCount
+COMPLETION: retainWeakReference : [#BOOL#]retainWeakReference
+COMPLETION: scriptingBeginsWith: : [#BOOL#]scriptingBeginsWith:<#(id)#>
+COMPLETION: scriptingContains: : [#BOOL#]scriptingContains:<#(id)#>
+COMPLETION: scriptingEndsWith: : [#BOOL#]scriptingEndsWith:<#(id)#>
+COMPLETION: scriptingIsEqualTo: : [#BOOL#]scriptingIsEqualTo:<#(id)#>
+COMPLETION: scriptingIsGreaterThan: : [#BOOL#]scriptingIsGreaterThan:<#(id)#>
+COMPLETION: scriptingIsGreaterThanOrEqualTo: : [#BOOL#]scriptingIsGreaterThanOrEqualTo:<#(id)#>
+COMPLETION: scriptingIsLessThan: : [#BOOL#]scriptingIsLessThan:<#(id)#>
+COMPLETION: scriptingIsLessThanOrEqualTo: : [#BOOL#]scriptingIsLessThanOrEqualTo:<#(id)#>
+COMPLETION: scriptingProperties : [#NSDictionary *#]scriptingProperties
+COMPLETION: scriptingValueForSpecifier: : [#id#]scriptingValueForSpecifier:<#(NSScriptObjectSpecifier *)#>
+COMPLETION: self : [#id#]self
+COMPLETION: setKey: : [#void#]setKey:<#(NSString *)#>
+COMPLETION: setLocalizedKey: : [#void#]setLocalizedKey:<#(NSString *)#>
+COMPLETION: setNilValueForKey: : [#void#]setNilValueForKey:<#(NSString *)#>
+COMPLETION: setObservationInfo: : [#void#]setObservationInfo:<#(void *)#>
+COMPLETION: setScriptingProperties: : [#void#]setScriptingProperties:<#(NSDictionary *)#>
+COMPLETION: setValue: : [#void#]setValue:<#(id)#>
+COMPLETION: setValue:forKey: : [#void#]setValue:<#(id)#> forKey:<#(NSString *)#>
+COMPLETION: setValue:forKeyPath: : [#void#]setValue:<#(id)#> forKeyPath:<#(NSString *)#>
+COMPLETION: setValue:forUndefinedKey: : [#void#]setValue:<#(id)#> forUndefinedKey:<#(NSString *)#>
+COMPLETION: setValuesForKeysWithDictionary: : [#void#]setValuesForKeysWithDictionary:<#(NSDictionary *)#>
+COMPLETION: sizeWithAttributes: : [#NSSize#]sizeWithAttributes:<#(NSDictionary *)#>
+COMPLETION: smallestEncoding : [#NSStringEncoding#]smallestEncoding
+COMPLETION: storedValueForKey: : [#id#]storedValueForKey:<#(NSString *)#>
+COMPLETION: stringByAbbreviatingWithTildeInPath : [#NSString *#]stringByAbbreviatingWithTildeInPath
+COMPLETION: stringByAddingPercentEscapesUsingEncoding: : [#NSString *#]stringByAddingPercentEscapesUsingEncoding:<#(NSStringEncoding)#>
+COMPLETION: stringByAppendingFormat: : [#NSString *#]stringByAppendingFormat:<#(NSString *), ...#>
+COMPLETION: stringByAppendingPathComponent: : [#NSString *#]stringByAppendingPathComponent:<#(NSString *)#>
+COMPLETION: stringByAppendingPathExtension: : [#NSString *#]stringByAppendingPathExtension:<#(NSString *)#>
+COMPLETION: stringByAppendingString: : [#NSString *#]stringByAppendingString:<#(NSString *)#>
+COMPLETION: stringByDeletingLastPathComponent : [#NSString *#]stringByDeletingLastPathComponent
+COMPLETION: stringByDeletingPathExtension : [#NSString *#]stringByDeletingPathExtension
+COMPLETION: stringByExpandingTildeInPath : [#NSString *#]stringByExpandingTildeInPath
+COMPLETION: stringByFoldingWithOptions:locale: : [#NSString *#]stringByFoldingWithOptions:<#(NSStringCompareOptions)#> locale:<#(NSLocale *)#>
+COMPLETION: stringByPaddingToLength:withString:startingAtIndex: : [#NSString *#]stringByPaddingToLength:<#(NSUInteger)#> withString:<#(NSString *)#> startingAtIndex:<#(NSUInteger)#>
+COMPLETION: stringByReplacingCharactersInRange:withString: : [#NSString *#]stringByReplacingCharactersInRange:<#(NSRange)#> withString:<#(NSString *)#>
+COMPLETION: stringByReplacingOccurrencesOfString:withString: : [#NSString *#]stringByReplacingOccurrencesOfString:<#(NSString *)#> withString:<#(NSString *)#>
+COMPLETION: stringByReplacingOccurrencesOfString:withString:options:range: : [#NSString *#]stringByReplacingOccurrencesOfString:<#(NSString *)#> withString:<#(NSString *)#> options:<#(NSStringCompareOptions)#> range:<#(NSRange)#>
+COMPLETION: stringByReplacingPercentEscapesUsingEncoding: : [#NSString *#]stringByReplacingPercentEscapesUsingEncoding:<#(NSStringEncoding)#>
+COMPLETION: stringByResolvingSymlinksInPath : [#NSString *#]stringByResolvingSymlinksInPath
+COMPLETION: stringByStandardizingPath : [#NSString *#]stringByStandardizingPath
+COMPLETION: stringByTrimmingCharactersInSet: : [#NSString *#]stringByTrimmingCharactersInSet:<#(NSCharacterSet *)#>
+COMPLETION: stringsByAppendingPaths: : [#NSArray *#]stringsByAppendingPaths:<#(NSArray *)#>
+COMPLETION: substringFromIndex: : [#NSString *#]substringFromIndex:<#(NSUInteger)#>
+COMPLETION: substringToIndex: : [#NSString *#]substringToIndex:<#(NSUInteger)#>
+COMPLETION: substringWithRange: : [#NSString *#]substringWithRange:<#(NSRange)#>
+COMPLETION: superclass : [#Class#]superclass
+COMPLETION: tableView:writeRows:toPasteboard: : [#BOOL#]tableView:<#(NSTableView *)#> writeRows:<#(NSArray *)#> toPasteboard:<#(NSPasteboard *)#>
+COMPLETION: takeStoredValue:forKey: : [#void#]takeStoredValue:<#(id)#> forKey:<#(NSString *)#>
+COMPLETION: takeValue:forKey: : [#void#]takeValue:<#(id)#> forKey:<#(NSString *)#>
+COMPLETION: takeValue:forKeyPath: : [#void#]takeValue:<#(id)#> forKeyPath:<#(NSString *)#>
+COMPLETION: takeValuesFromDictionary: : [#void#]takeValuesFromDictionary:<#(NSDictionary *)#>
+COMPLETION: toManyRelationshipKeys : [#NSArray *#]toManyRelationshipKeys
+COMPLETION: toOneRelationshipKeys : [#NSArray *#]toOneRelationshipKeys
+COMPLETION: unableToSetNilForKey: : [#void#]unableToSetNilForKey:<#(NSString *)#>
+COMPLETION: unbind: : [#void#]unbind:<#(NSString *)#>
+COMPLETION: uppercaseString : [#NSString *#]uppercaseString
+COMPLETION: uppercaseStringWithLocale: : [#NSString *#]uppercaseStringWithLocale:<#(NSLocale *)#>
+COMPLETION: URL:resourceDataDidBecomeAvailable: : [#void#]URL:<#(NSURL *)#> resourceDataDidBecomeAvailable:<#(NSData *)#>
+COMPLETION: URL:resourceDidFailLoadingWithReason: : [#void#]URL:<#(NSURL *)#> resourceDidFailLoadingWithReason:<#(NSString *)#>
+COMPLETION: URLResourceDidCancelLoading: : [#void#]URLResourceDidCancelLoading:<#(NSURL *)#>
+COMPLETION: URLResourceDidFinishLoading: : [#void#]URLResourceDidFinishLoading:<#(NSURL *)#>
+COMPLETION: UTF8String : [#const char *#]UTF8String
+COMPLETION: validateMenuItem: : [#BOOL#]validateMenuItem:<#(NSMenuItem *)#>
+COMPLETION: validateToolbarItem: : [#BOOL#]validateToolbarItem:<#(NSToolbarItem *)#>
+COMPLETION: validateValue:forKey:error: : [#BOOL#]validateValue:<#(inout id *)#> forKey:<#(NSString *)#> error:<#(out NSError **)#>
+COMPLETION: validateValue:forKeyPath:error: : [#BOOL#]validateValue:<#(inout id *)#> forKeyPath:<#(NSString *)#> error:<#(out NSError **)#>
+COMPLETION: validModesForFontPanel: : [#NSUInteger#]validModesForFontPanel:<#(NSFontPanel *)#>
+COMPLETION: value : [#id#]value
+COMPLETION: valueAtIndex:inPropertyWithKey: : [#id#]valueAtIndex:<#(NSUInteger)#> inPropertyWithKey:<#(NSString *)#>
+COMPLETION: valueClassForBinding: : [#Class#]valueClassForBinding:<#(NSString *)#>
+COMPLETION: valueForKey: : [#id#]valueForKey:<#(NSString *)#>
+COMPLETION: valueForKeyPath: : [#id#]valueForKeyPath:<#(NSString *)#>
+COMPLETION: valueForUndefinedKey: : [#id#]valueForUndefinedKey:<#(NSString *)#>
+COMPLETION: valuesForKeys: : [#NSDictionary *#]valuesForKeys:<#(NSArray *)#>
+COMPLETION: valueWithName:inPropertyWithKey: : [#id#]valueWithName:<#(NSString *)#> inPropertyWithKey:<#(NSString *)#>
+COMPLETION: valueWithUniqueID:inPropertyWithKey: : [#id#]valueWithUniqueID:<#(id)#> inPropertyWithKey:<#(NSString *)#>
+COMPLETION: view:stringForToolTip:point:userData: : [#NSString *#]view:<#(NSView *)#> stringForToolTip:<#(NSToolTipTag)#> point:<#(NSPoint)#> userData:<#(void *)#>
+COMPLETION: willChange:valuesAtIndexes:forKey: : [#void#]willChange:<#(NSKeyValueChange)#> valuesAtIndexes:<#(NSIndexSet *)#> forKey:<#(NSString *)#>
+COMPLETION: willChangeValueForKey: : [#void#]willChangeValueForKey:<#(NSString *)#>
+COMPLETION: willChangeValueForKey:withSetMutation:usingObjects: : [#void#]willChangeValueForKey:<#(NSString *)#> withSetMutation:<#(NSKeyValueSetMutationKind)#> usingObjects:<#(NSSet *)#>
+COMPLETION: writableTypesForPasteboard: : [#NSArray *#]writableTypesForPasteboard:<#(NSPasteboard *)#>
+COMPLETION: writeSelectionToPasteboard:types: : [#BOOL#]writeSelectionToPasteboard:<#(NSPasteboard *)#> types:<#(NSArray *)#>
+COMPLETION: writeToFile:atomically: : [#BOOL#]writeToFile:<#(NSString *)#> atomically:<#(BOOL)#>
+COMPLETION: writeToFile:atomically:encoding:error: : [#BOOL#]writeToFile:<#(NSString *)#> atomically:<#(BOOL)#> encoding:<#(NSStringEncoding)#> error:<#(NSError **)#>
+COMPLETION: writeToURL:atomically: : [#BOOL#]writeToURL:<#(NSURL *)#> atomically:<#(BOOL)#>
+COMPLETION: writeToURL:atomically:encoding:error: : [#BOOL#]writeToURL:<#(NSURL *)#> atomically:<#(BOOL)#> encoding:<#(NSStringEncoding)#> error:<#(NSError **)#>
+COMPLETION: writingOptionsForType:pasteboard: : [#NSPasteboardWritingOptions#]writingOptionsForType:<#(NSString *)#> pasteboard:<#(NSPasteboard *)#>
+COMPLETION: zone : [#NSZone *#]zone

@@ -1,0 +1,64 @@
+COMPLETION: Pattern : [#NSString *#]@"<#string#>"
+COMPLETION: Pattern : [#id#]@(<#expression#>)
+COMPLETION: Pattern : [#NSArray *#]@[<#objects, ...#>]
+COMPLETION: Pattern : [#const char[]#]@encode(<#type-name#>)
+COMPLETION: Pattern : [#Protocol *#]@protocol(<#protocol-name#>)
+COMPLETION: Pattern : [#SEL#]@selector(<#selector#>)
+COMPLETION: Pattern : @throw <#expression#>
+COMPLETION: Pattern : [#NSDictionary *#]@{<#key#>: <#object, ...#>}
+COMPLETION: __FUNCTION__
+COMPLETION: __PRETTY_FUNCTION__
+COMPLETION: argc : [#int#]argc
+COMPLETION: argv : [#const char **#]argv
+COMPLETION: bool
+COMPLETION: char
+COMPLETION: Class : Class
+COMPLETION: class
+COMPLETION: const
+COMPLETION: Pattern : const_cast<<#type#>>(<#expression#>)
+COMPLETION: Pattern : [#void#]delete <#expression#>
+COMPLETION: Pattern : [#void#]delete [] <#expression#>
+COMPLETION: double
+COMPLETION: Pattern : dynamic_cast<<#type#>>(<#expression#>)
+COMPLETION: enum
+COMPLETION: extern
+COMPLETION: Pattern : [#bool#]false
+COMPLETION: float
+COMPLETION: Pattern : goto <#label#>
+COMPLETION: Hello : Hello
+COMPLETION: Hello2 : Hello2
+COMPLETION: id : id
+COMPLETION: int
+COMPLETION: long
+COMPLETION: main : [#int#]main(<#int argc#>, <#const char **argv#>)
+COMPLETION: Pattern : new <#type#>(<#expressions#>)
+COMPLETION: Pattern : new <#type#>[<#size#>](<#expressions#>)
+COMPLETION: operator
+COMPLETION: Protocol : Protocol
+COMPLETION: Pattern : reinterpret_cast<<#type#>>(<#expression#>)
+COMPLETION: Pattern : return <#expression#>
+COMPLETION: SEL : SEL
+COMPLETION: short
+COMPLETION: signed
+COMPLETION: Pattern : [#size_t#]sizeof(<#expression-or-type#>)
+COMPLETION: static
+COMPLETION: Pattern : static_cast<<#type#>>(<#expression#>)
+COMPLETION: struct
+COMPLETION: Pattern : [#void#]throw <#expression#>
+COMPLETION: Pattern : [#bool#]true
+COMPLETION: Pattern : typedef <#type#> <#name#>
+COMPLETION: Pattern : [#std::type_info#]typeid(<#expression-or-type#>)
+COMPLETION: Pattern : typename <#qualifier#>::<#name#>
+COMPLETION: Pattern : typeof <#expression#>
+COMPLETION: Pattern : typeof(<#type#>)
+COMPLETION: union
+COMPLETION: unsigned
+COMPLETION: Pattern : using namespace <#identifier#>
+COMPLETION: void
+COMPLETION: volatile
+COMPLETION: wchar_t
+COMPLETION: World : World
+COMPLETION: World2 : World2
+COMPLETION: World3 : World3
+COMPLETION: World4 : World4
+COMPLETION: World5 : World5
