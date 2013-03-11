@@ -2,6 +2,7 @@ package clang
 
 import (
 	"fmt"
+	"github.com/quarnster/completion/clang/parser"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/util"
 	"io/ioutil"
@@ -45,10 +46,6 @@ func TestParseResult(t *testing.T) {
 		}
 	}
 	for k, data := range tests {
-		if strings.HasSuffix(k, "mm5.in") {
-			// With almost 30000 lines this one is way to slow to parse and diff at the moment
-			continue
-		}
 		s := time.Now()
 		input, expected := data[0], data[1]
 		res := ""
@@ -79,4 +76,27 @@ func TestParseResult(t *testing.T) {
 		t.Logf("Diff %s %s", k, e.Sub(s))
 	}
 
+}
+
+func BenchmarkParse(b *testing.B) {
+	if raw, err := ioutil.ReadFile("./testdata/mm5.in"); err != nil {
+		b.Fatal(err)
+	} else {
+		var p parser.PARSER
+		data := string(raw)
+		for i := 0; i < b.N; i++ {
+			p.Parse(data)
+		}
+	}
+}
+
+func BenchmarkParseResult(b *testing.B) {
+	if raw, err := ioutil.ReadFile("./testdata/mm5.in"); err != nil {
+		b.Fatal(err)
+	} else {
+		data := string(raw)
+		for i := 0; i < b.N; i++ {
+			parseresult(data)
+		}
+	}
 }
