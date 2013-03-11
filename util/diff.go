@@ -44,6 +44,9 @@ func mDiff(av, bv []string) (ret []string) {
 }
 
 func Diff(a, b string) string {
+	if a == b {
+		return ""
+	}
 	a = strings.Replace(a, "\r", "", -1)
 	b = strings.Replace(b, "\r", "", -1)
 	return strings.Join(mDiff(strings.Split(a, "\n"), strings.Split(b, "\n")), "\n")
