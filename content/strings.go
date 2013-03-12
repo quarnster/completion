@@ -26,6 +26,8 @@ func (t Type) String() (ret string) {
 		return "*" + t.Specialization[0].String()
 	case FLAG_TYPE_ARRAY:
 		return t.Specialization[0].String() + "[]"
+	case FLAG_TYPE_CONST:
+		return "const " + t.Specialization[0].String()
 	}
 	ret += fmt.Sprintf("%s%s", t.Flags, t.Name.String())
 	if len(t.Specialization) > 0 {
