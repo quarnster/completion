@@ -85,7 +85,8 @@ func (f Field) String() (ret string) {
 }
 
 func (m Method) String() (ret string) {
-	ret = fmt.Sprintf("%s", m.Flags)
+	f := m.Flags &^ FLAG_CONST
+	ret = fmt.Sprintf("%s", f)
 	for i := range m.Returns {
 		if i > 0 {
 			ret += ", "
@@ -100,6 +101,10 @@ func (m Method) String() (ret string) {
 		ret += fmt.Sprintf("%s", m.Parameters[i])
 	}
 	ret += ")"
+	if m.Flags&FLAG_CONST != 0 {
+		ret += " const"
+	}
+
 	return
 }
 

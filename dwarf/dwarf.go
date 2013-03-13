@@ -66,6 +66,128 @@ func (d *DWARFHelper) Flags(e *dwarf.Entry) (ret content.Flags) {
 	return
 }
 
+func (d *DWARFHelper) Complete(id content.FullyQualifiedName) (content.CompletionResult, error) {
+	var cmp content.CompletionResult
+	r := d.df.Reader()
+	for {
+		if e, err := r.Next(); err != nil {
+			return cmp, err
+			break
+		} else if e == nil {
+			break
+		} else {
+			switch e.Tag {
+			case dwarf.TagCompileUnit:
+				continue
+			case dwarf.TagClassType, dwarf.TagTypedef, dwarf.TagStructType:
+				if t, err := d.GetType(e.Offset); err != nil {
+					return cmp, err
+				} else if t.Name == id && e.Children {
+					r2 := d.df.Reader()
+					r2.Seek(e.Offset)
+					for {
+						if e, err := r.Next(); err != nil {
+							return cmp, err
+						} else if e == nil || e.Tag == 0 {
+							break
+						} else {
+							switch e.Tag {
+							case dwarf.TagMember:
+								if f, err := d.toContentField(e); err != nil {
+									return cmp, err
+								} else {
+									cmp.Fields = append(cmp.Fields, f)
+								}
+							case dwarf.TagSubprogram:
+								if m, err := d.toContentMethod(e); err != nil {
+									return cmp, err
+								} else {
+									cmp.Methods = append(cmp.Methods, m)
+								}
+								r.SkipChildren()
+							}
+						}
+					}
+					return cmp, nil
+				}
+			}
+		}
+		r.SkipChildren()
+	}
+	return cmp, errors.New(fmt.Sprintf("Unable to find type: %s", id))
+}
+
+func (d *DWARFHelper) toContentField(e *dwarf.Entry) (content.Field, error) {
+	var f content.Field
+	if v, ok := e.Val(dwarf.AttrName).(string); ok {
+		f.Name.Relative = v
+	}
+	if v, ok := e.Val(dwarf.AttrType).(dwarf.Offset); ok {
+		if t, err := d.GetType(v); err != nil {
+			return f, err
+		} else {
+			f.Type = t
+		}
+	}
+	f.Flags = d.Flags(e)
+	return f, nil
+}
+
+func (d *DWARFHelper) toContentMethod(e *dwarf.Entry) (content.Method, error) {
+	var m content.Method
+	if v, ok := e.Val(dwarf.AttrName).(string); ok {
+		m.Name.Relative = v
+	}
+	if v, ok := e.Val(dwarf.AttrType).(dwarf.Offset); ok {
+		if t, err := d.GetType(v); err != nil {
+			return m, err
+		} else {
+			m.Returns = append(m.Returns, content.Variable{Type: t})
+		}
+	} else {
+		m.Returns = append(m.Returns, content.Variable{Type: content.Type{Name: content.FullyQualifiedName{Relative: "void"}}})
+	}
+	m.Flags = d.Flags(e)
+	if e.Children {
+		r := d.df.Reader()
+		r.Seek(e.Offset)
+		for {
+			if e, err := r.Next(); err != nil {
+				return m, err
+			} else if e == nil || e.Tag == 0 {
+				break
+			} else if e.Tag == dwarf.TagFormalParameter {
+				var p content.Variable
+				if v, ok := e.Val(dwarf.AttrType).(dwarf.Offset); ok {
+					if t, err := d.GetType(v); err != nil {
+						return m, err
+					} else {
+						p.Type = t
+					}
+				}
+				if v, ok := e.Val(dwarf.AttrName).(string); ok {
+					p.Name.Relative = v
+				}
+				if v, ok := e.Val(dwarf.AttrArtificial).(bool); ok && v {
+					if p.Type.Flags&content.FLAG_TYPE_MASK != content.FLAG_TYPE_POINTER {
+						m.Parameters = append(m.Parameters, p)
+						continue
+					}
+					// C++ "this" pointer
+					t := p.Type.Specialization[0]
+					if t.Flags&content.FLAG_CONST != 0 {
+						m.Flags |= content.FLAG_CONST
+					}
+					//m.Name.Absolute = t.Name.Relative + "::" + m.Name.Relative
+				} else {
+					m.Parameters = append(m.Parameters, p)
+				}
+			}
+		}
+	}
+	return m, nil
+}
+
 func (d *DWARFHelper) Load() (content.CompletionResult, error) {
 	var cmp content.CompletionResult
 	r := d.df.Reader()
@@ -78,57 +200,17 @@ func (d *DWARFHelper) Load() (content.CompletionResult, error) {
 		} else {
 			switch e.Tag {
 			case dwarf.TagMember:
-				var f content.Field
-				if v, ok := e.Val(dwarf.AttrName).(string); ok {
-					f.Name.Relative = v
-				}
-				if v, ok := e.Val(dwarf.AttrType).(dwarf.Offset); ok {
-					if t, err := d.GetType(v); err != nil {
-						return cmp, err
-					} else {
-						f.Type = t
-					}
-				}
-				f.Flags = d.Flags(e)
-				cmp.Fields = append(cmp.Fields, f)
-			case dwarf.TagSubprogram:
-				var m content.Method
-				if v, ok := e.Val(dwarf.AttrName).(string); ok {
-					m.Name.Relative = v
-				}
-				if v, ok := e.Val(dwarf.AttrType).(dwarf.Offset); ok {
-					if t, err := d.GetType(v); err != nil {
-						return cmp, err
-					} else {
-						m.Returns = append(m.Returns, content.Variable{Type: t})
-					}
+				if f, err := d.toContentField(e); err != nil {
+					return cmp, err
 				} else {
-					m.Returns = append(m.Returns, content.Variable{Type: content.Type{Name: content.FullyQualifiedName{Relative: "void"}}})
+					cmp.Fields = append(cmp.Fields, f)
 				}
-				m.Flags = d.Flags(e)
-				if e.Children {
-					for {
-						if e, err := r.Next(); err != nil {
-							return cmp, err
-						} else if e == nil || e.Tag == 0 {
-							break
-						} else if e.Tag == dwarf.TagFormalParameter {
-							var p content.Variable
-							if v, ok := e.Val(dwarf.AttrType).(dwarf.Offset); ok {
-								if t, err := d.GetType(v); err != nil {
-									return cmp, err
-								} else {
-									p.Type = t
-								}
-							}
-							if v, ok := e.Val(dwarf.AttrName).(string); ok {
-								p.Name.Relative = v
-							}
-							m.Parameters = append(m.Parameters, p)
-						}
-					}
+			case dwarf.TagSubprogram:
+				if m, err := d.toContentMethod(e); err != nil {
+					return cmp, err
+				} else {
+					cmp.Methods = append(cmp.Methods, m)
 				}
-				cmp.Methods = append(cmp.Methods, m)
 			case dwarf.TagClassType, dwarf.TagTypedef, dwarf.TagStructType:
 				if t, err := d.GetType(e.Offset); err != nil {
 					return cmp, err
