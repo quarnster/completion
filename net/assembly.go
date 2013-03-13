@@ -7,6 +7,7 @@ package net
 // http://www.ecma-international.org/publications/standards/Ecma-335.htm
 
 import (
+	"code.google.com/p/log4go"
 	"encoding/binary"
 	"errors"
 	"fmt"
@@ -44,7 +45,13 @@ func (a *Assembly) Types() (types []content.Type, err error) {
 			var (
 				tr = rawtype.(*TypeDefRow)
 			)
-			types = append(types, ToContentType(tr))
+			tc := ToContentType(tr)
+			if err := check(&tc, tc.Name); err != nil {
+				log4go.Debug("Skipping type %v, %s", tc, err)
+				continue
+			} else {
+				types = append(types, tc)
+			}
 		}
 	}
 	return

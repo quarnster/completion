@@ -321,38 +321,9 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[30] EnclosingClass:TypeDefRow[5]}
 	&{NestedClass:TypeDefRow[31] EnclosingClass:TypeDefRow[5]}
 	&{NestedClass:TypeDefRow[32] EnclosingClass:TypeDefRow[5]}
-	<Module>
 	PeterO.QRCodeGenerator
 	CodeMatrix
 	BitList
-	<PrivateImplementationDetails>{ef0bcc38-b8c8-444f-b6a8-96d99b4af645}
-	$ArrayType=2044
-	$ArrayType=1024
-	$ArrayType=28
-	$ArrayType=32
-	$ArrayType=36
-	$ArrayType=40
-	$ArrayType=44
-	$ArrayType=48
-	$ArrayType=52
-	$ArrayType=56
-	$ArrayType=60
-	$ArrayType=64
-	$ArrayType=68
-	$ArrayType=72
-	$ArrayType=80
-	$ArrayType=88
-	$ArrayType=96
-	$ArrayType=104
-	$ArrayType=112
-	$ArrayType=120
-	$ArrayType=136
-	$ArrayType=1120
-	$ArrayType=960
-	$ArrayType=128
-	$ArrayType=160
-	$ArrayType=256
-	$ArrayType=8
 public class PeterO.QRCodeGenerator
 	extends System.Object
 	private static System.Int32[] GaloisExp

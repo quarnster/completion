@@ -239,7 +239,6 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[3] EnclosingClass:TypeDefRow[2]}
 	&{NestedClass:TypeDefRow[4] EnclosingClass:TypeDefRow[3]}
 	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[4]}
-	<Module>
 	CompleteSharp
 	MyAppDomain
 	Hack

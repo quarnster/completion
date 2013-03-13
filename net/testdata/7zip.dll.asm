@@ -1301,7 +1301,6 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[36] EnclosingClass:TypeDefRow[32]}
 	&{NestedClass:TypeDefRow[37] EnclosingClass:TypeDefRow[32]}
 	&{NestedClass:TypeDefRow[55] EnclosingClass:TypeDefRow[54]}
-	<Module>
 	SevenZip.CommandLineParser.SwitchType
 	SevenZip.CommandLineParser.SwitchForm
 	SevenZip.CommandLineParser.SwitchResult
@@ -1354,8 +1353,6 @@ NestedClassRow
 	SevenZip.ISetCoderProperties
 	SevenZip.IWriteCoderProperties
 	SevenZip.ISetDecoderProperties
-	<PrivateImplementationDetails>{36dcba29-69c8-4e99-b590-8bd2082695d5}
-	$ArrayType=32
 public class SevenZip.CommandLineParser.SwitchType
 	extends System.Enum
 	public System.Int32 value__

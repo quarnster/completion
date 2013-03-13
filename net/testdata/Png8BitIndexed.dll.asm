@@ -145,12 +145,7 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[4] EnclosingClass:TypeDefRow[3]}
 	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[3]}
 	&{NestedClass:TypeDefRow[6] EnclosingClass:TypeDefRow[3]}
-	<Module>
 	PeterO.Png8BitIndexed
-	<PrivateImplementationDetails>{2b5ca898-bb41-4b8c-9925-988fa7f2f57a}
-	$ArrayType=32
-	$ArrayType=4
-	$ArrayType=12
 public class PeterO.Png8BitIndexed
 	extends System.Object
 	private System.Byte[] subdata1

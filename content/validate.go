@@ -78,12 +78,12 @@ func (t *Type) Validate() error {
 	return nil
 }
 
-var badre = regexp.MustCompile(`(^[^\\\w]|[^\\][^\w])`)
+var badre = regexp.MustCompile(`(^[.$][^.]|[^\\][.$][^.])`)
 
 func (f *FullyQualifiedName) Validate() error {
 	if badre.MatchString(f.Relative) {
 		str := badre.FindString(f.Relative)
-		return errors.New(fmt.Sprintf("Relative name contains illegal characters: %s (%c)", f.Relative, str[len(str)-1]))
+		return errors.New(fmt.Sprintf("Relative name contains illegal characters: %s (%c)", f.Relative, str[0]))
 	}
 	return nil
 }

@@ -1,12 +1,17 @@
 package dwarf
 
 import (
+	"bytes"
 	"code.google.com/p/log4go"
+	"compress/bzip2"
 	"debug/dwarf"
 	"debug/macho"
 	"errors"
 	"fmt"
 	"github.com/quarnster/completion/content"
+	"io/ioutil"
+	"os"
+	"path/filepath"
 )
 
 type DWARFHelper struct {
@@ -15,7 +20,23 @@ type DWARFHelper struct {
 
 func NewDWARFHelper(filename string) (*DWARFHelper, error) {
 	// TODO: detect file format..
-	if f, err := macho.Open(filename); err != nil {
+	var f *macho.File
+	var err error
+	if filepath.Ext(filename) == ".bz2" {
+		if fs, err2 := os.Open(filename); err2 != nil {
+			return nil, err2
+		} else {
+			defer fs.Close()
+			if data, err2 := ioutil.ReadAll(bzip2.NewReader(fs)); err2 != nil {
+				return nil, err2
+			} else {
+				f, err = macho.NewFile(bytes.NewReader(data))
+			}
+		}
+	} else {
+		f, err = macho.Open(filename)
+	}
+	if err != nil {
 		return nil, err
 	} else {
 		defer f.Close()
@@ -158,7 +179,7 @@ func (d *DWARFHelper) GetType(off dwarf.Offset) (content.Type, error) {
 		switch e.Tag {
 		case dwarf.TagVolatileType, dwarf.TagReferenceType, dwarf.TagRestrictType, dwarf.TagConstType:
 			if len(t.Specialization) == 0 {
-				t.Name.Relative = "unknown"
+				t.Name.Relative = "void"
 			} else {
 				t = t.Specialization[0]
 			}
@@ -179,7 +200,11 @@ func (d *DWARFHelper) GetType(off dwarf.Offset) (content.Type, error) {
 			t.Flags |= content.FLAG_CONST
 		case dwarf.TagSubroutineType:
 			var m content.Method
-			m.Returns = append(m.Returns, content.Variable{Type: t.Specialization[0]})
+			if len(t.Specialization) > 0 {
+				m.Returns = append(m.Returns, content.Variable{Type: t.Specialization[0]})
+			} else {
+				m.Returns = append(m.Returns, content.Variable{Type: content.Type{Name: content.FullyQualifiedName{Relative: "void"}}})
+			}
 			t.Specialization = t.Specialization[0:0]
 			t.Flags = content.FLAG_TYPE_METHOD
 			for {

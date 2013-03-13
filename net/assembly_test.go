@@ -96,7 +96,7 @@ func TestLoadAssembly(t *testing.T) {
 				if err != nil {
 					t.Error(err)
 					continue
-				} else if n := td.Name(); content.Validate(&n) != nil {
+				} else if n := td.Name(); check(&n, n) != nil {
 					continue
 				}
 

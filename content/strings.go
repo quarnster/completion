@@ -21,6 +21,10 @@ func (f FullyQualifiedName) String() string {
 }
 
 func (t Type) String() (ret string) {
+	if err := Validate(&t); err != nil {
+		return err.Error()
+	}
+
 	switch t.Flags & FLAG_TYPE_MASK {
 	case FLAG_TYPE_POINTER:
 		return t.Specialization[0].String() + "*"
@@ -124,7 +128,7 @@ func (a Flags) String() (ret string) {
 		ret += "volatile "
 	}
 	if a&FLAG_REFERENCE != 0 {
-		ret += "&"
+		ret += "& "
 	}
 
 	switch a & FLAG_TYPE_MASK {

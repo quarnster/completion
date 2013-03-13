@@ -175,6 +175,16 @@ func (td *TypeDef) ListRange(index uint32, table, memberTable int, getindex func
 	return
 }
 
+func check(i interface{}, name content.FullyQualifiedName) error {
+	if err := content.Validate(i); err != nil {
+		return err
+	}
+	if name.Relative[0] == '<' || name.Relative[0] == '$' {
+		return errors.New(fmt.Sprintf("Not .net referenceable name: %s", name))
+	}
+	return nil
+}
+
 func (td *TypeDef) Fields() (fields []content.Field, err error) {
 	var (
 		mu               = td.index.(*ConcreteTableIndex).metadataUtil
@@ -210,7 +220,7 @@ func (td *TypeDef) Fields() (fields []content.Field, err error) {
 			} else if field.Flags&FieldAttributes_Family != 0 {
 				f.Flags |= content.FLAG_ACC_PROTECTED
 			}
-			if err := content.Validate(&f); err != nil {
+			if err := check(&f, f.Name); err != nil {
 				log4go.Debug("Skipping field: %s, %+v, %+v", err, f, field)
 				continue
 			}
@@ -300,7 +310,7 @@ func (td *TypeDef) Methods() (methods []content.Method, err error) {
 					m.Returns[0].Type = td.initContentType(td.index, &sig.RetType.Type)
 				}
 			}
-			if err := content.Validate(&m); err != nil {
+			if err := check(&m, m.Name); err != nil {
 				log4go.Debug("Skipping method: %s, %+v, %+v", err, m, method)
 				continue
 			}
@@ -412,7 +422,7 @@ func (td *TypeDef) ToContentType() (t content.Type, err error) {
 					ct := content.Type{}
 					ct.Name = td2.Name()
 					ct.Flags = td2.row.Flags.Convert()
-					if err := content.Validate(&ct); err != nil {
+					if err := check(&ct, ct.Name); err != nil {
 						log4go.Debug("Skipping nested type: %s, %+v, %+v", err, ct, td2.row)
 						continue
 					}

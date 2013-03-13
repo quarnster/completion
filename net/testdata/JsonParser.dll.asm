@@ -375,12 +375,9 @@ MethodSpecRow
 	&{Method:MemberRefRow[22] Instantiation:Blob[581]}
 	&{Method:MemberRefRow[22] Instantiation:Blob[593]}
 	&{Method:MemberRefRow[23] Instantiation:Blob[642]}
-	<Module>
 	Json.JsonToken
 	Json.InvalidJsonException
 	Json.JsonParser
-	<PrivateImplementationDetails>{fa75a08b-59e8-4d4a-b10e-2114294958f4}
-	$ArrayType=32
 public class Json.JsonToken
 	extends System.Enum
 	public System.Int32 value__
