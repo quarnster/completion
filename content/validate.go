@@ -68,6 +68,10 @@ func (t *Type) Validate() error {
 		if l := len(t.Specialization); l != 1 {
 			return errors.New(fmt.Sprintf("Expected specialization length mismatch: %d != 1", l))
 		}
+	case FLAG_TYPE_METHOD:
+		if l := len(t.Methods); l != 1 {
+			return errors.New(fmt.Sprintf("Expected method length mismatch: %d != 1", l))
+		}
 	default:
 		return Validate(&t.Name)
 	}
