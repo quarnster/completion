@@ -1,6 +1,7 @@
 package dwarf
 
 import (
+	"code.google.com/p/log4go"
 	"debug/dwarf"
 	"debug/macho"
 	"errors"
@@ -19,6 +20,9 @@ func NewDWARFHelper(filename string) (*DWARFHelper, error) {
 	} else {
 		defer f.Close()
 		if df, err := f.DWARF(); err != nil {
+			for i := range f.Sections {
+				log4go.Debug(f.Sections[i])
+			}
 			return nil, err
 		} else {
 			var ret DWARFHelper
@@ -104,7 +108,7 @@ func (d *DWARFHelper) Load() (content.CompletionResult, error) {
 					}
 				}
 				cmp.Methods = append(cmp.Methods, m)
-			case dwarf.TagClassType, dwarf.TagTypedef:
+			case dwarf.TagClassType, dwarf.TagTypedef, dwarf.TagStructType:
 				if t, err := d.GetType(e.Offset); err != nil {
 					return cmp, err
 				} else {
@@ -125,21 +129,20 @@ func (d *DWARFHelper) GetType(off dwarf.Offset) (content.Type, error) {
 		return t, err
 	} else {
 		switch e.Tag {
-		case dwarf.TagConstType:
-			t.Flags |= content.FLAG_TYPE_CONST
+		case dwarf.TagVolatileType, dwarf.TagReferenceType, dwarf.TagRestrictType, dwarf.TagConstType, dwarf.TagSubroutineType:
 			recurse = true
 		case dwarf.TagPointerType:
 			t.Flags |= content.FLAG_TYPE_POINTER
 			recurse = true
-		case dwarf.TagSubroutineType:
-			recurse = true
 		case dwarf.TagArrayType:
 			recurse = true
 			t.Flags |= content.FLAG_TYPE_ARRAY
-		case dwarf.TagClassType, dwarf.TagTypedef, dwarf.TagBaseType:
+		case dwarf.TagClassType, dwarf.TagTypedef, dwarf.TagBaseType, dwarf.TagEnumerationType, dwarf.TagStructType:
 			if v, ok := e.Val(dwarf.AttrName).(string); ok {
 				t.Name.Relative = v
 			}
+		case dwarf.TagUnionType:
+			t.Name.Relative = "union"
 		default:
 			return t, errors.New(fmt.Sprintf("Don't know how to handle %+v", e))
 		}
@@ -152,6 +155,56 @@ func (d *DWARFHelper) GetType(off dwarf.Offset) (content.Type, error) {
 				}
 			}
 		}
+		switch e.Tag {
+		case dwarf.TagVolatileType, dwarf.TagReferenceType, dwarf.TagRestrictType, dwarf.TagConstType:
+			if len(t.Specialization) == 0 {
+				t.Name.Relative = "unknown"
+			} else {
+				t = t.Specialization[0]
+			}
+		}
+
+		switch e.Tag {
+		case dwarf.TagPointerType:
+			if len(t.Specialization) == 0 {
+				t.Specialization = append(t.Specialization, content.Type{Name: content.FullyQualifiedName{Relative: "void"}})
+			}
+		case dwarf.TagVolatileType:
+			t.Flags |= content.FLAG_VOLATILE
+		case dwarf.TagReferenceType:
+			t.Flags |= content.FLAG_REFERENCE
+		case dwarf.TagRestrictType:
+			t.Flags |= content.FLAG_RESTRICT
+		case dwarf.TagConstType:
+			t.Flags |= content.FLAG_CONST
+		case dwarf.TagSubroutineType:
+			var m content.Method
+			m.Returns = append(m.Returns, content.Variable{Type: t.Specialization[0]})
+			t.Specialization = t.Specialization[0:0]
+			t.Flags = content.FLAG_TYPE_METHOD
+			for {
+				if e, err := r.Next(); err != nil {
+					return t, err
+				} else if e == nil || e.Tag == 0 {
+					break
+				} else if e.Tag == dwarf.TagFormalParameter {
+					var p content.Variable
+					if v, ok := e.Val(dwarf.AttrType).(dwarf.Offset); ok {
+						if t2, err := d.GetType(v); err != nil {
+							return t, err
+						} else {
+							p.Type = t2
+						}
+					}
+					if v, ok := e.Val(dwarf.AttrName).(string); ok {
+						p.Name.Relative = v
+					}
+					m.Parameters = append(m.Parameters, p)
+				}
+			}
+			t.Methods = append(t.Methods, m)
+		}
+
 		return t, nil
 	}
 }
