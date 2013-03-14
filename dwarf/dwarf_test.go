@@ -1,11 +1,33 @@
 package dwarf
 
 import (
+	"bytes"
+	"compress/bzip2"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/util"
+	"io"
 	"io/ioutil"
+	"os"
+	"path/filepath"
 	"testing"
 )
+
+func readFile(filename string) (io.ReaderAt, error) {
+	if fs, err := os.Open(filename); err != nil {
+		return nil, err
+	} else {
+		defer fs.Close()
+		var r io.Reader = fs
+		if filepath.Ext(filename) == ".bz2" {
+			r = bzip2.NewReader(fs)
+		}
+		if data, err := ioutil.ReadAll(r); err != nil {
+			return nil, err
+		} else {
+			return bytes.NewReader(data), nil
+		}
+	}
+}
 
 func TestBlah(t *testing.T) {
 	tests := []string{
@@ -13,7 +35,9 @@ func TestBlah(t *testing.T) {
 		"./testdata/8",
 	}
 	for _, testfile := range tests {
-		if dh, err := NewDWARFHelper(testfile); err != nil {
+		if r, err := readFile(testfile); err != nil {
+			t.Error(err)
+		} else if dh, err := NewDWARFHelper(r); err != nil {
 			t.Error(err)
 		} else {
 			t.Log(dh.Load())
@@ -27,7 +51,9 @@ func TestCompleteGame(t *testing.T) {
 		"asCObjectType",
 		"asCScriptFunction",
 	}
-	if dh, err := NewDWARFHelper(testfile); err != nil {
+	if r, err := readFile(testfile); err != nil {
+		t.Error(err)
+	} else if dh, err := NewDWARFHelper(r); err != nil {
 		t.Error(err)
 	} else {
 		res := ""

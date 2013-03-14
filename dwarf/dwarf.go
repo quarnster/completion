@@ -1,42 +1,22 @@
 package dwarf
 
 import (
-	"bytes"
 	"code.google.com/p/log4go"
-	"compress/bzip2"
 	"debug/dwarf"
 	"debug/macho"
 	"errors"
 	"fmt"
 	"github.com/quarnster/completion/content"
-	"io/ioutil"
-	"os"
-	"path/filepath"
+	"io"
 )
 
 type DWARFHelper struct {
 	df *dwarf.Data
 }
 
-func NewDWARFHelper(filename string) (*DWARFHelper, error) {
+func NewDWARFHelper(r io.ReaderAt) (*DWARFHelper, error) {
 	// TODO: detect file format..
-	var f *macho.File
-	var err error
-	if filepath.Ext(filename) == ".bz2" {
-		if fs, err2 := os.Open(filename); err2 != nil {
-			return nil, err2
-		} else {
-			defer fs.Close()
-			if data, err2 := ioutil.ReadAll(bzip2.NewReader(fs)); err2 != nil {
-				return nil, err2
-			} else {
-				f, err = macho.NewFile(bytes.NewReader(data))
-			}
-		}
-	} else {
-		f, err = macho.Open(filename)
-	}
-	if err != nil {
+	if f, err := macho.NewFile(r); err != nil {
 		return nil, err
 	} else {
 		defer f.Close()
