@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/quarnster/completion/util"
 	errors "github.com/quarnster/completion/util/errors"
-	"math"
 	"reflect"
 	"sort"
 	"strings"
@@ -262,10 +261,6 @@ func (m *MetadataUtil) ReadIndex(br *util.BinaryReader, size uint) (uint32, erro
 	return br.Uint32()
 }
 
-func bits(values int) uint {
-	return uint(math.Ceil(math.Log2(float64(values))))
-}
-
 func (m *MetadataUtil) Create(br *util.BinaryReader, v interface{}) error {
 	t := reflect.ValueOf(v)
 	if t.Kind() != reflect.Ptr {
@@ -308,7 +303,7 @@ func (m *MetadataUtil) Create(br *util.BinaryReader, v interface{}) error {
 			}
 			var (
 				tables = enc_lut[idx_name_lut[name]]
-				b      = bits(len(tables))
+				b      = util.Bits(len(tables))
 				mask   = uint32(0xffff << b)
 				tbl    = idx &^ mask
 				ti     ConcreteTableIndex
@@ -377,7 +372,7 @@ func (m *MetadataUtil) Size(t reflect.Type) (uint, error) {
 					rows = s2
 				}
 			}
-			if rows<<bits(len(tables)) < 1<<16 {
+			if rows<<util.Bits(len(tables)) < 1<<16 {
 				size = 2
 			} else {
 				size = 4
