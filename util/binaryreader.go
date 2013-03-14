@@ -12,14 +12,16 @@ import (
 	"unsafe"
 )
 
-type Validateable interface {
-	Validate() error
-}
+type (
+	Validateable interface {
+		Validate() error
+	}
 
-type BinaryReader struct {
-	Reader    io.ReadSeeker
-	Endianess binary.ByteOrder
-}
+	BinaryReader struct {
+		Reader    io.ReadSeeker
+		Endianess binary.ByteOrder
+	}
+)
 
 func (r *BinaryReader) ReadInterface(v interface{}) error {
 	t := reflect.ValueOf(v)

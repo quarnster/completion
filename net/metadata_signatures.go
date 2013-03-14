@@ -103,15 +103,95 @@ const (
 	SIGNATURE_FIELD        = 0x6
 )
 
-var NotACModError = errors.New("Not a cmod")
+var (
+	NotACModError = errors.New("Not a cmod")
 
-type EncUint uint32
-type EncInt int32
+	// II.23.2.16 Short form signatures
+	lut_element_type = map[int]string{
+		ELEMENT_TYPE_STRING:     "String",
+		ELEMENT_TYPE_OBJECT:     "Object",
+		ELEMENT_TYPE_VOID:       "Void",
+		ELEMENT_TYPE_BOOLEAN:    "Boolean",
+		ELEMENT_TYPE_CHAR:       "Char",
+		ELEMENT_TYPE_U1:         "Byte",
+		ELEMENT_TYPE_I1:         "Sbyte",
+		ELEMENT_TYPE_I2:         "Int16",
+		ELEMENT_TYPE_U2:         "UInt16",
+		ELEMENT_TYPE_I4:         "Int32",
+		ELEMENT_TYPE_U4:         "UInt32",
+		ELEMENT_TYPE_I8:         "Int64",
+		ELEMENT_TYPE_U8:         "UInt64",
+		ELEMENT_TYPE_I:          "IntPtr",
+		ELEMENT_TYPE_U:          "UIntPtr",
+		ELEMENT_TYPE_TYPEDBYREF: "TypedReference",
+		ELEMENT_TYPE_R4:         "r4",
+		ELEMENT_TYPE_R8:         "r8",
+		ELEMENT_TYPE_PTR:        "ptr",
+		ELEMENT_TYPE_VALUETYPE:  "valuetype",
+		ELEMENT_TYPE_CLASS:      "class",
+		ELEMENT_TYPE_ARRAY:      "array",
+		ELEMENT_TYPE_FNPTR:      "fnptr",
+		ELEMENT_TYPE_SZARRAY:    "szarray",
+		ELEMENT_TYPE_CMOD_REQD:  "cmod_reqd",
+		ELEMENT_TYPE_CMOD_OPT:   "cmod_opt",
+		ELEMENT_TYPE_INTERNAL:   "internal",
+		ELEMENT_TYPE_MODIFIER:   "modifier",
+		ELEMENT_TYPE_SENTINEL:   "sentinel",
+		ELEMENT_TYPE_PINNED:     "pinned",
+	}
+)
 
-type SignatureDecoder struct {
-	Reader       util.BinaryReader
-	metadataUtil *MetadataUtil
-}
+type (
+	EncUint uint32
+	EncInt  int32
+
+	SignatureDecoder struct {
+		Reader       util.BinaryReader
+		metadataUtil *MetadataUtil
+	}
+	MethodDefSigId uint8
+
+	// II.23.2.1 MethodDefSig
+	MethodDefSig struct {
+		Id            MethodDefSigId
+		GenParamCount EncUint
+		RetType       RetType
+		Params        []Param
+	}
+
+	// II.23.2.4 FieldSig
+	FieldSig struct {
+		CustomMod []CustomMod
+		Type      Type
+	}
+
+	// II.23.2.7 CustomMod
+	CustomMod struct {
+		ModType uint32
+		Index   TypeDefOrRefEncodedIndex
+	}
+
+	// II.23.2.10 Param
+	Param struct {
+		Mod  []CustomMod
+		Type Type
+	}
+
+	// II.23.2.11 RetType
+	RetType struct {
+		Mod  []CustomMod
+		Type Type
+	}
+
+	Type struct {
+		TypeId        uint32
+		Class         TypeDefOrRefEncodedIndex
+		Type          *Type
+		Instance      []*Type
+		GenericNumber uint32
+		Mod           []CustomMod
+	}
+)
 
 func NewSignatureDecoder(idx BlobIndex) (*SignatureDecoder, error) {
 	if idx.Index() == 0 {
@@ -290,83 +370,6 @@ func (d *SignatureDecoder) Decode(v interface{}) error {
 		return errors.New(fmt.Sprintf("Don't know how to decode type %s, %s", v2.Type().Name(), v2.Kind()))
 	}
 	return nil
-}
-
-type MethodDefSigId uint8
-
-// II.23.2.1 MethodDefSig
-type MethodDefSig struct {
-	Id            MethodDefSigId
-	GenParamCount EncUint
-	RetType       RetType
-	Params        []Param
-}
-
-// II.23.2.4 FieldSig
-type FieldSig struct {
-	CustomMod []CustomMod
-	Type      Type
-}
-
-// II.23.2.7 CustomMod
-type CustomMod struct {
-	ModType uint32
-	Index   TypeDefOrRefEncodedIndex
-}
-
-// II.23.2.10 Param
-type Param struct {
-	Mod  []CustomMod
-	Type Type
-}
-
-// II.23.2.11 RetType
-type RetType struct {
-	Mod  []CustomMod
-	Type Type
-}
-
-type Type struct {
-	TypeId        uint32
-	Class         TypeDefOrRefEncodedIndex
-	Type          *Type
-	Instance      []*Type
-	GenericNumber uint32
-	Mod           []CustomMod
-}
-
-// II.23.2.16 Short form signatures
-var lut_element_type = map[int]string{
-	ELEMENT_TYPE_STRING:     "String",
-	ELEMENT_TYPE_OBJECT:     "Object",
-	ELEMENT_TYPE_VOID:       "Void",
-	ELEMENT_TYPE_BOOLEAN:    "Boolean",
-	ELEMENT_TYPE_CHAR:       "Char",
-	ELEMENT_TYPE_U1:         "Byte",
-	ELEMENT_TYPE_I1:         "Sbyte",
-	ELEMENT_TYPE_I2:         "Int16",
-	ELEMENT_TYPE_U2:         "UInt16",
-	ELEMENT_TYPE_I4:         "Int32",
-	ELEMENT_TYPE_U4:         "UInt32",
-	ELEMENT_TYPE_I8:         "Int64",
-	ELEMENT_TYPE_U8:         "UInt64",
-	ELEMENT_TYPE_I:          "IntPtr",
-	ELEMENT_TYPE_U:          "UIntPtr",
-	ELEMENT_TYPE_TYPEDBYREF: "TypedReference",
-	ELEMENT_TYPE_R4:         "r4",
-	ELEMENT_TYPE_R8:         "r8",
-	ELEMENT_TYPE_PTR:        "ptr",
-	ELEMENT_TYPE_VALUETYPE:  "valuetype",
-	ELEMENT_TYPE_CLASS:      "class",
-	ELEMENT_TYPE_ARRAY:      "array",
-	ELEMENT_TYPE_FNPTR:      "fnptr",
-	ELEMENT_TYPE_SZARRAY:    "szarray",
-	ELEMENT_TYPE_CMOD_REQD:  "cmod_reqd",
-	ELEMENT_TYPE_CMOD_OPT:   "cmod_opt",
-	ELEMENT_TYPE_INTERNAL:   "internal",
-	ELEMENT_TYPE_MODIFIER:   "modifier",
-	ELEMENT_TYPE_SENTINEL:   "sentinel",
-	ELEMENT_TYPE_PINNED:     "pinned",
 }
 
 func (t *Type) Name() string {

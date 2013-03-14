@@ -2,8 +2,10 @@ package java
 
 import "strings"
 
-type Filename string
-type Classname string
+type (
+	Filename  string
+	Classname string
+)
 
 func (fn Filename) Classname() Classname {
 	path := string(fn)

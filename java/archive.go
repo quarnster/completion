@@ -9,17 +9,27 @@ import (
 	"strings"
 )
 
-type Archive interface {
-	Classes() ([]Classname, error)
-	LoadClass(class Classname) ([]byte, error)
-	LoadAllClasses() [][]byte
-	Close() error
-}
+type (
+	Archive interface {
+		Classes() ([]Classname, error)
+		LoadClass(class Classname) ([]byte, error)
+		LoadAllClasses() [][]byte
+		Close() error
+	}
 
-type JarArchive struct {
-	path string
-	zf   *zip.ReadCloser
-}
+	JarArchive struct {
+		path string
+		zf   *zip.ReadCloser
+	}
+
+	DirectoryArchive struct {
+		path string
+		fi   []os.FileInfo
+	}
+	CompositeArchive struct {
+		archives []Archive
+	}
+)
 
 func (j *JarArchive) Classes() (ret []Classname, err error) {
 	for _, zf := range j.zf.File {
@@ -67,11 +77,6 @@ func (j *JarArchive) Close() error {
 	return j.zf.Close()
 }
 
-type DirectoryArchive struct {
-	path string
-	fi   []os.FileInfo
-}
-
 func (d *DirectoryArchive) Classes() (ret []Classname, err error) {
 	for _, f := range d.fi {
 		if strings.HasSuffix(f.Name(), ".class") {
@@ -101,10 +106,6 @@ func (d *DirectoryArchive) LoadAllClasses() (ret [][]byte) {
 
 func (d *DirectoryArchive) Close() error {
 	return nil
-}
-
-type CompositeArchive struct {
-	archives []Archive
 }
 
 func (c *CompositeArchive) Classes() (ret []Classname, err error) {

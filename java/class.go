@@ -14,15 +14,48 @@ import (
 http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html
 http://en.wikipedia.org/wiki/Java_class_file
 */
-type u1 uint8
-type u2 uint16
-type u4 uint32
+type (
+	u1 uint8
+	u2 uint16
+	u4 uint32
 
-type Constant struct {
-	tag   u1
-	index [2]u2
-	value string
-}
+	Constant struct {
+		tag   u1
+		index [2]u2
+		value string
+	}
+	AccessFlags u2
+
+	member_info struct {
+		Access_flags     AccessFlags
+		Name_index       u2
+		Descriptor_index u2
+		Attributes       []attribute_info
+	}
+	attribute_info struct {
+		Attribute_name_index u2
+		Info                 []byte
+	}
+
+	Class struct {
+		Magic         u4
+		Minor_version u2
+		Major_version u2
+		Constant_pool []Constant
+		Access_flags  AccessFlags
+		This_class    u2
+		Super_class   u2
+		Interfaces    []u2
+		Fields        []member_info
+		Methods       []member_info
+		Attributes    []attribute_info
+	}
+
+	ClassDecoder struct {
+		reader util.BinaryReader
+		err    error
+	}
+)
 
 func String(lut []Constant, idx u2) string {
 	if idx > 0 && int(idx) <= len(lut) {
@@ -44,8 +77,6 @@ func (c Constant) String(lut []Constant) string {
 	}
 	return fmt.Sprintf("Non-stringed tag: %d", c.tag)
 }
-
-type AccessFlags u2
 
 func (a AccessFlags) String() (ret string) {
 	if a&ACC_PUBLIC != 0 {
@@ -78,37 +109,11 @@ func (a AccessFlags) String() (ret string) {
 	return ret
 }
 
-type member_info struct {
-	Access_flags     AccessFlags
-	Name_index       u2
-	Descriptor_index u2
-	Attributes       []attribute_info
-}
-
 func (mi *member_info) String(c []Constant) string {
 	ret := mi.Access_flags.String()
 	ret += String(c, mi.Name_index)
 	ret += " " + String(c, mi.Descriptor_index)
 	return ret
-}
-
-type attribute_info struct {
-	Attribute_name_index u2
-	Info                 []byte
-}
-
-type Class struct {
-	Magic         u4
-	Minor_version u2
-	Major_version u2
-	Constant_pool []Constant
-	Access_flags  AccessFlags
-	This_class    u2
-	Super_class   u2
-	Interfaces    []u2
-	Fields        []member_info
-	Methods       []member_info
-	Attributes    []attribute_info
 }
 
 func (c *Class) String() (ret string) {
@@ -167,11 +172,6 @@ const (
 	// Declared as an element of an enum.
 	ACC_ENUM = 0x4000
 )
-
-type ClassDecoder struct {
-	reader util.BinaryReader
-	err    error
-}
 
 func (dec *ClassDecoder) Decode(v interface{}) error {
 	t := reflect.ValueOf(v)

@@ -13,16 +13,18 @@ var (
 	templateType = regexp.MustCompile("`\\d+")
 )
 
-type TypeDef struct {
-	mu    *MetadataUtil
-	index TypeDefIndex
-	row   TypeDefRow
-}
+type (
+	TypeDef struct {
+		mu    *MetadataUtil
+		index TypeDefIndex
+		row   TypeDefRow
+	}
 
-type AbstractType interface {
-	Name() string
-	Namespace() string
-}
+	AbstractType interface {
+		Name() string
+		Namespace() string
+	}
+)
 
 func AbsoluteName(t AbstractType) string {
 	n := t.Name()

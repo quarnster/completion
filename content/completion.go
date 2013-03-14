@@ -1,16 +1,5 @@
 package content
 
-type Type struct {
-	Name           FullyQualifiedName `protocol:"optional" json:",omitempty"`
-	Specialization []Type             `protocol:"optional" json:",omitempty"`
-	Flags          Flags              `protocol:"optional" json:",omitempty"`
-	Methods        []Method           `protocol:"optional" json:",omitempty"`
-	Fields         []Field            `protocol:"optional" json:",omitempty"`
-	Types          []Type             `protocol:"optional" json:",omitempty"`
-	Extends        []Type             `protocol:"optional" json:",omitempty"`
-	Implements     []Type             `protocol:"optional" json:",omitempty"`
-}
-
 const (
 	FLAG_BOOL_SHIFT = 0
 )
@@ -70,28 +59,40 @@ const (
 	FLAG_LANG_MASK   = ((1 << FLAG_LANG_BITS) - 1) << FLAG_LANG_SHIFT
 )
 
-type Flags uint32
+type (
+	Flags uint32
 
-type Variable struct {
-	Name FullyQualifiedName `protocol:"required" json:",omitempty"`
-	Type Type               `protocol:"required" json:",omitempty"`
-}
+	Variable struct {
+		Name FullyQualifiedName `protocol:"required" json:",omitempty"`
+		Type Type               `protocol:"required" json:",omitempty"`
+	}
 
-type Field struct {
-	Variable `protocol:"required" json:",omitempty"`
-	Flags    Flags `protocol:"optional" json:",omitempty"`
-}
+	Field struct {
+		Variable `protocol:"required" json:",omitempty"`
+		Flags    Flags `protocol:"optional" json:",omitempty"`
+	}
 
-type Method struct {
-	Name           FullyQualifiedName `protocol:"required" json:",omitempty"`
-	Flags          Flags              `protocol:"optional" json:",omitempty"`
-	Returns        []Variable         `protocol:"optional" json:",omitempty"`
-	Parameters     []Variable         `protocol:"optional" json:",omitempty"`
-	Specialization []Type             `protocol:"optional" json:",omitempty"`
-}
+	Method struct {
+		Name           FullyQualifiedName `protocol:"required" json:",omitempty"`
+		Flags          Flags              `protocol:"optional" json:",omitempty"`
+		Returns        []Variable         `protocol:"optional" json:",omitempty"`
+		Parameters     []Variable         `protocol:"optional" json:",omitempty"`
+		Specialization []Type             `protocol:"optional" json:",omitempty"`
+	}
 
-type CompletionResult struct {
-	Types   []Type   `protocol:"optional" json:",omitempty"`
-	Fields  []Field  `protocol:"optional" json:",omitempty"`
-	Methods []Method `protocol:"optional" json:",omitempty"`
-}
+	CompletionResult struct {
+		Types   []Type   `protocol:"optional" json:",omitempty"`
+		Fields  []Field  `protocol:"optional" json:",omitempty"`
+		Methods []Method `protocol:"optional" json:",omitempty"`
+	}
+	Type struct {
+		Name           FullyQualifiedName `protocol:"optional" json:",omitempty"`
+		Specialization []Type             `protocol:"optional" json:",omitempty"`
+		Flags          Flags              `protocol:"optional" json:",omitempty"`
+		Methods        []Method           `protocol:"optional" json:",omitempty"`
+		Fields         []Field            `protocol:"optional" json:",omitempty"`
+		Types          []Type             `protocol:"optional" json:",omitempty"`
+		Extends        []Type             `protocol:"optional" json:",omitempty"`
+		Implements     []Type             `protocol:"optional" json:",omitempty"`
+	}
+)

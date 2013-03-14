@@ -13,10 +13,23 @@ import (
 	"sync"
 )
 
-type entry struct {
-	name     string
-	assembly *Assembly
-}
+type (
+	entry struct {
+		name     string
+		assembly *Assembly
+	}
+	loadreq struct {
+		name   string
+		reload bool
+	}
+	Cache struct {
+		entries []entry
+		paths   []string
+		watch   *fsnotify.Watcher
+		mutex   sync.Mutex
+		load    chan loadreq
+	}
+)
 
 func (c *Cache) reload(e *entry) error {
 	if data, err := ioutil.ReadFile(e.name); err != nil {
@@ -37,18 +50,6 @@ func (c *Cache) reload(e *entry) error {
 		}
 	}
 	return nil
-}
-
-type loadreq struct {
-	name   string
-	reload bool
-}
-type Cache struct {
-	entries []entry
-	paths   []string
-	watch   *fsnotify.Watcher
-	mutex   sync.Mutex
-	load    chan loadreq
 }
 
 func (c *Cache) loaderthread() {

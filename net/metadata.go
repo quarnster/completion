@@ -63,107 +63,95 @@ const (
 )
 
 var (
-	ErrMetadata = errors.New("Metadata header isn't in the expected format")
+	ErrMetadata        = errors.New("Metadata header isn't in the expected format")
+	table_row_type_lut = map[int]reflect.Type{
+		id_Assembly:               reflect.TypeOf(AssemblyRow{}),
+		id_AssemblyOS:             reflect.TypeOf(AssemblyOSRow{}),
+		id_AssemblyProcessor:      reflect.TypeOf(AssemblyProcessorRow{}),
+		id_AssemblyRef:            reflect.TypeOf(AssemblyRefRow{}),
+		id_AssemblyRefOS:          reflect.TypeOf(AssemblyRefOSRow{}),
+		id_AssemblyRefProcessor:   reflect.TypeOf(AssemblyRefProcessorRow{}),
+		id_ClassLayout:            reflect.TypeOf(ClassLayoutRow{}),
+		id_Constant:               reflect.TypeOf(ConstantRow{}),
+		id_CustomAttribute:        reflect.TypeOf(CustomAttributeRow{}),
+		id_DeclSecurity:           reflect.TypeOf(DeclSecurityRow{}),
+		id_EventMap:               reflect.TypeOf(EventMapRow{}),
+		id_Event:                  reflect.TypeOf(EventRow{}),
+		id_ExportedType:           reflect.TypeOf(ExportedTypeRow{}),
+		id_Field:                  reflect.TypeOf(FieldRow{}),
+		id_FieldLayout:            reflect.TypeOf(FieldLayoutRow{}),
+		id_FieldMarshal:           reflect.TypeOf(FieldMarshalRow{}),
+		id_FieldRVA:               reflect.TypeOf(FieldRVARow{}),
+		id_File:                   reflect.TypeOf(FileRow{}),
+		id_GenericParam:           reflect.TypeOf(GenericParamRow{}),
+		id_GenericParamConstraint: reflect.TypeOf(GenericParamConstraintRow{}),
+		id_ImplMap:                reflect.TypeOf(ImplMapRow{}),
+		id_InterfaceImpl:          reflect.TypeOf(InterfaceImplRow{}),
+		id_ManifestResource:       reflect.TypeOf(ManifestResourceRow{}),
+		id_MemberRef:              reflect.TypeOf(MemberRefRow{}),
+		id_MethodDef:              reflect.TypeOf(MethodDefRow{}),
+		id_MethodImpl:             reflect.TypeOf(MethodImplRow{}),
+		id_MethodSemantics:        reflect.TypeOf(MethodSemanticsRow{}),
+		id_MethodSpec:             reflect.TypeOf(MethodSpecRow{}),
+		id_Module:                 reflect.TypeOf(ModuleRow{}),
+		id_ModuleRef:              reflect.TypeOf(ModuleRefRow{}),
+		id_NestedClass:            reflect.TypeOf(NestedClassRow{}),
+		id_Param:                  reflect.TypeOf(ParamRow{}),
+		id_Property:               reflect.TypeOf(PropertyRow{}),
+		id_PropertyMap:            reflect.TypeOf(PropertyMapRow{}),
+		id_StandAloneSig:          reflect.TypeOf(StandAloneSigRow{}),
+		id_TypeDef:                reflect.TypeOf(TypeDefRow{}),
+		id_TypeRef:                reflect.TypeOf(TypeRefRow{}),
+		id_TypeSpec:               reflect.TypeOf(TypeSpecRow{}),
+	}
 )
-var table_row_type_lut = map[int]reflect.Type{
-	id_Assembly:               reflect.TypeOf(AssemblyRow{}),
-	id_AssemblyOS:             reflect.TypeOf(AssemblyOSRow{}),
-	id_AssemblyProcessor:      reflect.TypeOf(AssemblyProcessorRow{}),
-	id_AssemblyRef:            reflect.TypeOf(AssemblyRefRow{}),
-	id_AssemblyRefOS:          reflect.TypeOf(AssemblyRefOSRow{}),
-	id_AssemblyRefProcessor:   reflect.TypeOf(AssemblyRefProcessorRow{}),
-	id_ClassLayout:            reflect.TypeOf(ClassLayoutRow{}),
-	id_Constant:               reflect.TypeOf(ConstantRow{}),
-	id_CustomAttribute:        reflect.TypeOf(CustomAttributeRow{}),
-	id_DeclSecurity:           reflect.TypeOf(DeclSecurityRow{}),
-	id_EventMap:               reflect.TypeOf(EventMapRow{}),
-	id_Event:                  reflect.TypeOf(EventRow{}),
-	id_ExportedType:           reflect.TypeOf(ExportedTypeRow{}),
-	id_Field:                  reflect.TypeOf(FieldRow{}),
-	id_FieldLayout:            reflect.TypeOf(FieldLayoutRow{}),
-	id_FieldMarshal:           reflect.TypeOf(FieldMarshalRow{}),
-	id_FieldRVA:               reflect.TypeOf(FieldRVARow{}),
-	id_File:                   reflect.TypeOf(FileRow{}),
-	id_GenericParam:           reflect.TypeOf(GenericParamRow{}),
-	id_GenericParamConstraint: reflect.TypeOf(GenericParamConstraintRow{}),
-	id_ImplMap:                reflect.TypeOf(ImplMapRow{}),
-	id_InterfaceImpl:          reflect.TypeOf(InterfaceImplRow{}),
-	id_ManifestResource:       reflect.TypeOf(ManifestResourceRow{}),
-	id_MemberRef:              reflect.TypeOf(MemberRefRow{}),
-	id_MethodDef:              reflect.TypeOf(MethodDefRow{}),
-	id_MethodImpl:             reflect.TypeOf(MethodImplRow{}),
-	id_MethodSemantics:        reflect.TypeOf(MethodSemanticsRow{}),
-	id_MethodSpec:             reflect.TypeOf(MethodSpecRow{}),
-	id_Module:                 reflect.TypeOf(ModuleRow{}),
-	id_ModuleRef:              reflect.TypeOf(ModuleRefRow{}),
-	id_NestedClass:            reflect.TypeOf(NestedClassRow{}),
-	id_Param:                  reflect.TypeOf(ParamRow{}),
-	id_Property:               reflect.TypeOf(PropertyRow{}),
-	id_PropertyMap:            reflect.TypeOf(PropertyMapRow{}),
-	id_StandAloneSig:          reflect.TypeOf(StandAloneSigRow{}),
-	id_TypeDef:                reflect.TypeOf(TypeDefRow{}),
-	id_TypeRef:                reflect.TypeOf(TypeRefRow{}),
-	id_TypeSpec:               reflect.TypeOf(TypeSpecRow{}),
-}
 
-// ECMA-335 II.24.2.1
-type MetadataHeader struct {
-	Signature     uint32
-	MajorVersion  uint16
-	MinorVersion  uint16
-	Reserved      uint32
-	Length        uint32
-	Version       string `length:"Length" align:"4"`
-	Flags         uint16
-	StreamCount   uint16
-	StreamHeaders []stream_header `length:"StreamCount"`
-}
-
-func (m *MetadataHeader) Validate() error {
-	if m.Signature != metadata_signature || m.MajorVersion != 1 || m.MinorVersion != 1 || m.Reserved != 0 {
-		return ErrMetadata
+type (
+	// ECMA-335 II.24.2.1
+	MetadataHeader struct {
+		Signature     uint32
+		MajorVersion  uint16
+		MinorVersion  uint16
+		Reserved      uint32
+		Length        uint32
+		Version       string `length:"Length" align:"4"`
+		Flags         uint16
+		StreamCount   uint16
+		StreamHeaders []stream_header `length:"StreamCount"`
 	}
-	return nil
-}
 
-// ECMA-335 II.24.2.2
-type stream_header struct {
-	Offset uint32
-	Size   uint32
-	Name   string `max:"32" align:"4"`
-}
-
-func (s *stream_header) Validate() error {
-	if s.Name[0] != '#' {
-		return errors.New(fmt.Sprintf("This does not appear to be a valid stream header: %#v", s))
+	// ECMA-335 II.24.2.2
+	stream_header struct {
+		Offset uint32
+		Size   uint32
+		Name   string `max:"32" align:"4"`
 	}
-	return nil
-}
 
-// ECMA-335 II.24.2.6 #~ stream
-type hash_tilde_stream_header struct {
-	Reserved     uint32
-	MajorVersion uint8
-	MinorVersion uint8
-	HeapSizes    uint8
-	Reserved2    uint8
-	Valid        uint64
-	Sorted       uint64
-}
-
-func (h *hash_tilde_stream_header) Validate() error {
-	if h.Reserved != 0 || h.MajorVersion != 2 || h.MinorVersion != 0 /*|| h.Reserved2 != 1*/ { //TODO: Hmm spec says Reserved2 should be 1, but it appears to be 0x10?
-		return errors.New(fmt.Sprintf("This does not appear to be a valid #~ stream header: %#v", h))
+	// ECMA-335 II.24.2.6 #~ stream
+	hash_tilde_stream_header struct {
+		Reserved     uint32
+		MajorVersion uint8
+		MinorVersion uint8
+		HeapSizes    uint8
+		Reserved2    uint8
+		Valid        uint64
+		Sorted       uint64
 	}
-	return nil
-}
 
-type MetadataUtil struct {
-	Tables     [64]MetadataTable
-	StringHeap MetadataTable
-	BlobHeap   MetadataTable
-	GuidHeap   MetadataTable
-}
+	MetadataUtil struct {
+		Tables     [64]MetadataTable
+		StringHeap MetadataTable
+		BlobHeap   MetadataTable
+		GuidHeap   MetadataTable
+	}
+
+	MetadataTable struct {
+		data    []byte
+		Rows    uint32
+		RowType reflect.Type
+		RowSize uint32
+	}
+)
 
 func (mh *MetadataHeader) MetadataUtil(br *util.BinaryReader) (*MetadataUtil, error) {
 	var (
@@ -423,13 +411,6 @@ func (mu *MetadataUtil) Search(tableId int, equal func(TableIndex) bool) TableIn
 	}
 	ci.index = uint32(idx) + 1
 	return &ci
-}
-
-type MetadataTable struct {
-	data    []byte
-	Rows    uint32
-	RowType reflect.Type
-	RowSize uint32
 }
 
 func (mt *MetadataTable) Index(index uint32) ([]byte, error) {
