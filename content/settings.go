@@ -1,5 +1,9 @@
 package content
 
+import (
+	"encoding/json"
+)
+
 type Settings struct {
 	data map[string]interface{}
 }
@@ -28,4 +32,12 @@ func (s *Settings) Merge(other *Settings) {
 	for k, v := range other.data {
 		s.data[k] = v
 	}
+}
+
+func (s *Settings) MarshalJSON() ([]byte, error) {
+	return json.Marshal(s.data)
+}
+
+func (s *Settings) UnmarshalJSON(data []byte) error {
+	return json.Unmarshal(data, &s.data)
 }
