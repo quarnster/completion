@@ -28,7 +28,15 @@ func RegisterType(key string, t reflect.Type) error {
 	return nil
 }
 
-func (s *Settings) MarshalJSON() ([]byte, error) {
+func (s Settings) MarshalJSON() ([]byte, error) {
+	for k, v := range s.data {
+		if registered, ok := registered_types[k]; ok {
+			actual := reflect.TypeOf(v)
+			if ak, rk := actual.Kind(), registered.Kind(); ak != rk {
+				return nil, errors.New(fmt.Sprintf("Unable to marshal object %s with key %s, as it's registered as type %s != %s", actual, k, rk, ak))
+			}
+		}
+	}
 	return json.Marshal(s.data)
 }
 
@@ -44,12 +52,12 @@ func (s *Settings) UnmarshalJSON(data []byte) error {
 		var i interface{}
 		k = strings.ToLower(k)
 		if t, ok := registered_types[k]; ok {
-			val := reflect.New(t)
-			i = val.Interface()
-			if err := json.Unmarshal(v, i); err != nil {
+			ptr := reflect.New(t)
+			i = ptr.Interface()
+			if err := json.Unmarshal([]byte(v), i); err != nil {
 				return err
 			}
-			i = val.Elem().Interface()
+			i = ptr.Elem().Interface()
 		} else if err := json.Unmarshal(v, &i); err != nil {
 			return err
 		}
