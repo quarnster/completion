@@ -39,7 +39,13 @@ func TestJson(t *testing.T) {
 			{Variable: Variable{Name: FullyQualifiedName{Relative: "Hello"}}},
 		}},
 	}}
-	RegisterType("complex", reflect.TypeOf(source.Get("complex")))
+	if err := RegisterType("complex", reflect.TypeOf(source.Get("complex"))); err != nil {
+		t.Fatal(err)
+	} else if err = RegisterType("complex", reflect.TypeOf(source.Get("complex"))); err != nil {
+		t.Error(err)
+	} else if err = RegisterType("complex", reflect.TypeOf(source)); err == nil {
+		t.Error("Expected an error but didn't get one")
+	}
 	s1 := NewSettings()
 	s1.Set("settings", source)
 	if d, err := json.MarshalIndent(&s1, "", "\t"); err != nil {
