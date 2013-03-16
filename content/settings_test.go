@@ -1,7 +1,6 @@
 package content
 
 import (
-	"encoding/json"
 	"testing"
 )
 
@@ -69,27 +68,4 @@ func TestMerge(t *testing.T) {
 		}
 	}
 
-}
-
-func TestJson(t *testing.T) {
-	s1 := &Settings{map[string]interface{}{
-		"hello": "world",
-		"yes":   true,
-		"no":    3,
-		"complex": CompletionResult{Fields: []Field{
-			{Variable: Variable{Name: FullyQualifiedName{Relative: "Hello"}}},
-		}},
-	}}
-	if d, err := json.MarshalIndent(&s1, "", "\t"); err != nil {
-		t.Error(err)
-	} else {
-		t.Log(string(d))
-		s2 := &Settings{}
-		if err := json.Unmarshal(d, &s2); err != nil {
-			t.Error(err)
-		} else {
-			t.Log(s1)
-			t.Log(s2)
-		}
-	}
 }
