@@ -10,22 +10,6 @@ var handlers = map[string]Handler{}
 
 type (
 	Handler func(io.Writer, Intent)
-
-	Intent struct {
-		Version   int64
-		Operation string
-		Data      []Data
-	}
-
-	Response struct {
-		Version int64 `json:"version"`
-		Data    []Data
-	}
-
-	Data struct {
-		Name  string
-		Value []byte
-	}
 )
 
 func AddHandler(name string, h Handler) {

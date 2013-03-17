@@ -11,8 +11,19 @@ import (
 var registered_types map[string]reflect.Type
 
 func init() {
-	if err := RegisterType("settings", reflect.TypeOf(Settings{})); err != nil {
-		panic(err)
+	type reg struct {
+		k string
+		t reflect.Type
+	}
+	types := []reg{
+		{"settings", reflect.TypeOf(Settings{})},
+		{"location", reflect.TypeOf(SourceLocation{})},
+		{"completion", reflect.TypeOf(CompletionResult{})},
+	}
+	for _, t := range types {
+		if err := RegisterType(t.k, t.t); err != nil {
+			panic(err)
+		}
 	}
 }
 

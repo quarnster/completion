@@ -69,3 +69,92 @@ func TestJson(t *testing.T) {
 		t.Error("It shouldn't be possible to marshal a type that was registered as a struct, but is now a pointer to a struct")
 	}
 }
+
+type (
+	Intent struct {
+		Version   int64
+		Operation string
+		Data      Settings
+	}
+
+	Response struct {
+		Version int64    `json:"version"`
+		Data    Settings `json:"data"`
+	}
+
+	Session struct {
+		Settings Settings
+	}
+)
+
+func NewIntent(key string) (ret Intent) {
+	ret.Operation = key
+	ret.Data = *NewSettings()
+	return
+}
+
+func NewResponse() (ret Response) {
+	ret.Data = *NewSettings()
+	return
+}
+
+func (it *Intent) Session() *Session {
+	if sessionid, ok := it.Data.Get("sessionid").(int); ok {
+		_ = sessionid // TODO actually look up session and return it
+	}
+	return nil
+}
+
+func (it *Intent) Settings() *Settings {
+	if session := it.Session(); session != nil {
+		set := session.Settings.Clone()
+		if settings, ok := it.Data.Get("settings").(Settings); ok {
+			set.Merge(&settings)
+		}
+		return set
+	} else if settings, ok := it.Data.Get("settings").(Settings); ok {
+		return &settings
+	}
+	return nil
+}
+
+func TestJson2(t *testing.T) {
+	it := NewIntent("completion.complete.location")
+	it.Data.Set("location", SourceLocation{File{Name: "hello.cpp"}, 10, 2})
+	it.Data.Set("sessionid", 1337)
+	settings := NewSettings()
+	settings.Set("compilation_options", []string{"-Iincludepath1", "-Iincludepath2"})
+	it.Data.Set("settings", *settings)
+
+	if d, err := json.MarshalIndent(it, "", "\t"); err != nil {
+		t.Error(err)
+	} else {
+		t.Log(string(d))
+	}
+
+	// obviously the proper action would be taken in the "real" code
+	if cmp, err := loadData(); err != nil {
+		t.Error(err)
+	} else {
+		cmp.Methods = cmp.Methods[:3] // Just to make the result smaller in this mock up use case
+		cmp.Fields = cmp.Fields[:3]   // Just to make the result smaller in this mock up use case
+		r := NewResponse()
+		r.Data.Set("completions", cmp)
+		if d, err := json.MarshalIndent(r, "", "\t"); err != nil {
+			t.Error(err)
+		} else {
+			t.Log(string(d))
+		}
+	}
+
+	// and in the case of an error
+	{
+		r := NewResponse()
+		r.Data.Set("error", "something") // Could include a stacktrace etc
+		if d, err := json.MarshalIndent(r, "", "\t"); err != nil {
+			t.Error(err)
+		} else {
+			t.Log(string(d))
+		}
+	}
+}
