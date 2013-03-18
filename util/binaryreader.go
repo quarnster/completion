@@ -2,8 +2,8 @@ package util
 
 import (
 	"encoding/binary"
-	"errors"
 	"fmt"
+	"github.com/quarnster/completion/util/errors"
 	"io"
 	"math"
 	"reflect"
@@ -17,6 +17,10 @@ type (
 		Validate() error
 	}
 
+	Reader interface {
+		Read(*BinaryReader) error
+	}
+
 	BinaryReader struct {
 		Reader    io.ReadSeeker
 		Endianess binary.ByteOrder
@@ -24,6 +28,9 @@ type (
 )
 
 func (r *BinaryReader) ReadInterface(v interface{}) error {
+	if ri, ok := v.(Reader); ok {
+		return ri.Read(r)
+	}
 	t := reflect.ValueOf(v)
 	if t.Kind() != reflect.Ptr {
 		return errors.New(fmt.Sprintf("Expected a pointer not %s", t.Kind()))
@@ -149,13 +156,27 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 				if size == -1 {
 					return errors.New("SliceHeader require a known length")
 				}
-				var v3 = reflect.MakeSlice(f.Type(), size, size)
-				for i := 0; i < size; i++ {
-					if err = r.ReadInterface(v3.Index(i).Addr().Interface()); err != nil {
+				if f.Type().Elem().Kind() == reflect.Uint8 {
+					if b, err := r.Read(size); err != nil {
+						return err
+					} else {
+						f.Set(reflect.ValueOf(b))
+					}
+				} else {
+					var v3 = reflect.MakeSlice(f.Type(), size, size)
+					for i := 0; i < size; i++ {
+						if err = r.ReadInterface(v3.Index(i).Addr().Interface()); err != nil {
+							return err
+						}
+					}
+					f.Set(v3)
+				}
+			case reflect.Array:
+				for i := 0; i < f.Type().Len(); i++ {
+					if err = r.ReadInterface(f.Index(i).Addr().Interface()); err != nil {
 						return err
 					}
 				}
-				f.Set(v3)
 			default:
 				if err := r.ReadInterface(f.Addr().Interface()); err != nil {
 					return err
