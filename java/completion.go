@@ -26,7 +26,7 @@ func (af AccessFlags) ToContentFlags() (ret content.Flags) {
 }
 
 func (c *Class) ToContentFQN(index u2) (ret content.FullyQualifiedName) {
-	ret.Absolute = strings.Replace(String(c.Constant_pool, index), "/", ".", -1)
+	ret.Absolute = strings.Replace(c.Constant_pool.Lut(index).String(), "/", ".", -1)
 	ret.Relative = ret.Absolute
 	if i := strings.LastIndex(ret.Absolute, "."); i > 0 {
 		ret.Relative = ret.Relative[i+1:]
@@ -37,10 +37,10 @@ func (c *Class) ToContentFQN(index u2) (ret content.FullyQualifiedName) {
 func (c *Class) Fields() (fields []content.Field, err error) {
 	for _, inf := range c.RawFields {
 		var p descriptors.DESCRIPTORS
-		p.Parse(String(c.Constant_pool, inf.Descriptor_index))
+		p.Parse(c.Constant_pool.Lut(inf.Descriptor_index).String())
 		outf := descriptors.ToContentField(p.RootNode().Children[0])
 		outf.Flags = inf.Access_flags.ToContentFlags()
-		outf.Name.Relative = String(c.Constant_pool, inf.Name_index)
+		outf.Name.Relative = c.Constant_pool.Lut(inf.Name_index).String()
 		fields = append(fields, outf)
 	}
 	return
@@ -49,10 +49,10 @@ func (c *Class) Fields() (fields []content.Field, err error) {
 func (c *Class) Methods() (methods []content.Method, err error) {
 	for _, inf := range c.RawMethods {
 		var p descriptors.DESCRIPTORS
-		p.Parse(String(c.Constant_pool, inf.Descriptor_index))
+		p.Parse(c.Constant_pool.Lut(inf.Descriptor_index).String())
 		outf := descriptors.ToContentMethod(p.RootNode().Children[0])
 		outf.Flags = inf.Access_flags.ToContentFlags()
-		outf.Name.Relative = String(c.Constant_pool, inf.Name_index)
+		outf.Name.Relative = c.Constant_pool.Lut(inf.Name_index).String()
 		methods = append(methods, outf)
 	}
 	return

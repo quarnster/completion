@@ -31,7 +31,7 @@ func TestLoadAllClasses(t *testing.T) {
 			if c, err := NewClass(f); err != nil {
 				outChan <- err
 			} else {
-				t.Log("class", String(c.Constant_pool, c.This_class))
+				t.Log("class", c.Constant_pool.Lut(c.This_class))
 			}
 		}
 		wg.Done()
