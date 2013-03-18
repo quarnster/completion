@@ -58,3 +58,59 @@ Methods
 	public getLabelFor ()Ljava/awt/Component;
 	public setLabelFor (Ljava/awt/Component;)V
 	public getAccessibleContext ()Ljavax/accessibility/AccessibleContext;
+public javax.swing.JLabel
+	extends javax.swing.JComponent
+	implements javax.swing.SwingConstants, javax.accessibility.Accessible
+	private static final java.lang.String uiClassID
+	private int mnemonic
+	private int mnemonicIndex
+	private java.lang.String text
+	private javax.swing.Icon defaultIcon
+	private javax.swing.Icon disabledIcon
+	private boolean disabledIconSet
+	private int verticalAlignment
+	private int horizontalAlignment
+	private int verticalTextPosition
+	private int horizontalTextPosition
+	private int iconTextGap
+	protected java.awt.Component labelFor
+	static final java.lang.String LABELED_BY_PROPERTY
+	public void  <init>(java.lang.String , javax.swing.Icon , int )
+	public void  <init>(java.lang.String , int )
+	public void  <init>(java.lang.String )
+	public void  <init>(javax.swing.Icon , int )
+	public void  <init>(javax.swing.Icon )
+	public void  <init>()
+	public javax.swing.plaf.LabelUI  getUI()
+	public void  setUI(javax.swing.plaf.LabelUI )
+	public void  updateUI()
+	public java.lang.String  getUIClassID()
+	public java.lang.String  getText()
+	public void  setText(java.lang.String )
+	public javax.swing.Icon  getIcon()
+	public void  setIcon(javax.swing.Icon )
+	public javax.swing.Icon  getDisabledIcon()
+	public void  setDisabledIcon(javax.swing.Icon )
+	public void  setDisplayedMnemonic(int )
+	public void  setDisplayedMnemonic(char )
+	public int  getDisplayedMnemonic()
+	public void  setDisplayedMnemonicIndex(int )
+	public int  getDisplayedMnemonicIndex()
+	protected int  checkHorizontalKey(int , java.lang.String )
+	protected int  checkVerticalKey(int , java.lang.String )
+	public int  getIconTextGap()
+	public void  setIconTextGap(int )
+	public int  getVerticalAlignment()
+	public void  setVerticalAlignment(int )
+	public int  getHorizontalAlignment()
+	public void  setHorizontalAlignment(int )
+	public int  getVerticalTextPosition()
+	public void  setVerticalTextPosition(int )
+	public int  getHorizontalTextPosition()
+	public void  setHorizontalTextPosition(int )
+	public boolean  imageUpdate(java.awt.Image , int , int , int , int , int )
+	private void  writeObject(java.io.ObjectOutputStream )
+	protected java.lang.String  paramString()
+	public java.awt.Component  getLabelFor()
+	public void  setLabelFor(java.awt.Component )
+	public javax.accessibility.AccessibleContext  getAccessibleContext()

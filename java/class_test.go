@@ -2,6 +2,7 @@ package java
 
 import (
 	"bytes"
+	"fmt"
 	"github.com/quarnster/completion/util"
 	"io/ioutil"
 	"os"
@@ -69,18 +70,25 @@ func TestSpecificClasses(t *testing.T) {
 			continue
 		}
 
+		ret := c.String()
+		if ct, err := c.ToContentType(); err != nil {
+			t.Error(err)
+		} else {
+			ret += fmt.Sprintf("%s\n", ct)
+		}
+
 		if len(v) <= 1 {
 			// Just if we want to add new tests, this will spit out the newly added
 			// test data
 			fn := testdata_path + strings.Replace(string(k.Filename()), "/", "_", -1)
 			t.Logf("Creating new test data: %s", fn)
-			if err := ioutil.WriteFile(fn, []byte(c.String()), 0666); err != nil {
+			if err := ioutil.WriteFile(fn, []byte(ret), 0666); err != nil {
 				t.Errorf("Couldn't write test data to %s: %s", fn, err)
 			}
 			continue
 		}
 
-		if d := util.Diff(c.String(), v); len(d) != 0 {
+		if d := util.Diff(v, ret); len(d) != 0 {
 			t.Error(d)
 		}
 	}

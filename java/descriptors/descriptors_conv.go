@@ -1,6 +1,7 @@
 package descriptors
 
 import (
+	"github.com/quarnster/completion/content"
 	"github.com/quarnster/parser"
 	"strings"
 )
@@ -16,6 +17,42 @@ var lut = map[string]string{
 	"S": "short",
 	"Z": "boolean",
 	"V": "void"}
+
+func ToContentType(node *parser.Node) (ret content.Type) {
+	if node.Name == "ArrayType" {
+		ret.Flags |= content.FLAG_TYPE_ARRAY
+		ret.Specialization = append(ret.Specialization, ToContentType(node.Children[0]))
+		return
+	}
+	switch node.Name {
+	case "BaseType":
+		fallthrough
+	case "VoidDescriptor":
+		ret.Name.Relative = lut[node.Data()]
+		ret.Name.Absolute = ret.Name.Relative
+	case "Classname":
+		ret.Name.Absolute = strings.Replace(node.Data(), "/", ".", -1)
+		ret.Name.Relative = "TODO"
+	default:
+		return ToContentType(node.Children[0])
+	}
+
+	return
+}
+
+func ToContentField(node *parser.Node) (ret content.Field) {
+	ret.Type = ToContentType(node.Children[0])
+	return
+}
+
+func ToContentMethod(node *parser.Node) (ret content.Method) {
+	ri := len(node.Children) - 1
+	ret.Returns = append(ret.Returns, content.Variable{Type: ToContentType(node.Children[ri])})
+	for i := range node.Children[:ri] {
+		ret.Parameters = append(ret.Parameters, content.Variable{Type: ToContentType(node.Children[i])})
+	}
+	return
+}
 
 func convert(node *parser.Node) string {
 	ret := ""

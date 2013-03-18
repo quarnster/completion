@@ -46,8 +46,8 @@ type (
 		This_class    u2
 		Super_class   u2
 		Interfaces    []u2
-		Fields        []member_info
-		Methods       []member_info
+		RawFields     []member_info
+		RawMethods    []member_info
 		Attributes    []attribute_info
 	}
 
@@ -124,11 +124,11 @@ func (c *Class) String() (ret string) {
 		ret += fmt.Sprintf("\t%s\n", String(c.Constant_pool, i))
 	}
 	ret += fmt.Sprintln("Fields")
-	for _, f := range c.Fields {
+	for _, f := range c.RawFields {
 		ret += fmt.Sprintf("\t%s\n", f.String(c.Constant_pool))
 	}
 	ret += fmt.Sprintln("Methods")
-	for _, m := range c.Methods {
+	for _, m := range c.RawMethods {
 		ret += fmt.Sprintf("\t%s\n", m.String(c.Constant_pool))
 	}
 	return ret

@@ -32,3 +32,34 @@ Methods
 	private readObject (Ljava/io/ObjectInputStream;)V
 	public getAccessibleContext ()Ljavax/accessibility/AccessibleContext;
 	static <clinit> ()V
+public java.awt.Button
+	extends java.awt.Component
+	implements javax.accessibility.Accessible
+	java.lang.String label
+	java.lang.String actionCommand
+	java.awt.event.ActionListener actionListener
+	private static final java.lang.String base
+	private static int nameCounter
+	private static final long serialVersionUID
+	private int buttonSerializedDataVersion
+	private static void  initIDs()
+	public void  <init>()
+	public void  <init>(java.lang.String )
+	java.lang.String  constructComponentName()
+	public void  addNotify()
+	public java.lang.String  getLabel()
+	public void  setLabel(java.lang.String )
+	public void  setActionCommand(java.lang.String )
+	public java.lang.String  getActionCommand()
+	public void  addActionListener(java.awt.event.ActionListener )
+	public void  removeActionListener(java.awt.event.ActionListener )
+	public java.awt.event.ActionListener[]  getActionListeners()
+	public java.util.EventListener[]  getListeners(java.lang.Class )
+	boolean  eventEnabled(java.awt.AWTEvent )
+	protected void  processEvent(java.awt.AWTEvent )
+	protected void  processActionEvent(java.awt.event.ActionEvent )
+	protected java.lang.String  paramString()
+	private void  writeObject(java.io.ObjectOutputStream )
+	private void  readObject(java.io.ObjectInputStream )
+	public javax.accessibility.AccessibleContext  getAccessibleContext()
+	static void  <clinit>()
