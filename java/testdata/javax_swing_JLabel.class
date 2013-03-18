@@ -3,8 +3,12 @@ extends javax/swing/JComponent
 implements
 	javax/swing/SwingConstants
 	javax/accessibility/Accessible
+attributes
+	SourceFile=JLabel.java
+	InnerClasses
 Fields
 	private static final uiClassID Ljava/lang/String;
+		 ConstantValue
 	private mnemonic I
 	private mnemonicIndex I
 	private text Ljava/lang/String;
@@ -18,46 +22,86 @@ Fields
 	private iconTextGap I
 	protected labelFor Ljava/awt/Component;
 	static final LABELED_BY_PROPERTY Ljava/lang/String;
+		 ConstantValue
 Methods
 	public <init> (Ljava/lang/String;Ljavax/swing/Icon;I)V
+		 Code ( LineNumberTable )
 	public <init> (Ljava/lang/String;I)V
+		 Code ( LineNumberTable )
 	public <init> (Ljava/lang/String;)V
+		 Code ( LineNumberTable )
 	public <init> (Ljavax/swing/Icon;I)V
+		 Code ( LineNumberTable )
 	public <init> (Ljavax/swing/Icon;)V
+		 Code ( LineNumberTable )
 	public <init> ()V
+		 Code ( LineNumberTable )
 	public getUI ()Ljavax/swing/plaf/LabelUI;
+		 Code ( LineNumberTable )
 	public setUI (Ljavax/swing/plaf/LabelUI;)V
+		 Code ( LineNumberTable StackMapTable )
 	public updateUI ()V
+		 Code ( LineNumberTable )
 	public getUIClassID ()Ljava/lang/String;
+		 Code ( LineNumberTable )
 	public getText ()Ljava/lang/String;
+		 Code ( LineNumberTable )
 	public setText (Ljava/lang/String;)V
+		 Code ( LineNumberTable StackMapTable )
 	public getIcon ()Ljavax/swing/Icon;
+		 Code ( LineNumberTable )
 	public setIcon (Ljavax/swing/Icon;)V
+		 Code ( LineNumberTable StackMapTable )
 	public getDisabledIcon ()Ljavax/swing/Icon;
+		 Code ( LineNumberTable StackMapTable ) RuntimeVisibleAnnotations
 	public setDisabledIcon (Ljavax/swing/Icon;)V
+		 Code ( LineNumberTable StackMapTable )
 	public setDisplayedMnemonic (I)V
+		 Code ( LineNumberTable StackMapTable )
 	public setDisplayedMnemonic (C)V
+		 Code ( LineNumberTable StackMapTable )
 	public getDisplayedMnemonic ()I
+		 Code ( LineNumberTable )
 	public setDisplayedMnemonicIndex (I)V
+		 Code ( LineNumberTable StackMapTable ) Exceptions
 	public getDisplayedMnemonicIndex ()I
+		 Code ( LineNumberTable )
 	protected checkHorizontalKey (ILjava/lang/String;)I
+		 Code ( LineNumberTable StackMapTable )
 	protected checkVerticalKey (ILjava/lang/String;)I
+		 Code ( LineNumberTable StackMapTable )
 	public getIconTextGap ()I
+		 Code ( LineNumberTable )
 	public setIconTextGap (I)V
+		 Code ( LineNumberTable StackMapTable )
 	public getVerticalAlignment ()I
+		 Code ( LineNumberTable )
 	public setVerticalAlignment (I)V
+		 Code ( LineNumberTable StackMapTable )
 	public getHorizontalAlignment ()I
+		 Code ( LineNumberTable )
 	public setHorizontalAlignment (I)V
+		 Code ( LineNumberTable StackMapTable )
 	public getVerticalTextPosition ()I
+		 Code ( LineNumberTable )
 	public setVerticalTextPosition (I)V
+		 Code ( LineNumberTable StackMapTable )
 	public getHorizontalTextPosition ()I
+		 Code ( LineNumberTable )
 	public setHorizontalTextPosition (I)V
+		 Code ( LineNumberTable )
 	public imageUpdate (Ljava/awt/Image;IIIII)Z
+		 Code ( LineNumberTable StackMapTable )
 	private writeObject (Ljava/io/ObjectOutputStream;)V
+		 Code ( LineNumberTable StackMapTable ) Exceptions
 	protected paramString ()Ljava/lang/String;
+		 Code ( LineNumberTable StackMapTable )
 	public getLabelFor ()Ljava/awt/Component;
+		 Code ( LineNumberTable )
 	public setLabelFor (Ljava/awt/Component;)V
+		 Code ( LineNumberTable StackMapTable )
 	public getAccessibleContext ()Ljavax/accessibility/AccessibleContext;
+		 Code ( LineNumberTable StackMapTable )
 public javax.swing.JLabel
 	extends javax.swing.JComponent
 	implements javax.swing.SwingConstants, javax.accessibility.Accessible

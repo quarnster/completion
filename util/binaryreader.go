@@ -27,6 +27,11 @@ type (
 	}
 )
 
+var (
+	LittleEndian = binary.LittleEndian
+	BigEndian    = binary.BigEndian
+)
+
 func (r *BinaryReader) ReadInterface(v interface{}) error {
 	if ri, ok := v.(Reader); ok {
 		return ri.Read(r)
@@ -156,7 +161,7 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 				if size == -1 {
 					return errors.New("SliceHeader require a known length")
 				}
-				if f.Type().Elem().Kind() == reflect.Uint8 {
+				if f.Type().Elem().Kind() == reflect.Int8 {
 					if b, err := r.Read(size); err != nil {
 						return err
 					} else {

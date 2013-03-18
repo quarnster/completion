@@ -1,6 +1,7 @@
 package java
 
 import (
+	"bytes"
 	"encoding/binary"
 	"errors"
 	"fmt"
@@ -62,14 +63,12 @@ type (
 
 	// http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.7.3
 	exception_table struct {
-		start_pc   u2
-		end_pc     u2
-		handler_pc u2
-		catch_type u2
+		Start_pc   u2
+		End_pc     u2
+		Handler_pc u2
+		Catch_type u2
 	}
 	Code_attribute struct {
-		Attribute_name_index   u2
-		Attribute_length       u4
 		Max_stack              u2
 		Max_locals             u2
 		Code_length            u4
@@ -219,9 +218,42 @@ func (a AccessFlags) String() (ret string) {
 	return ret
 }
 
+func (a *attribute_info) String(c *ConstantPool) (ret string) {
+	ret = c.Lut(a.Attribute_name_index).String()
+	switch n := c.Lut(a.Attribute_name_index).String(); n {
+	case "Signature", "SourceFile":
+		ret += "="
+		br := util.BinaryReader{bytes.NewReader(a.Info), util.BigEndian}
+		if i16, err := br.Uint16(); err != nil {
+			ret += err.Error()
+		} else {
+			ret += c.Lut(u2(i16)).String()
+		}
+	case "Code":
+		ret += " ("
+		var cl Code_attribute
+		br := util.BinaryReader{bytes.NewReader(a.Info), util.BigEndian}
+		if err := br.ReadInterface(&cl); err != nil {
+			ret += err.Error()
+		} else {
+			for _, a2 := range cl.Attributes {
+				ret += fmt.Sprintf(" %s", c.Lut(a2.Attribute_name_index))
+			}
+		}
+		ret += " )"
+	}
+	return ret
+}
+
 func (mi *member_info) String(c *ConstantPool) string {
 	ret := mi.Access_flags.String()
 	ret += fmt.Sprintf("%s %s", c.Lut(mi.Name_index), c.Lut(mi.Descriptor_index))
+	for i, a := range mi.Attributes {
+		if i == 0 {
+			ret += "\n\t\t"
+		}
+		ret += fmt.Sprintf(" %s", a.String(c))
+	}
 	return ret
 }
 
@@ -232,6 +264,11 @@ func (c *Class) String() (ret string) {
 	for _, i := range c.Interfaces {
 		ret += fmt.Sprintf("\t%s\n", c.Constant_pool.Lut(i))
 	}
+	ret += fmt.Sprintln("attributes")
+	for _, a := range c.Attributes {
+		ret += fmt.Sprintf("\t%s\n", a.String(&c.Constant_pool))
+	}
+
 	ret += fmt.Sprintln("Fields")
 	for _, f := range c.RawFields {
 		ret += fmt.Sprintf("\t%s\n", f.String(&c.Constant_pool))

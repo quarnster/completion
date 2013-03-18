@@ -2,36 +2,61 @@ public class java/awt/Button
 extends java/awt/Component
 implements
 	javax/accessibility/Accessible
+attributes
+	SourceFile=Button.java
+	InnerClasses
 Fields
 	label Ljava/lang/String;
 	actionCommand Ljava/lang/String;
 	transient actionListener Ljava/awt/event/ActionListener;
 	private static final base Ljava/lang/String;
+		 ConstantValue
 	private static nameCounter I
 	private static final serialVersionUID J
+		 ConstantValue
 	private buttonSerializedDataVersion I
 Methods
 	private static initIDs ()V
 	public <init> ()V
+		 Code ( LineNumberTable ) Exceptions
 	public <init> (Ljava/lang/String;)V
+		 Code ( LineNumberTable ) Exceptions
 	constructComponentName ()Ljava/lang/String;
+		 Code ( LineNumberTable StackMapTable )
 	public addNotify ()V
+		 Code ( LineNumberTable StackMapTable )
 	public getLabel ()Ljava/lang/String;
+		 Code ( LineNumberTable )
 	public setLabel (Ljava/lang/String;)V
+		 Code ( LineNumberTable StackMapTable )
 	public setActionCommand (Ljava/lang/String;)V
+		 Code ( LineNumberTable )
 	public getActionCommand ()Ljava/lang/String;
+		 Code ( LineNumberTable StackMapTable )
 	public addActionListener (Ljava/awt/event/ActionListener;)V
+		 Code ( LineNumberTable StackMapTable )
 	public removeActionListener (Ljava/awt/event/ActionListener;)V
+		 Code ( LineNumberTable StackMapTable )
 	public getActionListeners ()[Ljava/awt/event/ActionListener;
+		 Code ( LineNumberTable )
 	public getListeners (Ljava/lang/Class;)[Ljava/util/EventListener;
+		 Code ( LineNumberTable StackMapTable ) Signature=<T::Ljava/util/EventListener;>(Ljava/lang/Class<TT;>;)[TT;
 	eventEnabled (Ljava/awt/AWTEvent;)Z
+		 Code ( LineNumberTable StackMapTable )
 	protected processEvent (Ljava/awt/AWTEvent;)V
+		 Code ( LineNumberTable StackMapTable )
 	protected processActionEvent (Ljava/awt/event/ActionEvent;)V
+		 Code ( LineNumberTable StackMapTable )
 	protected paramString ()Ljava/lang/String;
+		 Code ( LineNumberTable )
 	private writeObject (Ljava/io/ObjectOutputStream;)V
+		 Code ( LineNumberTable ) Exceptions
 	private readObject (Ljava/io/ObjectInputStream;)V
+		 Code ( LineNumberTable StackMapTable ) Exceptions
 	public getAccessibleContext ()Ljavax/accessibility/AccessibleContext;
+		 Code ( LineNumberTable StackMapTable )
 	static <clinit> ()V
+		 Code ( LineNumberTable StackMapTable )
 public java.awt.Button
 	extends java.awt.Component
 	implements javax.accessibility.Accessible
