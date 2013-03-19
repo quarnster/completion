@@ -2,6 +2,9 @@ package java
 
 import (
 	"bytes"
+	"github.com/quarnster/completion/java/descriptors"
+	"github.com/quarnster/completion/java/signatures"
+	"github.com/quarnster/completion/util"
 	"runtime"
 	"sync"
 	"testing"
@@ -10,6 +13,30 @@ import (
 
 func init() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
+}
+
+func testparse(c *Class, members []member_info, t *testing.T) {
+	for i := range members {
+		var p descriptors.DESCRIPTORS
+		desc := c.Constant_pool.Lut(members[i].Descriptor_index).String()
+		if !p.Parse(desc) || p.RootNode().Range.End != len(desc) {
+			t.Errorf("Failed to parse descriptor: %s\n%s\n%s", p.Error(), desc, p.RootNode())
+		}
+		var p2 signatures.SIGNATURES
+		for _, attr := range members[i].Attributes {
+			if c.Constant_pool.Lut(attr.Attribute_name_index).String() == "Signature" {
+				br := util.BinaryReader{bytes.NewReader(attr.Info), util.BigEndian}
+				if i16, err := br.Uint16(); err != nil {
+					t.Error(err)
+				} else {
+					sign := c.Constant_pool.Lut(u2(i16)).String()
+					if !p2.Parse(sign) || p2.RootNode().Range.End != len(sign) {
+						t.Errorf("Failed to parse signature: %s\n%s\n%s", p.Error(), desc, p.RootNode())
+					}
+				}
+			}
+		}
+	}
 }
 
 func TestLoadAllClasses(t *testing.T) {
@@ -32,6 +59,8 @@ func TestLoadAllClasses(t *testing.T) {
 				outChan <- err
 			} else {
 				t.Log("class", c.Constant_pool.Lut(c.This_class))
+				testparse(c, c.RawFields, t)
+				testparse(c, c.RawMethods, t)
 			}
 		}
 		wg.Done()

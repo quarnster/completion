@@ -95,6 +95,7 @@ func main() {
 	} else if len(b) != 0 {
 		fmt.Println(string(b))
 	}
+	buildPeg("../java/signatures/signatures.peg", "TypeSignature,TypeArgument,Entry,FormalTypeParameter")
 	buildPeg("../java/descriptors/descriptors.peg", "Entry,ComponentType,FieldType,ObjectType")
 	buildPeg("../clang/parser/parser.peg", "Spacing,Pattern,Completion,Completions,ReturnType,Arguments,Argument,UnhandledStuff,KeyedStuff,Type,TemplateName,Function")
 	tests := []string{"test"}

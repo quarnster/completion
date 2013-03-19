@@ -1,0 +1,34 @@
+Entry                       <-      ClassSignature / MethodTypeSignature / FieldTypeSignature
+
+# http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.3.4
+Identifier                  <-      (![.;[/<>:] .)+
+
+ClassSignature              <-      FormalTypeParameters? SuperclassSignature SuperinterfaceSignature*
+
+FormalTypeParameters        <-      '<' FormalTypeParameter+ '>'
+FormalTypeParameter         <-      Identifier ClassBound InterfaceBound*
+ClassBound                  <-      ':' FieldTypeSignature?
+InterfaceBound              <-      ':' FieldTypeSignature
+SuperclassSignature         <-      ClassTypeSignature
+SuperinterfaceSignature     <-      ClassTypeSignature
+
+FieldTypeSignature          <-      ClassTypeSignature / ArrayTypeSignature / TypeVariableSignature
+
+ClassTypeSignature          <-      'L' PackageSpecifier? SimpleClassTypeSignature ClassTypeSignatureSuffix* ';'
+PackageSpecifier            <-      Identifier '/' PackageSpecifier*
+SimpleClassTypeSignature    <-      Identifier TypeArguments?
+ClassTypeSignatureSuffix    <-      '.' SimpleClassTypeSignature
+TypeVariableSignature       <-      'T' Identifier ';'
+TypeArguments               <-      '<' TypeArgument+ '>'
+TypeArgument                <-      (WildcardIndicator? FieldTypeSignature) / '*'
+WildcardIndicator           <-      '+' / '-'
+ArrayTypeSignature          <-      '[' TypeSignature
+TypeSignature               <-      FieldTypeSignature / BaseType
+
+
+MethodTypeSignature         <-      FormalTypeParameters? '(' TypeSignature* ')' ReturnType ThrowsSignature*
+ReturnType                  <-      TypeSignature / VoidDescriptor
+ThrowsSignature             <-      '^' (ClassTypeSignature / TypeVariableSignature)
+
+VoidDescriptor              <-      'V'
+BaseType                    <-      'B' / 'C' / 'D' / 'F' / 'I' / 'J' / 'S' / 'Z'
