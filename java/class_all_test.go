@@ -15,7 +15,7 @@ func init() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 }
 
-func testparse(c *Class, members []member_info, t *testing.T) {
+func testparse(c *Class, members []member_info, method bool, t *testing.T) {
 	for i := range members {
 		var p descriptors.DESCRIPTORS
 		desc := c.Constant_pool.Lut(members[i].Descriptor_index).String()
@@ -30,8 +30,16 @@ func testparse(c *Class, members []member_info, t *testing.T) {
 					t.Error(err)
 				} else {
 					sign := c.Constant_pool.Lut(u2(i16)).String()
-					if !p2.Parse(sign) || p2.RootNode().Range.End != len(sign) {
-						t.Errorf("Failed to parse signature: %s\n%s\n%s", p.Error(), desc, p.RootNode())
+					p2.SetData(sign)
+					var ret bool
+					if method {
+						ret = p2.MethodTypeSignature()
+					} else {
+						ret = p2.FieldTypeSignature()
+					}
+					p2.RootNode().UpdateRange()
+					if !ret || p2.RootNode().Range.End != len(sign) {
+						t.Errorf("Failed to parse signature: %s\n%s\n%s", p2.Error(), desc, p2.RootNode())
 					}
 				}
 			}
@@ -59,8 +67,8 @@ func TestLoadAllClasses(t *testing.T) {
 				outChan <- err
 			} else {
 				t.Log("class", c.Constant_pool.Lut(c.This_class))
-				testparse(c, c.RawFields, t)
-				testparse(c, c.RawMethods, t)
+				testparse(c, c.RawFields, false, t)
+				testparse(c, c.RawMethods, true, t)
 			}
 		}
 		wg.Done()
