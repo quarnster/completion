@@ -1,9 +1,9 @@
 Fields:
-	void MyCategoryMethod
-	void myworld
-	void something
-	float value
-	World * world2
+	void MyCategoryMethod                                                            // 
+	void myworld                                                                     // 
+	void something                                                                   // 
+	float value                                                                      // 
+	World * world2                                                                   // 
 Methods:
-	void  ((float) setValue)
-	void  ((World *) setWorld2)
+	void  ((float) setValue)                                                         // 
+	void  ((World *) setWorld2)                                                      // 

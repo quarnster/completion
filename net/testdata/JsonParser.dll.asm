@@ -380,60 +380,60 @@ MethodSpecRow
 	Json.JsonParser
 public class Json.JsonToken
 	extends System.Enum
-	public System.Int32 value__
-	public static Json.JsonToken Unknown
-	public static Json.JsonToken LeftBrace
-	public static Json.JsonToken RightBrace
-	public static Json.JsonToken Colon
-	public static Json.JsonToken Comma
-	public static Json.JsonToken LeftBracket
-	public static Json.JsonToken RightBracket
-	public static Json.JsonToken String
-	public static Json.JsonToken Number
-	public static Json.JsonToken True
-	public static Json.JsonToken False
-	public static Json.JsonToken Null
+	public System.Int32 value__                                                      // net://field/Json.JsonToken;0
+	public static Json.JsonToken Unknown                                             // net://field/Json.JsonToken;1
+	public static Json.JsonToken LeftBrace                                           // net://field/Json.JsonToken;2
+	public static Json.JsonToken RightBrace                                          // net://field/Json.JsonToken;3
+	public static Json.JsonToken Colon                                               // net://field/Json.JsonToken;4
+	public static Json.JsonToken Comma                                               // net://field/Json.JsonToken;5
+	public static Json.JsonToken LeftBracket                                         // net://field/Json.JsonToken;6
+	public static Json.JsonToken RightBracket                                        // net://field/Json.JsonToken;7
+	public static Json.JsonToken String                                              // net://field/Json.JsonToken;8
+	public static Json.JsonToken Number                                              // net://field/Json.JsonToken;9
+	public static Json.JsonToken True                                                // net://field/Json.JsonToken;10
+	public static Json.JsonToken False                                               // net://field/Json.JsonToken;11
+	public static Json.JsonToken Null                                                // net://field/Json.JsonToken;12
 public class Json.InvalidJsonException
 	extends System.Exception
-	public  InvalidJsonException(System.String message)
+	public  InvalidJsonException(System.String message)                              // net://method/Json.InvalidJsonException;0
 public class Json.JsonParser
 	extends System.Object
-	private static System.Globalization.NumberStyles JsonNumbers
-	private static System.Collections.Generic.IDictionary`2<System.Type, System.Reflection.PropertyInfo[]> _cache
-	private static System.Char[] _base16
-	public  JsonParser()
-	public static System.String  Serialize(T instance)
-	public static System.Object  Deserialize(System.String json, System.Type type)
-	public static T  Deserialize(System.String json)
-	private static System.Void  DeserializeImpl(System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo> map, System.Collections.Generic.IDictionary`2<System.String, System.Object> bag, System.Object instance)
-	private static System.Void  DeserializeImpl(System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo> map, System.Collections.Generic.IDictionary`2<System.String, System.Object> bag, T instance)
-	private static System.Void  DeserializeType(System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo> map, System.Collections.Generic.IDictionary`2<System.String, System.Object> bag, System.Object instance)
-	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  FromJson(System.String json)
-	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  FromJson(System.String json, Json.JsonToken type)
-	public static System.String  ToJson(System.Collections.Generic.IDictionary`2<System.String, System.Object> bag)
-	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  GetBagForObject(System.Type type, System.Object instance)
-	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  GetBagForObject(T instance)
-	public static System.Collections.Generic.Dictionary`2<System.String, System.Object>  InitializeBag()
-	public static System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo>  PrepareInstance(System.Object instance, System.Type type)
-	public static System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo>  PrepareInstance(T instance)
-	public static System.Void  CacheReflection(System.Type item)
-	public static System.Void  SerializeItem(System.Text.StringBuilder sb, System.Object item)
-	public static System.Void  SerializeDateTime(System.Text.StringBuilder sb)
-	public static System.Void  SerializeArray(System.Object item, System.Text.StringBuilder sb)
-	public static System.Void  SerializeObject(System.Object item, System.Text.StringBuilder sb)
-	public static System.Void  SerializeString(System.Text.StringBuilder sb, System.Object item)
-	public static System.String  GetUnicode(System.Int32 code)
-	public static System.Collections.Generic.KeyValuePair`2<System.String, System.Object>  ParsePair(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
-	public static System.Boolean  ParseToken(Json.JsonToken token, System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
-	public static System.String  ParseString(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
-	public static System.Object  ParseValue(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
-	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  ParseObject(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
-	public static System.Collections.Generic.IEnumerable`1<System.Object>  ParseArray(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
-	public static System.Object  ParseNumber(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
-	public static Json.JsonToken  NextToken(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index)
-	public static Json.JsonToken  GetTokenFromSymbol(System.Char symbol)
-	public static Json.JsonToken  GetTokenFromSymbol(System.Char symbol, Json.JsonToken token)
-	public static System.Void  IgnoreWhitespace(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index, System.Char symbol)
-	public static Json.JsonToken  IgnoreWhitespace(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index, Json.JsonToken token, System.Char symbol)
-	public static System.Void  GetKeyword(System.String word, Json.JsonToken target, System.Collections.Generic.IList`1<System.Char> data, System.Int32 index, Json.JsonToken result)
-	public static System.String  BaseConvert(System.Int32 input, System.Char[] charSet, System.Int32 minLength)
+	private static System.Globalization.NumberStyles JsonNumbers                     // net://field/Json.JsonParser;0
+	private static System.Collections.Generic.IDictionary`2<System.Type, System.Reflection.PropertyInfo[]> _cache // net://field/Json.JsonParser;1
+	private static System.Char[] _base16                                             // net://field/Json.JsonParser;2
+	public  JsonParser()                                                             // net://method/Json.JsonParser;0
+	public static System.String  Serialize(T instance)                               // net://method/Json.JsonParser;1
+	public static System.Object  Deserialize(System.String json, System.Type type)   // net://method/Json.JsonParser;2
+	public static T  Deserialize(System.String json)                                 // net://method/Json.JsonParser;3
+	private static System.Void  DeserializeImpl(System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo> map, System.Collections.Generic.IDictionary`2<System.String, System.Object> bag, System.Object instance) // net://method/Json.JsonParser;4
+	private static System.Void  DeserializeImpl(System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo> map, System.Collections.Generic.IDictionary`2<System.String, System.Object> bag, T instance) // net://method/Json.JsonParser;5
+	private static System.Void  DeserializeType(System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo> map, System.Collections.Generic.IDictionary`2<System.String, System.Object> bag, System.Object instance) // net://method/Json.JsonParser;6
+	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  FromJson(System.String json) // net://method/Json.JsonParser;7
+	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  FromJson(System.String json, Json.JsonToken type) // net://method/Json.JsonParser;8
+	public static System.String  ToJson(System.Collections.Generic.IDictionary`2<System.String, System.Object> bag) // net://method/Json.JsonParser;9
+	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  GetBagForObject(System.Type type, System.Object instance) // net://method/Json.JsonParser;10
+	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  GetBagForObject(T instance) // net://method/Json.JsonParser;11
+	public static System.Collections.Generic.Dictionary`2<System.String, System.Object>  InitializeBag() // net://method/Json.JsonParser;12
+	public static System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo>  PrepareInstance(System.Object instance, System.Type type) // net://method/Json.JsonParser;13
+	public static System.Collections.Generic.IEnumerable`1<System.Reflection.PropertyInfo>  PrepareInstance(T instance) // net://method/Json.JsonParser;14
+	public static System.Void  CacheReflection(System.Type item)                     // net://method/Json.JsonParser;15
+	public static System.Void  SerializeItem(System.Text.StringBuilder sb, System.Object item) // net://method/Json.JsonParser;16
+	public static System.Void  SerializeDateTime(System.Text.StringBuilder sb)       // net://method/Json.JsonParser;17
+	public static System.Void  SerializeArray(System.Object item, System.Text.StringBuilder sb) // net://method/Json.JsonParser;18
+	public static System.Void  SerializeObject(System.Object item, System.Text.StringBuilder sb) // net://method/Json.JsonParser;19
+	public static System.Void  SerializeString(System.Text.StringBuilder sb, System.Object item) // net://method/Json.JsonParser;20
+	public static System.String  GetUnicode(System.Int32 code)                       // net://method/Json.JsonParser;21
+	public static System.Collections.Generic.KeyValuePair`2<System.String, System.Object>  ParsePair(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index) // net://method/Json.JsonParser;22
+	public static System.Boolean  ParseToken(Json.JsonToken token, System.Collections.Generic.IList`1<System.Char> data, System.Int32 index) // net://method/Json.JsonParser;23
+	public static System.String  ParseString(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index) // net://method/Json.JsonParser;24
+	public static System.Object  ParseValue(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index) // net://method/Json.JsonParser;25
+	public static System.Collections.Generic.IDictionary`2<System.String, System.Object>  ParseObject(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index) // net://method/Json.JsonParser;26
+	public static System.Collections.Generic.IEnumerable`1<System.Object>  ParseArray(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index) // net://method/Json.JsonParser;27
+	public static System.Object  ParseNumber(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index) // net://method/Json.JsonParser;28
+	public static Json.JsonToken  NextToken(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index) // net://method/Json.JsonParser;29
+	public static Json.JsonToken  GetTokenFromSymbol(System.Char symbol)             // net://method/Json.JsonParser;30
+	public static Json.JsonToken  GetTokenFromSymbol(System.Char symbol, Json.JsonToken token) // net://method/Json.JsonParser;31
+	public static System.Void  IgnoreWhitespace(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index, System.Char symbol) // net://method/Json.JsonParser;32
+	public static Json.JsonToken  IgnoreWhitespace(System.Collections.Generic.IList`1<System.Char> data, System.Int32 index, Json.JsonToken token, System.Char symbol) // net://method/Json.JsonParser;33
+	public static System.Void  GetKeyword(System.String word, Json.JsonToken target, System.Collections.Generic.IList`1<System.Char> data, System.Int32 index, Json.JsonToken result) // net://method/Json.JsonParser;34
+	public static System.String  BaseConvert(System.Int32 input, System.Char[] charSet, System.Int32 minLength) // net://method/Json.JsonParser;35

@@ -1,6 +1,7 @@
 package java
 
 import (
+	"fmt"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/java/descriptors"
 	"strings"
@@ -35,24 +36,30 @@ func (c *Class) ToContentFQN(index u2) (ret content.FullyQualifiedName) {
 }
 
 func (c *Class) Fields() (fields []content.Field, err error) {
-	for _, inf := range c.RawFields {
+	cn := c.Constant_pool.Lut(c.This_class).String()
+	for i, inf := range c.RawFields {
 		var p descriptors.DESCRIPTORS
-		p.Parse(c.Constant_pool.Lut(inf.Descriptor_index).String())
+		desc := c.Constant_pool.Lut(inf.Descriptor_index).String()
+		p.Parse(desc)
 		outf := descriptors.ToContentField(p.RootNode().Children[0])
 		outf.Flags = inf.Access_flags.ToContentFlags()
 		outf.Name.Relative = c.Constant_pool.Lut(inf.Name_index).String()
+		outf.Name.Absolute = fmt.Sprintf("java://field/%s;%d", cn, i)
 		fields = append(fields, outf)
 	}
 	return
 }
 
 func (c *Class) Methods() (methods []content.Method, err error) {
-	for _, inf := range c.RawMethods {
+	cn := c.Constant_pool.Lut(c.This_class).String()
+	for i, inf := range c.RawMethods {
 		var p descriptors.DESCRIPTORS
-		p.Parse(c.Constant_pool.Lut(inf.Descriptor_index).String())
+		desc := c.Constant_pool.Lut(inf.Descriptor_index).String()
+		p.Parse(desc)
 		outf := descriptors.ToContentMethod(p.RootNode().Children[0])
 		outf.Flags = inf.Access_flags.ToContentFlags()
 		outf.Name.Relative = c.Constant_pool.Lut(inf.Name_index).String()
+		outf.Name.Absolute = fmt.Sprintf("java://method/%s;%d", cn, i)
 		methods = append(methods, outf)
 	}
 	return

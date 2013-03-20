@@ -193,6 +193,7 @@ func (td *TypeDef) Fields() (fields []content.Field, err error) {
 		startRow, endRow = td.ListRange(td.index.Index(), id_TypeDef, id_Field, func(i interface{}) uint32 { return i.(*TypeDefRow).FieldList.Index() })
 		idx              = ConcreteTableIndex{mu, startRow, id_Field}
 	)
+	cn := td.Name().Absolute
 	for i := startRow; i < endRow; i++ {
 		idx.index = i
 		if rawfield, err := idx.Data(); err != nil {
@@ -205,6 +206,7 @@ func (td *TypeDef) Fields() (fields []content.Field, err error) {
 				sig   FieldSig
 			)
 			f.Name.Relative = string(field.Name)
+			f.Name.Absolute = fmt.Sprintf("net://field/%s;%d", cn, i-startRow)
 			if dec, err = NewSignatureDecoder(field.Signature); err != nil {
 				return nil, err
 			} else if err = dec.Decode(&sig); err != nil {
@@ -258,6 +260,7 @@ func (td *TypeDef) Methods() (methods []content.Method, err error) {
 		startRow, endRow = td.ListRange(td.index.Index(), id_TypeDef, id_MethodDef, func(i interface{}) uint32 { return i.(*TypeDefRow).MethodList.Index() })
 		idx              = &ConcreteTableIndex{mu, startRow, id_MethodDef}
 	)
+	cn := td.Name().Absolute
 	for i := startRow; i < endRow; i++ {
 		idx.index = i
 		if rawmethod, err := idx.Data(); err != nil {
@@ -275,6 +278,7 @@ func (td *TypeDef) Methods() (methods []content.Method, err error) {
 			} else {
 				m.Name.Relative = n
 			}
+			m.Name.Absolute = fmt.Sprintf("net://method/%s;%d", cn, i-startRow)
 			if m.Parameters, err = td.Parameters(idx); err != nil {
 				return nil, err
 			}

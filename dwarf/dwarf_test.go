@@ -37,7 +37,7 @@ func TestBlah(t *testing.T) {
 	for _, testfile := range tests {
 		if r, err := readFile(testfile); err != nil {
 			t.Error(err)
-		} else if dh, err := NewDWARFHelper(r); err != nil {
+		} else if dh, err := NewDWARFHelper(testfile, r); err != nil {
 			t.Error(err)
 		} else {
 			t.Log(dh.Load())
@@ -53,7 +53,7 @@ func TestCompleteGame(t *testing.T) {
 	}
 	if r, err := readFile(testfile); err != nil {
 		t.Error(err)
-	} else if dh, err := NewDWARFHelper(r); err != nil {
+	} else if dh, err := NewDWARFHelper(testfile, r); err != nil {
 		t.Error(err)
 	} else {
 		res := ""

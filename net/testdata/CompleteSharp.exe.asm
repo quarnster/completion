@@ -245,46 +245,46 @@ NestedClassRow
 	Accessibility
 public class CompleteSharp
 	extends System.Object
-	private static System.String sep
-	public  CompleteSharp()
-	private static System.Void  reportError(System.Exception e)
-	public static System.Void  Main(System.String[] arg)
+	private static System.String sep                                                 // net://field/CompleteSharp;0
+	public  CompleteSharp()                                                          // net://method/CompleteSharp;0
+	private static System.Void  reportError(System.Exception e)                      // net://method/CompleteSharp;1
+	public static System.Void  Main(System.String[] arg)                             // net://method/CompleteSharp;2
 	class CompleteSharp$MyAppDomain
 class CompleteSharp$MyAppDomain
 	extends System.MarshalByRefObject
-	private System.AppDomain ad
-	private System.String[] assemblies
-	private System.DateTime[] times
-	private System.Boolean forceReload
-	public  MyAppDomain(System.String[] arg)
-	public System.Void  LoadAssemblies()
-	public System.Boolean  Execute(System.String[] args, System.Collections.ArrayList modules)
-	private System.Void  CheckUpdate()
+	private System.AppDomain ad                                                      // net://field/CompleteSharp$MyAppDomain;0
+	private System.String[] assemblies                                               // net://field/CompleteSharp$MyAppDomain;1
+	private System.DateTime[] times                                                  // net://field/CompleteSharp$MyAppDomain;2
+	private System.Boolean forceReload                                               // net://field/CompleteSharp$MyAppDomain;3
+	public  MyAppDomain(System.String[] arg)                                         // net://method/CompleteSharp$MyAppDomain;0
+	public System.Void  LoadAssemblies()                                             // net://method/CompleteSharp$MyAppDomain;1
+	public System.Boolean  Execute(System.String[] args, System.Collections.ArrayList modules) // net://method/CompleteSharp$MyAppDomain;2
+	private System.Void  CheckUpdate()                                               // net://method/CompleteSharp$MyAppDomain;3
 	public class CompleteSharp$MyAppDomain$Hack
 public class CompleteSharp$MyAppDomain$Hack
 	extends System.MarshalByRefObject
-	public MyAppDomain ad
-	public  Hack()
-	private System.Int32  GetParameterExtent(System.String parameter)
-	private System.String[]  SplitParameters(System.String parameters, System.Boolean fix)
-	private System.String  ParseParameters(System.String parameters, System.Int32 expected, System.Boolean insertion)
-	private System.String  FixName(System.String str, System.Boolean insertion)
-	private System.String[]  GetTemplateArguments(System.String template)
-	private System.String  GetBase(System.String fullname)
-	public System.Type  GetType(MyAppDomain ad, System.String basename, System.String[] templateParam)
-	private System.Int32  GetModifiers(System.Reflection.MemberInfo m)
-	private System.Reflection.Assembly  TryLoad(System.String path, System.String name)
-	private System.Reflection.Assembly  ResolveAssembly(System.Object sender, System.ResolveEventArgs args)
-	public System.Reflection.Assembly  Load(System.String str)
-	public System.Type  GetType(System.String basename)
-	public System.Boolean  Execute(System.String[] args, System.Collections.ArrayList modules)
+	public MyAppDomain ad                                                            // net://field/CompleteSharp$MyAppDomain$Hack;0
+	public  Hack()                                                                   // net://method/CompleteSharp$MyAppDomain$Hack;0
+	private System.Int32  GetParameterExtent(System.String parameter)                // net://method/CompleteSharp$MyAppDomain$Hack;1
+	private System.String[]  SplitParameters(System.String parameters, System.Boolean fix) // net://method/CompleteSharp$MyAppDomain$Hack;2
+	private System.String  ParseParameters(System.String parameters, System.Int32 expected, System.Boolean insertion) // net://method/CompleteSharp$MyAppDomain$Hack;3
+	private System.String  FixName(System.String str, System.Boolean insertion)      // net://method/CompleteSharp$MyAppDomain$Hack;4
+	private System.String[]  GetTemplateArguments(System.String template)            // net://method/CompleteSharp$MyAppDomain$Hack;5
+	private System.String  GetBase(System.String fullname)                           // net://method/CompleteSharp$MyAppDomain$Hack;6
+	public System.Type  GetType(MyAppDomain ad, System.String basename, System.String[] templateParam) // net://method/CompleteSharp$MyAppDomain$Hack;7
+	private System.Int32  GetModifiers(System.Reflection.MemberInfo m)               // net://method/CompleteSharp$MyAppDomain$Hack;8
+	private System.Reflection.Assembly  TryLoad(System.String path, System.String name) // net://method/CompleteSharp$MyAppDomain$Hack;9
+	private System.Reflection.Assembly  ResolveAssembly(System.Object sender, System.ResolveEventArgs args) // net://method/CompleteSharp$MyAppDomain$Hack;10
+	public System.Reflection.Assembly  Load(System.String str)                       // net://method/CompleteSharp$MyAppDomain$Hack;11
+	public System.Type  GetType(System.String basename)                              // net://method/CompleteSharp$MyAppDomain$Hack;12
+	public System.Boolean  Execute(System.String[] args, System.Collections.ArrayList modules) // net://method/CompleteSharp$MyAppDomain$Hack;13
 	public class CompleteSharp$MyAppDomain$Hack$Accessibility
 public class CompleteSharp$MyAppDomain$Hack$Accessibility
 	extends System.Enum
-	public System.Int32 value__
-	public static Accessibility NONE
-	public static Accessibility STATIC
-	public static Accessibility PRIVATE
-	public static Accessibility PROTECTED
-	public static Accessibility PUBLIC
-	public static Accessibility INTERNAL
+	public System.Int32 value__                                                      // net://field/CompleteSharp$MyAppDomain$Hack$Accessibility;0
+	public static Accessibility NONE                                                 // net://field/CompleteSharp$MyAppDomain$Hack$Accessibility;1
+	public static Accessibility STATIC                                               // net://field/CompleteSharp$MyAppDomain$Hack$Accessibility;2
+	public static Accessibility PRIVATE                                              // net://field/CompleteSharp$MyAppDomain$Hack$Accessibility;3
+	public static Accessibility PROTECTED                                            // net://field/CompleteSharp$MyAppDomain$Hack$Accessibility;4
+	public static Accessibility PUBLIC                                               // net://field/CompleteSharp$MyAppDomain$Hack$Accessibility;5
+	public static Accessibility INTERNAL                                             // net://field/CompleteSharp$MyAppDomain$Hack$Accessibility;6

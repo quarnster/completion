@@ -326,56 +326,56 @@ NestedClassRow
 	BitList
 public class PeterO.QRCodeGenerator
 	extends System.Object
-	private static System.Int32[] GaloisExp
-	private static System.Int32[] GaloisLog
-	private static System.Int32[][] polynomials
-	private static System.Int32[] VersionInfo
-	private static System.Int32[] AlignmentPatterns
-	private static System.Int32[] DataBlocks
-	private static System.Int32[] FormatInfo
-	private static System.Int32[] versions
-	private static System.Int32[] versionsnumeric
-	private static System.Int32[] versionsalphanum
-	private static System.Int32[] ecbytes
-	private static System.Int32[] CharToValue
-	private static System.Int32  GaloisMult(System.Int32 a, System.Int32 b)
-	private static System.Void  ReedSolomonEncode(System.Collections.Generic.IList`1<System.Byte> b, System.Int32 offset, System.Int32 count, System.Int32 blockSize)
-	private static CodeMatrix  GetEncodedMatrix(System.Byte[] data, System.Boolean stringData)
+	private static System.Int32[] GaloisExp                                          // net://field/PeterO.QRCodeGenerator;0
+	private static System.Int32[] GaloisLog                                          // net://field/PeterO.QRCodeGenerator;1
+	private static System.Int32[][] polynomials                                      // net://field/PeterO.QRCodeGenerator;2
+	private static System.Int32[] VersionInfo                                        // net://field/PeterO.QRCodeGenerator;3
+	private static System.Int32[] AlignmentPatterns                                  // net://field/PeterO.QRCodeGenerator;4
+	private static System.Int32[] DataBlocks                                         // net://field/PeterO.QRCodeGenerator;5
+	private static System.Int32[] FormatInfo                                         // net://field/PeterO.QRCodeGenerator;6
+	private static System.Int32[] versions                                           // net://field/PeterO.QRCodeGenerator;7
+	private static System.Int32[] versionsnumeric                                    // net://field/PeterO.QRCodeGenerator;8
+	private static System.Int32[] versionsalphanum                                   // net://field/PeterO.QRCodeGenerator;9
+	private static System.Int32[] ecbytes                                            // net://field/PeterO.QRCodeGenerator;10
+	private static System.Int32[] CharToValue                                        // net://field/PeterO.QRCodeGenerator;11
+	private static System.Int32  GaloisMult(System.Int32 a, System.Int32 b)          // net://method/PeterO.QRCodeGenerator;0
+	private static System.Void  ReedSolomonEncode(System.Collections.Generic.IList`1<System.Byte> b, System.Int32 offset, System.Int32 count, System.Int32 blockSize) // net://method/PeterO.QRCodeGenerator;1
+	private static CodeMatrix  GetEncodedMatrix(System.Byte[] data, System.Boolean stringData) // net://method/PeterO.QRCodeGenerator;2
 	public class QRCodeGenerator$CodeMatrix
 	public class QRCodeGenerator$BitList
 public class QRCodeGenerator$CodeMatrix
 	extends System.Object
-	private System.Byte[] data
-	private System.Int32 size
-	private System.Int32 codewordX
-	private System.Int32 codewordY
-	private System.Boolean directionDown
-	private System.Boolean directionRight
-	private System.Boolean[] state11311expected
-	public  CodeMatrix(System.Int32 size)
-	public System.Int32  get_Size()
-	public System.Boolean  get_Item(System.Int32 x, System.Int32 y)
-	public System.Void  set_Item(System.Int32 x, System.Int32 y, System.Boolean value)
-	private System.Byte  GetValue(System.Int32 x, System.Int32 y)
-	private System.Void  SetValue(System.Int32 x, System.Int32 y, System.Byte value)
-	private System.Void  SetValueChecked(System.Int32 x, System.Int32 y, System.Byte value)
-	public System.Void  SetVersionInfo(System.Int32 value)
-	public System.Void  SetFormatInfo(System.Int32 value)
-	public System.Void  SetNextCodeword(System.Byte value)
-	public System.Void  DrawAlignmentPattern(System.Int32 x, System.Int32 y)
-	private System.Int32  FindBlock(System.Int32 x, System.Int32 y, System.Int32 tentativeWidth, System.Byte[] moduleblocks)
-	public System.Int32  CalculatePenalty()
-	public System.Void  ApplyMask(System.Int32 mask)
-	public System.Void  DrawTimingPatterns()
-	public System.Void  DrawFinderPattern(System.Int32 x, System.Int32 y)
-	public System.String  ToString()
+	private System.Byte[] data                                                       // net://field/QRCodeGenerator$CodeMatrix;0
+	private System.Int32 size                                                        // net://field/QRCodeGenerator$CodeMatrix;1
+	private System.Int32 codewordX                                                   // net://field/QRCodeGenerator$CodeMatrix;2
+	private System.Int32 codewordY                                                   // net://field/QRCodeGenerator$CodeMatrix;3
+	private System.Boolean directionDown                                             // net://field/QRCodeGenerator$CodeMatrix;4
+	private System.Boolean directionRight                                            // net://field/QRCodeGenerator$CodeMatrix;5
+	private System.Boolean[] state11311expected                                      // net://field/QRCodeGenerator$CodeMatrix;6
+	public  CodeMatrix(System.Int32 size)                                            // net://method/QRCodeGenerator$CodeMatrix;0
+	public System.Int32  get_Size()                                                  // net://method/QRCodeGenerator$CodeMatrix;1
+	public System.Boolean  get_Item(System.Int32 x, System.Int32 y)                  // net://method/QRCodeGenerator$CodeMatrix;2
+	public System.Void  set_Item(System.Int32 x, System.Int32 y, System.Boolean value) // net://method/QRCodeGenerator$CodeMatrix;3
+	private System.Byte  GetValue(System.Int32 x, System.Int32 y)                    // net://method/QRCodeGenerator$CodeMatrix;4
+	private System.Void  SetValue(System.Int32 x, System.Int32 y, System.Byte value) // net://method/QRCodeGenerator$CodeMatrix;5
+	private System.Void  SetValueChecked(System.Int32 x, System.Int32 y, System.Byte value) // net://method/QRCodeGenerator$CodeMatrix;6
+	public System.Void  SetVersionInfo(System.Int32 value)                           // net://method/QRCodeGenerator$CodeMatrix;7
+	public System.Void  SetFormatInfo(System.Int32 value)                            // net://method/QRCodeGenerator$CodeMatrix;8
+	public System.Void  SetNextCodeword(System.Byte value)                           // net://method/QRCodeGenerator$CodeMatrix;9
+	public System.Void  DrawAlignmentPattern(System.Int32 x, System.Int32 y)         // net://method/QRCodeGenerator$CodeMatrix;10
+	private System.Int32  FindBlock(System.Int32 x, System.Int32 y, System.Int32 tentativeWidth, System.Byte[] moduleblocks) // net://method/QRCodeGenerator$CodeMatrix;11
+	public System.Int32  CalculatePenalty()                                          // net://method/QRCodeGenerator$CodeMatrix;12
+	public System.Void  ApplyMask(System.Int32 mask)                                 // net://method/QRCodeGenerator$CodeMatrix;13
+	public System.Void  DrawTimingPatterns()                                         // net://method/QRCodeGenerator$CodeMatrix;14
+	public System.Void  DrawFinderPattern(System.Int32 x, System.Int32 y)            // net://method/QRCodeGenerator$CodeMatrix;15
+	public System.String  ToString()                                                 // net://method/QRCodeGenerator$CodeMatrix;16
 public class QRCodeGenerator$BitList
 	extends System.Object
-	private System.Collections.Generic.List`1<System.Byte> list
-	private System.Byte curbyte
-	private System.Int32 curbit
-	public  BitList()
-	public System.Collections.Generic.IList`1<System.Byte>  get_List()
-	public System.Void  AddBits(System.Byte value, System.Int32 bits)
-	public System.Void  AddBits(System.Int32 value, System.Int32 bits)
-	public System.Void  PadTo(System.Int32 size)
+	private System.Collections.Generic.List`1<System.Byte> list                      // net://field/QRCodeGenerator$BitList;0
+	private System.Byte curbyte                                                      // net://field/QRCodeGenerator$BitList;1
+	private System.Int32 curbit                                                      // net://field/QRCodeGenerator$BitList;2
+	public  BitList()                                                                // net://method/QRCodeGenerator$BitList;0
+	public System.Collections.Generic.IList`1<System.Byte>  get_List()               // net://method/QRCodeGenerator$BitList;1
+	public System.Void  AddBits(System.Byte value, System.Int32 bits)                // net://method/QRCodeGenerator$BitList;2
+	public System.Void  AddBits(System.Int32 value, System.Int32 bits)               // net://method/QRCodeGenerator$BitList;3
+	public System.Void  PadTo(System.Int32 size)                                     // net://method/QRCodeGenerator$BitList;4

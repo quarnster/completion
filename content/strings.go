@@ -80,8 +80,9 @@ func (v Variable) String() string {
 	return fmt.Sprintf("%s %s", v.Type, v.Name)
 }
 
-func (f Field) String() (ret string) {
-	return ret + fmt.Sprintf("%s%s %s", f.Flags, f.Type, f.Name)
+func (f Field) String() string {
+	tmp := fmt.Sprintf("%s%s %s", f.Flags, f.Type, f.Name.Relative)
+	return fmt.Sprintf("%-80s // %s", tmp, f.Name.Absolute)
 }
 
 func (m Method) String() (ret string) {
@@ -93,7 +94,7 @@ func (m Method) String() (ret string) {
 		}
 		ret += fmt.Sprintf("%s", m.Returns[i])
 	}
-	ret += fmt.Sprintf(" %s(", m.Name)
+	ret += fmt.Sprintf(" %s(", m.Name.Relative)
 	for i := range m.Parameters {
 		if i > 0 {
 			ret += ", "
@@ -104,6 +105,7 @@ func (m Method) String() (ret string) {
 	if m.Flags&FLAG_CONST != 0 {
 		ret += " const"
 	}
+	ret = fmt.Sprintf("%-80s // %s", ret, m.Name.Absolute)
 
 	return
 }

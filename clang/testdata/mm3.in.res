@@ -1,5 +1,5 @@
 Fields:
-	float _value
-	int privateVariable
-	int protectedVariable
-	int publicVariable
+	float _value                                                                     // 
+	int privateVariable                                                              // 
+	int protectedVariable                                                            // 
+	int publicVariable                                                               // 

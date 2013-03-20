@@ -12,9 +12,10 @@ import (
 
 type DWARFHelper struct {
 	df *dwarf.Data
+	id string
 }
 
-func NewDWARFHelper(r io.ReaderAt) (*DWARFHelper, error) {
+func NewDWARFHelper(id string, r io.ReaderAt) (*DWARFHelper, error) {
 	// TODO: detect file format..
 	if f, err := macho.NewFile(r); err != nil {
 		return nil, err
@@ -28,6 +29,7 @@ func NewDWARFHelper(r io.ReaderAt) (*DWARFHelper, error) {
 		} else {
 			var ret DWARFHelper
 			ret.df = df
+			ret.id = id
 			return &ret, nil
 		}
 	}
@@ -76,12 +78,14 @@ func (d *DWARFHelper) Complete(id content.FullyQualifiedName) (content.Completio
 								if f, err := d.toContentField(e); err != nil {
 									return cmp, err
 								} else {
+									f.Name.Absolute = fmt.Sprintf("dwarf://field/%s;%d", d.id, e.Offset)
 									cmp.Fields = append(cmp.Fields, f)
 								}
 							case dwarf.TagSubprogram:
 								if m, err := d.toContentMethod(e); err != nil {
 									return cmp, err
 								} else {
+									m.Name.Absolute = fmt.Sprintf("dwarf://method/%s;%d", d.id, e.Offset)
 									cmp.Methods = append(cmp.Methods, m)
 								}
 								r.SkipChildren()
