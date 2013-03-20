@@ -185,13 +185,17 @@ func check(i interface{}, name content.FullyQualifiedName) error {
 	return nil
 }
 
+func stripProto(absname string) string {
+	return absname[len("net://type/"):]
+}
+
 func (td *TypeDef) Fields() (fields []content.Field, err error) {
 	var (
 		mu               = td.index.(*ConcreteTableIndex).metadataUtil
 		startRow, endRow = td.ListRange(td.index.Index(), id_TypeDef, id_Field, func(i interface{}) uint32 { return i.(*TypeDefRow).FieldList.Index() })
 		idx              = ConcreteTableIndex{mu, startRow, id_Field}
 	)
-	cn := td.Name().Absolute
+	cn := stripProto(td.Name().Absolute)
 	for i := startRow; i < endRow; i++ {
 		idx.index = i
 		if rawfield, err := idx.Data(); err != nil {
@@ -258,7 +262,7 @@ func (td *TypeDef) Methods() (methods []content.Method, err error) {
 		startRow, endRow = td.ListRange(td.index.Index(), id_TypeDef, id_MethodDef, func(i interface{}) uint32 { return i.(*TypeDefRow).MethodList.Index() })
 		idx              = &ConcreteTableIndex{mu, startRow, id_MethodDef}
 	)
-	cn := td.Name().Absolute
+	cn := stripProto(td.Name().Absolute)
 	for i := startRow; i < endRow; i++ {
 		idx.index = i
 		if rawmethod, err := idx.Data(); err != nil {
