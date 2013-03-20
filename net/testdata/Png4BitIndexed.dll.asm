@@ -140,32 +140,32 @@ NestedClassRow
 	&{NestedClass:TypeDefRow[4] EnclosingClass:TypeDefRow[3]}
 	&{NestedClass:TypeDefRow[5] EnclosingClass:TypeDefRow[3]}
 	&{NestedClass:TypeDefRow[6] EnclosingClass:TypeDefRow[3]}
-	PeterO.Png4BitIndexed
-public class PeterO.Png4BitIndexed
-	extends System.Object
-	private System.Byte[] subdata1                                                   // net://field/PeterO.Png4BitIndexed;0
-	private System.UInt32[] crcTable                                                 // net://field/PeterO.Png4BitIndexed;1
-	private System.Int32 width                                                       // net://field/PeterO.Png4BitIndexed;2
-	private System.Int32 height                                                      // net://field/PeterO.Png4BitIndexed;3
-	private System.Int32 realRowSize                                                 // net://field/PeterO.Png4BitIndexed;4
-	private System.Int32 blockSize                                                   // net://field/PeterO.Png4BitIndexed;5
-	private System.Int32 rowSize                                                     // net://field/PeterO.Png4BitIndexed;6
-	private System.Byte[] imageData                                                  // net://field/PeterO.Png4BitIndexed;7
-	private System.Byte[] data                                                       // net://field/PeterO.Png4BitIndexed;8
-	private System.Byte[] subdata2                                                   // net://field/PeterO.Png4BitIndexed;9
-	private System.Byte[] colors                                                     // net://field/PeterO.Png4BitIndexed;10
-	private System.UInt32 idatCrc                                                    // net://field/PeterO.Png4BitIndexed;11
-	private System.Int32 transparent                                                 // net://field/PeterO.Png4BitIndexed;12
-	public  Png4BitIndexed(System.Int32 width, System.Int32 height)                  // net://method/PeterO.Png4BitIndexed;0
-	private System.Byte[]  Adler32(System.Byte[] stream, System.Int32 offset, System.Int32 length) // net://method/PeterO.Png4BitIndexed;1
-	private System.UInt32  Crc32(System.Byte[] stream, System.Int32 offset, System.Int32 length, System.UInt32 crc) // net://method/PeterO.Png4BitIndexed;2
-	public System.Void  SetPixel(System.Int32 x, System.Int32 y, System.Int32 pixel) // net://method/PeterO.Png4BitIndexed;3
-	public System.Int32  GetPixel(System.Int32 x, System.Int32 y)                    // net://method/PeterO.Png4BitIndexed;4
-	public System.Byte[]  GetColor(System.Int32 index)                               // net://method/PeterO.Png4BitIndexed;5
-	public System.Void  SetColor(System.Int32 index, System.Byte[] color)            // net://method/PeterO.Png4BitIndexed;6
-	private System.Byte[]  GetBE(System.UInt32 crc)                                  // net://method/PeterO.Png4BitIndexed;7
-	public System.Void  Save(System.String filename)                                 // net://method/PeterO.Png4BitIndexed;8
-	public System.Int32  get_Height()                                                // net://method/PeterO.Png4BitIndexed;9
-	public System.Int32  get_Width()                                                 // net://method/PeterO.Png4BitIndexed;10
-	public System.Int32  get_Transparent()                                           // net://method/PeterO.Png4BitIndexed;11
-	public System.Void  set_Transparent(System.Int32 value)                          // net://method/PeterO.Png4BitIndexed;12
+	net://type/PeterO.Png4BitIndexed
+public class net://type/PeterO.Png4BitIndexed
+	extends net://type/System.Object
+	private net://type/System.Byte[] subdata1                                        // net://field/net://type/PeterO.Png4BitIndexed;0
+	private net://type/System.UInt32[] crcTable                                      // net://field/net://type/PeterO.Png4BitIndexed;1
+	private net://type/System.Int32 width                                            // net://field/net://type/PeterO.Png4BitIndexed;2
+	private net://type/System.Int32 height                                           // net://field/net://type/PeterO.Png4BitIndexed;3
+	private net://type/System.Int32 realRowSize                                      // net://field/net://type/PeterO.Png4BitIndexed;4
+	private net://type/System.Int32 blockSize                                        // net://field/net://type/PeterO.Png4BitIndexed;5
+	private net://type/System.Int32 rowSize                                          // net://field/net://type/PeterO.Png4BitIndexed;6
+	private net://type/System.Byte[] imageData                                       // net://field/net://type/PeterO.Png4BitIndexed;7
+	private net://type/System.Byte[] data                                            // net://field/net://type/PeterO.Png4BitIndexed;8
+	private net://type/System.Byte[] subdata2                                        // net://field/net://type/PeterO.Png4BitIndexed;9
+	private net://type/System.Byte[] colors                                          // net://field/net://type/PeterO.Png4BitIndexed;10
+	private net://type/System.UInt32 idatCrc                                         // net://field/net://type/PeterO.Png4BitIndexed;11
+	private net://type/System.Int32 transparent                                      // net://field/net://type/PeterO.Png4BitIndexed;12
+	public  Png4BitIndexed(net://type/System.Int32 width, net://type/System.Int32 height) // net://method/net://type/PeterO.Png4BitIndexed;0
+	private net://type/System.Byte[]  Adler32(net://type/System.Byte[] stream, net://type/System.Int32 offset, net://type/System.Int32 length) // net://method/net://type/PeterO.Png4BitIndexed;1
+	private net://type/System.UInt32  Crc32(net://type/System.Byte[] stream, net://type/System.Int32 offset, net://type/System.Int32 length, net://type/System.UInt32 crc) // net://method/net://type/PeterO.Png4BitIndexed;2
+	public net://type/System.Void  SetPixel(net://type/System.Int32 x, net://type/System.Int32 y, net://type/System.Int32 pixel) // net://method/net://type/PeterO.Png4BitIndexed;3
+	public net://type/System.Int32  GetPixel(net://type/System.Int32 x, net://type/System.Int32 y) // net://method/net://type/PeterO.Png4BitIndexed;4
+	public net://type/System.Byte[]  GetColor(net://type/System.Int32 index)         // net://method/net://type/PeterO.Png4BitIndexed;5
+	public net://type/System.Void  SetColor(net://type/System.Int32 index, net://type/System.Byte[] color) // net://method/net://type/PeterO.Png4BitIndexed;6
+	private net://type/System.Byte[]  GetBE(net://type/System.UInt32 crc)            // net://method/net://type/PeterO.Png4BitIndexed;7
+	public net://type/System.Void  Save(net://type/System.String filename)           // net://method/net://type/PeterO.Png4BitIndexed;8
+	public net://type/System.Int32  get_Height()                                     // net://method/net://type/PeterO.Png4BitIndexed;9
+	public net://type/System.Int32  get_Width()                                      // net://method/net://type/PeterO.Png4BitIndexed;10
+	public net://type/System.Int32  get_Transparent()                                // net://method/net://type/PeterO.Png4BitIndexed;11
+	public net://type/System.Void  set_Transparent(net://type/System.Int32 value)    // net://method/net://type/PeterO.Png4BitIndexed;12

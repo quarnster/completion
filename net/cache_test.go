@@ -29,7 +29,7 @@ func TestCacheComplete(t *testing.T) {
 	}
 
 	tests2 := []content.Type{
-		content.Type{Name: content.FullyQualifiedName{Absolute: "System.String"}},
+		content.Type{Name: content.FullyQualifiedName{Absolute: "net://type/System.String"}},
 	}
 	for _, test := range tests2 {
 		if res, err := c.Complete(&test); err != nil {
@@ -71,8 +71,8 @@ func TestCacheReload(t *testing.T) {
 	if _, err := c.Load(filepath.Base(binary.Name())); err != nil {
 		t.Error(err)
 	} else {
-		ty1 := content.Type{Name: content.FullyQualifiedName{Absolute: "Test1"}}
-		ty2 := content.Type{Name: content.FullyQualifiedName{Absolute: "Test2"}}
+		ty1 := content.Type{Name: content.FullyQualifiedName{Absolute: "net://type/Test1"}}
+		ty2 := content.Type{Name: content.FullyQualifiedName{Absolute: "net://type/Test2"}}
 		if _, err := c.Complete(&ty1); err != nil {
 			t.Fatal(err)
 		} else if _, err := c.Complete(&ty2); err == nil {
@@ -133,7 +133,7 @@ func BenchmarkCacheComplete(b *testing.B) {
 	}
 
 	tests2 := []content.Type{
-		content.Type{Name: content.FullyQualifiedName{Absolute: "System.String"}},
+		content.Type{Name: content.FullyQualifiedName{Absolute: "net://type/System.String"}},
 	}
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {

@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/java/descriptors"
-	"strings"
 )
 
 func (af AccessFlags) ToContentFlags() (ret content.Flags) {
@@ -27,12 +26,7 @@ func (af AccessFlags) ToContentFlags() (ret content.Flags) {
 }
 
 func (c *Class) ToContentFQN(index u2) (ret content.FullyQualifiedName) {
-	ret.Absolute = strings.Replace(c.Constant_pool.Lut(index).String(), "/", ".", -1)
-	ret.Relative = ret.Absolute
-	if i := strings.LastIndex(ret.Absolute, "."); i > 0 {
-		ret.Relative = ret.Relative[i+1:]
-	}
-	return
+	return descriptors.ToContentFQN(c.Constant_pool.Lut(index).String())
 }
 
 func (c *Class) Fields() (fields []content.Field, err error) {

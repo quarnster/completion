@@ -29,16 +29,14 @@ type (
 func AbsoluteName(t AbstractType) string {
 	n := t.Name()
 	if ns := t.Namespace(); ns != "" {
-		return ns + "." + n
+		n = ns + "." + n
 	}
-	return n
+	return "net://type/" + n
 }
 
 func ToContentType(t AbstractType) (t2 content.Type) {
 	t2.Name.Relative = t.Name()
-	if ns := t.Namespace(); ns != "" {
-		t2.Name.Absolute = fmt.Sprintf("%s.%s", ns, t2.Name.Relative)
-	}
+	t2.Name.Absolute = AbsoluteName(t)
 	return
 }
 
@@ -362,6 +360,7 @@ func (td *TypeDef) Name() (ret content.FullyQualifiedName) {
 		ret.Absolute += "."
 	}
 	ret.Absolute += td.TypeNesting(td.index)
+	ret.Absolute = "net://type/" + ret.Absolute
 	ret.Relative = string(td.row.Name())
 	return
 }

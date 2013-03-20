@@ -200,32 +200,32 @@ Methods
 		 Code ( LineNumberTable )
 	static <clinit> ()V
 		 Code ( LineNumberTable StackMapTable )
-public final java.lang.String
-	extends java.lang.Object
-	implements java.io.Serializable, java.lang.Comparable, java.lang.CharSequence
+public final java://type/java/lang/String
+	extends java://type/java/lang/Object
+	implements java://type/java/io/Serializable, java://type/java/lang/Comparable, java://type/java/lang/CharSequence
 	private final char[] value                                                       // java://field/java/lang/String;0
 	private int hash                                                                 // java://field/java/lang/String;1
 	private static final long serialVersionUID                                       // java://field/java/lang/String;2
-	private static final java.io.ObjectStreamField[] serialPersistentFields          // java://field/java/lang/String;3
-	public static final java.util.Comparator CASE_INSENSITIVE_ORDER                  // java://field/java/lang/String;4
+	private static final java://type/java/io/ObjectStreamField[] serialPersistentFields // java://field/java/lang/String;3
+	public static final java://type/java/util/Comparator CASE_INSENSITIVE_ORDER      // java://field/java/lang/String;4
 	private static final int HASHING_SEED                                            // java://field/java/lang/String;5
 	private int hash32                                                               // java://field/java/lang/String;6
 	public void  <init>()                                                            // java://method/java/lang/String;0
-	public void  <init>(java.lang.String )                                           // java://method/java/lang/String;1
+	public void  <init>(java://type/java/lang/String )                               // java://method/java/lang/String;1
 	public void  <init>(char[] )                                                     // java://method/java/lang/String;2
 	public void  <init>(char[] , int , int )                                         // java://method/java/lang/String;3
 	public void  <init>(int[] , int , int )                                          // java://method/java/lang/String;4
 	public void  <init>(byte[] , int , int , int )                                   // java://method/java/lang/String;5
 	public void  <init>(byte[] , int )                                               // java://method/java/lang/String;6
 	private static void  checkBounds(byte[] , int , int )                            // java://method/java/lang/String;7
-	public void  <init>(byte[] , int , int , java.lang.String )                      // java://method/java/lang/String;8
-	public void  <init>(byte[] , int , int , java.nio.charset.Charset )              // java://method/java/lang/String;9
-	public void  <init>(byte[] , java.lang.String )                                  // java://method/java/lang/String;10
-	public void  <init>(byte[] , java.nio.charset.Charset )                          // java://method/java/lang/String;11
+	public void  <init>(byte[] , int , int , java://type/java/lang/String )          // java://method/java/lang/String;8
+	public void  <init>(byte[] , int , int , java://type/java/nio/charset/Charset )  // java://method/java/lang/String;9
+	public void  <init>(byte[] , java://type/java/lang/String )                      // java://method/java/lang/String;10
+	public void  <init>(byte[] , java://type/java/nio/charset/Charset )              // java://method/java/lang/String;11
 	public void  <init>(byte[] , int , int )                                         // java://method/java/lang/String;12
 	public void  <init>(byte[] )                                                     // java://method/java/lang/String;13
-	public void  <init>(java.lang.StringBuffer )                                     // java://method/java/lang/String;14
-	public void  <init>(java.lang.StringBuilder )                                    // java://method/java/lang/String;15
+	public void  <init>(java://type/java/lang/StringBuffer )                         // java://method/java/lang/String;14
+	public void  <init>(java://type/java/lang/StringBuilder )                        // java://method/java/lang/String;15
 	void  <init>(char[] , boolean )                                                  // java://method/java/lang/String;16
 	void  <init>(int , int , char[] )                                                // java://method/java/lang/String;17
 	public int  length()                                                             // java://method/java/lang/String;18
@@ -238,20 +238,20 @@ public final java.lang.String
 	void  getChars(char[] , int )                                                    // java://method/java/lang/String;25
 	public void  getChars(int , int , char[] , int )                                 // java://method/java/lang/String;26
 	public void  getBytes(int , int , byte[] , int )                                 // java://method/java/lang/String;27
-	public byte[]  getBytes(java.lang.String )                                       // java://method/java/lang/String;28
-	public byte[]  getBytes(java.nio.charset.Charset )                               // java://method/java/lang/String;29
+	public byte[]  getBytes(java://type/java/lang/String )                           // java://method/java/lang/String;28
+	public byte[]  getBytes(java://type/java/nio/charset/Charset )                   // java://method/java/lang/String;29
 	public byte[]  getBytes()                                                        // java://method/java/lang/String;30
-	public boolean  equals(java.lang.Object )                                        // java://method/java/lang/String;31
-	public boolean  contentEquals(java.lang.StringBuffer )                           // java://method/java/lang/String;32
-	public boolean  contentEquals(java.lang.CharSequence )                           // java://method/java/lang/String;33
-	public boolean  equalsIgnoreCase(java.lang.String )                              // java://method/java/lang/String;34
-	public int  compareTo(java.lang.String )                                         // java://method/java/lang/String;35
-	public int  compareToIgnoreCase(java.lang.String )                               // java://method/java/lang/String;36
-	public boolean  regionMatches(int , java.lang.String , int , int )               // java://method/java/lang/String;37
-	public boolean  regionMatches(boolean , int , java.lang.String , int , int )     // java://method/java/lang/String;38
-	public boolean  startsWith(java.lang.String , int )                              // java://method/java/lang/String;39
-	public boolean  startsWith(java.lang.String )                                    // java://method/java/lang/String;40
-	public boolean  endsWith(java.lang.String )                                      // java://method/java/lang/String;41
+	public boolean  equals(java://type/java/lang/Object )                            // java://method/java/lang/String;31
+	public boolean  contentEquals(java://type/java/lang/StringBuffer )               // java://method/java/lang/String;32
+	public boolean  contentEquals(java://type/java/lang/CharSequence )               // java://method/java/lang/String;33
+	public boolean  equalsIgnoreCase(java://type/java/lang/String )                  // java://method/java/lang/String;34
+	public int  compareTo(java://type/java/lang/String )                             // java://method/java/lang/String;35
+	public int  compareToIgnoreCase(java://type/java/lang/String )                   // java://method/java/lang/String;36
+	public boolean  regionMatches(int , java://type/java/lang/String , int , int )   // java://method/java/lang/String;37
+	public boolean  regionMatches(boolean , int , java://type/java/lang/String , int , int ) // java://method/java/lang/String;38
+	public boolean  startsWith(java://type/java/lang/String , int )                  // java://method/java/lang/String;39
+	public boolean  startsWith(java://type/java/lang/String )                        // java://method/java/lang/String;40
+	public boolean  endsWith(java://type/java/lang/String )                          // java://method/java/lang/String;41
 	public int  hashCode()                                                           // java://method/java/lang/String;42
 	public int  indexOf(int )                                                        // java://method/java/lang/String;43
 	public int  indexOf(int , int )                                                  // java://method/java/lang/String;44
@@ -259,45 +259,45 @@ public final java.lang.String
 	public int  lastIndexOf(int )                                                    // java://method/java/lang/String;46
 	public int  lastIndexOf(int , int )                                              // java://method/java/lang/String;47
 	private int  lastIndexOfSupplementary(int , int )                                // java://method/java/lang/String;48
-	public int  indexOf(java.lang.String )                                           // java://method/java/lang/String;49
-	public int  indexOf(java.lang.String , int )                                     // java://method/java/lang/String;50
+	public int  indexOf(java://type/java/lang/String )                               // java://method/java/lang/String;49
+	public int  indexOf(java://type/java/lang/String , int )                         // java://method/java/lang/String;50
 	static int  indexOf(char[] , int , int , char[] , int , int , int )              // java://method/java/lang/String;51
-	public int  lastIndexOf(java.lang.String )                                       // java://method/java/lang/String;52
-	public int  lastIndexOf(java.lang.String , int )                                 // java://method/java/lang/String;53
+	public int  lastIndexOf(java://type/java/lang/String )                           // java://method/java/lang/String;52
+	public int  lastIndexOf(java://type/java/lang/String , int )                     // java://method/java/lang/String;53
 	static int  lastIndexOf(char[] , int , int , char[] , int , int , int )          // java://method/java/lang/String;54
-	public java.lang.String  substring(int )                                         // java://method/java/lang/String;55
-	public java.lang.String  substring(int , int )                                   // java://method/java/lang/String;56
-	public java.lang.CharSequence  subSequence(int , int )                           // java://method/java/lang/String;57
-	public java.lang.String  concat(java.lang.String )                               // java://method/java/lang/String;58
-	public java.lang.String  replace(char , char )                                   // java://method/java/lang/String;59
-	public boolean  matches(java.lang.String )                                       // java://method/java/lang/String;60
-	public boolean  contains(java.lang.CharSequence )                                // java://method/java/lang/String;61
-	public java.lang.String  replaceFirst(java.lang.String , java.lang.String )      // java://method/java/lang/String;62
-	public java.lang.String  replaceAll(java.lang.String , java.lang.String )        // java://method/java/lang/String;63
-	public java.lang.String  replace(java.lang.CharSequence , java.lang.CharSequence ) // java://method/java/lang/String;64
-	public java.lang.String[]  split(java.lang.String , int )                        // java://method/java/lang/String;65
-	public java.lang.String[]  split(java.lang.String )                              // java://method/java/lang/String;66
-	public java.lang.String  toLowerCase(java.util.Locale )                          // java://method/java/lang/String;67
-	public java.lang.String  toLowerCase()                                           // java://method/java/lang/String;68
-	public java.lang.String  toUpperCase(java.util.Locale )                          // java://method/java/lang/String;69
-	public java.lang.String  toUpperCase()                                           // java://method/java/lang/String;70
-	public java.lang.String  trim()                                                  // java://method/java/lang/String;71
-	public java.lang.String  toString()                                              // java://method/java/lang/String;72
+	public java://type/java/lang/String  substring(int )                             // java://method/java/lang/String;55
+	public java://type/java/lang/String  substring(int , int )                       // java://method/java/lang/String;56
+	public java://type/java/lang/CharSequence  subSequence(int , int )               // java://method/java/lang/String;57
+	public java://type/java/lang/String  concat(java://type/java/lang/String )       // java://method/java/lang/String;58
+	public java://type/java/lang/String  replace(char , char )                       // java://method/java/lang/String;59
+	public boolean  matches(java://type/java/lang/String )                           // java://method/java/lang/String;60
+	public boolean  contains(java://type/java/lang/CharSequence )                    // java://method/java/lang/String;61
+	public java://type/java/lang/String  replaceFirst(java://type/java/lang/String , java://type/java/lang/String ) // java://method/java/lang/String;62
+	public java://type/java/lang/String  replaceAll(java://type/java/lang/String , java://type/java/lang/String ) // java://method/java/lang/String;63
+	public java://type/java/lang/String  replace(java://type/java/lang/CharSequence , java://type/java/lang/CharSequence ) // java://method/java/lang/String;64
+	public java://type/java/lang/String[]  split(java://type/java/lang/String , int ) // java://method/java/lang/String;65
+	public java://type/java/lang/String[]  split(java://type/java/lang/String )      // java://method/java/lang/String;66
+	public java://type/java/lang/String  toLowerCase(java://type/java/util/Locale )  // java://method/java/lang/String;67
+	public java://type/java/lang/String  toLowerCase()                               // java://method/java/lang/String;68
+	public java://type/java/lang/String  toUpperCase(java://type/java/util/Locale )  // java://method/java/lang/String;69
+	public java://type/java/lang/String  toUpperCase()                               // java://method/java/lang/String;70
+	public java://type/java/lang/String  trim()                                      // java://method/java/lang/String;71
+	public java://type/java/lang/String  toString()                                  // java://method/java/lang/String;72
 	public char[]  toCharArray()                                                     // java://method/java/lang/String;73
-	public static java.lang.String  format(java.lang.String , java.lang.Object[] )   // java://method/java/lang/String;74
-	public static java.lang.String  format(java.util.Locale , java.lang.String , java.lang.Object[] ) // java://method/java/lang/String;75
-	public static java.lang.String  valueOf(java.lang.Object )                       // java://method/java/lang/String;76
-	public static java.lang.String  valueOf(char[] )                                 // java://method/java/lang/String;77
-	public static java.lang.String  valueOf(char[] , int , int )                     // java://method/java/lang/String;78
-	public static java.lang.String  copyValueOf(char[] , int , int )                 // java://method/java/lang/String;79
-	public static java.lang.String  copyValueOf(char[] )                             // java://method/java/lang/String;80
-	public static java.lang.String  valueOf(boolean )                                // java://method/java/lang/String;81
-	public static java.lang.String  valueOf(char )                                   // java://method/java/lang/String;82
-	public static java.lang.String  valueOf(int )                                    // java://method/java/lang/String;83
-	public static java.lang.String  valueOf(long )                                   // java://method/java/lang/String;84
-	public static java.lang.String  valueOf(float )                                  // java://method/java/lang/String;85
-	public static java.lang.String  valueOf(double )                                 // java://method/java/lang/String;86
-	public java.lang.String  intern()                                                // java://method/java/lang/String;87
+	public static java://type/java/lang/String  format(java://type/java/lang/String , java://type/java/lang/Object[] ) // java://method/java/lang/String;74
+	public static java://type/java/lang/String  format(java://type/java/util/Locale , java://type/java/lang/String , java://type/java/lang/Object[] ) // java://method/java/lang/String;75
+	public static java://type/java/lang/String  valueOf(java://type/java/lang/Object ) // java://method/java/lang/String;76
+	public static java://type/java/lang/String  valueOf(char[] )                     // java://method/java/lang/String;77
+	public static java://type/java/lang/String  valueOf(char[] , int , int )         // java://method/java/lang/String;78
+	public static java://type/java/lang/String  copyValueOf(char[] , int , int )     // java://method/java/lang/String;79
+	public static java://type/java/lang/String  copyValueOf(char[] )                 // java://method/java/lang/String;80
+	public static java://type/java/lang/String  valueOf(boolean )                    // java://method/java/lang/String;81
+	public static java://type/java/lang/String  valueOf(char )                       // java://method/java/lang/String;82
+	public static java://type/java/lang/String  valueOf(int )                        // java://method/java/lang/String;83
+	public static java://type/java/lang/String  valueOf(long )                       // java://method/java/lang/String;84
+	public static java://type/java/lang/String  valueOf(float )                      // java://method/java/lang/String;85
+	public static java://type/java/lang/String  valueOf(double )                     // java://method/java/lang/String;86
+	public java://type/java/lang/String  intern()                                    // java://method/java/lang/String;87
 	int  hash32()                                                                    // java://method/java/lang/String;88
-	public int  compareTo(java.lang.Object )                                         // java://method/java/lang/String;89
+	public int  compareTo(java://type/java/lang/Object )                             // java://method/java/lang/String;89
 	static void  <clinit>()                                                          // java://method/java/lang/String;90

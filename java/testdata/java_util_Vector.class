@@ -126,10 +126,10 @@ Methods
 		 Code ( LineNumberTable ) Signature=()Ljava/util/ListIterator<TE;>;
 	public iterator ()Ljava/util/Iterator;
 		 Code ( LineNumberTable ) Signature=()Ljava/util/Iterator<TE;>;
-public java.util.Vector
-	extends java.util.AbstractList
-	implements java.util.List, java.util.RandomAccess, java.lang.Cloneable, java.io.Serializable
-	protected java.lang.Object[] elementData                                         // java://field/java/util/Vector;0
+public java://type/java/util/Vector
+	extends java://type/java/util/AbstractList
+	implements java://type/java/util/List, java://type/java/util/RandomAccess, java://type/java/lang/Cloneable, java://type/java/io/Serializable
+	protected java://type/java/lang/Object[] elementData                             // java://field/java/util/Vector;0
 	protected int elementCount                                                       // java://field/java/util/Vector;1
 	protected int capacityIncrement                                                  // java://field/java/util/Vector;2
 	private static final long serialVersionUID                                       // java://field/java/util/Vector;3
@@ -137,8 +137,8 @@ public java.util.Vector
 	public void  <init>(int , int )                                                  // java://method/java/util/Vector;0
 	public void  <init>(int )                                                        // java://method/java/util/Vector;1
 	public void  <init>()                                                            // java://method/java/util/Vector;2
-	public void  <init>(java.util.Collection )                                       // java://method/java/util/Vector;3
-	public void  copyInto(java.lang.Object[] )                                       // java://method/java/util/Vector;4
+	public void  <init>(java://type/java/util/Collection )                           // java://method/java/util/Vector;3
+	public void  copyInto(java://type/java/lang/Object[] )                           // java://method/java/util/Vector;4
 	public void  trimToSize()                                                        // java://method/java/util/Vector;5
 	public void  ensureCapacity(int )                                                // java://method/java/util/Vector;6
 	private void  ensureCapacityHelper(int )                                         // java://method/java/util/Vector;7
@@ -148,43 +148,43 @@ public java.util.Vector
 	public int  capacity()                                                           // java://method/java/util/Vector;11
 	public int  size()                                                               // java://method/java/util/Vector;12
 	public boolean  isEmpty()                                                        // java://method/java/util/Vector;13
-	public java.util.Enumeration  elements()                                         // java://method/java/util/Vector;14
-	public boolean  contains(java.lang.Object )                                      // java://method/java/util/Vector;15
-	public int  indexOf(java.lang.Object )                                           // java://method/java/util/Vector;16
-	public int  indexOf(java.lang.Object , int )                                     // java://method/java/util/Vector;17
-	public int  lastIndexOf(java.lang.Object )                                       // java://method/java/util/Vector;18
-	public int  lastIndexOf(java.lang.Object , int )                                 // java://method/java/util/Vector;19
-	public java.lang.Object  elementAt(int )                                         // java://method/java/util/Vector;20
-	public java.lang.Object  firstElement()                                          // java://method/java/util/Vector;21
-	public java.lang.Object  lastElement()                                           // java://method/java/util/Vector;22
-	public void  setElementAt(java.lang.Object , int )                               // java://method/java/util/Vector;23
+	public java://type/java/util/Enumeration  elements()                             // java://method/java/util/Vector;14
+	public boolean  contains(java://type/java/lang/Object )                          // java://method/java/util/Vector;15
+	public int  indexOf(java://type/java/lang/Object )                               // java://method/java/util/Vector;16
+	public int  indexOf(java://type/java/lang/Object , int )                         // java://method/java/util/Vector;17
+	public int  lastIndexOf(java://type/java/lang/Object )                           // java://method/java/util/Vector;18
+	public int  lastIndexOf(java://type/java/lang/Object , int )                     // java://method/java/util/Vector;19
+	public java://type/java/lang/Object  elementAt(int )                             // java://method/java/util/Vector;20
+	public java://type/java/lang/Object  firstElement()                              // java://method/java/util/Vector;21
+	public java://type/java/lang/Object  lastElement()                               // java://method/java/util/Vector;22
+	public void  setElementAt(java://type/java/lang/Object , int )                   // java://method/java/util/Vector;23
 	public void  removeElementAt(int )                                               // java://method/java/util/Vector;24
-	public void  insertElementAt(java.lang.Object , int )                            // java://method/java/util/Vector;25
-	public void  addElement(java.lang.Object )                                       // java://method/java/util/Vector;26
-	public boolean  removeElement(java.lang.Object )                                 // java://method/java/util/Vector;27
+	public void  insertElementAt(java://type/java/lang/Object , int )                // java://method/java/util/Vector;25
+	public void  addElement(java://type/java/lang/Object )                           // java://method/java/util/Vector;26
+	public boolean  removeElement(java://type/java/lang/Object )                     // java://method/java/util/Vector;27
 	public void  removeAllElements()                                                 // java://method/java/util/Vector;28
-	public java.lang.Object  clone()                                                 // java://method/java/util/Vector;29
-	public java.lang.Object[]  toArray()                                             // java://method/java/util/Vector;30
-	public java.lang.Object[]  toArray(java.lang.Object[] )                          // java://method/java/util/Vector;31
-	java.lang.Object  elementData(int )                                              // java://method/java/util/Vector;32
-	public java.lang.Object  get(int )                                               // java://method/java/util/Vector;33
-	public java.lang.Object  set(int , java.lang.Object )                            // java://method/java/util/Vector;34
-	public boolean  add(java.lang.Object )                                           // java://method/java/util/Vector;35
-	public boolean  remove(java.lang.Object )                                        // java://method/java/util/Vector;36
-	public void  add(int , java.lang.Object )                                        // java://method/java/util/Vector;37
-	public java.lang.Object  remove(int )                                            // java://method/java/util/Vector;38
+	public java://type/java/lang/Object  clone()                                     // java://method/java/util/Vector;29
+	public java://type/java/lang/Object[]  toArray()                                 // java://method/java/util/Vector;30
+	public java://type/java/lang/Object[]  toArray(java://type/java/lang/Object[] )  // java://method/java/util/Vector;31
+	java://type/java/lang/Object  elementData(int )                                  // java://method/java/util/Vector;32
+	public java://type/java/lang/Object  get(int )                                   // java://method/java/util/Vector;33
+	public java://type/java/lang/Object  set(int , java://type/java/lang/Object )    // java://method/java/util/Vector;34
+	public boolean  add(java://type/java/lang/Object )                               // java://method/java/util/Vector;35
+	public boolean  remove(java://type/java/lang/Object )                            // java://method/java/util/Vector;36
+	public void  add(int , java://type/java/lang/Object )                            // java://method/java/util/Vector;37
+	public java://type/java/lang/Object  remove(int )                                // java://method/java/util/Vector;38
 	public void  clear()                                                             // java://method/java/util/Vector;39
-	public boolean  containsAll(java.util.Collection )                               // java://method/java/util/Vector;40
-	public boolean  addAll(java.util.Collection )                                    // java://method/java/util/Vector;41
-	public boolean  removeAll(java.util.Collection )                                 // java://method/java/util/Vector;42
-	public boolean  retainAll(java.util.Collection )                                 // java://method/java/util/Vector;43
-	public boolean  addAll(int , java.util.Collection )                              // java://method/java/util/Vector;44
-	public boolean  equals(java.lang.Object )                                        // java://method/java/util/Vector;45
+	public boolean  containsAll(java://type/java/util/Collection )                   // java://method/java/util/Vector;40
+	public boolean  addAll(java://type/java/util/Collection )                        // java://method/java/util/Vector;41
+	public boolean  removeAll(java://type/java/util/Collection )                     // java://method/java/util/Vector;42
+	public boolean  retainAll(java://type/java/util/Collection )                     // java://method/java/util/Vector;43
+	public boolean  addAll(int , java://type/java/util/Collection )                  // java://method/java/util/Vector;44
+	public boolean  equals(java://type/java/lang/Object )                            // java://method/java/util/Vector;45
 	public int  hashCode()                                                           // java://method/java/util/Vector;46
-	public java.lang.String  toString()                                              // java://method/java/util/Vector;47
-	public java.util.List  subList(int , int )                                       // java://method/java/util/Vector;48
+	public java://type/java/lang/String  toString()                                  // java://method/java/util/Vector;47
+	public java://type/java/util/List  subList(int , int )                           // java://method/java/util/Vector;48
 	protected void  removeRange(int , int )                                          // java://method/java/util/Vector;49
-	private void  writeObject(java.io.ObjectOutputStream )                           // java://method/java/util/Vector;50
-	public java.util.ListIterator  listIterator(int )                                // java://method/java/util/Vector;51
-	public java.util.ListIterator  listIterator()                                    // java://method/java/util/Vector;52
-	public java.util.Iterator  iterator()                                            // java://method/java/util/Vector;53
+	private void  writeObject(java://type/java/io/ObjectOutputStream )               // java://method/java/util/Vector;50
+	public java://type/java/util/ListIterator  listIterator(int )                    // java://method/java/util/Vector;51
+	public java://type/java/util/ListIterator  listIterator()                        // java://method/java/util/Vector;52
+	public java://type/java/util/Iterator  iterator()                                // java://method/java/util/Vector;53

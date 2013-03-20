@@ -132,12 +132,12 @@ func TestFindType(t *testing.T) {
 		expectFind bool
 	}
 	var tests = []Test{
-		{"SevenZip.CommandLineParser.SwitchType", true},
-		{"SevenZip.Compression.LZ.OutWindow", true},
-		{"SevenZip.Compression.LZ.OutWindow.Something", false},
-		{"SevenZip.ISetDecoderProperties", true},
-		{"Key", true},
-		{"Key.Something", false},
+		{"net://type/SevenZip.CommandLineParser.SwitchType", true},
+		{"net://type/SevenZip.Compression.LZ.OutWindow", true},
+		{"net://type/SevenZip.Compression.LZ.OutWindow.Something", false},
+		{"net://type/SevenZip.ISetDecoderProperties", true},
+		{"net://type/Key", true},
+		{"net://type/Key.Something", false},
 	}
 	f, err := os.Open(findtype_test)
 	if err != nil {

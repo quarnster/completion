@@ -18,6 +18,15 @@ var lut = map[string]string{
 	"Z": "boolean",
 	"V": "void"}
 
+func ToContentFQN(str string) (ret content.FullyQualifiedName) {
+	ret.Relative = str
+	if i := strings.LastIndex(ret.Relative, "/"); i > 0 {
+		ret.Relative = ret.Relative[i+1:]
+	}
+	ret.Absolute = "java://type/" + str
+	return
+}
+
 func ToContentType(node *parser.Node) (ret content.Type) {
 	if node.Name == "ArrayType" {
 		ret.Flags |= content.FLAG_TYPE_ARRAY
@@ -31,8 +40,7 @@ func ToContentType(node *parser.Node) (ret content.Type) {
 		ret.Name.Relative = lut[node.Data()]
 		ret.Name.Absolute = ret.Name.Relative
 	case "Classname":
-		ret.Name.Absolute = strings.Replace(node.Data(), "/", ".", -1)
-		ret.Name.Relative = "TODO"
+		ret.Name = ToContentFQN(node.Data())
 	default:
 		return ToContentType(node.Children[0])
 	}

@@ -57,34 +57,34 @@ Methods
 		 Code ( LineNumberTable StackMapTable )
 	static <clinit> ()V
 		 Code ( LineNumberTable StackMapTable )
-public java.awt.Button
-	extends java.awt.Component
-	implements javax.accessibility.Accessible
-	java.lang.String label                                                           // java://field/java/awt/Button;0
-	java.lang.String actionCommand                                                   // java://field/java/awt/Button;1
-	java.awt.event.ActionListener actionListener                                     // java://field/java/awt/Button;2
-	private static final java.lang.String base                                       // java://field/java/awt/Button;3
+public java://type/java/awt/Button
+	extends java://type/java/awt/Component
+	implements java://type/javax/accessibility/Accessible
+	java://type/java/lang/String label                                               // java://field/java/awt/Button;0
+	java://type/java/lang/String actionCommand                                       // java://field/java/awt/Button;1
+	java://type/java/awt/event/ActionListener actionListener                         // java://field/java/awt/Button;2
+	private static final java://type/java/lang/String base                           // java://field/java/awt/Button;3
 	private static int nameCounter                                                   // java://field/java/awt/Button;4
 	private static final long serialVersionUID                                       // java://field/java/awt/Button;5
 	private int buttonSerializedDataVersion                                          // java://field/java/awt/Button;6
 	private static void  initIDs()                                                   // java://method/java/awt/Button;0
 	public void  <init>()                                                            // java://method/java/awt/Button;1
-	public void  <init>(java.lang.String )                                           // java://method/java/awt/Button;2
-	java.lang.String  constructComponentName()                                       // java://method/java/awt/Button;3
+	public void  <init>(java://type/java/lang/String )                               // java://method/java/awt/Button;2
+	java://type/java/lang/String  constructComponentName()                           // java://method/java/awt/Button;3
 	public void  addNotify()                                                         // java://method/java/awt/Button;4
-	public java.lang.String  getLabel()                                              // java://method/java/awt/Button;5
-	public void  setLabel(java.lang.String )                                         // java://method/java/awt/Button;6
-	public void  setActionCommand(java.lang.String )                                 // java://method/java/awt/Button;7
-	public java.lang.String  getActionCommand()                                      // java://method/java/awt/Button;8
-	public void  addActionListener(java.awt.event.ActionListener )                   // java://method/java/awt/Button;9
-	public void  removeActionListener(java.awt.event.ActionListener )                // java://method/java/awt/Button;10
-	public java.awt.event.ActionListener[]  getActionListeners()                     // java://method/java/awt/Button;11
-	public java.util.EventListener[]  getListeners(java.lang.Class )                 // java://method/java/awt/Button;12
-	boolean  eventEnabled(java.awt.AWTEvent )                                        // java://method/java/awt/Button;13
-	protected void  processEvent(java.awt.AWTEvent )                                 // java://method/java/awt/Button;14
-	protected void  processActionEvent(java.awt.event.ActionEvent )                  // java://method/java/awt/Button;15
-	protected java.lang.String  paramString()                                        // java://method/java/awt/Button;16
-	private void  writeObject(java.io.ObjectOutputStream )                           // java://method/java/awt/Button;17
-	private void  readObject(java.io.ObjectInputStream )                             // java://method/java/awt/Button;18
-	public javax.accessibility.AccessibleContext  getAccessibleContext()             // java://method/java/awt/Button;19
+	public java://type/java/lang/String  getLabel()                                  // java://method/java/awt/Button;5
+	public void  setLabel(java://type/java/lang/String )                             // java://method/java/awt/Button;6
+	public void  setActionCommand(java://type/java/lang/String )                     // java://method/java/awt/Button;7
+	public java://type/java/lang/String  getActionCommand()                          // java://method/java/awt/Button;8
+	public void  addActionListener(java://type/java/awt/event/ActionListener )       // java://method/java/awt/Button;9
+	public void  removeActionListener(java://type/java/awt/event/ActionListener )    // java://method/java/awt/Button;10
+	public java://type/java/awt/event/ActionListener[]  getActionListeners()         // java://method/java/awt/Button;11
+	public java://type/java/util/EventListener[]  getListeners(java://type/java/lang/Class ) // java://method/java/awt/Button;12
+	boolean  eventEnabled(java://type/java/awt/AWTEvent )                            // java://method/java/awt/Button;13
+	protected void  processEvent(java://type/java/awt/AWTEvent )                     // java://method/java/awt/Button;14
+	protected void  processActionEvent(java://type/java/awt/event/ActionEvent )      // java://method/java/awt/Button;15
+	protected java://type/java/lang/String  paramString()                            // java://method/java/awt/Button;16
+	private void  writeObject(java://type/java/io/ObjectOutputStream )               // java://method/java/awt/Button;17
+	private void  readObject(java://type/java/io/ObjectInputStream )                 // java://method/java/awt/Button;18
+	public java://type/javax/accessibility/AccessibleContext  getAccessibleContext() // java://method/java/awt/Button;19
 	static void  <clinit>()                                                          // java://method/java/awt/Button;20
