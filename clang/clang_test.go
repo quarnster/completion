@@ -20,7 +20,7 @@ func TestClang(t *testing.T) {
 	loc.Column = 1
 	loc.Line = 10
 	loc.File.Name = "testdata/hello.cpp"
-	t.Log(CompleteAt(loc))
+	t.Log(CompleteAt([]string{}, loc))
 }
 
 func TestParseResult(t *testing.T) {

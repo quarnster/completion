@@ -70,8 +70,10 @@ func parseresult(in string) (ret content.CompletionResult, err error) {
 	return
 }
 
-func CompleteAt(loc content.SourceLocation) (ret content.CompletionResult, err error) {
-	if out, err := RunClang("-fsyntax-only", "-Xclang", fmt.Sprintf("-code-completion-at=%s:%d:%d", loc.File.Name, loc.Line, loc.Column), loc.File.Name); err != nil {
+func CompleteAt(args []string, loc content.SourceLocation) (ret content.CompletionResult, err error) {
+	args = append([]string{"-fsyntax-only", "-Xclang", fmt.Sprintf("-code-completion-at=%s:%d:%d", loc.File.Name, loc.Line, loc.Column)}, args...)
+	args = append(args, loc.File.Name)
+	if out, err := RunClang(args...); err != nil {
 		return ret, err
 	} else {
 		return parseresult(string(out))
