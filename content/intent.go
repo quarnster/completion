@@ -60,7 +60,7 @@ func (it *Intent) Settings() *Settings {
 	} else if settings, ok := it.Data.Get("settings").(Settings); ok {
 		return &settings
 	}
-	return nil
+	return NewSettings()
 }
 
 func AddHandler(name string, h Handler) {

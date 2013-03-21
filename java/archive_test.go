@@ -9,10 +9,8 @@ func TestClasses(t *testing.T) {
 		c, err := NewCompositeArchive(p)
 
 		// yes, c not err as err can be filled out with errors opening individual classpaths
-		if c == nil {
+		if err != nil {
 			t.Fatal(err)
-		} else if err != nil {
-			t.Log(err)
 		}
 		defer c.Close()
 		classes, err := c.Classes()
@@ -33,10 +31,8 @@ func BenchmarkCompositeArchiveLoadClass(b *testing.B) {
 		classes := []Classname{"java.lang.String", "javax.swing.JLabel"}
 		c, err := NewCompositeArchive(p)
 		// yes, c not err as err can be filled out with errors opening individual classpaths
-		if c == nil {
+		if err != nil {
 			b.Fatal(err)
-		} else if err != nil {
-			b.Log(err)
 		}
 		defer c.Close()
 		b.StartTimer()

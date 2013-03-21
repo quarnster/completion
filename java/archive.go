@@ -2,6 +2,7 @@ package java
 
 import (
 	"archive/zip"
+	"code.google.com/p/log4go"
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -181,6 +182,7 @@ func NewCompositeArchive(paths []string) (ret *CompositeArchive, err error) {
 
 	for i := range paths {
 		if a, err := NewArchive(paths[i]); err != nil {
+			log4go.Warn(err)
 			if len(errorStr) > 0 {
 				errorStr += "\n"
 			}
@@ -190,11 +192,10 @@ func NewCompositeArchive(paths []string) (ret *CompositeArchive, err error) {
 		}
 	}
 
-	if len(errorStr) != 0 {
-		err = errors.New(errorStr)
-	}
 	if len(archives) > 0 {
 		ret = &CompositeArchive{archives}
+	} else if len(errorStr) != 0 {
+		err = errors.New(errorStr)
 	}
 	return ret, err
 }
