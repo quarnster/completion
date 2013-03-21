@@ -13,7 +13,7 @@ type (
 		CanHandle(it *Intent) bool
 		Handle(it *Intent) *Response
 	}
-	// TODO(@dskinner): Replace with IntentHandler?
+	// TODO(@dskinner): Replace Handler with IntentHandler or something else?
 	Handler func(io.Writer, Intent)
 
 	Intent struct {
@@ -43,13 +43,22 @@ func NewResponse() (ret Response) {
 	return
 }
 
+// Returns the Session object associated with this Intent or nil.
 func (it *Intent) Session() *Session {
+	// TODO(someone): Intent.Session not implemented yet
 	if sessionid, ok := it.Data.Get("sessionid").(int); ok {
 		_ = sessionid // TODO actually look up session and return it
 	}
 	return nil
 }
 
+// If a Session is associated with this Intent, then the Session's
+// Settings is cloned and the intent's Settings are merged into the
+// cloned Settings object. This to allow Intents to be "slim", i.e.
+// only contain the keys of the specific settings it wants to override.
+//
+// If there's no Session nor Intent Settings, the empty Settings object
+// is returned.
 func (it *Intent) Settings() *Settings {
 	if session := it.Session(); session != nil {
 		set := session.Settings.Clone()

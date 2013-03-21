@@ -57,7 +57,7 @@ func (c *CompletionHandler) Handle(it *content.Intent) *content.Response {
 
 func (c *CompletionHandler) CanHandle(it *content.Intent) bool {
 	// TODO
-	if it.Operation != "completion.complete.fqn" {
+	if it.Operation != content.CompleteFullyQualifiedName {
 		return false
 	}
 	fqn, ok := it.Data.Get("fqn").(content.FullyQualifiedName)

@@ -27,6 +27,7 @@ func init() {
 	}
 }
 
+// Register a type to make it possible to correctly deserialize it.
 func RegisterType(key string, t reflect.Type) error {
 	if registered_types == nil {
 		registered_types = make(map[string]reflect.Type)
