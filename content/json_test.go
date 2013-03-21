@@ -70,54 +70,6 @@ func TestJson(t *testing.T) {
 	}
 }
 
-type (
-	Intent struct {
-		Version   int64
-		Operation string
-		Data      Settings
-	}
-
-	Response struct {
-		Version int64    `json:"version"`
-		Data    Settings `json:"data"`
-	}
-
-	Session struct {
-		Settings Settings
-	}
-)
-
-func NewIntent(key string) (ret Intent) {
-	ret.Operation = key
-	ret.Data = *NewSettings()
-	return
-}
-
-func NewResponse() (ret Response) {
-	ret.Data = *NewSettings()
-	return
-}
-
-func (it *Intent) Session() *Session {
-	if sessionid, ok := it.Data.Get("sessionid").(int); ok {
-		_ = sessionid // TODO actually look up session and return it
-	}
-	return nil
-}
-
-func (it *Intent) Settings() *Settings {
-	if session := it.Session(); session != nil {
-		set := session.Settings.Clone()
-		if settings, ok := it.Data.Get("settings").(Settings); ok {
-			set.Merge(&settings)
-		}
-		return set
-	} else if settings, ok := it.Data.Get("settings").(Settings); ok {
-		return &settings
-	}
-	return nil
-}
-
 func TestJson2(t *testing.T) {
 	it := NewIntent("completion.complete.location")
 	it.Data.Set("location", SourceLocation{File{Name: "hello.cpp"}, 10, 2})
