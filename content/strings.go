@@ -2,6 +2,7 @@ package content
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -105,6 +106,7 @@ func (m Method) String() (ret string) {
 	if m.Flags&FLAG_CONST != 0 {
 		ret += " const"
 	}
+
 	ret = fmt.Sprintf("%-80s // %s", ret, m.Name.Absolute)
 
 	return
@@ -158,18 +160,33 @@ func (cr CompletionResult) String() (ret string) {
 	if len(cr.Types) > 0 {
 		b.WriteString("Types:\n")
 		for _, t := range cr.Types {
+			if d, err := json.Marshal(t); err == nil {
+				b.WriteString("\t// ")
+				b.Write(d)
+				b.WriteRune('\n')
+			}
 			b.WriteString(fmt.Sprintf("\t%s\n", t))
 		}
 	}
 	if len(cr.Fields) > 0 {
 		b.WriteString("Fields:\n")
 		for _, t := range cr.Fields {
+			if d, err := json.Marshal(t); err == nil {
+				b.WriteString("\t// ")
+				b.Write(d)
+				b.WriteRune('\n')
+			}
 			b.WriteString(fmt.Sprintf("\t%s\n", t))
 		}
 	}
 	if len(cr.Methods) > 0 {
 		b.WriteString("Methods:\n")
 		for _, t := range cr.Methods {
+			if d, err := json.Marshal(t); err == nil {
+				b.WriteString("\t// ")
+				b.Write(d)
+				b.WriteRune('\n')
+			}
 			b.WriteString(fmt.Sprintf("\t%s\n", t))
 		}
 	}
