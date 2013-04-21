@@ -4,11 +4,10 @@ import (
 	"encoding/binary"
 	"fmt"
 	"github.com/quarnster/completion/util/errors"
+	"github.com/quarnster/completion/util/expression"
 	"io"
 	"math"
 	"reflect"
-	"strconv"
-	"strings"
 	"unsafe"
 )
 
@@ -111,22 +110,23 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 				err  error
 			)
 			if fi := f2.Tag.Get("if"); fi != "" {
-				arr := strings.Split(fi, ",")
-				if f3 := v2.FieldByName(arr[0]); !f3.IsValid() {
-					return errors.New(fmt.Sprintf("No such field: %s in %s", arr[0], v2.Type().Name()))
-				} else if test, err := strconv.ParseUint(arr[1], 0, 64); err != nil {
+				var e expression.EXPRESSION
+				if !e.Parse(fi) {
+					return e.Error()
+				} else if ev, err := expression.Eval(&v2, e.RootNode()); err != nil {
 					return err
-				} else {
-					if f3.Uint() != test {
-						continue
-					}
+				} else if ev == 0 {
+					continue
 				}
 			}
 			if l := f2.Tag.Get("length"); l != "" {
-				if v3 := v2.FieldByName(l); v3.IsValid() {
-					size = int(v3.Uint())
-				} else if size, err = strconv.Atoi(l); err != nil {
+				var e expression.EXPRESSION
+				if !e.Parse(l) {
+					return e.Error()
+				} else if ev, err := expression.Eval(&v2, e.RootNode()); err != nil {
 					return err
+				} else {
+					size = ev
 				}
 			}
 
@@ -140,8 +140,13 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 				} else {
 					var max = math.MaxInt32
 					if m := f2.Tag.Get("max"); m != "" {
-						if max, err = strconv.Atoi(m); err != nil {
+						var e expression.EXPRESSION
+						if !e.Parse(m) {
+							return e.Error()
+						} else if ev, err := expression.Eval(&v2, e.RootNode()); err != nil {
 							return err
+						} else {
+							max = ev
 						}
 					}
 
@@ -191,9 +196,24 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 			}
 
 			if al := f2.Tag.Get("align"); al != "" {
-				if a, err := strconv.Atoi(al); err != nil {
+				var (
+					e     expression.EXPRESSION
+					align int
+					seek  int
+				)
+				if !e.Parse(al) {
+					return e.Error()
+				} else if ev, err := expression.Eval(&v2, e.RootNode()); err != nil {
 					return err
-				} else if seek := ((size + (a - 1)) &^ (a - 1)) - size; seek > 0 {
+				} else {
+					align = ev
+				}
+				if align < size {
+					seek = ((size + (align - 1)) &^ (align - 1)) - size
+				} else if align > size {
+					seek = align - size
+				}
+				if seek > 0 {
 					if _, err := r.Seek(int64(seek), 1); err != nil {
 						return err
 					}

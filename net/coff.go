@@ -37,9 +37,9 @@ type (
 		SizeOfUninitializedData     uint32
 		AddressOfEntryPoint         uint32
 		BaseOfCode                  uint32
-		BaseOfData                  uint32 `if:"Magic,0x10b"`
-		ImageBase                   uint32 `if:"Magic,0x10b"`
-		ImageBase64                 uint64 `if:"Magic,0x20b"`
+		BaseOfData                  uint32 `if:"Magic == 0x10b"`
+		ImageBase                   uint32 `if:"Magic == 0x10b"`
+		ImageBase64                 uint64 `if:"Magic == 0x20b"`
 		SectionAlignment            uint32
 		FileAlignment               uint32
 		MajorOperatingSystemVersion uint16
@@ -54,14 +54,14 @@ type (
 		CheckSum                    uint32
 		Subsystem                   uint16
 		DllCharacteristics          uint16
-		SizeOfStackReserve          uint32 `if:"Magic,0x10b"`
-		SizeOfStackCommit           uint32 `if:"Magic,0x10b"`
-		SizeOfHeapReserve           uint32 `if:"Magic,0x10b"`
-		SizeOfHeapCommit            uint32 `if:"Magic,0x10b"`
-		SizeOfStackReserve64        uint64 `if:"Magic,0x20b"`
-		SizeOfStackCommit64         uint64 `if:"Magic,0x20b"`
-		SizeOfHeapReserve64         uint64 `if:"Magic,0x20b"`
-		SizeOfHeapCommit64          uint64 `if:"Magic,0x20b"`
+		SizeOfStackReserve          uint32 `if:"Magic == 0x10b"`
+		SizeOfStackCommit           uint32 `if:"Magic == 0x10b"`
+		SizeOfHeapReserve           uint32 `if:"Magic == 0x10b"`
+		SizeOfHeapCommit            uint32 `if:"Magic == 0x10b"`
+		SizeOfStackReserve64        uint64 `if:"Magic == 0x20b"`
+		SizeOfStackCommit64         uint64 `if:"Magic == 0x20b"`
+		SizeOfHeapReserve64         uint64 `if:"Magic == 0x20b"`
+		SizeOfHeapCommit64          uint64 `if:"Magic == 0x20b"`
 		LoaderFlags                 uint32
 		NumberOfRvaAndSizes         uint32
 		RVAS                        []image_data_directory `length:"NumberOfRvaAndSizes"`

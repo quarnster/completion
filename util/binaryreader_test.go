@@ -269,9 +269,9 @@ func TestBinaryReaderIf(t *testing.T) {
 	}
 	type Test struct {
 		Magic uint32
-		A     A `if:"Magic,0x1"`
+		A     A `if:"Magic == 0x1"`
 		B     uint8
-		C     C `if:"Magic,0x2"`
+		C     C `if:"Magic == 0x2"`
 		D     uint8
 	}
 

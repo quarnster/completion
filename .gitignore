@@ -3,3 +3,4 @@ build/*
 java/descriptors/descriptors.go
 java/signatures/signatures.go
 clang/parser/parser.go
+util/expression/expression.go

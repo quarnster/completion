@@ -1,0 +1,20 @@
+Expression  <- (Op / Grouping) EndOfFile
+Op          <- ShiftRight / ShiftLeft / AndNot / Mask / Add / Sub / Mul / BooleanOp
+BooleanOp   <- Eq / Lt / Gt / Le / Ge
+ShiftRight  <- Grouping ">>" Grouping
+ShiftLeft   <- Grouping "<<" Grouping
+Mask        <- Grouping '&' Grouping
+Add         <- Grouping '+' Grouping
+Sub         <- Grouping '-' Grouping
+Mul         <- Grouping '*' Grouping
+AndNot      <- Grouping "&^" Grouping
+Eq          <- Grouping "==" Grouping
+Lt          <- Grouping '<' Grouping
+Le          <- Grouping "<=" Grouping
+Gt          <- Grouping '>' Grouping
+Ge          <- Grouping ">=" Grouping
+Grouping    <- Spacing? ('(' Op ')' / Constant / Identifier) Spacing?
+Identifier  <- [A-Z] [_A-Za-z0-9]*
+Constant    <- ("0x" [a-fA-F0-9]+) / [0-9]+
+Spacing     <- [ \t\n\r]+
+EndOfFile   <- !.
