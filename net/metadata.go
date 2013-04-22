@@ -113,11 +113,9 @@ type (
 		MajorVersion  uint16
 		MinorVersion  uint16
 		Reserved      uint32
-		Length        uint32
-		Version       string `length:"Length" align:"4"`
+		Version       string `length:"uint32" align:"4"`
 		Flags         uint16
-		StreamCount   uint16
-		StreamHeaders []stream_header `length:"StreamCount"`
+		StreamHeaders []stream_header `length:"uint16"`
 	}
 
 	// ECMA-335 II.24.2.2

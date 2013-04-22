@@ -30,13 +30,11 @@ type (
 		Access_flags     AccessFlags
 		Name_index       u2
 		Descriptor_index u2
-		Attributes_count u2
-		Attributes       []attribute_info `length:"Attributes_count"`
+		Attributes       []attribute_info `length:"uint16"`
 	}
 	attribute_info struct {
 		Attribute_name_index u2
-		Attribute_length     u4
-		Info                 []byte `length:"Attribute_length"`
+		Info                 []byte `length:"uint32"`
 	}
 
 	ConstantPool struct {
@@ -44,21 +42,17 @@ type (
 	}
 
 	Class struct {
-		Magic            u4
-		Minor_version    u2
-		Major_version    u2
-		Constant_pool    ConstantPool
-		Access_flags     AccessFlags
-		This_class       u2
-		Super_class      u2
-		Interfaces_count u2
-		Interfaces       []u2 `length:"Interfaces_count"`
-		Field_count      u2
-		RawFields        []member_info `length:"Field_count"`
-		Method_count     u2
-		RawMethods       []member_info `length:"Method_count"`
-		Attribute_count  u2
-		Attributes       []attribute_info `length:"Attribute_count"`
+		Magic         u4
+		Minor_version u2
+		Major_version u2
+		Constant_pool ConstantPool
+		Access_flags  AccessFlags
+		This_class    u2
+		Super_class   u2
+		Interfaces    []u2             `length:"uint16"`
+		RawFields     []member_info    `length:"uint16"`
+		RawMethods    []member_info    `length:"uint16"`
+		Attributes    []attribute_info `length:"uint16"`
 	}
 
 	// http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.7.3
@@ -69,14 +63,11 @@ type (
 		Catch_type u2
 	}
 	Code_attribute struct {
-		Max_stack              u2
-		Max_locals             u2
-		Code_length            u4
-		Code                   []u1 `length:"Code_length"`
-		Exception_table_length u2
-		Exception_table        []exception_table `length:"Exception_table_length"`
-		Attributes_count       u2
-		Attributes             []attribute_info `length:"Attributes_count"`
+		Max_stack       u2
+		Max_locals      u2
+		Code            []u1              `length:"uint32"`
+		Exception_table []exception_table `length:"uint16"`
+		Attributes      []attribute_info  `length:"uint16"`
 	}
 )
 

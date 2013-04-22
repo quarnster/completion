@@ -63,8 +63,7 @@ type (
 		SizeOfHeapReserve64         uint64 `if:"Magic == 0x20b"`
 		SizeOfHeapCommit64          uint64 `if:"Magic == 0x20b"`
 		LoaderFlags                 uint32
-		NumberOfRvaAndSizes         uint32
-		RVAS                        []image_data_directory `length:"NumberOfRvaAndSizes"`
+		RVAS                        []image_data_directory `length:"uint32"`
 	}
 
 	image_data_directory struct {
