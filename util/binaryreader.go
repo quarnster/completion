@@ -120,13 +120,40 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 				}
 			}
 			if l := f2.Tag.Get("length"); l != "" {
-				var e expression.EXPRESSION
-				if !e.Parse(l) {
-					return e.Error()
-				} else if ev, err := expression.Eval(&v2, e.RootNode()); err != nil {
-					return err
-				} else {
-					size = ev
+				switch l {
+				case "uint8":
+					if s, err := r.Uint8(); err != nil {
+						return err
+					} else {
+						size = int(s)
+					}
+				case "uint16":
+					if s, err := r.Uint16(); err != nil {
+						return err
+					} else {
+						size = int(s)
+					}
+				case "uint32":
+					if s, err := r.Uint32(); err != nil {
+						return err
+					} else {
+						size = int(s)
+					}
+				case "uin64":
+					if s, err := r.Uint64(); err != nil {
+						return err
+					} else {
+						size = int(s)
+					}
+				default:
+					var e expression.EXPRESSION
+					if !e.Parse(l) {
+						return e.Error()
+					} else if ev, err := expression.Eval(&v2, e.RootNode()); err != nil {
+						return err
+					} else {
+						size = ev
+					}
 				}
 			}
 
@@ -136,6 +163,12 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 				if size >= 0 {
 					if data, err = r.Read(size); err != nil {
 						return err
+					}
+					for i, v := range data {
+						if v == '\u0000' {
+							data = data[:i]
+							break
+						}
 					}
 				} else {
 					var max = math.MaxInt32
@@ -164,7 +197,7 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 				f.SetString(string(data))
 			case reflect.Slice:
 				if size == -1 {
-					return errors.New("SliceHeader require a known length")
+					return fmt.Errorf("SliceHeader require a known length, %+v", v)
 				}
 				if f.Type().Elem().Kind() == reflect.Int8 {
 					if b, err := r.Read(size); err != nil {
@@ -189,7 +222,7 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 				}
 			default:
 				if err := r.ReadInterface(f.Addr().Interface()); err != nil {
-					return err
+					return fmt.Errorf("%+v: %s", v, err)
 				} else {
 					size = int(f.Type().Size())
 				}
