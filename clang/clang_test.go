@@ -16,11 +16,20 @@ func TestClang(t *testing.T) {
 	if _, err := RunClang("-v"); err != nil {
 		t.Skipf("Couldn't launch clang: %s", err)
 	}
-	loc := content.SourceLocation{}
-	loc.Column = 1
-	loc.Line = 10
-	loc.File.Name = "testdata/hello.cpp"
-	t.Log(CompleteAt([]string{}, loc))
+	var (
+		a content.CompleteAtArgs
+		b content.CompletionResult
+		c Clang
+	)
+
+	a.Location.Column = 1
+	a.Location.Line = 4
+	a.Location.File.Name = "testdata/hello.cpp"
+	if err := c.CompleteAt(&a, &b); err != nil {
+		t.Error(err)
+	} else {
+		t.Log(b)
+	}
 }
 
 func TestParseResult(t *testing.T) {

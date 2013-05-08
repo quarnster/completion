@@ -44,7 +44,7 @@ Currently, JSON-RPC 2.0(pre) and JSON-RPC 1.0 are implemented
         close ('127.0.0.1', 31415)
 
     Client with JsonRPC2.0 and an abstract Unix Domain Socket::
-    
+
         >>> proxy = ServerProxy( JsonRpc20(), TransportUnixSocket(addr="\\x00.rpcsocket") )
         >>> proxy.hi( message="hello" )         #named parameters
         u'hi there'
@@ -56,7 +56,7 @@ Currently, JSON-RPC 2.0(pre) and JSON-RPC 1.0 are implemented
         u'hello world'
 
     Server with JsonRPC2.0 and abstract Unix Domain Socket with a logfile::
-        
+
         >>> server = Server( JsonRpc20(), TransportUnixSocket(addr="\\x00.rpcsocket", logfunc=log_file("mylog.txt")) )
         >>> def echo( s ):
         ...   return s
@@ -168,7 +168,7 @@ ERROR_MESSAGE = {
     PERMISSION_DENIED   : "Permission denied.",
     INVALID_PARAM_VALUES: "Invalid parameter values."
     }
- 
+
 #----------------------
 # exceptions
 
@@ -183,7 +183,7 @@ class RPCTimeoutError(RPCTransportError):
 
 class RPCFault(RPCError):
     """RPC error/fault package received.
-    
+
     This exception can also be used as a class, to generate a
     RPC-error/fault message.
 
@@ -254,8 +254,11 @@ class RPCInvalidParamValues(RPCFault):
 try:
     import simplejson
 except ImportError, err:
-    print "FATAL: json-module 'simplejson' is missing (%s)" % (err)
-    sys.exit(1)
+    try:
+        import json as simplejson
+    except ImportError, err:
+        print "FATAL: json-module 'simplejson' is missing (%s)" % (err)
+        sys.exit(1)
 
 #----------------------
 #
@@ -304,7 +307,7 @@ class JsonRpc10:
             - id:     if id=None, this results in a Notification
         :Returns:   | {"method": "...", "params": ..., "id": ...}
                     | "method", "params" and "id" are always in this order.
-        :Raises:    TypeError if method/params is of wrong type or 
+        :Raises:    TypeError if method/params is of wrong type or
                     not JSON-serializable
         """
         if not isinstance(method, (str, unicode)):
@@ -346,7 +349,7 @@ class JsonRpc10:
 
         Since JSON-RPC 1.0 does not define an error-object, this uses the
         JSON-RPC 2.0 error-object.
-      
+
         :Parameters:
             - error: a RPCFault instance
         :Returns:   | {"result": null, "error": {"code": error_code, "message": error_message, "data": error_data}, "id": ...}
@@ -481,7 +484,7 @@ class JsonRpc20:
         :Returns:   | {"jsonrpc": "2.0", "method": "...", "params": ..., "id": ...}
                     | "jsonrpc", "method", "params" and "id" are always in this order.
                     | "params" is omitted if empty
-        :Raises:    TypeError if method/params is of wrong type or 
+        :Raises:    TypeError if method/params is of wrong type or
                     not JSON-serializable
         """
         if not isinstance(method, (str, unicode)):
@@ -528,7 +531,7 @@ class JsonRpc20:
 
     def dumps_error( self, error, id=None ):
         """serialize a JSON-RPC-Response-error
-      
+
         :Parameters:
             - error: a RPCFault instance
         :Returns:   | {"jsonrpc": "2.0", "error": {"code": error_code, "message": error_message, "data": error_data}, "id": ...}
@@ -676,7 +679,7 @@ def log_filedate( filename ):
 
 class Transport:
     """generic Transport-interface.
-    
+
     This class, and especially its methods and docstrings,
     define the Transport-Interface.
     """
@@ -696,7 +699,7 @@ class Transport:
         return self.recv()
     def serve( self, handler, n=None ):
         """serve (forever or for n communicaions).
-        
+
         - receive data
         - call result = handler(data)
         - send back result if not None
@@ -737,7 +740,7 @@ class TransportSTDINOUT(Transport):
 import socket, select
 class TransportSocket(Transport):
     """Transport via socket.
-   
+
     :SeeAlso:   python-module socket
     :TODO:
         - documentation
@@ -772,7 +775,7 @@ class TransportSocket(Transport):
             self.s = None
     def __repr__(self):
         return "<TransportSocket, %s>" % repr(self.addr)
-    
+
     def send( self, string ):
         if self.s is None:
             self.connect()
@@ -799,7 +802,7 @@ class TransportSocket(Transport):
             self.close()
     def serve(self, handler, n=None):
         """open socket, wait for incoming connections and handle them.
-        
+
         :Parameters:
             - n: serve n requests, None=forever
         """
@@ -829,7 +832,7 @@ class TransportSocket(Transport):
 
 
 if hasattr(socket, 'AF_UNIX'):
-    
+
     class TransportUnixSocket(TransportSocket):
         """Transport via Unix Domain Socket.
         """
@@ -941,7 +944,7 @@ class _method:
 class Server:
     """RPC-server.
 
-    It works with different data/serializers and 
+    It works with different data/serializers and
     with different transports.
 
     :Example:
@@ -982,7 +985,7 @@ class Server:
 
     def register_instance(self, myinst, name=None):
         """Add all functions of a class-instance to the RPC-services.
-        
+
         All entries of the instance which do not begin with '_' are added.
 
         :Parameters:
@@ -1002,7 +1005,7 @@ class Server:
                     self.register_function( getattr(myinst, e), name="%s.%s" % (name, e) )
     def register_function(self, function, name=None):
         """Add a function to the RPC-services.
-        
+
         :Parameters:
             - function: function to add
             - name:     RPC-name for the function. If omitted/None, the original
@@ -1012,7 +1015,7 @@ class Server:
             self.funcs[function.__name__] = function
         else:
             self.funcs[name] = function
-    
+
     def handle(self, rpcstr):
         """Handle a RPC-Request.
 
@@ -1066,7 +1069,7 @@ class Server:
 
     def serve(self, n=None):
         """serve (forever or for n communicaions).
-        
+
         :See: Transport
         """
         self.__transport.serve( self.handle, n )

@@ -11,7 +11,7 @@ import (
 	"runtime"
 )
 
-var ignore = regexp.MustCompile(`\.git|build|testdata`)
+var ignore = regexp.MustCompile(`\.git|build|testdata|3rdparty`)
 var verbose bool
 
 func adddirs(pkg, path string, dirs []string) []string {
@@ -103,7 +103,6 @@ func main() {
 	if verbose {
 		tests = append(tests, "-v")
 	}
-	tests = append(tests, "github.com/quarnster/completion")
 	tests = adddirs("github.com/quarnster/completion", "..", tests)
 	c = exec.Command("go", tests...)
 	r, err := c.StdoutPipe()

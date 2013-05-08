@@ -1,6 +1,7 @@
 package clang
 
 import (
+	"code.google.com/p/log4go"
 	"fmt"
 	cp "github.com/quarnster/completion/clang/parser"
 	"github.com/quarnster/completion/content"
@@ -10,7 +11,7 @@ import (
 
 func RunClang(args ...string) ([]byte, error) {
 	cmd := exec.Command("clang", args...)
-	fmt.Println("cmd:", cmd.Args)
+	log4go.Trace("Running clang command: %v", cmd)
 	return cmd.CombinedOutput()
 }
 
@@ -70,12 +71,20 @@ func parseresult(in string) (ret content.CompletionResult, err error) {
 	return
 }
 
-func CompleteAt(args []string, loc content.SourceLocation) (ret content.CompletionResult, err error) {
-	args = append([]string{"-fsyntax-only", "-Xclang", fmt.Sprintf("-code-completion-at=%s:%d:%d", loc.File.Name, loc.Line, loc.Column)}, args...)
-	args = append(args, loc.File.Name)
+type Clang struct {
+}
+
+func (c *Clang) CompleteAt(a *content.CompleteAtArgs, ret *content.CompletionResult) error {
+	args, _ := a.Settings().Get("compiler_flags").([]string)
+
+	args = append([]string{"-fsyntax-only", "-Xclang", fmt.Sprintf("-code-completion-at=%s:%d:%d", a.Location.File.Name, a.Location.Line, a.Location.Column)}, args...)
+	args = append(args, a.Location.File.Name)
 	if out, err := RunClang(args...); err != nil {
-		return ret, err
+		return err
+	} else if r, err := parseresult(string(out)); err != nil {
+		return err
 	} else {
-		return parseresult(string(out))
+		*ret = r
+		return nil
 	}
 }

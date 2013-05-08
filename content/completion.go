@@ -95,4 +95,12 @@ type (
 		Extends        []Type             `protocol:"optional" json:",omitempty"`
 		Implements     []Type             `protocol:"optional" json:",omitempty"`
 	}
+
+	Complete interface {
+		Complete(*CompleteArgs, *CompletionResult) error
+	}
+
+	CompleteAt interface {
+		CompleteAt(*CompleteAtArgs, *CompletionResult) error
+	}
 )
