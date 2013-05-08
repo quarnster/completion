@@ -20,10 +20,16 @@ class Ev(sublime_plugin.EventListener):
                 },
                 "Column": col+1,
                 "Line": row+1
+            },
+            "SessionOverrides": {
+                # TODO: what would be a good way to handle this? Query the "driver" for which options are configurable?
+                # TODO: Sessions should be used when possible to avoid sending the same configuration all the time.
+                "compiler_flags": view.settings().get("sublimeclang_options", []),
             }
         }
         if view.is_dirty():
             args["Location"]["File"]["Contents"] = view.substr(sublime.Region(0, view.size()))
+
         res = proxy.Clang.CompleteAt(args)
 
         completions = []
