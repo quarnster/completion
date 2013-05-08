@@ -418,8 +418,8 @@ class JsonRpc10:
 
         #error
         if data["error"] is not None:
-            if data["result"] is not None:
-                raise RPCInvalidRPC("""Invalid Response, one of "result" or "error" must be null.""")
+            # if data["result"] is not None:
+            #     raise RPCInvalidRPC("""Invalid Response, one of "result" or "error" must be null.""")
             #v2.0 error-format
             if( isinstance(data["error"], dict)  and  "code" in data["error"]  and  "message" in data["error"]  and
                 (len(data["error"])==2 or ("data" in data["error"] and len(data["error"])==3)) ):
