@@ -32,6 +32,54 @@ func TestClang(t *testing.T) {
 	}
 }
 
+func TestClangUnsaved(t *testing.T) {
+	var (
+		a        content.CompleteAtArgs
+		b        content.CompletionResult
+		c        Clang
+		expected string
+	)
+	a.Location.File.Name = "test.cpp"
+	a.Location.File.Contents = `
+class Test {
+public:
+	int A;
+	int B;
+	int C;
+};
+
+void main() {
+	Test t;
+	t.
+}
+
+`
+	a.Location.Line = 11
+	a.Location.Column = 4
+	a.SessionOverrides.Set("compiler_flags", []string{"-x", "c++"})
+	if err := c.CompleteAt(&a, &b); err != nil {
+		t.Error(err)
+	}
+	res := fmt.Sprintf("%s", b)
+	fn := "./testdata/unsaved.cpp.res"
+	if data, err := ioutil.ReadFile(fn); err != nil {
+		t.Logf("Error reading test data: %s. Testdata will be created", err)
+	} else {
+		expected = string(data)
+	}
+	if len(expected) <= 1 {
+		// Just if we want to add new tests, this will spit out the newly added
+		// test data
+		t.Logf("Creating new test data: %s", fn)
+		if err := ioutil.WriteFile(fn, []byte(res), 0644); err != nil {
+			t.Errorf("Couldn't write test data to %s: %s", fn, err)
+		}
+	} else if d := util.Diff(expected, res); len(d) != 0 {
+		t.Error(d)
+	}
+
+}
+
 func TestParseResult(t *testing.T) {
 	var tests = make(map[string][]string)
 	if dir, err := os.Open("./testdata"); err != nil {

@@ -13,6 +13,9 @@ func (s *Settings) Get(key string) interface{} {
 }
 
 func (s *Settings) Set(key string, val interface{}) {
+	if s.data == nil {
+		s.data = make(map[string]interface{})
+	}
 	s.data[key] = val
 }
 

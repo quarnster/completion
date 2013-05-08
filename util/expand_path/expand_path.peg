@@ -1,0 +1,9 @@
+File            <-      (NonOperation? Operation)* NonOperation?
+NonOperation    <-      (!Operation .)+
+RecNonOp        <-      (!Operation !'}' .)+
+RecOp           <-      (Operation RecNonOp?)+
+Operation       <-      "${" (Env / Home / Folder) '}'
+Env             <-      "env:" (RecOp / String)
+Folder          <-      "folder:" (RecOp / String)
+Home            <-      "home"
+String          <-      (!'}' .)+

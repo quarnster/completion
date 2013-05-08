@@ -99,6 +99,7 @@ func main() {
 	buildPeg("../java/descriptors/descriptors.peg", "Entry,ComponentType,FieldType,ObjectType")
 	buildPeg("../clang/parser/parser.peg", "Spacing,Pattern,Completion,Completions,ReturnType,Arguments,Argument,UnhandledStuff,KeyedStuff,Type,TemplateName,Function")
 	buildPeg("../util/expression/expression.peg", "Spacing,Primary,Op,Expression,Grouping,BooleanOp")
+	buildPeg("../util/expand_path/expand_path.peg", "Operation,File")
 	tests := []string{"test"}
 	if verbose {
 		tests = append(tests, "-v")

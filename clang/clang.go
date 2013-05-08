@@ -5,10 +5,12 @@ import (
 	"fmt"
 	cp "github.com/quarnster/completion/clang/parser"
 	"github.com/quarnster/completion/content"
+	"github.com/quarnster/completion/util/expand_path"
 	"github.com/quarnster/parser"
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path/filepath"
 )
 
 func RunClang(args ...string) ([]byte, error) {
@@ -77,16 +79,24 @@ type Clang struct {
 }
 
 func (c *Clang) CompleteAt(a *content.CompleteAtArgs, ret *content.CompletionResult) error {
-	args, _ := a.Settings().Get("compiler_flags").([]string)
+	origargs, _ := a.Settings().Get("compiler_flags").([]string)
+	args := make([]string, len(origargs))
+	for i := range origargs {
+		args[i] = expand_path.ExpandPath(origargs[i])
+	}
 	fn := a.Location.File.Name
 
-	if a.Location.File.Contents != "" {
+	if cnt := a.Location.File.Contents; cnt != "" {
 		if f, err := ioutil.TempFile("", "completion_clang"); err != nil {
 			return err
 		} else {
-			defer os.Remove(f.Name())
 			fn = f.Name()
+			defer os.Remove(fn)
+			if err := ioutil.WriteFile(fn, []byte(cnt), 0644); err != nil {
+				return err
+			}
 		}
+		args = append(args, "-I"+filepath.Dir(a.Location.File.Name))
 	}
 
 	args = append([]string{"-fsyntax-only", "-Xclang", fmt.Sprintf("-code-completion-at=%s:%d:%d", fn, a.Location.Line, a.Location.Column)}, args...)

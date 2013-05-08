@@ -22,6 +22,8 @@ func main() {
 	flag.StringVar(&port, "port", port, "TCP port the server will listen on")
 	flag.Parse()
 
+	log4go.Global.AddFilter("stdout", log4go.FINE, log4go.NewConsoleLogWriter())
+
 	server := rpc.NewServer()
 
 	for _, i := range ifs {
