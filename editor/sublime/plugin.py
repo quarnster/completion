@@ -2,17 +2,30 @@ import sys
 import jsonrpc
 import sublime
 import sublime_plugin
+def log(a):
+    print(a)
 
-proxy = jsonrpc.ServerProxy( jsonrpc.JsonRpc10(), jsonrpc.TransportTcpIp(addr=("127.0.0.1",12345)) )
+proxy = jsonrpc.ServerProxy( jsonrpc.JsonRpc10(), jsonrpc.TransportTcpIp(addr=("127.0.0.1",12345), logfunc=log))
 
 class Ev(sublime_plugin.EventListener):
     def on_query_completions(self, view, prefix, locations):
         row, col = view.rowcol(locations[0])
 
         # TODO: detect which "driver" should be used
-        # TODO: save the file to a temporary location if it's unsaved
         # TODO: Make the request async
-        res = proxy.Clang.CompleteAt({"Location": {"File": {"Name": view.file_name()}, "Column": col+1, "Line": row+1}})
+        args = {
+            "Location": {
+                "File": {
+                    "Name": view.file_name(),
+                },
+                "Column": col+1,
+                "Line": row+1
+            }
+        }
+        if view.is_dirty():
+            args["Location"]["File"]["Contents"] = view.substr(sublime.Region(0, view.size()))
+        res = proxy.Clang.CompleteAt(args)
+
         completions = []
         if "Methods" in res:
             for m in res["Methods"]:
@@ -33,7 +46,16 @@ class Ev(sublime_plugin.EventListener):
                 ins += ")"
                 res += ")\t" + m["Returns"][0]["Type"]["Name"]["Relative"]
                 completions.append((res, ins))
-        # TODO: "Fields"
-        # TODO: "Types"
+        if "Fields" in res:
+            for f in res["Fields"]:
+                tn = f["Type"]["Name"]["Relative"]
+                vn = f["Name"]["Relative"] if "Relative" in f["Name"] else ""
+                ins = "%s" % (vn)
+                res = "%s\t%s" % (vn, tn)
+                completions.append((res, ins))
+        if "Types" in res:
+            # TODO: "Types"
+            print(res["Types"])
+
         return completions
 
