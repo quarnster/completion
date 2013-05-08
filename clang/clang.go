@@ -6,13 +6,15 @@ import (
 	cp "github.com/quarnster/completion/clang/parser"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/parser"
+	"io/ioutil"
+	"os"
 	"os/exec"
 )
 
 func RunClang(args ...string) ([]byte, error) {
 	cmd := exec.Command("clang", args...)
-	log4go.Trace("Running clang command: %v", cmd)
-	return cmd.CombinedOutput()
+	log4go.Debug("Running clang command: %v", cmd)
+	return cmd.Output()
 }
 
 func data(n *parser.Node) string {
@@ -76,10 +78,20 @@ type Clang struct {
 
 func (c *Clang) CompleteAt(a *content.CompleteAtArgs, ret *content.CompletionResult) error {
 	args, _ := a.Settings().Get("compiler_flags").([]string)
+	fn := a.Location.File.Name
 
-	args = append([]string{"-fsyntax-only", "-Xclang", fmt.Sprintf("-code-completion-at=%s:%d:%d", a.Location.File.Name, a.Location.Line, a.Location.Column)}, args...)
-	args = append(args, a.Location.File.Name)
-	if out, err := RunClang(args...); err != nil {
+	if a.Location.File.Contents != "" {
+		if f, err := ioutil.TempFile("", "completion_clang"); err != nil {
+			return err
+		} else {
+			defer os.Remove(f.Name())
+			fn = f.Name()
+		}
+	}
+
+	args = append([]string{"-fsyntax-only", "-Xclang", fmt.Sprintf("-code-completion-at=%s:%d:%d", fn, a.Location.Line, a.Location.Column)}, args...)
+	args = append(args, fn)
+	if out, err := RunClang(args...); len(out) == 0 {
 		return err
 	} else if r, err := parseresult(string(out)); err != nil {
 		return err

@@ -11,7 +11,7 @@ import (
 	"runtime"
 )
 
-var ignore = regexp.MustCompile(`\.git|build|testdata|3rdparty`)
+var ignore = regexp.MustCompile(`\.git|build|testdata|3rdparty|editor`)
 var verbose bool
 
 func adddirs(pkg, path string, dirs []string) []string {
