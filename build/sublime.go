@@ -47,6 +47,9 @@ func main() {
 		case "darwin":
 			st_paths = append(st_paths, filepath.Join(u.HomeDir, "Library", "Application Support", "Sublime Text 2", "Packages"))
 			st_paths = append(st_paths, filepath.Join(u.HomeDir, "Library", "Application Support", "Sublime Text 3", "Packages"))
+		case "linux":
+			st_paths = append(st_paths, filepath.Join(u.HomeDir, ".config", "sublime-text-2", "Packages"))
+			st_paths = append(st_paths, filepath.Join(u.HomeDir, ".config", "sublime-text-3", "Packages"))
 		default:
 			log.Fatalf("Don't know where to install Sublime Text files on OS %s", runtime.GOOS)
 		}
