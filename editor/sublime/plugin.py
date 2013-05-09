@@ -1,5 +1,8 @@
 import sys
-import jsonrpc
+try:
+    import completion.jsonrpc as jsonrpc
+except:
+    import jsonrpc
 import sublime
 import sublime_plugin
 def log(a):

@@ -58,8 +58,10 @@ func main() {
 		if fi, err := os.Stat(st_paths[i]); err != nil || !fi.IsDir() {
 			continue
 		} else {
+			p := filepath.Join(st_paths[i], "completion")
+			os.Mkdir(p, 0755)
 			for _, f := range files {
-				copy(f, filepath.Join(st_paths[i], filepath.Base(f)))
+				copy(f, filepath.Join(p, filepath.Base(f)))
 			}
 		}
 	}
