@@ -92,6 +92,8 @@ func (c *Clang) CompleteAt(a *content.CompleteAtArgs, ret *content.CompletionRes
 		} else {
 			fn = f.Name()
 			defer os.Remove(fn)
+			fn += filepath.Ext(a.Location.File.Name)
+			defer os.Remove(fn)
 			if err := ioutil.WriteFile(fn, []byte(cnt), 0644); err != nil {
 				return err
 			}
