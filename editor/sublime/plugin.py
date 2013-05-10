@@ -1,4 +1,6 @@
 import sys
+import re
+import time
 try:
     import completion.jsonrpc as jsonrpc
 except:
@@ -9,12 +11,33 @@ def log(a):
     print(a)
 
 proxy = jsonrpc.ServerProxy( jsonrpc.JsonRpc10(), jsonrpc.TransportTcpIp(addr=("127.0.0.1",12345), logfunc=log))
+language_regex = re.compile("(?<=source\.)[\w+#]+")
 
 class Ev(sublime_plugin.EventListener):
+
+
+    def get_language(self, view, caret):
+        language = language_regex.search(view.scope_name(caret))
+        if language == None:
+            return None
+        return language.group(0)
+
     def on_query_completions(self, view, prefix, locations):
+        s = time.time()
         row, col = view.rowcol(locations[0])
 
-        # TODO: detect which "driver" should be used
+        # TODO: detecting which "driver" is to be used should at some point be possible (but not required) to delegate to the server
+        drivers = {
+            "c++": "Clang",
+            "c": "Clang"
+        }
+
+        lang = self.get_language(view, locations[0])
+        if not lang in drivers:
+            return
+        else:
+            driver = getattr(proxy, drivers[lang])
+
         # TODO: Make the request async
         args = {
             "Location": {
@@ -33,8 +56,17 @@ class Ev(sublime_plugin.EventListener):
         if view.is_dirty():
             args["Location"]["File"]["Contents"] = view.substr(sublime.Region(0, view.size()))
 
-        res = proxy.Clang.CompleteAt(args)
-
+        e = time.time()
+        print("Prepare: %f ms" % ((e-s)*1000))
+        s = time.time()
+        try:
+            res = driver.CompleteAt(args)
+        except jsonrpc.RPCFault as e:
+            print(e.error_data)
+            return
+        e = time.time()
+        print("Perform: %f ms" % ((e-s)*1000))
+        s = time.time()
         completions = []
         if "Methods" in res:
             for m in res["Methods"]:
@@ -66,5 +98,7 @@ class Ev(sublime_plugin.EventListener):
             # TODO: "Types"
             print(res["Types"])
 
+        e = time.time()
+        print("Post processing: %f ms" % ((e-s)*1000))
         return completions
 

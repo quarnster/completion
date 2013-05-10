@@ -16,7 +16,29 @@ import (
 func RunClang(args ...string) ([]byte, error) {
 	cmd := exec.Command("clang", args...)
 	log4go.Debug("Running clang command: %v", cmd)
-	return cmd.Output()
+
+	if e, err := cmd.StderrPipe(); err != nil {
+		return nil, err
+	} else if s, err := cmd.StdoutPipe(); err != nil {
+		return nil, err
+	} else if err := cmd.Start(); err != nil {
+		return nil, err
+	} else {
+		so, serr := ioutil.ReadAll(s)
+		eo, eerr := ioutil.ReadAll(e)
+
+		log4go.Fine("stdout: %s\n", string(so))
+		log4go.Fine("stderr: %s\n", string(eo))
+		if serr != nil {
+			return nil, serr
+		} else if eerr != nil {
+			return nil, eerr
+		}
+		if len(so) == 0 && len(eo) != 0 {
+			return nil, fmt.Errorf(string(eo))
+		}
+		return so, nil
+	}
 }
 
 func data(n *parser.Node) string {
