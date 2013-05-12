@@ -4,6 +4,7 @@ import (
 	"code.google.com/p/log4go"
 	"flag"
 	"github.com/quarnster/completion/clang"
+	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/java"
 	"net"
 	"net/rpc"
@@ -15,6 +16,7 @@ func main() {
 	var (
 		port = ":12345"
 		ifs  = []interface{}{
+			&content.Session{},
 			&clang.Clang{},
 			&java.Java{},
 		}

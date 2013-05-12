@@ -15,20 +15,32 @@ func fqnToClassname(fqn content.FullyQualifiedName) Classname {
 }
 
 func (c *Java) Complete(args *content.CompleteArgs, cmp *content.CompletionResult) error {
-	cp, err := DefaultClasspath()
-	if err != nil {
-		// We don't really care about not being able to get the default classpath as it could be provided manually by the user
-		log4go.Warn("Couldn't get the default classpath: %s", err)
+	var archive Archive
+	session := args.Session()
+	if session != nil {
+		if a, ok := session.Get("java_archive").(Archive); ok {
+			archive = a
+		}
 	}
-	settings := args.Settings()
-	if cp2, ok := settings.Get("classpath").([]string); ok {
-		// TODO: do we ever want to override rather than append to the classpath?
-		cp = append(cp, cp2...)
+	if archive == nil {
+		cp, err := DefaultClasspath()
+		if err != nil {
+			// We don't really care about not being able to get the default classpath as it could be provided manually by the user
+			log4go.Warn("Couldn't get the default classpath: %s", err)
+		}
+		settings := args.Settings()
+		if cp2, ok := settings.Get("classpath").([]string); ok {
+			// TODO: do we ever want to override rather than append to the classpath?
+			cp = append(cp, cp2...)
+		}
+		// TODO: this should probably be cached in the session...
+		if archive, err = NewCompositeArchive(cp); err != nil {
+			return err
+		} else if session != nil {
+			session.Set("java_archive", archive)
+		}
 	}
-	// TODO: this should probably be cached in the session...
-	if archive, err := NewCompositeArchive(cp); err != nil {
-		return err
-	} else if data, err := archive.LoadClass(fqnToClassname(args.Location)); err != nil {
+	if data, err := archive.LoadClass(fqnToClassname(args.Location)); err != nil {
 		return err
 	} else if class, err := NewClass(bytes.NewReader(data)); err != nil {
 		return err

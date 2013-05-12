@@ -15,18 +15,11 @@ type (
 		Args
 		Location FullyQualifiedName
 	}
-
-	Session struct {
-		Settings Settings
-	}
 )
 
 // Returns the Session object associated with this Args or nil.
 func (a *Args) Session() *Session {
-	if a.SessionId != "" {
-		// TODO actually look up session and return it
-	}
-	return nil
+	return sessionmap[a.SessionId]
 }
 
 // If a Session is associated with this Args, then the Session's
