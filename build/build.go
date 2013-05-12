@@ -1,9 +1,12 @@
 package main
 
 import (
+	"archive/zip"
+	"bytes"
 	"flag"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -13,6 +16,43 @@ import (
 
 var ignore = regexp.MustCompile(`\.git|build|testdata|3rdparty|editor`)
 var verbose bool
+
+func createPluginArchive() {
+	files := []string{
+		"3rdparty/jsonrpc.py",
+		"editor/sublime/plugin.py",
+	}
+	out := bytes.NewBuffer(nil)
+	z := zip.NewWriter(out)
+	for i := range files {
+		if w, err := z.Create(files[i]); err != nil {
+			panic(err)
+		} else if d, err := ioutil.ReadFile("../" + files[i]); err != nil {
+			panic(err)
+		} else if n, err := w.Write(d); err != nil {
+			panic(err)
+		} else if n != len(d) {
+			panic(fmt.Errorf("%d != %d", n != len(d)))
+		}
+	}
+	if err := z.Close(); err != nil {
+		panic(err)
+	}
+	b2 := bytes.NewBuffer(nil)
+	b2.WriteString(`package editor
+
+var archive_data = []byte{`)
+	for i, b := range out.Bytes() {
+		if i > 0 {
+			b2.WriteRune(',')
+		}
+		b2.WriteString(fmt.Sprintf("%v", b))
+	}
+	b2.WriteString("}")
+	if err := ioutil.WriteFile("../editor/archive_data.go", b2.Bytes(), 0644); err != nil {
+		panic(err)
+	}
+}
 
 func adddirs(pkg, path string, dirs []string) []string {
 	f, err := os.Open(path)
@@ -82,6 +122,7 @@ func readthread(r io.Reader, out chan string) {
 func main() {
 	flag.BoolVar(&verbose, "v", verbose, "Verbose output")
 	flag.Parse()
+	createPluginArchive()
 	var extension = ""
 	if runtime.GOOS == "windows" {
 		extension += ".exe"

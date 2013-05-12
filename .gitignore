@@ -2,6 +2,7 @@ build/*
 !build/*.go
 java/descriptors/descriptors.go
 java/signatures/signatures.go
+editor/archive_data.go
 clang/parser/parser.go
 util/expand_path/expand_path.go
 util/expression/expression.go

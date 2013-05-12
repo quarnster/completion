@@ -1,16 +1,21 @@
 package main
 
 import (
+	"bytes"
 	"code.google.com/p/log4go"
 	"flag"
+	"fmt"
 	"github.com/quarnster/completion/clang"
 	"github.com/quarnster/completion/content"
+	"github.com/quarnster/completion/editor"
+	_ "github.com/quarnster/completion/editor/sublime"
 	"github.com/quarnster/completion/java"
 	cnet "github.com/quarnster/completion/net"
 	"net"
 	"net/rpc"
 	"net/rpc/jsonrpc"
 	"runtime/debug"
+	"strings"
 )
 
 var (
@@ -18,6 +23,7 @@ var (
 	l       net.Listener
 	server  *rpc.Server
 	running = make(chan bool)
+	install = ""
 )
 
 func init() {
@@ -32,8 +38,32 @@ func init() {
 	)
 
 	flag.StringVar(&port, "port", port, "TCP port the server will listen on")
+	flag.StringVar(&install, "install", install, fmt.Sprintf("A comma separated list of editors for which to install the plugin. Valid editors are:%s", func() string {
+		b := bytes.NewBuffer(nil)
+		for _, p := range editor.List() {
+			b.WriteString(fmt.Sprintf("\n\t%8s - %s", p.Name(), p.Description()))
+		}
+		return b.String()
+	}()))
 	flag.Parse()
 	log4go.Global.AddFilter("stdout", log4go.FINE, log4go.NewConsoleLogWriter())
+
+	for _, e := range strings.Split(install, ",") {
+		found := false
+		for _, ed := range editor.List() {
+			if ed.Name() == e {
+				found = true
+				if err := ed.Install(); err != nil {
+					log4go.Error("Failed to install editor plugin for %s: %s", e, err)
+				}
+				break
+			}
+		}
+		if !found {
+			log4go.Error("No such editor: %s", e)
+		}
+	}
+
 	server = rpc.NewServer()
 
 	for _, i := range ifs {
