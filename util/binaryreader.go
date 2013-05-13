@@ -222,7 +222,7 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 				}
 			default:
 				if err := r.ReadInterface(f.Addr().Interface()); err != nil {
-					return fmt.Errorf("%+v: %s", v, err)
+					return err
 				} else {
 					size = int(f.Type().Size())
 				}

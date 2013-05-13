@@ -96,6 +96,10 @@ type (
 		Implements     []Type             `protocol:"optional" json:",omitempty"`
 	}
 
+	Available interface {
+		Available(*Args, *bool) error
+	}
+
 	Complete interface {
 		Complete(*CompleteArgs, *CompletionResult) error
 	}

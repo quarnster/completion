@@ -11,9 +11,11 @@ import (
 	"testing"
 	"time"
 )
+var skip = false
 
 func TestClang(t *testing.T) {
 	if _, err := RunClang("-v"); err != nil {
+		skip = true
 		t.Skipf("Couldn't launch clang: %s", err)
 	}
 	var (
@@ -33,6 +35,9 @@ func TestClang(t *testing.T) {
 }
 
 func TestClangUnsaved(t *testing.T) {
+	if skip {
+		t.Skipf("Clang not installed, skipping")
+	}
 	var (
 		a        content.CompleteAtArgs
 		b        content.CompletionResult

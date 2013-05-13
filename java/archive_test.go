@@ -23,6 +23,14 @@ func TestClasses(t *testing.T) {
 	}
 }
 
+func TestNewCompositeArchive(t *testing.T) {
+	if c, err := NewCompositeArchive(nil); err != nil {
+		t.Error(err)
+	} else if c == nil {
+		t.Error("Composite is nil")
+	}
+}
+
 func BenchmarkCompositeArchiveLoadClass(b *testing.B) {
 	b.StopTimer()
 	if p, err := DefaultClasspath(); err != nil {

@@ -192,7 +192,7 @@ func NewCompositeArchive(paths []string) (ret *CompositeArchive, err error) {
 		}
 	}
 
-	if len(archives) > 0 {
+	if len(archives) > 0 || len(paths) == 0 {
 		ret = &CompositeArchive{archives}
 	} else if len(errorStr) != 0 {
 		err = errors.New(errorStr)
