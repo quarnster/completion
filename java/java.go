@@ -3,6 +3,7 @@ package java
 import (
 	"bytes"
 	"code.google.com/p/log4go"
+	"errors"
 	"github.com/quarnster/completion/content"
 	"strings"
 )
@@ -10,8 +11,15 @@ import (
 type Java struct {
 }
 
-func fqnToClassname(fqn content.FullyQualifiedName) Classname {
-	return Classname(strings.Replace(fqn.Absolute[len("java://type/"):], "/", ".", -1))
+func fqnToClassname(fqn content.FullyQualifiedName) (Classname, error) {
+	// TODO(d) should qualify abs or rel
+	if len(fqn.Absolute) == 0 {
+		return "", errors.New("Received empty fqn")
+	}
+	if !strings.HasPrefix(fqn.Absolute, "java://type/") {
+		return "", errors.New("FQN prefixed incorrectly with " + fqn.Absolute)
+	}
+	return Classname(strings.Replace(fqn.Absolute[len("java://type/"):], "/", ".", -1)), nil
 }
 
 func (c *Java) Complete(args *content.CompleteArgs, cmp *content.CompletionResult) error {
@@ -40,7 +48,9 @@ func (c *Java) Complete(args *content.CompleteArgs, cmp *content.CompletionResul
 			session.Set("java_archive", archive)
 		}
 	}
-	if data, err := archive.LoadClass(fqnToClassname(args.Location)); err != nil {
+	if className, err := fqnToClassname(args.Location); err != nil {
+		return err
+	} else if data, err := archive.LoadClass(className); err != nil {
 		return err
 	} else if class, err := NewClass(bytes.NewReader(data)); err != nil {
 		return err

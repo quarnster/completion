@@ -15,6 +15,8 @@ var (
 
 func properties() (ret map[string]string, err error) {
 	// Adding -version just so that we get a better exit code
+	// TODO(d) this isn't compatible with 1.6 jvm, openjdk. `javac -verbose EmptyFile.java` provides whats needed
+	// but 100x slower and more apt to change than the no-guarantee -X settings.
 	if out, err := exec.Command("java", "-XshowSettings:properties", "-version").CombinedOutput(); err != nil {
 		return nil, errors.New(fmt.Sprintf("Couldn't execute java: %s", err))
 	} else {

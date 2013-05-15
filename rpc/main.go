@@ -95,19 +95,12 @@ func serverloop() {
 				defer func() {
 					log4go.Debug("In defer")
 					codec.Close()
+					if r := recover(); r != nil {
+						log4go.Error("Recovered from panic: %v, stack: %s", r, string(debug.Stack()))
+					}
 				}()
-				handle := func() error {
-					defer func() {
-						if r := recover(); r != nil {
-							log4go.Error("Recovered from panic: %v, stack: %s", r, string(debug.Stack()))
-							// TODO(q): what would be the proper way to handle this?
-							codec.Close()
-						}
-					}()
-					return server.ServeRequest(codec)
-				}
 				for {
-					if err := handle(); err != nil {
+					if err := server.ServeRequest(codec); err != nil {
 						log4go.Error("Error handling request: %v", err)
 						break
 					}
