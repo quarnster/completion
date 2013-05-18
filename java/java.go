@@ -41,7 +41,6 @@ func (c *Java) Complete(args *content.CompleteArgs, cmp *content.CompletionResul
 			// TODO: do we ever want to override rather than append to the classpath?
 			cp = append(cp, cp2...)
 		}
-		// TODO: this should probably be cached in the session...
 		if archive, err = NewCompositeArchive(cp); err != nil {
 			return err
 		} else if session != nil {
@@ -57,7 +56,9 @@ func (c *Java) Complete(args *content.CompleteArgs, cmp *content.CompletionResul
 	} else if ct, err := class.ToContentType(); err != nil {
 		return err
 	} else {
-		// TODO: inherited fields and methods
+		// TODO(q): Inherited fields and methods?
+		// 			I see value in being able to "just" get the smaller set,
+		//			but getting the full set should definitely be possible "server side"
 		cmp.Fields = ct.Fields
 		cmp.Types = ct.Types
 		cmp.Methods = ct.Methods
