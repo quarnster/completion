@@ -7,14 +7,16 @@ except:
     import jsonrpc
 import sublime
 import sublime_plugin
+
+
 def log(a):
     print(a)
 
-proxy = jsonrpc.ServerProxy( jsonrpc.JsonRpc10(), jsonrpc.TransportTcpIp(addr=("127.0.0.1",12345), logfunc=log))
+proxy = jsonrpc.ServerProxy(jsonrpc.JsonRpc10(), jsonrpc.TransportTcpIp(addr=("127.0.0.1", 12345), logfunc=log))
 language_regex = re.compile("(?<=source\.)[\w+#]+")
 
-class Ev(sublime_plugin.EventListener):
 
+class Ev(sublime_plugin.EventListener):
 
     def get_language(self, view, caret):
         language = language_regex.search(view.scope_name(caret))
@@ -29,7 +31,8 @@ class Ev(sublime_plugin.EventListener):
         # TODO: detecting which "driver" is to be used should at some point be possible (but not required) to delegate to the server
         drivers = {
             "c++": "Clang",
-            "c": "Clang"
+            "c": "Clang",
+            "java": "Java"
         }
 
         lang = self.get_language(view, locations[0])
@@ -44,8 +47,8 @@ class Ev(sublime_plugin.EventListener):
                 "File": {
                     "Name": view.file_name(),
                 },
-                "Column": col+1,
-                "Line": row+1
+                "Column": col + 1,
+                "Line": row + 1
             },
             "SessionOverrides": {
                 # TODO: what would be a good way to handle this? Query the "driver" for which options are configurable?
@@ -57,7 +60,7 @@ class Ev(sublime_plugin.EventListener):
             args["Location"]["File"]["Contents"] = view.substr(sublime.Region(0, view.size()))
 
         e = time.time()
-        print("Prepare: %f ms" % ((e-s)*1000))
+        print("Prepare: %f ms" % ((e - s) * 1000))
         s = time.time()
         try:
             res = driver.CompleteAt(args)
@@ -65,9 +68,10 @@ class Ev(sublime_plugin.EventListener):
             print(e.error_data)
             return
         e = time.time()
-        print("Perform: %f ms" % ((e-s)*1000))
+        print("Perform: %f ms" % ((e - s) * 1000))
         s = time.time()
         completions = []
+        print("response:", res)
         if "Methods" in res:
             for m in res["Methods"]:
                 n = m["Name"]["Relative"] + "("
@@ -99,6 +103,5 @@ class Ev(sublime_plugin.EventListener):
             print(res["Types"])
 
         e = time.time()
-        print("Post processing: %f ms" % ((e-s)*1000))
+        print("Post processing: %f ms" % ((e - s) * 1000))
         return completions
-
