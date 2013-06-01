@@ -48,19 +48,38 @@ func (c *Java) Complete(args *content.CompleteArgs, cmp *content.CompletionResul
 			session.Set("java_archive", archive)
 		}
 	}
-	if className, err := fqnToClassname(args.Location); err != nil {
+
+	className, err := fqnToClassname(args.Location)
+	if err != nil {
 		return err
-	} else if data, err := archive.LoadClass(className); err != nil {
-		return err
-	} else if class, err := NewClass(bytes.NewReader(data)); err != nil {
-		return err
-	} else if ct, err := class.ToContentType(); err != nil {
-		return err
-	} else {
-		// TODO: inherited fields and methods
-		cmp.Fields = ct.Fields
-		cmp.Types = ct.Types
-		cmp.Methods = ct.Methods
 	}
+
+	data, err := archive.LoadClass(className)
+	if err != nil {
+		return err
+	}
+
+	class, err := NewClass(bytes.NewReader(data))
+	if err != nil {
+		return err
+	}
+
+	ct, err := class.ToContentType()
+	if err != nil {
+		return err
+	}
+
+	// TODO: inherited fields and methods
+	cmp.Fields = ct.Fields
+	cmp.Types = ct.Types
+	cmp.Methods = ct.Methods
+
+	return nil
+}
+
+// TODO(d) provide generic completions based on context. New lines should complete
+// types, methods, and members, inherited or otherwise. Argument position should show
+// results only for the type accepted, etc.
+func (c *Java) CompleteAt(a *content.CompleteAtArgs, ret *content.CompletionResult) error {
 	return nil
 }
