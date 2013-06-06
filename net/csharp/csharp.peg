@@ -1,0 +1,78 @@
+# Reference: http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-334.pdf
+
+Code                        <-      BOM? (Spacing? (Comment / Using) Spacing?)* Namespace*
+BOM                         <-      '\ufeff' / '\ufffe'
+
+Namespace                   <-      "namespace" Spacing Identifier Spacing? '{' Spacing? Namespace* Class
+
+Class                       <-      Access* ("class" / "struct") Spacing Identifier Inheritance? Scope
+
+Inheritance                 <-      ':' Spacing? (Identifier Spacing? ',' Spacing? / Identifier)+ Spacing?
+Using                       <-      "using" Spacing Identifier ';'
+Identifier                  <-      [A-Za-z_]+ [A-Za-z_0-9.]* Spacing?
+
+ReturnType                  <-      Identifier "[]"* Spacing?
+
+Parameters                  <-      (Parameter ',' Spacing? Parameters) / Parameter Spacing?
+Parameter                   <-      ReturnType Identifier? Spacing?
+
+Integer                     <-      '-'? (("0x" [0-9a-fA-F]+) / [0-9]+)
+Float                       <-      '-'? [0-9]+ '.' + [0-9]+
+
+Op                          <-      ShiftRight / ShiftLeft / AndNot / And / Add / Sub / Mul / Xor / Or / BooleanOp
+BooleanOp                   <-      Eq / Lt / Gt / Le / Ge / BooleanAnd / BooleanOr
+Xor                         <-      Grouping '^' Grouping
+Or                          <-      Grouping '|' Grouping
+ShiftRight                  <-      Grouping ">>" Grouping
+ShiftLeft                   <-      Grouping "<<" Grouping
+And                         <-      Grouping '&' Grouping
+Add                         <-      Grouping '+' Grouping
+Sub                         <-      Grouping '-' Grouping
+Mul                         <-      Grouping '*' Grouping
+AndNot                      <-      Grouping "&~" Grouping
+Eq                          <-      Grouping "==" Grouping
+Lt                          <-      Grouping '<' Grouping
+Le                          <-      Grouping "<=" Grouping
+Gt                          <-      Grouping '>' Grouping
+Ge                          <-      Grouping ">=" Grouping
+BooleanAnd                  <-      Grouping "&&" Grouping
+BooleanOr                   <-      Grouping "||" Grouping
+
+PostInc                     <-      (Index / Identifier) "++"
+PostDec                     <-      (Index / Identifier) "--"
+PreInc                      <-      "++" (Index / Identifier)
+PreDec                      <-      "--" (Index / Identifier)
+
+Return                      <-      "return" Spacing (!';' .)+
+
+TypeCast                    <-      '(' Identifier ')' Spacing? Identifier
+MethodCall                  <-      Identifier '(' Parameters? ')' Spacing?
+
+Grouping                    <-      Spacing? ('(' Op ')' / PostInc / PostDec / PreInc / PreDec / Index / MethodCall / Reference) Spacing?
+
+Index                       <-      (MethodCall / Identifier) '[' Expression ']'
+Reference                   <-      (TypeCast / Integer / Float / Identifier) Spacing?
+
+Expression                  <-      Op / Grouping
+
+Variable                    <-      Access* ReturnType Identifier ('=' Spacing? Expression)? ';' Spacing?
+Method                      <-      Access* ReturnType Identifier '(' Parameters? ')' (';' / Scope)
+
+Junk                        <-      (!Spacing ![{}\[\]()] .)+ Spacing?
+Access                      <-      ("public" / "protected" / "internal" / "private" / "static" / "sealed") Spacing?
+
+LineComment                 <-      "//" ((('\\' EndOfLine) / (!EndOfLine .)))+ EndOfLine Spacing?
+BlockComment                <-      "/*" (!"*/" .)+ "*/" Spacing?
+Comment                     <-      LineComment / BlockComment
+
+Loops                       <-      For / While
+
+For                         <-      "for" Spacing? '(' Spacing? (Variable / ';') (!';' .)* ';' Grouping* ')' (Scope / Expression)
+While                       <-      "while" Spacing? '(' Expression* ')' Spacing? (Scope / Expression) Spacing?
+
+Scope                       <-      Spacing? '{'  InnerScope* '}' Spacing?
+InnerScope                  <-      Spacing? (Scope / Loops / Class / Return / Variable / Method / Expression / Junk) Spacing?
+
+EndOfLine                   <-      "\n\r" / '\n' / '\r'
+Spacing                     <-      ([ \t\n\r]+ / Comment+)+
+EndOfFile                   <-      !.
