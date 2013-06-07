@@ -1,9 +1,11 @@
 # Reference: http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-334.pdf
 
-Code                        <-      BOM? (Spacing? (Comment / Using) Spacing?)* Namespace*
+Code                        <-      BOM? Spacing? (Using Spacing?)* Namespace* Class?
 BOM                         <-      '\ufeff' / '\ufffe'
 
-Namespace                   <-      "namespace" Spacing Identifier Spacing? '{' Spacing? Namespace* Class
+Preproc                     <-      '#' (!EndOfLine .)+ EndOfLine
+
+Namespace                   <-      "namespace" Spacing Identifier Spacing? '{' Spacing? Namespace* Class Spacing? '}' Spacing?
 
 Class                       <-      Access* ("class" / "struct") Spacing Identifier Inheritance? Scope
 
@@ -11,68 +13,71 @@ Inheritance                 <-      ':' Spacing? (Identifier Spacing? ',' Spacin
 Using                       <-      "using" Spacing Identifier ';'
 Identifier                  <-      [A-Za-z_]+ [A-Za-z_0-9.]* Spacing?
 
-ReturnType                  <-      Identifier "[]"* Spacing?
+Type                        <-      Identifier '<' Type '>' / Identifier
+ReturnType                  <-      Type ('[' Expression? ']')* Spacing?
 
 Parameters                  <-      (Parameter ',' Spacing? Parameters) / Parameter Spacing?
 Parameter                   <-      ReturnType Identifier? Spacing?
 
+CallParameters              <-      CallParameter (',' CallParameter)*
+CallParameter               <-      Expression
+
+Char                        <-      '\'' (('\\' .) / .) '\''
+String                      <-      '"' (('\\' .) / (!'"' .))+ '"'
 Integer                     <-      '-'? (("0x" [0-9a-fA-F]+) / [0-9]+)
 Float                       <-      '-'? [0-9]+ '.' + [0-9]+
 
-Op                          <-      ShiftRight / ShiftLeft / AndNot / And / Add / Sub / Mul / Xor / Or / BooleanOp
-BooleanOp                   <-      Eq / Lt / Gt / Le / Ge / BooleanAnd / BooleanOr
-Xor                         <-      Grouping '^' Grouping
-Or                          <-      Grouping '|' Grouping
-ShiftRight                  <-      Grouping ">>" Grouping
-ShiftLeft                   <-      Grouping "<<" Grouping
-And                         <-      Grouping '&' Grouping
-Add                         <-      Grouping '+' Grouping
-Sub                         <-      Grouping '-' Grouping
-Mul                         <-      Grouping '*' Grouping
-AndNot                      <-      Grouping "&~" Grouping
-Eq                          <-      Grouping "==" Grouping
-Lt                          <-      Grouping '<' Grouping
-Le                          <-      Grouping "<=" Grouping
-Gt                          <-      Grouping '>' Grouping
-Ge                          <-      Grouping ">=" Grouping
-BooleanAnd                  <-      Grouping "&&" Grouping
-BooleanOr                   <-      Grouping "||" Grouping
+Op2                         <-      (">>" / "<<" / "&~" / "==" / "<=" / ">=" / "!=" / "||" / "&&" / [^|&+*/<>=%] '='?  / '-')
+Op                          <-      '!'? Grouping (If2 / Op2 Expression)*
 
 PostInc                     <-      (Index / Identifier) "++"
 PostDec                     <-      (Index / Identifier) "--"
 PreInc                      <-      "++" (Index / Identifier)
 PreDec                      <-      "--" (Index / Identifier)
 
-Return                      <-      "return" Spacing (!';' .)+
+Return                      <-      "return" Spacing? (!';' .)*
 
-TypeCast                    <-      '(' Identifier ')' Spacing? Identifier
-MethodCall                  <-      Identifier '(' Parameters? ')' Spacing?
+TypeCast                    <-      '(' Identifier ')' Spacing? Grouping
+MethodCall                  <-      Identifier '(' CallParameters? ')' Spacing?
 
-Grouping                    <-      Spacing? ('(' Op ')' / PostInc / PostDec / PreInc / PreDec / Index / MethodCall / Reference) Spacing?
+Grouping                    <-      Spacing? (Variable2 / TypeCast / ('(' Expression ')' / PostInc / PostDec / PreInc / PreDec / Index / MethodCall / Reference)) Spacing?
 
-Index                       <-      (MethodCall / Identifier) '[' Expression ']'
-Reference                   <-      (TypeCast / Integer / Float / Identifier) Spacing?
+Index                       <-      Identifier '[' Expression (',' Expression)* ']'
+Reference                   <-      (TypeCast / Integer / Float / String / Char / Identifier) Spacing?
 
-Expression                  <-      Op / Grouping
+Throw                       <-      Spacing? "throw" Spacing Expression
+InitializationList          <-      Spacing? ('[' Expression? ']')* Spacing? '{' (Expression (',' Spacing? Expression?)*)? '}'
+New                         <-      Spacing? "new" Spacing ReturnType (Spacing? '(' CallParameters? ')')? InitializationList?
 
-Variable                    <-      Access* ReturnType Identifier ('=' Spacing? Expression)? ';' Spacing?
-Method                      <-      Access* ReturnType Identifier '(' Parameters? ')' (';' / Scope)
+Expression                  <-      Throw / New / Op / Grouping
+Variable2                   <-      ReturnType Identifier
+Variable                    <-      Access* ReturnType Identifier ('=' Spacing? (Expression / InitializationList))? ';' Spacing?
+Constructor                 <-      Access* Identifier '(' Parameters? ')' Scope
+Method                      <-      Access* ReturnType Identifier '(' Parameters? ')' Scope
 
 Junk                        <-      (!Spacing ![{}\[\]()] .)+ Spacing?
-Access                      <-      ("public" / "protected" / "internal" / "private" / "static" / "sealed") Spacing?
+Access                      <-      ("public" / "protected" / "internal" / "private" / "static" / "sealed" / "override") Spacing?
 
 LineComment                 <-      "//" ((('\\' EndOfLine) / (!EndOfLine .)))+ EndOfLine Spacing?
 BlockComment                <-      "/*" (!"*/" .)+ "*/" Spacing?
 Comment                     <-      LineComment / BlockComment
 
-Loops                       <-      For / While
+Do                          <-      "do" Scope "while" Spacing? '(' Expression ')' Spacing? ';'
+Loops                       <-      For / Do / While
 
-For                         <-      "for" Spacing? '(' Spacing? (Variable / ';') (!';' .)* ';' Grouping* ')' (Scope / Expression)
+Else                        <-      "else " If / "else"  Spacing? (Scope / Expression ';') Spacing?
+
+If2                         <-      '?' Expression ':' Expression
+
+If                          <-      "if" Spacing? '(' Expression ')' Spacing? (Scope / Expression ';') Spacing? Else?
+For                         <-      "for" Spacing? '(' Spacing? (Variable / Expression? ';') (!';' .)* ';' (Expression (',' Expression)*)? ')' (Scope / Expression)
 While                       <-      "while" Spacing? '(' Expression* ')' Spacing? (Scope / Expression) Spacing?
 
-Scope                       <-      Spacing? '{'  InnerScope* '}' Spacing?
-InnerScope                  <-      Spacing? (Scope / Loops / Class / Return / Variable / Method / Expression / Junk) Spacing?
+ThisIndexer                 <-      Access* ReturnType "this" '[' Parameters ']' Scope
+
+Scope                       <-      Spacing? '{'  InnerScope* Spacing? '}' Spacing?
+InnerScope                  <-      Spacing? (Scope / Loops / If / Class / Return / Variable / Method / Constructor / ThisIndexer / Expression / Junk) Spacing? ';'? Spacing?
 
 EndOfLine                   <-      "\n\r" / '\n' / '\r'
-Spacing                     <-      ([ \t\n\r]+ / Comment+)+
+Spacing                     <-      ([ \t\n\r]+ / Comment+ / Preproc+)+
 EndOfFile                   <-      !.

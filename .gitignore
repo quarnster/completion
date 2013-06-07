@@ -4,6 +4,7 @@ java/descriptors/descriptors.go
 java/signatures/signatures.go
 editor/archive_data.go
 clang/parser/parser.go
+net/csharp/csharp.go
 util/expand_path/expand_path.go
 util/expression/expression.go
 *.pyc

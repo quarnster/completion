@@ -141,6 +141,7 @@ func main() {
 	buildPeg("../clang/parser/parser.peg", "Spacing,Pattern,Completion,Completions,ReturnType,Arguments,Argument,UnhandledStuff,KeyedStuff,Type,TemplateName,Function")
 	buildPeg("../util/expression/expression.peg", "Spacing,Primary,Op,Expression,Grouping,BooleanOp")
 	buildPeg("../util/expand_path/expand_path.peg", "Operation,File")
+	buildPeg("../net/csharp/csharp.peg", "Junk,BOM,Spacing,Reference,Grouping,InnerScope,EndOfLine,Comment,LineComment,BlockComment,Loops,Code")
 	tests := []string{"test"}
 	if verbose {
 		tests = append(tests, "-v")
