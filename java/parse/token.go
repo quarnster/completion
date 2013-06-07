@@ -3,14 +3,17 @@ package parse
 type tokenType int
 
 const (
-	tokenImport tokenType = iota
+	tokenPackage tokenType = iota
+	tokenImport
 	tokenAnnotation
 	tokenClass
 	tokenClassEnd
 	tokenExtends
 	tokenImplements
+	tokenInit
 	tokenField
 	tokenMethod
+	tokenParameter
 	tokenVar
 	tokenVisitField
 	tokenVisitMethod
@@ -18,14 +21,17 @@ const (
 )
 
 var tokenString = map[tokenType]string{
+	tokenPackage:     "Package",
 	tokenImport:      "Import",
 	tokenAnnotation:  "Annotation",
 	tokenClass:       "Class",
 	tokenClassEnd:    "ClassEnd",
 	tokenExtends:     "Extends",
 	tokenImplements:  "Implements",
+	tokenInit:        "Initializer",
 	tokenField:       "Field",
 	tokenMethod:      "Method",
+	tokenParameter:   "Parameter",
 	tokenVar:         "Var",
 	tokenVisitField:  "VisitField",
 	tokenVisitMethod: "VisitMethod",
