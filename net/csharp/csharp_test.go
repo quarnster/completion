@@ -22,8 +22,14 @@ func TestParse(t *testing.T) {
 				if d, err := ioutil.ReadFile(n); err != nil {
 					t.Error(err)
 				} else if !p.Parse(string(d)) {
-					t.Error(p.Error())
+					t.Errorf("%s: %s", n, p.Error())
 				} else {
+					back := p.RootNode().Children[len(p.RootNode().Children)-1]
+					if back.Name != "EndOfFile" {
+						t.Log(p.RootNode())
+						t.Errorf("Didn't finish parsing %s: %s", n, p.Error())
+					}
+
 					res := p.RootNode().String()
 					if exp, err := ioutil.ReadFile(n + ".pt"); err != nil {
 						t.Logf("Expected result for parsing %s does not exist and will be created", n)

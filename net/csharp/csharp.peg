@@ -1,83 +1,104 @@
 # Reference: http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-334.pdf
 
-Code                        <-      BOM? Spacing? (Using Spacing?)* Namespace* Class?
+Code                        <-      BOM? Spacing? Using* Namespace* Class? EndOfFile
 BOM                         <-      '\ufeff' / '\ufffe'
 
 Preproc                     <-      '#' (!EndOfLine .)+ EndOfLine
 
-Namespace                   <-      "namespace" Spacing Identifier Spacing? '{' Spacing? Namespace* Class Spacing? '}' Spacing?
+Namespace                   <-      Spacing? "namespace" Spacing SpacedIdentifier '{' Namespace* Class '}' Spacing?
 
-Class                       <-      Access* ("class" / "struct") Spacing Identifier Inheritance? Scope
+Class                       <-      SpacedAccess* Spacing? ("class" / "struct") Spacing SpacedIdentifier Inheritance? ClassScope
 
-Inheritance                 <-      ':' Spacing? (Identifier Spacing? ',' Spacing? / Identifier)+ Spacing?
-Using                       <-      "using" Spacing Identifier ';'
-Identifier                  <-      [A-Za-z_]+ [A-Za-z_0-9.]* Spacing?
+Inheritance                 <-      ':' Spacing? (SpacedIdentifier ',' / SpacedIdentifier)+ Spacing?
+Using                       <-      "using" Spacing SpacedIdentifier ';' Spacing?
 
-Type                        <-      Identifier '<' Type '>' / Identifier
-ReturnType                  <-      Type ('[' Expression? ']')* Spacing?
+SpacedIdentifier            <-      Spacing? Identifier Spacing?
+Identifier                  <-      !Reserved [A-Za-z_] [A-Za-z_0-9.]*
 
-Parameters                  <-      (Parameter ',' Spacing? Parameters) / Parameter Spacing?
-Parameter                   <-      ReturnType Identifier? Spacing?
+
+Reserved                    <-      ("if" / "else" / "return" / "while" / "for" / "foreach" / "public" / "private" / "protected" / "internal" / "throw" / "return" / "new" / "break" / "case" / "default" / "switch" / "enum") (![A-Za-z0-9_] .)
+
+
+EnumValue                   <-      SpacedIdentifier ('=' Expression)?
+Enum                        <-      SpacedAccess? "enum" Spacing SpacedIdentifier '{' (EnumValue ','?)* Spacing? '}' Spacing? ';' Spacing?
+
+Type                        <-      SpacedIdentifier '<' Type '>' / SpacedIdentifier
+ReturnType                  <-      Type ('[' Expression? ']')*
+
+Parameters                  <-      (Parameter ',' Parameters) / Parameter
+Parameter                   <-      ReturnType SpacedIdentifier? ('=' Expression)?
 
 CallParameters              <-      CallParameter (',' CallParameter)*
 CallParameter               <-      Expression
 
 Char                        <-      '\'' (('\\' .) / .) '\''
-String                      <-      '"' (('\\' .) / (!'"' .))+ '"'
+String                      <-      '"' (('\\' .) / (!'"' .))* '"'
 Integer                     <-      '-'? (("0x" [0-9a-fA-F]+) / [0-9]+)
 Float                       <-      '-'? [0-9]+ '.' + [0-9]+
 
-Op2                         <-      (">>" / "<<" / "&~" / "==" / "<=" / ">=" / "!=" / "||" / "&&" / [^|&+*/<>=%] '='?  / '-')
-Op                          <-      '!'? Grouping (If2 / Op2 Expression)*
+Primary                     <-      Char / String / Integer / Float / Identifier
 
-PostInc                     <-      (Index / Identifier) "++"
-PostDec                     <-      (Index / Identifier) "--"
-PreInc                      <-      "++" (Index / Identifier)
-PreDec                      <-      "--" (Index / Identifier)
+Op2                         <-      ((">>" / "<<") '='?) / "&~" / "==" / "<=" / ">=" / "!=" / "||" / "&&" / ([^|&+*/<>=%.] / '-') '='?
+Op                          <-      Grouping (If2 / Op2 Expression)*
 
-Return                      <-      "return" Spacing? (!';' .)*
+PostInc                     <-      (Index / SpacedIdentifier) "++"
+PostDec                     <-      (Index / SpacedIdentifier) "--"
+PreInc                      <-      "++" (Index / SpacedIdentifier)
+PreDec                      <-      "--" (Index / SpacedIdentifier)
 
-TypeCast                    <-      '(' Identifier ')' Spacing? Grouping
-MethodCall                  <-      Identifier '(' CallParameters? ')' Spacing?
+Return                      <-      Spacing? "return" Expression?
 
-Grouping                    <-      Spacing? (Variable2 / TypeCast / ('(' Expression ')' / PostInc / PostDec / PreInc / PreDec / Index / MethodCall / Reference)) Spacing?
+TypeCast                    <-      '(' SpacedIdentifier ')' Grouping
+MethodCall                  <-      SpacedIdentifier '(' CallParameters? ')'
 
-Index                       <-      Identifier '[' Expression (',' Expression)* ']'
-Reference                   <-      (TypeCast / Integer / Float / String / Char / Identifier) Spacing?
+Grouping                    <-      Spacing?  (('!' Op) / Variable2 / TypeCast / ('(' Expression ')' / PostInc / PostDec / PreInc / PreDec / Index / MethodCall / Reference)) Spacing?
+
+Index                       <-      SpacedIdentifier '[' Expression (',' Expression)* ']'
+Reference                   <-      (TypeCast / Primary / SpacedIdentifier)
 
 Throw                       <-      Spacing? "throw" Spacing Expression
-InitializationList          <-      Spacing? ('[' Expression? ']')* Spacing? '{' (Expression (',' Spacing? Expression?)*)? '}'
-New                         <-      Spacing? "new" Spacing ReturnType (Spacing? '(' CallParameters? ')')? InitializationList?
+InitializationList          <-      Spacing? ('[' Expression? ']')* Spacing? '{' (Expression (',' Expression?)*)? Spacing? '}'
+New                         <-      Spacing? "new" Spacing ReturnType ( '(' CallParameters? ')')? InitializationList?
 
-Expression                  <-      Throw / New / Op / Grouping
-Variable2                   <-      ReturnType Identifier
-Variable                    <-      Access* ReturnType Identifier ('=' Spacing? (Expression / InitializationList))? ';' Spacing?
-Constructor                 <-      Access* Identifier '(' Parameters? ')' Scope
-Method                      <-      Access* ReturnType Identifier '(' Parameters? ')' Scope
+Expression                  <-      Throw / New / Return / Op / Grouping / Spacing? "break" Spacing?
+Variable2                   <-      ReturnType SpacedIdentifier
+
+Property                    <-      SpacedAccess* ReturnType SpacedIdentifier '{' (Spacing? ("get" / "set") Spacing? Scope)+ '}'
+
+Variable                    <-      SpacedAccess* ReturnType (SpacedIdentifier ('=' (Expression / InitializationList))? (Spacing? ',' Spacing?)?)+ ';'
+Constructor                 <-      SpacedAccess* SpacedIdentifier '(' Parameters? ')' Scope
+Method                      <-      SpacedAccess* ReturnType SpacedIdentifier '(' Parameters? ')' Scope
 
 Junk                        <-      (!Spacing ![{}\[\]()] .)+ Spacing?
-Access                      <-      ("public" / "protected" / "internal" / "private" / "static" / "sealed" / "override") Spacing?
+SpacedAccess                <-      Spacing? Access Spacing
+Access                      <-      ("public" / "protected" / "internal" / "private" / "static" / "sealed" / "override")
 
 LineComment                 <-      "//" ((('\\' EndOfLine) / (!EndOfLine .)))+ EndOfLine Spacing?
 BlockComment                <-      "/*" (!"*/" .)+ "*/" Spacing?
 Comment                     <-      LineComment / BlockComment
 
-Do                          <-      "do" Scope "while" Spacing? '(' Expression ')' Spacing? ';'
-Loops                       <-      For / Do / While
 
-Else                        <-      "else " If / "else"  Spacing? (Scope / Expression ';') Spacing?
 
+Loops                       <-      For / Foreach / Do / While
+Do                          <-      Spacing? "do" Scope "while" Spacing? '(' Expression ')' Spacing? ';'
+For                         <-      Spacing? "for" Spacing? '(' (Variable / Expression? ';') (!';' .)* ';' (Expression (',' Expression)*)? ')' (Scope / Expression ';')
+Foreach                     <-      Spacing? "foreach" Spacing? '(' Variable2 "in" Spacing Expression ')' (Scope / Expression ';')
+While                       <-      Spacing? "while" Spacing? '(' Expression* ')' (Scope / Expression)
+
+
+CaseLabel                   <-      Spacing? ("case" Spacing Primary Spacing? / "default") ':' Spacing? (!CaseLabel InnerScope)*
+Switch                      <-      Spacing? "switch" Spacing? '(' Expression ')' Spacing? '{' Spacing? CaseLabel* Spacing? '}' Spacing?
+
+If                          <-      Spacing? "if" Spacing? '(' Expression ')' (Scope / Expression ';') Spacing? Else?
+Else                        <-      Spacing? "else " If / "else" (Scope / Expression ';')
 If2                         <-      '?' Expression ':' Expression
 
-If                          <-      "if" Spacing? '(' Expression ')' Spacing? (Scope / Expression ';') Spacing? Else?
-For                         <-      "for" Spacing? '(' Spacing? (Variable / Expression? ';') (!';' .)* ';' (Expression (',' Expression)*)? ')' (Scope / Expression)
-While                       <-      "while" Spacing? '(' Expression* ')' Spacing? (Scope / Expression) Spacing?
+ThisIndexer                 <-      SpacedAccess* ReturnType "this" '[' Parameters ']' Scope
 
-ThisIndexer                 <-      Access* ReturnType "this" '[' Parameters ']' Scope
-
+ClassScope                  <-      Spacing? '{' (Class / Constructor / Method / Property / Enum / ThisIndexer / InnerScope / Spacing)* '}' Spacing?
 Scope                       <-      Spacing? '{'  InnerScope* Spacing? '}' Spacing?
-InnerScope                  <-      Spacing? (Scope / Loops / If / Class / Return / Variable / Method / Constructor / ThisIndexer / Expression / Junk) Spacing? ';'? Spacing?
+InnerScope                  <-      Spacing? (Scope / Loops / If / Switch / Variable / Expression / Junk) Spacing? ';'? Spacing?
 
 EndOfLine                   <-      "\n\r" / '\n' / '\r'
-Spacing                     <-      ([ \t\n\r]+ / Comment+ / Preproc+)+
+Spacing                     <-      ([  \t\n\r]+ / Comment+ / Preproc+)+
 EndOfFile                   <-      !.
