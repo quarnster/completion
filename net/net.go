@@ -3,9 +3,66 @@ package net
 import (
 	"code.google.com/p/log4go"
 	"github.com/quarnster/completion/content"
+	"github.com/quarnster/completion/net/csharp"
+	"github.com/quarnster/parser"
+	"io/ioutil"
+	"strings"
 )
 
 type Net struct {
+}
+
+func resolve(node *parser.Node) string {
+	switch n := node.Name; n {
+	case "Identifier":
+		if r := node.Data(); strings.HasSuffix(r, ".") {
+			return r[:len(r)-1]
+		} else {
+			return r
+		}
+	default:
+		if len(node.Children) > 0 {
+			return resolve(node.Children[0])
+		} else {
+			return ""
+		}
+	}
+}
+
+func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionResult) error {
+	contents := args.Location.File.Contents
+	if contents == "" {
+		if d, err := ioutil.ReadFile(args.Location.File.Name); err != nil {
+			return err
+		} else {
+			contents = string(d)
+		}
+	}
+	lines := strings.Split(contents, "\n")
+
+	line := lines[args.Location.Line-1]
+
+	var p csharp.CSHARP
+	p.SetData(line[:args.Location.Column-1])
+	if !p.Expression() {
+		return p.Error()
+	}
+
+	exp := resolve(p.RootNode())
+	p.SetData(contents)
+	p.UsingDirectives()
+	using := p.RootNode()
+	log4go.Debug("Parsed file: %s, %s, %s", exp, using)
+	for _, child := range using.Children {
+		var a2 content.CompleteArgs
+		a2.SessionId = args.SessionId
+		a2.SessionOverrides = args.SessionOverrides
+		a2.Location.Absolute = "net://type/" + child.Children[0].Data() + "." + exp
+		if err := c.Complete(&a2, cmp); err == nil {
+			return nil
+		}
+	}
+	return nil
 }
 
 func (c *Net) Complete(args *content.CompleteArgs, cmp *content.CompletionResult) error {

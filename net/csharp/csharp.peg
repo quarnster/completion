@@ -1,7 +1,9 @@
 # Reference: http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-334.pdf
 
-Code                        <-      BOM? Spacing? Using* Namespace* Class? EndOfFile
+Code                        <-      UsingDirectives Namespace* Class? EndOfFile
 BOM                         <-      '\ufeff' / '\ufffe'
+
+UsingDirectives             <-      BOM? Spacing? Using*
 
 Preproc                     <-      '#' (!EndOfLine .)+ EndOfLine
 

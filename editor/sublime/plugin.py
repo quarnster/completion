@@ -32,7 +32,8 @@ class Ev(sublime_plugin.EventListener):
         drivers = {
             "c++": "Clang",
             "c": "Clang",
-            "java": "Java"
+            "java": "Java",
+            "cs": "Net"
         }
 
         lang = self.get_language(view, locations[0])
