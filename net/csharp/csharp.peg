@@ -2,9 +2,9 @@
 
 Code                        <-      UsingDirectives Namespace* Class? EndOfFile
 BOM                         <-      '\ufeff' / '\ufffe'
+Complete                    <-      Expression '.'? Spacing? EndOfFile / Spacing? ([{}\[\]()] / Junk) Spacing? Complete
 
 UsingDirectives             <-      BOM? Spacing? Using*
-Complete                    <-      Expression '.' Spacing? EndOfFile / Spacing? ([{}\[\]()] / Junk) Spacing? Complete
 
 Preproc                     <-      '#' (!EndOfLine .)+ EndOfLine
 
@@ -13,10 +13,11 @@ Namespace                   <-      Spacing? "namespace" Spacing SpacedIdentifie
 Class                       <-      SpacedAccess* Spacing? ("class" / "struct") Spacing SpacedIdentifier Inheritance? ClassScope
 
 Inheritance                 <-      ':' Spacing? (SpacedIdentifier ',' / SpacedIdentifier)+ Spacing?
-Using                       <-      "using" Spacing SpacedIdentifier ';' Spacing?
+Using                       <-      "using" Spacing SpacedDotIdentifier ';' Spacing?
 
-SpacedIdentifier            <-      Spacing? DotIdentifier Spacing?
-DotIdentifier               <-      Identifier ('.' Identifier)*
+SpacedDotIdentifier         <-      Spacing? DotIdentifier Spacing?
+SpacedIdentifier            <-      Spacing? Identifier Spacing?
+DotIdentifier               <-      Identifier '.' DotIdentifier / Identifier
 Identifier                  <-      !Reserved [A-Za-z_] [A-Za-z_0-9]*
 
 
@@ -26,7 +27,7 @@ Reserved                    <-      ("if" / "else" / "return" / "while" / "for" 
 EnumValue                   <-      SpacedIdentifier ('=' Expression)?
 Enum                        <-      SpacedAccess? "enum" Spacing SpacedIdentifier '{' (EnumValue ','?)* Spacing? '}' Spacing? ';' Spacing?
 
-Type                        <-      SpacedIdentifier '<' Type '>' / SpacedIdentifier
+Type                        <-      SpacedDotIdentifier '<' Type '>' / SpacedDotIdentifier
 ReturnType                  <-      Type ('[' Expression? ']')*
 
 Parameters                  <-      (Parameter ',' Parameters) / Parameter
@@ -40,9 +41,9 @@ String                      <-      '"' (('\\' .) / (!'"' .))* '"'
 Integer                     <-      '-'? (("0x" [0-9a-fA-F]+) / [0-9]+)
 Float                       <-      '-'? [0-9]+ '.' + [0-9]+
 
-Primary                     <-      Char / String / Integer / Float / DotIdentifier
+Primary                     <-      Char / String / Integer / Float / Identifier
 
-Op2                         <-      ((">>" / "<<") '='?) / "&~" / "==" / "<=" / ">=" / "!=" / "||" / "&&" / ([^|&+*/<>=%.] / '-') '='?
+Op2                         <-      '.' / (((">>" / "<<") '='?) / "&~" / "==" / "<=" / ">=" / "!=" / "||" / "&&" / ([^|&+*/<>=%.] / '-') '='?)
 Op                          <-      Grouping (If2 / Op2 Expression)*
 
 PostInc                     <-      (Index / SpacedIdentifier) "++"

@@ -25,11 +25,10 @@ func TestNet(t *testing.T) {
 		// TODO: this test is not platform independent as it depends on whatever framework you happen
 		//       to have installed
 		{"./testdata/CompleteSharp.cs", 40, 27},
-		// {"./testdata/CompleteSharp.cs", 40, 27},
 		{"./testdata/CompleteSharp.cs", 40, 41},
 		//{"./testdata/CompleteSharp.cs", 95, 45},
 		//		{"./testdata/CompleteSharp.cs", 28, 14},
-		//{"./testdata/CompleteSharp.cs", 211, 46},
+		{"./testdata/CompleteSharp.cs", 211, 46},
 		{"./testdata/CompleteSharp.cs", 761, 83},
 	}
 	args.SessionId = "a"

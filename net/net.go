@@ -34,10 +34,56 @@ func base(node *parser.Node) *parser.Node {
 	return node
 }
 
-func findtype(cache *Cache, using *parser.Node, base *parser.Node) *TypeDef {
-	bn := base.Data()
+func typeresolve(td *TypeDef, node *parser.Node) (*content.Type, error) {
+	switch n := node.Name; n {
+	case "MethodCall":
+		if methods, err := td.Methods(); err != nil {
+			return nil, err
+		} else {
+			for _, method := range methods {
+				if method.Name.Relative == node.Children[0].Data() {
+					return &method.Returns[0].Type, nil
+				}
+			}
+		}
+	case "Identifier":
+		if fields, err := td.Fields(); err != nil {
+			return nil, err
+		} else {
+			for _, field := range fields {
+				if field.Name.Relative == node.Data() {
+					return &field.Type, nil
+				}
+			}
+		}
+
+		// Is it a Property then perhaps?
+		name := "get_" + node.Data()
+		if methods, err := td.Methods(); err != nil {
+			return nil, err
+		} else {
+			for _, method := range methods {
+				if method.Name.Relative == name {
+					return &method.Returns[0].Type, nil
+				}
+			}
+		}
+		// TODO: could also be an inner class
+	}
+
+	// Found nothing.
+	// TODO: Try parents
+	return nil, fmt.Errorf("No such type found: %s, %s", td.Name(), node)
+}
+
+func findtype(cache *Cache, using *parser.Node, name string) *TypeDef {
+	n := content.FullyQualifiedName{Absolute: fmt.Sprintf("net://type/%s", name)}
+	if td, _ := cache.FindType(n); td != nil {
+		return td
+	}
+
 	for _, child := range using.Children {
-		n := content.FullyQualifiedName{Absolute: fmt.Sprintf("net://type/%s.%s", child.Children[0].Data(), bn)}
+		n := content.FullyQualifiedName{Absolute: fmt.Sprintf("net://type/%s.%s", child.Children[0].Data(), name)}
 		if td, _ := cache.FindType(n); td != nil {
 			return td
 		}
@@ -105,7 +151,9 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 	r := p.RootNode()
 	r.Simplify()
 
+	var td *TypeDef
 	var complete func(node *parser.Node) error
+	var ns string
 	complete = func(node *parser.Node) error {
 		//		log4go.Debug("Complete: %s", node)
 		switch n := node.Name; n {
@@ -116,52 +164,31 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 			}
 			switch op := node.Children[1].Data(); op {
 			case ".":
-				return complete(node.Children[0])
+				if td == nil {
+					tn := ns + node.Children[0].Data()
+					if td = findtype(cache, using, tn); td == nil {
+						ns = tn + "."
+						log4go.Debug("Not found ns is now: %s", ns)
+					}
+				} else if t2, err := typeresolve(td, node.Children[0]); err != nil {
+					return err
+				} else if td, err = cache.FindType(t2.Name); err != nil {
+					return err
+				} else if td == nil {
+					return fmt.Errorf("Couldn't find type: %s", node.Children[0])
+				}
+				if n > 2 {
+					return complete(node.Children[2])
+				} else if td == nil {
+					return fmt.Errorf("Typedef is nil")
+				}
+				return c.complete(cache, &content.Type{Name: td.Name()}, cmp)
 			default:
 				if n < 3 {
 					return fmt.Errorf("Not enough children in Op node: %d < 3: %s", n, node)
-				} else {
-
 				}
+				td = nil
 				return complete(node.Children[2])
-			}
-		case "MethodCall":
-			bn := base(node.Children[0])
-			if td := findtype(cache, using, bn); td == nil {
-				return fmt.Errorf("Couldn't find base type with name %s", bn)
-			} else if methods, err := td.Methods(); err != nil {
-				return err
-			} else {
-				for _, method := range methods {
-					if method.Name.Relative == node.Children[0].Children[1].Data() {
-						// TODO: a.b.c.d.e.f. etc completions...
-						return c.complete(cache, &method.Returns[0].Type, cmp)
-					}
-				}
-				// Found nothing. Try parents
-				// TODO
-			}
-		case "Identifier":
-			if td := findtype(cache, using, node); td == nil {
-				return fmt.Errorf("Couldn't find base type with name %s", node)
-			} else {
-				return c.complete(cache, &content.Type{Name: td.Name()}, cmp)
-			}
-		case "DotIdentifier":
-			bn := base(node)
-			if td := findtype(cache, using, bn); td == nil {
-				return fmt.Errorf("Couldn't find base type with name %s", bn)
-			} else if fields, err := td.Fields(); err != nil {
-				return err
-			} else {
-				for _, field := range fields {
-					if field.Name.Relative == node.Children[1].Data() {
-						// TODO: a.b.c.d.e.f. etc completions...
-						return c.complete(cache, &field.Type, cmp)
-					}
-				}
-				// Found nothing. Try parents
-				// TODO
 			}
 		default:
 			return fmt.Errorf("Don't know how to complete %s", node)
