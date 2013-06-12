@@ -84,10 +84,10 @@ func (a *Assembly) Complete(t *content.Type) (*content.CompletionResult, error) 
 		return nil, err
 	} else if td == nil {
 		return nil, errors.New(fmt.Sprintf("Type not found in assembly: %s", t))
-	} else if ret.Fields, err = td.Fields(); err != nil {
+	} else if ct, err := td.ToContentType(); err != nil {
 		return nil, err
-	} else if ret.Methods, err = td.Methods(); err != nil {
-		return nil, err
+	} else {
+		ret = content.CompletionResult(ct)
 	}
 
 	return &ret, nil

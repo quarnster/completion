@@ -5,6 +5,9 @@ import (
 )
 
 type (
+	// The session object is used to define settings that are specific to a session id.
+	// Future queries by clients can then, instead of re-sending the settings for every request,
+	// just specify the session id.
 	Session struct {
 		Settings
 	}

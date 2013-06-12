@@ -135,14 +135,7 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 				for _, method := range methods {
 					if method.Name.Relative == node.Children[0].Children[1].Data() {
 						// TODO: a.b.c.d.e.f. etc completions...
-						if ct, err := cache.Complete(&method.Returns[0].Type); err != nil {
-							return err
-						} else {
-							cmp.Fields = ct.Fields
-							cmp.Types = ct.Types
-							cmp.Methods = ct.Methods
-							return nil
-						}
+						return c.complete(cache, &method.Returns[0].Type, cmp)
 					}
 				}
 				// Found nothing. Try parents
@@ -152,14 +145,7 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 			if td := findtype(cache, using, node); td == nil {
 				return fmt.Errorf("Couldn't find base type with name %s", node)
 			} else {
-				log4go.Debug("Performing Identifier completion: %s", node)
-				if ct, err := td.ToContentType(); err != nil {
-					return err
-				} else {
-					cmp.Fields = ct.Fields
-					cmp.Methods = ct.Methods
-					cmp.Types = ct.Types
-				}
+				return c.complete(cache, &content.Type{Name: td.Name()}, cmp)
 			}
 		case "DotIdentifier":
 			bn := base(node)
@@ -171,14 +157,7 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 				for _, field := range fields {
 					if field.Name.Relative == node.Children[1].Data() {
 						// TODO: a.b.c.d.e.f. etc completions...
-						if ct, err := cache.Complete(&field.Type); err != nil {
-							return err
-						} else {
-							cmp.Fields = ct.Fields
-							cmp.Types = ct.Types
-							cmp.Methods = ct.Methods
-							return nil
-						}
+						return c.complete(cache, &field.Type, cmp)
 					}
 				}
 				// Found nothing. Try parents
@@ -190,9 +169,18 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 		return nil
 	}
 
-	//	log4go.Debug("Want to complete: %s", r.Children[0])
-
 	return complete(r.Children[0])
+}
+
+func (c *Net) complete(cache *Cache, t *content.Type, cmp *content.CompletionResult) error {
+	if ct, err := cache.Complete(t); err != nil {
+		return err
+	} else {
+		cmp.Fields = ct.Fields
+		cmp.Types = ct.Types
+		cmp.Methods = ct.Methods
+	}
+	return nil
 }
 
 func (c *Net) Complete(args *content.CompleteArgs, cmp *content.CompletionResult) error {
@@ -201,12 +189,5 @@ func (c *Net) Complete(args *content.CompleteArgs, cmp *content.CompletionResult
 		return err
 	}
 	log4go.Debug("Trying to complete: %s", args.Location)
-	if ct, err := cache.Complete(&content.Type{Name: args.Location}); err != nil {
-		return err
-	} else {
-		cmp.Fields = ct.Fields
-		cmp.Types = ct.Types
-		cmp.Methods = ct.Methods
-	}
-	return nil
+	return c.complete(cache, &content.Type{Name: args.Location}, cmp)
 }

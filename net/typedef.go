@@ -227,7 +227,7 @@ func (td *TypeDef) Fields() (fields []content.Field, err error) {
 				f.Flags |= content.FLAG_ACC_PROTECTED
 			}
 			if err := check(&f, f.Name); err != nil {
-				log4go.Debug("Skipping field: %s, %+v, %+v", err, f, field)
+				log4go.Fine("Skipping field: %s, %+v, %+v", err, f, field)
 				continue
 			}
 			fields = append(fields, f)
@@ -319,7 +319,7 @@ func (td *TypeDef) Methods() (methods []content.Method, err error) {
 				}
 			}
 			if err := check(&m, m.Name); err != nil {
-				log4go.Debug("Skipping method: %s, %+v, %+v", err, m, method)
+				log4go.Fine("Skipping method: %s, %+v, %+v", err, m, method)
 				continue
 			}
 
@@ -432,7 +432,7 @@ func (td *TypeDef) ToContentType() (t content.Type, err error) {
 					ct.Name = td2.Name()
 					ct.Flags = td2.row.Flags.Convert()
 					if err := check(&ct, ct.Name); err != nil {
-						log4go.Debug("Skipping nested type: %s, %+v, %+v", err, ct, td2.row)
+						log4go.Fine("Skipping nested type: %s, %+v, %+v", err, ct, td2.row)
 						continue
 					}
 

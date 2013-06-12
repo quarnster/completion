@@ -80,12 +80,10 @@ type (
 		Specialization []Type             `protocol:"optional" json:",omitempty"`
 	}
 
-	CompletionResult struct {
-		Types   []Type   `protocol:"optional" json:",omitempty"`
-		Fields  []Field  `protocol:"optional" json:",omitempty"`
-		Methods []Method `protocol:"optional" json:",omitempty"`
-	}
-	Type struct {
+	// TODO: Is there any instance where the completion result would need to contain
+	// 	     fields *not* in Type?
+	CompletionResult Type
+	Type             struct {
 		Name           FullyQualifiedName `protocol:"optional" json:",omitempty"`
 		Specialization []Type             `protocol:"optional" json:",omitempty"`
 		Flags          Flags              `protocol:"optional" json:",omitempty"`

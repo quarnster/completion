@@ -1,3 +1,8 @@
+Types:
+	// {"Name":{"Relative":"ResolveEventHolder","Absolute":"net://type/Assembly$ResolveEventHolder"},"Flags":640}
+	public class net://type/Assembly$ResolveEventHolder
+	// {"Name":{"Relative":"ResourceCloseHandler","Absolute":"net://type/Assembly$ResourceCloseHandler"},"Flags":640}
+	public class net://type/Assembly$ResourceCloseHandler
 Fields:
 	// {"Name":{"Relative":"_mono_assembly","Absolute":"net://field/System.Reflection.Assembly;0"},"Type":{"Name":{"Relative":"IntPtr","Absolute":"net://type/System.IntPtr"}},"Flags":256}
 	private net://type/System.IntPtr _mono_assembly                                  // net://field/System.Reflection.Assembly;0
