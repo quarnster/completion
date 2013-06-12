@@ -1,7 +1,7 @@
 package net
 
 import (
-	//	"code.google.com/p/log4go"
+	"code.google.com/p/log4go"
 	"fmt"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/util"
@@ -15,6 +15,8 @@ func TestNet(t *testing.T) {
 		args content.CompleteAtArgs
 		cmp  content.CompletionResult
 	)
+	log4go.Close()
+	log4go.AddFilter("test", log4go.DEBUG, log4go.NewConsoleLogWriter())
 
 	tests := []struct {
 		InFile       string
@@ -23,6 +25,12 @@ func TestNet(t *testing.T) {
 		// TODO: this test is not platform independent as it depends on whatever framework you happen
 		//       to have installed
 		{"./testdata/CompleteSharp.cs", 40, 27},
+		// {"./testdata/CompleteSharp.cs", 40, 27},
+		{"./testdata/CompleteSharp.cs", 40, 41},
+		//{"./testdata/CompleteSharp.cs", 95, 45},
+		//		{"./testdata/CompleteSharp.cs", 28, 14},
+		//{"./testdata/CompleteSharp.cs", 211, 46},
+		{"./testdata/CompleteSharp.cs", 761, 83},
 	}
 	args.SessionId = "a"
 	for _, test := range tests {

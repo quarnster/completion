@@ -148,6 +148,17 @@ func (c *Cache) cache(assembly string) (*Assembly, error) {
 	return nil, errors.New(errs)
 }
 
+func (c *Cache) FindType(t content.FullyQualifiedName) (*TypeDef, error) {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	for i := range c.entries {
+		if t2, _ := c.entries[i].assembly.FindType(t); t2 != nil {
+			return t2, nil
+		}
+	}
+	return nil, nil
+}
+
 func (c *Cache) Complete(t *content.Type) (*content.CompletionResult, error) {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()

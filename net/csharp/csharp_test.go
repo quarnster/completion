@@ -29,8 +29,9 @@ func TestParse(t *testing.T) {
 						t.Log(p.RootNode())
 						t.Errorf("Didn't finish parsing %s: %s", n, p.Error())
 					}
-
-					res := p.RootNode().String()
+					root := p.RootNode()
+					root.Simplify()
+					res := root.String()
 					if exp, err := ioutil.ReadFile(n + ".pt"); err != nil {
 						t.Logf("Expected result for parsing %s does not exist and will be created", n)
 						ioutil.WriteFile(n+".pt", []byte(res), 0644)

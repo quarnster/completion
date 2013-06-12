@@ -4,6 +4,7 @@ Code                        <-      UsingDirectives Namespace* Class? EndOfFile
 BOM                         <-      '\ufeff' / '\ufffe'
 
 UsingDirectives             <-      BOM? Spacing? Using*
+Complete                    <-      Expression '.' Spacing? EndOfFile / Spacing? ([{}\[\]()] / Junk) Spacing? Complete
 
 Preproc                     <-      '#' (!EndOfLine .)+ EndOfLine
 
@@ -14,8 +15,9 @@ Class                       <-      SpacedAccess* Spacing? ("class" / "struct") 
 Inheritance                 <-      ':' Spacing? (SpacedIdentifier ',' / SpacedIdentifier)+ Spacing?
 Using                       <-      "using" Spacing SpacedIdentifier ';' Spacing?
 
-SpacedIdentifier            <-      Spacing? Identifier Spacing?
-Identifier                  <-      !Reserved [A-Za-z_] [A-Za-z_0-9.]*
+SpacedIdentifier            <-      Spacing? DotIdentifier Spacing?
+DotIdentifier               <-      Identifier ('.' Identifier)*
+Identifier                  <-      !Reserved [A-Za-z_] [A-Za-z_0-9]*
 
 
 Reserved                    <-      ("if" / "else" / "return" / "while" / "for" / "foreach" / "public" / "private" / "protected" / "internal" / "throw" / "return" / "new" / "break" / "case" / "default" / "switch" / "enum") (![A-Za-z0-9_] .)
@@ -38,7 +40,7 @@ String                      <-      '"' (('\\' .) / (!'"' .))* '"'
 Integer                     <-      '-'? (("0x" [0-9a-fA-F]+) / [0-9]+)
 Float                       <-      '-'? [0-9]+ '.' + [0-9]+
 
-Primary                     <-      Char / String / Integer / Float / Identifier
+Primary                     <-      Char / String / Integer / Float / DotIdentifier
 
 Op2                         <-      ((">>" / "<<") '='?) / "&~" / "==" / "<=" / ">=" / "!=" / "||" / "&&" / ([^|&+*/<>=%.] / '-') '='?
 Op                          <-      Grouping (If2 / Op2 Expression)*

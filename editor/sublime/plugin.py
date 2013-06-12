@@ -73,6 +73,10 @@ class Ev(sublime_plugin.EventListener):
         s = time.time()
         completions = []
         print("response:", res)
+
+        def relname(dict):
+            return dict["Relative"] if "Relative" in dict else ""
+
         if "Methods" in res:
             for m in res["Methods"]:
                 n = m["Name"]["Relative"] + "("
@@ -84,18 +88,21 @@ class Ev(sublime_plugin.EventListener):
                         if c > 1:
                             ins += ", "
                             res += ", "
-                        tn = p["Type"]["Name"]["Relative"]
-                        vn = p["Name"]["Relative"] if "Relative" in p["Name"] else ""
+                        tn = relname(p["Type"]["Name"])
+                        vn = relname(p["Name"])
                         ins += "${%d:%s %s}" % (c, tn, vn)
                         res += "%s %s" % (tn, vn)
                         c += 1
                 ins += ")"
-                res += ")\t" + m["Returns"][0]["Type"]["Name"]["Relative"]
+                res += ")"
+                if "Returns" in m:
+                    # TODO: multiple returns
+                    res += "\t" + relname(m["Returns"][0]["Type"]["Name"])
                 completions.append((res, ins))
         if "Fields" in res:
             for f in res["Fields"]:
-                tn = f["Type"]["Name"]["Relative"]
-                vn = f["Name"]["Relative"] if "Relative" in f["Name"] else ""
+                tn = relname(f["Type"]["Name"])
+                vn = relname(f["Name"])
                 ins = "%s" % (vn)
                 res = "%s\t%s" % (vn, tn)
                 completions.append((res, ins))
