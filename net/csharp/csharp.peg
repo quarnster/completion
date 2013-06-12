@@ -100,7 +100,7 @@ If2                         <-      '?' Expression ':' Expression
 
 ThisIndexer                 <-      SpacedAccess* ReturnType "this" '[' Parameters ']' Scope
 
-ClassScope                  <-      Spacing? '{' (Class / Constructor / Method / Property / Enum / ThisIndexer / InnerScope / Spacing)* '}' Spacing?
+ClassScope                  <-      Spacing? '{' (Spacing? (Class / Constructor / Method / Property / Enum / ThisIndexer / Variable / Junk))* '}' Spacing?
 Scope                       <-      Spacing? '{'  InnerScope* Spacing? '}' Spacing?
 InnerScope                  <-      Spacing? (Scope / Loops / If / Switch / Variable / Expression / Junk) Spacing? ';'? Spacing?
 

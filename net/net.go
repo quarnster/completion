@@ -13,27 +13,6 @@ import (
 type Net struct {
 }
 
-func resolve(node *parser.Node) string {
-	switch n := node.Name; n {
-	case "Identifier":
-		return node.Data()
-	default:
-		if len(node.Children) > 0 {
-			return resolve(node.Children[0])
-		} else {
-			return ""
-		}
-	}
-}
-
-func base(node *parser.Node) *parser.Node {
-	switch n := node.Name; n {
-	case "DotIdentifier":
-		return node.Children[0]
-	}
-	return node
-}
-
 func typeresolve(td *TypeDef, node *parser.Node) (*content.Type, error) {
 	switch n := node.Name; n {
 	case "MethodCall":
