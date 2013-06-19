@@ -119,6 +119,17 @@ func (r *BinaryReader) ReadInterface(v interface{}) error {
 					continue
 				}
 			}
+			if l := f2.Tag.Get("skip"); l != "" {
+				var e expression.EXPRESSION
+				if !e.Parse(l) {
+					return e.Error()
+				} else if ev, err := expression.Eval(&v2, e.RootNode()); err != nil {
+					return err
+				} else if _, err := r.Seek(int64(ev), 1); err != nil {
+					return err
+				}
+			}
+
 			if l := f2.Tag.Get("length"); l != "" {
 				switch l {
 				case "uint8":
