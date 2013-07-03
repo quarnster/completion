@@ -14,7 +14,7 @@ import (
 	"runtime"
 )
 
-var ignore = regexp.MustCompile(`\.git|build|testdata|3rdparty|editor`)
+var ignore = regexp.MustCompile(`\.git|build|testdata|3rdparty|editor|libclang`)
 var verbose bool
 
 func createPluginArchive() {
