@@ -119,6 +119,7 @@ func readthread(r io.Reader, out chan string) {
 	close(out)
 }
 
+// TODO(q): skips libclang for now
 func main() {
 	flag.BoolVar(&verbose, "v", verbose, "Verbose output")
 	flag.Parse()
@@ -142,7 +143,7 @@ func main() {
 	buildPeg("../util/expression/expression.peg", "Spacing,Primary,Op,Expression,Grouping,BooleanOp")
 	buildPeg("../util/expand_path/expand_path.peg", "Operation,File")
 	buildPeg("../net/csharp/csharp.peg", "Complete,Junk,UsingDirectives,Primary,BOM,Spacing,Reference,Grouping,InnerScope,EndOfLine,Comment,LineComment,BlockComment,Loops,Code,SpacedIdentifier,SpacedAccess")
-	tests := []string{"test"}
+	tests := []string{"test", "-tags", "nolibclang"}
 	if verbose {
 		tests = append(tests, "-v")
 	}
