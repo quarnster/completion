@@ -11,6 +11,8 @@ type (
 		Location SourceLocation
 	}
 
+	// TODO(): Rather than a FullyQualifiedName, isn't content.Type a better fit?
+	//         We need to see how this unfolds for the various backends.
 	CompleteArgs struct {
 		Args
 		Location FullyQualifiedName

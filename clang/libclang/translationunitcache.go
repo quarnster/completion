@@ -112,6 +112,7 @@ func (t *TranslationUnitCache) GetTranslationUnit(filename string, options []str
 	} else {
 		recompile := !reflect.DeepEqual(tu.opts, options) || tu.opts_script != options_script
 		if recompile {
+			// TODO: need to dispose the tu.. Who's responsible for its disposal?
 			delete(t.lut, filename)
 		}
 		t.Unlock()
