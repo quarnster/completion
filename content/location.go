@@ -22,11 +22,22 @@ type (
 		// returns, and python does not type a functions parameters.
 		//
 		// When available, the Relative name would be the identifier
-		// presented to the user.
+		// presented to the user, for example "String" rather than
+		// "java.lang.String".
 		Relative string `protocol:"optional" json:",omitempty"`
 
 		// The Absolute string contains all information needed
-		// by a backend "driver" to
+		// by a backend "driver" to be able to perform a "Complete"
+		// (rather than "CompleteAt") operation and is usually
+		// treated as an internal driver specific identifier.
+		//
+		// TODO():	What about presenting "packages" or "namespaces" to the user?
+		//			That's not always redundant information.
+		// 			We may want to change this field to be the "java.lang.String",
+		//			or perhaps we have a "Path" field containing "java.lang".
+		//			The information needed by a driver for non-"At" operations
+		//			(i.e going to the documentation/implementation of a type)
+		// 			may be specified in another field then.
 		Absolute string `protocol:"optional" json:",omitempty"`
 	}
 )
