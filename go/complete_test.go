@@ -17,3 +17,16 @@ func TestGoo(t *testing.T) {
 		t.Log(cmp)
 	}
 }
+
+func TestGoo2(t *testing.T) {
+	var (
+		g   Go
+		cmp content.CompletionResult
+	)
+	if err := g.complete_pkg("github.com/quarnster/completion/content", &cmp); err != nil {
+		t.Error(err)
+	} else {
+		t.Log(cmp)
+	}
+
+}

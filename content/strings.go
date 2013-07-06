@@ -151,6 +151,8 @@ func (a Flags) String() (ret string) {
 		ret += "class "
 	case FLAG_TYPE_INTERFACE:
 		ret += "interface "
+	case FLAG_TYPE_STRUCT:
+		ret += "struct "
 	}
 	return
 }
