@@ -7,23 +7,22 @@ import (
 	"testing"
 )
 
-func TestTranslationUnitCache(t *testing.T) {
-	cache := NewTranslationUnitCache()
-	if tu := cache.GetTranslationUnit("../testdata/hello.cpp", []string{"-x", "c++"}, "", nil); tu == nil {
-		t.Error("Didn't get a translation unit")
-	}
+func TestComplete(t *testing.T) {
+	cache := Clang{*NewTranslationUnitCache()}
 	var (
 		args = content.CompleteAtArgs{
 			Location: content.SourceLocation{
-				File:   content.File{Name: "../testdata/hello.cpp"},
-				Line:   4,
-				Column: 1,
+				File:   content.File{Name: "hello.cpp", Contents: "#include <stdio.h>\nint main(){ printf(); }"},
+				Line:   2,
+				Column: 12,
 			},
 		}
 		res content.CompletionResult
 	)
 	if err := cache.CompleteAt(&args, &res); err != nil {
 		t.Errorf("Error completing: %v", err)
+	} else if l := len(res.Methods); l < 10 {
+		t.Errorf("Expected more methods than %d", l)
 	} else {
 		t.Logf("%+v", res)
 	}
