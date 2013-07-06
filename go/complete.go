@@ -2,6 +2,7 @@ package goo
 
 import (
 	"code.google.com/p/go.tools/go/types"
+	"code.google.com/p/log4go"
 	"github.com/quarnster/completion/content"
 	//	"go/ast"
 	//	"go/parser"
@@ -81,16 +82,22 @@ func (g *Go) complete(t reflect.Type, cmp *content.CompletionResult) error {
 
 var dotre = regexp.MustCompile(`·\d+`)
 
+// TODO(): This does not return the right think for *, [], map[] types
+func (g *Go) pkg_type(t types.Type) (ret content.Type) {
+	n := t.String()
+	if i := strings.LastIndex(n, "."); i > 0 {
+		ret.Name.Relative = n[i+1:]
+		ret.Name.Absolute = n
+	} else {
+		ret.Name.Relative = n
+		ret.Name.Absolute = n
+	}
+	return
+}
+
 func (g *Go) pkg_var(v *types.Var) (ret content.Variable) {
 	ret.Name.Relative = dotre.ReplaceAllString(v.Name(), "")
-	n := v.Type().String()
-	if i := strings.LastIndex(n, "."); i > 0 {
-		ret.Type.Name.Relative = n[i+1:]
-		ret.Type.Name.Absolute = n
-	} else {
-		ret.Type.Name.Relative = n
-		ret.Type.Name.Absolute = n
-	}
+	ret.Type = g.pkg_type(v.Type())
 	return
 }
 
@@ -142,10 +149,15 @@ func (g *Go) complete_pkg(pkg string, cmp *content.CompletionResult) error {
 					t2.Flags |= content.FLAG_TYPE_STRUCT
 				}
 				cmp.Types = append(cmp.Types, t2)
+			case *types.Const, *types.Var:
+				var f content.Field
+				f.Name.Relative = t.Name()
+				f.Type = g.pkg_type(t.Type())
+				cmp.Fields = append(cmp.Fields, f)
+			default:
+				log4go.Warn("Unimplemented type in package completion: at: %+v, %v, %v", t, reflect.TypeOf(t), reflect.TypeOf(t.Type().Underlying()))
 			}
-			fmt.Printf("at: %+v, %v, %v\n", t, reflect.TypeOf(t), reflect.TypeOf(t.Type().Underlying()))
 		}
-		fmt.Printf("entries: %d\n", nn.NumEntries())
 	}
 	return nil
 }
