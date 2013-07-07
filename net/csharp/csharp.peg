@@ -2,7 +2,7 @@
 
 Code                        <-      UsingDirectives Namespace* Class? EndOfFile
 BOM                         <-      '\ufeff' / '\ufffe'
-Complete                    <-      Expression '.'? Spacing? EndOfFile / Spacing? ([{}\[\]()] / Junk) Spacing? Complete
+Complete                    <-      Expression '.'? (Spacing / ';')* EndOfFile / Spacing? ([{}\[\]()] / Junk) Spacing? Complete
 
 UsingDirectives             <-      BOM? Spacing? Using*
 

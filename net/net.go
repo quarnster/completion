@@ -6,8 +6,7 @@ import (
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/net/csharp"
 	"github.com/quarnster/parser"
-	"io/ioutil"
-	"strings"
+	"regexp"
 )
 
 type Net struct {
@@ -55,7 +54,15 @@ func typeresolve(td *TypeDef, node *parser.Node) (*content.Type, error) {
 	return nil, fmt.Errorf("No such type found: %s, %s", td.Name(), node)
 }
 
+var tm = map[string]string{
+	"string": "System.String",
+	"int":    "System.Int32",
+}
+
 func findtype(cache *Cache, using *parser.Node, name string) *TypeDef {
+	if n, ok := tm[name]; ok {
+		name = n
+	}
 	n := content.FullyQualifiedName{Absolute: fmt.Sprintf("net://type/%s", name)}
 	if td, _ := cache.FindType(n); td != nil {
 		return td
@@ -67,6 +74,7 @@ func findtype(cache *Cache, using *parser.Node, name string) *TypeDef {
 			return td
 		}
 	}
+
 	return nil
 }
 
@@ -97,19 +105,29 @@ func (c *Net) cache(args *content.Args) (*Cache, error) {
 	return cache, nil
 }
 
+func (c *Net) variable(n *parser.Node) string {
+	switch n.Name {
+	case "ReturnType":
+		return n.Data()
+	default:
+		if len(n.Children) > 0 {
+			return c.variable(n.Children[0])
+		}
+	}
+	return ""
+}
+
+var tdnil = fmt.Errorf("Typedef is nil")
+
 func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionResult) error {
 	cache, err := c.cache(&args.Args)
 	if err != nil {
 		return err
 	}
-	contents := args.Location.File.Contents
-	if contents == "" {
-		if d, err := ioutil.ReadFile(args.Location.File.Name); err != nil {
-			return err
-		} else {
-			contents = string(d)
-		}
+	if err := args.Location.File.Load(); err != nil {
+		return err
 	}
+	contents := args.Location.File.Contents
 
 	var up csharp.CSHARP
 	up.SetData(contents)
@@ -118,10 +136,8 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 	}
 	using := up.RootNode()
 
-	lines := strings.Split(contents, "\n")
-	line := lines[args.Location.Line-1]
-
 	var p csharp.CSHARP
+	line := args.Location.File.Line(args.Location.Offset())
 	line = line[:args.Location.Column-1]
 	p.SetData(line)
 	if !p.Complete() {
@@ -133,8 +149,8 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 	var td *TypeDef
 	var complete func(node *parser.Node) error
 	var ns string
+
 	complete = func(node *parser.Node) error {
-		//		log4go.Debug("Complete: %s", node)
 		switch n := node.Name; n {
 		case "Op":
 			n := len(node.Children)
@@ -147,7 +163,6 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 					tn := ns + node.Children[0].Data()
 					if td = findtype(cache, using, tn); td == nil {
 						ns = tn + "."
-						log4go.Debug("Not found ns is now: %s", ns)
 					}
 				} else if t2, err := typeresolve(td, node.Children[0]); err != nil {
 					return err
@@ -156,10 +171,36 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 				} else if td == nil {
 					return fmt.Errorf("Couldn't find type: %s", node.Children[0])
 				}
+				if td == nil {
+					// Probably a variable completion then?
+					v := node.Children[0].Data()
+					if re, err := regexp.Compile(fmt.Sprintf(`[\s,]%s[,;=\)\s]`, v)); err != nil {
+						return err
+					} else {
+						idx := re.FindAllStringIndex(contents, -1)
+						for _, i := range idx {
+							line := args.Location.File.Line(content.Offset(i[0]))
+							var p csharp.CSHARP
+							p.SetData(line)
+							if !p.Complete() {
+								return fmt.Errorf("%s, %s, %s", line, p.Error(), p.RootNode())
+							} else {
+								if t := c.variable(p.RootNode()); t != "" {
+									// TODO: Need to figure out which variables are actually visible
+									//       rather than just returning the first variable we stumble upon
+									td = findtype(cache, using, t)
+									if td != nil {
+										break
+									}
+								}
+							}
+						}
+					}
+				}
 				if n > 2 {
 					return complete(node.Children[2])
 				} else if td == nil {
-					return fmt.Errorf("Typedef is nil")
+					return tdnil
 				}
 				return c.complete(cache, &content.Type{Name: td.Name()}, cmp)
 			default:
@@ -175,7 +216,12 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 		return nil
 	}
 
-	return complete(r.Children[0])
+	if err := complete(r.Children[0]); err == tdnil {
+		return err
+	} else {
+		return err
+	}
+
 }
 
 func (c *Net) complete(cache *Cache, t *content.Type, cmp *content.CompletionResult) error {
