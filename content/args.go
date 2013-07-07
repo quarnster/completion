@@ -30,6 +30,8 @@ func (a *Args) Session() *Session {
 func (a *Args) SessionOrCreate(id string) *Session {
 	if s := a.Session(); s != nil {
 		return s
+	} else if s, ok := sessionmap[id]; ok {
+		return s
 	} else {
 		sessionmap[id] = &Session{*NewSettings()}
 		a.SessionId = id
@@ -46,10 +48,7 @@ func (a *Args) SessionOrCreate(id string) *Session {
 // is returned.
 func (it *Args) Settings() *Settings {
 	if session := it.Session(); session != nil {
-		set := session.Settings.Clone()
-		set.Merge(&it.SessionOverrides)
-		return set
-	} else {
-		return &it.SessionOverrides
+		it.SessionOverrides.parent = &session.Settings
 	}
+	return &it.SessionOverrides
 }

@@ -2,7 +2,12 @@
 
 Code                        <-      UsingDirectives Namespace* Class? EndOfFile
 BOM                         <-      '\ufeff' / '\ufffe'
-Complete                    <-      Expression '.'? (Spacing / ';')* EndOfFile / Spacing? ([{}\[\]()] / Junk) Spacing? Complete
+
+CompleteOp                  <-      CompleteGrouping (Op2 CompleteExpression)*
+CompleteGrouping            <-      MethodCall / SpacedIdentifier
+CompleteExpression          <-      CompleteOp
+Complete                    <-      Spacing? CompleteExpression '.'? (Spacing / ';')* EndOfFile / Spacing? ([{}\[\]()] / Junk) Spacing? Complete
+CompleteVariable            <-      Variable2 .* EndOfFile
 
 UsingDirectives             <-      BOM? Spacing? Using*
 
@@ -21,7 +26,7 @@ DotIdentifier               <-      Identifier '.' DotIdentifier / Identifier
 Identifier                  <-      !Reserved [A-Za-z_] [A-Za-z_0-9]*
 
 
-Reserved                    <-      ("if" / "else" / "return" / "while" / "for" / "foreach" / "public" / "private" / "protected" / "internal" / "throw" / "return" / "new" / "break" / "case" / "default" / "switch" / "enum") (![A-Za-z0-9_] .)
+Reserved                    <-      ("if" / "else" / "return" / "while" / "for" / "foreach" / "public" / "private" / "protected" / "internal" / "throw" / "return" / "new" / "break" / "case" / "default" / "switch" / "enum" / "using") (![A-Za-z0-9_] .)
 
 
 EnumValue                   <-      SpacedIdentifier ('=' Expression)?

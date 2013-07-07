@@ -175,7 +175,7 @@ func BenchmarkComplete(b *testing.B) {
 		b.Error(err)
 	} else {
 		b.StartTimer()
-		tn := content.Type{Name: content.FullyQualifiedName{Absolute: "SevenZip.Compression.LZ.OutWindow"}}
+		tn := content.Type{Name: content.FullyQualifiedName{Absolute: "net://type/SevenZip.Compression.LZ.OutWindow"}}
 		for i := 0; i < b.N; i++ {
 			if _, err := asm.Complete(&tn); err != nil {
 				b.Error(err)
@@ -193,7 +193,7 @@ func BenchmarkMetatableLookup(b *testing.B) {
 	defer f.Close()
 	if asm, err := LoadAssembly(f); err != nil {
 		b.Error(err)
-	} else if ty, err := asm.FindType(content.FullyQualifiedName{Absolute: "SevenZip.Compression.LZ.OutWindow"}); err != nil {
+	} else if ty, err := asm.FindType(content.FullyQualifiedName{Absolute: "net://type/SevenZip.Compression.LZ.OutWindow"}); err != nil {
 		b.Error(err)
 	} else {
 		idx := ty.index

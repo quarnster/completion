@@ -16,6 +16,7 @@ import (
 	"net/rpc/jsonrpc"
 	"runtime/debug"
 	"strings"
+	"time"
 )
 
 var (
@@ -91,13 +92,15 @@ func serverloop() {
 			}
 		} else {
 			go func() {
+				s := time.Now()
+				conn.SetDeadline(time.Time{})
 				codec := jsonrpc.NewServerCodec(conn)
 				defer func() {
-					log4go.Debug("In defer")
 					codec.Close()
 					if r := recover(); r != nil {
 						log4go.Error("Recovered from panic: %v, stack: %s", r, string(debug.Stack()))
 					}
+					log4go.Debug("Serviced in %f milliseconds", time.Since(s).Seconds()*1000)
 				}()
 				for {
 					if err := server.ServeRequest(codec); err != nil {

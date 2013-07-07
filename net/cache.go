@@ -2,12 +2,12 @@ package net
 
 import (
 	"bytes"
+	"code.google.com/p/log4go"
 	"errors"
 	"fmt"
 	"github.com/howeyc/fsnotify"
 	"github.com/quarnster/completion/content"
 	"io/ioutil"
-	"log"
 	"os"
 	"path/filepath"
 	"sync"
@@ -63,7 +63,7 @@ func (c *Cache) loaderthread() {
 					loaded = true
 					if req.reload {
 						if err := c.reload(&c.entries[i]); err != nil {
-							log.Println("Error reloading assembly:", err)
+							log4go.Warn("Error reloading assembly:", err)
 						}
 					}
 					break
@@ -89,7 +89,7 @@ func (c *Cache) watchthread() {
 		case ev := <-c.watch.Event:
 			c.load <- loadreq{ev.Name, true}
 		case err := <-c.watch.Error:
-			log.Println("error:", err)
+			log4go.Error("error:", err)
 		}
 	}
 }

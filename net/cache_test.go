@@ -108,7 +108,7 @@ func TestCacheLoadDep(t *testing.T) {
 		t.Error(err)
 	} else {
 		t.Logf("Found %s", asm.Name())
-		time.Sleep(time.Millisecond * 10)
+		time.Sleep(time.Millisecond * 100)
 		if len(c.entries) <= 1 {
 			t.Error("Dependencies not loaded:", c.entries)
 		}
@@ -146,6 +146,7 @@ func BenchmarkCacheComplete(b *testing.B) {
 }
 
 func BenchmarkCacheFindType(b *testing.B) {
+	b.StopTimer()
 	paths := DefaultPaths()
 	if len(paths) == 0 {
 		b.Skip("No default paths available")

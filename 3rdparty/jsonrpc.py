@@ -791,7 +791,7 @@ class TransportSocket(Transport):
         if self.s is None:
             self.connect()
         data = self.s.recv( self.limit )
-        while( select.select((self.s,), (), (), 0.1)[0] ):  #TODO: this select is probably not necessary, because server closes this socket
+        while data.count(b'{') != data.count(b'}'):
             d = self.s.recv( self.limit )
             if len(d) == 0:
                 break

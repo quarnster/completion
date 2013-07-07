@@ -12,7 +12,7 @@ import sublime_plugin
 def log(a):
     print(a)
 
-proxy = jsonrpc.ServerProxy(jsonrpc.JsonRpc10(), jsonrpc.TransportTcpIp(addr=("127.0.0.1", 12345), logfunc=log))
+proxy = jsonrpc.ServerProxy(jsonrpc.JsonRpc10(), jsonrpc.TransportTcpIp(addr=("127.0.0.1", 12345), logfunc=log, timeout=2.0))
 language_regex = re.compile("(?<=source\.)[\w+#]+")
 
 

@@ -25,47 +25,36 @@ func TestSetGet(t *testing.T) {
 	}
 }
 
-func TestClone(t *testing.T) {
-	s := NewSettings()
-	s.Set("hello", "world")
-	s.Set("yes", true)
-	s2 := s.Clone()
-	s2.Set("no", false)
-	for k := range s.data {
-		if a, b := s.Get(k), s2.Get(k); a != b {
-			t.Errorf("%s != %s", a, b)
-		}
-	}
-	if a, b := len(s.data), len(s2.data); a == b {
-		t.Errorf("Expected different data lengths: %d == %d", a, b)
-	}
-}
-
-func TestMerge(t *testing.T) {
-	s1 := &Settings{map[string]interface{}{
+func TestParent(t *testing.T) {
+	s1 := &Settings{data: map[string]interface{}{
 		"hello": "world",
 		"yes":   true,
 		"no":    3,
 	}}
-	s2 := &Settings{map[string]interface{}{
+	s2 := &Settings{data: map[string]interface{}{
 		"no":  false,
 		"yes": false,
 		"new": 14,
-	}}
+	},
+		parent: s1,
+	}
 	exp := map[string]interface{}{
 		"hello": "world",
 		"yes":   false,
 		"no":    false,
 		"new":   14,
 	}
-	s1.Merge(s2)
-	if a, b := len(s1.data), len(exp); a != b {
-		t.Errorf("%d != %d", a, b)
-	}
 	for k, v := range exp {
-		if a, b := v, s1.Get(k); a != b {
+		if a, b := v, s2.Get(k); a != b {
 			t.Errorf("%s != %s", a, b)
 		}
+	}
+	s2.Set("hello", "you")
+	if v := s2.Get("hello").(string); v != "you" {
+		t.Errorf("Expected 'you' got: %s", v)
+	}
+	if v := s1.Get("hello").(string); v != "world" {
+		t.Errorf("Expected 'world' got: %s", v)
 	}
 
 }

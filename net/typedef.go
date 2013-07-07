@@ -18,6 +18,7 @@ type (
 		mu    *MetadataUtil
 		index TypeDefIndex
 		row   TypeDefRow
+		ct    content.Type
 	}
 
 	AbstractType interface {
@@ -69,7 +70,8 @@ func TypeDefFromIndex(index TypeDefIndex) (*TypeDef, error) {
 		return nil, err
 	} else {
 		i2 := *index.(*ConcreteTableIndex)
-		return &TypeDef{i2.metadataUtil, &i2, *tr.(*TypeDefRow)}, nil
+		td := &TypeDef{i2.metadataUtil, &i2, *tr.(*TypeDefRow), content.Type{}}
+		return td, nil
 	}
 }
 
@@ -110,6 +112,8 @@ func (td *TypeDef) initContentType(index TypeDefIndex, t *Type) (t2 content.Type
 func (td *TypeDef) Extends() (t []content.Type, err error) {
 	if (td.row.Flags & TypeAttributes_ClassSemanticsMask) != TypeAttributes_Class {
 		return nil, ErrInterface
+	} else if td.ct.Name.Relative != "" {
+		return td.ct.Extends, nil
 	}
 	if td.row.Extends.Index() != 0 {
 		if raw, err := td.row.Extends.Data(); err != nil {
@@ -122,6 +126,10 @@ func (td *TypeDef) Extends() (t []content.Type, err error) {
 }
 
 func (td *TypeDef) Implements() (interfaces []content.Type, err error) {
+	if td.ct.Name.Relative != "" {
+		return td.ct.Implements, nil
+	}
+
 	table := td.mu.Tables[id_InterfaceImpl]
 	rawidx := td.mu.Search(id_InterfaceImpl, func(ti TableIndex) bool {
 		if raw, err := ti.Data(); err == nil {
@@ -191,6 +199,10 @@ func stripProto(absname string) string {
 }
 
 func (td *TypeDef) Fields() (fields []content.Field, err error) {
+	if td.ct.Name.Relative != "" {
+		return td.ct.Fields, nil
+	}
+
 	var (
 		mu               = td.index.(*ConcreteTableIndex).metadataUtil
 		startRow, endRow = td.ListRange(td.index.Index(), id_TypeDef, id_Field, func(i interface{}) uint32 { return i.(*TypeDefRow).FieldList.Index() })
@@ -258,6 +270,10 @@ func (td *TypeDef) Parameters(index MethodDefIndex) (params []content.Variable, 
 }
 
 func (td *TypeDef) Methods() (methods []content.Method, err error) {
+	if td.ct.Name.Relative != "" {
+		return td.ct.Methods, nil
+	}
+
 	var (
 		mu               = td.index.(*ConcreteTableIndex).metadataUtil
 		startRow, endRow = td.ListRange(td.index.Index(), id_TypeDef, id_MethodDef, func(i interface{}) uint32 { return i.(*TypeDefRow).MethodList.Index() })
@@ -360,6 +376,10 @@ func (td *TypeDef) TypeNesting(index TypeDefIndex) (ret string) {
 }
 
 func (td *TypeDef) Name() (ret content.FullyQualifiedName) {
+	if td.ct.Name.Relative != "" {
+		return td.ct.Name
+	}
+
 	ret.Absolute = td.row.Namespace()
 	if len(ret.Absolute) > 0 {
 		ret.Absolute += "."
@@ -383,27 +403,31 @@ func (flags TypeAttributes) Convert() (t content.Flags) {
 	return t
 }
 
-func (td *TypeDef) ToContentType() (t content.Type, err error) {
+func (td *TypeDef) ToContentType() (t *content.Type, err error) {
+	if td.ct.Name.Relative != "" {
+		return &td.ct, nil
+	}
+	t = &content.Type{}
 	t.Name = td.Name()
 	t.Flags = td.row.Flags.Convert()
 
 	if ext, err := td.Extends(); err != nil && err != ErrInterface {
-		return content.Type{}, err
+		return nil, err
 	} else {
 		t.Extends = ext
 	}
 	if imp, err := td.Implements(); err != nil {
-		return content.Type{}, err
+		return nil, err
 	} else {
 		t.Implements = imp
 	}
 	if f, err := td.Fields(); err != nil {
-		return content.Type{}, err
+		return nil, err
 	} else {
 		t.Fields = f
 	}
 	if f, err := td.Methods(); err != nil {
-		return content.Type{}, err
+		return nil, err
 	} else {
 		t.Methods = f
 	}
@@ -421,13 +445,13 @@ func (td *TypeDef) ToContentType() (t content.Type, err error) {
 		for i := idx.Index(); i < table.Rows+1; i++ {
 			ci.index = i
 			if raw, err := ci.Data(); err != nil {
-				return content.Type{}, err
+				return nil, err
 			} else {
 				row := raw.(*NestedClassRow)
 				if row.EnclosingClass.Index() != td.index.Index() {
 					break
 				} else if td2, err := TypeDefFromIndex(row.NestedClass); err != nil {
-					return content.Type{}, err
+					return nil, err
 				} else {
 					ct := content.Type{}
 					ct.Name = td2.Name()
@@ -443,5 +467,6 @@ func (td *TypeDef) ToContentType() (t content.Type, err error) {
 		}
 	}
 	err = content.Validate(&t)
+	td.ct = *t
 	return
 }

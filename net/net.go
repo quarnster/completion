@@ -85,6 +85,7 @@ func (c *Net) cache(args *content.Args) (*Cache, error) {
 		cache = a
 	}
 	if cache == nil {
+		log4go.Debug("cache is nil..")
 		paths := DefaultPaths()
 		s := args.Settings()
 		if v, ok := s.Get("net_paths").([]string); ok {
@@ -107,11 +108,11 @@ func (c *Net) cache(args *content.Args) (*Cache, error) {
 
 func (c *Net) variable(n *parser.Node) string {
 	switch n.Name {
-	case "ReturnType":
-		return n.Data()
 	default:
 		if len(n.Children) > 0 {
 			return c.variable(n.Children[0])
+		} else {
+			return n.Data()
 		}
 	}
 	return ""
@@ -128,7 +129,6 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 		return err
 	}
 	contents := args.Location.File.Contents
-
 	var up csharp.CSHARP
 	up.SetData(contents)
 	if !up.UsingDirectives() {
@@ -137,7 +137,8 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 	using := up.RootNode()
 
 	var p csharp.CSHARP
-	line := args.Location.File.Line(args.Location.Offset())
+	off := args.Location.Offset()
+	line := args.Location.File.Line(off)
 	line = line[:args.Location.Column-1]
 	p.SetData(line)
 	if !p.Complete() {
@@ -145,14 +146,13 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 	}
 	r := p.RootNode()
 	r.Simplify()
-
 	var td *TypeDef
 	var complete func(node *parser.Node) error
 	var ns string
 
 	complete = func(node *parser.Node) error {
 		switch n := node.Name; n {
-		case "Op":
+		case "CompleteOp":
 			n := len(node.Children)
 			if n < 2 {
 				return fmt.Errorf("Not enough children in Op node: %d < 2: %s", n, node)
@@ -173,8 +173,8 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 				}
 				if td == nil {
 					// Probably a variable completion then?
-					v := node.Children[0].Data()
-					if re, err := regexp.Compile(fmt.Sprintf(`[\s,]%s[,;=\)\s]`, v)); err != nil {
+					v := c.variable(node.Children[0])
+					if re, err := regexp.Compile(fmt.Sprintf(`%s[;\s=,]`, v)); err != nil {
 						return err
 					} else {
 						idx := re.FindAllStringIndex(contents, -1)
@@ -182,9 +182,7 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 							line := args.Location.File.Line(content.Offset(i[0]))
 							var p csharp.CSHARP
 							p.SetData(line)
-							if !p.Complete() {
-								return fmt.Errorf("%s, %s, %s", line, p.Error(), p.RootNode())
-							} else {
+							if p.CompleteVariable() {
 								if t := c.variable(p.RootNode()); t != "" {
 									// TODO: Need to figure out which variables are actually visible
 									//       rather than just returning the first variable we stumble upon

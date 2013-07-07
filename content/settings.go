@@ -1,7 +1,8 @@
 package content
 
 type Settings struct {
-	data map[string]interface{}
+	data   map[string]interface{}
+	parent *Settings
 }
 
 func NewSettings() *Settings {
@@ -9,7 +10,12 @@ func NewSettings() *Settings {
 }
 
 func (s *Settings) Get(key string) interface{} {
-	return s.data[key]
+	if v, ok := s.data[key]; ok {
+		return v
+	} else if s.parent != nil {
+		return s.parent.Get(key)
+	}
+	return nil
 }
 
 func (s *Settings) Set(key string, val interface{}) {
@@ -17,18 +23,4 @@ func (s *Settings) Set(key string, val interface{}) {
 		s.data = make(map[string]interface{})
 	}
 	s.data[key] = val
-}
-
-func (s *Settings) Clone() *Settings {
-	s2 := NewSettings()
-	for k, v := range s.data {
-		s2.Set(k, v)
-	}
-	return s2
-}
-
-func (s *Settings) Merge(other *Settings) {
-	for k, v := range other.data {
-		s.data[k] = v
-	}
 }

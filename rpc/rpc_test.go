@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/java"
@@ -8,6 +9,7 @@ import (
 	"net/rpc/jsonrpc"
 	"reflect"
 	"testing"
+	"time"
 )
 
 func TestRpc(t *testing.T) {
@@ -73,5 +75,54 @@ func TestRpcInvalid(t *testing.T) {
 				t.Error("Expected an error, but didn't receive one")
 			}
 		}
+	}
+}
+
+func BenchmarkDirect(b *testing.B) {
+
+	var n net.Net
+	for i := 0; i < b.N; i++ {
+		var a content.CompleteAtArgs
+		a.Location.Line = 95
+		a.Location.Column = 45
+		a.Location.File.Name = "../net/testdata/CompleteSharp.cs"
+		var cmp1 content.CompletionResult
+		n.CompleteAt(&a, &cmp1)
+	}
+}
+
+func BenchmarkRpc(b *testing.B) {
+	if c, err := jsonrpc.Dial("tcp", fmt.Sprintf("127.0.0.1%s", port)); err != nil {
+		b.Error(err)
+	} else {
+		defer c.Close()
+
+		s := time.Now()
+		for i := 0; i < b.N; i++ {
+			var a content.CompleteAtArgs
+			a.Location.Line = 95
+			a.Location.Column = 45
+			a.Location.File.Name = "../net/testdata/CompleteSharp.cs"
+
+			var cmp1 content.CompletionResult
+			if err := c.Call("Net.CompleteAt", &a, &cmp1); err != nil {
+				b.Error(err)
+			}
+		}
+		e := time.Since(s).Seconds() * 1000
+		b.Logf("%d calls in %f ms = %f ms/call", b.N, e, e/float64(b.N))
+	}
+}
+
+func BenchmarkJsonMarshal(b *testing.B) {
+	var n net.Net
+	for i := 0; i < b.N; i++ {
+		var a content.CompleteAtArgs
+		a.Location.Line = 95
+		a.Location.Column = 45
+		a.Location.File.Name = "../net/testdata/CompleteSharp.cs"
+		var cmp1 content.CompletionResult
+		n.CompleteAt(&a, &cmp1)
+		json.Marshal(&cmp1)
 	}
 }

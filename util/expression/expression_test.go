@@ -29,7 +29,7 @@ func TestParser(t *testing.T) {
 			t.Error("Didn't parse correctly: %s\n", p.Error())
 		} else {
 			root := p.RootNode()
-			if root.Range.End != len(p.ParserData.Data) {
+			if root.Range.End != p.ParserData.Len() {
 				t.Error("Parsing didn't finish: %v\n%s", root, p.Error())
 			} else if root.String() != test[1] {
 				t.Error("Output differs\n", root.String(), "\n", test[1])

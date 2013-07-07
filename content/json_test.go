@@ -31,7 +31,7 @@ func comparesettings(s1, s2 *Settings) error {
 }
 
 func TestJson(t *testing.T) {
-	source := Settings{map[string]interface{}{
+	source := Settings{data: map[string]interface{}{
 		"hello": "world",
 		"yes":   true,
 		"no":    3.0,

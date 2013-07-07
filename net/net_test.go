@@ -77,7 +77,7 @@ func BenchmarkFindtype(b *testing.B) {
 	}
 }
 
-func BenchmarkNet(b *testing.B) {
+func BenchmarkNetComplete(b *testing.B) {
 	var (
 		n    Net
 		args content.CompleteAtArgs

@@ -43,3 +43,10 @@ func TestParse(t *testing.T) {
 		}
 	}
 }
+
+func TestParse2(t *testing.T) {
+	var p CSHARP
+	p.SetData("if (fix && toadd.Trim().")
+	p.Complete()
+	t.Log(p.RootNode())
+}
