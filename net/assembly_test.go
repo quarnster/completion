@@ -136,8 +136,9 @@ func TestFindType(t *testing.T) {
 		{"net://type/SevenZip.Compression.LZ.OutWindow", true},
 		{"net://type/SevenZip.Compression.LZ.OutWindow.Something", false},
 		{"net://type/SevenZip.ISetDecoderProperties", true},
-		{"net://type/Key", true},
-		{"net://type/Key.Something", false},
+		{"net://type/Key", false},
+		{"net://type/LzmaAlone$Key", true},
+		{"net://type/LzmaAlone$Key.Something", false},
 	}
 	f, err := os.Open(findtype_test)
 	if err != nil {
@@ -155,7 +156,7 @@ func TestFindType(t *testing.T) {
 					t.Errorf("Expected to find type %s, but didn't", test.in)
 				}
 			} else {
-				if n := AbsoluteName(&ty.row); n != test.in {
+				if n := ty.Name().Absolute; n != test.in || !test.expectFind {
 					t.Errorf("Type name mismatch: %s != %s", n, test.in)
 				}
 			}

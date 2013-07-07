@@ -144,3 +144,31 @@ func BenchmarkCacheComplete(b *testing.B) {
 		}
 	}
 }
+
+func BenchmarkCacheFindType(b *testing.B) {
+	paths := DefaultPaths()
+	if len(paths) == 0 {
+		b.Skip("No default paths available")
+	}
+
+	tests := []string{"mscorlib.dll", "System.dll"}
+
+	c := Cache{paths: paths}
+	for _, test := range tests {
+		if _, err := c.Load(test); err != nil {
+			b.Error(err)
+		}
+	}
+
+	tests2 := []content.FullyQualifiedName{
+		content.FullyQualifiedName{Absolute: "net://type/string"},
+	}
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		for _, test := range tests2 {
+			if _, err := c.FindType(test); err != nil {
+				b.Error(err)
+			}
+		}
+	}
+}

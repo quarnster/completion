@@ -4,19 +4,22 @@ import (
 	"code.google.com/p/log4go"
 	"fmt"
 	"github.com/quarnster/completion/content"
+	"github.com/quarnster/completion/net/csharp"
 	"github.com/quarnster/completion/util"
 	"io/ioutil"
 	"testing"
 )
 
+func init() {
+	log4go.Close()
+	log4go.AddFilter("test", log4go.DEBUG, log4go.NewConsoleLogWriter())
+}
 func TestNet(t *testing.T) {
 	var (
 		n    Net
 		args content.CompleteAtArgs
 		cmp  content.CompletionResult
 	)
-	log4go.Close()
-	log4go.AddFilter("test", log4go.DEBUG, log4go.NewConsoleLogWriter())
 
 	tests := []struct {
 		InFile       string
@@ -48,5 +51,43 @@ func TestNet(t *testing.T) {
 		} else if d := util.Diff(string(exp), cmp.String()); len(d) != 0 {
 			t.Error(d)
 		}
+	}
+}
+
+func BenchmarkFindtype(b *testing.B) {
+	var (
+		n    Net
+		args content.CompleteAtArgs
+	)
+	args.Location.File.Name = "./testdata/CompleteSharp.cs"
+	args.Location.File.Load()
+	args.Location.Line = 95
+	args.Location.Column = 45
+	cache, _ := n.cache(&args.Args)
+
+	var up csharp.CSHARP
+	up.SetData(args.Location.File.Contents)
+	if !up.UsingDirectives() {
+		b.Fatal(up.Error())
+	}
+	using := up.RootNode()
+
+	for i := 0; i < b.N; i++ {
+		findtype(cache, using, "string")
+	}
+}
+
+func BenchmarkNet(b *testing.B) {
+	var (
+		n    Net
+		args content.CompleteAtArgs
+	)
+	args.Location.File.Name = "./testdata/CompleteSharp.cs"
+	args.Location.File.Load()
+	args.Location.Line = 95
+	args.Location.Column = 45
+	for i := 0; i < b.N; i++ {
+		var cmp content.CompletionResult
+		n.CompleteAt(&args, &cmp)
 	}
 }

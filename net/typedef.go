@@ -68,7 +68,8 @@ func TypeDefFromIndex(index TypeDefIndex) (*TypeDef, error) {
 	if tr, err := index.Data(); err != nil {
 		return nil, err
 	} else {
-		return &TypeDef{index.(*ConcreteTableIndex).metadataUtil, index, *tr.(*TypeDefRow)}, nil
+		i2 := *index.(*ConcreteTableIndex)
+		return &TypeDef{i2.metadataUtil, &i2, *tr.(*TypeDefRow)}, nil
 	}
 }
 

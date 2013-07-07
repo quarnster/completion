@@ -22,6 +22,7 @@ var (
 
 type Assembly struct {
 	MetadataUtil
+	typelut map[string]*TypeDef
 }
 
 func (a *Assembly) Name() string {
@@ -61,21 +62,17 @@ func (a *Assembly) FindType(t content.FullyQualifiedName) (*TypeDef, error) {
 	if t.Absolute == "" {
 		return nil, errors.New("Can only look up types with a full absolute name")
 	}
-	idx := ConcreteTableIndex{&a.MetadataUtil, 0, id_TypeDef}
-	for i := uint32(0); i < a.Tables[id_TypeDef].Rows; i++ {
-		idx.index = 1 + i
-		if rawtype, err := idx.Data(); err != nil {
-			return nil, err
-		} else {
-			var (
-				tr = rawtype.(*TypeDefRow)
-			)
-			if AbsoluteName(tr) == t.Absolute {
-				return TypeDefFromIndex(&idx)
+	if a.typelut == nil {
+		a.typelut = make(map[string]*TypeDef)
+		idx := ConcreteTableIndex{&a.MetadataUtil, 0, id_TypeDef}
+		for i := uint32(0); i < a.Tables[id_TypeDef].Rows; i++ {
+			idx.index = 1 + i
+			if td, err := TypeDefFromIndex(&idx); err == nil {
+				a.typelut[td.Name().Absolute] = td
 			}
 		}
 	}
-	return nil, nil
+	return a.typelut[t.Absolute], nil
 }
 
 func (a *Assembly) Complete(t *content.Type) (*content.CompletionResult, error) {
@@ -139,6 +136,6 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 	if md, err := t.MetadataUtil(&br); err != nil {
 		return nil, err
 	} else {
-		return &Assembly{*md}, nil
+		return &Assembly{*md, nil}, nil
 	}
 }
