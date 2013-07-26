@@ -1,0 +1,4 @@
+Scope			<-	(TextScope / CommentScope / BracketScope / (![{}"] !"/*" .))+
+BracketScope	<-	'{' Scope? '}'
+CommentScope	<-	"/*" (!"*/" .)* "*/"
+TextScope		<-	'"' (('\\' .) / (!'"' .))* '"'
