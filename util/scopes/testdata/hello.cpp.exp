@@ -1,5 +1,3 @@
 0-93: "SCOPES"
-	52-93: "BracketScope" - Data: "{
-	printf("Hello world!\n");
-	return 0;
-}"
+	52-93: "BracketScope"
+		62-78: "TextScope" - Data: ""Hello world!\n""

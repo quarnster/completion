@@ -15,7 +15,7 @@ ignore_parser = Spacing,Pattern,Completion,Completions,ReturnType,Arguments,Argu
 ignore_expression = Spacing,Primary,Op,Expression,Grouping,BooleanOp
 ignore_expand_path = Operation,File
 ignore_csharp = Complete,Junk,UsingDirectives,Primary,BOM,Spacing,Reference,Grouping,InnerScope,EndOfLine,Comment,LineComment,BlockComment,Loops,Code,SpacedIdentifier,SpacedAccess
-ignore_scopes = Scope,CommentScope,TextScope
+ignore_scopes = Scope
 
 PEGS = \
 	../java/signatures/signatures.go \
