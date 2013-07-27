@@ -7,7 +7,7 @@ CompleteOp                  <-      '!'? CompleteGrouping (Op2 CompleteExpressio
 CompleteGrouping            <-      MethodCall / SpacedIdentifier
 CompleteExpression          <-      CompleteOp
 Complete                    <-      Spacing? CompleteExpression '.'? (Spacing / ';')* EndOfFile / Spacing? ([{}\[\]()] / Junk) Spacing? Complete
-CompleteVariable            <-      Variable2 .* EndOfFile
+CompleteVariable            <-      SpacedAccess* Variable2 .* EndOfFile / Variable
 
 UsingDirectives             <-      BOM? Spacing? Using*
 

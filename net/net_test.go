@@ -29,6 +29,7 @@ func TestNet(t *testing.T) {
 		//       to have installed
 		{"./testdata/CompleteSharp.cs", 40, 27},
 		{"./testdata/CompleteSharp.cs", 40, 41},
+		{"./testdata/CompleteSharp.cs", 47, 47},
 		//{"./testdata/CompleteSharp.cs", 28, 14},
 		{"./testdata/CompleteSharp.cs", 211, 46},
 		{"./testdata/CompleteSharp.cs", 761, 83},
@@ -37,6 +38,7 @@ func TestNet(t *testing.T) {
 		{"./testdata/CompleteSharp.cs", 737, 15},
 		{"./testdata/CompleteSharp.cs", 95, 38},
 		{"./testdata/CompleteSharp.cs", 95, 45},
+		{"./testdata/CompleteSharp.cs", 776, 39},
 	}
 	args.SessionId = "a"
 	args.Settings().Set("net_paths", []string{"./testdata/"})

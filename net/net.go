@@ -227,16 +227,16 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 					// Probably a variable completion then?
 					v := c.variable(node.Children[0])
 					loc := content.File{Contents: scopes.Substr(args.Location.File.Contents, scopes.Visibility(args.Location))}
-					if re, err := regexp.Compile(fmt.Sprintf(`%s[;\s=,]`, v)); err != nil {
+					if re, err := regexp.Compile(fmt.Sprintf(`[=\(,;}\s](\w+(\s*\[\])*\s+)*%s[;\s=,)\[]`, v)); err != nil {
 						return err
 					} else {
 						idx := re.FindAllStringIndex(loc.Contents, -1)
 						for _, i := range idx {
 							// TODO: It's better at getting the right variable, but still not 100% correct
-							line := loc.Line(content.Offset(i[0]))
+							line := loc.Contents[i[0]+1 : i[1]-1]
 							var p csharp.CSHARP
 							p.SetData(line)
-							if p.Variable() {
+							if p.CompleteVariable() {
 								if t := c.variable(p.RootNode()); t != "" {
 									if td = findtype(cache, using, t); td != nil {
 										break

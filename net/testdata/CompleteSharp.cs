@@ -110,7 +110,7 @@ public class CompleteSharp
                 {
                     parameters = parameters.Substring(1, parameters.Length-2);
                 }
-                string[] para = null;
+                string[] para = null;
                 if (parameters.Length > 0)
                 {
                     para = SplitParameters(parameters);
@@ -197,7 +197,7 @@ public class CompleteSharp
                 for (int i = 0; i < subtypes.Length; i++)
                 {
                     string bn = GetBase(templateParam[i]);
-                    string[] args = GetTemplateArguments(templateParam[i]);
+                    string[] args = GetTemplateArguments(templateParam[i]);
                     subtypes[i] = GetType(ad, bn, args);
                 }
 
@@ -715,7 +715,7 @@ public class CompleteSharp
         };
         private AppDomain ad = null;
         private string[] assemblies;
-        private DateTime[] times = null;
+        private DateTime[] times = null;
         public MyAppDomain(string[] arg)
         {
             assemblies = arg;
@@ -755,7 +755,7 @@ public class CompleteSharp
             }
         }
 
-        public bool Execute(string[] args, ArrayList modules)
+        public bool Execute(string[] args, ArrayList modules)
         {
             CheckUpdate();
             object o = ad.CreateInstanceAndUnwrap(Assembly.GetExecutingAssembly().FullName, "CompleteSharp+MyAppDomain+Hack");
