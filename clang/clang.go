@@ -11,7 +11,14 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"reflect"
 )
+
+func init() {
+	if err := content.RegisterType("compiler_flags", reflect.TypeOf([]string{})); err != nil {
+		panic(err)
+	}
+}
 
 func RunClang(args ...string) ([]byte, error) {
 	cmd := exec.Command("clang", args...)

@@ -3,7 +3,7 @@
 Code                        <-      UsingDirectives Namespace* Class? EndOfFile
 BOM                         <-      '\ufeff' / '\ufffe'
 
-CompleteOp                  <-      CompleteGrouping (Op2 CompleteExpression)*
+CompleteOp                  <-      '!'? CompleteGrouping (Op2 CompleteExpression)*
 CompleteGrouping            <-      MethodCall / SpacedIdentifier
 CompleteExpression          <-      CompleteOp
 Complete                    <-      Spacing? CompleteExpression '.'? (Spacing / ';')* EndOfFile / Spacing? ([{}\[\]()] / Junk) Spacing? Complete

@@ -94,6 +94,18 @@ func (c *Cache) watchthread() {
 	}
 }
 
+func (c *Cache) AddPath(path string) {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	path = filepath.Clean(path)
+	for _, p := range c.paths {
+		if p == path {
+			return
+		}
+	}
+	c.paths = append(c.paths, path)
+}
+
 func (c *Cache) Load(name string) (*Assembly, error) {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()

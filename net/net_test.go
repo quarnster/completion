@@ -32,17 +32,22 @@ func TestNet(t *testing.T) {
 		//{"./testdata/CompleteSharp.cs", 28, 14},
 		{"./testdata/CompleteSharp.cs", 211, 46},
 		{"./testdata/CompleteSharp.cs", 761, 83},
+		{"./testdata/CompleteSharp.cs", 761, 27},
+		{"./testdata/CompleteSharp.cs", 857, 29},
+		{"./testdata/CompleteSharp.cs", 737, 15},
 		{"./testdata/CompleteSharp.cs", 95, 38},
 		{"./testdata/CompleteSharp.cs", 95, 45},
 	}
 	args.SessionId = "a"
+	args.Settings().Set("net_paths", []string{"./testdata/"})
+	args.Settings().Set("net_assemblies", []string{"CompleteSharp.exe"})
 	for _, test := range tests {
 		args.Location.File.Name = test.InFile
 		args.Location.Line = test.Line
 		args.Location.Column = test.Column
 		ex := fmt.Sprintf("%s-%d-%d.cmp", test.InFile, test.Line, test.Column)
 		if err := n.CompleteAt(&args, &cmp); err != nil {
-			t.Error(err)
+			t.Errorf("Unable to complete %v: %s", test, err)
 		} else if exp, err := ioutil.ReadFile(ex); err != nil {
 			t.Logf("Couldn't read the expected output file %s (%s); it'll be created", ex, err)
 			if err := ioutil.WriteFile(ex, []byte(cmp.String()), 0644); err != nil {

@@ -5,9 +5,20 @@ import (
 	"fmt"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/net/csharp"
+	"github.com/quarnster/completion/util/scopes"
 	"github.com/quarnster/parser"
+	"reflect"
 	"regexp"
+	"strings"
 )
+
+func init() {
+	if err := content.RegisterType("net_paths", reflect.TypeOf([]string{})); err != nil {
+		panic(err)
+	} else if err := content.RegisterType("net_assemblies", reflect.TypeOf([]string{})); err != nil {
+		panic(err)
+	}
+}
 
 type Net struct {
 }
@@ -87,10 +98,6 @@ func (c *Net) cache(args *content.Args) (*Cache, error) {
 	if cache == nil {
 		log4go.Debug("cache is nil..")
 		paths := DefaultPaths()
-		s := args.Settings()
-		if v, ok := s.Get("net_paths").([]string); ok {
-			paths = append(paths, v...)
-		}
 		c := Cache{paths: paths}
 		std := []string{"mscorlib.dll", "System.dll"}
 		for _, lib := range std {
@@ -103,19 +110,64 @@ func (c *Net) cache(args *content.Args) (*Cache, error) {
 		cache = &c
 		session.Set("net_cache", cache)
 	}
+	s := args.Settings()
+	if v, ok := s.Get("net_paths").([]string); ok {
+		for _, p := range v {
+			cache.AddPath(p)
+		}
+	}
+	if v, ok := s.Get("net_assemblies").([]string); ok {
+		for _, lib := range v {
+			if asm, err := cache.Load(lib); err != nil {
+				return nil, err
+			} else {
+				log4go.Debug("Found %s (%s)", lib, asm.Name())
+			}
+		}
+	}
+
 	return cache, nil
 }
 
 func (c *Net) variable(n *parser.Node) string {
 	switch n.Name {
+	case "Access":
 	default:
 		if len(n.Children) > 0 {
-			return c.variable(n.Children[0])
+			for _, child := range n.Children {
+				if v := c.variable(child); v != "" {
+					return v
+				}
+			}
 		} else {
 			return n.Data()
 		}
 	}
 	return ""
+}
+
+func (c *Net) classes(path string, cs []string, n *parser.Node) []string {
+	switch n.Name {
+	case "Namespace", "Class":
+		var p2 = ""
+		for _, child := range n.Children {
+			switch child.Name {
+			case "Identifier", "SpacedIdentifier":
+				p2 = path + child.Data()
+				cs = append(cs, p2)
+			case "ClassScope":
+				cs = c.classes(p2+"$", cs, child)
+			case "Namespace", "Class":
+				cs = c.classes(p2+".", cs, child)
+			}
+		}
+		return cs
+	case "CSHARP", "ClassScope":
+		for _, child := range n.Children {
+			cs = c.classes(path, cs, child)
+		}
+	}
+	return cs
 }
 
 var tdnil = fmt.Errorf("Typedef is nil")
@@ -174,19 +226,34 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 				if td == nil {
 					// Probably a variable completion then?
 					v := c.variable(node.Children[0])
+					loc := content.File{Contents: scopes.Substr(args.Location.File.Contents, scopes.Visibility(args.Location))}
 					if re, err := regexp.Compile(fmt.Sprintf(`%s[;\s=,]`, v)); err != nil {
 						return err
 					} else {
-						idx := re.FindAllStringIndex(contents, -1)
+						idx := re.FindAllStringIndex(loc.Contents, -1)
 						for _, i := range idx {
-							line := args.Location.File.Line(content.Offset(i[0]))
+							// TODO: It's better at getting the right variable, but still not 100% correct
+							line := loc.Line(content.Offset(i[0]))
 							var p csharp.CSHARP
 							p.SetData(line)
-							if p.CompleteVariable() {
+							if p.Variable() {
 								if t := c.variable(p.RootNode()); t != "" {
-									// TODO: Need to figure out which variables are actually visible
-									//       rather than just returning the first variable we stumble upon
-									td = findtype(cache, using, t)
+									if td = findtype(cache, using, t); td != nil {
+										break
+									} else {
+										// Internal class perhaps?
+										var p csharp.CSHARP
+										if p.Parse(loc.Contents) {
+											for _, t2 := range c.classes("", nil, p.RootNode()) {
+												if !strings.HasSuffix(t2, t) {
+													continue
+												}
+												if td = findtype(cache, using, t2); td != nil {
+													break
+												}
+											}
+										}
+									}
 									if td != nil {
 										break
 									}

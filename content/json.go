@@ -19,7 +19,6 @@ func init() {
 		{"settings", reflect.TypeOf(Settings{})},
 		{"location", reflect.TypeOf(SourceLocation{})},
 		{"completion", reflect.TypeOf(CompletionResult{})},
-		{"compiler_flags", reflect.TypeOf([]string{})},
 	}
 	for _, t := range types {
 		if err := RegisterType(t.k, t.t); err != nil {

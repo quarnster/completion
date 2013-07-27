@@ -1,0 +1,21 @@
+Types:
+	// {"Name":{"Relative":"Hack","Absolute":"net://type/CompleteSharp$MyAppDomain$Hack"},"Flags":640}
+	public class net://type/CompleteSharp$MyAppDomain$Hack
+Fields:
+	// {"Name":{"Relative":"ad","Absolute":"net://field/CompleteSharp$MyAppDomain;0"},"Type":{"Name":{"Relative":"AppDomain","Absolute":"net://type/System.AppDomain"}},"Flags":256}
+	private net://type/System.AppDomain ad                                           // net://field/CompleteSharp$MyAppDomain;0
+	// {"Name":{"Relative":"assemblies","Absolute":"net://field/CompleteSharp$MyAppDomain;1"},"Type":{"Name":{},"Specialization":[{"Name":{"Relative":"String","Absolute":"net://type/System.String"}}],"Flags":2048},"Flags":256}
+	private net://type/System.String[] assemblies                                    // net://field/CompleteSharp$MyAppDomain;1
+	// {"Name":{"Relative":"times","Absolute":"net://field/CompleteSharp$MyAppDomain;2"},"Type":{"Name":{},"Specialization":[{"Name":{"Relative":"DateTime","Absolute":"net://type/System.DateTime"}}],"Flags":2048},"Flags":256}
+	private net://type/System.DateTime[] times                                       // net://field/CompleteSharp$MyAppDomain;2
+	// {"Name":{"Relative":"forceReload","Absolute":"net://field/CompleteSharp$MyAppDomain;3"},"Type":{"Name":{"Relative":"Boolean","Absolute":"net://type/System.Boolean"}},"Flags":256}
+	private net://type/System.Boolean forceReload                                    // net://field/CompleteSharp$MyAppDomain;3
+Methods:
+	// {"Name":{"Relative":"MyAppDomain","Absolute":"net://method/CompleteSharp$MyAppDomain;0"},"Flags":132,"Parameters":[{"Name":{"Relative":"arg"},"Type":{"Name":{},"Specialization":[{"Name":{"Relative":"String","Absolute":"net://type/System.String"}}],"Flags":2048}}]}
+	public  MyAppDomain(net://type/System.String[] arg)                              // net://method/CompleteSharp$MyAppDomain;0
+	// {"Name":{"Relative":"LoadAssemblies","Absolute":"net://method/CompleteSharp$MyAppDomain;1"},"Flags":128,"Returns":[{"Name":{},"Type":{"Name":{"Relative":"Void","Absolute":"net://type/System.Void"}}}]}
+	public net://type/System.Void  LoadAssemblies()                                  // net://method/CompleteSharp$MyAppDomain;1
+	// {"Name":{"Relative":"Execute","Absolute":"net://method/CompleteSharp$MyAppDomain;2"},"Flags":128,"Returns":[{"Name":{},"Type":{"Name":{"Relative":"Boolean","Absolute":"net://type/System.Boolean"}}}],"Parameters":[{"Name":{"Relative":"args"},"Type":{"Name":{},"Specialization":[{"Name":{"Relative":"String","Absolute":"net://type/System.String"}}],"Flags":2048}},{"Name":{"Relative":"modules"},"Type":{"Name":{"Relative":"ArrayList","Absolute":"net://type/System.Collections.ArrayList"}}}]}
+	public net://type/System.Boolean  Execute(net://type/System.String[] args, net://type/System.Collections.ArrayList modules) // net://method/CompleteSharp$MyAppDomain;2
+	// {"Name":{"Relative":"CheckUpdate","Absolute":"net://method/CompleteSharp$MyAppDomain;3"},"Flags":256,"Returns":[{"Name":{},"Type":{"Name":{"Relative":"Void","Absolute":"net://type/System.Void"}}}]}
+	private net://type/System.Void  CheckUpdate()                                    // net://method/CompleteSharp$MyAppDomain;3
