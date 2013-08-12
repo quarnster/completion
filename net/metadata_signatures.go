@@ -2,10 +2,9 @@ package net
 
 import (
 	"bytes"
-	"encoding/binary"
 	"errors"
 	"fmt"
-	"github.com/quarnster/completion/util"
+	"github.com/quarnster/util/encoding/binary"
 	"io"
 	"reflect"
 )
@@ -146,7 +145,7 @@ type (
 	EncInt  int32
 
 	SignatureDecoder struct {
-		Reader       util.BinaryReader
+		Reader       binary.BinaryReader
 		metadataUtil *MetadataUtil
 	}
 	MethodDefSigId uint8
@@ -212,7 +211,7 @@ func NewSignatureDecoder(idx BlobIndex) (*SignatureDecoder, error) {
 		pos, _ := r.Seek(0, 1)
 		data = data[pos : uint32(pos)+l]
 	}
-	return &SignatureDecoder{metadataUtil: ci.metadataUtil, Reader: util.BinaryReader{Reader: bytes.NewReader(data), Endianess: binary.LittleEndian}}, nil
+	return &SignatureDecoder{metadataUtil: ci.metadataUtil, Reader: binary.BinaryReader{Reader: bytes.NewReader(data), Endianess: binary.LittleEndian}}, nil
 }
 
 func (d *SignatureDecoder) Decode(v interface{}) error {

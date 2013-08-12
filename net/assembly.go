@@ -8,11 +8,10 @@ package net
 
 import (
 	"code.google.com/p/log4go"
-	"encoding/binary"
 	"errors"
 	"fmt"
 	"github.com/quarnster/completion/content"
-	"github.com/quarnster/completion/util"
+	"github.com/quarnster/util/encoding/binary"
 	"io"
 )
 
@@ -82,7 +81,7 @@ func (a *Assembly) Complete(t *content.Type) (*content.CompletionResult, error) 
 func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 
 	var (
-		br        = util.BinaryReader{r, binary.LittleEndian}
+		br        = binary.BinaryReader{r, binary.LittleEndian}
 		err       error
 		pe_offset uint32
 		coff      coff_file_header

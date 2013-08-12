@@ -3,10 +3,9 @@ package java
 
 import (
 	"bytes"
-	"encoding/binary"
 	"errors"
 	"fmt"
-	"github.com/quarnster/completion/util"
+	"github.com/quarnster/util/encoding/binary"
 	"io"
 )
 
@@ -72,7 +71,7 @@ type (
 	}
 )
 
-func (cp *ConstantPool) readConstant(c *Constant, br *util.BinaryReader) error {
+func (cp *ConstantPool) readConstant(c *Constant, br *binary.BinaryReader) error {
 	if err := br.ReadInterface(&c.Tag); err != nil {
 		return err
 	} else {
@@ -133,7 +132,7 @@ func (cp *ConstantPool) readConstant(c *Constant, br *util.BinaryReader) error {
 	return nil
 }
 
-func (c *ConstantPool) Read(br *util.BinaryReader) error {
+func (c *ConstantPool) Read(br *binary.BinaryReader) error {
 	var count uint16
 	if err := br.ReadInterface(&count); err != nil {
 		return err
@@ -215,7 +214,7 @@ func (a *attribute_info) String(c *ConstantPool) (ret string) {
 	switch n := c.Lut(a.Attribute_name_index).String(); n {
 	case "Signature", "SourceFile":
 		ret += "="
-		br := util.BinaryReader{bytes.NewReader(a.Info), util.BigEndian}
+		br := binary.BinaryReader{bytes.NewReader(a.Info), binary.BigEndian}
 		if i16, err := br.Uint16(); err != nil {
 			ret += err.Error()
 		} else {
@@ -224,7 +223,7 @@ func (a *attribute_info) String(c *ConstantPool) (ret string) {
 	case "Code":
 		ret += " ("
 		var cl Code_attribute
-		br := util.BinaryReader{bytes.NewReader(a.Info), util.BigEndian}
+		br := binary.BinaryReader{bytes.NewReader(a.Info), binary.BigEndian}
 		if err := br.ReadInterface(&cl); err != nil {
 			ret += err.Error()
 		} else {
@@ -312,7 +311,7 @@ const (
 )
 
 func NewClass(reader io.ReadSeeker) (*Class, error) {
-	r := util.BinaryReader{reader, binary.BigEndian}
+	r := binary.BinaryReader{reader, binary.BigEndian}
 	var c Class
 	if err := r.ReadInterface(&c); err != nil {
 		return nil, err

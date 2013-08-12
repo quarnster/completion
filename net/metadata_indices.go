@@ -2,10 +2,9 @@ package net
 
 import (
 	"bytes"
-	"encoding/binary"
 	"errors"
 	"fmt"
-	"github.com/quarnster/completion/util"
+	"github.com/quarnster/util/encoding/binary"
 	"reflect"
 )
 
@@ -58,7 +57,7 @@ func (t *ConcreteTableIndex) Data() (interface{}, error) {
 		return nil, err
 	}
 	ret := reflect.New(table.RowType).Interface()
-	if err := t.metadataUtil.Create(&util.BinaryReader{Reader: bytes.NewReader(data), Endianess: binary.LittleEndian}, ret); err != nil {
+	if err := t.metadataUtil.Create(&binary.BinaryReader{Reader: bytes.NewReader(data), Endianess: binary.LittleEndian}, ret); err != nil {
 		return nil, err
 	}
 	return ret, nil

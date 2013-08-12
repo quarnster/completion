@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/quarnster/completion/util"
 	errors "github.com/quarnster/completion/util/errors"
+	"github.com/quarnster/util/encoding/binary"
 	"reflect"
 	"sort"
 	"strings"
@@ -151,7 +152,7 @@ type (
 	}
 )
 
-func (mh *MetadataHeader) MetadataUtil(br *util.BinaryReader) (*MetadataUtil, error) {
+func (mh *MetadataHeader) MetadataUtil(br *binary.BinaryReader) (*MetadataUtil, error) {
 	var (
 		ret MetadataUtil
 	)
@@ -236,7 +237,7 @@ func (mh *MetadataHeader) MetadataUtil(br *util.BinaryReader) (*MetadataUtil, er
 	return &ret, nil
 }
 
-func (m *MetadataUtil) ReadIndex(br *util.BinaryReader, size uint) (uint32, error) {
+func (m *MetadataUtil) ReadIndex(br *binary.BinaryReader, size uint) (uint32, error) {
 	if size == 2 {
 		if v, e := br.Uint16(); e != nil {
 			return 0, e
@@ -247,7 +248,7 @@ func (m *MetadataUtil) ReadIndex(br *util.BinaryReader, size uint) (uint32, erro
 	return br.Uint32()
 }
 
-func (m *MetadataUtil) Create(br *util.BinaryReader, v interface{}) error {
+func (m *MetadataUtil) Create(br *binary.BinaryReader, v interface{}) error {
 	t := reflect.ValueOf(v)
 	if t.Kind() != reflect.Ptr {
 		return errors.New(fmt.Sprintf("Expected a pointer not %s", t.Kind()))
