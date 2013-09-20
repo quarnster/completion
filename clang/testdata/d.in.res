@@ -1,7 +1,7 @@
 Fields:
 	// {"Name":{"Relative":"boost_foreach_argument_dependent_lookup_hack_value"},"Type":{"Name":{"Relative":"boost_foreach_argument_dependent_lookup_hack"}}}
 	boost_foreach_argument_dependent_lookup_hack boost_foreach_argument_dependent_lookup_hack_value // 
-	// {"Name":{"Relative":"data"},"Type":{"Name":{"Relative":"const std::string &"}}}
+	// {"Name":{"Relative":"data"},"Type":{"Name":{"Relative":"const std::string \u0026"}}}
 	const std::string & data                                                         // 
 	// {"Name":{"Relative":"daylight"},"Type":{"Name":{"Relative":"int"}}}
 	int daylight                                                                     // 
@@ -136,17 +136,17 @@ Methods:
 	int  bcmp(const void * , const void * , size_t )                                 // 
 	// {"Name":{"Relative":"bcopy"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const void *"}}},{"Name":{},"Type":{"Name":{"Relative":"void *"}}},{"Name":{},"Type":{"Name":{"Relative":"size_t"}}}]}
 	void  bcopy(const void * , void * , size_t )                                     // 
-	// {"Name":{"Relative":"boost_foreach_is_lightweight_proxy"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"boost::mpl::true_ *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"std::pair\u003cT, T\u003e *&"}}},{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::tag"}}}]}
+	// {"Name":{"Relative":"boost_foreach_is_lightweight_proxy"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"boost::mpl::true_ *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"std::pair\u003cT, T\u003e *\u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::tag"}}}]}
 	boost::mpl::true_ *  boost_foreach_is_lightweight_proxy(std::pair<T, T> *& , boost::foreach::tag ) // 
-	// {"Name":{"Relative":"boost_foreach_is_lightweight_proxy"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::is_lightweight_proxy\u003cT\u003e *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T *&"}}},{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::tag"}}}]}
+	// {"Name":{"Relative":"boost_foreach_is_lightweight_proxy"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::is_lightweight_proxy\u003cT\u003e *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T *\u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::tag"}}}]}
 	boost::foreach::is_lightweight_proxy<T> *  boost_foreach_is_lightweight_proxy(T *& , boost::foreach::tag ) // 
-	// {"Name":{"Relative":"boost_foreach_is_lightweight_proxy"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"boost::mpl::true_ *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"boost::iterator_range\u003cT\u003e *&"}}},{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::tag"}}}]}
+	// {"Name":{"Relative":"boost_foreach_is_lightweight_proxy"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"boost::mpl::true_ *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"boost::iterator_range\u003cT\u003e *\u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::tag"}}}]}
 	boost::mpl::true_ *  boost_foreach_is_lightweight_proxy(boost::iterator_range<T> *& , boost::foreach::tag ) // 
-	// {"Name":{"Relative":"boost_foreach_is_lightweight_proxy"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"boost::mpl::true_ *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T **&"}}},{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::tag"}}}]}
+	// {"Name":{"Relative":"boost_foreach_is_lightweight_proxy"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"boost::mpl::true_ *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T **\u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::tag"}}}]}
 	boost::mpl::true_ *  boost_foreach_is_lightweight_proxy(T **& , boost::foreach::tag ) // 
-	// {"Name":{"Relative":"boost_foreach_is_lightweight_proxy"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"boost::mpl::true_ *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"boost::sub_range\u003cT\u003e *&"}}},{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::tag"}}}]}
+	// {"Name":{"Relative":"boost_foreach_is_lightweight_proxy"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"boost::mpl::true_ *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"boost::sub_range\u003cT\u003e *\u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::tag"}}}]}
 	boost::mpl::true_ *  boost_foreach_is_lightweight_proxy(boost::sub_range<T> *& , boost::foreach::tag ) // 
-	// {"Name":{"Relative":"boost_foreach_is_noncopyable"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::is_noncopyable\u003cT\u003e *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T *&"}}},{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::tag"}}}]}
+	// {"Name":{"Relative":"boost_foreach_is_noncopyable"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::is_noncopyable\u003cT\u003e *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T *\u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"boost::foreach::tag"}}}]}
 	boost::foreach::is_noncopyable<T> *  boost_foreach_is_noncopyable(T *& , boost::foreach::tag ) // 
 	// {"Name":{"Relative":"brk"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const void *"}}}]}
 	void *  brk(const void * )                                                       // 
@@ -916,7 +916,7 @@ Methods:
 	long double  powl(long double , long double )                                    // 
 	// {"Name":{"Relative":"pread"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"ssize_t"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"int"}}},{"Name":{},"Type":{"Name":{"Relative":"void *"}}},{"Name":{},"Type":{"Name":{"Relative":"size_t"}}},{"Name":{},"Type":{"Name":{"Relative":"off_t"}}}]}
 	ssize_t  pread(int , void * , size_t , off_t )                                   // 
-	// {"Name":{"Relative":"Preprocess"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"std::string"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const std::string &data"}}}]}
+	// {"Name":{"Relative":"Preprocess"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"std::string"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const std::string \u0026data"}}}]}
 	std::string  Preprocess(const std::string &data )                                // 
 	// {"Name":{"Relative":"printf"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const char *, ..."}}}]}
 	int  printf(const char *, ... )                                                  // 

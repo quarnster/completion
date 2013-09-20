@@ -1,5 +1,5 @@
 Methods:
-	// {"Name":{"Relative":"assign"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"size_type __n"}}},{"Name":{},"Type":{"Name":{"Relative":"const value_type &__val"}}}]}
+	// {"Name":{"Relative":"assign"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"size_type __n"}}},{"Name":{},"Type":{"Name":{"Relative":"const value_type \u0026__val"}}}]}
 	void  assign(size_type __n , const value_type &__val )                           // 
 	// {"Name":{"Relative":"assign"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"_InputIterator __first"}}},{"Name":{},"Type":{"Name":{"Relative":"_InputIterator __last"}}}]}
 	void  assign(_InputIterator __first , _InputIterator __last )                    // 
@@ -39,9 +39,9 @@ Methods:
 	const_reference  front()                                                         // 
 	// {"Name":{"Relative":"get_allocator"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"allocator_type"}}}]}
 	allocator_type  get_allocator()                                                  // 
-	// {"Name":{"Relative":"insert"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"iterator"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"iterator __position"}}},{"Name":{},"Type":{"Name":{"Relative":"const value_type &__x"}}}]}
+	// {"Name":{"Relative":"insert"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"iterator"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"iterator __position"}}},{"Name":{},"Type":{"Name":{"Relative":"const value_type \u0026__x"}}}]}
 	iterator  insert(iterator __position , const value_type &__x )                   // 
-	// {"Name":{"Relative":"insert"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"iterator __position"}}},{"Name":{},"Type":{"Name":{"Relative":"size_type __n"}}},{"Name":{},"Type":{"Name":{"Relative":"const value_type &__x"}}}]}
+	// {"Name":{"Relative":"insert"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"iterator __position"}}},{"Name":{},"Type":{"Name":{"Relative":"size_type __n"}}},{"Name":{},"Type":{"Name":{"Relative":"const value_type \u0026__x"}}}]}
 	void  insert(iterator __position , size_type __n , const value_type &__x )       // 
 	// {"Name":{"Relative":"insert"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"iterator __position"}}},{"Name":{},"Type":{"Name":{"Relative":"_InputIterator __first"}}},{"Name":{},"Type":{"Name":{"Relative":"_InputIterator __last"}}}]}
 	void  insert(iterator __position , _InputIterator __first , _InputIterator __last ) // 
@@ -49,7 +49,7 @@ Methods:
 	size_type  max_size()                                                            // 
 	// {"Name":{"Relative":"pop_back"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}]}
 	void  pop_back()                                                                 // 
-	// {"Name":{"Relative":"push_back"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const value_type &__x"}}}]}
+	// {"Name":{"Relative":"push_back"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const value_type \u0026__x"}}}]}
 	void  push_back(const value_type &__x )                                          // 
 	// {"Name":{"Relative":"rbegin"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"reverse_iterator"}}}]}
 	reverse_iterator  rbegin()                                                       // 
@@ -65,7 +65,7 @@ Methods:
 	void  resize(size_type __new_size , value_type __x )                             // 
 	// {"Name":{"Relative":"size"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"size_type"}}}]}
 	size_type  size()                                                                // 
-	// {"Name":{"Relative":"swap"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"std::vector\u003cStringID, std::allocator\u003cStringID\u003e \u003e &__x"}}}]}
+	// {"Name":{"Relative":"swap"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"std::vector\u003cStringID, std::allocator\u003cStringID\u003e \u003e \u0026__x"}}}]}
 	void  swap(std::vector<StringID, std::allocator<StringID> > &__x )               // 
-	// {"Name":{"Relative":"vector"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"_InputIterator __first"}}},{"Name":{},"Type":{"Name":{"Relative":"_InputIterator __last"}}},{"Name":{},"Type":{"Name":{"Relative":"const allocator_type &__a"}}}]}
+	// {"Name":{"Relative":"vector"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"_InputIterator __first"}}},{"Name":{},"Type":{"Name":{"Relative":"_InputIterator __last"}}},{"Name":{},"Type":{"Name":{"Relative":"const allocator_type \u0026__a"}}}]}
 	void  vector(_InputIterator __first , _InputIterator __last , const allocator_type &__a ) // 

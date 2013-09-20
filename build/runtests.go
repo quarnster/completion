@@ -9,7 +9,7 @@ import (
 	"regexp"
 )
 
-var ignore = regexp.MustCompile(`\.git|build|testdata|3rdparty|editor|libclang`)
+var ignore = regexp.MustCompile(`\.git|build|testdata|3rdparty|editor|libclang|go`)
 var (
 	verbose bool
 	test    bool

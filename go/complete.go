@@ -1,3 +1,5 @@
+// +build go_types_changed_again
+
 package goo
 
 import (

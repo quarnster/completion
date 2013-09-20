@@ -936,7 +936,7 @@ Methods:
 	unsigned int  alarm(unsigned int )                                               // 
 	// {"Name":{"Relative":"alloca"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"size_t"}}}]}
 	void *  alloca(size_t )                                                          // 
-	// {"Name":{"Relative":"angle"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion &q1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion &q2"}}}]}
+	// {"Name":{"Relative":"angle"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion \u0026q1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion \u0026q2"}}}]}
 	btScalar  angle(const btQuaternion &q1 , const btQuaternion &q2 )                // 
 	// {"Name":{"Relative":"arc4random"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"u_int32_t"}}}]}
 	u_int32_t  arc4random()                                                          // 
@@ -952,9 +952,9 @@ Methods:
 	void  asAcquireExclusiveLock()                                                   // 
 	// {"Name":{"Relative":"asAcquireSharedLock"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}]}
 	void  asAcquireSharedLock()                                                      // 
-	// {"Name":{"Relative":"asAtomicDec"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"int &value"}}}]}
+	// {"Name":{"Relative":"asAtomicDec"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"int \u0026value"}}}]}
 	int  asAtomicDec(int &value )                                                    // 
-	// {"Name":{"Relative":"asAtomicInc"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"int &value"}}}]}
+	// {"Name":{"Relative":"asAtomicInc"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"int \u0026value"}}}]}
 	int  asAtomicInc(int &value )                                                    // 
 	// {"Name":{"Relative":"asCreateScriptEngine"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"asIScriptEngine *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"asDWORD version"}}}]}
 	asIScriptEngine *  asCreateScriptEngine(asDWORD version )                        // 
@@ -1046,7 +1046,7 @@ Methods:
 	btScalar  btAcos(btScalar x )                                                    // 
 	// {"Name":{"Relative":"btAlignPointer"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"T *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T *unalignedPtr"}}},{"Name":{},"Type":{"Name":{"Relative":"size_t alignment"}}}]}
 	T *  btAlignPointer(T *unalignedPtr , size_t alignment )                         // 
-	// {"Name":{"Relative":"btAngle"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v2"}}}]}
+	// {"Name":{"Relative":"btAngle"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v2"}}}]}
 	btScalar  btAngle(const btVector3 &v1 , const btVector3 &v2 )                    // 
 	// {"Name":{"Relative":"btAsin"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btScalar x"}}}]}
 	btScalar  btAsin(btScalar x )                                                    // 
@@ -1056,21 +1056,21 @@ Methods:
 	btScalar  btAtan2(btScalar x , btScalar y )                                      // 
 	// {"Name":{"Relative":"btAtan2Fast"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btScalar y"}}},{"Name":{},"Type":{"Name":{"Relative":"btScalar x"}}}]}
 	btScalar  btAtan2Fast(btScalar y , btScalar x )                                  // 
-	// {"Name":{"Relative":"btClamp"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T &a"}}},{"Name":{},"Type":{"Name":{"Relative":"const T &lb"}}},{"Name":{},"Type":{"Name":{"Relative":"const T &ub"}}}]}
+	// {"Name":{"Relative":"btClamp"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T \u0026a"}}},{"Name":{},"Type":{"Name":{"Relative":"const T \u0026lb"}}},{"Name":{},"Type":{"Name":{"Relative":"const T \u0026ub"}}}]}
 	void  btClamp(T &a , const T &lb , const T &ub )                                 // 
-	// {"Name":{"Relative":"btClamped"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"const T &"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const T &a"}}},{"Name":{},"Type":{"Name":{"Relative":"const T &lb"}}},{"Name":{},"Type":{"Name":{"Relative":"const T &ub"}}}]}
+	// {"Name":{"Relative":"btClamped"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"const T \u0026"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const T \u0026a"}}},{"Name":{},"Type":{"Name":{"Relative":"const T \u0026lb"}}},{"Name":{},"Type":{"Name":{"Relative":"const T \u0026ub"}}}]}
 	const T &  btClamped(const T &a , const T &lb , const T &ub )                    // 
 	// {"Name":{"Relative":"btCos"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btScalar x"}}}]}
 	btScalar  btCos(btScalar x )                                                     // 
-	// {"Name":{"Relative":"btCross"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btVector3"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v2"}}}]}
+	// {"Name":{"Relative":"btCross"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btVector3"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v2"}}}]}
 	btVector3  btCross(const btVector3 &v1 , const btVector3 &v2 )                   // 
 	// {"Name":{"Relative":"btDegrees"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btScalar x"}}}]}
 	btScalar  btDegrees(btScalar x )                                                 // 
-	// {"Name":{"Relative":"btDistance"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v2"}}}]}
+	// {"Name":{"Relative":"btDistance"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v2"}}}]}
 	btScalar  btDistance(const btVector3 &v1 , const btVector3 &v2 )                 // 
-	// {"Name":{"Relative":"btDistance2"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v2"}}}]}
+	// {"Name":{"Relative":"btDistance2"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v2"}}}]}
 	btScalar  btDistance2(const btVector3 &v1 , const btVector3 &v2 )                // 
-	// {"Name":{"Relative":"btDot"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v2"}}}]}
+	// {"Name":{"Relative":"btDot"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v2"}}}]}
 	btScalar  btDot(const btVector3 &v1 , const btVector3 &v2 )                      // 
 	// {"Name":{"Relative":"btEqual"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"bool"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btScalar a"}}},{"Name":{},"Type":{"Name":{"Relative":"btScalar eps"}}}]}
 	bool  btEqual(btScalar a , btScalar eps )                                        // 
@@ -1094,15 +1094,15 @@ Methods:
 	btScalar  btLog(btScalar x )                                                     // 
 	// {"Name":{"Relative":"btMachineIsLittleEndian"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"bool"}}}]}
 	bool  btMachineIsLittleEndian()                                                  // 
-	// {"Name":{"Relative":"btMax"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"const T &"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const T &a"}}},{"Name":{},"Type":{"Name":{"Relative":"const T &b"}}}]}
+	// {"Name":{"Relative":"btMax"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"const T \u0026"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const T \u0026a"}}},{"Name":{},"Type":{"Name":{"Relative":"const T \u0026b"}}}]}
 	const T &  btMax(const T &a , const T &b )                                       // 
-	// {"Name":{"Relative":"btMin"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"const T &"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const T &a"}}},{"Name":{},"Type":{"Name":{"Relative":"const T &b"}}}]}
+	// {"Name":{"Relative":"btMin"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"const T \u0026"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const T \u0026a"}}},{"Name":{},"Type":{"Name":{"Relative":"const T \u0026b"}}}]}
 	const T &  btMin(const T &a , const T &b )                                       // 
 	// {"Name":{"Relative":"btNormalizeAngle"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btScalar angleInRadians"}}}]}
 	btScalar  btNormalizeAngle(btScalar angleInRadians )                             // 
 	// {"Name":{"Relative":"btowc"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"wint_t"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}]}
 	wint_t  btowc(int )                                                              // 
-	// {"Name":{"Relative":"btPlaneSpace1"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const T &n"}}},{"Name":{},"Type":{"Name":{"Relative":"T &p"}}},{"Name":{},"Type":{"Name":{"Relative":"T &q"}}}]}
+	// {"Name":{"Relative":"btPlaneSpace1"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const T \u0026n"}}},{"Name":{},"Type":{"Name":{"Relative":"T \u0026p"}}},{"Name":{},"Type":{"Name":{"Relative":"T \u0026q"}}}]}
 	void  btPlaneSpace1(const T &n , T &p , T &q )                                   // 
 	// {"Name":{"Relative":"btPow"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btScalar x"}}},{"Name":{},"Type":{"Name":{"Relative":"btScalar y"}}}]}
 	btScalar  btPow(btScalar x , btScalar y )                                        // 
@@ -1114,15 +1114,15 @@ Methods:
 	int  btSelect(unsigned int condition , int valueIfConditionNonZero , int valueIfConditionZero ) // 
 	// {"Name":{"Relative":"btSelect"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"float"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"unsigned int condition"}}},{"Name":{},"Type":{"Name":{"Relative":"float valueIfConditionNonZero"}}},{"Name":{},"Type":{"Name":{"Relative":"float valueIfConditionZero"}}}]}
 	float  btSelect(unsigned int condition , float valueIfConditionNonZero , float valueIfConditionZero ) // 
-	// {"Name":{"Relative":"btSetMax"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T &a"}}},{"Name":{},"Type":{"Name":{"Relative":"const T &b"}}}]}
+	// {"Name":{"Relative":"btSetMax"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T \u0026a"}}},{"Name":{},"Type":{"Name":{"Relative":"const T \u0026b"}}}]}
 	void  btSetMax(T &a , const T &b )                                               // 
-	// {"Name":{"Relative":"btSetMin"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T &a"}}},{"Name":{},"Type":{"Name":{"Relative":"const T &b"}}}]}
+	// {"Name":{"Relative":"btSetMin"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T \u0026a"}}},{"Name":{},"Type":{"Name":{"Relative":"const T \u0026b"}}}]}
 	void  btSetMin(T &a , const T &b )                                               // 
 	// {"Name":{"Relative":"btSin"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btScalar x"}}}]}
 	btScalar  btSin(btScalar x )                                                     // 
 	// {"Name":{"Relative":"btSqrt"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btScalar y"}}}]}
 	btScalar  btSqrt(btScalar y )                                                    // 
-	// {"Name":{"Relative":"btSwap"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T &a"}}},{"Name":{},"Type":{"Name":{"Relative":"T &b"}}}]}
+	// {"Name":{"Relative":"btSwap"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"T \u0026a"}}},{"Name":{},"Type":{"Name":{"Relative":"T \u0026b"}}}]}
 	void  btSwap(T &a , T &b )                                                       // 
 	// {"Name":{"Relative":"btSwapEndian"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"unsigned short"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"short val"}}}]}
 	unsigned short  btSwapEndian(short val )                                         // 
@@ -1136,19 +1136,19 @@ Methods:
 	void  btSwapEndianDouble(double d , unsigned char *dst )                         // 
 	// {"Name":{"Relative":"btSwapEndianFloat"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"unsigned int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"float d"}}}]}
 	unsigned int  btSwapEndianFloat(float d )                                        // 
-	// {"Name":{"Relative":"btSwapScalarEndian"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btScalar &sourceVal"}}},{"Name":{},"Type":{"Name":{"Relative":"btScalar &destVal"}}}]}
+	// {"Name":{"Relative":"btSwapScalarEndian"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btScalar \u0026sourceVal"}}},{"Name":{},"Type":{"Name":{"Relative":"btScalar \u0026destVal"}}}]}
 	void  btSwapScalarEndian(const btScalar &sourceVal , btScalar &destVal )         // 
-	// {"Name":{"Relative":"btSwapVector3Endian"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &sourceVec"}}},{"Name":{},"Type":{"Name":{"Relative":"btVector3 &destVec"}}}]}
+	// {"Name":{"Relative":"btSwapVector3Endian"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026sourceVec"}}},{"Name":{},"Type":{"Name":{"Relative":"btVector3 \u0026destVec"}}}]}
 	void  btSwapVector3Endian(const btVector3 &sourceVec , btVector3 &destVec )      // 
 	// {"Name":{"Relative":"btTan"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btScalar x"}}}]}
 	btScalar  btTan(btScalar x )                                                     // 
-	// {"Name":{"Relative":"btTriple"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v2"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v3"}}}]}
+	// {"Name":{"Relative":"btTriple"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v2"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v3"}}}]}
 	btScalar  btTriple(const btVector3 &v1 , const btVector3 &v2 , const btVector3 &v3 ) // 
 	// {"Name":{"Relative":"btUnswapEndianDouble"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"double"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const unsigned char *src"}}}]}
 	double  btUnswapEndianDouble(const unsigned char *src )                          // 
 	// {"Name":{"Relative":"btUnswapEndianFloat"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"float"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"unsigned int a"}}}]}
 	float  btUnswapEndianFloat(unsigned int a )                                      // 
-	// {"Name":{"Relative":"btUnSwapVector3Endian"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btVector3 &vector"}}}]}
+	// {"Name":{"Relative":"btUnSwapVector3Endian"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btVector3 \u0026vector"}}}]}
 	void  btUnSwapVector3Endian(btVector3 &vector )                                  // 
 	// {"Name":{"Relative":"bzero"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"void *"}}},{"Name":{},"Type":{"Name":{"Relative":"size_t"}}}]}
 	void  bzero(void * , size_t )                                                    // 
@@ -1248,7 +1248,7 @@ Methods:
 	int  digittoint(int _c )                                                         // 
 	// {"Name":{"Relative":"div"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"div_t"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"int"}}},{"Name":{},"Type":{"Name":{"Relative":"int"}}}]}
 	div_t  div(int , int )                                                           // 
-	// {"Name":{"Relative":"dot"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion &q1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion &q2"}}}]}
+	// {"Name":{"Relative":"dot"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion \u0026q1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion \u0026q2"}}}]}
 	btScalar  dot(const btQuaternion &q1 , const btQuaternion &q2 )                  // 
 	// {"Name":{"Relative":"dprintf"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"int"}}},{"Name":{},"Type":{"Name":{"Relative":"const char *, ..."}}}]}
 	int  dprintf(int , const char *, ... )                                           // 
@@ -1682,13 +1682,13 @@ Methods:
 	int  getdtablesize()                                                             // 
 	// {"Name":{"Relative":"getegid"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"gid_t"}}}]}
 	gid_t  getegid()                                                                 // 
-	// {"Name":{"Relative":"GetEntity"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"Entity *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const StringID &sid"}}}]}
+	// {"Name":{"Relative":"GetEntity"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"Entity *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const StringID \u0026sid"}}}]}
 	Entity *  GetEntity(const StringID &sid )                                        // 
 	// {"Name":{"Relative":"getenv"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"char *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const char *"}}}]}
 	char *  getenv(const char * )                                                    // 
 	// {"Name":{"Relative":"geteuid"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"uid_t"}}}]}
 	uid_t  geteuid()                                                                 // 
-	// {"Name":{"Relative":"GetFunction"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"asIScriptFunction *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const std::string &decl"}}}]}
+	// {"Name":{"Relative":"GetFunction"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"asIScriptFunction *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const std::string \u0026decl"}}}]}
 	asIScriptFunction *  GetFunction(const std::string &decl )                       // 
 	// {"Name":{"Relative":"getgid"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"gid_t"}}}]}
 	gid_t  getgid()                                                                  // 
@@ -1748,7 +1748,7 @@ Methods:
 	int  getsgroups_np(int * , unsigned char * )                                     // 
 	// {"Name":{"Relative":"getsid"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"pid_t"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"pid_t"}}}]}
 	pid_t  getsid(pid_t )                                                            // 
-	// {"Name":{"Relative":"GetStringID"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"StringID"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const std::string &name"}}}]}
+	// {"Name":{"Relative":"GetStringID"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"StringID"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const std::string \u0026name"}}}]}
 	StringID  GetStringID(const std::string &name )                                  // 
 	// {"Name":{"Relative":"getsubopt"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"char **"}}},{"Name":{},"Type":{"Name":{"Relative":"char *const *"}}},{"Name":{},"Type":{"Name":{"Relative":"char **"}}}]}
 	int  getsubopt(char ** , char *const * , char ** )                               // 
@@ -1794,7 +1794,7 @@ Methods:
 	int  initgroups(const char * , int )                                             // 
 	// {"Name":{"Relative":"initstate"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"char *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"unsigned int"}}},{"Name":{},"Type":{"Name":{"Relative":"char *"}}},{"Name":{},"Type":{"Name":{"Relative":"size_t"}}}]}
 	char *  initstate(unsigned int , char * , size_t )                               // 
-	// {"Name":{"Relative":"inverse"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btQuaternion"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion &q"}}}]}
+	// {"Name":{"Relative":"inverse"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btQuaternion"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion \u0026q"}}}]}
 	btQuaternion  inverse(const btQuaternion &q )                                    // 
 	// {"Name":{"Relative":"iruserok"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"unsigned long"}}},{"Name":{},"Type":{"Name":{"Relative":"int"}}},{"Name":{},"Type":{"Name":{"Relative":"const char *"}}},{"Name":{},"Type":{"Name":{"Relative":"const char *"}}}]}
 	int  iruserok(unsigned long , int , const char * , const char * )                // 
@@ -1914,9 +1914,9 @@ Methods:
 	long double  ldexpl(long double , int )                                          // 
 	// {"Name":{"Relative":"ldiv"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"ldiv_t"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"long"}}},{"Name":{},"Type":{"Name":{"Relative":"long"}}}]}
 	ldiv_t  ldiv(long , long )                                                       // 
-	// {"Name":{"Relative":"length"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion &q"}}}]}
+	// {"Name":{"Relative":"length"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btScalar"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion \u0026q"}}}]}
 	btScalar  length(const btQuaternion &q )                                         // 
-	// {"Name":{"Relative":"lerp"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btVector3"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v2"}}},{"Name":{},"Type":{"Name":{"Relative":"const btScalar &t"}}}]}
+	// {"Name":{"Relative":"lerp"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btVector3"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v2"}}},{"Name":{},"Type":{"Name":{"Relative":"const btScalar \u0026t"}}}]}
 	btVector3  lerp(const btVector3 &v1 , const btVector3 &v2 , const btScalar &t )  // 
 	// {"Name":{"Relative":"lgamma"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"double"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"double"}}}]}
 	double  lgamma(double )                                                          // 
@@ -2388,7 +2388,7 @@ Methods:
 	void  qsort_b(void * , size_t , size_t , ^int(const void *, const void *) )      // 
 	// {"Name":{"Relative":"qsort_r"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"void *"}}},{"Name":{},"Type":{"Name":{"Relative":"size_t"}}},{"Name":{},"Type":{"Name":{"Relative":"size_t"}}},{"Name":{},"Type":{"Name":{"Relative":"void *"}}},{"Name":{},"Type":{"Name":{"Relative":"int (*)(void *, const void *, const void *)"}}}]}
 	void  qsort_r(void * , size_t , size_t , void * , int (*)(void *, const void *, const void *) ) // 
-	// {"Name":{"Relative":"quatRotate"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btVector3"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion &rotation"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v"}}}]}
+	// {"Name":{"Relative":"quatRotate"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btVector3"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion \u0026rotation"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v"}}}]}
 	btVector3  quatRotate(const btQuaternion &rotation , const btVector3 &v )        // 
 	// {"Name":{"Relative":"radixsort"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const unsigned char **"}}},{"Name":{},"Type":{"Name":{"Relative":"int"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned char *"}}},{"Name":{},"Type":{"Name":{"Relative":"unsigned int"}}}]}
 	int  radixsort(const unsigned char ** , int , const unsigned char * , unsigned int ) // 
@@ -2500,17 +2500,17 @@ Methods:
 	unsigned short *  seed48(unsigned short * )                                      // 
 	// {"Name":{"Relative":"select"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"int"}}},{"Name":{},"Type":{"Name":{"Relative":"fd_set *"}}},{"Name":{},"Type":{"Name":{"Relative":"fd_set *"}}},{"Name":{},"Type":{"Name":{"Relative":"fd_set *"}}},{"Name":{},"Type":{"Name":{"Relative":"struct timeval *"}}}]}
 	int  select(int , fd_set * , fd_set * , fd_set * , struct timeval * )            // 
-	// {"Name":{"Relative":"serialize"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"Archive &ar"}}},{"Name":{},"Type":{"Name":{"Relative":"EngineSettings &t"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned int"}}}]}
+	// {"Name":{"Relative":"serialize"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"Archive \u0026ar"}}},{"Name":{},"Type":{"Name":{"Relative":"EngineSettings \u0026t"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned int"}}}]}
 	void  serialize(Archive &ar , EngineSettings &t , const unsigned int )           // 
-	// {"Name":{"Relative":"serialize"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"Archive &"}}},{"Name":{},"Type":{"Name":{"Relative":"Mesh &"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned int"}}}]}
+	// {"Name":{"Relative":"serialize"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"Archive \u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"Mesh \u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned int"}}}]}
 	void  serialize(Archive & , Mesh & , const unsigned int )                        // 
-	// {"Name":{"Relative":"serialize"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"Archive &"}}},{"Name":{},"Type":{"Name":{"Relative":"StringList &"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned int"}}}]}
+	// {"Name":{"Relative":"serialize"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"Archive \u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"StringList \u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned int"}}}]}
 	void  serialize(Archive & , StringList & , const unsigned int )                  // 
-	// {"Name":{"Relative":"serialize"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"Archive &"}}},{"Name":{},"Type":{"Name":{"Relative":"Material &"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned int"}}}]}
+	// {"Name":{"Relative":"serialize"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"Archive \u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"Material \u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned int"}}}]}
 	void  serialize(Archive & , Material & , const unsigned int )                    // 
-	// {"Name":{"Relative":"serialize"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"Archive &"}}},{"Name":{},"Type":{"Name":{"Relative":"Attribute &"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned int"}}}]}
+	// {"Name":{"Relative":"serialize"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"Archive \u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"Attribute \u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned int"}}}]}
 	void  serialize(Archive & , Attribute & , const unsigned int )                   // 
-	// {"Name":{"Relative":"serialize"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"Archive &"}}},{"Name":{},"Type":{"Name":{"Relative":"StringID &"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned int"}}}]}
+	// {"Name":{"Relative":"serialize"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"Archive \u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"StringID \u0026"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned int"}}}]}
 	void  serialize(Archive & , StringID & , const unsigned int )                    // 
 	// {"Name":{"Relative":"setattrlist"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const char *"}}},{"Name":{},"Type":{"Name":{"Relative":"void *"}}},{"Name":{},"Type":{"Name":{"Relative":"void *"}}},{"Name":{},"Type":{"Name":{"Relative":"size_t"}}},{"Name":{},"Type":{"Name":{"Relative":"unsigned int"}}}]}
 	int  setattrlist(const char * , void * , void * , size_t , unsigned int )        // 
@@ -2580,9 +2580,9 @@ Methods:
 	int  setvbuf(FILE * , char * , int , size_t )                                    // 
 	// {"Name":{"Relative":"setwgroups_np"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"int"}}},{"Name":{},"Type":{"Name":{"Relative":"const unsigned char *"}}}]}
 	int  setwgroups_np(int , const unsigned char * )                                 // 
-	// {"Name":{"Relative":"shortestArcQuat"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btQuaternion"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v0"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 &v1"}}}]}
+	// {"Name":{"Relative":"shortestArcQuat"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btQuaternion"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v0"}}},{"Name":{},"Type":{"Name":{"Relative":"const btVector3 \u0026v1"}}}]}
 	btQuaternion  shortestArcQuat(const btVector3 &v0 , const btVector3 &v1 )        // 
-	// {"Name":{"Relative":"shortestArcQuatNormalize2"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btQuaternion"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btVector3 &v0"}}},{"Name":{},"Type":{"Name":{"Relative":"btVector3 &v1"}}}]}
+	// {"Name":{"Relative":"shortestArcQuatNormalize2"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btQuaternion"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"btVector3 \u0026v0"}}},{"Name":{},"Type":{"Name":{"Relative":"btVector3 \u0026v1"}}}]}
 	btQuaternion  shortestArcQuatNormalize2(btVector3 &v0 , btVector3 &v1 )          // 
 	// {"Name":{"Relative":"sigaction"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"int"}}},{"Name":{},"Type":{"Name":{"Relative":"const struct sigaction *"}}},{"Name":{},"Type":{"Name":{"Relative":"struct sigaction *"}}}]}
 	int  sigaction(int , const struct sigaction * , struct sigaction * )             // 
@@ -2642,7 +2642,7 @@ Methods:
 	long double  sinl(long double )                                                  // 
 	// {"Name":{"Relative":"sleep"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"unsigned int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"unsigned int"}}}]}
 	unsigned int  sleep(unsigned int )                                               // 
-	// {"Name":{"Relative":"slerp"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btQuaternion"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion &q1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion &q2"}}},{"Name":{},"Type":{"Name":{"Relative":"const btScalar &t"}}}]}
+	// {"Name":{"Relative":"slerp"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"btQuaternion"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion \u0026q1"}}},{"Name":{},"Type":{"Name":{"Relative":"const btQuaternion \u0026q2"}}},{"Name":{},"Type":{"Name":{"Relative":"const btScalar \u0026t"}}}]}
 	btQuaternion  slerp(const btQuaternion &q1 , const btQuaternion &q2 , const btScalar &t ) // 
 	// {"Name":{"Relative":"snprintf"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"int"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"char *"}}},{"Name":{},"Type":{"Name":{"Relative":"size_t"}}},{"Name":{},"Type":{"Name":{"Relative":"const char *, ..."}}}]}
 	int  snprintf(char * , size_t , const char *, ... )                              // 

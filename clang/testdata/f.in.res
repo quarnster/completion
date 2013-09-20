@@ -20,7 +20,7 @@ Methods:
 	void  AddResourceUpdatedListener(ResourceUpdatedListener *listener )             // 
 	// {"Name":{"Relative":"DelRef"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"void"}}}]}
 	void  DelRef()                                                                   // 
-	// {"Name":{"Relative":"GetFunction"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"asIScriptFunction *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const std::string &decl"}}}]}
+	// {"Name":{"Relative":"GetFunction"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"asIScriptFunction *"}}}],"Parameters":[{"Name":{},"Type":{"Name":{"Relative":"const std::string \u0026decl"}}}]}
 	asIScriptFunction *  GetFunction(const std::string &decl )                       // 
 	// {"Name":{"Relative":"GetName"},"Returns":[{"Name":{},"Type":{"Name":{"Relative":"StringID"}}}]}
 	StringID  GetName()                                                              // 

@@ -2,10 +2,10 @@ package net
 
 import (
 	"bytes"
-	"encoding/binary"
 	"fmt"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/util"
+	"github.com/quarnster/util/encoding/binary"
 	"io/ioutil"
 	"os"
 	"reflect"
@@ -72,7 +72,7 @@ func TestLoadAssembly(t *testing.T) {
 						t.Error(err)
 						continue
 					}
-					if err := asm.Create(&util.BinaryReader{bytes.NewReader(data), binary.LittleEndian}, row); err != nil {
+					if err := asm.Create(&binary.BinaryReader{bytes.NewReader(data), binary.LittleEndian}, row); err != nil {
 						t.Error(err)
 					} else {
 						res += fmt.Sprintf("\t%+v\n", row)

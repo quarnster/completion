@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"github.com/quarnster/completion/java/descriptors"
 	"github.com/quarnster/completion/java/signatures"
-	"github.com/quarnster/completion/util"
+	"github.com/quarnster/util/encoding/binary"
 	"runtime"
 	"sync"
 	"testing"
@@ -25,7 +25,7 @@ func testparse(c *Class, members []member_info, method bool, t *testing.T) {
 		var p2 signatures.SIGNATURES
 		for _, attr := range members[i].Attributes {
 			if c.Constant_pool.Lut(attr.Attribute_name_index).String() == "Signature" {
-				br := util.BinaryReader{bytes.NewReader(attr.Info), util.BigEndian}
+				br := binary.BinaryReader{bytes.NewReader(attr.Info), binary.BigEndian}
 				if i16, err := br.Uint16(); err != nil {
 					t.Error(err)
 				} else {
