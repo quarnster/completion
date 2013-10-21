@@ -37,7 +37,7 @@ func TestSignatures(t *testing.T) {
 		var p SIGNATURES
 		t.Log(tests[i], p.Parse(tests[i]))
 		t.Log(p.RootNode().String())
-		if p.RootNode().Range.End != len(tests[i]) {
+		if p.RootNode().Range.End() != len(tests[i]) {
 			t.Error(p.Error())
 		}
 	}

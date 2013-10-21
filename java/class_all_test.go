@@ -19,7 +19,7 @@ func testparse(c *Class, members []member_info, method bool, t *testing.T) {
 	for i := range members {
 		var p descriptors.DESCRIPTORS
 		desc := c.Constant_pool.Lut(members[i].Descriptor_index).String()
-		if !p.Parse(desc) || p.RootNode().Range.End != len(desc) {
+		if !p.Parse(desc) || p.RootNode().Range.End() != len(desc) {
 			t.Errorf("Failed to parse descriptor: %s\n%s\n%s", p.Error(), desc, p.RootNode())
 		}
 		var p2 signatures.SIGNATURES
@@ -38,7 +38,7 @@ func testparse(c *Class, members []member_info, method bool, t *testing.T) {
 						ret = p2.FieldTypeSignature()
 					}
 					p2.RootNode().UpdateRange()
-					if !ret || p2.RootNode().Range.End != len(sign) {
+					if !ret || p2.RootNode().Range.End() != len(sign) {
 						t.Errorf("Failed to parse signature: %s\n%s\n%s", p2.Error(), desc, p2.RootNode())
 					}
 				}
