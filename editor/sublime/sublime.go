@@ -17,6 +17,26 @@ func init() {
 
 type Sublime struct{}
 
+func (s *Sublime) writeDefaultConfig(p string) error {
+	f, err := os.Create(filepath.Join(p, "completion.sublime-settings"))
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	bin, err := filepath.Abs(os.Args[0])
+	if err != nil {
+		return err
+	}
+
+	f.WriteString(fmt.Sprintf(`{
+		"daemon_command": ["%s", "daemon"],
+		"launch_daemon": true
+}
+`, bin))
+	return nil
+}
+
 func (s *Sublime) Install() error {
 	var (
 		st_paths []string
@@ -50,6 +70,9 @@ func (s *Sublime) Install() error {
 				if err := editor.Copy(f, filepath.Join(p, filepath.Base(f))); err != nil {
 					return err
 				}
+			}
+			if err := s.writeDefaultConfig(p); err != nil {
+				return err
 			}
 		}
 	}

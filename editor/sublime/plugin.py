@@ -7,13 +7,24 @@ except:
     import jsonrpc
 import sublime
 import sublime_plugin
-
+import subprocess
+import threading
 
 def log(a):
     print(a)
 
 proxy = jsonrpc.ServerProxy(jsonrpc.JsonRpc10(), jsonrpc.TransportTcpIp(addr=("127.0.0.1", 12345), logfunc=log, timeout=2.0))
 language_regex = re.compile("(?<=source\.)[\w+#]+")
+daemon = None
+
+def pipe_reader(pipe):
+    while True:
+        try:
+            line = pipe.readline()
+            if len(line) == 0:
+                break
+        except:
+            traceback.print_exc()
 
 
 class Ev(sublime_plugin.EventListener):
@@ -27,6 +38,7 @@ class Ev(sublime_plugin.EventListener):
     def on_query_completions(self, view, prefix, locations):
         s = time.time()
         row, col = view.rowcol(locations[0])
+        settings = sublime.load_settings("completion.sublime-settings")
 
         # TODO: detecting which "driver" is to be used should at some point be possible (but not required) to delegate to the server
         drivers = {
@@ -70,6 +82,15 @@ class Ev(sublime_plugin.EventListener):
         except jsonrpc.RPCFault as e:
             print(e.error_data)
             return
+        except jsonrpc.RPCTransportError as e2:
+            global daemon
+            if daemon == None and settings.get("launch_daemon", False):
+                daemon = subprocess.Popen(settings.get("daemon_command"), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                t = threading.Thread(target=pipe_reader, args=(daemon.stdout,))
+                t.start()
+                t = threading.Thread(target=pipe_reader, args=(daemon.stderr,))
+                t.start()
+
         e = time.time()
         print("Perform: %f ms" % ((e - s) * 1000))
         s = time.time()
