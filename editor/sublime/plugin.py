@@ -11,21 +11,30 @@ import subprocess
 import threading
 
 def log(a):
-    print(a)
+    settings = sublime.load_settings("completion.sublime-settings")
+    if settings.get("debug", False):
+        print(a)
 
 proxy = jsonrpc.ServerProxy(jsonrpc.JsonRpc10(), jsonrpc.TransportTcpIp(addr=("127.0.0.1", 12345), logfunc=log, timeout=2.0))
 language_regex = re.compile("(?<=source\.)[\w+#]+")
 daemon = None
 
 def pipe_reader(pipe):
-    while True:
+    global daemon
+    while True and daemon != None:
         try:
             line = pipe.readline()
             if len(line) == 0:
                 break
         except:
             traceback.print_exc()
+    daemon = None
 
+def plugin_unloaded():
+    global daemon
+    if daemon != None:
+        daemon.kill()
+        daemon = None
 
 class Ev(sublime_plugin.EventListener):
 
@@ -76,26 +85,32 @@ class Ev(sublime_plugin.EventListener):
 
         e = time.time()
         print("Prepare: %f ms" % ((e - s) * 1000))
-        s = time.time()
-        try:
-            res = driver.CompleteAt(args)
-        except jsonrpc.RPCFault as e:
-            print(e.error_data)
-            return
-        except jsonrpc.RPCTransportError as e2:
-            global daemon
-            if daemon == None and settings.get("launch_daemon", False):
-                daemon = subprocess.Popen(settings.get("daemon_command"), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                t = threading.Thread(target=pipe_reader, args=(daemon.stdout,))
-                t.start()
-                t = threading.Thread(target=pipe_reader, args=(daemon.stderr,))
-                t.start()
+        while True:
+            s = time.time()
+            try:
+                res = driver.CompleteAt(args)
+                break
+            except jsonrpc.RPCFault as e:
+                print(e.error_data)
+                return
+            except jsonrpc.RPCTransportError as e2:
+                global daemon
+                if daemon == None and settings.get("launch_daemon", False):
+                    daemon = subprocess.Popen(settings.get("daemon_command"), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    t = threading.Thread(target=pipe_reader, args=(daemon.stdout,))
+                    t.start()
+                    t = threading.Thread(target=pipe_reader, args=(daemon.stderr,))
+                    t.start()
+                else:
+                    return
+
 
         e = time.time()
         print("Perform: %f ms" % ((e - s) * 1000))
         s = time.time()
         completions = []
-        print("response:", res)
+        if settings.get("debug", False):
+            print("response:", res)
 
         def relname(dict):
             return dict["Relative"] if "Relative" in dict else ""
