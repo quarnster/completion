@@ -19,10 +19,10 @@ PEGS = \
 	../util/scopes/scopes.go \
 	../net/csharp/csharp.go
 ARCHIVE_DATA= ../3rdparty/jsonrpc.py ../editor/sublime/plugin.py
-GENERATED = $(PEGS) ../editor/archive_data.go 
+GENERATED = $(PEGS) ../editor/archive_data.go
 
 
-all: ../../parser $(PEGS) ../editor/archive_data.go rpc
+all: ../../parser $(PEGS) ../editor/archive_data.go completion
 
 ../../parser:
 	go get github.com/quarnster/parser
@@ -31,13 +31,13 @@ all: ../../parser $(PEGS) ../editor/archive_data.go rpc
 ../editor/archive_data.go: $(ARCHIVE_DATA)
 	go run archive.go $(ARCHIVE_DATA)
 
-rpc: $(GENERATED)
-	go build -o rpc ../rpc
+completion: $(GENERATED)
+	go build -o completion ../
 
-test: rpc
+test: completion
 	go run runtests.go
 
-clean: 
-	$(RM) $(GENERATED) rpc $(subst .go,,$(notdir $(PEGS)))
+clean:
+	$(RM) $(GENERATED) completion $(subst .go,,$(notdir $(PEGS)))
 
 include ../../parser/PegRules.make

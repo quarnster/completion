@@ -13,6 +13,12 @@ import (
 )
 
 func TestRpc(t *testing.T) {
+	var d Daemon
+	if err := d.init(); err != nil {
+		t.Fatal(err)
+	}
+	go d.serverloop()
+	defer d.close()
 	if c, err := jsonrpc.Dial("tcp", fmt.Sprintf("127.0.0.1%s", port)); err != nil {
 		t.Error(err)
 	} else {
@@ -51,6 +57,13 @@ func TestRpc(t *testing.T) {
 }
 
 func TestRpcInvalid(t *testing.T) {
+	var d Daemon
+	if err := d.init(); err != nil {
+		t.Fatal(err)
+	}
+	go d.serverloop()
+	defer d.close()
+
 	if c, err := jsonrpc.Dial("tcp", fmt.Sprintf("127.0.0.1%s", port)); err != nil {
 		t.Error(err)
 	} else {
@@ -79,7 +92,6 @@ func TestRpcInvalid(t *testing.T) {
 }
 
 func BenchmarkDirect(b *testing.B) {
-
 	var n net.Net
 	for i := 0; i < b.N; i++ {
 		var a content.CompleteAtArgs
@@ -92,6 +104,13 @@ func BenchmarkDirect(b *testing.B) {
 }
 
 func BenchmarkRpc(b *testing.B) {
+	var d Daemon
+	if err := d.init(); err != nil {
+		b.Fatal(err)
+	}
+	go d.serverloop()
+	defer d.close()
+
 	if c, err := jsonrpc.Dial("tcp", fmt.Sprintf("127.0.0.1%s", port)); err != nil {
 		b.Error(err)
 	} else {
