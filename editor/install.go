@@ -18,25 +18,32 @@ type (
 	}
 )
 
-func Copy(a, b string) error {
+func Open(path string) (io.ReadCloser, error) {
 	r, err := zip.NewReader(bytes.NewReader(archive_data), int64(len(archive_data)))
 	if err != nil {
-		return err
+		return nil, err
 	}
 	var f1 io.ReadCloser
 	for _, f := range r.File {
-		if f.Name == a {
+		if f.Name == path {
 			f1, err = f.Open()
 			if err != nil {
-				return err
+				return nil, err
 			}
 			break
 		}
 	}
 	if f1 == nil {
-		return fmt.Errorf("File not found: %v", a)
+		return nil, fmt.Errorf("File not found: %v", path)
 	}
+	return f1, nil
+}
 
+func Copy(a, b string) error {
+	f1, err := Open(a)
+	if err != nil {
+		return err
+	}
 	defer f1.Close()
 	f2, err := os.Create(b)
 	if err != nil {

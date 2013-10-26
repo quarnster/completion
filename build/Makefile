@@ -18,7 +18,7 @@ PEGS = \
 	../util/expand_path/expand_path.go \
 	../util/scopes/scopes.go \
 	../net/csharp/csharp.go
-ARCHIVE_DATA= ../3rdparty/jsonrpc.py ../editor/sublime/plugin.py
+ARCHIVE_DATA= ../3rdparty/jsonrpc.py ../editor/sublime/plugin.py ../README.md
 GENERATED = $(PEGS) ../editor/archive_data.go
 
 
