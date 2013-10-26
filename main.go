@@ -9,6 +9,7 @@ import (
 var bin = comandante.New(os.Args[0], os.Args[0]+" code utilities")
 
 func init() {
+	// TODO: should really log to stderr and not stdout
 	log4go.Global.AddFilter("stdout", log4go.FINE, log4go.NewConsoleLogWriter())
 }
 
