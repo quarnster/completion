@@ -10,5 +10,6 @@ install:
 
 script:
   - cd build
+  - cat ../../parser/PegRules.make
   - make
   - make test
