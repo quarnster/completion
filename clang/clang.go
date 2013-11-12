@@ -33,6 +33,10 @@ func RunClang(args ...string) ([]byte, error) {
 	} else {
 		so, serr := ioutil.ReadAll(s)
 		eo, eerr := ioutil.ReadAll(e)
+		// We ignore the output error here as a non-zero exit
+		// code doesn't necessarily mean that the output isn't
+		// useful
+		cmd.Wait()
 
 		log4go.Fine("stdout: %s\n", string(so))
 		log4go.Fine("stderr: %s\n", string(eo))
@@ -40,9 +44,6 @@ func RunClang(args ...string) ([]byte, error) {
 			return nil, serr
 		} else if eerr != nil {
 			return nil, eerr
-		}
-		if len(so) == 0 && len(eo) != 0 {
-			return nil, fmt.Errorf(string(eo))
 		}
 		return so, nil
 	}
