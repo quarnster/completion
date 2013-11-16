@@ -15,7 +15,7 @@ import (
 )
 
 func TestAbbr(t *testing.T) {
-	for _, test := range []string{"./testdata/8", "./testdata/hello", "./testdata/game.bz2"} {
+	for _, test := range []string{"./testdata/8", "./testdata/hello", "./testdata/game.bz2", "./testdata/listener.o.bz2", "./testdata/completion.bz2"} {
 		t.Logf("\n%s", test)
 		rf, err := readFile(test)
 		if err != nil {
@@ -90,7 +90,8 @@ func readFile(filename string) (io.ReaderAt, error) {
 		if data, err := ioutil.ReadAll(r); err != nil {
 			return nil, err
 		} else {
-			return bytes.NewReader(data), nil
+			// TODO: why, oh why do I need to append a byte?
+			return bytes.NewReader(append(data, 0)), nil
 		}
 	}
 }
