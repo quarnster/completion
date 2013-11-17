@@ -70,6 +70,11 @@ func (ie *InfoEntry) Read(br *binary.BinaryReader) error {
 
 func (ie *InfoEntry) data(form DW_FORM) interface{} {
 	switch form {
+	case DW_FORM_block:
+		var size LEB128
+		ie.reader.Info.ReadInterface(&size)
+		r, _ := ie.reader.Info.Read(int(size))
+		return r
 	case DW_FORM_block1:
 		size, _ := ie.reader.Info.Uint8()
 		r, _ := ie.reader.Info.Read(int(size))
@@ -90,7 +95,7 @@ func (ie *InfoEntry) data(form DW_FORM) interface{} {
 			v, _ := ie.reader.Info.Uint32()
 			return v
 		}
-	case DW_FORM_strp:
+	case DW_FORM_ref_addr, DW_FORM_strp:
 		if ie.header.is64 {
 			v, _ := ie.reader.Info.Uint64()
 			return v
@@ -110,6 +115,24 @@ func (ie *InfoEntry) data(form DW_FORM) interface{} {
 	case DW_FORM_ref8, DW_FORM_data8:
 		v, _ := ie.reader.Info.Uint64()
 		return v
+	case DW_FORM_sdata, DW_FORM_udata:
+		var r LEB128
+		ie.reader.Info.ReadInterface(&r)
+		return r
+	case DW_FORM_string:
+		buf := make([]byte, 4096)
+
+		for i := range buf {
+			if v, err := ie.reader.Info.Uint8(); err != nil {
+				return err
+			} else if v == 0 {
+				buf = buf[:i]
+				break
+			} else {
+				buf[i] = byte(v)
+			}
+		}
+		return string(buf)
 	}
 
 	return nil

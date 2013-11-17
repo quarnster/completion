@@ -62,7 +62,6 @@ func TestInfo(t *testing.T) {
 				abbr_entries = append(abbr_entries, abr)
 			}
 		}
-		//		bra.Seek(ih.DebugAbbrevOffset, 0)
 
 		for {
 			var (
@@ -74,18 +73,10 @@ func TestInfo(t *testing.T) {
 				}
 				t.Error(err)
 				break
-			} else {
-				//				t.Logf("%+v", ih)
 			}
 
-			// if err := bra.ReadInterface(&abr); err != nil {
-			// 	t.Error(err)
-			// 	break
-			// } else {
-			// 	//				t.Logf("%+v", abr)
-			// }
 			ie.header = &ih
-			if ie.id == 0 {
+			if ie.id <= 0 || ie.id >= LEB128(len(abbr_entries)) {
 				continue
 			}
 			ie.ae = &abbr_entries[ie.id-1]
@@ -112,10 +103,6 @@ func TestInfo(t *testing.T) {
 			}
 			off, _ := bri.Seek(0, 1)
 			t.Logf("0x%x", off)
-			//			t.Log(bri.Read(16))
-			//			break
-			//bri.Seek(int64(ie.Length), 1)
 		}
-		break
 	}
 }
