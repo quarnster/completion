@@ -237,6 +237,19 @@ const (
 )
 
 const (
+	DW_TAG_format_label DW_TAG = 0x4101 + iota
+	DW_TAG_function_template
+	DW_TAG_class_template
+	DW_TAG_GNU_BINCL
+	DW_TAG_GNU_EINCL
+	DW_TAG_GNU_template_template_param
+	DW_TAG_GNU_template_parameter_pack
+	DW_TAG_GNU_formal_parameter_pack
+	DW_TAG_GNU_call_site
+	DW_TAG_GNU_call_site_parameter
+)
+
+const (
 	DW_TAG_APPLE_property DW_TAG = 0x4200
 )
 
@@ -551,6 +564,33 @@ const (
 	DW_AT_MIPS_allocatable_dopetype
 	DW_AT_MIPS_assumed_shape_dopetype
 	DW_AT_MIPS_assumed_size
+)
+const (
+	DW_AT_sf_names DW_AT = 0x2101 + iota
+	DW_AT_src_info
+	DW_AT_mac_info
+	DW_AT_src_coords
+	DW_AT_body_begin
+	DW_AT_body_end
+	DW_AT_GNU_vector
+	DW_AT_GNU_guarded_by
+	DW_AT_GNU_pt_guarded_by
+	DW_AT_GNU_guarded
+	DW_AT_GNU_pt_guarded
+	DW_AT_GNU_locks_excluded
+	DW_AT_GNU_exclusive_locks_required
+	DW_AT_GNU_shared_locks_required
+	DW_AT_GNU_odr_signature
+	DW_AT_GNU_template_name
+	DW_AT_GNU_call_site_value
+	DW_AT_GNU_call_site_data_value
+	DW_AT_GNU_call_site_target
+	DW_AT_GNU_call_site_target_clobbered
+	DW_AT_GNU_tail_call
+	DW_AT_GNU_all_tail_call_sites
+	DW_AT_GNU_all_call_sites
+	DW_AT_GNU_all_source_call_sites
+	DW_AT_GNU_macros
 )
 
 const (

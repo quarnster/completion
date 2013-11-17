@@ -2,6 +2,7 @@ package dwarf
 
 import (
 	"github.com/quarnster/util/encoding/binary"
+	"reflect"
 )
 
 type (
@@ -68,62 +69,67 @@ func (ie *InfoEntry) Read(br *binary.BinaryReader) error {
 	return ret
 }
 
-func (ie *InfoEntry) data(form DW_FORM) interface{} {
+func (ie *InfoEntry) data(form DW_FORM, br binary.BinaryReader) interface{} {
+	if form == DW_FORM_ref_addr && ie.header.Version < 3 {
+		form = DW_FORM_addr
+	}
 	switch form {
-	case DW_FORM_block:
+	case DW_FORM_flag_present:
+		return true
+	case DW_FORM_exprloc, DW_FORM_block:
 		var size LEB128
-		ie.reader.Info.ReadInterface(&size)
-		r, _ := ie.reader.Info.Read(int(size))
+		br.ReadInterface(&size)
+		r, _ := br.Read(int(size))
 		return r
 	case DW_FORM_block1:
-		size, _ := ie.reader.Info.Uint8()
-		r, _ := ie.reader.Info.Read(int(size))
+		size, _ := br.Uint8()
+		r, _ := br.Read(int(size))
 		return r
 	case DW_FORM_block2:
-		size, _ := ie.reader.Info.Uint16()
-		r, _ := ie.reader.Info.Read(int(size))
+		size, _ := br.Uint16()
+		r, _ := br.Read(int(size))
 		return r
 	case DW_FORM_block4:
-		size, _ := ie.reader.Info.Uint32()
-		r, _ := ie.reader.Info.Read(int(size))
+		size, _ := br.Uint32()
+		r, _ := br.Read(int(size))
 		return r
 	case DW_FORM_addr:
 		if ie.header.AddressSize == 8 {
-			v, _ := ie.reader.Info.Uint64()
+			v, _ := br.Uint64()
 			return v
 		} else {
-			v, _ := ie.reader.Info.Uint32()
+			v, _ := br.Uint32()
 			return v
 		}
-	case DW_FORM_ref_addr, DW_FORM_strp:
+	case DW_FORM_ref_addr, DW_FORM_strp, DW_FORM_sec_offset:
 		if ie.header.is64 {
-			v, _ := ie.reader.Info.Uint64()
+			v, _ := br.Uint64()
 			return v
 		} else {
-			v, _ := ie.reader.Info.Uint32()
+			v, _ := br.Uint32()
 			return v
 		}
 	case DW_FORM_ref1, DW_FORM_flag, DW_FORM_data1:
-		v, _ := ie.reader.Info.Uint8()
+		v, _ := br.Uint8()
 		return v
 	case DW_FORM_ref2, DW_FORM_data2:
-		v, _ := ie.reader.Info.Uint16()
+		v, _ := br.Uint16()
 		return v
 	case DW_FORM_ref4, DW_FORM_data4:
-		v, _ := ie.reader.Info.Uint32()
+		v, _ := br.Uint32()
 		return v
 	case DW_FORM_ref8, DW_FORM_data8:
-		v, _ := ie.reader.Info.Uint64()
+		v, _ := br.Uint64()
 		return v
 	case DW_FORM_sdata, DW_FORM_udata:
 		var r LEB128
-		ie.reader.Info.ReadInterface(&r)
+		br.ReadInterface(&r)
 		return r
 	case DW_FORM_string:
 		buf := make([]byte, 4096)
 
 		for i := range buf {
-			if v, err := ie.reader.Info.Uint8(); err != nil {
+			if v, err := br.Uint8(); err != nil {
 				return err
 			} else if v == 0 {
 				buf = buf[:i]
@@ -143,8 +149,23 @@ func (ie *InfoEntry) Attribute(name DW_AT) interface{} {
 		return nil
 	}
 	for _, attr := range ie.ae.Attributes {
-		d := ie.data(attr.Form)
+		d := ie.data(attr.Form, ie.reader.Info)
 		if d == nil || name == attr.Name {
+			switch attr.Form {
+			case DW_FORM_strp:
+				ie.reader.Str.Seek(int64(reflect.ValueOf(d).Uint()), 0)
+				return ie.data(DW_FORM_string, ie.reader.Str)
+			}
+			switch attr.Name {
+			case DW_AT_encoding:
+				return DW_ATE(reflect.ValueOf(d).Uint())
+			case DW_AT_accessibility:
+				return DW_ACCESS(reflect.ValueOf(d).Uint())
+			case DW_AT_virtuality:
+				return DW_VIRTUALITY(reflect.ValueOf(d).Uint())
+			case DW_AT_language:
+				return DW_LANG(reflect.ValueOf(d).Uint())
+			}
 			return d
 		}
 	}
