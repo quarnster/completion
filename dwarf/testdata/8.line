@@ -1,0 +1,44 @@
+                            Header: {is64:false Length:233 Version:2}
+                     header_length: 0x61
+        minimum_instruction_length: 0x1
+maximum_operations_per_instruction: 0x1
+                   default_is_stmt: true
+                         line_base: -0x5
+                        line_range: 0xe
+                       opcode_base: 0xd
+standard_opcode_lengths[DW_LNS_copy] = 0
+standard_opcode_lengths[DW_LNS_advance_pc] = 1
+standard_opcode_lengths[DW_LNS_advance_line] = 1
+standard_opcode_lengths[DW_LNS_set_file] = 1
+standard_opcode_lengths[DW_LNS_set_column] = 1
+standard_opcode_lengths[DW_LNS_negate_stmt] = 0
+standard_opcode_lengths[DW_LNS_set_basic_block] = 0
+standard_opcode_lengths[DW_LNS_const_add_pc] = 0
+standard_opcode_lengths[DW_LNS_fixed_advance_pc] = 1
+standard_opcode_lengths[DW_LNS_set_prologue_end] = 0
+standard_opcode_lengths[DW_LNS_set_epilogue_begin] = 0
+standard_opcode_lengths[DW_LNS_set_isa] = 1
+include_directories[  1]: /System/Library/Frameworks/Foundation.framework/Headers
+                Dir  Mod Time   File Len   File Name
+                ---- ---------- ---------- ---------------------------
+file_names[  1]    0 0x00000000 0x00000000 8.mm
+file_names[  2]    1 0x00000000 0x00000000 /System/Library/Frameworks/Foundation.framework/Headers/NSObject.h
+
+Address            Line   Column File   ISA Flags
+------------------ ------ ------ ------ --- -------------
+0x0000000100000da0     53      0      1   0  
+0x0000000100000dac     56      1      1   0  is_stmt prologue_end 
+0x0000000100000dae     56      1      1   0  is_stmt end_sequence 
+0x0000000100000db0     47      0      1   0  
+0x0000000100000dbc     47     17      1   0  is_stmt prologue_end 
+0x0000000100000dd4     47     17      1   0  is_stmt end_sequence 
+0x0000000100000de0     47      0      1   0  
+0x0000000100000df1     47     17      1   0  is_stmt prologue_end 
+0x0000000100000e04     47     17      1   0  is_stmt end_sequence 
+0x0000000100000e10     64      0      1   0  
+0x0000000100000e1c     67      1      1   0  is_stmt prologue_end 
+0x0000000100000e1e     67      1      1   0  is_stmt end_sequence 
+0x0000000100000e20     83      0      1   0  
+0x0000000100000e37     84      2      1   0  is_stmt prologue_end 
+0x0000000100000e39     84      2      1   0  is_stmt end_sequence 
+

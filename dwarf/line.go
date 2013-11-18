@@ -1,8 +1,11 @@
 package dwarf
 
 import (
+	"bytes"
 	"fmt"
 	"github.com/quarnster/util/encoding/binary"
+	"path/filepath"
+	"reflect"
 )
 
 type (
@@ -46,6 +49,28 @@ type (
 	}
 )
 
+func (le lineEntry) String() string {
+	buf := bytes.NewBuffer(nil)
+	buf.WriteString(fmt.Sprintf("%#016x %6d %6d %6d %3d  ", le.address, le.line, le.column, le.file, le.isa))
+	if le.is_stmt {
+		buf.WriteString("is_stmt ")
+	}
+	if le.basic_block {
+		buf.WriteString("basic_block ")
+	}
+	if le.end_sequence {
+		buf.WriteString("end_sequence ")
+	}
+	if le.prologue_end {
+		buf.WriteString("prologue_end ")
+	}
+	if le.epilogue_begin {
+		buf.WriteString("epilogue_begin ")
+	}
+
+	return buf.String()
+}
+
 func (s *state) advance(advance uint) {
 	addr := uint(s.header.minimum_instruction_length) * (uint(s.op_index) + advance)
 	s.address += uint64(addr)
@@ -88,8 +113,6 @@ func (s *state) execute(op DW_LNS, br *binary.BinaryReader) error {
 		s.is_stmt = !s.is_stmt
 	case DW_LNS_set_basic_block:
 		s.basic_block = true
-	case DW_LNS_const_add_pc:
-		// TODO???
 	case DW_LNS_fixed_advance_pc:
 		var arg uint16
 		if err := br.ReadInterface(&arg); err != nil {
@@ -107,6 +130,9 @@ func (s *state) execute(op DW_LNS, br *binary.BinaryReader) error {
 			return err
 		}
 		s.isa = int(arg)
+	case DW_LNS_const_add_pc:
+		op = 255
+		fallthrough
 	default:
 		if uint8(op) > s.header.opcode_base {
 			op2 := int(uint8(op) - s.header.opcode_base)
@@ -266,4 +292,63 @@ func (lh *lineHeader) Read(br *binary.BinaryReader) error {
 	}
 
 	return nil
+}
+
+func (lh *lineHeader) Filename(index int) string {
+	if i := index - 1; i < 0 || i >= len(lh.file_names) {
+		return "<unknown>"
+	}
+	f := lh.file_names[index-1]
+	if f.IncludeDirectory != 0 {
+		return filepath.Join(lh.include_directories[f.IncludeDirectory-1], f.Name)
+	}
+	return f.Name
+}
+
+func (lh lineHeader) String() string {
+	buf := bytes.NewBuffer(nil)
+	v := reflect.ValueOf(lh)
+	t := v.Type()
+	for i := 0; i < v.NumField(); i++ {
+		f := v.Field(i)
+		tf := t.Field(i)
+		switch f.Kind() {
+		case reflect.Slice:
+			continue
+		}
+		buf.WriteString(fmt.Sprintf("%34s: ", tf.Name))
+
+		switch f.Kind() {
+		case reflect.Struct:
+			buf.WriteString(fmt.Sprintf("%+v", f.Interface()))
+		case reflect.Bool:
+			buf.WriteString(fmt.Sprintf("%v", f.Bool()))
+		case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+			buf.WriteString(fmt.Sprintf("%#x", f.Int()))
+		case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+			buf.WriteString(fmt.Sprintf("%#x", f.Uint()))
+		}
+		buf.WriteRune('\n')
+	}
+	for i, v := range lh.standard_opcode_lengths {
+		buf.WriteString(fmt.Sprintf("standard_opcode_lengths[%s] = %d\n", DW_LNS(i+1), v))
+	}
+	for i, v := range lh.include_directories {
+		buf.WriteString(fmt.Sprintf("include_directories[%3d]: %+v\n", (i + 1), v))
+	}
+	buf.WriteString(`                Dir  Mod Time   File Len   File Name
+                ---- ---------- ---------- ---------------------------
+`)
+	for i, v := range lh.file_names {
+		i++
+		buf.WriteString(fmt.Sprintf("file_names[%3d] %4d %#08x %#08x %s\n", i, v.IncludeDirectory, v.LastModified, v.Size, lh.Filename(i)))
+	}
+	buf.WriteString(`
+Address            Line   Column File   ISA Flags
+------------------ ------ ------ ------ --- -------------
+`)
+	for _, v := range lh.matrix {
+		buf.WriteString(fmt.Sprintf("%s\n", v))
+	}
+	return buf.String()
 }
