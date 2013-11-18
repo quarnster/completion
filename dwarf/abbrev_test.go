@@ -1,37 +1,24 @@
 package dwarf
 
 import (
-	"bytes"
-	"debug/macho"
-	"github.com/quarnster/util/encoding/binary"
 	"io"
 	"testing"
 )
 
 func TestAbbrev(t *testing.T) {
 	for _, test := range []string{"./testdata/8", "./testdata/hello", "./testdata/game.bz2", "./testdata/listener.o.bz2", "./testdata/completion.bz2"} {
-		t.Logf("\n%s", test)
 		rf, err := readFile(test)
 		if err != nil {
-			t.Fatal(err)
+			t.Error(err)
+			continue
 		}
-		f, err := macho.NewFile(rf)
+		f, err := newSectionReader(rf)
 		if err != nil {
-			t.Fatal(err)
+			t.Error(err)
+			continue
 		}
 		defer f.Close()
-		sec := f.Section("__debug_abbrev")
-		if sec == nil {
-			for _, sec := range f.Sections {
-				t.Log(sec.Name)
-			}
-			t.Fatal("No such section")
-		}
-		data, err := sec.Data()
-		if err != nil {
-			t.Fatal(err)
-		}
-		br := binary.BinaryReader{Reader: bytes.NewReader(data)}
+		br := f.Reader("debug_line")
 		for {
 			var v AbbrevEntry
 			before, _ := br.Seek(0, 1)
@@ -41,7 +28,7 @@ func TestAbbrev(t *testing.T) {
 				}
 				break
 			} else {
-				t.Logf("%+v", v)
+				t.Log("%+v", v)
 			}
 		}
 	}

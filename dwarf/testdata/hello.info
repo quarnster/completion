@@ -1,0 +1,669 @@
+{Header:{is64:false Length:1231 Version:2} DebugAbbrevOffset:0 AddressSize:8}
+DW_TAG_compile_unit [1] *
+  0x0000000c {DW_AT_producer DW_FORM_strp} Apple LLVM version 4.2 (clang-425.0.24) (based on LLVM 3.2svn)
+  0x00000010 {DW_AT_language DW_FORM_data2} DW_LANG_C_plus_plus
+  0x00000012 {DW_AT_name DW_FORM_strp} hello.cpp
+  0x00000016 {DW_AT_low_pc DW_FORM_addr} 0x100000ed0
+  0x0000001e {DW_AT_stmt_list DW_FORM_data4} 0x00000000
+  0x00000022 {DW_AT_comp_dir DW_FORM_strp} /Users/quarnster/code/go/src/github.com/quarnster/completion/dwarf/testdata
+
+  DW_TAG_base_type [2] 
+    0x00000027 {DW_AT_name DW_FORM_strp} int
+    0x0000002b {DW_AT_encoding DW_FORM_data1} DW_ATE_signed
+    0x0000002c {DW_AT_byte_size DW_FORM_data1} 0x00000004
+
+  DW_TAG_base_type [2] 
+    0x0000002e {DW_AT_name DW_FORM_strp} unsigned char
+    0x00000032 {DW_AT_encoding DW_FORM_data1} DW_ATE_unsigned_char
+    0x00000033 {DW_AT_byte_size DW_FORM_data1} 0x00000001
+
+  DW_TAG_pointer_type [3] 
+    0x00000035 {DW_AT_type DW_FORM_ref4} 0x0000002d
+
+  DW_TAG_base_type [2] 
+    0x0000003a {DW_AT_name DW_FORM_strp} short
+    0x0000003e {DW_AT_encoding DW_FORM_data1} DW_ATE_signed
+    0x0000003f {DW_AT_byte_size DW_FORM_data1} 0x00000002
+
+  DW_TAG_class_type [4] *
+    0x00000041 {DW_AT_name DW_FORM_strp} __sbuf
+    0x00000045 {DW_AT_byte_size DW_FORM_data1} 0x00000010
+    0x00000046 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+    0x00000047 {DW_AT_decl_line DW_FORM_data1} 0x00000060
+
+    DW_TAG_member [5] 
+      0x00000049 {DW_AT_name DW_FORM_strp} _base
+      0x0000004d {DW_AT_type DW_FORM_ref4} 0x00000034
+      0x00000051 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x00000052 {DW_AT_decl_line DW_FORM_data1} 0x00000061
+      0x00000053 {DW_AT_data_member_location DW_FORM_block1} [35 0]
+      0x00000056 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x00000058 {DW_AT_name DW_FORM_strp} _size
+      0x0000005c {DW_AT_type DW_FORM_ref4} 0x00000026
+      0x00000060 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x00000061 {DW_AT_decl_line DW_FORM_data1} 0x00000062
+      0x00000062 {DW_AT_data_member_location DW_FORM_block1} [35 8]
+      0x00000065 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+  DW_TAG_pointer_type [6] 
+
+  DW_TAG_subroutine_type [7] *
+    0x00000069 {DW_AT_type DW_FORM_ref4} 0x00000026
+
+    DW_TAG_formal_parameter [8] 
+      0x0000006e {DW_AT_type DW_FORM_ref4} 0x00000067
+
+  DW_TAG_pointer_type [3] 
+    0x00000074 {DW_AT_type DW_FORM_ref4} 0x00000068
+
+  DW_TAG_base_type [2] 
+    0x00000079 {DW_AT_name DW_FORM_strp} char
+    0x0000007d {DW_AT_encoding DW_FORM_data1} DW_ATE_signed_char
+    0x0000007e {DW_AT_byte_size DW_FORM_data1} 0x00000001
+
+  DW_TAG_pointer_type [3] 
+    0x00000080 {DW_AT_type DW_FORM_ref4} 0x00000078
+
+  DW_TAG_subroutine_type [7] *
+    0x00000085 {DW_AT_type DW_FORM_ref4} 0x00000026
+
+    DW_TAG_formal_parameter [8] 
+      0x0000008a {DW_AT_type DW_FORM_ref4} 0x00000067
+
+    DW_TAG_formal_parameter [8] 
+      0x0000008f {DW_AT_type DW_FORM_ref4} 0x0000007f
+
+    DW_TAG_formal_parameter [8] 
+      0x00000094 {DW_AT_type DW_FORM_ref4} 0x00000026
+
+  DW_TAG_pointer_type [3] 
+    0x0000009a {DW_AT_type DW_FORM_ref4} 0x00000084
+
+  DW_TAG_base_type [2] 
+    0x0000009f {DW_AT_name DW_FORM_strp} long long int
+    0x000000a3 {DW_AT_encoding DW_FORM_data1} DW_ATE_signed
+    0x000000a4 {DW_AT_byte_size DW_FORM_data1} 0x00000008
+
+  DW_TAG_typedef [9] 
+    0x000000a6 {DW_AT_type DW_FORM_ref4} 0x0000009e
+    0x000000aa {DW_AT_name DW_FORM_strp} __int64_t
+    0x000000ae {DW_AT_decl_file DW_FORM_data1} 0x00000002
+    0x000000af {DW_AT_decl_line DW_FORM_data1} 0x0000002e
+
+  DW_TAG_typedef [9] 
+    0x000000b1 {DW_AT_type DW_FORM_ref4} 0x000000a5
+    0x000000b5 {DW_AT_name DW_FORM_strp} __darwin_off_t
+    0x000000b9 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+    0x000000ba {DW_AT_decl_line DW_FORM_data1} 0x0000006e
+
+  DW_TAG_typedef [9] 
+    0x000000bc {DW_AT_type DW_FORM_ref4} 0x000000b0
+    0x000000c0 {DW_AT_name DW_FORM_strp} fpos_t
+    0x000000c4 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+    0x000000c5 {DW_AT_decl_line DW_FORM_data1} 0x00000055
+
+  DW_TAG_subroutine_type [7] *
+    0x000000c7 {DW_AT_type DW_FORM_ref4} 0x000000bb
+
+    DW_TAG_formal_parameter [8] 
+      0x000000cc {DW_AT_type DW_FORM_ref4} 0x00000067
+
+    DW_TAG_formal_parameter [8] 
+      0x000000d1 {DW_AT_type DW_FORM_ref4} 0x000000bb
+
+    DW_TAG_formal_parameter [8] 
+      0x000000d6 {DW_AT_type DW_FORM_ref4} 0x00000026
+
+  DW_TAG_pointer_type [3] 
+    0x000000dc {DW_AT_type DW_FORM_ref4} 0x000000c6
+
+  DW_TAG_const_type [10] 
+    0x000000e1 {DW_AT_type DW_FORM_ref4} 0x00000078
+
+  DW_TAG_pointer_type [3] 
+    0x000000e6 {DW_AT_type DW_FORM_ref4} 0x000000e0
+
+  DW_TAG_subroutine_type [7] *
+    0x000000eb {DW_AT_type DW_FORM_ref4} 0x00000026
+
+    DW_TAG_formal_parameter [8] 
+      0x000000f0 {DW_AT_type DW_FORM_ref4} 0x00000067
+
+    DW_TAG_formal_parameter [8] 
+      0x000000f5 {DW_AT_type DW_FORM_ref4} 0x000000e5
+
+    DW_TAG_formal_parameter [8] 
+      0x000000fa {DW_AT_type DW_FORM_ref4} 0x00000026
+
+  DW_TAG_pointer_type [3] 
+    0x00000100 {DW_AT_type DW_FORM_ref4} 0x000000ea
+
+  DW_TAG_class_type [11] 
+    0x00000105 {DW_AT_name DW_FORM_strp} __sFILEX
+    0x00000109 {DW_AT_declaration DW_FORM_flag} 0x00000001
+
+  DW_TAG_pointer_type [3] 
+    0x0000010b {DW_AT_type DW_FORM_ref4} 0x00000104
+
+  DW_TAG_base_type [12] 
+    0x00000110 {DW_AT_byte_size DW_FORM_data1} 0x00000004
+    0x00000111 {DW_AT_encoding DW_FORM_data1} DW_ATE_signed
+
+  DW_TAG_array_type [13] *
+    0x00000113 {DW_AT_type DW_FORM_ref4} 0x0000002d
+
+    DW_TAG_subrange_type [14] 
+      0x00000118 {DW_AT_type DW_FORM_ref4} 0x0000010f
+      0x0000011c {DW_AT_upper_bound DW_FORM_data1} 0x00000002
+
+  DW_TAG_array_type [13] *
+    0x0000011f {DW_AT_type DW_FORM_ref4} 0x0000002d
+
+    DW_TAG_subrange_type [14] 
+      0x00000124 {DW_AT_type DW_FORM_ref4} 0x0000010f
+      0x00000128 {DW_AT_upper_bound DW_FORM_data1} 0x00000000
+
+  DW_TAG_class_type [4] *
+    0x0000012b {DW_AT_name DW_FORM_strp} __sFILE
+    0x0000012f {DW_AT_byte_size DW_FORM_data1} 0x00000098
+    0x00000130 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+    0x00000131 {DW_AT_decl_line DW_FORM_data1} 0x00000082
+
+    DW_TAG_member [5] 
+      0x00000133 {DW_AT_name DW_FORM_strp} _p
+      0x00000137 {DW_AT_type DW_FORM_ref4} 0x00000034
+      0x0000013b {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x0000013c {DW_AT_decl_line DW_FORM_data1} 0x00000083
+      0x0000013d {DW_AT_data_member_location DW_FORM_block1} [35 0]
+      0x00000140 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x00000142 {DW_AT_name DW_FORM_strp} _r
+      0x00000146 {DW_AT_type DW_FORM_ref4} 0x00000026
+      0x0000014a {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x0000014b {DW_AT_decl_line DW_FORM_data1} 0x00000084
+      0x0000014c {DW_AT_data_member_location DW_FORM_block1} [35 8]
+      0x0000014f {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x00000151 {DW_AT_name DW_FORM_strp} _w
+      0x00000155 {DW_AT_type DW_FORM_ref4} 0x00000026
+      0x00000159 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x0000015a {DW_AT_decl_line DW_FORM_data1} 0x00000085
+      0x0000015b {DW_AT_data_member_location DW_FORM_block1} [35 12]
+      0x0000015e {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x00000160 {DW_AT_name DW_FORM_strp} _flags
+      0x00000164 {DW_AT_type DW_FORM_ref4} 0x00000039
+      0x00000168 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x00000169 {DW_AT_decl_line DW_FORM_data1} 0x00000086
+      0x0000016a {DW_AT_data_member_location DW_FORM_block1} [35 16]
+      0x0000016d {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x0000016f {DW_AT_name DW_FORM_strp} _file
+      0x00000173 {DW_AT_type DW_FORM_ref4} 0x00000039
+      0x00000177 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x00000178 {DW_AT_decl_line DW_FORM_data1} 0x00000087
+      0x00000179 {DW_AT_data_member_location DW_FORM_block1} [35 18]
+      0x0000017c {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x0000017e {DW_AT_name DW_FORM_strp} _bf
+      0x00000182 {DW_AT_type DW_FORM_ref4} 0x00000040
+      0x00000186 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x00000187 {DW_AT_decl_line DW_FORM_data1} 0x00000088
+      0x00000188 {DW_AT_data_member_location DW_FORM_block1} [35 24]
+      0x0000018b {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x0000018d {DW_AT_name DW_FORM_strp} _lbfsize
+      0x00000191 {DW_AT_type DW_FORM_ref4} 0x00000026
+      0x00000195 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x00000196 {DW_AT_decl_line DW_FORM_data1} 0x00000089
+      0x00000197 {DW_AT_data_member_location DW_FORM_block1} [35 40]
+      0x0000019a {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x0000019c {DW_AT_name DW_FORM_strp} _cookie
+      0x000001a0 {DW_AT_type DW_FORM_ref4} 0x00000067
+      0x000001a4 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x000001a5 {DW_AT_decl_line DW_FORM_data1} 0x0000008c
+      0x000001a6 {DW_AT_data_member_location DW_FORM_block1} [35 48]
+      0x000001a9 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x000001ab {DW_AT_name DW_FORM_strp} _close
+      0x000001af {DW_AT_type DW_FORM_ref4} 0x00000073
+      0x000001b3 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x000001b4 {DW_AT_decl_line DW_FORM_data1} 0x0000008d
+      0x000001b5 {DW_AT_data_member_location DW_FORM_block1} [35 56]
+      0x000001b8 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x000001ba {DW_AT_name DW_FORM_strp} _read
+      0x000001be {DW_AT_type DW_FORM_ref4} 0x00000099
+      0x000001c2 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x000001c3 {DW_AT_decl_line DW_FORM_data1} 0x0000008e
+      0x000001c4 {DW_AT_data_member_location DW_FORM_block1} [35 64]
+      0x000001c7 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x000001c9 {DW_AT_name DW_FORM_strp} _seek
+      0x000001cd {DW_AT_type DW_FORM_ref4} 0x000000db
+      0x000001d1 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x000001d2 {DW_AT_decl_line DW_FORM_data1} 0x0000008f
+      0x000001d3 {DW_AT_data_member_location DW_FORM_block1} [35 72]
+      0x000001d6 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x000001d8 {DW_AT_name DW_FORM_strp} _write
+      0x000001dc {DW_AT_type DW_FORM_ref4} 0x000000ff
+      0x000001e0 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x000001e1 {DW_AT_decl_line DW_FORM_data1} 0x00000090
+      0x000001e2 {DW_AT_data_member_location DW_FORM_block1} [35 80]
+      0x000001e5 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x000001e7 {DW_AT_name DW_FORM_strp} _ub
+      0x000001eb {DW_AT_type DW_FORM_ref4} 0x00000040
+      0x000001ef {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x000001f0 {DW_AT_decl_line DW_FORM_data1} 0x00000093
+      0x000001f1 {DW_AT_data_member_location DW_FORM_block1} [35 88]
+      0x000001f4 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x000001f6 {DW_AT_name DW_FORM_strp} _extra
+      0x000001fa {DW_AT_type DW_FORM_ref4} 0x0000010a
+      0x000001fe {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x000001ff {DW_AT_decl_line DW_FORM_data1} 0x00000094
+      0x00000200 {DW_AT_data_member_location DW_FORM_block1} [35 104]
+      0x00000203 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x00000205 {DW_AT_name DW_FORM_strp} _ur
+      0x00000209 {DW_AT_type DW_FORM_ref4} 0x00000026
+      0x0000020d {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x0000020e {DW_AT_decl_line DW_FORM_data1} 0x00000095
+      0x0000020f {DW_AT_data_member_location DW_FORM_block1} [35 112]
+      0x00000212 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x00000214 {DW_AT_name DW_FORM_strp} _ubuf
+      0x00000218 {DW_AT_type DW_FORM_ref4} 0x00000112
+      0x0000021c {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x0000021d {DW_AT_decl_line DW_FORM_data1} 0x00000098
+      0x0000021e {DW_AT_data_member_location DW_FORM_block1} [35 116]
+      0x00000221 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x00000223 {DW_AT_name DW_FORM_strp} _nbuf
+      0x00000227 {DW_AT_type DW_FORM_ref4} 0x0000011e
+      0x0000022b {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x0000022c {DW_AT_decl_line DW_FORM_data1} 0x00000099
+      0x0000022d {DW_AT_data_member_location DW_FORM_block1} [35 119]
+      0x00000230 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x00000232 {DW_AT_name DW_FORM_strp} _lb
+      0x00000236 {DW_AT_type DW_FORM_ref4} 0x00000040
+      0x0000023a {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x0000023b {DW_AT_decl_line DW_FORM_data1} 0x0000009c
+      0x0000023c {DW_AT_data_member_location DW_FORM_block1} [35 120]
+      0x0000023f {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x00000241 {DW_AT_name DW_FORM_strp} _blksize
+      0x00000245 {DW_AT_type DW_FORM_ref4} 0x00000026
+      0x00000249 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x0000024a {DW_AT_decl_line DW_FORM_data1} 0x0000009f
+      0x0000024b {DW_AT_data_member_location DW_FORM_block1} [35 136 1]
+      0x0000024f {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x00000251 {DW_AT_name DW_FORM_strp} _offset
+      0x00000255 {DW_AT_type DW_FORM_ref4} 0x000000bb
+      0x00000259 {DW_AT_decl_file DW_FORM_data1} 0x00000002
+      0x0000025a {DW_AT_decl_line DW_FORM_data1} 0x000000a0
+      0x0000025b {DW_AT_data_member_location DW_FORM_block1} [35 144 1]
+      0x0000025f {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+  DW_TAG_typedef [9] 
+    0x00000262 {DW_AT_type DW_FORM_ref4} 0x0000012a
+    0x00000266 {DW_AT_name DW_FORM_strp} FILE
+    0x0000026a {DW_AT_decl_file DW_FORM_data1} 0x00000001
+    0x0000026b {DW_AT_decl_line DW_FORM_data1} 0x000000a1
+
+  DW_TAG_pointer_type [3] 
+    0x0000026d {DW_AT_type DW_FORM_ref4} 0x00000261
+
+  DW_TAG_pointer_type [3] 
+    0x00000272 {DW_AT_type DW_FORM_ref4} 0x00000280
+
+  DW_TAG_const_type [10] 
+    0x00000277 {DW_AT_type DW_FORM_ref4} 0x00000280
+
+  DW_TAG_pointer_type [3] 
+    0x0000027c {DW_AT_type DW_FORM_ref4} 0x00000276
+
+  DW_TAG_class_type [4] *
+    0x00000281 {DW_AT_name DW_FORM_strp} TestA
+    0x00000285 {DW_AT_byte_size DW_FORM_data1} 0x00000030
+    0x00000286 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+    0x00000287 {DW_AT_decl_line DW_FORM_data1} 0x00000003
+
+    DW_TAG_member [5] 
+      0x00000289 {DW_AT_name DW_FORM_strp} publicIntMember
+      0x0000028d {DW_AT_type DW_FORM_ref4} 0x00000026
+      0x00000291 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x00000292 {DW_AT_decl_line DW_FORM_data1} 0x0000000d
+      0x00000293 {DW_AT_data_member_location DW_FORM_block1} [35 0]
+      0x00000296 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x00000298 {DW_AT_name DW_FORM_strp} publicFileMember
+      0x0000029c {DW_AT_type DW_FORM_ref4} 0x0000026c
+      0x000002a0 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x000002a1 {DW_AT_decl_line DW_FORM_data1} 0x0000000e
+      0x000002a2 {DW_AT_data_member_location DW_FORM_block1} [35 8]
+      0x000002a5 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_member [5] 
+      0x000002a7 {DW_AT_name DW_FORM_strp} privateIntMember
+      0x000002ab {DW_AT_type DW_FORM_ref4} 0x00000026
+      0x000002af {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x000002b0 {DW_AT_decl_line DW_FORM_data1} 0x00000019
+      0x000002b1 {DW_AT_data_member_location DW_FORM_block1} [35 16]
+      0x000002b4 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_private
+
+    DW_TAG_member [5] 
+      0x000002b6 {DW_AT_name DW_FORM_strp} privateFileMember
+      0x000002ba {DW_AT_type DW_FORM_ref4} 0x0000026c
+      0x000002be {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x000002bf {DW_AT_decl_line DW_FORM_data1} 0x0000001a
+      0x000002c0 {DW_AT_data_member_location DW_FORM_block1} [35 24]
+      0x000002c3 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_private
+
+    DW_TAG_member [5] 
+      0x000002c5 {DW_AT_name DW_FORM_strp} protectedIntMember
+      0x000002c9 {DW_AT_type DW_FORM_ref4} 0x00000026
+      0x000002cd {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x000002ce {DW_AT_decl_line DW_FORM_data1} 0x00000025
+      0x000002cf {DW_AT_data_member_location DW_FORM_block1} [35 32]
+      0x000002d2 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_protected
+
+    DW_TAG_member [5] 
+      0x000002d4 {DW_AT_name DW_FORM_strp} protectedFileMember
+      0x000002d8 {DW_AT_type DW_FORM_ref4} 0x0000026c
+      0x000002dc {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x000002dd {DW_AT_decl_line DW_FORM_data1} 0x00000026
+      0x000002de {DW_AT_data_member_location DW_FORM_block1} [35 40]
+      0x000002e1 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_protected
+
+    DW_TAG_subprogram [15] *
+      0x000002e3 {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZN5TestA14publicVoidFuncEv
+      0x000002e7 {DW_AT_name DW_FORM_strp} publicVoidFunc
+      0x000002eb {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x000002ec {DW_AT_decl_line DW_FORM_data1} 0x00000005
+      0x000002ed {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x000002ee {DW_AT_external DW_FORM_flag} 0x00000001
+      0x000002ef {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+      DW_TAG_formal_parameter [16] 
+        0x000002f1 {DW_AT_type DW_FORM_ref4} 0x00000271
+        0x000002f5 {DW_AT_artificial DW_FORM_flag} 0x00000001
+
+    DW_TAG_subprogram [15] *
+      0x000002f8 {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZNK5TestA19publicConstVoidFuncEv
+      0x000002fc {DW_AT_name DW_FORM_strp} publicConstVoidFunc
+      0x00000300 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x00000301 {DW_AT_decl_line DW_FORM_data1} 0x00000006
+      0x00000302 {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x00000303 {DW_AT_external DW_FORM_flag} 0x00000001
+      0x00000304 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+      DW_TAG_formal_parameter [16] 
+        0x00000306 {DW_AT_type DW_FORM_ref4} 0x0000027b
+        0x0000030a {DW_AT_artificial DW_FORM_flag} 0x00000001
+
+    DW_TAG_subprogram [17] *
+      0x0000030d {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZN5TestA14publicFileFuncEv
+      0x00000311 {DW_AT_name DW_FORM_strp} publicFileFunc
+      0x00000315 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x00000316 {DW_AT_decl_line DW_FORM_data1} 0x00000007
+      0x00000317 {DW_AT_type DW_FORM_ref4} 0x0000026c
+      0x0000031b {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x0000031c {DW_AT_external DW_FORM_flag} 0x00000001
+      0x0000031d {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+      DW_TAG_formal_parameter [16] 
+        0x0000031f {DW_AT_type DW_FORM_ref4} 0x00000271
+        0x00000323 {DW_AT_artificial DW_FORM_flag} 0x00000001
+
+    DW_TAG_subprogram [17] *
+      0x00000326 {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZNK5TestA19publicConstFileFuncEv
+      0x0000032a {DW_AT_name DW_FORM_strp} publicConstFileFunc
+      0x0000032e {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x0000032f {DW_AT_decl_line DW_FORM_data1} 0x00000008
+      0x00000330 {DW_AT_type DW_FORM_ref4} 0x0000026c
+      0x00000334 {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x00000335 {DW_AT_external DW_FORM_flag} 0x00000001
+      0x00000336 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+      DW_TAG_formal_parameter [16] 
+        0x00000338 {DW_AT_type DW_FORM_ref4} 0x0000027b
+        0x0000033c {DW_AT_artificial DW_FORM_flag} 0x00000001
+
+    DW_TAG_subprogram [18] 
+      0x0000033f {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZN5TestA20publicStaticVoidFuncEv
+      0x00000343 {DW_AT_name DW_FORM_strp} publicStaticVoidFunc
+      0x00000347 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x00000348 {DW_AT_decl_line DW_FORM_data1} 0x0000000a
+      0x00000349 {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x0000034a {DW_AT_external DW_FORM_flag} 0x00000001
+      0x0000034b {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+
+    DW_TAG_subprogram [19] 
+      0x0000034d {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_public
+      0x0000034e {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZN5TestA20publicStaticFileFuncEv
+      0x00000352 {DW_AT_name DW_FORM_strp} publicStaticFileFunc
+      0x00000356 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x00000357 {DW_AT_decl_line DW_FORM_data1} 0x0000000b
+      0x00000358 {DW_AT_type DW_FORM_ref4} 0x0000026c
+      0x0000035c {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x0000035d {DW_AT_external DW_FORM_flag} 0x00000001
+
+    DW_TAG_subprogram [15] *
+      0x0000035f {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZN5TestA15privateVoidFuncEv
+      0x00000363 {DW_AT_name DW_FORM_strp} privateVoidFunc
+      0x00000367 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x00000368 {DW_AT_decl_line DW_FORM_data1} 0x00000011
+      0x00000369 {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x0000036a {DW_AT_external DW_FORM_flag} 0x00000001
+      0x0000036b {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_private
+
+      DW_TAG_formal_parameter [16] 
+        0x0000036d {DW_AT_type DW_FORM_ref4} 0x00000271
+        0x00000371 {DW_AT_artificial DW_FORM_flag} 0x00000001
+
+    DW_TAG_subprogram [15] *
+      0x00000374 {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZNK5TestA20privateConstVoidFuncEv
+      0x00000378 {DW_AT_name DW_FORM_strp} privateConstVoidFunc
+      0x0000037c {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x0000037d {DW_AT_decl_line DW_FORM_data1} 0x00000012
+      0x0000037e {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x0000037f {DW_AT_external DW_FORM_flag} 0x00000001
+      0x00000380 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_private
+
+      DW_TAG_formal_parameter [16] 
+        0x00000382 {DW_AT_type DW_FORM_ref4} 0x0000027b
+        0x00000386 {DW_AT_artificial DW_FORM_flag} 0x00000001
+
+    DW_TAG_subprogram [17] *
+      0x00000389 {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZN5TestA15privateFileFuncEv
+      0x0000038d {DW_AT_name DW_FORM_strp} privateFileFunc
+      0x00000391 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x00000392 {DW_AT_decl_line DW_FORM_data1} 0x00000013
+      0x00000393 {DW_AT_type DW_FORM_ref4} 0x0000026c
+      0x00000397 {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x00000398 {DW_AT_external DW_FORM_flag} 0x00000001
+      0x00000399 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_private
+
+      DW_TAG_formal_parameter [16] 
+        0x0000039b {DW_AT_type DW_FORM_ref4} 0x00000271
+        0x0000039f {DW_AT_artificial DW_FORM_flag} 0x00000001
+
+    DW_TAG_subprogram [17] *
+      0x000003a2 {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZNK5TestA20privateConstFileFuncEv
+      0x000003a6 {DW_AT_name DW_FORM_strp} privateConstFileFunc
+      0x000003aa {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x000003ab {DW_AT_decl_line DW_FORM_data1} 0x00000014
+      0x000003ac {DW_AT_type DW_FORM_ref4} 0x0000026c
+      0x000003b0 {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x000003b1 {DW_AT_external DW_FORM_flag} 0x00000001
+      0x000003b2 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_private
+
+      DW_TAG_formal_parameter [16] 
+        0x000003b4 {DW_AT_type DW_FORM_ref4} 0x0000027b
+        0x000003b8 {DW_AT_artificial DW_FORM_flag} 0x00000001
+
+    DW_TAG_subprogram [18] 
+      0x000003bb {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZN5TestA21privateStaticVoidFuncEv
+      0x000003bf {DW_AT_name DW_FORM_strp} privateStaticVoidFunc
+      0x000003c3 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x000003c4 {DW_AT_decl_line DW_FORM_data1} 0x00000016
+      0x000003c5 {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x000003c6 {DW_AT_external DW_FORM_flag} 0x00000001
+      0x000003c7 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_private
+
+    DW_TAG_subprogram [20] 
+      0x000003c9 {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZN5TestA21privateStaticFileFuncEv
+      0x000003cd {DW_AT_name DW_FORM_strp} privateStaticFileFunc
+      0x000003d1 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x000003d2 {DW_AT_decl_line DW_FORM_data1} 0x00000017
+      0x000003d3 {DW_AT_type DW_FORM_ref4} 0x0000026c
+      0x000003d7 {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x000003d8 {DW_AT_external DW_FORM_flag} 0x00000001
+      0x000003d9 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_private
+
+    DW_TAG_subprogram [15] *
+      0x000003db {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZN5TestA17protectedVoidFuncEv
+      0x000003df {DW_AT_name DW_FORM_strp} protectedVoidFunc
+      0x000003e3 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x000003e4 {DW_AT_decl_line DW_FORM_data1} 0x0000001d
+      0x000003e5 {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x000003e6 {DW_AT_external DW_FORM_flag} 0x00000001
+      0x000003e7 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_protected
+
+      DW_TAG_formal_parameter [16] 
+        0x000003e9 {DW_AT_type DW_FORM_ref4} 0x00000271
+        0x000003ed {DW_AT_artificial DW_FORM_flag} 0x00000001
+
+    DW_TAG_subprogram [15] *
+      0x000003f0 {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZNK5TestA22protectedConstVoidFuncEv
+      0x000003f4 {DW_AT_name DW_FORM_strp} protectedConstVoidFunc
+      0x000003f8 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x000003f9 {DW_AT_decl_line DW_FORM_data1} 0x0000001e
+      0x000003fa {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x000003fb {DW_AT_external DW_FORM_flag} 0x00000001
+      0x000003fc {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_protected
+
+      DW_TAG_formal_parameter [16] 
+        0x000003fe {DW_AT_type DW_FORM_ref4} 0x0000027b
+        0x00000402 {DW_AT_artificial DW_FORM_flag} 0x00000001
+
+    DW_TAG_subprogram [17] *
+      0x00000405 {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZN5TestA17protectedFileFuncEv
+      0x00000409 {DW_AT_name DW_FORM_strp} protectedFileFunc
+      0x0000040d {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x0000040e {DW_AT_decl_line DW_FORM_data1} 0x0000001f
+      0x0000040f {DW_AT_type DW_FORM_ref4} 0x0000026c
+      0x00000413 {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x00000414 {DW_AT_external DW_FORM_flag} 0x00000001
+      0x00000415 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_protected
+
+      DW_TAG_formal_parameter [16] 
+        0x00000417 {DW_AT_type DW_FORM_ref4} 0x00000271
+        0x0000041b {DW_AT_artificial DW_FORM_flag} 0x00000001
+
+    DW_TAG_subprogram [17] *
+      0x0000041e {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZNK5TestA22protectedConstFileFuncEv
+      0x00000422 {DW_AT_name DW_FORM_strp} protectedConstFileFunc
+      0x00000426 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x00000427 {DW_AT_decl_line DW_FORM_data1} 0x00000020
+      0x00000428 {DW_AT_type DW_FORM_ref4} 0x0000026c
+      0x0000042c {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x0000042d {DW_AT_external DW_FORM_flag} 0x00000001
+      0x0000042e {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_protected
+
+      DW_TAG_formal_parameter [16] 
+        0x00000430 {DW_AT_type DW_FORM_ref4} 0x0000027b
+        0x00000434 {DW_AT_artificial DW_FORM_flag} 0x00000001
+
+    DW_TAG_subprogram [18] 
+      0x00000437 {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZN5TestA23protectedStaticVoidFuncEv
+      0x0000043b {DW_AT_name DW_FORM_strp} protectedStaticVoidFunc
+      0x0000043f {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x00000440 {DW_AT_decl_line DW_FORM_data1} 0x00000022
+      0x00000441 {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x00000442 {DW_AT_external DW_FORM_flag} 0x00000001
+      0x00000443 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_protected
+
+    DW_TAG_subprogram [20] 
+      0x00000445 {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZN5TestA23protectedStaticFileFuncEv
+      0x00000449 {DW_AT_name DW_FORM_strp} protectedStaticFileFunc
+      0x0000044d {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x0000044e {DW_AT_decl_line DW_FORM_data1} 0x00000023
+      0x0000044f {DW_AT_type DW_FORM_ref4} 0x0000026c
+      0x00000453 {DW_AT_declaration DW_FORM_flag} 0x00000001
+      0x00000454 {DW_AT_external DW_FORM_flag} 0x00000001
+      0x00000455 {DW_AT_accessibility DW_FORM_data1} DW_ACCESS_protected
+
+  DW_TAG_subprogram [21] 
+    0x00000458 {DW_AT_MIPS_linkage_name DW_FORM_strp} _ZN5TestA20publicStaticFileFuncEv
+    0x0000045c {DW_AT_specification DW_FORM_ref4} 0x0000034c
+    0x00000460 {DW_AT_low_pc DW_FORM_addr} 0x100000ed0
+    0x00000468 {DW_AT_high_pc DW_FORM_addr} 0x100000ee0
+    0x00000470 {DW_AT_frame_base DW_FORM_block1} [86]
+
+  DW_TAG_subprogram [22] *
+    0x00000473 {DW_AT_name DW_FORM_strp} main
+    0x00000477 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+    0x00000478 {DW_AT_decl_line DW_FORM_data1} 0x0000002e
+    0x00000479 {DW_AT_type DW_FORM_ref4} 0x00000026
+    0x0000047d {DW_AT_external DW_FORM_flag} 0x00000001
+    0x0000047e {DW_AT_low_pc DW_FORM_addr} 0x100000ee0
+    0x00000486 {DW_AT_high_pc DW_FORM_addr} 0x100000f17
+    0x0000048e {DW_AT_frame_base DW_FORM_block1} [86]
+
+    DW_TAG_formal_parameter [23] 
+      0x00000491 {DW_AT_name DW_FORM_strp} argc
+      0x00000495 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x00000496 {DW_AT_decl_line DW_FORM_data1} 0x0000002e
+      0x00000497 {DW_AT_type DW_FORM_ref4} 0x00000026
+      0x0000049b {DW_AT_location DW_FORM_block1} [145 120]
+
+    DW_TAG_formal_parameter [23] 
+      0x0000049f {DW_AT_name DW_FORM_strp} argv
+      0x000004a3 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+      0x000004a4 {DW_AT_decl_line DW_FORM_data1} 0x0000002e
+      0x000004a5 {DW_AT_type DW_FORM_ref4} 0x000004cd
+      0x000004a9 {DW_AT_location DW_FORM_block1} [145 112]
+
+    DW_TAG_lexical_block [24] *
+      0x000004ad {DW_AT_low_pc DW_FORM_addr} 0x100000efd
+      0x000004b5 {DW_AT_high_pc DW_FORM_addr} 0x100000f17
+
+      DW_TAG_variable [25] 
+        0x000004be {DW_AT_name DW_FORM_strp} a
+        0x000004c2 {DW_AT_decl_file DW_FORM_data1} 0x00000001
+        0x000004c3 {DW_AT_decl_line DW_FORM_data1} 0x0000002f
+        0x000004c4 {DW_AT_type DW_FORM_ref4} 0x00000280
+        0x000004c8 {DW_AT_location DW_FORM_block1} [145 64]
+
+  DW_TAG_pointer_type [3] 
+    0x000004ce {DW_AT_type DW_FORM_ref4} 0x0000007f
+

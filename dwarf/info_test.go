@@ -4,8 +4,11 @@ import (
 	"bytes"
 	"debug/elf"
 	"debug/macho"
+	"fmt"
+	"github.com/quarnster/completion/util"
 	"github.com/quarnster/util/encoding/binary"
 	"io"
+	"io/ioutil"
 	"testing"
 )
 
@@ -61,7 +64,6 @@ func (s *sectionReader) Close() error {
 }
 
 func TestInfo(t *testing.T) {
-outer:
 	for _, test := range []string{"./testdata/8", "./testdata/hello", "./testdata/game.bz2", "./testdata/listener.o.bz2", "./testdata/completion.bz2", "./testdata/hello4"} {
 		t.Logf("\n%s", test)
 		rf, err := readFile(test)
@@ -81,19 +83,18 @@ outer:
 		var ih InfoHeader
 		nextHeader, _ := bri.Seek(0, 1)
 		var abbr_entries []AbbrevEntry
+		buf := bytes.NewBuffer(nil)
+		var indent = ""
 		for {
 			off, _ := bri.Seek(0, 1)
 			if off >= nextHeader {
-				bri.Seek(nextHeader, 0)
-				t.Log(bri.Read(16))
-				bri.Seek(nextHeader, 0)
 				if err := bri.ReadInterface(&ih); err != nil {
 					if err != io.EOF {
 						t.Error(err)
 					}
-					continue outer
+					break
 				} else {
-					t.Logf("%+v", ih)
+					buf.WriteString(fmt.Sprintf("%+v\n", ih))
 					nextHeader += int64(ih.Length) + 4
 					abbr_entries = nil
 					bra.Seek(ih.DebugAbbrevOffset, 0)
@@ -120,35 +121,51 @@ outer:
 
 			ie.header = &ih
 			if ie.id <= 0 {
+				indent = indent[:len(indent)-2]
 				continue
 			}
-			t.Log(ie.id, len(abbr_entries))
+			//			buf.WriteString(fmt.Sprintf("%v, %d\n", ie.id, len(abbr_entries)))
 			ie.ae = &abbr_entries[ie.id-1]
 			ie.reader.Info = bri
 			ie.reader.Abbrev = bra
 			ie.reader.Str = brs
-			t.Logf("%s", ie.Tag())
+			buf.WriteString(fmt.Sprintf("%s%s [%d] ", indent, ie.Tag().String(), ie.id))
+			if ie.ae.Children == DW_CHILDREN_yes {
+				buf.WriteRune('*')
+			}
+			buf.WriteRune('\n')
+			indent += "  "
 			for _, attr := range ie.ae.Attributes {
 				pos, _ := bri.Seek(0, 1)
 				va := ie.Attribute(attr.Name)
 				switch v := va.(type) {
-				case uint:
-					t.Logf("\t0x%08x %s 0x%08x", pos, attr, v)
-				case uint8:
-					t.Logf("\t0x%08x %s 0x%08x", pos, attr, v)
-				case uint16:
-					t.Logf("\t0x%08x %s 0x%08x", pos, attr, v)
-				case uint32:
-					t.Logf("\t0x%08x %s 0x%08x", pos, attr, v)
 				case uint64:
-					t.Logf("\t0x%08x %s 0x%08x", pos, attr, v)
+					buf.WriteString(fmt.Sprintf("%s0x%08x %s 0x%08x\n", indent, pos, attr, v))
 				default:
-					t.Logf("\t0x%08x %s %v", pos, attr, v)
+					buf.WriteString(fmt.Sprintf("%s0x%08x %s %v\n", indent, pos, attr, v))
 				}
 			}
+
+			if ie.ae.Children == DW_CHILDREN_no {
+				indent = indent[:len(indent)-2]
+			}
+			buf.WriteRune('\n')
 			off, _ = bri.Seek(0, 1)
-			t.Logf("0x%x 0x%x", off, nextHeader)
+			//			buf.WriteString(fmt.Sprintf("0x%x 0x%x", off, nextHeader))
 		}
-		break
+		res := buf.String()
+		expected := ""
+		fn := test + ".info"
+		if data, err := ioutil.ReadFile(fn); err == nil {
+			expected = string(data)
+		}
+		if len(expected) <= 1 {
+			t.Logf("Creating new test data: %s", fn)
+			if err := ioutil.WriteFile(fn, []byte(res), 0644); err != nil {
+				t.Errorf("Couldn't write test data to %s: %s", fn, err)
+			}
+		} else if d := util.Diff(expected, res); len(d) != 0 {
+			t.Error(d)
+		}
 	}
 }
