@@ -27,6 +27,16 @@ func newSectionReader(rf io.ReaderAt) (ret sectionReader, err error) {
 	return
 }
 
+func (s *sectionReader) Reader(name string) (ret binary.BinaryReader) {
+	var data []byte
+	ret.Endianess = binary.LittleEndian
+	if sec := s.Section(name); sec != nil {
+		data, _ = sec.Data()
+	}
+	ret.Reader = bytes.NewReader(data)
+	return
+}
+
 func (s *sectionReader) Section(name string) Section {
 	if s.elf != nil {
 		if r := s.elf.Section("." + name); r == nil {
@@ -65,42 +75,9 @@ outer:
 			continue
 		}
 		defer f.Close()
-		info := f.Section("debug_info")
-		if info == nil {
-			t.Error("No info section")
-			continue
-		}
-		data, err := info.Data()
-		if err != nil {
-			t.Error(err)
-			continue
-		}
-		abbrev := f.Section("debug_abbrev")
-		if abbrev == nil {
-			t.Error("No abbrev section")
-			continue
-		}
-		data2, err := abbrev.Data()
-		if err != nil {
-			t.Error(err)
-			continue
-		}
-		var (
-			datastr []byte
-		)
-		str := f.Section("debug_str")
-		if str == nil {
-			t.Log("No str section")
-		} else {
-			datastr, err = str.Data()
-			if err != nil {
-				t.Log(err)
-			}
-		}
-
-		bri := binary.BinaryReader{Reader: bytes.NewReader(data), Endianess: binary.LittleEndian}
-		bra := binary.BinaryReader{Reader: bytes.NewReader(data2), Endianess: binary.LittleEndian}
-		brs := binary.BinaryReader{Reader: bytes.NewReader(datastr), Endianess: binary.LittleEndian}
+		bri := f.Reader("debug_info")
+		bra := f.Reader("debug_abbrev")
+		brs := f.Reader("debug_str")
 		var ih InfoHeader
 		nextHeader, _ := bri.Seek(0, 1)
 		var abbr_entries []AbbrevEntry

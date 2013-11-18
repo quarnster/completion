@@ -1,8 +1,13 @@
 package dwarf
 
-import "github.com/quarnster/util/encoding/binary"
+import (
+	"github.com/quarnster/util/encoding/binary"
+)
 
-type LEB128 uint
+type (
+	LEB128  uint
+	SLEB128 int
+)
 
 func (l *LEB128) Read(br *binary.BinaryReader) error {
 	curr := LEB128(0)
@@ -21,6 +26,35 @@ func (l *LEB128) Read(br *binary.BinaryReader) error {
 		shift += 7
 	}
 	*l = curr
+	return nil
+}
+
+func (l *SLEB128) Read(br *binary.BinaryReader) error {
+	var (
+		curr  LEB128
+		shift LEB128
+		v     uint8
+		err   error
+	)
+	for {
+		v, err = br.Uint8()
+		if err != nil {
+			return err
+		}
+		br := v&0x80 == 0
+		v = v & 0x7f
+		curr |= LEB128(v) << shift
+		shift += 7
+		if br {
+			break
+		}
+	}
+	const size = 64
+	if (shift < size) && v&0x40 != 0 {
+		curr |= -(1 << shift)
+	}
+	*l = SLEB128(curr)
+
 	return nil
 }
 
@@ -120,22 +154,7 @@ func (dw *DW_LANG) Read(br *binary.BinaryReader) error {
 	*dw = DW_LANG(v)
 	return nil
 }
-func (dw *DW_LNE) Read(br *binary.BinaryReader) error {
-	var v LEB128
-	if err := br.ReadInterface(&v); err != nil {
-		return err
-	}
-	*dw = DW_LNE(v)
-	return nil
-}
-func (dw *DW_LNS) Read(br *binary.BinaryReader) error {
-	var v LEB128
-	if err := br.ReadInterface(&v); err != nil {
-		return err
-	}
-	*dw = DW_LNS(v)
-	return nil
-}
+
 func (dw *DW_MACINFO) Read(br *binary.BinaryReader) error {
 	var v LEB128
 	if err := br.ReadInterface(&v); err != nil {

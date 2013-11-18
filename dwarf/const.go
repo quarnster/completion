@@ -13,8 +13,8 @@ type (
 	DW_ID         LEB128
 	DW_INL        LEB128
 	DW_LANG       LEB128
-	DW_LNE        LEB128
-	DW_LNS        LEB128
+	DW_LNE        uint8
+	DW_LNS        uint8
 	DW_MACINFO    LEB128
 	DW_ORD        LEB128
 	DW_OP         LEB128
@@ -105,6 +105,10 @@ const (
 	DW_LANG_Haskell
 	DW_LANG_lo_user DW_LANG = 0x8000
 	DW_LANG_hi_user DW_LANG = 0xffff
+)
+
+const (
+	DW_LANG_Mips_Assembler DW_LANG = 0x8001
 )
 
 const (
