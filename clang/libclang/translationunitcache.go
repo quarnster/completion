@@ -91,7 +91,8 @@ func (t *TranslationUnitCache) addEx(w workunit) {
 
 func (t *TranslationUnitCache) GetTranslationUnit(filename string, options []string, options_script string, unsaved_files map[string]string) *LockedTranslationUnit {
 	t.Lock()
-	if tu, ok := t.lut[filename]; !ok {
+	tu, ok := t.lut[filename]
+	if !ok {
 		t.Unlock()
 
 		// TODO(q): SublimeClang executed opts_script here
@@ -113,18 +114,16 @@ func (t *TranslationUnitCache) GetTranslationUnit(filename string, options []str
 			log4go.Warn("Failed to compile %s, %v", filename, tu2)
 		}
 		return tu
-	} else {
-		recompile := !reflect.DeepEqual(tu.opts, options) || tu.opts_script != options_script
-		if recompile {
-			// TODO: need to dispose the tu.. Who's responsible for its disposal?
-			delete(t.lut, filename)
-		}
-		t.Unlock()
-		if recompile {
-			log4go.Debug("Options change detected. Will recompile %s", filename)
-			t.addEx(workunit{filename, options, options_script, nil})
-		}
-		return tu
 	}
-	return nil
+	recompile := !reflect.DeepEqual(tu.opts, options) || tu.opts_script != options_script
+	if recompile {
+		// TODO: need to dispose the tu.. Who's responsible for its disposal?
+		delete(t.lut, filename)
+	}
+	t.Unlock()
+	if recompile {
+		log4go.Debug("Options change detected. Will recompile %s", filename)
+		t.addEx(workunit{filename, options, options_script, nil})
+	}
+	return tu
 }

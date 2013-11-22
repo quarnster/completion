@@ -26,35 +26,35 @@ type Net struct {
 func typeresolve(td *TypeDef, node *parser.Node) (*content.Type, error) {
 	switch n := node.Name; n {
 	case "MethodCall":
-		if methods, err := td.Methods(); err != nil {
+		methods, err := td.Methods()
+		if err != nil {
 			return nil, err
-		} else {
-			for _, method := range methods {
-				if method.Name.Relative == node.Children[0].Data() {
-					return &method.Returns[0].Type, nil
-				}
+		}
+		for _, method := range methods {
+			if method.Name.Relative == node.Children[0].Data() {
+				return &method.Returns[0].Type, nil
 			}
 		}
 	case "Identifier":
-		if fields, err := td.Fields(); err != nil {
+		fields, err := td.Fields()
+		if err != nil {
 			return nil, err
-		} else {
-			for _, field := range fields {
-				if field.Name.Relative == node.Data() {
-					return &field.Type, nil
-				}
+		}
+		for _, field := range fields {
+			if field.Name.Relative == node.Data() {
+				return &field.Type, nil
 			}
 		}
 
 		// Is it a Property then perhaps?
 		name := "get_" + node.Data()
-		if methods, err := td.Methods(); err != nil {
+		methods, err := td.Methods()
+		if err != nil {
 			return nil, err
-		} else {
-			for _, method := range methods {
-				if method.Name.Relative == name {
-					return &method.Returns[0].Type, nil
-				}
+		}
+		for _, method := range methods {
+			if method.Name.Relative == name {
+				return &method.Returns[0].Type, nil
 			}
 		}
 		// TODO: could also be an inner class
@@ -101,11 +101,11 @@ func (c *Net) cache(args *content.Args) (*Cache, error) {
 		c := Cache{paths: paths}
 		std := []string{"mscorlib.dll", "System.dll"}
 		for _, lib := range std {
-			if asm, err := c.Load(lib); err != nil {
+			asm, err := c.Load(lib)
+			if err != nil {
 				return nil, err
-			} else {
-				log4go.Debug("Found %s (%s)", lib, asm.Name())
 			}
+			log4go.Debug("Found %s (%s)", lib, asm.Name())
 		}
 		cache = &c
 		session.Set("net_cache", cache)
@@ -118,11 +118,11 @@ func (c *Net) cache(args *content.Args) (*Cache, error) {
 	}
 	if v, ok := s.Get("net_assemblies").([]string); ok {
 		for _, lib := range v {
-			if asm, err := cache.Load(lib); err != nil {
+			asm, err := cache.Load(lib)
+			if err != nil {
 				return nil, err
-			} else {
-				log4go.Debug("Found %s (%s)", lib, asm.Name())
 			}
+			log4go.Debug("Found %s (%s)", lib, asm.Name())
 		}
 	}
 
@@ -133,14 +133,13 @@ func (c *Net) variable(n *parser.Node) string {
 	switch n.Name {
 	case "Access":
 	default:
-		if len(n.Children) > 0 {
-			for _, child := range n.Children {
-				if v := c.variable(child); v != "" {
-					return v
-				}
-			}
-		} else {
+		if len(n.Children) == 0 {
 			return n.Data()
+		}
+		for _, child := range n.Children {
+			if v := c.variable(child); v != "" {
+				return v
+			}
 		}
 	}
 	return ""
@@ -203,82 +202,80 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 	var ns string
 
 	complete = func(node *parser.Node) error {
-		switch n := node.Name; n {
-		case "CompleteOp":
-			n := len(node.Children)
-			if n < 2 {
-				return fmt.Errorf("Not enough children in Op node: %d < 2: %s", n, node)
-			}
-			switch op := node.Children[1].Data(); op {
-			case ".":
-				if td == nil {
-					tn := ns + node.Children[0].Data()
-					if td = findtype(cache, using, tn); td == nil {
-						ns = tn + "."
-					}
-				} else if t2, err := typeresolve(td, node.Children[0]); err != nil {
-					return err
-				} else if td, err = cache.FindType(t2.Name); err != nil {
-					return err
-				} else if td == nil {
-					return fmt.Errorf("Couldn't find type: %s", node.Children[0])
-				}
-				if td == nil {
-					// Probably a variable completion then?
-					v := c.variable(node.Children[0])
-					loc := content.File{Contents: scopes.Substr(args.Location.File.Contents, scopes.Visibility(args.Location))}
-					if re, err := regexp.Compile(fmt.Sprintf(`[=\(,;}\s](\w+(\s*\[\])*\s+)*%s[;\s=,)\[]`, v)); err != nil {
-						return err
-					} else {
-						idx := re.FindAllStringIndex(loc.Contents, -1)
-						for _, i := range idx {
-							// TODO: It's better at getting the right variable, but still not 100% correct
-							line := loc.Contents[i[0]+1 : i[1]-1]
-							var p csharp.CSHARP
-							p.SetData(line)
-							if p.CompleteVariable() {
-								if t := c.variable(p.RootNode()); t != "" {
-									if td = findtype(cache, using, t); td != nil {
-										break
-									} else {
-										// Internal class perhaps?
-										var p csharp.CSHARP
-										if p.Parse(loc.Contents) {
-											for _, t2 := range c.classes("", nil, p.RootNode()) {
-												if !strings.HasSuffix(t2, t) {
-													continue
-												}
-												if td = findtype(cache, using, t2); td != nil {
-													break
-												}
-											}
-										}
-									}
-									if td != nil {
-										break
-									}
-								}
-							}
-						}
-					}
-				}
-				if n > 2 {
-					return complete(node.Children[2])
-				} else if td == nil {
-					return tdnil
-				}
-				return c.complete(cache, &content.Type{Name: td.Name()}, cmp)
-			default:
-				if n < 3 {
-					return fmt.Errorf("Not enough children in Op node: %d < 3: %s", n, node)
-				}
-				td = nil
-				return complete(node.Children[2])
-			}
-		default:
+		if node.Name != "CompleteOp" {
 			return fmt.Errorf("Don't know how to complete %s", node)
 		}
-		return nil
+		n := len(node.Children)
+		if n < 2 {
+			return fmt.Errorf("Not enough children in Op node: %d < 2: %s", n, node)
+		}
+		if op := node.Children[1].Data(); op != "." {
+			if n < 3 {
+				return fmt.Errorf("Not enough children in Op node: %d < 3: %s", n, node)
+			}
+			td = nil
+			return complete(node.Children[2])
+		}
+		if td == nil {
+			tn := ns + node.Children[0].Data()
+			if td = findtype(cache, using, tn); td == nil {
+				ns = tn + "."
+			}
+		} else if t2, err := typeresolve(td, node.Children[0]); err != nil {
+			return err
+		} else if td, err = cache.FindType(t2.Name); err != nil {
+			return err
+		} else if td == nil {
+			return fmt.Errorf("Couldn't find type: %s", node.Children[0])
+		}
+		if td == nil {
+			// Probably a variable completion then?
+			v := c.variable(node.Children[0])
+			loc := content.File{Contents: scopes.Substr(args.Location.File.Contents, scopes.Visibility(args.Location))}
+			re, err := regexp.Compile(fmt.Sprintf(`[=\(,;}\s](\w+(\s*\[\])*\s+)*%s[;\s=,)\[]`, v))
+			if err != nil {
+				return err
+			}
+			idx := re.FindAllStringIndex(loc.Contents, -1)
+			for _, i := range idx {
+				// TODO: It's better at getting the right variable, but still not 100% correct
+				line := loc.Contents[i[0]+1 : i[1]-1]
+				var p csharp.CSHARP
+				p.SetData(line)
+				if !p.CompleteVariable() {
+					continue
+				}
+				t := c.variable(p.RootNode())
+				if t == "" {
+					continue
+				}
+				if td = findtype(cache, using, t); td != nil {
+					break
+				}
+				// Internal class perhaps?
+				var p2 csharp.CSHARP
+				if !p2.Parse(loc.Contents) {
+					continue
+				}
+				for _, t2 := range c.classes("", nil, p2.RootNode()) {
+					if !strings.HasSuffix(t2, t) {
+						continue
+					}
+					if td = findtype(cache, using, t2); td != nil {
+						break
+					}
+				}
+				if td != nil {
+					break
+				}
+			}
+		}
+		if n > 2 {
+			return complete(node.Children[2])
+		} else if td == nil {
+			return tdnil
+		}
+		return c.complete(cache, &content.Type{Name: td.Name()}, cmp)
 	}
 
 	if err := complete(r.Children[0]); err == tdnil {
@@ -286,17 +283,16 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 	} else {
 		return err
 	}
-
 }
 
 func (c *Net) complete(cache *Cache, t *content.Type, cmp *content.CompletionResult) error {
-	if ct, err := cache.Complete(t); err != nil {
+	ct, err := cache.Complete(t)
+	if err != nil {
 		return err
-	} else {
-		cmp.Fields = ct.Fields
-		cmp.Types = ct.Types
-		cmp.Methods = ct.Methods
 	}
+	cmp.Fields = ct.Fields
+	cmp.Types = ct.Types
+	cmp.Methods = ct.Methods
 	return nil
 }
 

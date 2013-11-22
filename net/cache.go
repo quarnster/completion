@@ -32,22 +32,24 @@ type (
 )
 
 func (c *Cache) reload(e *entry) error {
-	if data, err := ioutil.ReadFile(e.name); err != nil {
+	data, err := ioutil.ReadFile(e.name)
+	if err != nil {
 		return err
-	} else if asm, err := LoadAssembly(bytes.NewReader(data)); err != nil {
+	}
+	asm, err := LoadAssembly(bytes.NewReader(data))
+	if err != nil {
 		return err
-	} else {
-		e.assembly = asm
-		ci := ConcreteTableIndex{metadataUtil: &asm.MetadataUtil, table: id_AssemblyRef, index: 0}
-		for i := uint32(0); i < asm.Tables[id_AssemblyRef].Rows; i++ {
-			ci.index = i + 1
-			if raw, err := ci.Data(); err != nil {
-				return err
-			} else {
-				row := raw.(*AssemblyRefRow)
-				c.load <- loadreq{name: string(row.Name)}
-			}
+	}
+	e.assembly = asm
+	ci := ConcreteTableIndex{metadataUtil: &asm.MetadataUtil, table: id_AssemblyRef, index: 0}
+	for i := uint32(0); i < asm.Tables[id_AssemblyRef].Rows; i++ {
+		ci.index = i + 1
+		raw, err := ci.Data()
+		if err != nil {
+			return err
 		}
+		row := raw.(*AssemblyRefRow)
+		c.load <- loadreq{name: string(row.Name)}
 	}
 	return nil
 }
@@ -59,25 +61,29 @@ func (c *Cache) loaderthread() {
 			c.mutex.Lock()
 			defer c.mutex.Unlock()
 			for i := range c.entries {
-				if c.entries[i].name == req.name {
-					loaded = true
-					if req.reload {
-						if err := c.reload(&c.entries[i]); err != nil {
-							log4go.Warn("Error reloading assembly:", err)
-						}
-					}
-					break
+				if c.entries[i].name != req.name {
+					continue
 				}
+				loaded = true
+				if req.reload {
+					if err := c.reload(&c.entries[i]); err != nil {
+						log4go.Warn("Error reloading assembly:", err)
+					}
+				}
+				break
 			}
 		}()
-		if !loaded {
-			exts := []string{".dll", ".exe"}
-			if _, err := c.Load(req.name); err != nil {
-				for _, ext := range exts {
-					if _, err := c.Load(req.name + ext); err == nil {
-						break
-					}
-				}
+		if loaded {
+			continue
+		}
+		exts := []string{".dll", ".exe"}
+		_, err := c.Load(req.name)
+		if err == nil {
+			continue
+		}
+		for _, ext := range exts {
+			if _, err := c.Load(req.name + ext); err == nil {
+				break
 			}
 		}
 	}
@@ -133,24 +139,23 @@ func (c *Cache) cache(assembly string) (*Assembly, error) {
 		path := filepath.Join(p, assembly)
 		if _, err := os.Stat(path); err != nil {
 			continue
-		} else {
-			if err := c.watch.Watch(path); err != nil {
-				return nil, err
-			} else if err := c.watch.WatchFlags(path, fsnotify.FSN_MODIFY); err != nil {
-				return nil, err
-			}
-			e := entry{name: path}
-			if err := c.reload(&e); err != nil {
-				if len(errs) != 0 {
-					errs += "\n"
-				}
-				errs += fmt.Sprintf("\t%s", err.Error())
-				c.watch.RemoveWatch(path)
-				continue
-			}
-			c.entries = append(c.entries, e)
-			return e.assembly, nil
 		}
+		if err := c.watch.Watch(path); err != nil {
+			return nil, err
+		} else if err := c.watch.WatchFlags(path, fsnotify.FSN_MODIFY); err != nil {
+			return nil, err
+		}
+		e := entry{name: path}
+		if err := c.reload(&e); err != nil {
+			if len(errs) != 0 {
+				errs += "\n"
+			}
+			errs += fmt.Sprintf("\t%s", err.Error())
+			c.watch.RemoveWatch(path)
+			continue
+		}
+		c.entries = append(c.entries, e)
+		return e.assembly, nil
 	}
 	if len(errs) == 0 {
 		errs = fmt.Sprintf("Assembly %s is not in path.", assembly)

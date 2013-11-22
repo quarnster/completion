@@ -61,30 +61,29 @@ func SignedDecode(reader io.ReadSeeker) (ret int32, err error) {
 	if err != nil {
 		return 0, err
 	}
-
-	if d, err := UnsignedDecode(reader); err != nil {
+	d, err := UnsignedDecode(reader)
+	if err != nil {
 		return 0, err
-	} else {
-		sign := (d & 1)
-		switch w := encodedWidth(data[0]); w {
-		case 1:
-			sign <<= 7
-			sign |= sign >> 1
-			return int32(int8(d>>1 | sign)), nil
-		case 2:
-			sign <<= 15
-			sign |= sign >> 1
-			sign |= sign >> 1
-			return int32(int16(d>>1 | sign)), nil
-		case 4:
-			sign <<= 31
-			sign |= sign >> 1
-			sign |= sign >> 1
-			sign |= sign >> 1
-			return int32(int32(d>>1 | sign)), nil
-		default:
-			return 0, errors.New(fmt.Sprintf("Invalid width: %d", w))
-		}
+	}
+	sign := (d & 1)
+	switch w := encodedWidth(data[0]); w {
+	case 1:
+		sign <<= 7
+		sign |= sign >> 1
+		return int32(int8(d>>1 | sign)), nil
+	case 2:
+		sign <<= 15
+		sign |= sign >> 1
+		sign |= sign >> 1
+		return int32(int16(d>>1 | sign)), nil
+	case 4:
+		sign <<= 31
+		sign |= sign >> 1
+		sign |= sign >> 1
+		sign |= sign >> 1
+		return int32(int32(d>>1 | sign)), nil
+	default:
+		return 0, errors.New(fmt.Sprintf("Invalid width: %d", w))
 	}
 }
 
@@ -294,50 +293,50 @@ func (d *SignatureDecoder) Decode(v interface{}) error {
 		}
 		return nil
 	case *Type:
-		if val, err := UnsignedDecode(d.Reader.Reader); err != nil {
+		val, err := UnsignedDecode(d.Reader.Reader)
+		if err != nil {
 			return err
-		} else {
-			if val == ELEMENT_TYPE_BYREF {
-				return d.Decode(raw)
-			}
-			raw.TypeId = val
-			switch raw.TypeId {
-			case ELEMENT_TYPE_VALUETYPE, ELEMENT_TYPE_CLASS:
-				if err := d.Decode(&raw.Class); err != nil {
-					return err
-				}
-			case ELEMENT_TYPE_GENERICINST:
-				raw.Type = &Type{}
-				if err := d.Decode(raw.Type); err != nil {
-					return err
-				}
-				var count EncUint
-				if err := d.Decode(&count); err != nil {
-					return err
-				}
-				raw.Instance = make([]*Type, count)
-				for i := range raw.Instance {
-					t := Type{}
-					if err := d.Decode(&t); err != nil {
-						return err
-					}
-					raw.Instance[i] = &t
-				}
-			case ELEMENT_TYPE_SZARRAY:
-				raw.Type = &Type{}
-				if err := d.Decode(&raw.Mod); err != nil {
-					return err
-				} else if err := d.Decode(raw.Type); err != nil {
-					return err
-				}
-			case ELEMENT_TYPE_VAR, ELEMENT_TYPE_MVAR:
-				if raw.GenericNumber, err = UnsignedDecode(d.Reader.Reader); err != nil {
-					return err
-				}
-			}
-
-			return nil
 		}
+		if val == ELEMENT_TYPE_BYREF {
+			return d.Decode(raw)
+		}
+		raw.TypeId = val
+		switch raw.TypeId {
+		case ELEMENT_TYPE_VALUETYPE, ELEMENT_TYPE_CLASS:
+			if err := d.Decode(&raw.Class); err != nil {
+				return err
+			}
+		case ELEMENT_TYPE_GENERICINST:
+			raw.Type = &Type{}
+			if err := d.Decode(raw.Type); err != nil {
+				return err
+			}
+			var count EncUint
+			if err := d.Decode(&count); err != nil {
+				return err
+			}
+			raw.Instance = make([]*Type, count)
+			for i := range raw.Instance {
+				t := Type{}
+				if err := d.Decode(&t); err != nil {
+					return err
+				}
+				raw.Instance[i] = &t
+			}
+		case ELEMENT_TYPE_SZARRAY:
+			raw.Type = &Type{}
+			if err := d.Decode(&raw.Mod); err != nil {
+				return err
+			} else if err := d.Decode(raw.Type); err != nil {
+				return err
+			}
+		case ELEMENT_TYPE_VAR, ELEMENT_TYPE_MVAR:
+			if raw.GenericNumber, err = UnsignedDecode(d.Reader.Reader); err != nil {
+				return err
+			}
+		}
+
+		return nil
 	}
 
 	switch v2.Kind() {

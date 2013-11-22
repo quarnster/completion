@@ -91,13 +91,14 @@ func (td *TypeDef) initContentType(index TypeDefIndex, t *Type) (t2 content.Type
 			}
 			return false
 		})
-		if idx2.Table() != id_nullTable {
-			ci := idx2.(*ConcreteTableIndex)
-			ci.index += t.GenericNumber
-			if raw, err := ci.Data(); err == nil {
-				gr := raw.(*GenericParamRow)
-				t2.Name.Relative = string(gr.Name)
-			}
+		if idx2.Table() == id_nullTable {
+			return
+		}
+		ci := idx2.(*ConcreteTableIndex)
+		ci.index += t.GenericNumber
+		if raw, err := ci.Data(); err == nil {
+			gr := raw.(*GenericParamRow)
+			t2.Name.Relative = string(gr.Name)
 		}
 	case ELEMENT_TYPE_SZARRAY:
 		t2.Flags |= content.FLAG_TYPE_ARRAY
@@ -115,12 +116,13 @@ func (td *TypeDef) Extends() (t []content.Type, err error) {
 	} else if td.ct.Name.Relative != "" {
 		return td.ct.Extends, nil
 	}
-	if td.row.Extends.Index() != 0 {
-		if raw, err := td.row.Extends.Data(); err != nil {
-			return nil, err
-		} else {
-			t = append(t, ToContentType(raw.(AbstractType)))
-		}
+	if td.row.Extends.Index() == 0 {
+		return
+	}
+	if raw, err := td.row.Extends.Data(); err != nil {
+		return nil, err
+	} else {
+		t = append(t, ToContentType(raw.(AbstractType)))
 	}
 	return
 }
@@ -144,18 +146,18 @@ func (td *TypeDef) Implements() (interfaces []content.Type, err error) {
 	ci := rawidx.(*ConcreteTableIndex)
 	for i := uint32(ci.index); i < table.Rows+1; i++ {
 		ci.index = i
-		if raw, err := ci.Data(); err != nil {
+		raw, err := ci.Data()
+		if err != nil {
+			return nil, err
+		}
+		c := raw.(*InterfaceImplRow)
+		if c.Class.Index() != td.index.Index() {
+			break
+		}
+		if raw, err := c.Interface.Data(); err != nil {
 			return nil, err
 		} else {
-			c := raw.(*InterfaceImplRow)
-			if c.Class.Index() != td.index.Index() {
-				break
-			}
-			if raw, err := c.Interface.Data(); err != nil {
-				return nil, err
-			} else {
-				interfaces = append(interfaces, ToContentType(raw.(AbstractType)))
-			}
+			interfaces = append(interfaces, ToContentType(raw.(AbstractType)))
 		}
 	}
 	return
@@ -211,40 +213,40 @@ func (td *TypeDef) Fields() (fields []content.Field, err error) {
 	cn := stripProto(td.Name().Absolute)
 	for i := startRow; i < endRow; i++ {
 		idx.index = i
-		if rawfield, err := idx.Data(); err != nil {
+		rawfield, err := idx.Data()
+		if err != nil {
+			return nil, err
+		}
+		var (
+			field = rawfield.(*FieldRow)
+			f     content.Field
+			dec   *SignatureDecoder
+			sig   FieldSig
+		)
+		f.Name.Relative = string(field.Name)
+		f.Name.Absolute = fmt.Sprintf("net://field/%s;%d", cn, i-startRow)
+		if dec, err = NewSignatureDecoder(field.Signature); err != nil {
+			return nil, err
+		} else if err = dec.Decode(&sig); err != nil {
 			return nil, err
 		} else {
-			var (
-				field = rawfield.(*FieldRow)
-				f     content.Field
-				dec   *SignatureDecoder
-				sig   FieldSig
-			)
-			f.Name.Relative = string(field.Name)
-			f.Name.Absolute = fmt.Sprintf("net://field/%s;%d", cn, i-startRow)
-			if dec, err = NewSignatureDecoder(field.Signature); err != nil {
-				return nil, err
-			} else if err = dec.Decode(&sig); err != nil {
-				return nil, err
-			} else {
-				f.Type = td.initContentType(td.index, &sig.Type)
-			}
-			if field.Flags&FieldAttributes_Static != 0 {
-				f.Flags |= content.FLAG_STATIC
-			}
-			if field.Flags&FieldAttributes_Public != 0 {
-				f.Flags |= content.FLAG_ACC_PUBLIC
-			} else if field.Flags&FieldAttributes_Private != 0 {
-				f.Flags |= content.FLAG_ACC_PRIVATE
-			} else if field.Flags&FieldAttributes_Family != 0 {
-				f.Flags |= content.FLAG_ACC_PROTECTED
-			}
-			if err := check(&f, f.Name); err != nil {
-				log4go.Fine("Skipping field: %s, %+v, %+v", err, f, field)
-				continue
-			}
-			fields = append(fields, f)
+			f.Type = td.initContentType(td.index, &sig.Type)
 		}
+		if field.Flags&FieldAttributes_Static != 0 {
+			f.Flags |= content.FLAG_STATIC
+		}
+		if field.Flags&FieldAttributes_Public != 0 {
+			f.Flags |= content.FLAG_ACC_PUBLIC
+		} else if field.Flags&FieldAttributes_Private != 0 {
+			f.Flags |= content.FLAG_ACC_PRIVATE
+		} else if field.Flags&FieldAttributes_Family != 0 {
+			f.Flags |= content.FLAG_ACC_PROTECTED
+		}
+		if err := check(&f, f.Name); err != nil {
+			log4go.Fine("Skipping field: %s, %+v, %+v", err, f, field)
+			continue
+		}
+		fields = append(fields, f)
 	}
 	return fields, nil
 }
@@ -257,14 +259,14 @@ func (td *TypeDef) Parameters(index MethodDefIndex) (params []content.Variable, 
 	)
 	for i := startRow; i < endRow; i++ {
 		idx.index = i
-		if rawparam, err := idx.Data(); err != nil {
+		rawparam, err := idx.Data()
+		if err != nil {
 			return nil, err
-		} else {
-			param := rawparam.(*ParamRow)
-			var f content.Variable
-			f.Name.Relative = string(param.Name)
-			params = append(params, f)
 		}
+		param := rawparam.(*ParamRow)
+		var f content.Variable
+		f.Name.Relative = string(param.Name)
+		params = append(params, f)
 	}
 	return params, nil
 }
@@ -282,66 +284,65 @@ func (td *TypeDef) Methods() (methods []content.Method, err error) {
 	cn := stripProto(td.Name().Absolute)
 	for i := startRow; i < endRow; i++ {
 		idx.index = i
-		if rawmethod, err := idx.Data(); err != nil {
+		rawmethod, err := idx.Data()
+		if err != nil {
 			return nil, err
-		} else {
-			var (
-				m      content.Method
-				method = rawmethod.(*MethodDefRow)
-				dec    *SignatureDecoder
-				sig    MethodDefSig
-			)
-			if n := string(method.Name); n == ".cctor" {
-				// Static constructor, we don't care about that one
-				continue
-			} else {
-				m.Name.Relative = n
-			}
-			m.Name.Absolute = fmt.Sprintf("net://method/%s;%d", cn, i-startRow)
-			if m.Parameters, err = td.Parameters(idx); err != nil {
-				return nil, err
-			}
-			if dec, err = NewSignatureDecoder(method.Signature); err != nil {
-				return nil, err
-			} else if err = dec.Decode(&sig); err != nil {
-				return nil, err
-			} else {
-				// TODO: need to figure out why this mismatch happens
-				l := len(sig.Params)
-				if l2 := len(m.Parameters); l2 < l {
-					l = l2
-				}
-				for i := range sig.Params[:l] {
-					m.Parameters[i].Type = td.initContentType(td.index, &sig.Params[i].Type)
-				}
-				if method.Flags&MethodAttributes_Final != 0 {
-					m.Flags |= content.FLAG_FINAL
-				}
-				if method.Flags&MethodAttributes_Static != 0 {
-					m.Flags |= content.FLAG_STATIC
-				}
-				if method.Flags&MethodAttributes_Public != 0 {
-					m.Flags |= content.FLAG_ACC_PUBLIC
-				} else if method.Flags&MethodAttributes_Private != 0 {
-					m.Flags |= content.FLAG_ACC_PRIVATE
-				} else if method.Flags&MethodAttributes_Family != 0 {
-					m.Flags |= content.FLAG_ACC_PROTECTED
-				}
-				if m.Name.Relative == ".ctor" {
-					m.Name.Relative = td.row.Name()
-					m.Flags |= content.FLAG_CONSTRUCTOR
-				} else {
-					m.Returns = make([]content.Variable, 1)
-					m.Returns[0].Type = td.initContentType(td.index, &sig.RetType.Type)
-				}
-			}
-			if err := check(&m, m.Name); err != nil {
-				log4go.Fine("Skipping method: %s, %+v, %+v", err, m, method)
-				continue
-			}
-
-			methods = append(methods, m)
 		}
+		var (
+			m      content.Method
+			method = rawmethod.(*MethodDefRow)
+			dec    *SignatureDecoder
+			sig    MethodDefSig
+		)
+		if n := string(method.Name); n == ".cctor" {
+			// Static constructor, we don't care about that one
+			continue
+		} else {
+			m.Name.Relative = n
+		}
+		m.Name.Absolute = fmt.Sprintf("net://method/%s;%d", cn, i-startRow)
+		if m.Parameters, err = td.Parameters(idx); err != nil {
+			return nil, err
+		}
+		if dec, err = NewSignatureDecoder(method.Signature); err != nil {
+			return nil, err
+		} else if err = dec.Decode(&sig); err != nil {
+			return nil, err
+		}
+		// TODO: need to figure out why this mismatch happens
+		l := len(sig.Params)
+		if l2 := len(m.Parameters); l2 < l {
+			l = l2
+		}
+		for i := range sig.Params[:l] {
+			m.Parameters[i].Type = td.initContentType(td.index, &sig.Params[i].Type)
+		}
+		if method.Flags&MethodAttributes_Final != 0 {
+			m.Flags |= content.FLAG_FINAL
+		}
+		if method.Flags&MethodAttributes_Static != 0 {
+			m.Flags |= content.FLAG_STATIC
+		}
+		if method.Flags&MethodAttributes_Public != 0 {
+			m.Flags |= content.FLAG_ACC_PUBLIC
+		} else if method.Flags&MethodAttributes_Private != 0 {
+			m.Flags |= content.FLAG_ACC_PRIVATE
+		} else if method.Flags&MethodAttributes_Family != 0 {
+			m.Flags |= content.FLAG_ACC_PROTECTED
+		}
+		if m.Name.Relative == ".ctor" {
+			m.Name.Relative = td.row.Name()
+			m.Flags |= content.FLAG_CONSTRUCTOR
+		} else {
+			m.Returns = make([]content.Variable, 1)
+			m.Returns[0].Type = td.initContentType(td.index, &sig.RetType.Type)
+		}
+		if err := check(&m, m.Name); err != nil {
+			log4go.Fine("Skipping method: %s, %+v, %+v", err, m, method)
+			continue
+		}
+
+		methods = append(methods, m)
 	}
 	return methods, nil
 }
@@ -444,25 +445,25 @@ func (td *TypeDef) ToContentType() (t *content.Type, err error) {
 		table := td.mu.Tables[idx.Table()]
 		for i := idx.Index(); i < table.Rows+1; i++ {
 			ci.index = i
-			if raw, err := ci.Data(); err != nil {
+			raw, err := ci.Data()
+			if err != nil {
+				return nil, err
+			}
+			row := raw.(*NestedClassRow)
+			if row.EnclosingClass.Index() != td.index.Index() {
+				break
+			} else if td2, err := TypeDefFromIndex(row.NestedClass); err != nil {
 				return nil, err
 			} else {
-				row := raw.(*NestedClassRow)
-				if row.EnclosingClass.Index() != td.index.Index() {
-					break
-				} else if td2, err := TypeDefFromIndex(row.NestedClass); err != nil {
-					return nil, err
-				} else {
-					ct := content.Type{}
-					ct.Name = td2.Name()
-					ct.Flags = td2.row.Flags.Convert()
-					if err := check(&ct, ct.Name); err != nil {
-						log4go.Fine("Skipping nested type: %s, %+v, %+v", err, ct, td2.row)
-						continue
-					}
-
-					t.Types = append(t.Types, ct)
+				ct := content.Type{}
+				ct.Name = td2.Name()
+				ct.Flags = td2.row.Flags.Convert()
+				if err := check(&ct, ct.Name); err != nil {
+					log4go.Fine("Skipping nested type: %s, %+v, %+v", err, ct, td2.row)
+					continue
 				}
+
+				t.Types = append(t.Types, ct)
 			}
 		}
 	}

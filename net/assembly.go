@@ -39,20 +39,19 @@ func (a *Assembly) Types() (types []content.Type, err error) {
 	)
 	for i := uint32(0); i < a.Tables[id_TypeDef].Rows; i++ {
 		idx.index = 1 + i
-		if rawtype, err := idx.Data(); err != nil {
+		rawtype, err := idx.Data()
+		if err != nil {
 			return nil, err
-		} else {
-			var (
-				tr = rawtype.(*TypeDefRow)
-			)
-			tc := ToContentType(tr)
-			if err := check(&tc, tc.Name); err != nil {
-				log4go.Debug("Skipping type %v, %s", tc, err)
-				continue
-			} else {
-				types = append(types, tc)
-			}
 		}
+		var (
+			tr = rawtype.(*TypeDefRow)
+		)
+		tc := ToContentType(tr)
+		if err := check(&tc, tc.Name); err != nil {
+			log4go.Debug("Skipping type %v, %s", tc, err)
+			continue
+		}
+		types = append(types, tc)
 	}
 	return
 }
@@ -121,17 +120,17 @@ func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 	if _, err := br.Seek(int64(off), 0); err != nil {
 		return nil, err
 	}
-	if md, err := t.MetadataUtil(&br); err != nil {
+	md, err := t.MetadataUtil(&br)
+	if err != nil {
 		return nil, err
-	} else {
-		a := Assembly{*md, make(map[string]*TypeDef)}
-		idx := ConcreteTableIndex{&a.MetadataUtil, 0, id_TypeDef}
-		for i := uint32(0); i < a.Tables[id_TypeDef].Rows; i++ {
-			idx.index = 1 + i
-			if td, err := TypeDefFromIndex(&idx); err == nil {
-				a.typelut[td.Name().Absolute] = td
-			}
-		}
-		return &a, nil
 	}
+	a := Assembly{*md, make(map[string]*TypeDef)}
+	idx := ConcreteTableIndex{&a.MetadataUtil, 0, id_TypeDef}
+	for i := uint32(0); i < a.Tables[id_TypeDef].Rows; i++ {
+		idx.index = 1 + i
+		if td, err := TypeDefFromIndex(&idx); err == nil {
+			a.typelut[td.Name().Absolute] = td
+		}
+	}
+	return &a, nil
 }

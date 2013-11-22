@@ -160,24 +160,26 @@ func (ie *InfoEntry) Attribute(name DW_AT) interface{} {
 		d := ie.data(attr.Form, ie.reader.Info)
 		if d == nil {
 			return nil
-		} else if name == attr.Name {
-			switch attr.Form {
-			case DW_FORM_strp:
-				ie.reader.Str.Seek(int64(reflect.ValueOf(d).Uint()), 0)
-				return ie.data(DW_FORM_string, ie.reader.Str)
-			}
-			switch attr.Name {
-			case DW_AT_encoding:
-				return DW_ATE(reflect.ValueOf(d).Uint())
-			case DW_AT_accessibility:
-				return DW_ACCESS(reflect.ValueOf(d).Uint())
-			case DW_AT_virtuality:
-				return DW_VIRTUALITY(reflect.ValueOf(d).Uint())
-			case DW_AT_language:
-				return DW_LANG(reflect.ValueOf(d).Uint())
-			}
-			return d
 		}
+		if name != attr.Name {
+			continue
+		}
+		switch attr.Form {
+		case DW_FORM_strp:
+			ie.reader.Str.Seek(int64(reflect.ValueOf(d).Uint()), 0)
+			return ie.data(DW_FORM_string, ie.reader.Str)
+		}
+		switch attr.Name {
+		case DW_AT_encoding:
+			return DW_ATE(reflect.ValueOf(d).Uint())
+		case DW_AT_accessibility:
+			return DW_ACCESS(reflect.ValueOf(d).Uint())
+		case DW_AT_virtuality:
+			return DW_VIRTUALITY(reflect.ValueOf(d).Uint())
+		case DW_AT_language:
+			return DW_LANG(reflect.ValueOf(d).Uint())
+		}
+		return d
 	}
 	return nil
 }

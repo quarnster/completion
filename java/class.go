@@ -72,62 +72,60 @@ type (
 )
 
 func (cp *ConstantPool) readConstant(c *Constant, br *binary.BinaryReader) error {
-	if err := br.ReadInterface(&c.Tag); err != nil {
+	err := br.ReadInterface(&c.Tag)
+	if err != nil {
 		return err
-	} else {
-		switch c.Tag {
-		case CONSTANT_String:
-			fallthrough
-		case CONSTANT_MethodType:
-			fallthrough
-		case CONSTANT_Class:
-			return br.ReadInterface(&c.Index[0])
-		case CONSTANT_Fieldref:
-			fallthrough
-		case CONSTANT_Methodref:
-			fallthrough
-		case CONSTANT_NameAndType:
-			fallthrough
-		case CONSTANT_InvokeDynamic:
-			fallthrough
-		case CONSTANT_InterfaceMethodref:
-			if err := br.ReadInterface(&c.Index[0]); err != nil {
-				return err
-			} else {
-				return br.ReadInterface(&c.Index[1])
-			}
-		case CONSTANT_Integer:
-			var v int32
-			return br.ReadInterface(&v)
-		case CONSTANT_Float:
-			var v float32
-			return br.ReadInterface(&v)
-		case CONSTANT_Long:
-			var v int64
-			return br.ReadInterface(&v)
-		case CONSTANT_Double:
-			var v float64
-			return br.ReadInterface(&v)
-		case CONSTANT_Utf8:
-			var length u2
-			if err := br.ReadInterface(&length); err != nil {
-				return err
-			} else if d, err := br.Read(int(length)); err != nil {
-				return err
-			} else {
-				c.Value = string(d)
-			}
-		case CONSTANT_MethodHandle:
-			var ref_kind u1
-			if err := br.ReadInterface(&ref_kind); err != nil {
-				return err
-			} else {
-				c.Index[0] = u2(ref_kind)
-				return br.ReadInterface(&c.Index[1])
-			}
-		default:
-			return errors.New(fmt.Sprintf("Unimplemented tag: %d", c.Tag))
+	}
+	switch c.Tag {
+	case CONSTANT_String:
+		fallthrough
+	case CONSTANT_MethodType:
+		fallthrough
+	case CONSTANT_Class:
+		return br.ReadInterface(&c.Index[0])
+	case CONSTANT_Fieldref:
+		fallthrough
+	case CONSTANT_Methodref:
+		fallthrough
+	case CONSTANT_NameAndType:
+		fallthrough
+	case CONSTANT_InvokeDynamic:
+		fallthrough
+	case CONSTANT_InterfaceMethodref:
+		if err := br.ReadInterface(&c.Index[0]); err != nil {
+			return err
 		}
+		return br.ReadInterface(&c.Index[1])
+	case CONSTANT_Integer:
+		var v int32
+		return br.ReadInterface(&v)
+	case CONSTANT_Float:
+		var v float32
+		return br.ReadInterface(&v)
+	case CONSTANT_Long:
+		var v int64
+		return br.ReadInterface(&v)
+	case CONSTANT_Double:
+		var v float64
+		return br.ReadInterface(&v)
+	case CONSTANT_Utf8:
+		var length u2
+		if err := br.ReadInterface(&length); err != nil {
+			return err
+		} else if d, err := br.Read(int(length)); err != nil {
+			return err
+		} else {
+			c.Value = string(d)
+		}
+	case CONSTANT_MethodHandle:
+		var ref_kind u1
+		if err := br.ReadInterface(&ref_kind); err != nil {
+			return err
+		}
+		c.Index[0] = u2(ref_kind)
+		return br.ReadInterface(&c.Index[1])
+	default:
+		return errors.New(fmt.Sprintf("Unimplemented tag: %d", c.Tag))
 	}
 	return nil
 }
@@ -136,22 +134,21 @@ func (c *ConstantPool) Read(br *binary.BinaryReader) error {
 	var count uint16
 	if err := br.ReadInterface(&count); err != nil {
 		return err
-	} else {
-		ic := int(count)
-		ic--
-		c.constants = make([]Constant, ic, ic)
+	}
+	ic := int(count)
+	ic--
+	c.constants = make([]Constant, ic, ic)
 
-		for i := 0; i < len(c.constants); i++ {
-			cc := &c.constants[i]
-			cc.cp = c
-			if err := c.readConstant(cc, br); err != nil {
-				return err
-			}
+	for i := 0; i < len(c.constants); i++ {
+		cc := &c.constants[i]
+		cc.cp = c
+		if err := c.readConstant(cc, br); err != nil {
+			return err
+		}
 
-			if cc.Tag == CONSTANT_Double || cc.Tag == CONSTANT_Long {
-				// All 8-byte constants take up two entries in the constant_pool table of the class file.
-				i++
-			}
+		if cc.Tag == CONSTANT_Double || cc.Tag == CONSTANT_Long {
+			// All 8-byte constants take up two entries in the constant_pool table of the class file.
+			i++
 		}
 	}
 	return nil

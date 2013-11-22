@@ -42,11 +42,13 @@ func RegisterType(key string, t reflect.Type) error {
 
 func (s Settings) MarshalJSON() ([]byte, error) {
 	for k, v := range s.data {
-		if registered, ok := registered_types[k]; ok {
-			actual := reflect.TypeOf(v)
-			if ak, rk := actual.Kind(), registered.Kind(); ak != rk {
-				return nil, errors.New(fmt.Sprintf("Unable to marshal object %s with key %s, as it's registered as type %s != %s", actual, k, rk, ak))
-			}
+		registered, ok := registered_types[k]
+		if !ok {
+			continue
+		}
+		actual := reflect.TypeOf(v)
+		if ak, rk := actual.Kind(), registered.Kind(); ak != rk {
+			return nil, errors.New(fmt.Sprintf("Unable to marshal object %s with key %s, as it's registered as type %s != %s", actual, k, rk, ak))
 		}
 	}
 	return json.Marshal(s.data)

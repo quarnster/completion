@@ -117,16 +117,16 @@ func (c *Clang) CompleteAt(a *content.CompleteAtArgs, ret *content.CompletionRes
 	fn := a.Location.File.Name
 
 	if cnt := a.Location.File.Contents; cnt != "" {
-		if f, err := ioutil.TempFile("", "completion_clang"); err != nil {
+		f, err := ioutil.TempFile("", "completion_clang")
+		if err != nil {
 			return err
-		} else {
-			fn = f.Name()
-			defer os.Remove(fn)
-			fn += filepath.Ext(a.Location.File.Name)
-			defer os.Remove(fn)
-			if err := ioutil.WriteFile(fn, []byte(cnt), 0644); err != nil {
-				return err
-			}
+		}
+		fn = f.Name()
+		defer os.Remove(fn)
+		fn += filepath.Ext(a.Location.File.Name)
+		defer os.Remove(fn)
+		if err := ioutil.WriteFile(fn, []byte(cnt), 0644); err != nil {
+			return err
 		}
 		args = append(args, "-I"+filepath.Dir(a.Location.File.Name))
 	}

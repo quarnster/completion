@@ -214,38 +214,39 @@ func (mh *MetadataHeader) MetadataUtil(br *binary.BinaryReader) (*MetadataUtil, 
 	}
 
 	for i := range ret.Tables {
-		if valid := (h.Valid >> uint(i)) & 1; valid != 0 {
-			if ret.Tables[i].Rows, err = br.Uint32(); err != nil {
-				return nil, err
-			}
-			ret.Tables[i].RowType = table_row_type_lut[i]
+		if valid := (h.Valid >> uint(i)) & 1; valid == 0 {
+			continue
 		}
+		if ret.Tables[i].Rows, err = br.Uint32(); err != nil {
+			return nil, err
+		}
+		ret.Tables[i].RowType = table_row_type_lut[i]
 	}
 
 	for i := range ret.Tables {
-		if ret.Tables[i].Rows != 0 {
-			if size, err := ret.Size(ret.Tables[i].RowType); err != nil {
-				return nil, err
-			} else {
-				ret.Tables[i].RowSize = uint32(size)
-				if ret.Tables[i].data, err = br.Read(int(ret.Tables[i].RowSize * ret.Tables[i].Rows)); err != nil {
-					return nil, err
-				}
-			}
+		if ret.Tables[i].Rows == 0 {
+			continue
+		}
+		size, err := ret.Size(ret.Tables[i].RowType)
+		if err != nil {
+			return nil, err
+		}
+		ret.Tables[i].RowSize = uint32(size)
+		if ret.Tables[i].data, err = br.Read(int(ret.Tables[i].RowSize * ret.Tables[i].Rows)); err != nil {
+			return nil, err
 		}
 	}
 	return &ret, nil
 }
 
 func (m *MetadataUtil) ReadIndex(br *binary.BinaryReader, size uint) (uint32, error) {
-	if size == 2 {
-		if v, e := br.Uint16(); e != nil {
-			return 0, e
-		} else {
-			return uint32(v), nil
-		}
+	if size != 2 {
+		return br.Uint32()
+	} else if v, e := br.Uint16(); e != nil {
+		return 0, e
+	} else {
+		return uint32(v), nil
 	}
-	return br.Uint32()
 }
 
 func (m *MetadataUtil) Create(br *binary.BinaryReader, v interface{}) error {
@@ -281,54 +282,52 @@ func (m *MetadataUtil) Create(br *binary.BinaryReader, v interface{}) error {
 			v2.Set(reflect.ValueOf(g))
 		}
 	} else if strings.HasSuffix(name, "EncodedIndex") {
-		if size, err := m.Size(v2.Type()); err != nil {
+		size, err := m.Size(v2.Type())
+		if err != nil {
 			return err
-		} else {
-			idx, err := m.ReadIndex(br, size)
-			if err != nil {
-				return err
-			}
-			var (
-				tables = enc_lut[idx_name_lut[name]]
-				b      = util.Bits(len(tables))
-				mask   = uint32(0xffff << b)
-				tbl    = idx &^ mask
-				ti     ConcreteTableIndex
-			)
-			idx = idx >> b
-			ti.index = idx
-			ti.table = tables[int(tbl)]
-			ti.metadataUtil = m
-			v2.Set(reflect.ValueOf(&ti))
 		}
+		idx, err := m.ReadIndex(br, size)
+		if err != nil {
+			return err
+		}
+		var (
+			tables = enc_lut[idx_name_lut[name]]
+			b      = util.Bits(len(tables))
+			mask   = uint32(0xffff << b)
+			tbl    = idx &^ mask
+			ti     ConcreteTableIndex
+		)
+		idx = idx >> b
+		ti.index = idx
+		ti.table = tables[int(tbl)]
+		ti.metadataUtil = m
+		v2.Set(reflect.ValueOf(&ti))
 	} else if strings.HasSuffix(name, "Index") {
-		if size, err := m.Size(v2.Type()); err != nil {
+		size, err := m.Size(v2.Type())
+		if err != nil {
 			return err
+		}
+		var ti ConcreteTableIndex
+		if ti.index, err = m.ReadIndex(br, size); err != nil {
+			return err
+		}
+		if name == "BlobIndex" {
+			ti.table = id_Blob
 		} else {
-			var ti ConcreteTableIndex
-			if ti.index, err = m.ReadIndex(br, size); err != nil {
+			ti.table = idx_name_lut[name]
+		}
+		ti.metadataUtil = m
+		v2.Set(reflect.ValueOf(&ti))
+	} else {
+		if v2.Kind() != reflect.Struct {
+			return br.ReadInterface(v)
+		}
+		for i := 0; i < v2.NumField(); i++ {
+			f := v2.Field(i)
+			a := f.Addr()
+			if err := m.Create(br, a.Interface()); err != nil {
 				return err
 			}
-			if name == "BlobIndex" {
-				ti.table = id_Blob
-			} else {
-				ti.table = idx_name_lut[name]
-			}
-			ti.metadataUtil = m
-			v2.Set(reflect.ValueOf(&ti))
-		}
-	} else {
-		switch v2.Kind() {
-		case reflect.Struct:
-			for i := 0; i < v2.NumField(); i++ {
-				f := v2.Field(i)
-				a := f.Addr()
-				if err := m.Create(br, a.Interface()); err != nil {
-					return err
-				}
-			}
-		default:
-			return br.ReadInterface(v)
 		}
 	}
 	return nil

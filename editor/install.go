@@ -25,13 +25,14 @@ func Open(path string) (io.ReadCloser, error) {
 	}
 	var f1 io.ReadCloser
 	for _, f := range r.File {
-		if f.Name == path {
-			f1, err = f.Open()
-			if err != nil {
-				return nil, err
-			}
-			break
+		if f.Name != path {
+			continue
 		}
+		f1, err = f.Open()
+		if err != nil {
+			return nil, err
+		}
+		break
 	}
 	if f1 == nil {
 		return nil, fmt.Errorf("File not found: %v", path)
