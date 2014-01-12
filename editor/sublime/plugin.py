@@ -36,7 +36,82 @@ def plugin_unloaded():
         daemon.kill()
         daemon = None
 
+
+def do_query(context, callback, driver, args, launch_daemon, daemon_command, debug=False):
+    for i in range(2):
+        # The reason for the loop here is to try and start the daemon if it wasn't running and the user settings allows this
+        s = time.time()
+        try:
+            res = driver.CompleteAt(args)
+            break
+        except jsonrpc.RPCFault as e:
+            print(e.error_data)
+            return
+        except jsonrpc.RPCTransportError as e2:
+            global daemon
+            if daemon == None and launch_daemon:
+                daemon = subprocess.Popen(daemon_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                t = threading.Thread(target=pipe_reader, args=(daemon.stdout,))
+                t.start()
+                t = threading.Thread(target=pipe_reader, args=(daemon.stderr,))
+                t.start()
+            else:
+                return
+
+    e = time.time()
+    print("Perform: %f ms" % ((e - s) * 1000))
+    s = time.time()
+    completions = []
+    if debug:
+        print("response:", res)
+
+    def relname(dict):
+        return dict["Relative"] if "Relative" in dict else ""
+
+    if "Methods" in res:
+        for m in res["Methods"]:
+            n = m["Name"]["Relative"] + "("
+            ins = n
+            res = n
+            if "Parameters" in m:
+                c = 1
+                for p in m["Parameters"]:
+                    if c > 1:
+                        ins += ", "
+                        res += ", "
+                    tn = relname(p["Type"]["Name"])
+                    vn = relname(p["Name"])
+                    ins += "${%d:%s %s}" % (c, tn, vn)
+                    res += "%s %s" % (tn, vn)
+                    c += 1
+            ins += ")"
+            res += ")"
+            if "Returns" in m:
+                # TODO: multiple returns
+                res += "\t" + relname(m["Returns"][0]["Type"]["Name"])
+            completions.append((res, ins))
+    if "Fields" in res:
+        for f in res["Fields"]:
+            tn = relname(f["Type"]["Name"])
+            vn = relname(f["Name"])
+            ins = "%s" % (vn)
+            res = "%s\t%s" % (vn, tn)
+            completions.append((res, ins))
+    if "Types" in res:
+        # TODO: "Types"
+        print(res["Types"])
+
+    e = time.time()
+    print("Post processing: %f ms" % ((e - s) * 1000))
+    callback(context, completions)
+
+
 class Ev(sublime_plugin.EventListener):
+
+    def __init__(self):
+        self.request_context = None
+        self.response_context = None
+        self.response = None
 
     def get_language(self, view, caret):
         language = language_regex.search(view.scope_name(caret))
@@ -44,10 +119,9 @@ class Ev(sublime_plugin.EventListener):
             return None
         return language.group(0)
 
-    def on_query_completions(self, view, prefix, locations):
+    def prepare_request(self, view, prefix, locations, settings):
         s = time.time()
         row, col = view.rowcol(locations[0])
-        settings = sublime.load_settings("completion.sublime-settings")
 
         # TODO: detecting which "driver" is to be used should at some point be possible (but not required) to delegate to the server
         drivers = {
@@ -59,7 +133,7 @@ class Ev(sublime_plugin.EventListener):
 
         lang = self.get_language(view, locations[0])
         if not lang in drivers:
-            return
+            return (None, None)
         else:
             driver = getattr(proxy, drivers[lang])
 
@@ -85,69 +159,48 @@ class Ev(sublime_plugin.EventListener):
 
         e = time.time()
         print("Prepare: %f ms" % ((e - s) * 1000))
-        while True:
-            s = time.time()
-            try:
-                res = driver.CompleteAt(args)
-                break
-            except jsonrpc.RPCFault as e:
-                print(e.error_data)
-                return
-            except jsonrpc.RPCTransportError as e2:
-                global daemon
-                if daemon == None and settings.get("launch_daemon", False):
-                    daemon = subprocess.Popen(settings.get("daemon_command"), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                    t = threading.Thread(target=pipe_reader, args=(daemon.stdout,))
-                    t.start()
-                    t = threading.Thread(target=pipe_reader, args=(daemon.stderr,))
-                    t.start()
-                else:
-                    return
 
+        return (driver, args)
 
-        e = time.time()
-        print("Perform: %f ms" % ((e - s) * 1000))
-        s = time.time()
-        completions = []
-        if settings.get("debug", False):
-            print("response:", res)
+    def got_response(self, context, completions):
+        if self.request_context != context:
+            print("Context out of date.. Discarding.")
+            return
+        self.response_context = context
+        self.response = completions
+        sublime.set_timeout(self.hack)
 
-        def relname(dict):
-            return dict["Relative"] if "Relative" in dict else ""
+    def hack(self):
+        sublime.active_window().run_command("hide_auto_complete")
+        def hack2():
+            sublime.active_window().run_command("auto_complete")
+        sublime.set_timeout(hack2, 1)
 
-        if "Methods" in res:
-            for m in res["Methods"]:
-                n = m["Name"]["Relative"] + "("
-                ins = n
-                res = n
-                if "Parameters" in m:
-                    c = 1
-                    for p in m["Parameters"]:
-                        if c > 1:
-                            ins += ", "
-                            res += ", "
-                        tn = relname(p["Type"]["Name"])
-                        vn = relname(p["Name"])
-                        ins += "${%d:%s %s}" % (c, tn, vn)
-                        res += "%s %s" % (tn, vn)
-                        c += 1
-                ins += ")"
-                res += ")"
-                if "Returns" in m:
-                    # TODO: multiple returns
-                    res += "\t" + relname(m["Returns"][0]["Type"]["Name"])
-                completions.append((res, ins))
-        if "Fields" in res:
-            for f in res["Fields"]:
-                tn = relname(f["Type"]["Name"])
-                vn = relname(f["Name"])
-                ins = "%s" % (vn)
-                res = "%s\t%s" % (vn, tn)
-                completions.append((res, ins))
-        if "Types" in res:
-            # TODO: "Types"
-            print(res["Types"])
+    def get_context(self, view, prefix, locations):
+        return "%s:%s" % (view.file_name(), locations[0]-len(prefix))
 
-        e = time.time()
-        print("Post processing: %f ms" % ((e - s) * 1000))
-        return completions
+    def on_query_completions(self, view, prefix, locations):
+        context = self.get_context(view, prefix, locations)
+
+        if self.response_context == context:
+            # Have a finished response from before
+            return self.response
+        elif self.request_context == context:
+            # Currently being processed already...
+            return
+
+        # No active query or the context of the current query is not what we want.
+        # Start a new request.
+        self.request_context = context
+
+        settings = sublime.load_settings("completion.sublime-settings")
+        launch_daemon = settings.get("launch_daemon", False)
+        daemon_command = settings.get("daemon_command")
+        debug = settings.get("debug", False)
+
+        driver, args = self.prepare_request(view, prefix, locations, settings)
+        if driver == None or args == None:
+            return
+
+        t = threading.Thread(target=do_query, args=(context, self.got_response, driver, args, launch_daemon, daemon_command, debug))
+        t.start()
