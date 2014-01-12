@@ -23,6 +23,16 @@ Collaborators wanting to aid the project are welcome to submit pull requests and
 open up a new issue number for discussing implementation details not already discussed
 in the [existing issues](https://github.com/quarnster/completion/issues?state=open) list.
 
+For more detailed goals, please see the [Design goals](https://github.com/quarnster/completion/wiki/Design-goals) page in the [wiki](https://github.com/quarnster/completion/wiki/_pages).
+
+# Building
+
+Please consult the wiki's [Building](https://github.com/quarnster/completion/wiki/Building) page.
+
+# Installing
+
+Please consult the wiki's [Installing](https://github.com/quarnster/completion/wiki/Installing) page.
+
 # License
 
 The license of the project is the 2-clause BSD license:
