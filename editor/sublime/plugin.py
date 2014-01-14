@@ -42,7 +42,7 @@ def do_query(context, callback, driver, args, launch_daemon, daemon_command, deb
         # The reason for the loop here is to try and start the daemon if it wasn't running and the user settings allows this
         s = time.time()
         try:
-            res = driver.CompleteAt(args)
+            response = driver.CompleteAt(args)
             break
         except jsonrpc.RPCFault as e:
             print(e.error_data)
@@ -63,13 +63,13 @@ def do_query(context, callback, driver, args, launch_daemon, daemon_command, deb
     s = time.time()
     completions = []
     if debug:
-        print("response:", res)
+        print("response:", response)
 
     def relname(dict):
         return dict["Relative"] if "Relative" in dict else ""
 
-    if "Methods" in res:
-        for m in res["Methods"]:
+    if "Methods" in response:
+        for m in response["Methods"]:
             n = m["Name"]["Relative"] + "("
             ins = n
             res = n
@@ -90,19 +90,21 @@ def do_query(context, callback, driver, args, launch_daemon, daemon_command, deb
                 # TODO: multiple returns
                 res += "\t" + relname(m["Returns"][0]["Type"]["Name"])
             completions.append((res, ins))
-    if "Fields" in res:
-        for f in res["Fields"]:
+    if "Fields" in response:
+        for f in response["Fields"]:
             tn = relname(f["Type"]["Name"])
             vn = relname(f["Name"])
             ins = "%s" % (vn)
             res = "%s\t%s" % (vn, tn)
             completions.append((res, ins))
-    if "Types" in res:
+    if "Types" in response:
         # TODO: "Types"
-        print(res["Types"])
+        print(response["Types"])
 
     e = time.time()
     print("Post processing: %f ms" % ((e - s) * 1000))
+    if debug:
+        print(completions)
     callback(context, completions)
 
 
@@ -168,7 +170,8 @@ class Ev(sublime_plugin.EventListener):
             return
         self.response_context = context
         self.response = completions
-        sublime.set_timeout(self.hack)
+        if len(completions) != 0:
+            sublime.set_timeout(self.hack)
 
     def hack(self):
         sublime.active_window().run_command("hide_auto_complete")
