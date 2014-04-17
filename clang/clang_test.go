@@ -62,7 +62,7 @@ void main() {
 `
 	a.Location.Line = 11
 	a.Location.Column = 4
-	a.SessionOverrides.Set("compiler_flags", []string{"-x", "c++"})
+	a.SessionOverrides.Set("compiler_flags", []string{"-x", "c++", "-fno-exceptions"})
 	if err := c.CompleteAt(&a, &b); err != nil {
 		t.Error(err)
 	}

@@ -161,7 +161,12 @@ def get_context(view, prefix, locations):
 
 def exec_goto(driver, args):
     response = driver.GetDefinition(args)
-    sublime.active_window().open_file("%s:%d:%d" % (response["File"]["Name"], response["Line"], response["Column"]), sublime.ENCODED_POSITION|sublime.TRANSIENT)
+
+    try:
+        sublime.active_window().open_file("%s:%d:%d" % (response["File"]["Name"], response["Line"], response["Column"]), sublime.ENCODED_POSITION|sublime.TRANSIENT)
+    except:
+        sublime.status_message("definition not found!")
+        print(response)
 
 
 class CompletionGotoDefinitionCommand(sublime_plugin.TextCommand):
@@ -180,6 +185,7 @@ class CompletionGotoDefinitionCommand(sublime_plugin.TextCommand):
         if driver == None or args == None:
             return
         args["Identifier"] = prefix
+        sublime.status_message("looking for definition of %s" % prefix)
         t = threading.Thread(target=exec_goto, args=(driver, args))
         t.start()
 

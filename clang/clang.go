@@ -132,7 +132,7 @@ func (c *Clang) GetDefinition(a *content.GetDefinitionArgs, ret *content.SourceL
 	if err != nil {
 		return err
 	}
-	args = append([]string{"-cc1", "-fsyntax-only", "-ast-dump", "-ast-dump-filter", a.Identifier}, args...)
+	args = append([]string{"-fsyntax-only", "-Xclang", "-ast-dump", "-Xclang", "-ast-dump-filter", "-Xclang", a.Identifier}, args...)
 	args = append(args, fn)
 	out, err := RunClang(a.Location.File.Contents, args...)
 	if len(out) == 0 {
@@ -160,7 +160,7 @@ func (c *Clang) CompleteAt(a *content.CompleteAtArgs, ret *content.CompletionRes
 		return err
 	}
 
-	args = append([]string{"-cc1", "-fsyntax-only", fmt.Sprintf("-code-completion-at=%s:%d:%d", fn, a.Location.Line, a.Location.Column)}, args...)
+	args = append([]string{"-fsyntax-only", "-Xclang", fmt.Sprintf("-code-completion-at=%s:%d:%d", fn, a.Location.Line, a.Location.Column)}, args...)
 	args = append(args, fn)
 	if out, err := RunClang(a.Location.File.Contents, args...); len(out) == 0 {
 		return err
