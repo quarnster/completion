@@ -43,6 +43,7 @@ func (s *Sublime) Install() error {
 		files    = []string{
 			"3rdparty/jsonrpc.py",
 			"editor/sublime/plugin.py",
+			"editor/sublime/Default.sublime-keymap",
 		}
 	)
 

@@ -8,10 +8,10 @@ import (
 	"github.com/quarnster/completion/util/expand_path"
 	"github.com/quarnster/parser"
 	"io/ioutil"
-	"os"
 	"os/exec"
-	"path/filepath"
 	"reflect"
+	"regexp"
+	"strconv"
 )
 
 func init() {
@@ -20,17 +20,21 @@ func init() {
 	}
 }
 
-func RunClang(args ...string) ([]byte, error) {
+func RunClang(stdin string, args ...string) ([]byte, error) {
 	cmd := exec.Command("clang", args...)
 	log4go.Debug("Running clang command: %v", cmd)
 
-	if e, err := cmd.StderrPipe(); err != nil {
+	if in, err := cmd.StdinPipe(); err != nil {
+		return nil, err
+	} else if e, err := cmd.StderrPipe(); err != nil {
 		return nil, err
 	} else if s, err := cmd.StdoutPipe(); err != nil {
 		return nil, err
 	} else if err := cmd.Start(); err != nil {
 		return nil, err
 	} else {
+		in.Write([]byte(stdin))
+		in.Close()
 		so, serr := ioutil.ReadAll(s)
 		eo, eerr := ioutil.ReadAll(e)
 		// We ignore the output error here as a non-zero exit
@@ -108,32 +112,57 @@ func parseresult(in string) (ret content.CompletionResult, err error) {
 type Clang struct {
 }
 
-func (c *Clang) CompleteAt(a *content.CompleteAtArgs, ret *content.CompletionResult) error {
+func (c *Clang) prepare(a *content.CompleteAtArgs) (fn string, args []string, err error) {
 	origargs, _ := a.Settings().Get("compiler_flags").([]string)
-	args := make([]string, len(origargs))
+	args = make([]string, len(origargs))
 	for i := range origargs {
 		args[i] = expand_path.ExpandPath(origargs[i])
 	}
-	fn := a.Location.File.Name
-
-	if cnt := a.Location.File.Contents; cnt != "" {
-		f, err := ioutil.TempFile("", "completion_clang")
-		if err != nil {
-			return err
-		}
-		fn = f.Name()
-		defer os.Remove(fn)
-		fn += filepath.Ext(a.Location.File.Name)
-		defer os.Remove(fn)
-		if err := ioutil.WriteFile(fn, []byte(cnt), 0644); err != nil {
-			return err
-		}
-		args = append(args, "-I"+filepath.Dir(a.Location.File.Name))
+	fn = a.Location.File.Name
+	if a.Location.File.Contents != "" {
+		// File is unsaved, so use stdin as the filename
+		fn = "-"
 	}
 
-	args = append([]string{"-fsyntax-only", "-Xclang", fmt.Sprintf("-code-completion-at=%s:%d:%d", fn, a.Location.Line, a.Location.Column)}, args...)
+	return fn, args, nil
+}
+
+func (c *Clang) GetDefinition(a *content.GetDefinitionArgs, ret *content.SourceLocation) error {
+	fn, args, err := c.prepare(&a.CompleteAtArgs)
+	if err != nil {
+		return err
+	}
+	args = append([]string{"-cc1", "-fsyntax-only", "-ast-dump", "-ast-dump-filter", a.Identifier}, args...)
 	args = append(args, fn)
-	if out, err := RunClang(args...); len(out) == 0 {
+	out, err := RunClang(a.Location.File.Contents, args...)
+	if len(out) == 0 {
+		return err
+	}
+	re, err := regexp.Compile(`\w+Decl[^<]+<(..[^:,]+):?(\d+)?:?(\d+)?.*?\s` + a.Identifier + `\s`)
+	if err != nil {
+		return err
+	}
+	res := re.FindAllStringSubmatch(string(out), -1)
+	if len(res) == 0 {
+		return fmt.Errorf("Not found")
+	}
+	ret.File.Name = res[0][1]
+	i, _ := strconv.ParseInt(res[0][2], 10, 32)
+	ret.Line = uint(i)
+	i, _ = strconv.ParseInt(res[0][3], 10, 32)
+	ret.Column = uint(i)
+	return nil
+}
+
+func (c *Clang) CompleteAt(a *content.CompleteAtArgs, ret *content.CompletionResult) error {
+	fn, args, err := c.prepare(a)
+	if err != nil {
+		return err
+	}
+
+	args = append([]string{"-cc1", "-fsyntax-only", fmt.Sprintf("-code-completion-at=%s:%d:%d", fn, a.Location.Line, a.Location.Column)}, args...)
+	args = append(args, fn)
+	if out, err := RunClang(a.Location.File.Contents, args...); len(out) == 0 {
 		return err
 	} else if r, err := parseresult(string(out)); err != nil {
 		return err

@@ -18,7 +18,7 @@ PEGS = \
 	../util/expand_path/expand_path.go \
 	../util/scopes/scopes.go \
 	../net/csharp/csharp.go
-ARCHIVE_DATA= ../3rdparty/jsonrpc.py ../editor/sublime/plugin.py ../README.md
+ARCHIVE_DATA= ../3rdparty/jsonrpc.py $(wildcard ../editor/sublime/*.py) $(wildcard ../editor/sublime/*.sublime-keymap) ../README.md
 GENERATED = $(PEGS) ../editor/archive_data.go
 
 
@@ -29,7 +29,7 @@ all: ../../parser $(PEGS) ../editor/archive_data.go completion
 	go install github.com/quarnster/parser/pegparser
 
 ../editor/archive_data.go: $(ARCHIVE_DATA)
-	go run archive.go $(ARCHIVE_DATA)
+	go run archive.go ${ARCHIVE_DATA}
 
 completion: $(GENERATED)
 	go build -o completion ../

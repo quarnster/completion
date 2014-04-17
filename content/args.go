@@ -11,6 +11,11 @@ type (
 		Location SourceLocation
 	}
 
+	GetDefinitionArgs struct {
+		CompleteAtArgs
+		Identifier string
+	}
+
 	// TODO(): Rather than a FullyQualifiedName, isn't content.Type a better fit?
 	//         We need to see how this unfolds for the various backends.
 	CompleteArgs struct {

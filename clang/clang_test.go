@@ -11,6 +11,7 @@ import (
 	"testing"
 	"time"
 )
+
 var skip = false
 
 func TestClang(t *testing.T) {
@@ -108,6 +109,9 @@ func TestParseResult(t *testing.T) {
 		}
 	}
 	for k, data := range tests {
+		if !strings.HasSuffix(k, "j.in") {
+			continue
+		}
 		s := time.Now()
 		input, expected := data[0], data[1]
 		res := ""
@@ -160,5 +164,27 @@ func BenchmarkParseResult(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			parseresult(data)
 		}
+	}
+}
+
+func TestGetDefinition(t *testing.T) {
+	if skip {
+		t.Skipf("Clang not installed, skipping")
+	}
+	var (
+		a content.GetDefinitionArgs
+		b content.SourceLocation
+		c Clang
+	)
+	a.Identifier = "printf"
+	a.Location.Column = 2
+	a.Location.Line = 4
+	a.Location.File.Name = "testdata/hello.cpp"
+	if err := c.GetDefinition(&a, &b); err != nil {
+		t.Error(err)
+	} else if b.File.Name == "" || b.Line == 0 || b.Column == 0 {
+		t.Error(b)
+	} else {
+		t.Log(b)
 	}
 }

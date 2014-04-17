@@ -35,7 +35,7 @@ func Open(path string) (io.ReadCloser, error) {
 		break
 	}
 	if f1 == nil {
-		return nil, fmt.Errorf("File not found: %v", path)
+		return nil, fmt.Errorf("File not found in archive: %v", path)
 	}
 	return f1, nil
 }

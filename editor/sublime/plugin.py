@@ -107,6 +107,81 @@ def do_query(context, callback, driver, args, launch_daemon, daemon_command, deb
         print(completions)
     callback(context, completions)
 
+def get_language(view, caret):
+    language = language_regex.search(view.scope_name(caret))
+    if language == None:
+        return None
+    return language.group(0)
+
+def prepare_request(view, prefix, locations, settings):
+    s = time.time()
+    row, col = view.rowcol(locations[0])
+
+    # TODO: detecting which "driver" is to be used should at some point be possible (but not required) to delegate to the server
+    drivers = {
+        "c++": "Clang",
+        "c": "Clang",
+        "java": "Java",
+        "cs": "Net"
+    }
+
+    lang = get_language(view, locations[0])
+    if not lang in drivers:
+        return (None, None)
+    else:
+        driver = getattr(proxy, drivers[lang])
+
+    # TODO: Make the request async
+    args = {
+        "Location": {
+            "File": {
+                "Name": view.file_name(),
+            },
+            "Column": col + 1,
+            "Line": row + 1
+        },
+        "SessionOverrides": {
+            # TODO: what would be a good way to handle this? Query the "driver" for which options are configurable?
+            # TODO: Sessions should be used when possible to avoid sending the same configuration all the time.
+            "compiler_flags": view.settings().get("sublimeclang_options", []),
+            "net_paths":view.settings().get("net_paths", []),
+            "net_assemblies":view.settings().get("net_assemblies", []),
+        }
+    }
+    if view.is_dirty():
+        args["Location"]["File"]["Contents"] = view.substr(sublime.Region(0, view.size()))
+
+    e = time.time()
+    print("Prepare: %f ms" % ((e - s) * 1000))
+
+    return (driver, args)
+
+def get_context(view, prefix, locations):
+    return "%s:%s" % (view.file_name(), locations[0]-len(prefix))
+
+def exec_goto(driver, args):
+    response = driver.GetDefinition(args)
+    sublime.active_window().open_file("%s:%d:%d" % (response["File"]["Name"], response["Line"], response["Column"]), sublime.ENCODED_POSITION|sublime.TRANSIENT)
+
+
+class CompletionGotoDefinitionCommand(sublime_plugin.TextCommand):
+    def __init__(self, view):
+        self.view = view
+
+    def run(self, edit):
+        settings = sublime.load_settings("completion.sublime-settings")
+        launch_daemon = settings.get("launch_daemon", False)
+        daemon_command = settings.get("daemon_command")
+        debug = settings.get("debug", False)
+
+        locations = [a.b for a in self.view.sel()]
+        prefix = self.view.substr(self.view.word(locations[0]))
+        driver, args = prepare_request(self.view, prefix, locations, settings)
+        if driver == None or args == None:
+            return
+        args["Identifier"] = prefix
+        t = threading.Thread(target=exec_goto, args=(driver, args))
+        t.start()
 
 class Ev(sublime_plugin.EventListener):
 
@@ -114,55 +189,6 @@ class Ev(sublime_plugin.EventListener):
         self.request_context = None
         self.response_context = None
         self.response = None
-
-    def get_language(self, view, caret):
-        language = language_regex.search(view.scope_name(caret))
-        if language == None:
-            return None
-        return language.group(0)
-
-    def prepare_request(self, view, prefix, locations, settings):
-        s = time.time()
-        row, col = view.rowcol(locations[0])
-
-        # TODO: detecting which "driver" is to be used should at some point be possible (but not required) to delegate to the server
-        drivers = {
-            "c++": "Clang",
-            "c": "Clang",
-            "java": "Java",
-            "cs": "Net"
-        }
-
-        lang = self.get_language(view, locations[0])
-        if not lang in drivers:
-            return (None, None)
-        else:
-            driver = getattr(proxy, drivers[lang])
-
-        # TODO: Make the request async
-        args = {
-            "Location": {
-                "File": {
-                    "Name": view.file_name(),
-                },
-                "Column": col + 1,
-                "Line": row + 1
-            },
-            "SessionOverrides": {
-                # TODO: what would be a good way to handle this? Query the "driver" for which options are configurable?
-                # TODO: Sessions should be used when possible to avoid sending the same configuration all the time.
-                "compiler_flags": view.settings().get("sublimeclang_options", []),
-                "net_paths":view.settings().get("net_paths", []),
-                "net_assemblies":view.settings().get("net_assemblies", []),
-            }
-        }
-        if view.is_dirty():
-            args["Location"]["File"]["Contents"] = view.substr(sublime.Region(0, view.size()))
-
-        e = time.time()
-        print("Prepare: %f ms" % ((e - s) * 1000))
-
-        return (driver, args)
 
     def got_response(self, context, completions):
         if self.request_context != context:
@@ -179,11 +205,9 @@ class Ev(sublime_plugin.EventListener):
             sublime.active_window().run_command("auto_complete")
         sublime.set_timeout(hack2, 1)
 
-    def get_context(self, view, prefix, locations):
-        return "%s:%s" % (view.file_name(), locations[0]-len(prefix))
 
     def on_query_completions(self, view, prefix, locations):
-        context = self.get_context(view, prefix, locations)
+        context = get_context(view, prefix, locations)
 
         if self.response_context == context:
             # Have a finished response from before
@@ -201,7 +225,7 @@ class Ev(sublime_plugin.EventListener):
         daemon_command = settings.get("daemon_command")
         debug = settings.get("debug", False)
 
-        driver, args = self.prepare_request(view, prefix, locations, settings)
+        driver, args = prepare_request(view, prefix, locations, settings)
         if driver == None or args == None:
             return
 

@@ -1,0 +1,4 @@
+[
+    {"keys": ["super+.", "super+d"], "command": "completion_goto_definition", "context": [{ "key": "selector", "operator": "equal", "operand": "source.c++" }] },
+    {"keys": ["ctrl+.", "ctrl+d"], "command": "completion_goto_definition", "context": [{ "key": "selector", "operator": "equal", "operand": "source.c++" }] }
+]

@@ -28,7 +28,7 @@ func installHooks() error {
 	for i, ed := range editor.List() {
 		if *instArgs[i] {
 			if err := ed.Install(); err != nil {
-				log4go.Error("Failed to install editor plugin for %s: %s", ed.Description(), err)
+				return log4go.Error("Failed to install editor plugin for %s: %s", ed.Description(), err)
 			}
 		}
 	}
