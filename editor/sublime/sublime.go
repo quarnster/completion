@@ -58,6 +58,9 @@ func (s *Sublime) Install() error {
 	case "linux":
 		st_paths = append(st_paths, filepath.Join(u.HomeDir, ".config", "sublime-text-2", "Packages"))
 		st_paths = append(st_paths, filepath.Join(u.HomeDir, ".config", "sublime-text-3", "Packages"))
+	case "windows":
+		st_paths = append(st_paths, filepath.Join(u.HomeDir, "AppData", "Roaming", "Sublime Text 2", "Packages"))
+		st_paths = append(st_paths, filepath.Join(u.HomeDir, "AppData", "Roaming", "Sublime Text 3", "Packages"))
 	default:
 		return fmt.Errorf("Don't know where to install Sublime Text files on OS %s", runtime.GOOS)
 	}
