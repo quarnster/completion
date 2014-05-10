@@ -5,8 +5,15 @@ import (
 	"code.google.com/p/log4go"
 	"errors"
 	"github.com/quarnster/completion/content"
+	"reflect"
 	"strings"
 )
+
+func init() {
+	if err := content.RegisterType("java_classpath", reflect.TypeOf([]string{})); err != nil {
+		panic(err)
+	}
+}
 
 type Java struct {
 }
@@ -23,6 +30,7 @@ func fqnToClassname(fqn content.FullyQualifiedName) (Classname, error) {
 }
 
 func (c *Java) Complete(args *content.CompleteArgs, cmp *content.CompletionResult) error {
+	log4go.Fine("%+v", args)
 	var archive Archive
 	session := args.Session()
 	if session != nil {
@@ -37,10 +45,11 @@ func (c *Java) Complete(args *content.CompleteArgs, cmp *content.CompletionResul
 			log4go.Warn("Couldn't get the default classpath: %s", err)
 		}
 		settings := args.Settings()
-		if cp2, ok := settings.Get("classpath").([]string); ok {
+		if cp2, ok := settings.Get("java_classpath").([]string); ok {
 			// TODO: do we ever want to override rather than append to the classpath?
 			cp = append(cp, cp2...)
 		}
+		log4go.Fine("classpath: %+v", cp)
 		if archive, err = NewCompositeArchive(cp); err != nil {
 			return err
 		} else if session != nil {
