@@ -7,6 +7,7 @@ import (
 	"os/user"
 	"path/filepath"
 	"runtime"
+	"encoding/json"
 )
 
 var verbose = true
@@ -29,11 +30,18 @@ func (s *Sublime) writeDefaultConfig(p string) error {
 		return err
 	}
 
+	bin_bytes, err := json.Marshal(bin)
+	if err != nil {
+		return err
+	}
+
+	bin_ := string(bin_bytes[:])
+
 	f.WriteString(fmt.Sprintf(`{
-		"daemon_command": ["%s", "daemon"],
+		"daemon_command": [%s, "daemon"],
 		"launch_daemon": true
 }
-`, bin))
+`, bin_))
 	return nil
 }
 
