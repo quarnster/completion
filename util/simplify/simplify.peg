@@ -1,0 +1,7 @@
+Simplified		<-	(Line / Unknown)+ EOF
+Unknown			<-	(!'\n' .)+ '\n'
+Line			<-	(Word ' '?)* (Scope / (';' NewLine))
+Scope			<-	'{' NewLine Line+ '}' NewLine
+Word			<-	(![{}; \n] .)+
+NewLine			<-	'\n'
+EOF				<-  !.

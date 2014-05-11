@@ -10,6 +10,7 @@ ignore_parser = Spacing,Pattern,Completion,Completions,ReturnType,Arguments,Argu
 ignore_expand_path = Operation,File
 ignore_csharp = Complete,Junk,UsingDirectives,Primary,BOM,Spacing,Reference,Grouping,InnerScope,EndOfLine,Comment,LineComment,BlockComment,Loops,Code,SpacedIdentifier,SpacedAccess
 ignore_scopes = Scope
+ignore_simplify = NewLine,EOF
 
 PEGS = \
 	../java/signatures/signatures.go \
@@ -17,6 +18,7 @@ PEGS = \
 	../clang/parser/parser.go \
 	../util/expand_path/expand_path.go \
 	../util/scopes/scopes.go \
+	../util/simplify/simplify.go \
 	../net/csharp/csharp.go
 ARCHIVE_DATA= ../3rdparty/jsonrpc.py $(wildcard ../editor/sublime/*.py) $(wildcard ../editor/sublime/*.sublime-keymap) ../README.md
 GENERATED = $(PEGS) ../editor/archive_data.go
@@ -35,7 +37,7 @@ completion: $(GENERATED)
 	go build -o completion ../
 
 test: completion
-	go run runtests.go
+	go test -tags=nolibclang github.com/quarnster/completion/...
 
 clean:
 	$(RM) $(GENERATED) completion $(subst .go,,$(notdir $(PEGS)))

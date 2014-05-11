@@ -6,6 +6,7 @@ import (
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/net/csharp"
 	"github.com/quarnster/completion/util/scopes"
+	//	"github.com/quarnster/completion/util/simplify"
 	"github.com/quarnster/parser"
 	"reflect"
 	"regexp"
@@ -22,6 +23,14 @@ func init() {
 
 type Net struct {
 }
+
+var (
+	tdnil = fmt.Errorf("Typedef is nil")
+	tm    = map[string]string{
+		"string": "System.String",
+		"int":    "System.Int32",
+	}
+)
 
 func typeresolve(td *TypeDef, node *parser.Node) (*content.Type, error) {
 	switch n := node.Name; n {
@@ -63,11 +72,6 @@ func typeresolve(td *TypeDef, node *parser.Node) (*content.Type, error) {
 	// Found nothing.
 	// TODO: Try parents
 	return nil, fmt.Errorf("No such type found: %s, %s", td.Name(), node)
-}
-
-var tm = map[string]string{
-	"string": "System.String",
-	"int":    "System.Int32",
 }
 
 func findtype(cache *Cache, using *parser.Node, name string) *TypeDef {
@@ -169,8 +173,6 @@ func (c *Net) classes(path string, cs []string, n *parser.Node) []string {
 	return cs
 }
 
-var tdnil = fmt.Errorf("Typedef is nil")
-
 func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionResult) error {
 	cache, err := c.cache(&args.Args)
 	if err != nil {
@@ -231,7 +233,8 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 		if td == nil {
 			// Probably a variable completion then?
 			v := c.variable(node.Children[0])
-			loc := content.File{Contents: scopes.Substr(args.Location.File.Contents, scopes.Visibility(args.Location))}
+			data := scopes.Substr(args.Location.File.Contents, scopes.Visibility(args.Location))
+			loc := content.File{Contents: data}
 			re, err := regexp.Compile(fmt.Sprintf(`[=\(,;}\s](\w+(\s*\[\])*\s+)*%s[;\s=,)\[]`, v))
 			if err != nil {
 				return err
