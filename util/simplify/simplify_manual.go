@@ -1,7 +1,7 @@
 package simplify
 
 import (
-	"fmt"
+	"github.com/quarnster/parser"
 	"regexp"
 )
 
@@ -12,10 +12,12 @@ var (
 	}{
 		{regexp.MustCompile(`;[^=;{}]+;`), ";"},
 		{regexp.MustCompile(`\s*\{\s*\}`), ";"},
-		{regexp.MustCompile(`\s(if|else|while|for|catch)\s*([^{;]+;|;)`), ""},
+		{regexp.MustCompile(`\s(if|else|while|catch)\s*([^{;]+;|;)`), ""},
+		{regexp.MustCompile(`\sfor\s?\([^)]*\);`), ""},
 		{regexp.MustCompile(`\{\s*`), "{"},
 		{regexp.MustCompile(`\s+`), " "},
 		{regexp.MustCompile(`(;|{|})\s?`), "$1\n"},
+		{regexp.MustCompile(`\s{`), "\n{"},
 		{regexp.MustCompile(`^\s+`), ""},
 	}
 )
@@ -35,11 +37,11 @@ func Simplify(data string) string {
 	return data
 }
 
-func Simplified(data string) {
+func Simplified(data string) (*parser.Node, error) {
 	var s SIMPLIFY
 	s.SetData(data)
-	fmt.Println(s.Simplified())
-	fmt.Println(s.RootNode())
-	fmt.Println(s.Error())
-	fmt.Println(data)
+	if !s.Simplified() {
+		return nil, s.Error()
+	}
+	return s.RootNode(), nil
 }

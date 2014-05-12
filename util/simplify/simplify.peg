@@ -1,7 +1,15 @@
-Simplified		<-	(Line / Unknown)+ EOF
-Unknown			<-	(!'\n' .)+ '\n'
-Line			<-	(Word ' '?)* (Scope / (';' NewLine))
-Scope			<-	'{' NewLine Line+ '}' NewLine
-Word			<-	(![{}; \n] .)+
+Simplified		<-	Contents+ EOF
+Contents		<-	(Class / Method / Variable / Unknown)
+Access			<-	("public" / "protected" / "private" / "internal" / "static") Spacing
+Class			<-	Access* "class " (Word ' '?)+  Impl
+Method			<-	Access* (Word ' '?)+ Arguments Impl
+Impl			<-	(';' End) / (End Body?)
+Variable		<-	Access* (Word ' '?)+ ';' End
+Arguments		<-	'(' (Word ([ ,]*))* ')'
+Unknown			<-	(!'\n' .)+ End
+Body			<-	Spacing* '{' End (!'}' Contents)* '}' End
+Spacing			<-	' '
+Word			<-	(![(){}; \n] .)+
 NewLine			<-	'\n'
+End				<-	Spacing* (NewLine / EOF)
 EOF				<-  !.
