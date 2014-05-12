@@ -169,6 +169,10 @@ freely, subject to the following restrictions:
 						11592-11651: "BracketScope" - Data: "{
                         return asm;
                     }"
+					11686-11754: "CommentScope" - Data: "// Assembly wasn't found, try and see if it's in the same directory
+"
+					11770-11820: "CommentScope" - Data: "// as one of the other already loaded assemblies.
+"
 					11868-12129: "BracketScope"
 						11948-12111: "BracketScope" - Data: "{
                         Assembly ret = TryLoad(asm, name);
@@ -215,6 +219,8 @@ freely, subject to the following restrictions:
 								14701-14780: "BracketScope" - Data: "{
                                 reportError(e);
                             }"
+							14907-14937: "CommentScope" - Data: "// Probably a namespace then?
+"
 							15023-16438: "BracketScope"
 								15085-16306: "BracketScope"
 									15187-16190: "BracketScope"
@@ -248,10 +254,16 @@ freely, subject to the following restrictions:
                                         }"
 											18279-18898: "BracketScope"
 												18356-18428: "TextScope" - Data: ""Skipping this member as an exception was thrown when calling ToString:""
+												18562-18633: "CommentScope" - Data: "// Seems that some state is messed up when this happens, so we need to
+"
+												18677-18736: "CommentScope" - Data: "// force a reload of the assemblies to make it work again.
+"
 											19210-19212: "TextScope" - Data: """"
 											19482-23056: "BracketScope"
 												19828-19833: "BracketScope" - Data: "{','}"
 												20299-21794: "BracketScope"
+													20432-20450: "CommentScope" - Data: "// Generic method
+"
 													20654-20657: "TextScope" - Data: ""<""
 													20812-20817: "BracketScope" - Data: "{','}"
 													20947-21615: "BracketScope"
@@ -297,6 +309,12 @@ freely, subject to the following restrictions:
                                         generics = null;
                                         break;
                                     }"
+								26778-26839: "CommentScope" - Data: "// This isn't 100% correct, but an instance where two things
+"
+								26867-26926: "CommentScope" - Data: "// are named the same but return two different types would
+"
+								26954-26977: "CommentScope" - Data: "// be considered rare.
+"
 								27079-27688: "BracketScope"
 									27169-27658: "BracketScope"
 										27320-27436: "BracketScope" - Data: "{
@@ -332,6 +350,8 @@ freely, subject to the following restrictions:
 									30429-30464: "BracketScope" - Data: "{
                                 }"
 								30563-31834: "BracketScope"
+									30597-30636: "CommentScope" - Data: "// It's a namespace we are completing.
+"
 									30690-30693: "TextScope" - Data: "".""
 									30806-31804: "BracketScope"
 										30884-31677: "BracketScope"
@@ -364,6 +384,14 @@ freely, subject to the following restrictions:
 			33370-33637: "BracketScope"
 				33491-33523: "TextScope" - Data: ""CompleteSharp+MyAppDomain+Hack""
 			33717-34791: "BracketScope"
+				33731-33806: "CommentScope" - Data: "// Yes, polling like this is a bit messy, however FileSystemWatcher didn't
+"
+				33818-33894: "CommentScope" - Data: "// work for me on OS X, there probably aren't that many assemblies to check
+"
+				33906-33979: "CommentScope" - Data: "// and the polling is only done after the user requests a completion, so
+"
+				33991-34018: "CommentScope" - Data: "// it shouldn't be too bad
+"
 				34120-34658: "BracketScope"
 					34158-34536: "BracketScope"
 						34296-34518: "BracketScope"
@@ -388,6 +416,8 @@ freely, subject to the following restrictions:
             }"
 				35472-36955: "BracketScope"
 					35510-36833: "BracketScope"
+						35568-35663: "CommentScope" - Data: "// Just to indicate that there's no more output from the command and we're ready for new input
+"
 						35868-35875: "TextScope" - Data: ""got: ""
 						36104-36116: "TextScope" - Data: ""-findclass""
 						36138-36687: "BracketScope"

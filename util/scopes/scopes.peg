@@ -1,4 +1,6 @@
-Scope			<-	(TextScope / CommentScope / BracketScope / (![{}"] !"/*" .))+
-BracketScope	<-	'{' Scope? '}'
-CommentScope	<-	"/*" (!"*/" .)* "*/"
-TextScope		<-	'"' (('\\' .) / (!'"' .))* '"'
+Scope				<-	(TextScope / CommentScope / BracketScope / (![{}"] !"/*" .))+
+BracketScope		<-	'{' Scope? '}'
+CommentScope		<-	MultiLineComment / SingleLineComment
+TextScope			<-	'"' (('\\' .) / (!'"' .))* '"'
+MultiLineComment	<-	"/*" (!"*/" .)* "*/"
+SingleLineComment	<-	"//" (('\\' .) / (!'\n' .))* '\n'

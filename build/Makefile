@@ -9,7 +9,7 @@ ignore_descriptors = Entry,ComponentType,FieldType,ObjectType
 ignore_parser = Spacing,Pattern,Completion,Completions,ReturnType,Arguments,Argument,UnhandledStuff,KeyedStuff,Type,TemplateName,Function
 ignore_expand_path = Operation,File
 ignore_csharp = Complete,Junk,UsingDirectives,Primary,BOM,Spacing,Reference,Grouping,InnerScope,EndOfLine,Comment,LineComment,BlockComment,Loops,Code,SpacedIdentifier,SpacedAccess
-ignore_scopes = Scope
+ignore_scopes = Scope,SingleLineComment,MultiLineComment
 ignore_simplify = NewLine,EOF
 
 PEGS = \
