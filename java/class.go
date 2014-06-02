@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/quarnster/util/encoding/binary"
 	"io"
+	"reflect"
 	"sort"
 	"strings"
 )
@@ -70,6 +71,9 @@ type (
 		Code            []u1              `length:"uint32"`
 		Exception_table []exception_table `length:"uint16"`
 		Attributes      []attribute_info  `length:"uint16"`
+	}
+	Stringer interface {
+		String(c *ConstantPool) string
 	}
 )
 
@@ -226,12 +230,7 @@ func (a *attribute_info) String(c *ConstantPool) (ret string) {
 		if err := br.ReadInterface(&cl); err != nil {
 			ret += err.Error()
 		} else {
-			attrs := make([]string, len(cl.Attributes))
-			for i, a2 := range cl.Attributes {
-				attrs[i] = c.Lut(a2.Attribute_name_index).String()
-			}
-			sort.Strings(attrs)
-			ret += strings.Join(attrs, " ")
+			ret += strings.Join(sortStrings(cl.Attributes, c), " ")
 		}
 		ret += " )"
 	}
@@ -249,6 +248,23 @@ func (mi *member_info) String(c *ConstantPool) string {
 	}
 	return ret
 }
+func sortStrings(rr interface{}, cp *ConstantPool) []string {
+	raw := reflect.ValueOf(rr)
+	attrs := make([]string, raw.Len())
+	for i := 0; i < raw.Len(); i++ {
+		intf := raw.Index(i).Addr().Interface()
+		if a, ok := intf.(Stringer); ok {
+			attrs[i] = a.String(cp)
+		}
+	}
+	sort.Strings(attrs)
+	return attrs
+}
+
+func (c *Class) sortIndentJoin(rr interface{}) (ret string) {
+	attrs := sortStrings(rr, &c.Constant_pool)
+	return "\t" + strings.Join(attrs, "\n\t") + "\n"
+}
 
 func (c *Class) String() (ret string) {
 	ret += fmt.Sprintf("%sclass %s\n", c.Access_flags, c.Constant_pool.Lut(c.This_class))
@@ -257,19 +273,9 @@ func (c *Class) String() (ret string) {
 	for _, i := range c.Interfaces {
 		ret += fmt.Sprintf("\t%s\n", c.Constant_pool.Lut(i))
 	}
-	ret += fmt.Sprintln("attributes")
-	for _, a := range c.Attributes {
-		ret += fmt.Sprintf("\t%s\n", a.String(&c.Constant_pool))
-	}
-
-	ret += fmt.Sprintln("Fields")
-	for _, f := range c.RawFields {
-		ret += fmt.Sprintf("\t%s\n", f.String(&c.Constant_pool))
-	}
-	ret += fmt.Sprintln("Methods")
-	for _, m := range c.RawMethods {
-		ret += fmt.Sprintf("\t%s\n", m.String(&c.Constant_pool))
-	}
+	ret += fmt.Sprintf("attributes\n%s", c.sortIndentJoin(c.Attributes))
+	ret += fmt.Sprintf("Fields\n%s", c.sortIndentJoin(c.RawFields))
+	ret += fmt.Sprintf("Methods\n%s", c.sortIndentJoin(c.RawMethods))
 	return ret
 }
 

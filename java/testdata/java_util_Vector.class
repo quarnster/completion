@@ -6,126 +6,126 @@ implements
 	java/lang/Cloneable
 	java/io/Serializable
 attributes
+	InnerClasses
 	Signature=<E:Ljava/lang/Object;>Ljava/util/AbstractList<TE;>;Ljava/util/List<TE;>;Ljava/util/RandomAccess;Ljava/lang/Cloneable;Ljava/io/Serializable;
 	SourceFile=Vector.java
-	InnerClasses
 Fields
-	protected elementData [Ljava/lang/Object;
-	protected elementCount I
-	protected capacityIncrement I
-	private static final serialVersionUID J
-		 ConstantValue
 	private static final MAX_ARRAY_SIZE I
 		 ConstantValue
+	private static final serialVersionUID J
+		 ConstantValue
+	protected capacityIncrement I
+	protected elementCount I
+	protected elementData [Ljava/lang/Object;
 Methods
-	public <init> (II)V
-		 Code ( LineNumberTable StackMapTable )
-	public <init> (I)V
-		 Code ( LineNumberTable )
-	public <init> ()V
-		 Code ( LineNumberTable )
-	public <init> (Ljava/util/Collection;)V
-		 Code ( LineNumberTable StackMapTable ) Signature=(Ljava/util/Collection<+TE;>;)V
-	public copyInto ([Ljava/lang/Object;)V
-		 Code ( LineNumberTable )
-	public trimToSize ()V
-		 Code ( LineNumberTable StackMapTable )
-	public ensureCapacity (I)V
-		 Code ( LineNumberTable StackMapTable )
+	elementData (I)Ljava/lang/Object;
+		 Code ( LineNumberTable ) Signature=(I)TE;
 	private ensureCapacityHelper (I)V
 		 Code ( LineNumberTable StackMapTable )
 	private grow (I)V
 		 Code ( LineNumberTable StackMapTable )
 	private static hugeCapacity (I)I
 		 Code ( LineNumberTable StackMapTable )
-	public setSize (I)V
+	private writeObject (Ljava/io/ObjectOutputStream;)V
+		 Code ( LineNumberTable StackMapTable ) Exceptions
+	protected removeRange (II)V
 		 Code ( LineNumberTable StackMapTable )
+	public <init> ()V
+		 Code ( LineNumberTable )
+	public <init> (I)V
+		 Code ( LineNumberTable )
+	public <init> (II)V
+		 Code ( LineNumberTable StackMapTable )
+	public <init> (Ljava/util/Collection;)V
+		 Code ( LineNumberTable StackMapTable ) Signature=(Ljava/util/Collection<+TE;>;)V
+	public add (ILjava/lang/Object;)V
+		 Code ( LineNumberTable ) Signature=(ITE;)V
+	public add (Ljava/lang/Object;)Z
+		 Code ( LineNumberTable ) Signature=(TE;)Z
+	public addAll (ILjava/util/Collection;)Z
+		 Code ( LineNumberTable StackMapTable ) Signature=(ILjava/util/Collection<+TE;>;)Z
+	public addAll (Ljava/util/Collection;)Z
+		 Code ( LineNumberTable StackMapTable ) Signature=(Ljava/util/Collection<+TE;>;)Z
+	public addElement (Ljava/lang/Object;)V
+		 Code ( LineNumberTable ) Signature=(TE;)V
 	public capacity ()I
 		 Code ( LineNumberTable )
-	public size ()I
+	public clear ()V
 		 Code ( LineNumberTable )
-	public isEmpty ()Z
+	public clone ()Ljava/lang/Object;
 		 Code ( LineNumberTable StackMapTable )
-	public elements ()Ljava/util/Enumeration;
-		 Code ( LineNumberTable ) Signature=()Ljava/util/Enumeration<TE;>;
 	public contains (Ljava/lang/Object;)Z
 		 Code ( LineNumberTable StackMapTable )
+	public containsAll (Ljava/util/Collection;)Z
+		 Code ( LineNumberTable ) Signature=(Ljava/util/Collection<*>;)Z
+	public copyInto ([Ljava/lang/Object;)V
+		 Code ( LineNumberTable )
+	public elementAt (I)Ljava/lang/Object;
+		 Code ( LineNumberTable StackMapTable ) Signature=(I)TE;
+	public elements ()Ljava/util/Enumeration;
+		 Code ( LineNumberTable ) Signature=()Ljava/util/Enumeration<TE;>;
+	public ensureCapacity (I)V
+		 Code ( LineNumberTable StackMapTable )
+	public equals (Ljava/lang/Object;)Z
+		 Code ( LineNumberTable )
+	public firstElement ()Ljava/lang/Object;
+		 Code ( LineNumberTable StackMapTable ) Signature=()TE;
+	public get (I)Ljava/lang/Object;
+		 Code ( LineNumberTable StackMapTable ) Signature=(I)TE;
+	public hashCode ()I
+		 Code ( LineNumberTable )
 	public indexOf (Ljava/lang/Object;)I
 		 Code ( LineNumberTable )
 	public indexOf (Ljava/lang/Object;I)I
 		 Code ( LineNumberTable StackMapTable )
+	public insertElementAt (Ljava/lang/Object;I)V
+		 Code ( LineNumberTable StackMapTable ) Signature=(TE;I)V
+	public isEmpty ()Z
+		 Code ( LineNumberTable StackMapTable )
+	public iterator ()Ljava/util/Iterator;
+		 Code ( LineNumberTable ) Signature=()Ljava/util/Iterator<TE;>;
+	public lastElement ()Ljava/lang/Object;
+		 Code ( LineNumberTable StackMapTable ) Signature=()TE;
 	public lastIndexOf (Ljava/lang/Object;)I
 		 Code ( LineNumberTable )
 	public lastIndexOf (Ljava/lang/Object;I)I
 		 Code ( LineNumberTable StackMapTable )
-	public elementAt (I)Ljava/lang/Object;
+	public listIterator ()Ljava/util/ListIterator;
+		 Code ( LineNumberTable ) Signature=()Ljava/util/ListIterator<TE;>;
+	public listIterator (I)Ljava/util/ListIterator;
+		 Code ( LineNumberTable StackMapTable ) Signature=(I)Ljava/util/ListIterator<TE;>;
+	public remove (I)Ljava/lang/Object;
 		 Code ( LineNumberTable StackMapTable ) Signature=(I)TE;
-	public firstElement ()Ljava/lang/Object;
-		 Code ( LineNumberTable StackMapTable ) Signature=()TE;
-	public lastElement ()Ljava/lang/Object;
-		 Code ( LineNumberTable StackMapTable ) Signature=()TE;
-	public setElementAt (Ljava/lang/Object;I)V
-		 Code ( LineNumberTable StackMapTable ) Signature=(TE;I)V
-	public removeElementAt (I)V
-		 Code ( LineNumberTable StackMapTable )
-	public insertElementAt (Ljava/lang/Object;I)V
-		 Code ( LineNumberTable StackMapTable ) Signature=(TE;I)V
-	public addElement (Ljava/lang/Object;)V
-		 Code ( LineNumberTable ) Signature=(TE;)V
-	public removeElement (Ljava/lang/Object;)Z
-		 Code ( LineNumberTable StackMapTable )
+	public remove (Ljava/lang/Object;)Z
+		 Code ( LineNumberTable )
+	public removeAll (Ljava/util/Collection;)Z
+		 Code ( LineNumberTable ) Signature=(Ljava/util/Collection<*>;)Z
 	public removeAllElements ()V
 		 Code ( LineNumberTable StackMapTable )
-	public clone ()Ljava/lang/Object;
+	public removeElement (Ljava/lang/Object;)Z
 		 Code ( LineNumberTable StackMapTable )
+	public removeElementAt (I)V
+		 Code ( LineNumberTable StackMapTable )
+	public retainAll (Ljava/util/Collection;)Z
+		 Code ( LineNumberTable ) Signature=(Ljava/util/Collection<*>;)Z
+	public set (ILjava/lang/Object;)Ljava/lang/Object;
+		 Code ( LineNumberTable StackMapTable ) Signature=(ITE;)TE;
+	public setElementAt (Ljava/lang/Object;I)V
+		 Code ( LineNumberTable StackMapTable ) Signature=(TE;I)V
+	public setSize (I)V
+		 Code ( LineNumberTable StackMapTable )
+	public size ()I
+		 Code ( LineNumberTable )
+	public subList (II)Ljava/util/List;
+		 Code ( LineNumberTable ) Signature=(II)Ljava/util/List<TE;>;
 	public toArray ()[Ljava/lang/Object;
 		 Code ( LineNumberTable )
 	public toArray ([Ljava/lang/Object;)[Ljava/lang/Object;
 		 Code ( LineNumberTable StackMapTable ) Signature=<T:Ljava/lang/Object;>([TT;)[TT;
-	elementData (I)Ljava/lang/Object;
-		 Code ( LineNumberTable ) Signature=(I)TE;
-	public get (I)Ljava/lang/Object;
-		 Code ( LineNumberTable StackMapTable ) Signature=(I)TE;
-	public set (ILjava/lang/Object;)Ljava/lang/Object;
-		 Code ( LineNumberTable StackMapTable ) Signature=(ITE;)TE;
-	public add (Ljava/lang/Object;)Z
-		 Code ( LineNumberTable ) Signature=(TE;)Z
-	public remove (Ljava/lang/Object;)Z
-		 Code ( LineNumberTable )
-	public add (ILjava/lang/Object;)V
-		 Code ( LineNumberTable ) Signature=(ITE;)V
-	public remove (I)Ljava/lang/Object;
-		 Code ( LineNumberTable StackMapTable ) Signature=(I)TE;
-	public clear ()V
-		 Code ( LineNumberTable )
-	public containsAll (Ljava/util/Collection;)Z
-		 Code ( LineNumberTable ) Signature=(Ljava/util/Collection<*>;)Z
-	public addAll (Ljava/util/Collection;)Z
-		 Code ( LineNumberTable StackMapTable ) Signature=(Ljava/util/Collection<+TE;>;)Z
-	public removeAll (Ljava/util/Collection;)Z
-		 Code ( LineNumberTable ) Signature=(Ljava/util/Collection<*>;)Z
-	public retainAll (Ljava/util/Collection;)Z
-		 Code ( LineNumberTable ) Signature=(Ljava/util/Collection<*>;)Z
-	public addAll (ILjava/util/Collection;)Z
-		 Code ( LineNumberTable StackMapTable ) Signature=(ILjava/util/Collection<+TE;>;)Z
-	public equals (Ljava/lang/Object;)Z
-		 Code ( LineNumberTable )
-	public hashCode ()I
-		 Code ( LineNumberTable )
 	public toString ()Ljava/lang/String;
 		 Code ( LineNumberTable )
-	public subList (II)Ljava/util/List;
-		 Code ( LineNumberTable ) Signature=(II)Ljava/util/List<TE;>;
-	protected removeRange (II)V
+	public trimToSize ()V
 		 Code ( LineNumberTable StackMapTable )
-	private writeObject (Ljava/io/ObjectOutputStream;)V
-		 Code ( LineNumberTable StackMapTable ) Exceptions
-	public listIterator (I)Ljava/util/ListIterator;
-		 Code ( LineNumberTable StackMapTable ) Signature=(I)Ljava/util/ListIterator<TE;>;
-	public listIterator ()Ljava/util/ListIterator;
-		 Code ( LineNumberTable ) Signature=()Ljava/util/ListIterator<TE;>;
-	public iterator ()Ljava/util/Iterator;
-		 Code ( LineNumberTable ) Signature=()Ljava/util/Iterator<TE;>;
 public java://type/java/util/Vector
 	extends java://type/java/util/AbstractList
 	implements java://type/java/util/List, java://type/java/util/RandomAccess, java://type/java/lang/Cloneable, java://type/java/io/Serializable

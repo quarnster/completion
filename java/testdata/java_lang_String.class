@@ -5,36 +5,50 @@ implements
 	java/lang/Comparable
 	java/lang/CharSequence
 attributes
+	InnerClasses
 	Signature=Ljava/lang/Object;Ljava/io/Serializable;Ljava/lang/Comparable<Ljava/lang/String;>;Ljava/lang/CharSequence;
 	SourceFile=String.java
-	InnerClasses
 Fields
 	private final value [C
 	private hash I
+	private static final HASHING_SEED I
+	private static final serialPersistentFields [Ljava/io/ObjectStreamField;
 	private static final serialVersionUID J
 		 ConstantValue
-	private static final serialPersistentFields [Ljava/io/ObjectStreamField;
+	private transient hash32 I
 	public static final CASE_INSENSITIVE_ORDER Ljava/util/Comparator;
 		 Signature=Ljava/util/Comparator<Ljava/lang/String;>;
-	private static final HASHING_SEED I
-	private transient hash32 I
 Methods
+	<init> (II[C)V
+		 Code ( LineNumberTable ) Deprecated RuntimeVisibleAnnotations
+	<init> ([CZ)V
+		 Code ( LineNumberTable )
+	getChars ([CI)V
+		 Code ( LineNumberTable )
+	hash32 ()I
+		 Code ( LineNumberTable StackMapTable )
+	private indexOfSupplementary (II)I
+		 Code ( LineNumberTable StackMapTable )
+	private lastIndexOfSupplementary (II)I
+		 Code ( LineNumberTable StackMapTable )
+	private static checkBounds ([BII)V
+		 Code ( LineNumberTable StackMapTable )
 	public <init> ()V
 		 Code ( LineNumberTable )
 	public <init> (Ljava/lang/String;)V
 		 Code ( LineNumberTable )
-	public <init> ([C)V
+	public <init> (Ljava/lang/StringBuffer;)V
+		 Code ( LineNumberTable StackMapTable )
+	public <init> (Ljava/lang/StringBuilder;)V
 		 Code ( LineNumberTable )
-	public <init> ([CII)V
-		 Code ( LineNumberTable StackMapTable )
-	public <init> ([III)V
-		 Code ( LineNumberTable StackMapTable )
-	public <init> ([BIII)V
-		 Code ( LineNumberTable StackMapTable ) Deprecated RuntimeVisibleAnnotations
+	public <init> ([B)V
+		 Code ( LineNumberTable )
 	public <init> ([BI)V
 		 Code ( LineNumberTable ) Deprecated RuntimeVisibleAnnotations
-	private static checkBounds ([BII)V
-		 Code ( LineNumberTable StackMapTable )
+	public <init> ([BII)V
+		 Code ( LineNumberTable )
+	public <init> ([BIII)V
+		 Code ( LineNumberTable StackMapTable ) Deprecated RuntimeVisibleAnnotations
 	public <init> ([BIILjava/lang/String;)V
 		 Code ( LineNumberTable StackMapTable ) Exceptions
 	public <init> ([BIILjava/nio/charset/Charset;)V
@@ -43,21 +57,11 @@ Methods
 		 Code ( LineNumberTable ) Exceptions
 	public <init> ([BLjava/nio/charset/Charset;)V
 		 Code ( LineNumberTable )
-	public <init> ([BII)V
+	public <init> ([C)V
 		 Code ( LineNumberTable )
-	public <init> ([B)V
-		 Code ( LineNumberTable )
-	public <init> (Ljava/lang/StringBuffer;)V
+	public <init> ([CII)V
 		 Code ( LineNumberTable StackMapTable )
-	public <init> (Ljava/lang/StringBuilder;)V
-		 Code ( LineNumberTable )
-	<init> ([CZ)V
-		 Code ( LineNumberTable )
-	<init> (II[C)V
-		 Code ( LineNumberTable ) Deprecated RuntimeVisibleAnnotations
-	public length ()I
-		 Code ( LineNumberTable )
-	public isEmpty ()Z
+	public <init> ([III)V
 		 Code ( LineNumberTable StackMapTable )
 	public charAt (I)C
 		 Code ( LineNumberTable StackMapTable )
@@ -67,138 +71,134 @@ Methods
 		 Code ( LineNumberTable StackMapTable )
 	public codePointCount (II)I
 		 Code ( LineNumberTable StackMapTable )
-	public offsetByCodePoints (II)I
+	public compareTo (Ljava/lang/String;)I
 		 Code ( LineNumberTable StackMapTable )
-	getChars ([CI)V
+	public compareToIgnoreCase (Ljava/lang/String;)I
 		 Code ( LineNumberTable )
-	public getChars (II[CI)V
+	public concat (Ljava/lang/String;)Ljava/lang/String;
 		 Code ( LineNumberTable StackMapTable )
+	public contains (Ljava/lang/CharSequence;)Z
+		 Code ( LineNumberTable StackMapTable )
+	public contentEquals (Ljava/lang/CharSequence;)Z
+		 Code ( LineNumberTable StackMapTable )
+	public contentEquals (Ljava/lang/StringBuffer;)Z
+		 Code ( LineNumberTable StackMapTable )
+	public endsWith (Ljava/lang/String;)Z
+		 Code ( LineNumberTable )
+	public equals (Ljava/lang/Object;)Z
+		 Code ( LineNumberTable StackMapTable )
+	public equalsIgnoreCase (Ljava/lang/String;)Z
+		 Code ( LineNumberTable StackMapTable )
+	public getBytes ()[B
+		 Code ( LineNumberTable )
 	public getBytes (II[BI)V
 		 Code ( LineNumberTable StackMapTable ) Deprecated RuntimeVisibleAnnotations
 	public getBytes (Ljava/lang/String;)[B
 		 Code ( LineNumberTable StackMapTable ) Exceptions
 	public getBytes (Ljava/nio/charset/Charset;)[B
 		 Code ( LineNumberTable StackMapTable )
-	public getBytes ()[B
-		 Code ( LineNumberTable )
-	public equals (Ljava/lang/Object;)Z
+	public getChars (II[CI)V
 		 Code ( LineNumberTable StackMapTable )
-	public contentEquals (Ljava/lang/StringBuffer;)Z
-		 Code ( LineNumberTable StackMapTable )
-	public contentEquals (Ljava/lang/CharSequence;)Z
-		 Code ( LineNumberTable StackMapTable )
-	public equalsIgnoreCase (Ljava/lang/String;)Z
-		 Code ( LineNumberTable StackMapTable )
-	public compareTo (Ljava/lang/String;)I
-		 Code ( LineNumberTable StackMapTable )
-	public compareToIgnoreCase (Ljava/lang/String;)I
-		 Code ( LineNumberTable )
-	public regionMatches (ILjava/lang/String;II)Z
-		 Code ( LineNumberTable StackMapTable )
-	public regionMatches (ZILjava/lang/String;II)Z
-		 Code ( LineNumberTable StackMapTable )
-	public startsWith (Ljava/lang/String;I)Z
-		 Code ( LineNumberTable StackMapTable )
-	public startsWith (Ljava/lang/String;)Z
-		 Code ( LineNumberTable )
-	public endsWith (Ljava/lang/String;)Z
-		 Code ( LineNumberTable )
 	public hashCode ()I
 		 Code ( LineNumberTable StackMapTable )
 	public indexOf (I)I
 		 Code ( LineNumberTable )
 	public indexOf (II)I
 		 Code ( LineNumberTable StackMapTable )
-	private indexOfSupplementary (II)I
+	public indexOf (Ljava/lang/String;)I
+		 Code ( LineNumberTable )
+	public indexOf (Ljava/lang/String;I)I
+		 Code ( LineNumberTable )
+	public intern ()Ljava/lang/String;
+	public isEmpty ()Z
 		 Code ( LineNumberTable StackMapTable )
 	public lastIndexOf (I)I
 		 Code ( LineNumberTable )
 	public lastIndexOf (II)I
 		 Code ( LineNumberTable StackMapTable )
-	private lastIndexOfSupplementary (II)I
-		 Code ( LineNumberTable StackMapTable )
-	public indexOf (Ljava/lang/String;)I
-		 Code ( LineNumberTable )
-	public indexOf (Ljava/lang/String;I)I
-		 Code ( LineNumberTable )
-	static indexOf ([CII[CIII)I
-		 Code ( LineNumberTable StackMapTable )
 	public lastIndexOf (Ljava/lang/String;)I
 		 Code ( LineNumberTable )
 	public lastIndexOf (Ljava/lang/String;I)I
 		 Code ( LineNumberTable )
-	static lastIndexOf ([CII[CIII)I
-		 Code ( LineNumberTable StackMapTable )
-	public substring (I)Ljava/lang/String;
-		 Code ( LineNumberTable StackMapTable )
-	public substring (II)Ljava/lang/String;
-		 Code ( LineNumberTable StackMapTable )
-	public subSequence (II)Ljava/lang/CharSequence;
+	public length ()I
 		 Code ( LineNumberTable )
-	public concat (Ljava/lang/String;)Ljava/lang/String;
+	public matches (Ljava/lang/String;)Z
+		 Code ( LineNumberTable )
+	public offsetByCodePoints (II)I
+		 Code ( LineNumberTable StackMapTable )
+	public regionMatches (ILjava/lang/String;II)Z
+		 Code ( LineNumberTable StackMapTable )
+	public regionMatches (ZILjava/lang/String;II)Z
 		 Code ( LineNumberTable StackMapTable )
 	public replace (CC)Ljava/lang/String;
 		 Code ( LineNumberTable StackMapTable )
-	public matches (Ljava/lang/String;)Z
-		 Code ( LineNumberTable )
-	public contains (Ljava/lang/CharSequence;)Z
-		 Code ( LineNumberTable StackMapTable )
-	public replaceFirst (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public replace (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
 		 Code ( LineNumberTable )
 	public replaceAll (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 		 Code ( LineNumberTable )
-	public replace (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+	public replaceFirst (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+		 Code ( LineNumberTable )
+	public split (Ljava/lang/String;)[Ljava/lang/String;
 		 Code ( LineNumberTable )
 	public split (Ljava/lang/String;I)[Ljava/lang/String;
 		 Code ( LineNumberTable StackMapTable )
-	public split (Ljava/lang/String;)[Ljava/lang/String;
+	public startsWith (Ljava/lang/String;)Z
 		 Code ( LineNumberTable )
-	public toLowerCase (Ljava/util/Locale;)Ljava/lang/String;
+	public startsWith (Ljava/lang/String;I)Z
 		 Code ( LineNumberTable StackMapTable )
-	public toLowerCase ()Ljava/lang/String;
+	public static copyValueOf ([C)Ljava/lang/String;
 		 Code ( LineNumberTable )
-	public toUpperCase (Ljava/util/Locale;)Ljava/lang/String;
-		 Code ( LineNumberTable StackMapTable )
-	public toUpperCase ()Ljava/lang/String;
-		 Code ( LineNumberTable )
-	public trim ()Ljava/lang/String;
-		 Code ( LineNumberTable StackMapTable )
-	public toString ()Ljava/lang/String;
-		 Code ( LineNumberTable )
-	public toCharArray ()[C
+	public static copyValueOf ([CII)Ljava/lang/String;
 		 Code ( LineNumberTable )
 	public static transient format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 		 Code ( LineNumberTable )
 	public static transient format (Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 		 Code ( LineNumberTable )
-	public static valueOf (Ljava/lang/Object;)Ljava/lang/String;
-		 Code ( LineNumberTable StackMapTable )
-	public static valueOf ([C)Ljava/lang/String;
-		 Code ( LineNumberTable )
-	public static valueOf ([CII)Ljava/lang/String;
-		 Code ( LineNumberTable )
-	public static copyValueOf ([CII)Ljava/lang/String;
-		 Code ( LineNumberTable )
-	public static copyValueOf ([C)Ljava/lang/String;
-		 Code ( LineNumberTable )
-	public static valueOf (Z)Ljava/lang/String;
-		 Code ( LineNumberTable StackMapTable )
 	public static valueOf (C)Ljava/lang/String;
+		 Code ( LineNumberTable )
+	public static valueOf (D)Ljava/lang/String;
+		 Code ( LineNumberTable )
+	public static valueOf (F)Ljava/lang/String;
 		 Code ( LineNumberTable )
 	public static valueOf (I)Ljava/lang/String;
 		 Code ( LineNumberTable )
 	public static valueOf (J)Ljava/lang/String;
 		 Code ( LineNumberTable )
-	public static valueOf (F)Ljava/lang/String;
+	public static valueOf (Ljava/lang/Object;)Ljava/lang/String;
+		 Code ( LineNumberTable StackMapTable )
+	public static valueOf (Z)Ljava/lang/String;
+		 Code ( LineNumberTable StackMapTable )
+	public static valueOf ([C)Ljava/lang/String;
 		 Code ( LineNumberTable )
-	public static valueOf (D)Ljava/lang/String;
+	public static valueOf ([CII)Ljava/lang/String;
 		 Code ( LineNumberTable )
-	public intern ()Ljava/lang/String;
-	hash32 ()I
+	public subSequence (II)Ljava/lang/CharSequence;
+		 Code ( LineNumberTable )
+	public substring (I)Ljava/lang/String;
+		 Code ( LineNumberTable StackMapTable )
+	public substring (II)Ljava/lang/String;
+		 Code ( LineNumberTable StackMapTable )
+	public toCharArray ()[C
+		 Code ( LineNumberTable )
+	public toLowerCase ()Ljava/lang/String;
+		 Code ( LineNumberTable )
+	public toLowerCase (Ljava/util/Locale;)Ljava/lang/String;
+		 Code ( LineNumberTable StackMapTable )
+	public toString ()Ljava/lang/String;
+		 Code ( LineNumberTable )
+	public toUpperCase ()Ljava/lang/String;
+		 Code ( LineNumberTable )
+	public toUpperCase (Ljava/util/Locale;)Ljava/lang/String;
+		 Code ( LineNumberTable StackMapTable )
+	public trim ()Ljava/lang/String;
 		 Code ( LineNumberTable StackMapTable )
 	public volatile synthetic compareTo (Ljava/lang/Object;)I
 		 Code ( LineNumberTable )
 	static <clinit> ()V
+		 Code ( LineNumberTable StackMapTable )
+	static indexOf ([CII[CIII)I
+		 Code ( LineNumberTable StackMapTable )
+	static lastIndexOf ([CII[CIII)I
 		 Code ( LineNumberTable StackMapTable )
 public final java://type/java/lang/String
 	extends java://type/java/lang/Object
