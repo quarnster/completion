@@ -9,30 +9,77 @@ import sublime
 import sublime_plugin
 import subprocess
 import threading
+import os
+import os.path
+import signal
 
 def log(a):
     settings = sublime.load_settings("completion.sublime-settings")
     if settings.get("debug", False):
         print(a)
 
-proxy = jsonrpc.ServerProxy(jsonrpc.JsonRpc10(), jsonrpc.TransportTcpIp(addr=("127.0.0.1", 12345), logfunc=log, timeout=2.0))
+def make_transport():
+    settings = sublime.load_settings("completion.sublime-settings")
+    proto = settings.get("proto", "unix")
+    tp = jsonrpc.TransportUnixSocket
+    port = settings.get("port", os.path.join(sublime.packages_path(), "User", "completion.rpc"))
+
+    if proto == "tcp":
+        tp = jsonrpc.TransportTcpIp
+    elif proto == "unix":
+        if not os.path.exists(port):
+            start_daemon()
+    return tp(addr=port, logfunc=log, timeout=2.0)
+
+def make_proxy():
+    global proxy
+    proxy = jsonrpc.ServerProxy(jsonrpc.JsonRpc10(),make_transport())
+
+proxy = None
 language_regex = re.compile("(?<=source\.)[\w+#]+")
 daemon = None
+last_launch = None
 
-def pipe_reader(pipe):
+def pipe_reader(name, pipe, output=False):
     global daemon
     while True and daemon != None:
         try:
             line = pipe.readline()
             if len(line) == 0:
                 break
+            if output:
+                log("%s: %s" % (name, line))
         except:
             traceback.print_exc()
+            break
     daemon = None
+
+def start_daemon(daemon_command=None):
+    global daemon
+    global last_launch
+    if daemon_command == None:
+        settings = sublime.load_settings("completion.sublime-settings")
+        daemon_command = settings.get("daemon_command")
+
+    now = time.time()
+    output = False
+    if last_launch != None and (now - last_launch) < 5:
+        # Last tried to launch 5 seconds ago, enable debug output in the
+        # pipe threads
+        output = True
+    last_launch = now
+    daemon = subprocess.Popen(daemon_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    t = threading.Thread(target=pipe_reader, args=("stdout", daemon.stdout,output,))
+    t.start()
+    t = threading.Thread(target=pipe_reader, args=("stderr", daemon.stderr,output,))
+    t.start()
+
 
 def plugin_unloaded():
     global daemon
     if daemon != None:
+        daemon.send_signal(signal.SIGINT)
+        time.sleep(2)
         daemon.kill()
         daemon = None
 
@@ -48,13 +95,8 @@ def do_query(context, callback, driver, args, launch_daemon, daemon_command, deb
             print(e.error_data)
             return
         except jsonrpc.RPCTransportError as e2:
-            global daemon
             if daemon == None and launch_daemon:
-                daemon = subprocess.Popen(daemon_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                t = threading.Thread(target=pipe_reader, args=(daemon.stdout,))
-                t.start()
-                t = threading.Thread(target=pipe_reader, args=(daemon.stderr,))
-                t.start()
+                start_daemon(daemon_command)
             else:
                 return
 
@@ -114,6 +156,8 @@ def get_language(view, caret):
     return language.group(0)
 
 def prepare_request(view, prefix, locations, settings):
+    if proxy == None:
+        make_proxy()
     s = time.time()
     row, col = view.rowcol(locations[0])
 

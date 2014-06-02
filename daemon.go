@@ -11,12 +11,15 @@ import (
 	"net"
 	"net/rpc"
 	"net/rpc/jsonrpc"
+	"os"
+	"os/signal"
 	"runtime/debug"
 	"time"
 )
 
 var (
-	port = ":12345"
+	port  = "/tmp/completion.rpc"
+	proto = "unix"
 )
 
 func init() {
@@ -27,6 +30,7 @@ func init() {
 
 func daemonFlagInit(fs *flag.FlagSet) {
 	fs.StringVar(&port, "port", port, "TCP port the server will listen on")
+	fs.StringVar(&proto, "proto", proto, "Network protocol type (tcp, udp, unix, see http://golang.org/pkg/net/)")
 }
 
 type Daemon struct {
@@ -49,7 +53,7 @@ func (d *Daemon) init() error {
 		}
 	}
 	var err error
-	d.l, err = net.Listen("tcp", port)
+	d.l, err = net.Listen(proto, port)
 	if err != nil {
 		return err
 	}
@@ -68,38 +72,59 @@ func runRpcDaemon() error {
 	if err = d.init(); err != nil {
 		return err
 	}
+	defer d.close()
 
 	return d.serverloop()
 }
 
+func (d *Daemon) handleConn(conn net.Conn) {
+	s := time.Now()
+	conn.SetDeadline(time.Time{})
+	codec := jsonrpc.NewServerCodec(conn)
+	defer func() {
+		codec.Close()
+		if r := recover(); r != nil {
+			log4go.Error("Recovered from panic: %v, stack: %s", r, string(debug.Stack()))
+		}
+		log4go.Debug("Serviced in %f milliseconds", time.Since(s).Seconds()*1000)
+	}()
+	for {
+		if err := d.server.ServeRequest(codec); err != nil {
+			log4go.Error("Error handling request: %v", err)
+			break
+		}
+	}
+}
+
 func (d *Daemon) serverloop() error {
 	errorcount := 0
+	sigchan := make(chan os.Signal)
+	conchan := make(chan net.Conn)
+	errchan := make(chan error)
+	signal.Notify(sigchan, os.Interrupt, os.Kill)
+	go func() {
+		for {
+			if conn, err := d.l.Accept(); err != nil {
+				errchan <- log4go.Error("Error accepting connection: %s", err)
+			} else {
+				conchan <- conn
+			}
+		}
+	}()
+outer:
 	for {
-		if conn, err := d.l.Accept(); err != nil {
+		select {
+		case s := <-sigchan:
+			log4go.Debug("Exiting due to signal: %s", s)
+			break outer
+		case conn := <-conchan:
+			go d.handleConn(conn)
+		case <-errchan:
 			errorcount++
-			log4go.Error("Error accepting connection: %s", err)
 			if errorcount > 10 {
 				return log4go.Error("Too many errors, shutting server down")
 			}
-		} else {
-			go func() {
-				s := time.Now()
-				conn.SetDeadline(time.Time{})
-				codec := jsonrpc.NewServerCodec(conn)
-				defer func() {
-					codec.Close()
-					if r := recover(); r != nil {
-						log4go.Error("Recovered from panic: %v, stack: %s", r, string(debug.Stack()))
-					}
-					log4go.Debug("Serviced in %f milliseconds", time.Since(s).Seconds()*1000)
-				}()
-				for {
-					if err := d.server.ServeRequest(codec); err != nil {
-						log4go.Error("Error handling request: %v", err)
-						break
-					}
-				}
-			}()
 		}
 	}
+	return nil
 }

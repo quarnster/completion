@@ -1,13 +1,13 @@
 package sublime
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/quarnster/completion/editor"
 	"os"
 	"os/user"
 	"path/filepath"
 	"runtime"
-	"encoding/json"
 )
 
 var verbose = true
@@ -18,7 +18,8 @@ func init() {
 
 type Sublime struct{}
 
-func (s *Sublime) writeDefaultConfig(p string) error {
+func (s *Sublime) writeDefaultConfig(user, p string) error {
+	rpc := filepath.Join(user, "completion.rpc")
 	f, err := os.Create(filepath.Join(p, "completion.sublime-settings"))
 	if err != nil {
 		return err
@@ -38,10 +39,12 @@ func (s *Sublime) writeDefaultConfig(p string) error {
 	bin_ := string(bin_bytes[:])
 
 	f.WriteString(fmt.Sprintf(`{
-		"daemon_command": [%s, "daemon"],
-		"launch_daemon": true
+		"daemon_command": [%s, "daemon", "-proto=unix", "-port=%s"],
+		"launch_daemon": true,
+		"proto": "unix",
+		"port": "%s"
 }
-`, bin_))
+`, bin_, rpc, rpc))
 	return nil
 }
 
@@ -77,13 +80,14 @@ func (s *Sublime) Install() error {
 			continue
 		}
 		p := filepath.Join(st_paths[i], "completion")
+		u := filepath.Join(st_paths[i], "User")
 		os.Mkdir(p, 0755)
 		for _, f := range files {
 			if err := editor.Copy(f, filepath.Join(p, filepath.Base(f))); err != nil {
 				return err
 			}
 		}
-		if err := s.writeDefaultConfig(p); err != nil {
+		if err := s.writeDefaultConfig(u, p); err != nil {
 			return err
 		}
 	}

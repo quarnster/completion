@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/java"
 	"github.com/quarnster/completion/net"
@@ -19,7 +18,7 @@ func TestRpc(t *testing.T) {
 	}
 	go d.serverloop()
 	defer d.close()
-	if c, err := jsonrpc.Dial("tcp", fmt.Sprintf("127.0.0.1%s", port)); err != nil {
+	if c, err := jsonrpc.Dial(proto, port); err != nil {
 		t.Error(err)
 	} else {
 		defer c.Close()
@@ -64,7 +63,7 @@ func TestRpcInvalid(t *testing.T) {
 	go d.serverloop()
 	defer d.close()
 
-	if c, err := jsonrpc.Dial("tcp", fmt.Sprintf("127.0.0.1%s", port)); err != nil {
+	if c, err := jsonrpc.Dial(proto, port); err != nil {
 		t.Error(err)
 	} else {
 		defer c.Close()
@@ -111,7 +110,7 @@ func BenchmarkRpc(b *testing.B) {
 	go d.serverloop()
 	defer d.close()
 
-	if c, err := jsonrpc.Dial("tcp", fmt.Sprintf("127.0.0.1%s", port)); err != nil {
+	if c, err := jsonrpc.Dial(proto, port); err != nil {
 		b.Error(err)
 	} else {
 		defer c.Close()
