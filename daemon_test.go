@@ -67,6 +67,7 @@ func TestRpc(t *testing.T) {
 		for _, test := range tests {
 			if err := test.skip(); err != nil {
 				t.Logf("skipping: %v", err)
+				continue
 			}
 			var a content.CompleteArgs
 			var cmp1, cmp2 content.CompletionResult
