@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/quarnster/util/encoding/binary"
 	"io"
+	"sort"
 	"strings"
 )
 
@@ -229,6 +230,7 @@ func (a *attribute_info) String(c *ConstantPool) (ret string) {
 			for i, a2 := range cl.Attributes {
 				attrs[i] = c.Lut(a2.Attribute_name_index).String()
 			}
+			sort.Strings(attrs)
 			ret += strings.Join(attrs, " ")
 		}
 		ret += " )"

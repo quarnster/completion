@@ -1,17 +1,31 @@
 package main
 
 import (
+	"code.google.com/p/log4go"
 	"encoding/json"
+	"fmt"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/java"
 	"github.com/quarnster/completion/net"
 	"net/rpc/jsonrpc"
 	"reflect"
+	"strings"
 	"testing"
-	"time"
 )
 
+type testlogger struct {
+	t *testing.T
+}
+
+func (t *testlogger) LogWrite(rec *log4go.LogRecord) {
+	t.t.Log(strings.TrimSpace(log4go.FormatLogRecord(log4go.FORMAT_DEFAULT, rec)))
+}
+func (t *testlogger) Close() {
+}
+
 func TestRpc(t *testing.T) {
+	log4go.Global.Close()
+	log4go.Global.AddFilter("test", log4go.FINEST, &testlogger{t})
 	var d Daemon
 	if err := d.init(); err != nil {
 		t.Fatal(err)
@@ -23,22 +37,36 @@ func TestRpc(t *testing.T) {
 	} else {
 		defer c.Close()
 		tests := []struct {
+			skip     func() error
 			complete content.Complete
 			rpcname  string
 			abs      string
 		}{
 			{
+				func() error {
+					_, e := java.DefaultClasspath()
+					return e
+				},
 				&java.Java{},
 				"Java.Complete",
 				"java://type/java/util/jar/JarEntry",
 			},
 			{
+				func() error {
+					if len(net.DefaultPaths()) == 0 {
+						return fmt.Errorf("net paths are empty...")
+					}
+					return nil
+				},
 				&net.Net{},
 				"Net.Complete",
 				"net://type/System.String",
 			},
 		}
 		for _, test := range tests {
+			if err := test.skip(); err != nil {
+				t.Logf("skipping: %v", err)
+			}
 			var a content.CompleteArgs
 			var cmp1, cmp2 content.CompletionResult
 			a.Location.Absolute = test.abs
@@ -56,6 +84,9 @@ func TestRpc(t *testing.T) {
 }
 
 func TestRpcInvalid(t *testing.T) {
+	log4go.Global.Close()
+	log4go.Global.AddFilter("test", log4go.FINEST, &testlogger{t})
+
 	var d Daemon
 	if err := d.init(); err != nil {
 		t.Fatal(err)
@@ -85,6 +116,8 @@ func TestRpcInvalid(t *testing.T) {
 			t.Log("calling", test.rpcname)
 			if err := c.Call(test.rpcname, &a, &cmp2); err == nil {
 				t.Error("Expected an error, but didn't receive one")
+			} else {
+				t.Logf("As expected got an error: %s", err)
 			}
 		}
 	}

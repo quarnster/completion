@@ -34,11 +34,13 @@ func daemonFlagInit(fs *flag.FlagSet) {
 }
 
 type Daemon struct {
+	quit   bool
 	l      net.Listener
 	server *rpc.Server
 }
 
 func (d *Daemon) init() error {
+	d.quit = false
 	ifs := []interface{}{
 		&content.Session{},
 		&clang.Clang{},
@@ -61,6 +63,7 @@ func (d *Daemon) init() error {
 }
 
 func (d *Daemon) close() error {
+	d.quit = true
 	return d.l.Close()
 }
 
@@ -105,6 +108,9 @@ func (d *Daemon) serverloop() error {
 	go func() {
 		for {
 			if conn, err := d.l.Accept(); err != nil {
+				if d.quit {
+					return
+				}
 				errchan <- log4go.Error("Error accepting connection: %s", err)
 			} else {
 				conchan <- conn
@@ -116,6 +122,7 @@ outer:
 		select {
 		case s := <-sigchan:
 			log4go.Debug("Exiting due to signal: %s", s)
+			d.quit = true
 			break outer
 		case conn := <-conchan:
 			go d.handleConn(conn)
