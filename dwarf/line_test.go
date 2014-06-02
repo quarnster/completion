@@ -1,3 +1,5 @@
+//+build all_tests
+
 package dwarf
 
 import (
