@@ -15,6 +15,11 @@ func init() {
 	log4go.AddFilter("test", log4go.DEBUG, log4go.NewConsoleLogWriter())
 }
 func TestNet(t *testing.T) {
+	paths := DefaultPaths()
+	if len(paths) == 0 {
+		t.Skip("Neither mono nor Windows .NET Framework paths were possible to get")
+	}
+
 	var (
 		n    Net
 		args content.CompleteAtArgs

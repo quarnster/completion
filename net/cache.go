@@ -67,7 +67,7 @@ func (c *Cache) loaderthread() {
 				loaded = true
 				if req.reload {
 					if err := c.reload(&c.entries[i]); err != nil {
-						log4go.Warn("Error reloading assembly:", err)
+						log4go.Warn("Error reloading assembly \"%s\": %s", c.entries[i].name, err)
 					}
 				}
 				break

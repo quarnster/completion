@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/quarnster/util/encoding/binary"
 	"io"
+	"strings"
 )
 
 /*
@@ -218,15 +219,17 @@ func (a *attribute_info) String(c *ConstantPool) (ret string) {
 			ret += c.Lut(u2(i16)).String()
 		}
 	case "Code":
-		ret += " ("
+		ret += " ( "
 		var cl Code_attribute
 		br := binary.BinaryReader{bytes.NewReader(a.Info), binary.BigEndian}
 		if err := br.ReadInterface(&cl); err != nil {
 			ret += err.Error()
 		} else {
-			for _, a2 := range cl.Attributes {
-				ret += fmt.Sprintf(" %s", c.Lut(a2.Attribute_name_index))
+			attrs := make([]string, len(cl.Attributes))
+			for i, a2 := range cl.Attributes {
+				attrs[i] = c.Lut(a2.Attribute_name_index).String()
 			}
+			ret += strings.Join(attrs, " ")
 		}
 		ret += " )"
 	}
