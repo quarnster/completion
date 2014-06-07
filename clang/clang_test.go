@@ -15,7 +15,7 @@ import (
 var skip = false
 
 func TestClang(t *testing.T) {
-	if _, err := RunClang("-v"); err != nil {
+	if _, err := RunClang("", "-v"); err != nil {
 		skip = true
 		t.Skipf("Couldn't launch clang: %s", err)
 	}
