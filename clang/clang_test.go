@@ -10,15 +10,34 @@ import (
 	"strings"
 	"testing"
 	"time"
+	"regexp"
+	"strconv"
 )
 
 var skip = false
 
 func TestClang(t *testing.T) {
-	if _, err := RunClang("", "-v"); err != nil {
+	out, err := RunClang("", "--version");
+	if err != nil {
 		skip = true
 		t.Skipf("Couldn't launch clang: %s", err)
 	}
+
+	r := regexp.MustCompile(`clang version (\d{1,9})\.(\d{1,9})`)
+	if !r.MatchString(string(out)) {
+		skip = true
+		t.Skipf("Couldn't parse clang version")
+	}
+
+	matches := r.FindStringSubmatch(string(out))
+	major, _ := strconv.ParseInt(matches[1], 10, 32)
+	minor, _ := strconv.ParseInt(matches[2], 10, 32)
+
+	if major < 3 || (major == 3 && minor < 4) {
+		skip = true
+		t.Skipf("Clang version > 3.4 required")
+	}
+
 	var (
 		a content.CompleteAtArgs
 		b content.CompletionResult
