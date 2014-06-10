@@ -57,6 +57,7 @@ def pipe_reader(name, pipe, output=False):
 def start_daemon(daemon_command=None):
     global daemon
     global last_launch
+    log("Starting deamon")
     if daemon_command == None:
         settings = sublime.load_settings("completion.sublime-settings")
         daemon_command = settings.get("daemon_command")
@@ -90,6 +91,7 @@ def do_query(context, callback, driver, args, launch_daemon, daemon_command, deb
         s = time.time()
         try:
             response = driver.CompleteAt(args)
+            log("Got response from driver")
             break
         except jsonrpc.RPCFault as e:
             print(e.error_data)
@@ -190,6 +192,7 @@ def prepare_request(view, prefix, locations, settings):
             "compiler_flags": view.settings().get("sublimeclang_options", []),
             "net_paths":view.settings().get("net_paths", []),
             "net_assemblies":view.settings().get("net_assemblies", []),
+            "clang_language": lang   # TODO: clang needs -x argument, i couldn't figure out how to do it more pretty
         }
     }
     if view.is_dirty():

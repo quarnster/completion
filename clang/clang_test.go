@@ -28,6 +28,7 @@ func TestClang(t *testing.T) {
 	a.Location.Column = 1
 	a.Location.Line = 4
 	a.Location.File.Name = "testdata/hello.cpp"
+	a.SessionOverrides.Set("clang_language", "c++")
 	if err := c.CompleteAt(&a, &b); err != nil {
 		t.Error(err)
 	} else {
@@ -62,7 +63,8 @@ void main() {
 `
 	a.Location.Line = 11
 	a.Location.Column = 4
-	a.SessionOverrides.Set("compiler_flags", []string{"-x", "c++", "-fno-exceptions"})
+	a.SessionOverrides.Set("compiler_flags", []string{"-fno-exceptions"})
+	a.SessionOverrides.Set("clang_language", "c++")
 	if err := c.CompleteAt(&a, &b); err != nil {
 		t.Error(err)
 	}
@@ -81,6 +83,9 @@ void main() {
 			t.Errorf("Couldn't write test data to %s: %s", fn, err)
 		}
 	} else if d := util.Diff(expected, res); len(d) != 0 {
+		fmt.Print("res:")
+		fmt.Print(res)
+		fmt.Print("\n")
 		t.Error(d)
 	}
 
@@ -180,6 +185,7 @@ func TestGetDefinition(t *testing.T) {
 	a.Location.Column = 2
 	a.Location.Line = 4
 	a.Location.File.Name = "testdata/hello.cpp"
+	a.SessionOverrides.Set("clang_language", "c++")
 	if err := c.GetDefinition(&a, &b); err != nil {
 		t.Error(err)
 	} else if b.File.Name == "" || b.Line == 0 || b.Column == 0 {
@@ -187,4 +193,15 @@ func TestGetDefinition(t *testing.T) {
 	} else {
 		t.Log(b)
 	}
+}
+
+func TestIdentificatorBegin(t *testing.T) {
+	if getIdentificatorBegin(" ~asd", 3) != 2 { t.Error("failed example 1") }
+	if getIdentificatorBegin("   ~   asd", 8) != 7 { t.Error("failed example 2") }
+	if getIdentificatorBegin(" a:: ~ asd", 8) != 5 { t.Error("failed example 3") }
+	if getIdentificatorBegin(" a ->~as", 7) != 5 { t.Error("failed example 4") }
+	if getIdentificatorBegin("a. ~s", 4) != 3 { t.Error("failed example 5") }
+	if getIdentificatorBegin(" asdasd", 5) != 1 { t.Error("failed example 6") }
+	if getIdentificatorBegin(".", 1) != 1 { t.Error("failed example 7") }
+	if getIdentificatorBegin("a", 1) != 0 { t.Error("failed example 8") }
 }

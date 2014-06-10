@@ -73,6 +73,7 @@ func runRpcDaemon() error {
 		err error
 	)
 	if err = d.init(); err != nil {
+		log4go.Error(err)
 		return err
 	}
 	defer d.close()

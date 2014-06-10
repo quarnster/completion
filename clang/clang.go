@@ -12,10 +12,14 @@ import (
 	"reflect"
 	"regexp"
 	"strconv"
+	"strings"
 )
 
 func init() {
 	if err := content.RegisterType("compiler_flags", reflect.TypeOf([]string{})); err != nil {
+		panic(err)
+	}
+	if err := content.RegisterType("clang_language", reflect.TypeOf("")); err != nil {
 		panic(err)
 	}
 }
@@ -114,17 +118,66 @@ type Clang struct {
 
 func (c *Clang) prepare(a *content.CompleteAtArgs) (fn string, args []string, err error) {
 	origargs, _ := a.Settings().Get("compiler_flags").([]string)
-	args = make([]string, len(origargs))
+	args = make([]string, len(origargs) + 1)
 	for i := range origargs {
 		args[i] = expand_path.ExpandPath(origargs[i])
 	}
 	fn = a.Location.File.Name
 	if a.Location.File.Contents != "" {
-		// File is unsaved, so use stdin as the filename
 		fn = "-"
 	}
 
+	args[len(args)-1] = "-x" + a.Settings().Get("clang_language").(string)
+
 	return fn, args, nil
+}
+
+func getIdentificatorBegin(line string, col int) int {
+	if len(line) == 0 {
+		return col
+	}
+
+	isIdChar := func (char byte) bool {
+		res, _ := regexp.Match(`[a-zA-Z0-9_]`, []byte{char})
+		return res
+	}
+
+	changed := false
+	if col >= len(line) {
+		col -= 1
+		changed = true
+	}
+	for col > 0 && isIdChar(line[col]) {
+		col -= 1
+		changed = true
+	}
+	if !isIdChar(line[col]) && changed {
+		col += 1;
+	}
+
+	if res, _ := regexp.MatchString(`^.*[a-zA-Z0-9_]\s*(::|->|\.)\s*~\s*$`, line[0:col]); res {
+		col = regexp.MustCompile(`~\s*$`).FindStringIndex(line[0:col])[0]
+	}
+
+	return col
+}
+
+func (c *Clang) fixColumnNumber(a *content.CompleteAtArgs) error {
+	fileContent := a.Location.File.Contents
+
+	if fileContent == "" {
+		dat, err := ioutil.ReadFile(a.Location.File.Name)
+		if err != nil {
+			return err
+		}
+		fileContent = string(dat)
+	}
+
+	file := strings.Split(fileContent, "\n")
+
+	a.Location.Column = uint(getIdentificatorBegin(file[a.Location.Line-1], int(a.Location.Column)-1)+1)
+
+	return nil
 }
 
 func (c *Clang) GetDefinition(a *content.GetDefinitionArgs, ret *content.SourceLocation) error {
@@ -158,6 +211,13 @@ func (c *Clang) CompleteAt(a *content.CompleteAtArgs, ret *content.CompletionRes
 	fn, args, err := c.prepare(a)
 	if err != nil {
 		return err
+	}
+
+	// the clang completeat have a requirement that column
+	// must math first letter of name we are trying to complete
+	// http://clang.llvm.org/doxygen/group__CINDEX__CODE__COMPLET.html#ga50fedfa85d8d1517363952f2e10aa3bf
+	if err := c.fixColumnNumber(a); err != nil {
+		return err;
 	}
 
 	args = append([]string{"-fsyntax-only", "-Xclang", fmt.Sprintf("-code-completion-at=%s:%d:%d", fn, a.Location.Line, a.Location.Column)}, args...)
