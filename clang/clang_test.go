@@ -36,6 +36,39 @@ func TestClang(t *testing.T) {
 	}
 }
 
+func TestClangCompleteatNotIdentifierBegin(t *testing.T) {
+	if skip {
+		t.Skipf("Clang not installed, skipping")
+	}
+	var (
+		a content.CompleteAtArgs
+		b content.CompletionResult
+		c Clang
+	)
+
+	a.Location.Column = 10
+	a.Location.Line = 5
+	a.Location.File.Name = "testdata/set.cpp"
+	a.SessionOverrides.Set("clang_language", "c++")
+	if err := c.CompleteAt(&a, &b); err != nil {
+		t.Error(err)
+	} else {
+		contain_clear := false
+		contain_printf := false
+		for _, method := range b.Methods {
+			if method.Name.Relative == "clear" {
+				contain_clear = true
+			}
+			if method.Name.Relative == "printf" {
+				contain_printf = true
+			}
+		}
+		if !contain_clear || contain_printf {
+			t.Error("Completion result contains incorrect data")
+		}
+	}
+}
+
 func TestClangUnsaved(t *testing.T) {
 	if skip {
 		t.Skipf("Clang not installed, skipping")
@@ -88,7 +121,6 @@ void main() {
 		fmt.Print("\n")
 		t.Error(d)
 	}
-
 }
 
 func TestParseResult(t *testing.T) {
