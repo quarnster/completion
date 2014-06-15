@@ -162,6 +162,7 @@ def prepare_request(view, prefix, locations, settings):
         make_proxy()
     s = time.time()
     row, col = view.rowcol(locations[0])
+    col -= len(prefix)
 
     # TODO: detecting which "driver" is to be used should at some point be possible (but not required) to delegate to the server
     drivers = {

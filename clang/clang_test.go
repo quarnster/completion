@@ -36,39 +36,6 @@ func TestClang(t *testing.T) {
 	}
 }
 
-func TestClangCompleteatNotIdentifierBegin(t *testing.T) {
-	if skip {
-		t.Skipf("Clang not installed, skipping")
-	}
-	var (
-		a content.CompleteAtArgs
-		b content.CompletionResult
-		c Clang
-	)
-
-	a.Location.Column = 10
-	a.Location.Line = 5
-	a.Location.File.Name = "testdata/set.cpp"
-	a.SessionOverrides.Set("clang_language", "c++")
-	if err := c.CompleteAt(&a, &b); err != nil {
-		t.Error(err)
-	} else {
-		contain_clear := false
-		contain_printf := false
-		for _, method := range b.Methods {
-			if method.Name.Relative == "clear" {
-				contain_clear = true
-			}
-			if method.Name.Relative == "printf" {
-				contain_printf = true
-			}
-		}
-		if !contain_clear || contain_printf {
-			t.Error("Completion result contains incorrect data")
-		}
-	}
-}
-
 func TestClangUnsaved(t *testing.T) {
 	if skip {
 		t.Skipf("Clang not installed, skipping")
@@ -116,9 +83,6 @@ void main() {
 			t.Errorf("Couldn't write test data to %s: %s", fn, err)
 		}
 	} else if d := util.Diff(expected, res); len(d) != 0 {
-		fmt.Print("res:")
-		fmt.Print(res)
-		fmt.Print("\n")
 		t.Error(d)
 	}
 }
@@ -225,15 +189,4 @@ func TestGetDefinition(t *testing.T) {
 	} else {
 		t.Log(b)
 	}
-}
-
-func TestIdentificatorBegin(t *testing.T) {
-	if getIdentificatorBegin(" ~asd", 3) != 2 { t.Error("failed example 1") }
-	if getIdentificatorBegin("   ~   asd", 8) != 7 { t.Error("failed example 2") }
-	if getIdentificatorBegin(" a:: ~ asd", 8) != 5 { t.Error("failed example 3") }
-	if getIdentificatorBegin(" a ->~as", 7) != 5 { t.Error("failed example 4") }
-	if getIdentificatorBegin("a. ~s", 4) != 3 { t.Error("failed example 5") }
-	if getIdentificatorBegin(" asdasd", 5) != 1 { t.Error("failed example 6") }
-	if getIdentificatorBegin(".", 1) != 1 { t.Error("failed example 7") }
-	if getIdentificatorBegin("a", 1) != 0 { t.Error("failed example 8") }
 }
