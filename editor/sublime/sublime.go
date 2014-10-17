@@ -39,7 +39,7 @@ func (s *Sublime) writeDefaultConfig(user, p string) error {
 	bin_ := string(bin_bytes[:])
 
 	f.WriteString(fmt.Sprintf(`{
-		"daemon_command": [%s, "daemon", "-proto=unix", "-port=%s"],
+		"daemon_command": [%s, "daemon", "-proto=unix", "-port=%s", "-remove=true"],
 		"launch_daemon": true,
 		"proto": "unix",
 		"port": "%s"

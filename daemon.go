@@ -18,8 +18,9 @@ import (
 )
 
 var (
-	port  = "/tmp/completion.rpc"
-	proto = "unix"
+	port   = "/tmp/completion.rpc"
+	proto  = "unix"
+	rmFile = false
 )
 
 func init() {
@@ -31,6 +32,7 @@ func init() {
 func daemonFlagInit(fs *flag.FlagSet) {
 	fs.StringVar(&port, "port", port, "TCP port the server will listen on")
 	fs.StringVar(&proto, "proto", proto, "Network protocol type (tcp, udp, unix, see http://golang.org/pkg/net/)")
+	fs.BoolVar(&rmFile, "remove", rmFile, "Remove unix socket file if it already exists (when using unix protocol)")
 }
 
 type Daemon struct {
@@ -53,6 +55,9 @@ func (d *Daemon) init() error {
 		if err := d.server.Register(i); err != nil {
 			return err
 		}
+	}
+	if proto == "unix" && rmFile {
+		os.Remove(port)
 	}
 	var err error
 	d.l, err = net.Listen(proto, port)
