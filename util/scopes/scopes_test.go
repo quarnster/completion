@@ -1,9 +1,9 @@
 package scopes
 
 import (
+	"github.com/limetext/text"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/completion/util"
-	"github.com/quarnster/util/text"
 	"io/ioutil"
 	"path/filepath"
 	"reflect"

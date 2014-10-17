@@ -2,9 +2,9 @@ package scopes
 
 import (
 	"bytes"
+	"github.com/limetext/text"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/parser"
-	"github.com/quarnster/util/text"
 )
 
 // Returns the RegionSet visible from the given source code location.
