@@ -5,11 +5,12 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"github.com/quarnster/util/encoding/binary"
 	"io"
 	"reflect"
 	"sort"
 	"strings"
+
+	"github.com/quarnster/util/encoding/binary"
 )
 
 /*

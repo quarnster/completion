@@ -1,5 +1,4 @@
-// This file was generated with the following command:
-// ["/Users/quarnster/code/go/bin/pegparser", "-peg=../util/simplify/simplify.peg", "-notest", "-ignore=NewLine,EOF,Spacing,End,Impl,Contents,Simplified", "-testfile=", "-outpath", "../util/simplify/", "-generator=go"]
+//go:generate "/home/pwaller/.local/bin/pegparser" "-peg=../util/simplify/simplify.peg" "-notest" "-ignore=NewLine,EOF,Spacing,End,Impl,Contents,Simplified" "-testfile=" "-outpath" "../util/simplify/" "-generator=go"
 
 package simplify
 

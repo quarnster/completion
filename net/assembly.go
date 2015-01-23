@@ -7,12 +7,13 @@ package net
 // http://www.ecma-international.org/publications/standards/Ecma-335.htm
 
 import (
-	"code.google.com/p/log4go"
 	"errors"
 	"fmt"
+	"io"
+
+	"code.google.com/p/log4go"
 	"github.com/quarnster/completion/content"
 	"github.com/quarnster/util/encoding/binary"
-	"io"
 )
 
 var (
