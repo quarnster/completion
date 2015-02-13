@@ -72,7 +72,7 @@ func TestLoadAssembly(t *testing.T) {
 						t.Error(err)
 						continue
 					}
-					if err := asm.Create(&binary.BinaryReader{bytes.NewReader(data), binary.LittleEndian}, row); err != nil {
+					if err := asm.Create(&binary.BinaryReader{Reader: bytes.NewReader(data), Endianess: binary.LittleEndian}, row); err != nil {
 						t.Error(err)
 					} else {
 						res += fmt.Sprintf("\t%+v\n", row)
