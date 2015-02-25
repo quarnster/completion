@@ -80,7 +80,7 @@ func (a *Assembly) Complete(t *content.Type) (*content.CompletionResult, error) 
 func LoadAssembly(r io.ReadSeeker) (*Assembly, error) {
 
 	var (
-		br        = binary.BinaryReader{r, binary.LittleEndian}
+		br        = binary.BinaryReader{Reader: r, Endianess: binary.LittleEndian}
 		err       error
 		pe_offset uint32
 		coff      coff_file_header

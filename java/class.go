@@ -217,7 +217,7 @@ func (a *attribute_info) String(c *ConstantPool) (ret string) {
 	switch n := c.Lut(a.Attribute_name_index).String(); n {
 	case "Signature", "SourceFile":
 		ret += "="
-		br := binary.BinaryReader{bytes.NewReader(a.Info), binary.BigEndian}
+		br := binary.BinaryReader{Reader: bytes.NewReader(a.Info), Endianess: binary.BigEndian}
 		if i16, err := br.Uint16(); err != nil {
 			ret += err.Error()
 		} else {
@@ -226,7 +226,7 @@ func (a *attribute_info) String(c *ConstantPool) (ret string) {
 	case "Code":
 		ret += " ( "
 		var cl Code_attribute
-		br := binary.BinaryReader{bytes.NewReader(a.Info), binary.BigEndian}
+		br := binary.BinaryReader{Reader: bytes.NewReader(a.Info), Endianess: binary.BigEndian}
 		if err := br.ReadInterface(&cl); err != nil {
 			ret += err.Error()
 		} else {
@@ -319,7 +319,7 @@ const (
 )
 
 func NewClass(reader io.ReadSeeker) (*Class, error) {
-	r := binary.BinaryReader{reader, binary.BigEndian}
+	r := binary.BinaryReader{Reader: reader, Endianess: binary.BigEndian}
 	var c Class
 	if err := r.ReadInterface(&c); err != nil {
 		return nil, err
