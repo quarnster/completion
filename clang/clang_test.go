@@ -28,6 +28,7 @@ func TestClang(t *testing.T) {
 	a.Location.Column = 1
 	a.Location.Line = 4
 	a.Location.File.Name = "testdata/hello.cpp"
+	a.SessionOverrides.Set("clang_language", "c++")
 	if err := c.CompleteAt(&a, &b); err != nil {
 		t.Error(err)
 	} else {
@@ -62,7 +63,8 @@ void main() {
 `
 	a.Location.Line = 11
 	a.Location.Column = 4
-	a.SessionOverrides.Set("compiler_flags", []string{"-x", "c++", "-fno-exceptions"})
+	a.SessionOverrides.Set("compiler_flags", []string{"-fno-exceptions"})
+	a.SessionOverrides.Set("clang_language", "c++")
 	if err := c.CompleteAt(&a, &b); err != nil {
 		t.Error(err)
 	}
@@ -83,7 +85,6 @@ void main() {
 	} else if d := util.Diff(expected, res); len(d) != 0 {
 		t.Error(d)
 	}
-
 }
 
 func TestParseResult(t *testing.T) {
@@ -180,6 +181,7 @@ func TestGetDefinition(t *testing.T) {
 	a.Location.Column = 2
 	a.Location.Line = 4
 	a.Location.File.Name = "testdata/hello.cpp"
+	a.SessionOverrides.Set("clang_language", "c++")
 	if err := c.GetDefinition(&a, &b); err != nil {
 		t.Error(err)
 	} else if b.File.Name == "" || b.Line == 0 || b.Column == 0 {

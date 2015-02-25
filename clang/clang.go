@@ -18,6 +18,9 @@ func init() {
 	if err := content.RegisterType("compiler_flags", reflect.TypeOf([]string{})); err != nil {
 		panic(err)
 	}
+	if err := content.RegisterType("clang_language", reflect.TypeOf("")); err != nil {
+		panic(err)
+	}
 }
 
 func RunClang(stdin string, args ...string) ([]byte, error) {
@@ -114,15 +117,16 @@ type Clang struct {
 
 func (c *Clang) prepare(a *content.CompleteAtArgs) (fn string, args []string, err error) {
 	origargs, _ := a.Settings().Get("compiler_flags").([]string)
-	args = make([]string, len(origargs))
+	args = make([]string, len(origargs) + 1)
 	for i := range origargs {
 		args[i] = expand_path.ExpandPath(origargs[i])
 	}
 	fn = a.Location.File.Name
 	if a.Location.File.Contents != "" {
-		// File is unsaved, so use stdin as the filename
 		fn = "-"
 	}
+
+	args[len(args)-1] = "-x" + a.Settings().Get("clang_language").(string)
 
 	return fn, args, nil
 }
