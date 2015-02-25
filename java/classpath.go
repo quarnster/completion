@@ -10,7 +10,6 @@ import (
 
 var (
 	re_classpath = regexp.MustCompile(` {4}([^=]+)=((?:[^\n]+\n)(?: {8}[^\n]+\n)*)`)
-	re_pathsplit = regexp.MustCompile(`\s*(\S+)\s*`)
 )
 
 func properties() (ret map[string]string, err error) {
@@ -34,11 +33,18 @@ func DefaultClasspath() ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
+	return classpathFromProps(props)
+}
+
+func classpathFromProps(props map[string]string) ([]string, error) {
 	if v, ok := props["sun.boot.class.path"]; ok {
-		matches := re_pathsplit.FindAllStringSubmatch(v, -1)
-		ret := make([]string, len(matches))
-		for i := range matches {
-			ret[i] = matches[i][1]
+		lines := strings.Split(v, "\n")
+		ret := make([]string, 0, len(lines))
+		for _, p := range lines {
+			trimmed := strings.TrimSpace(p)
+			if trimmed != "" {
+				ret = append(ret, trimmed)
+			}
 		}
 		return ret, nil
 	}
