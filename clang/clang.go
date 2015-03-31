@@ -20,18 +20,18 @@ func init() {
 	}
 }
 
-func RunClang(stdin string, args ...string) ([]byte, error) {
+func RunClang(stdin string, args ...string) ([]byte, []byte, error) {
 	cmd := exec.Command("clang", args...)
 	log4go.Debug("Running clang command: %v", cmd)
 
 	if in, err := cmd.StdinPipe(); err != nil {
-		return nil, err
+		return nil, nil, err
 	} else if e, err := cmd.StderrPipe(); err != nil {
-		return nil, err
+		return nil, nil, err
 	} else if s, err := cmd.StdoutPipe(); err != nil {
-		return nil, err
+		return nil, nil, err
 	} else if err := cmd.Start(); err != nil {
-		return nil, err
+		return nil, nil, err
 	} else {
 		in.Write([]byte(stdin))
 		in.Close()
@@ -45,11 +45,11 @@ func RunClang(stdin string, args ...string) ([]byte, error) {
 		log4go.Fine("stdout: %s\n", string(so))
 		log4go.Fine("stderr: %s\n", string(eo))
 		if serr != nil {
-			return nil, serr
+			return so, eo, serr
 		} else if eerr != nil {
-			return nil, eerr
+			return so, eo, eerr
 		}
-		return so, nil
+		return so, eo, nil
 	}
 }
 
@@ -134,9 +134,13 @@ func (c *Clang) GetDefinition(a *content.GetDefinitionArgs, ret *content.SourceL
 	}
 	args = append([]string{"-fsyntax-only", "-Xclang", "-ast-dump", "-Xclang", "-ast-dump-filter", "-Xclang", a.Identifier}, args...)
 	args = append(args, fn)
-	out, err := RunClang(a.Location.File.Contents, args...)
+	out, oute, err := RunClang(a.Location.File.Contents, args...)
 	if len(out) == 0 {
-		return err
+		if err != nil {
+			return err
+		} else {
+			return fmt.Errorf("%s", oute)
+		}
 	}
 	re, err := regexp.Compile(`\w+Decl[^<]+<(..[^:,]+):?(\d+)?:?(\d+)?.*?\s` + a.Identifier + `\s`)
 	if err != nil {
@@ -162,8 +166,12 @@ func (c *Clang) CompleteAt(a *content.CompleteAtArgs, ret *content.CompletionRes
 
 	args = append([]string{"-fsyntax-only", "-Xclang", fmt.Sprintf("-code-completion-at=%s:%d:%d", fn, a.Location.Line, a.Location.Column)}, args...)
 	args = append(args, fn)
-	if out, err := RunClang(a.Location.File.Contents, args...); len(out) == 0 {
-		return err
+	if out, oute, err := RunClang(a.Location.File.Contents, args...); len(out) == 0 {
+		if err != nil {
+			return err
+		} else {
+			return fmt.Errorf("%s", oute)
+		}
 	} else if r, err := parseresult(string(out)); err != nil {
 		return err
 	} else {

@@ -15,7 +15,7 @@ import (
 var skip = false
 
 func TestClang(t *testing.T) {
-	if _, err := RunClang("-v"); err != nil {
+	if _, _, err := RunClang("", "-v"); err != nil {
 		skip = true
 		t.Skipf("Couldn't launch clang: %s", err)
 	}
@@ -62,6 +62,10 @@ void main() {
 `
 	a.Location.Line = 11
 	a.Location.Column = 4
+	if err := c.CompleteAt(&a, &b); err == nil {
+		// Need to provide -xc++ or similar, so it should complain about this if we didn't
+		t.Error("Expected an error, but didn't get one")
+	}
 	a.SessionOverrides.Set("compiler_flags", []string{"-x", "c++", "-fno-exceptions"})
 	if err := c.CompleteAt(&a, &b); err != nil {
 		t.Error(err)
