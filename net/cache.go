@@ -2,7 +2,7 @@ package net
 
 import (
 	"bytes"
-	"code.google.com/p/log4go"
+	"github.com/limetext/log4go"
 	"errors"
 	"fmt"
 	"github.com/howeyc/fsnotify"

@@ -3,7 +3,7 @@ language: go
 go: 1.1
 
 install:
-  - go get -d code.google.com/p/log4go
+  - go get -d github.com/limetext/log4go
   - go get -d github.com/quarnster/parser
   - go get -d github.com/quarnster/util
   - go get -d github.com/howeyc/fsnotify

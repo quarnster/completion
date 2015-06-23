@@ -1,7 +1,7 @@
 package main
 
 import (
-	"code.google.com/p/log4go"
+	"github.com/limetext/log4go"
 	"flag"
 	"github.com/quarnster/completion/clang"
 	"github.com/quarnster/completion/content"

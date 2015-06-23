@@ -1,7 +1,7 @@
 package clang
 
 import (
-	"code.google.com/p/log4go"
+	"github.com/limetext/log4go"
 	"fmt"
 	cp "github.com/quarnster/completion/clang/parser"
 	"github.com/quarnster/completion/content"

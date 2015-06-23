@@ -4,7 +4,7 @@ package libclang
 
 import (
 	"bytes"
-	"code.google.com/p/log4go"
+	"github.com/limetext/log4go"
 	"fmt"
 	"github.com/quarnster/completion/content"
 	"github.com/sbinet/go-clang"

@@ -2,7 +2,7 @@ package expand_path
 
 import (
 	"bytes"
-	"code.google.com/p/log4go"
+	"github.com/limetext/log4go"
 	"github.com/quarnster/parser"
 	"os"
 	"os/user"
