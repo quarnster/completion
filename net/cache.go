@@ -5,8 +5,8 @@ import (
 	"code.google.com/p/log4go"
 	"errors"
 	"fmt"
-	"github.com/howeyc/fsnotify"
 	"github.com/quarnster/completion/content"
+	"gopkg.in/fsnotify.v1"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -92,9 +92,18 @@ func (c *Cache) loaderthread() {
 func (c *Cache) watchthread() {
 	for {
 		select {
-		case ev := <-c.watch.Event:
+		case ev := <-c.watch.Events:
+			if ev.Op == fsnotify.Remove {
+				// File no longer exists so we wont get events for it anymore
+				// with the old add. Thus need to re-add it like this so that
+				// we get events for the new file once it is created.
+				if err := c.watch.Add(ev.Name); err != nil {
+					log4go.Warn("Failed to re-watch for removed file %s: %s", ev.Name, err)
+				}
+			}
+
 			c.load <- loadreq{ev.Name, true}
-		case err := <-c.watch.Error:
+		case err := <-c.watch.Errors:
 			log4go.Error("error:", err)
 		}
 	}
@@ -140,9 +149,7 @@ func (c *Cache) cache(assembly string) (*Assembly, error) {
 		if _, err := os.Stat(path); err != nil {
 			continue
 		}
-		if err := c.watch.Watch(path); err != nil {
-			return nil, err
-		} else if err := c.watch.WatchFlags(path, fsnotify.FSN_MODIFY); err != nil {
+		if err := c.watch.Add(path); err != nil {
 			return nil, err
 		}
 		e := entry{name: path}
@@ -151,7 +158,7 @@ func (c *Cache) cache(assembly string) (*Assembly, error) {
 				errs += "\n"
 			}
 			errs += fmt.Sprintf("\t%s", err.Error())
-			c.watch.RemoveWatch(path)
+			c.watch.Remove(path)
 			continue
 		}
 		c.entries = append(c.entries, e)

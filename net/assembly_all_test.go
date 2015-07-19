@@ -76,7 +76,7 @@ func TestLoadAllAssemblies(t *testing.T) {
 						}
 					} else {
 						ar := d2.(*AssemblyRow)
-						if mn, an := string(mr.Name), string(ar.Name); !strings.HasPrefix(mn, an) && (an != "mscorlib" && mn != "CommonLanguageRuntimeLibrary") {
+						if mn, an := string(mr.Name), string(ar.Name); !strings.HasPrefix(mn, an) && (an != "mscorlib" && mn != "CommonLanguageRuntimeLibrary" && !strings.HasPrefix(an, "policy")) {
 							outChan <- errors.New(fmt.Sprintf("The assembly name isn't the prefix of the module name: %s, %s", an, mn))
 						} else {
 							t.Logf("Successfully loaded module %50s {%s} %s (%s)", mn, mr.Mvid, an, time.Now().Sub(start))
