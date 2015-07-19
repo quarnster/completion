@@ -791,7 +791,7 @@ class TransportSocket(Transport):
         if self.s is None:
             self.connect()
         data = self.s.recv( self.limit )
-        while data.count(b'{') != data.count(b'}'):
+        while not data.endswith(b'}\n'):
             d = self.s.recv( self.limit )
             if len(d) == 0:
                 break
