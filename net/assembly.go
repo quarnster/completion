@@ -73,7 +73,7 @@ func (a *Assembly) Complete(t *content.Type) (*content.CompletionResult, error) 
 	} else if ct, err := td.ToContentType(); err != nil {
 		return nil, err
 	} else {
-		return (*content.CompletionResult)(ct), nil
+		return &content.CompletionResult{Type: *ct}, nil
 	}
 }
 

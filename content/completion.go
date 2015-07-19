@@ -82,10 +82,13 @@ type (
 		Specialization []Type             `protocol:"optional" json:",omitempty"`
 	}
 
-	// TODO: Is there any instance where the completion result would need to contain
-	// 	     fields *not* in Type?
-	CompletionResult Type
-	Type             struct {
+	CompletionResult struct {
+		Type
+		// Messages contains any compiler output or other information that occured
+		// during the Complete or CompleteAt operation.
+		Messages string
+	}
+	Type struct {
 		Name           FullyQualifiedName `protocol:"optional" json:",omitempty"`
 		Specialization []Type             `protocol:"optional" json:",omitempty"`
 		Flags          Flags              `protocol:"optional" json:",omitempty"`

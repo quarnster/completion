@@ -35,8 +35,8 @@ func TestJson(t *testing.T) {
 		"hello": "world",
 		"yes":   true,
 		"no":    3.0,
-		"complex": CompletionResult{Fields: []Field{
-			{Variable: Variable{Name: FullyQualifiedName{Relative: "Hello"}}},
+		"complex": CompletionResult{Type: Type{Fields: []Field{
+			{Variable: Variable{Name: FullyQualifiedName{Relative: "Hello"}}}},
 		}},
 	}}
 	if err := RegisterType("complex", reflect.TypeOf(source.Get("complex"))); err != nil {

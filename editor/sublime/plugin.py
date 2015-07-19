@@ -106,6 +106,8 @@ def do_query(context, callback, driver, args, launch_daemon, daemon_command, deb
     completions = []
     if debug:
         print("response:", response)
+    if "Messages" in response:
+        print(response["Messages"])
 
     def relname(dict):
         return dict["Relative"] if "Relative" in dict else ""
