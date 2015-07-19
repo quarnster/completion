@@ -68,7 +68,9 @@ void main() {
 	}
 	a.SessionOverrides.Set("compiler_flags", []string{"-x", "c++", "-fno-exceptions"})
 	if err := c.CompleteAt(&a, &b); err != nil {
-		t.Error(err)
+		t.Errorf("Unexpected error: %s", err)
+	} else if strings.Index(b.Messages, "void main") == -1 {
+		t.Errorf("Expected an error about main returning void but got: \"%s\"", b.Messages)
 	}
 	res := fmt.Sprintf("%s", b)
 	fn := "./testdata/unsaved.cpp.res"

@@ -176,6 +176,7 @@ func (c *Clang) CompleteAt(a *content.CompleteAtArgs, ret *content.CompletionRes
 		return err
 	} else {
 		*ret = r
+		ret.Messages = string(oute)
 		return nil
 	}
 }
