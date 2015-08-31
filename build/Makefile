@@ -34,7 +34,7 @@ all: ../../parser $(PEGS) ../editor/archive_data.go completion
 	go run archive.go ${ARCHIVE_DATA}
 
 completion: $(GENERATED)
-	go build -o completion ../
+	go build ../
 
 test: completion
 	go test -tags=nolibclang github.com/quarnster/completion/...
