@@ -21,12 +21,12 @@ def log(a):
 def make_transport():
     settings = sublime.load_settings("completion.sublime-settings")
     proto = settings.get("proto", "unix")
-    tp = jsonrpc.TransportUnixSocket
     port = settings.get("port", os.path.join(sublime.packages_path(), "User", "completion.rpc"))
 
     if proto == "tcp":
         tp = jsonrpc.TransportTcpIp
     elif proto == "unix":
+        tp = jsonrpc.TransportUnixSocket
         if not os.path.exists(port):
             start_daemon()
     return tp(addr=port, logfunc=log, timeout=2.0)
