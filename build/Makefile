@@ -20,7 +20,7 @@ PEGS = \
 	../util/scopes/scopes.go \
 	../util/simplify/simplify.go \
 	../net/csharp/csharp.go
-ARCHIVE_DATA= ../3rdparty/jsonrpc.py $(wildcard ../editor/sublime/*.py) $(wildcard ../editor/sublime/*.sublime-keymap) ../README.md
+ARCHIVE_DATA= ../3rdparty/jsonrpc.py $(wildcard ../editor/sublime/*.py) $(wildcard ../editor/sublime/*.sublime-keymap) $(wildcard ../editor/sublime/*.sublime-menu) ../README.md
 GENERATED = $(PEGS) ../editor/archive_data.go
 
 

@@ -55,6 +55,7 @@ func (s *Sublime) Install() error {
 			"3rdparty/jsonrpc.py",
 			"editor/sublime/plugin.py",
 			"editor/sublime/Default.sublime-keymap",
+			"editor/sublime/Main.sublime-menu",
 		}
 	)
 
