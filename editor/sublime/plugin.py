@@ -189,9 +189,9 @@ def prepare_request(view, prefix, locations, settings):
         "SessionOverrides": {
             # TODO: what would be a good way to handle this? Query the "driver" for which options are configurable?
             # TODO: Sessions should be used when possible to avoid sending the same configuration all the time.
-            "compiler_flags": view.settings().get("sublimeclang_options", []),
-            "net_paths":view.settings().get("net_paths", []),
-            "net_assemblies":view.settings().get("net_assemblies", []),
+            "compiler_flags": settings.get("sublimeclang_options", []),
+            "net_paths":settings.get("net_paths", []),
+            "net_assemblies":settings.get("net_assemblies", []),
         }
     }
     if view.is_dirty():
