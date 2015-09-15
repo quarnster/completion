@@ -157,6 +157,9 @@ def get_language(view, caret):
         return None
     return language.group(0)
 
+def get_setting(view, settings, key, default=[]):
+	return view.settings().get(key, settings.get(key, default))
+
 def prepare_request(view, prefix, locations, settings):
     if proxy == None:
         make_proxy()
@@ -189,9 +192,9 @@ def prepare_request(view, prefix, locations, settings):
         "SessionOverrides": {
             # TODO: what would be a good way to handle this? Query the "driver" for which options are configurable?
             # TODO: Sessions should be used when possible to avoid sending the same configuration all the time.
-            "compiler_flags": settings.get("sublimeclang_options", []),
-            "net_paths":settings.get("net_paths", []),
-            "net_assemblies":settings.get("net_assemblies", []),
+            "compiler_flags": get_setting(view, settings, "sublimeclang_options", []),
+            "net_paths": get_setting(view, settings, "net_paths", []),
+            "net_assemblies": get_setting(view, settings, "net_assemblies", []),
         }
     }
     if view.is_dirty():
@@ -213,7 +216,6 @@ def exec_goto(driver, args):
     except:
         sublime.status_message("definition not found!")
         print(response)
-
 
 class CompletionGotoDefinitionCommand(sublime_plugin.TextCommand):
     def __init__(self, view):
