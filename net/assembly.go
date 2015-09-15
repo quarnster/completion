@@ -7,7 +7,7 @@ package net
 // http://www.ecma-international.org/publications/standards/Ecma-335.htm
 
 import (
-	"code.google.com/p/log4go"
+	"github.com/limetext/log4go"
 	"errors"
 	"fmt"
 	"github.com/quarnster/completion/content"

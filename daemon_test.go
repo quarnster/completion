@@ -1,7 +1,7 @@
 package main
 
 import (
-	"code.google.com/p/log4go"
+	"github.com/limetext/log4go"
 	"encoding/json"
 	"fmt"
 	"github.com/quarnster/completion/content"

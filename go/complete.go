@@ -4,7 +4,7 @@ package goo
 
 import (
 	"code.google.com/p/go.tools/go/types"
-	"code.google.com/p/log4go"
+	"github.com/limetext/log4go"
 	"github.com/quarnster/completion/content"
 	//	"go/ast"
 	//	"go/parser"

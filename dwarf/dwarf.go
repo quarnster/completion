@@ -1,7 +1,7 @@
 package dwarf
 
 import (
-	"code.google.com/p/log4go"
+	"github.com/limetext/log4go"
 	"debug/dwarf"
 	"debug/macho"
 	"errors"

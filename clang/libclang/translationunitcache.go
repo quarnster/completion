@@ -3,7 +3,7 @@
 package libclang
 
 import (
-	"code.google.com/p/log4go"
+	"github.com/limetext/log4go"
 	"github.com/quarnster/completion/util/expand_path"
 	"github.com/sbinet/go-clang"
 	"reflect"

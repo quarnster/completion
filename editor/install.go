@@ -3,7 +3,7 @@ package editor
 import (
 	"archive/zip"
 	"bytes"
-	"code.google.com/p/log4go"
+	"github.com/limetext/log4go"
 	"fmt"
 	"io"
 	"os"

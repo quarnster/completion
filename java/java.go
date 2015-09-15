@@ -2,7 +2,7 @@ package java
 
 import (
 	"bytes"
-	"code.google.com/p/log4go"
+	"github.com/limetext/log4go"
 	"errors"
 	"github.com/quarnster/completion/content"
 	"reflect"
