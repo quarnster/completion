@@ -85,7 +85,7 @@ func BenchmarkFindtype(b *testing.B) {
 	using := up.RootNode()
 
 	for i := 0; i < b.N; i++ {
-		findtype(cache, using, "string")
+		findtype(cache, "", using, "string")
 	}
 }
 

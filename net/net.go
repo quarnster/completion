@@ -74,7 +74,7 @@ func typeresolve(td *TypeDef, node *parser.Node) (*content.Type, error) {
 	return nil, fmt.Errorf("No such type found: %s, %s", td.Name(), node)
 }
 
-func findtype(cache *Cache, using *parser.Node, name string) *TypeDef {
+func findtype(cache *Cache, namespace string, using *parser.Node, name string) *TypeDef {
 	if n, ok := tm[name]; ok {
 		name = n
 	}
@@ -83,10 +83,19 @@ func findtype(cache *Cache, using *parser.Node, name string) *TypeDef {
 		return td
 	}
 
-	for _, child := range using.Children {
-		n := content.FullyQualifiedName{Absolute: fmt.Sprintf("net://type/%s.%s", child.Children[0].Data(), name)}
+	if namespace != "" {
+		n = content.FullyQualifiedName{Absolute: fmt.Sprintf("net://type/%s.%s", namespace, name)}
 		if td, _ := cache.FindType(n); td != nil {
 			return td
+		}
+	}
+
+	for _, child := range using.Children {
+		if(len(child.Children) > 0){
+			n := content.FullyQualifiedName{Absolute: fmt.Sprintf("net://type/%s.%s", child.Children[0].Data(), name)}
+			if td, _ := cache.FindType(n); td != nil {
+				return td
+			}
 		}
 	}
 
@@ -189,6 +198,16 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 	}
 	using := up.RootNode()
 
+	var code csharp.CSHARP
+	code.SetData(contents)
+	code.Code()
+	namespace := ""
+	if len(code.RootNode().Children) == 3 && len(code.RootNode().Children[1].Children) > 0 {
+		namespace = code.RootNode().Children[1].Children[0].Data()
+	} else {
+		log4go.Debug("Couldn't find namespace")
+	}
+
 	var p csharp.CSHARP
 	off := args.Location.Offset()
 	line := args.Location.File.Line(off)
@@ -220,7 +239,7 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 		}
 		if td == nil {
 			tn := ns + node.Children[0].Data()
-			if td = findtype(cache, using, tn); td == nil {
+			if td = findtype(cache, namespace, using, tn); td == nil {
 				ns = tn + "."
 			}
 		} else if t2, err := typeresolve(td, node.Children[0]); err != nil {
@@ -233,6 +252,7 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 		if td == nil {
 			// Probably a variable completion then?
 			v := c.variable(node.Children[0])
+
 			data := scopes.Substr(args.Location.File.Contents, scopes.Visibility(args.Location))
 			loc := content.File{Contents: data}
 			re, err := regexp.Compile(fmt.Sprintf(`[=\(,;}\s](\w+(\s*\[\])*\s+)*%s[;\s=,)\[]`, v))
@@ -252,7 +272,7 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 				if t == "" {
 					continue
 				}
-				if td = findtype(cache, using, t); td != nil {
+				if td = findtype(cache, namespace, using, t); td != nil {
 					break
 				}
 				// Internal class perhaps?
@@ -264,7 +284,7 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 					if !strings.HasSuffix(t2, t) {
 						continue
 					}
-					if td = findtype(cache, using, t2); td != nil {
+					if td = findtype(cache, namespace, using, t2); td != nil {
 						break
 					}
 				}

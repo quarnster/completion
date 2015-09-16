@@ -13,7 +13,7 @@ UsingDirectives             <-      BOM? Spacing? Using*
 
 Preproc                     <-      '#' (!EndOfLine .)+ EndOfLine
 
-Namespace                   <-      Spacing? "namespace" Spacing SpacedIdentifier '{' Namespace* Class '}' Spacing?
+Namespace                   <-      Spacing? "namespace" Spacing SpacedDotIdentifier '{' Namespace* Class '}' Spacing?
 
 Class                       <-      SpacedAccess* Spacing? ("class" / "struct") Spacing SpacedIdentifier Inheritance? ClassScope
 
