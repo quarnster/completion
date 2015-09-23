@@ -9,4 +9,5 @@ net/csharp/csharp.go
 util/expand_path/expand_path.go
 util/expression/expression.go
 util/scopes/scopes.go
+util/simplify/simplify.go
 *.pyc
