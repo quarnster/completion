@@ -190,6 +190,9 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 	if err := args.Location.File.Load(); err != nil {
 		return err
 	}
+
+	off := args.Location.Offset()
+	off_ := int(off)
 	contents := args.Location.File.Contents
 	var up csharp.CSHARP
 	up.SetData(contents)
@@ -201,15 +204,21 @@ func (c *Net) CompleteAt(args *content.CompleteAtArgs, cmp *content.CompletionRe
 	var code csharp.CSHARP
 	code.SetData(contents)
 	code.Code()
+	code.Namespace()
+
 	namespace := ""
-	if len(code.RootNode().Children) == 3 && len(code.RootNode().Children[1].Children) > 0 {
-		namespace = code.RootNode().Children[1].Children[0].Data()
-	} else {
+	for _, ns := range(code.RootNode().Children){
+		if ns.Name == "Namespace" && ns.Range.A <= off_ && off_ < ns.Range.B {
+			namespace = ns.Children[0].Data()
+			break;
+		}
+	}
+
+	if len(namespace) == 0 {
 		log4go.Debug("Couldn't find namespace")
 	}
 
 	var p csharp.CSHARP
-	off := args.Location.Offset()
 	line := args.Location.File.Line(off)
 	line = line[:args.Location.Column-1]
 	p.SetData(line)
