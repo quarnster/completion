@@ -44,6 +44,8 @@ func TestNet(t *testing.T) {
 		{"./testdata/CompleteSharp.cs", 95, 38},
 		{"./testdata/CompleteSharp.cs", 95, 45},
 		{"./testdata/CompleteSharp.cs", 776, 39},
+		{"./testdata/NamespaceTest.cs", 4, 15},
+		{"./testdata/NamespaceTest.cs", 6, 15},
 	}
 	args.SessionId = "a"
 	args.Settings().Set("net_paths", []string{"./testdata/"})
