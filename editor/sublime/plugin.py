@@ -54,12 +54,21 @@ def pipe_reader(name, pipe, output=False):
             break
     daemon = None
 
+def generate_daemon_command(settings):
+    proto = get_setting(view, settings, "proto")
+    if proto == "unix" and get_setting(view, settings, "remove"):
+        proto += " -remove=true"
+    daemon_path = get_setting(view, settings, "daemon_path")
+    port = get_setting(view, settings, "port")
+
+    return "%s daemon -proto=%s -port=%s" % (daemon_path, proto, port)
+
 def start_daemon(daemon_command=None):
     global daemon
     global last_launch
     if daemon_command == None:
         settings = sublime.load_settings("completion.sublime-settings")
-        daemon_command = settings.get("daemon_command")
+        daemon_command = generate_daemon_command()
 
     now = time.time()
     output = False
@@ -222,7 +231,7 @@ class CompletionGotoDefinitionCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         settings = sublime.load_settings("completion.sublime-settings")
         launch_daemon = settings.get("launch_daemon", False)
-        daemon_command = settings.get("daemon_command")
+        daemon_command = generate_daemon_command()
         debug = settings.get("debug", False)
 
         locations = [a.b for a in self.view.sel()]
@@ -274,7 +283,7 @@ class Ev(sublime_plugin.EventListener):
 
         settings = sublime.load_settings("completion.sublime-settings")
         launch_daemon = settings.get("launch_daemon", False)
-        daemon_command = settings.get("daemon_command")
+        daemon_command = generate_daemon_command()
         debug = settings.get("debug", False)
 
         driver, args = prepare_request(view, prefix, locations, settings)
