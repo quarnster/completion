@@ -87,7 +87,7 @@ func (c *Java) Complete(args *content.CompleteArgs, cmp *content.CompletionResul
 	return nil
 }
 
-// TODO(d) provide generic completions based on context. New lines should complete
+// CompleteAt: TODO(d) provide generic completions based on context. New lines should complete
 // types, methods, and members, inherited or otherwise. Argument position should show
 // results only for the type accepted, etc.
 func (c *Java) CompleteAt(a *content.CompleteAtArgs, ret *content.CompletionResult) error {

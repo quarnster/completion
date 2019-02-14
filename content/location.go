@@ -62,7 +62,7 @@ func (f *File) Load() error {
 	return nil
 }
 
-// Returns the line at the given offset
+// Line returns the line at the given offset
 func (f *File) Line(offset Offset) string {
 	const linebreaks = "\n\r"
 	if offset > Offset(len(f.Contents)) || offset < 0 {
@@ -78,7 +78,7 @@ func (f *File) Line(offset Offset) string {
 	return f.Contents[start+1 : end]
 }
 
-// Returns the 0 based offset that the SourceLocation represents.
+// Offset returns the 0 based offset that the SourceLocation represents.
 func (s *SourceLocation) Offset() Offset {
 	line, col := uint(1), uint(1)
 	for i, c := range s.File.Contents {

@@ -7,7 +7,7 @@ import (
 	"github.com/quarnster/parser"
 )
 
-// Returns the RegionSet visible from the given source code location.
+// Visibility returns the RegionSet visible from the given source code location.
 // Note that it only uses '{' and '}' to deduce scopes, and further
 // processing is likely needed depending on language specifics.
 func Visibility(loc content.SourceLocation) (ret text.RegionSet) {

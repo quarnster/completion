@@ -20,7 +20,7 @@ type (
 
 var sessionmap = make(map[string]*Session)
 
-// TODO(.): Not too happy about the signature here, but it's needed to conform to net/rpc requirements
+// Register: TODO(.): Not too happy about the signature here, but it's needed to conform to net/rpc requirements
 func (s *Session) Register(args *SessionRegisterArgs, dummy *bool) error {
 	if _, ok := sessionmap[args.SessionId]; ok {
 		return fmt.Errorf("Session already exists: %s", args.SessionId)
@@ -29,7 +29,7 @@ func (s *Session) Register(args *SessionRegisterArgs, dummy *bool) error {
 	return nil
 }
 
-// TODO(.): Not too happy about the signature here, but it's needed to conform to net/rpc requirements
+// Unregister: TODO(.): Not too happy about the signature here, but it's needed to conform to net/rpc requirements
 func (s *Session) Unregister(SessionId string, dummy *bool) error {
 	delete(sessionmap, SessionId)
 	return nil

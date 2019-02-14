@@ -22,7 +22,7 @@ var (
 	}
 )
 
-// Performs a series of transforms on the input code string
+// Simplify: Performs a series of transforms on the input code string
 // trying to make it as simple as possible to parse.
 //
 // The output is a compact representation of the original
